@@ -1,0 +1,62 @@
+{
+    "Buy Blood": {
+        "steps": [
+            {
+                "node": "Supplier",
+                "marker": "Supplier - inside",
+                "mode": "Wait until Appear",
+                "time": "0"
+            },
+            {
+                "node": "Blood - Type",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            },
+            {
+                "node": "Blood - Amount",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            },
+            {
+                "node": "Blood - Purchase",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            },
+            {
+                "node": "Supplier - out",
+                "marker": "Home",
+                "mode": "Wait until Appear",
+                "time": "0"
+            }
+        ]
+    },
+    "Gather": {
+        "steps": [
+            {
+                "node": "Gathering",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            },
+            {
+                "node": "Gathering - OK",
+                "marker": "Gathering - Automove",
+                "mode": "Wait until Disappear",
+                "time": "3"
+            }
+        ]
+    },
+    "Attack": {
+        "steps": [
+            {
+                "node": "Attack - Auto",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            }
+        ]
+    }
+}

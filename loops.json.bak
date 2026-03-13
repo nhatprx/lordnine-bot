@@ -1,0 +1,93 @@
+{
+    "Buy Blood": {
+        "nodes": {
+            "ceed8f58": {
+                "id": "ceed8f58",
+                "type": "Start",
+                "x": 35,
+                "y": 14,
+                "w": 140,
+                "h": 60,
+                "data": {
+                    "title": "Start"
+                }
+            },
+            "5913b3ca": {
+                "id": "5913b3ca",
+                "type": "Macro",
+                "x": 3,
+                "y": 222,
+                "w": 140,
+                "h": 60,
+                "data": {
+                    "macro_name": "Buy Blood"
+                }
+            },
+            "9823eac5": {
+                "id": "9823eac5",
+                "type": "Condition",
+                "x": 129,
+                "y": 108,
+                "w": 140,
+                "h": 80,
+                "data": {
+                    "image_name": "Home"
+                }
+            },
+            "2a4d1c9e": {
+                "id": "2a4d1c9e",
+                "type": "Macro",
+                "x": 205,
+                "y": 297,
+                "w": 140,
+                "h": 60,
+                "data": {
+                    "macro_name": "Gather"
+                }
+            },
+            "0c643ead": {
+                "id": "0c643ead",
+                "type": "Macro",
+                "x": 441,
+                "y": 320,
+                "w": 140,
+                "h": 60,
+                "data": {
+                    "macro_name": "Attack"
+                }
+            }
+        },
+        "edges": [
+            {
+                "from": "ceed8f58",
+                "from_pin": "out",
+                "to": "9823eac5",
+                "to_pin": "in"
+            },
+            {
+                "from": "9823eac5",
+                "from_pin": "true",
+                "to": "5913b3ca",
+                "to_pin": "in"
+            },
+            {
+                "from": "5913b3ca",
+                "from_pin": "out",
+                "to": "2a4d1c9e",
+                "to_pin": "in"
+            },
+            {
+                "from": "2a4d1c9e",
+                "from_pin": "out",
+                "to": "0c643ead",
+                "to_pin": "in"
+            },
+            {
+                "from": "9823eac5",
+                "from_pin": "false",
+                "to": "2a4d1c9e",
+                "to_pin": "in"
+            }
+        ]
+    }
+}
