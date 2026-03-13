@@ -31,7 +31,9 @@
                 "mode": "Wait until Appear",
                 "time": "0"
             }
-        ]
+        ],
+        "success_capture": "Home",
+        "failure_capture": "Supplier - inside"
     },
     "Gather": {
         "steps": [
@@ -50,6 +52,37 @@
         ]
     },
     "Attack": {
-        "steps": []
+        "steps": [
+            {
+                "node": "Attack - Auto",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            }
+        ],
+        "success_capture": "Revive",
+        "failure_capture": "None"
+    },
+    "Home": {
+        "steps": [
+            {
+                "node": "Home",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            }
+        ],
+        "success_capture": "Supplier",
+        "failure_capture": "Attack - Auto"
+    },
+    "Revive": {
+        "steps": [
+            {
+                "node": "Revive",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            }
+        ]
     }
 }

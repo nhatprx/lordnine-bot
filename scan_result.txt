@@ -1,0 +1,18 @@
+L111: self.multi_accounts = []
+L112: self.load_multi()
+L208: def load_multi(self):
+L213: self.multi_accounts = data.get("accounts", [])
+L217: def save_multi(self):
+L222: json.dump({"accounts": self.multi_accounts}, f, indent=4)
+L1915: total_assigned = len(self.multi_accounts)
+L1916: for acc in self.multi_accounts:
+L1933: for acc in self.multi_accounts:
+L1983: self.multi_accounts.append({
+L1988: self.save_multi()
+L2002: for idx, acc in enumerate(self.multi_accounts):
+L2010: self.multi_accounts.pop(i)
+L2011: self.save_multi()
+L2042: if not self.multi_accounts:
+L2050: for acc in self.multi_accounts:
+L2054: for acc in self.multi_accounts:
+L2059: for acc in self.multi_accounts:

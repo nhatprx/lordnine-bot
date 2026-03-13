@@ -3,11 +3,37 @@ import customtkinter as ctk
 import uuid
 from tkinter import messagebox, simpledialog
 
+# Unified palette (matches main.py COLOR dict)
+_FC = {
+    "bg":       "#0F172A",
+    "surface":  "#1E293B",
+    "surface2": "#334155",
+    "primary":  "#3B82F6",
+    "success":  "#22C55E",
+    "danger":   "#EF4444",
+    "warning":  "#F59E0B",
+    "accent":   "#06B6D4",
+    "text":     "#F1F5F9",
+    "text_dim": "#94A3B8",
+    "node_macro":  "#2563EB",
+    "node_cond":   "#D97706",
+    "node_delay":  "#7C3AED",
+    "node_start":  "#16A34A",
+    "node_default":"#475569",
+    "wire":     "#94A3B8",
+    "wire_true":"#22C55E",
+    "wire_false":"#EF4444",
+    "wire_drag":"#F59E0B",
+    "pin_in":   "#94A3B8",
+    "pin_out":  "#F59E0B",
+}
+
+
 class FlowchartUI(ctk.CTkCanvas):
     def __init__(self, master, get_macros_cb=None, get_images_cb=None, on_change_cb=None, **kwargs):
-        super().__init__(master, bg="#1E2B3C", highlightthickness=0, **kwargs)
+        super().__init__(master, bg=_FC["bg"], highlightthickness=0, **kwargs)
         self.nodes = {}
-        self.edges = [] # dicts: {'from': node_id, 'from_pin': pin_name, 'to': node_id, 'to_pin': pin_name}
+        self.edges = []
         
         # State
         self.selected_node = None
@@ -15,41 +41,118 @@ class FlowchartUI(ctk.CTkCanvas):
         self.drag_start_x = 0
         self.drag_start_y = 0
         
+        # Wiring state
         self.wiring = False
         self.wire_start_node = None
         self.wire_start_pin = None
         self.wire_line = None
         
+        # Pan state (middle mouse OR right-drag)
+        self.panning = False
+        self.pan_start_x = 0
+        self.pan_start_y = 0
+        
+        # View offset (for panning)
+        self.view_offset_x = 0
+        self.view_offset_y = 0
+        
+        # Zoom state
+        self.zoom = 1.0
+        self.ZOOM_MIN = 0.3
+        self.ZOOM_MAX = 2.0
+        
+        # Hand (pan) mode — toggled by H key
+        self.hand_mode = False
+        
+        # Track last mouse position on canvas (for placing new nodes)
+        self.last_mouse_x = 200
+        self.last_mouse_y = 150
+        
         self.get_macros_cb = get_macros_cb
         self.get_images_cb = get_images_cb
         self.on_change_cb = on_change_cb
         
+        # Node sizing
+        self.NODE_W = 160
+        self.NODE_H = 70
+        self.NODE_H_COND = 90
+        self.PIN_R = 9  # Pin radius for drawing
+        self.PIN_HIT = 14  # Pin hit area radius
+        self.CORNER_R = 8  # Rounded corner radius
+        
+        # Bindings
         self.bind("<ButtonPress-1>", self.on_press)
         self.bind("<B1-Motion>", self.on_drag)
         self.bind("<ButtonRelease-1>", self.on_release)
         self.bind("<Button-3>", self.on_right_click)
+        
+        # Middle mouse pan
+        self.bind("<ButtonPress-2>", self.on_pan_start)
+        self.bind("<B2-Motion>", self.on_pan_drag)
+        self.bind("<ButtonRelease-2>", self.on_pan_end)
+        
+        # Ctrl+Scroll = Zoom, Scroll = vertical pan, Shift+Scroll = horizontal pan
+        self.bind("<Control-MouseWheel>", self.on_zoom)
+        self.bind("<MouseWheel>", self.on_scroll)
+        self.bind("<Shift-MouseWheel>", self.on_scroll_h)
+        
+        # Track mouse movement for cursor-based node placement
+        self.bind("<Motion>", self.on_mouse_move)
+        
+        # H key = toggle hand/pan mode, Escape = exit hand mode
+        self.bind("<Key-h>", self.toggle_hand_mode)
+        self.bind("<Key-H>", self.toggle_hand_mode)
+        self.bind("<Escape>", self.exit_hand_mode)
+        
+        # Auto-grab focus when mouse enters canvas (needed for key events)
+        self.bind("<Enter>", lambda e: self.focus_set())
 
     def load_graph(self, data):
-        self.nodes = data.get("nodes", {})
-        self.edges = data.get("edges", [])
+        self.nodes = data.get("nodes", {}) if data else {}
+        self.edges = data.get("edges", []) if data else []
+        self.view_offset_x = 0
+        self.view_offset_y = 0
+        self.zoom = 1.0
         self.redraw()
+    
+    def screen_to_world(self, sx, sy):
+        """Convert screen coordinates to world coordinates (accounting for pan + zoom)."""
+        wx = sx / self.zoom + self.view_offset_x
+        wy = sy / self.zoom + self.view_offset_y
+        return wx, wy
+    
+    def world_to_screen(self, wx, wy):
+        """Convert world coordinates to screen coordinates."""
+        sx = (wx - self.view_offset_x) * self.zoom
+        sy = (wy - self.view_offset_y) * self.zoom
+        return sx, sy
         
     def export_graph(self):
         return {"nodes": self.nodes, "edges": self.edges}
         
-    def add_node(self, ntype, x=50, y=50):
+    def add_node(self, ntype, x=None, y=None):
+        """Add node near cursor position. x,y params are ignored - uses last mouse pos."""
         nid = str(uuid.uuid4())[:8]
+        # Place at cursor position (converted to world coords)
+        world_x, world_y = self.screen_to_world(self.last_mouse_x, self.last_mouse_y)
+        # Offset slightly so it's centered on cursor
+        world_x -= self.NODE_W // 2
+        world_y -= self.NODE_H // 2
+        
         node = {
-            "id": nid, "type": ntype, "x": x, "y": y, 
-            "w": 140, "h": 60, "data": {}
+            "id": nid, "type": ntype, 
+            "x": world_x, 
+            "y": world_y, 
+            "w": self.NODE_W, "h": self.NODE_H, "data": {}
         }
         if ntype == "Start":
             node["data"] = {"title": "Start"}
         elif ntype == "Macro":
             node["data"] = {"macro_name": "None"}
+            node["h"] = self.NODE_H_COND  # Taller to fit dual pins
         elif ntype == "Condition":
             node["data"] = {"image_name": "None"}
-            node["h"] = 80
+            node["h"] = self.NODE_H_COND
         elif ntype == "Delay":
             node["data"] = {"time": 1.0}
             
@@ -57,69 +160,232 @@ class FlowchartUI(ctk.CTkCanvas):
         self.redraw()
         if self.on_change_cb: self.on_change_cb()
         return nid
+
+    # --- Mouse tracking ---
+    def on_mouse_move(self, event):
+        self.last_mouse_x = event.x
+        self.last_mouse_y = event.y
+    
+    def toggle_hand_mode(self, event=None):
+        self.hand_mode = not self.hand_mode
+        self.configure(cursor="fleur" if self.hand_mode else "")
+        self.redraw()
+    
+    def exit_hand_mode(self, event=None):
+        self.hand_mode = False
+        self.configure(cursor="")
+        self.redraw()
+
+    # --- Scroll & Pan & Zoom ---
+    def on_scroll(self, event):
+        delta = -event.delta // 120 * 30
+        self.view_offset_y += delta / self.zoom
+        self.redraw()
+    
+    def on_scroll_h(self, event):
+        delta = -event.delta // 120 * 30
+        self.view_offset_x += delta / self.zoom
+        self.redraw()
+    
+    def on_zoom(self, event):
+        """Ctrl+Scroll = Zoom centered on mouse position."""
+        # Get world coords at current mouse position before zoom
+        old_wx, old_wy = self.screen_to_world(event.x, event.y)
         
-    # Helper to calculate pin positions
+        # Adjust zoom
+        factor = 1.1 if event.delta > 0 else 0.9
+        new_zoom = max(self.ZOOM_MIN, min(self.ZOOM_MAX, self.zoom * factor))
+        self.zoom = new_zoom
+        
+        # Adjust offset so the world point under the mouse stays put
+        self.view_offset_x = old_wx - event.x / self.zoom
+        self.view_offset_y = old_wy - event.y / self.zoom
+        
+        self.redraw()
+    
+    def on_pan_start(self, event):
+        self.panning = True
+        self.pan_start_x = event.x
+        self.pan_start_y = event.y
+    
+    def on_pan_drag(self, event):
+        if not self.panning: return
+        dx = event.x - self.pan_start_x
+        dy = event.y - self.pan_start_y
+        self.view_offset_x -= dx / self.zoom
+        self.view_offset_y -= dy / self.zoom
+        self.pan_start_x = event.x
+        self.pan_start_y = event.y
+        self.redraw()
+    
+    def on_pan_end(self, event):
+        self.panning = False
+
+    # --- Pin coords (with view offset + zoom) ---
     def get_pin_coords(self, nid, pin_name):
         n = self.nodes[nid]
+        # Convert world coords to screen coords
+        sx, sy = self.world_to_screen(n["x"], n["y"])
+        sw = n["w"] * self.zoom
+        sh = n["h"] * self.zoom
         if pin_name == "in":
-            return n["x"] + n["w"]/2, n["y"]
+            return sx + sw/2, sy
         elif pin_name == "out":
-            return n["x"] + n["w"]/2, n["y"] + n["h"]
+            return sx + sw/2, sy + sh
         elif pin_name == "true":
-            return n["x"] + n["w"]/4, n["y"] + n["h"]
+            return sx + sw/4, sy + sh
         elif pin_name == "false":
-            return n["x"] + 3*n["w"]/4, n["y"] + n["h"]
-        return n["x"], n["y"]
+            return sx + 3*sw/4, sy + sh
+        return sx, sy
 
-    # Redraw everything
+    # --- Drawing ---
+    def _round_rect(self, x1, y1, x2, y2, r, **kwargs):
+        """Draw a rounded rectangle on canvas."""
+        points = [
+            x1+r, y1,  x2-r, y1,  x2, y1,  x2, y1+r,
+            x2, y2-r,  x2, y2,  x2-r, y2,  x1+r, y2,
+            x1, y2,  x1, y2-r,  x1, y1+r,  x1, y1,  x1+r, y1
+        ]
+        return self.create_polygon(points, smooth=True, **kwargs)
+
     def redraw(self):
         self.delete("all")
-        # Draw edges
+        z = self.zoom
+        
+        # Draw grid (subtle dots)
+        cw = self.winfo_width() or 800
+        ch = self.winfo_height() or 500
+        grid_size = max(20, int(40 * z))
+        for gx in range(0, cw, grid_size):
+            for gy in range(0, ch, grid_size):
+                self.create_oval(gx, gy, gx+2, gy+2, fill="#1E293B", outline="")
+        
+        # Draw edges (curved bezier-like lines)
         for edge in self.edges:
-            x1, y1 = self.get_pin_coords(edge["from"], edge["from_pin"])
-            x2, y2 = self.get_pin_coords(edge["to"], edge["to_pin"])
-            color = "#2ECC71" if edge["from_pin"] == "true" else "#E74C3C" if edge["from_pin"] == "false" else "#BDC3C7"
-            self.create_line(x1, y1, x2, y2, arrow=tk.LAST, fill=color, width=3, tags=("edge", edge["from"], edge["to"]))
+            try:
+                x1, y1 = self.get_pin_coords(edge["from"], edge["from_pin"])
+                x2, y2 = self.get_pin_coords(edge["to"], edge["to_pin"])
+            except KeyError:
+                continue
+            
+            color = _FC["wire"]
+            if edge["from_pin"] == "true": color = _FC["wire_true"]
+            elif edge["from_pin"] == "false": color = _FC["wire_false"]
+            
+            # Smooth curve via midpoints
+            mid_y = (y1 + y2) / 2
+            self.create_line(
+                x1, y1, x1, mid_y, x2, mid_y, x2, y2,
+                arrow=tk.LAST, fill=color, width=max(1, int(2*z)), smooth=True,
+                tags=("edge", edge["from"], edge["to"])
+            )
             
         # Draw nodes
         for nid, n in self.nodes.items():
-            x, y, w, h = n["x"], n["y"], n["w"], n["h"]
-            bg_color = "#34495E"
-            if n["type"] == "Start": bg_color = "#27AE60"
-            elif n["type"] == "Condition": bg_color = "#D35400"
-            elif n["type"] == "Delay": bg_color = "#8E44AD"
-            elif n["type"] == "Macro": bg_color = "#2980B9"
+            sx, sy = self.world_to_screen(n["x"], n["y"])
+            sw = n["w"] * z
+            sh = n["h"] * z
             
-            outline = "white" if self.selected_node == nid else "black"
+            # Skip if off-screen
+            if sx + sw < -50 or sx > cw + 50 or sy + sh < -50 or sy > ch + 50:
+                continue
             
-            self.create_rectangle(x, y, x+w, y+h, fill=bg_color, outline=outline, width=2, tags=("node", nid))
+            # Node colors
+            bg = _FC["node_default"]
+            if n["type"] == "Start":      bg = _FC["node_start"]
+            elif n["type"] == "Macro":    bg = _FC["node_macro"]
+            elif n["type"] == "Condition":bg = _FC["node_cond"]
+            elif n["type"] == "Delay":    bg = _FC["node_delay"]
             
-            # Title
+            # Selection glow
+            outline_color = "#FFFFFF" if self.selected_node == nid else bg
+            outline_width = 3 if self.selected_node == nid else 1
+            
+            cr = max(2, int(self.CORNER_R * z))
+            
+            # Shadow
+            self._round_rect(sx+3, sy+3, sx+sw+3, sy+sh+3, cr, 
+                           fill="#0A0F1A", outline="")
+            
+            # Node body
+            self._round_rect(sx, sy, sx+sw, sy+sh, cr,
+                           fill=bg, outline=outline_color, width=outline_width,
+                           tags=("node", nid))
+            
+            # Title text
             title = n["type"]
-            if n["type"] == "Macro": title = f"Macro:\n{n['data'].get('macro_name','None')}"
-            elif n["type"] == "Condition": title = f"If Found:\n{n['data'].get('image_name','None')}"
-            elif n["type"] == "Delay": title = f"Wait: {n['data'].get('time',1)}s"
+            if n["type"] == "Macro":
+                title = f"Macro\n{n['data'].get('macro_name','None')}"
+            elif n["type"] == "Condition":
+                title = f"If Found\n{n['data'].get('image_name','None')}"
+            elif n["type"] == "Delay":
+                title = f"Wait {n['data'].get('time',1)}s"
+            elif n["type"] == "Start":
+                title = "START"
             
-            self.create_text(x+w/2, y+h/2, text=title, fill="white", font=("Arial", 10, "bold"), tags=("node", nid), width=w-10, justify="center")
+            font_size = max(7, int(11 * z))
+            self.create_text(sx+sw/2, sy+sh/2, text=title, fill=_FC["text"],
+                           font=("Segoe UI", font_size, "bold"), tags=("node", nid),
+                           width=sw-16*z, justify="center")
             
-            # Draw pins (larger hitboxes)
+            # Draw pins
+            pr = max(4, int(self.PIN_R * z))
+            
+            # IN pin (top, except Start)
             if n["type"] != "Start":
                 px, py = self.get_pin_coords(nid, "in")
-                self.create_oval(px-8, py-8, px+8, py+8, fill="#BDC3C7", tags=("pin", nid, "in"))
+                self.create_oval(px-pr, py-pr, px+pr, py+pr, 
+                               fill=_FC["pin_in"], outline=_FC["bg"], width=2,
+                               tags=("pin", nid, "in"))
                 
-            if n["type"] == "Condition":
+            # OUT pins
+            if n["type"] == "Condition" or n["type"] == "Macro":
+                # Dual pins: success (left) / failure (right)
                 px, py = self.get_pin_coords(nid, "true")
-                self.create_oval(px-8, py-8, px+8, py+8, fill="#2ECC71", tags=("pin", nid, "true"))
-                self.create_text(px, py-14, text="T", fill="#2ECC71", font=("Arial", 8, "bold"))
+                self.create_oval(px-pr, py-pr, px+pr, py+pr,
+                               fill=_FC["wire_true"], outline=_FC["bg"], width=2,
+                               tags=("pin", nid, "true"))
+                label_t = "TRUE" if n["type"] == "Condition" else "OK"
+                lfs = max(6, int(8 * z))
+                self.create_text(px, py+14*z, text=label_t, fill=_FC["wire_true"],
+                               font=("Segoe UI", lfs, "bold"))
                 
+                # False pin (right)
                 px, py = self.get_pin_coords(nid, "false")
-                self.create_oval(px-8, py-8, px+8, py+8, fill="#E74C3C", tags=("pin", nid, "false"))
-                self.create_text(px, py-14, text="F", fill="#E74C3C", font=("Arial", 8, "bold"))
+                self.create_oval(px-pr, py-pr, px+pr, py+pr,
+                               fill=_FC["wire_false"], outline=_FC["bg"], width=2,
+                               tags=("pin", nid, "false"))
+                label_f = "FALSE" if n["type"] == "Condition" else "FAIL"
+                self.create_text(px, py+14*z, text=label_f, fill=_FC["wire_false"],
+                               font=("Segoe UI", lfs, "bold"))
             else:
+                # Single out pin (bottom)
                 px, py = self.get_pin_coords(nid, "out")
-                self.create_oval(px-8, py-8, px+8, py+8, fill="#F39C12", tags=("pin", nid, "out"))
+                self.create_oval(px-pr, py-pr, px+pr, py+pr,
+                               fill=_FC["pin_out"], outline=_FC["bg"], width=2,
+                               tags=("pin", nid, "out"))
+        
+        # Zoom indicator (bottom-right)
+        zoom_pct = int(self.zoom * 100)
+        self.create_text(cw - 10, ch - 10, text=f"{zoom_pct}%", 
+                        fill=_FC["text_dim"], font=("Segoe UI", 9), anchor="se")
+        
+        # Hand mode indicator
+        if self.hand_mode:
+            self.create_text(cw - 10, ch - 26, text="HAND (H)", 
+                            fill=_FC["warning"], font=("Segoe UI", 9, "bold"), anchor="se")
                 
+    # --- Interaction ---
     def on_press(self, event):
+        self.focus_set()  # Ensure we receive key events
+        
+        # Hand mode: left click starts panning
+        if self.hand_mode:
+            self.panning = True
+            self.pan_start_x = event.x
+            self.pan_start_y = event.y
+            return
+        
         item = self.find_withtag("current")
         if not item:
             self.selected_node = None
@@ -134,7 +400,8 @@ class FlowchartUI(ctk.CTkCanvas):
                 self.wire_start_node = tags[1]
                 self.wire_start_pin = tags[2]
                 px, py = self.get_pin_coords(self.wire_start_node, self.wire_start_pin)
-                self.wire_line = self.create_line(px, py, event.x, event.y, fill="#F1C40F", width=3, dash=(5,2))
+                self.wire_line = self.create_line(px, py, event.x, event.y, 
+                    fill=_FC["wire_drag"], width=3, dash=(6, 3))
         elif "node" in tags:
             self.selected_node = tags[1]
             self.dragging_node = True
@@ -143,12 +410,21 @@ class FlowchartUI(ctk.CTkCanvas):
             self.redraw()
             
     def on_drag(self, event):
-        if self.wiring and self.wire_line:
+        # Hand mode panning (left click drag)
+        if self.panning:
+            dx = event.x - self.pan_start_x
+            dy = event.y - self.pan_start_y
+            self.view_offset_x -= dx / self.zoom
+            self.view_offset_y -= dy / self.zoom
+            self.pan_start_x = event.x
+            self.pan_start_y = event.y
+            self.redraw()
+        elif self.wiring and self.wire_line:
             px, py = self.get_pin_coords(self.wire_start_node, self.wire_start_pin)
             self.coords(self.wire_line, px, py, event.x, event.y)
         elif self.dragging_node and self.selected_node:
-            dx = event.x - self.drag_start_x
-            dy = event.y - self.drag_start_y
+            dx = (event.x - self.drag_start_x) / self.zoom
+            dy = (event.y - self.drag_start_y) / self.zoom
             self.nodes[self.selected_node]["x"] += dx
             self.nodes[self.selected_node]["y"] += dy
             self.drag_start_x = event.x
@@ -156,27 +432,31 @@ class FlowchartUI(ctk.CTkCanvas):
             self.redraw()
             
     def on_release(self, event):
+        if self.panning:
+            self.panning = False
+            return
+            
         if self.wiring:
             self.wiring = False
             self.delete(self.wire_line)
             self.wire_line = None
             
-            # Find the element under the mouse when released - HUGE HITBOX FOR SNAPPING
+            # Find target pin — generous snap radius
             x, y = event.x, event.y
-            items = self.find_overlapping(x-15, y-15, x+15, y+15)
+            items = self.find_overlapping(x - self.PIN_HIT, y - self.PIN_HIT, 
+                                          x + self.PIN_HIT, y + self.PIN_HIT)
             
             for item in items:
                 tags = self.gettags(item)
                 if "pin" in tags and tags[2] == "in" and tags[1] != self.wire_start_node:
-                    # Valid connection
                     from_node = self.wire_start_node
                     from_pin = self.wire_start_pin
                     to_node = tags[1]
                     to_pin = tags[2]
                     
-                    # Prevent multiple out connections from same out pin
+                    # Remove existing out connection from same pin
                     self.edges = [e for e in self.edges if not (e["from"] == from_node and e["from_pin"] == from_pin)]
-                    # Prevent cycle from self to self
+                    
                     if from_node != to_node:
                         self.edges.append({"from": from_node, "from_pin": from_pin, "to": to_node, "to_pin": to_pin})
                         if self.on_change_cb: self.on_change_cb()
@@ -197,7 +477,6 @@ class FlowchartUI(ctk.CTkCanvas):
             nid = tags[1]
             self.show_node_menu(nid, event.x_root, event.y_root)
         elif "edge" in tags:
-            # Delete edge
             from_nid = tags[1]
             to_nid = tags[2]
             self.edges = [e for e in self.edges if not (e["from"] == from_nid and e["to"] == to_nid)]
@@ -205,7 +484,9 @@ class FlowchartUI(ctk.CTkCanvas):
             if self.on_change_cb: self.on_change_cb()
             
     def show_node_menu(self, nid, x, y):
-        menu = tk.Menu(self, tearoff=0)
+        menu = tk.Menu(self, tearoff=0, bg=_FC["surface"], fg=_FC["text"],
+                      activebackground=_FC["primary"], activeforeground="white",
+                      font=("Segoe UI", 10))
         n = self.nodes[nid]
         
         if n["type"] == "Macro":
@@ -229,11 +510,13 @@ class FlowchartUI(ctk.CTkCanvas):
         
         top = ctk.CTkToplevel(self)
         top.title("Select Macro")
-        top.geometry("250x300")
+        top.geometry("280x350")
         top.attributes("-topmost", True)
         
-        frame = ctk.CTkScrollableFrame(top)
-        frame.pack(fill="both", expand=True, padx=10, pady=10)
+        ctk.CTkLabel(top, text="Choose a Macro", font=ctk.CTkFont(size=14, weight="bold")).pack(pady=(12, 8))
+        
+        frame = ctk.CTkScrollableFrame(top, fg_color=_FC["surface"])
+        frame.pack(fill="both", expand=True, padx=12, pady=(0, 12))
         
         def on_sel(m):
             self.nodes[nid]["data"]["macro_name"] = m
@@ -242,7 +525,9 @@ class FlowchartUI(ctk.CTkCanvas):
             top.destroy()
             
         for m in macros:
-            ctk.CTkButton(frame, text=m, command=lambda x=m: on_sel(x)).pack(pady=2, fill="x")
+            ctk.CTkButton(frame, text=m, command=lambda x=m: on_sel(x),
+                         fg_color=_FC["node_macro"], hover_color=_FC["primary"],
+                         corner_radius=6).pack(pady=3, fill="x")
         
     def config_condition(self, nid):
         if not self.get_images_cb: return
@@ -253,11 +538,13 @@ class FlowchartUI(ctk.CTkCanvas):
             
         top = ctk.CTkToplevel(self)
         top.title("Select Image")
-        top.geometry("250x300")
+        top.geometry("280x350")
         top.attributes("-topmost", True)
         
-        frame = ctk.CTkScrollableFrame(top)
-        frame.pack(fill="both", expand=True, padx=10, pady=10)
+        ctk.CTkLabel(top, text="Choose Target Image", font=ctk.CTkFont(size=14, weight="bold")).pack(pady=(12, 8))
+        
+        frame = ctk.CTkScrollableFrame(top, fg_color=_FC["surface"])
+        frame.pack(fill="both", expand=True, padx=12, pady=(0, 12))
         
         def on_sel(m):
             self.nodes[nid]["data"]["image_name"] = m
@@ -266,10 +553,13 @@ class FlowchartUI(ctk.CTkCanvas):
             top.destroy()
             
         for m in images:
-            ctk.CTkButton(frame, text=m, command=lambda x=m: on_sel(x)).pack(pady=2, fill="x")
+            ctk.CTkButton(frame, text=m, command=lambda x=m: on_sel(x),
+                         fg_color=_FC["node_cond"], hover_color=_FC["warning"],
+                         corner_radius=6).pack(pady=3, fill="x")
         
     def config_delay(self, nid):
-        val = simpledialog.askfloat("Set Delay", "Enter delay in seconds:", initialvalue=self.nodes[nid]["data"].get("time", 1.0))
+        val = simpledialog.askfloat("Set Delay", "Enter delay in seconds:", 
+                                     initialvalue=self.nodes[nid]["data"].get("time", 1.0))
         if val is not None:
             self.nodes[nid]["data"]["time"] = max(0, val)
             self.redraw()

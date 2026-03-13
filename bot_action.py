@@ -3,12 +3,14 @@ import time
 import random
 
 class BotAction:
-    def __init__(self, page=None):
+    def __init__(self, page=None, debug_visual_var=None):
         """
         page: Một Intance của Playwright Page (nếu chạy nền)
               Nếu None, fallback về click chuột hệ thống bằng PyAutoGUI
+        debug_visual_var: BooleanVar để bật/tắt chấm đỏ debug click
         """
         self.page = page
+        self.debug_visual_var = debug_visual_var
         self.cdp = None
         if self.page:
             try:
@@ -55,42 +57,76 @@ class BotAction:
                     except:
                         pass
                 
-                js_draw_dot = """
-                (args) => {
-                    const dot = document.createElement('div');
-                    dot.style.width = '12px';
-                    dot.style.height = '12px';
-                    dot.style.backgroundColor = 'red';
-                    dot.style.border = '2px solid white';
-                    dot.style.borderRadius = '50%';
-                    dot.style.position = 'fixed';
-                    dot.style.left = (args.x - 6) + 'px';
-                    dot.style.top = (args.y - 6) + 'px';
-                    dot.style.zIndex = '999999';
-                    dot.style.pointerEvents = 'none';
-                    document.body.appendChild(dot);
-                    setTimeout(() => dot.remove(), 2500);
-                }
-                """
-                try: 
-                    target_frame.evaluate(js_draw_dot, {'x': css_x, 'y': css_y})
-                except Exception as e:
-                    print(f"Failed to draw dot: {e}")
+                # --- VISUAL DEBUGGER (chỉ vẽ khi toggle bật) ---
+                show_dot = self.debug_visual_var.get() if self.debug_visual_var else False
+                if show_dot:
+                    js_draw_dot = """
+                    (args) => {
+                        const dot = document.createElement('div');
+                        dot.style.width = '12px';
+                        dot.style.height = '12px';
+                        dot.style.backgroundColor = 'red';
+                        dot.style.border = '2px solid white';
+                        dot.style.borderRadius = '50%';
+                        dot.style.position = 'fixed';
+                        dot.style.left = (args.x - 6) + 'px';
+                        dot.style.top = (args.y - 6) + 'px';
+                        dot.style.zIndex = '999999';
+                        dot.style.pointerEvents = 'none';
+                        document.body.appendChild(dot);
+                        setTimeout(() => dot.remove(), 2500);
+                    }
+                    """
+                    try: 
+                        target_frame.evaluate(js_draw_dot, {'x': css_x, 'y': css_y})
+                    except Exception as e:
+                        print(f"Failed to draw dot: {e}")
+                
+                # [SAFETY] Kiểm tra tọa độ trước khi click - tránh tắt điện thoại
+                try:
+                    viewport_size = self.page.evaluate("({w: window.innerWidth, h: window.innerHeight})")
+                    vw = viewport_size['w']
+                    vh = viewport_size['h']
+                    if css_x < 0 or css_x > vw or css_y < 0 or css_y > vh:
+                        print(f"[BotAction] BLOCKED CLICK: ({css_x:.0f},{css_y:.0f}) outside viewport ({vw}x{vh})")
+                        return
+                except:
+                    pass  # Nếu không đọc được viewport, cho phép click bình thường
                 
                 # --- THỰC THI CLICK ---
                 if self.cdp:
-                    # CDP gửi event ở Application level, có thể bị chặn bởi Iframe
-                    self.cdp.send("Input.dispatchTouchEvent", {
-                        "type": "touchStart",
-                        "touchPoints": [{"x": css_x, "y": css_y, "id": 1}]
-                    })
-                    time.sleep(random.uniform(0.05, 0.1))
-                    self.cdp.send("Input.dispatchTouchEvent", {
-                        "type": "touchEnd",
-                        "touchPoints": []
-                    })
+                    try:
+                        # Di chuyển chuột trước (đảm bảo cursor ở đúng vị trí)
+                        self.cdp.send("Input.dispatchMouseEvent", {
+                            "type": "mouseMoved",
+                            "x": css_x, "y": css_y,
+                            "button": "none",
+                        })
+                        time.sleep(random.uniform(0.03, 0.06))
+                        
+                        # Mouse Down
+                        self.cdp.send("Input.dispatchMouseEvent", {
+                            "type": "mousePressed",
+                            "x": css_x, "y": css_y,
+                            "button": "left",
+                            "clickCount": 1,
+                        })
+                        # Giữ chuột — giả lập click thật
+                        time.sleep(random.uniform(0.08, 0.15))
+                        
+                        # Mouse Up
+                        self.cdp.send("Input.dispatchMouseEvent", {
+                            "type": "mouseReleased",
+                            "x": css_x, "y": css_y,
+                            "button": "left",
+                            "clickCount": 1,
+                        })
+                    except Exception as cdp_err:
+                        # Fallback: Playwright mouse click
+                        print(f"[BotAction] CDP mouse failed, fallback: {cdp_err}")
+                        target_frame.mouse.click(css_x, css_y, delay=random.randint(80, 180))
                 else:
-                    target_frame.mouse.click(css_x, css_y, delay=random.randint(50, 150))
+                    target_frame.mouse.click(css_x, css_y, delay=random.randint(80, 180))
                     
                 time.sleep(random.uniform(0.1, 0.2))
             except Exception as e:
