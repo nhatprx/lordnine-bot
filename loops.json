@@ -4,52 +4,30 @@
             "ceed8f58": {
                 "id": "ceed8f58",
                 "type": "Start",
-                "x": -229.0,
-                "y": -253.0,
+                "x": -249.0,
+                "y": -286.0,
                 "w": 140,
                 "h": 60,
                 "data": {
                     "title": "Start"
                 }
             },
-            "9823eac5": {
-                "id": "9823eac5",
-                "type": "Condition",
-                "x": -168.59122085048008,
-                "y": 26.100137174211234,
-                "w": 140,
-                "h": 80,
-                "data": {
-                    "image_name": "Home"
-                }
-            },
             "2a4d1c9e": {
                 "id": "2a4d1c9e",
                 "type": "Macro",
-                "x": -220.72839506172838,
-                "y": 375.29355281207137,
+                "x": -450.7283950617284,
+                "y": 330.29355281207137,
                 "w": 140,
                 "h": 60,
                 "data": {
                     "macro_name": "Gather"
                 }
             },
-            "8a088beb": {
-                "id": "8a088beb",
-                "type": "Macro",
-                "x": -365.02606310013715,
-                "y": 194.24142661179695,
-                "w": 160,
-                "h": 90,
-                "data": {
-                    "macro_name": "Buy Blood"
-                }
-            },
             "00a91823": {
                 "id": "00a91823",
                 "type": "Macro",
-                "x": -53.0,
-                "y": 500.0,
+                "x": -558.0,
+                "y": 456.0,
                 "w": 160,
                 "h": 90,
                 "data": {
@@ -59,34 +37,12 @@
             "45f677d7": {
                 "id": "45f677d7",
                 "type": "Condition",
-                "x": -408.57064471879283,
-                "y": -114.16735253772289,
+                "x": -451.57064471879283,
+                "y": -140.16735253772288,
                 "w": 160,
                 "h": 90,
                 "data": {
                     "image_name": "Revive"
-                }
-            },
-            "8368d370": {
-                "id": "8368d370",
-                "type": "Condition",
-                "x": -185,
-                "y": 791,
-                "w": 160,
-                "h": 90,
-                "data": {
-                    "image_name": "Revive"
-                }
-            },
-            "11d1add6": {
-                "id": "11d1add6",
-                "type": "Macro",
-                "x": -275,
-                "y": 964,
-                "w": 160,
-                "h": 90,
-                "data": {
-                    "macro_name": "Revive"
                 }
             },
             "deaa58db": {
@@ -99,37 +55,35 @@
                 "data": {
                     "macro_name": "Revive"
                 }
+            },
+            "4c9864f8": {
+                "id": "4c9864f8",
+                "type": "Macro",
+                "x": -340.0,
+                "y": 164.0,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "macro_name": "Buy Blood"
+                }
+            },
+            "0e62ec37": {
+                "id": "0e62ec37",
+                "type": "Condition",
+                "x": -266.0,
+                "y": 5.0,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "image_name": "Home"
+                }
             }
         },
         "edges": [
             {
-                "from": "9823eac5",
-                "from_pin": "true",
-                "to": "8a088beb",
-                "to_pin": "in"
-            },
-            {
-                "from": "8a088beb",
-                "from_pin": "true",
-                "to": "2a4d1c9e",
-                "to_pin": "in"
-            },
-            {
                 "from": "2a4d1c9e",
                 "from_pin": "true",
                 "to": "00a91823",
-                "to_pin": "in"
-            },
-            {
-                "from": "00a91823",
-                "from_pin": "true",
-                "to": "8368d370",
-                "to_pin": "in"
-            },
-            {
-                "from": "8368d370",
-                "from_pin": "true",
-                "to": "11d1add6",
                 "to_pin": "in"
             },
             {
@@ -145,9 +99,21 @@
                 "to_pin": "in"
             },
             {
+                "from": "4c9864f8",
+                "from_pin": "true",
+                "to": "2a4d1c9e",
+                "to_pin": "in"
+            },
+            {
                 "from": "45f677d7",
                 "from_pin": "false",
-                "to": "9823eac5",
+                "to": "0e62ec37",
+                "to_pin": "in"
+            },
+            {
+                "from": "0e62ec37",
+                "from_pin": "true",
+                "to": "4c9864f8",
                 "to_pin": "in"
             }
         ]

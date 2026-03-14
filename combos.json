@@ -2,31 +2,28 @@
     "Buy Blood": {
         "steps": [
             {
-                "node": "Supplier",
+                "node": "Supplier"
+            },
+            {
+                "type": "marker",
                 "marker": "Supplier - inside",
                 "mode": "Wait until Appear",
                 "time": "0"
             },
             {
-                "node": "Blood - Type",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Blood - Type"
             },
             {
-                "node": "Blood - Amount",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Blood - Amount"
             },
             {
-                "node": "Blood - Purchase",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Blood - Purchase"
             },
             {
-                "node": "Supplier - out",
+                "node": "Supplier - out"
+            },
+            {
+                "type": "marker",
                 "marker": "Home",
                 "mode": "Wait until Appear",
                 "time": "0"
@@ -38,38 +35,62 @@
     "Gather": {
         "steps": [
             {
-                "node": "Gathering",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Gathering"
             },
             {
-                "node": "Gathering - OK",
-                "marker": "Gathering - Automove",
+                "type": "marker",
+                "marker": "Gathering - Inside",
+                "mode": "Wait until Appear",
+                "time": "250",
+                "timeout": "0",
+                "fail_image": "None",
+                "fail_mode": "Fail if Appear"
+            },
+            {
+                "node": "Gathering - OK"
+            },
+            {
+                "type": "delay",
+                "time": 10000.0
+            },
+            {
+                "type": "marker",
+                "marker": "Automove",
                 "mode": "Wait until Disappear",
-                "time": "3"
+                "time": "2000",
+                "timeout": "0",
+                "fail_image": "None",
+                "fail_mode": "Fail if Appear"
             }
-        ]
+        ],
+        "success_capture": "Attack - Auto",
+        "failure_capture": "Supplier"
     },
     "Attack": {
         "steps": [
             {
-                "node": "Attack - Auto",
-                "marker": "None",
+                "node": "Attack - Auto"
+            },
+            {
+                "type": "marker",
+                "marker": "Revive",
                 "mode": "Wait until Appear",
-                "time": "0"
+                "time": "2000",
+                "timeout": "0",
+                "fail_image": "None",
+                "fail_mode": "Fail if Appear"
+            },
+            {
+                "node": "Revive"
             }
         ],
-        "success_capture": "Revive",
+        "success_capture": "Supplier",
         "failure_capture": "None"
     },
     "Home": {
         "steps": [
             {
-                "node": "Home",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Home"
             }
         ],
         "success_capture": "Supplier",

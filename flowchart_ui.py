@@ -3,28 +3,28 @@ import customtkinter as ctk
 import uuid
 from tkinter import messagebox, simpledialog
 
-# Unified palette (matches main.py COLOR dict)
+# Unified palette (matches constants.py COLOR dict)
 _FC = {
-    "bg":       "#0F172A",
-    "surface":  "#1E293B",
-    "surface2": "#334155",
+    "bg":       "#0B0F19",
+    "surface":  "#141B2D",
+    "surface2": "#1C2640",
     "primary":  "#3B82F6",
-    "success":  "#22C55E",
-    "danger":   "#EF4444",
+    "success":  "#10B981",
+    "danger":   "#F43F5E",
     "warning":  "#F59E0B",
     "accent":   "#06B6D4",
-    "text":     "#F1F5F9",
-    "text_dim": "#94A3B8",
+    "text":     "#E2E8F0",
+    "text_dim": "#64748B",
     "node_macro":  "#2563EB",
     "node_cond":   "#D97706",
-    "node_delay":  "#7C3AED",
-    "node_start":  "#16A34A",
+    "node_delay":  "#8B5CF6",
+    "node_start":  "#059669",
     "node_default":"#475569",
-    "wire":     "#94A3B8",
-    "wire_true":"#22C55E",
-    "wire_false":"#EF4444",
+    "wire":     "#64748B",
+    "wire_true":"#10B981",
+    "wire_false":"#F43F5E",
     "wire_drag":"#F59E0B",
-    "pin_in":   "#94A3B8",
+    "pin_in":   "#64748B",
     "pin_out":  "#F59E0B",
 }
 
@@ -37,6 +37,7 @@ class FlowchartUI(ctk.CTkCanvas):
         
         # State
         self.selected_node = None
+        self.active_node_id = None  # Currently executing node (for highlight)
         self.dragging_node = False
         self.drag_start_x = 0
         self.drag_start_y = 0
@@ -107,6 +108,16 @@ class FlowchartUI(ctk.CTkCanvas):
         # Auto-grab focus when mouse enters canvas (needed for key events)
         self.bind("<Enter>", lambda e: self.focus_set())
 
+    def highlight_node(self, node_id):
+        """Highlight a node as actively running (called from loop engine via gui_queue)."""
+        self.active_node_id = node_id
+        self.redraw()
+
+    def clear_highlight(self):
+        """Remove the active node highlight."""
+        self.active_node_id = None
+        self.redraw()
+
     def load_graph(self, data):
         self.nodes = data.get("nodes", {}) if data else {}
         self.edges = data.get("edges", []) if data else []
@@ -154,7 +165,7 @@ class FlowchartUI(ctk.CTkCanvas):
             node["data"] = {"image_name": "None"}
             node["h"] = self.NODE_H_COND
         elif ntype == "Delay":
-            node["data"] = {"time": 1.0}
+            node["data"] = {"time": 1000}
             
         self.nodes[nid] = node
         self.redraw()
@@ -297,11 +308,28 @@ class FlowchartUI(ctk.CTkCanvas):
             elif n["type"] == "Condition":bg = _FC["node_cond"]
             elif n["type"] == "Delay":    bg = _FC["node_delay"]
             
+            # Active execution glow (bright cyan pulse)
+            is_active = (self.active_node_id == nid)
+            
             # Selection glow
-            outline_color = "#FFFFFF" if self.selected_node == nid else bg
-            outline_width = 3 if self.selected_node == nid else 1
+            if is_active:
+                outline_color = "#06B6D4"  # Cyan glow for running node
+                outline_width = 4
+            elif self.selected_node == nid:
+                outline_color = "#FFFFFF"
+                outline_width = 3
+            else:
+                outline_color = bg
+                outline_width = 1
             
             cr = max(2, int(self.CORNER_R * z))
+            
+            # Outer glow for active node
+            if is_active:
+                glow_pad = max(3, int(6 * z))
+                self._round_rect(sx - glow_pad, sy - glow_pad, 
+                               sx + sw + glow_pad, sy + sh + glow_pad, cr + 2,
+                               fill="", outline="#06B6D4", width=2)
             
             # Shadow
             self._round_rect(sx+3, sy+3, sx+sw+3, sy+sh+3, cr, 
@@ -319,7 +347,8 @@ class FlowchartUI(ctk.CTkCanvas):
             elif n["type"] == "Condition":
                 title = f"If Found\n{n['data'].get('image_name','None')}"
             elif n["type"] == "Delay":
-                title = f"Wait {n['data'].get('time',1)}s"
+                delay_val = n['data'].get('time', 1000)
+                title = f"Wait\n{delay_val}ms"
             elif n["type"] == "Start":
                 title = "START"
             
@@ -558,8 +587,8 @@ class FlowchartUI(ctk.CTkCanvas):
                          corner_radius=6).pack(pady=3, fill="x")
         
     def config_delay(self, nid):
-        val = simpledialog.askfloat("Set Delay", "Enter delay in seconds:", 
-                                     initialvalue=self.nodes[nid]["data"].get("time", 1.0))
+        val = simpledialog.askfloat("Set Delay", "Enter delay in milliseconds (ms):", 
+                                     initialvalue=self.nodes[nid]["data"].get("time", 1000))
         if val is not None:
             self.nodes[nid]["data"]["time"] = max(0, val)
             self.redraw()

@@ -124,9 +124,9 @@ class BotAction:
                     except Exception as cdp_err:
                         # Fallback: Playwright mouse click
                         print(f"[BotAction] CDP mouse failed, fallback: {cdp_err}")
-                        target_frame.mouse.click(css_x, css_y, delay=random.randint(80, 180))
+                        self.page.mouse.click(css_x, css_y, delay=random.randint(80, 180))
                 else:
-                    target_frame.mouse.click(css_x, css_y, delay=random.randint(80, 180))
+                    self.page.mouse.click(css_x, css_y, delay=random.randint(80, 180))
                     
                 time.sleep(random.uniform(0.1, 0.2))
             except Exception as e:
