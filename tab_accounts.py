@@ -653,6 +653,14 @@ class AccountsMixin:
         nodes = graph.get("nodes", {})
         edges = graph.get("edges", [])
         
+        # Stagger start — avoid all workers hitting Chrome CDP at the same instant
+        # Cap at 5s max, cycle through slots
+        if tab_idx > 0:
+            import random
+            stagger = (tab_idx % 4) * 0.5 + random.uniform(0, 0.5)
+            self.update_dash_status(acc_name, f"Starting in {stagger:.1f}s...", COLOR["text_dim"])
+            time.sleep(stagger)
+        
         self.update_dash_status(acc_name, "Connecting...", COLOR["warning"])
         self.state_db.save_account_state(acc_name, loop_name=loop_name, status="connecting", 
                                           port=port, tab_index=tab_idx)
