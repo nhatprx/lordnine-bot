@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LordNine Bot Control — UI Redesign Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F1117;
+  --bg-subtle: #13151C;
+  --surface: #181B23;
+  --surface-hover: #1E2130;
+  --surface-elevated: #222530;
+  --border: #2A2D38;
+  --border-subtle: #1F222C;
+  --sidebar-bg: #0C0E14;
+  --sidebar-hover: #14161E;
+  --primary: #5B8DEF;
+  --primary-hover: #4A7DE0;
+  --primary-muted: #3A5A9E;
+  --success: #4CAF82;
+  --success-muted: #2D5A44;
+  --danger: #D4626C;
+  --danger-muted: #5A2D32;
+  --warning: #D4A24C;
+  --warning-muted: #5A4A2D;
+  --purple: #9B7DCF;
+  --purple-muted: #4A3A62;
+  --accent: #5BB8CF;
+  --text: #D1D5DE;
+  --text-secondary: #8B90A0;
+  --text-muted: #555A68;
+  --font: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Consolas', monospace;
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); height: 100vh; overflow: hidden; }
+
+/* ═══ LAYOUT ═══ */
+.app { display: flex; height: 100vh; }
+.sidebar { width: 56px; min-width: 56px; background: var(--sidebar-bg); display: flex; flex-direction: column; align-items: center; border-right: 1px solid var(--border-subtle); }
+.content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.statusbar { height: 28px; background: var(--sidebar-bg); border-top: 1px solid var(--border-subtle); display: flex; align-items: center; padding: 0 14px; font-size: 11px; color: var(--text-muted); flex-shrink: 0; gap: 16px; }
+.status-item { display: flex; align-items: center; gap: 5px; }
+.status-item .si-dot { width: 6px; height: 6px; border-radius: 50%; }
+.status-item .si-dot.green { background: var(--success); }
+.status-item .si-dot.yellow { background: var(--warning); }
+.status-item .si-dot.red { background: var(--danger); }
+.status-item .si-dot.gray { background: var(--text-muted); }
+.status-item .si-val { color: var(--text-secondary); font-family: var(--mono); font-size: 10px; }
+.status-spacer { flex: 1; }
+
+/* ═══ SIDEBAR ═══ */
+.sidebar-logo { padding: 14px 0 10px; display: flex; align-items: center; justify-content: center; }
+.sidebar-logo img { width: 28px; height: 28px; }
+.sidebar-logo span { display: none; }
+.sidebar-divider { height: 1px; background: var(--border-subtle); margin: 0 10px 8px; width: calc(100% - 20px); }
+.sidebar-nav { flex: 1; padding: 0 6px; width: 100%; }
+.nav-item { display: flex; align-items: center; justify-content: center; padding: 10px 0; border-radius: var(--radius); cursor: pointer; transition: all 0.15s; margin-bottom: 2px; position: relative; font-size: 0; color: var(--text-secondary); font-weight: 500; }
+.nav-item:hover { background: var(--sidebar-hover); color: var(--text); }
+.nav-item.active { background: var(--surface); color: var(--text); }
+.nav-item.active::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 18px; background: var(--primary); border-radius: 0 2px 2px 0; }
+.nav-icon { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 16px; opacity: 0.5; }
+.nav-item:hover .nav-icon { opacity: 0.8; }
+.nav-item.active .nav-icon { opacity: 1; color: var(--primary); }
+.nav-item[data-tooltip]:hover::after { content: attr(data-tooltip); position: absolute; left: 52px; top: 50%; transform: translateY(-50%); background: var(--surface-elevated); color: var(--text); font-size: 12px; padding: 4px 10px; border-radius: 6px; white-space: nowrap; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.4); border: 1px solid var(--border); pointer-events: none; }
+.sidebar-footer { padding: 10px 0; font-size: 9px; color: var(--text-muted); text-align: center; }
+
+/* ═══ TAB CONTENT ═══ */
+.tab-content { flex: 1; display: none !important; overflow: hidden; }
+.tab-content.active { display: flex !important; }
+.tab-two-col { flex: 1; gap: 0; overflow: hidden; }
+
+/* Left pane (list panel) */
+.pane-left { width: 260px; min-width: 260px; display: flex; flex-direction: column; padding: 16px 8px 16px 16px; overflow: hidden; }
+.panel-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); display: flex; flex-direction: column; overflow: hidden; flex: 1; }
+.panel-header { padding: 12px 14px 10px; }
+.panel-title-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.panel-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-secondary); }
+.panel-actions { display: flex; gap: 2px; }
+.panel-actions .pa-btn { background: none; border: none; font-family: var(--font); font-size: 11px; font-weight: 600; cursor: pointer; padding: 3px 8px; border-radius: 4px; transition: all 0.12s; }
+.panel-actions .pa-add { color: var(--primary); }
+.panel-actions .pa-add:hover { background: rgba(91,141,239,0.1); }
+.panel-actions .pa-del { color: var(--text-muted); }
+.panel-actions .pa-del:hover { color: var(--danger); background: rgba(212,98,108,0.1); }
+.panel-search { position: relative; margin-bottom: 8px; }
+.panel-search input { width: 100%; height: 30px; background: var(--bg); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0 10px; font-size: 12px; color: var(--text); outline: none; font-family: var(--font); }
+.panel-search input:focus { border-color: var(--primary); }
+.panel-search input::placeholder { color: var(--text-muted); }
+.panel-list { flex: 1; overflow-y: auto; padding: 0 6px 8px; }
+.panel-list::-webkit-scrollbar { width: 4px; }
+.panel-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+/* List items */
+.list-item { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: var(--radius-sm); cursor: pointer; transition: background 0.12s; font-size: 12.5px; color: var(--text-secondary); }
+.list-item:hover { background: var(--surface-hover); }
+.list-item.selected { background: var(--surface-elevated); color: var(--text); }
+.list-item .chk { width: 15px; height: 15px; border: 1.5px solid var(--border); border-radius: 3px; flex-shrink: 0; }
+.list-item .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-left: auto; }
+.list-item .dot.valid { background: var(--success); }
+.list-item .dot.invalid { background: var(--text-muted); }
+
+/* Right pane */
+.pane-right { flex: 1; display: flex; flex-direction: column; padding: 16px 16px 16px 8px; overflow: hidden; }
+.detail-area { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.detail-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border-subtle); }
+.detail-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-secondary); font-weight: 600; }
+.detail-inputs { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); }
+.detail-inputs input { width: 44px; height: 26px; background: var(--bg); border: 1px solid var(--border-subtle); border-radius: 4px; text-align: center; font-size: 11px; color: var(--text); font-family: var(--mono); outline: none; }
+.detail-body { flex: 1; padding: 16px; overflow-y: auto; }
+
+/* ═══ BUTTONS ═══ */
+.btn { height: 28px; padding: 0 12px; border: none; border-radius: var(--radius-sm); font-family: var(--font); font-size: 11.5px; font-weight: 600; cursor: pointer; transition: all 0.12s; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-danger { background: var(--danger-muted); color: var(--danger); }
+.btn-danger:hover { background: #6A3338; }
+.btn-success { background: var(--success-muted); color: var(--success); }
+.btn-success:hover { background: #366B50; }
+.btn-warning { background: var(--warning-muted); color: var(--warning); }
+.btn-warning:hover { background: #6B5534; }
+.btn-purple { background: var(--purple-muted); color: var(--purple); }
+.btn-purple:hover { background: #5A4472; }
+.btn-ghost { background: transparent; color: var(--text-secondary); }
+.btn-ghost:hover { background: var(--surface-hover); color: var(--text); }
+.btn-sm { height: 24px; font-size: 11px; padding: 0 8px; }
+.btn-full { width: 100%; justify-content: center; }
+.btn-lg { height: 34px; font-size: 12.5px; }
+
+/* ═══ NODES TAB SPECIFIC ═══ */
+.preview-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.preview-name { font-size: 14px; font-weight: 600; }
+.badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-success { background: var(--success-muted); color: var(--success); }
+.preview-image-area { width: 100%; height: 200px; background: var(--bg); border: 1px solid var(--border-subtle); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+.preview-image-area span { color: var(--text-muted); font-size: 12px; }
+.settings-card { background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 14px; margin-top: 12px; }
+.settings-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.settings-label { font-size: 12px; color: var(--text-secondary); }
+.slider-track { flex: 1; height: 4px; background: var(--border); border-radius: 2px; margin: 0 12px; position: relative; }
+.slider-fill { height: 100%; width: 70%; background: var(--primary); border-radius: 2px; }
+.slider-thumb { width: 14px; height: 14px; background: var(--text); border-radius: 50%; position: absolute; right: 28%; top: -5px; box-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+.toggle { width: 36px; height: 20px; background: var(--border); border-radius: 10px; position: relative; cursor: pointer; }
+.toggle.on { background: var(--primary-muted); }
+.toggle::after { content: ''; width: 16px; height: 16px; background: var(--text); border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: 0.15s; }
+.toggle.on::after { left: 18px; background: var(--primary); }
+.detail-actions { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border-subtle); }
+
+/* ═══ MACROS TAB ═══ */
+.step-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--bg-subtle); border-radius: var(--radius-sm); margin-bottom: 4px; border-left: 3px solid transparent; transition: background 0.12s; }
+.step-item:hover { background: var(--surface-hover); }
+.step-item.step-click { border-left-color: var(--primary); }
+.step-item.step-delay { border-left-color: var(--purple); }
+.step-item.step-marker { border-left-color: var(--warning); }
+.step-drag { color: var(--text-muted); cursor: grab; font-size: 14px; flex-shrink: 0; }
+.step-text { flex: 1; font-size: 12.5px; }
+.step-text .step-num { color: var(--text-muted); margin-right: 4px; }
+.step-text .step-label { color: var(--text); }
+.step-sub { font-size: 10.5px; color: var(--text-muted); margin-top: 2px; }
+.step-actions { display: flex; gap: 2px; }
+.step-actions .btn-ghost { width: 24px; height: 24px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; border-radius: 4px; }
+.verify-section { background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 12px 14px; margin-top: 12px; }
+.verify-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+.verify-label { font-size: 11px; font-weight: 600; margin-bottom: 4px; }
+.verify-label.suc { color: var(--success); }
+.verify-label.fai { color: var(--danger); }
+.select-fake { height: 28px; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0 10px; font-size: 11px; color: var(--text-secondary); display: flex; align-items: center; }
+.macro-add-btns { display: flex; flex-direction: column; gap: 4px; margin-top: 12px; }
+
+/* ═══ AUTOMATION TAB ═══ */
+.loop-toolbar { display: flex; gap: 1px; padding: 6px 12px; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius); margin-bottom: 8px; align-items: center; }
+.loop-toolbar .tb-group { display: flex; gap: 1px; background: var(--border-subtle); border-radius: var(--radius-sm); overflow: hidden; }
+.loop-toolbar .tb-group .btn { border-radius: 0; background: var(--bg-subtle); color: var(--text-secondary); height: 28px; font-size: 11px; font-weight: 500; }
+.loop-toolbar .tb-group .btn:hover { background: var(--surface-hover); color: var(--text); }
+.loop-toolbar .tb-sep { width: 1px; height: 18px; background: var(--border); margin: 0 8px; }
+.loop-toolbar .toolbar-hint { margin-left: auto; font-size: 10px; color: var(--text-muted); font-style: italic; }
+.status-strip { display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); margin-bottom: 8px; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-muted); flex-shrink: 0; }
+.status-dot.running { background: var(--success); animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.status-text { font-family: var(--mono); font-size: 11px; color: var(--text-secondary); }
+.canvas-area { flex: 1; background: var(--bg); border: 1px solid var(--border-subtle); border-radius: var(--radius); position: relative; overflow: hidden; min-height: 300px; }
+.canvas-grid { position: absolute; inset: 0; background-image: radial-gradient(circle, #1E2028 1px, transparent 1px); background-size: 30px 30px; }
+.fc-node { position: absolute; border-radius: 8px; padding: 10px 14px; font-size: 12px; font-weight: 600; color: var(--text); min-width: 130px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.3); border: 1px solid transparent; cursor: grab; }
+.fc-node.nd-start { background: #1E3A2C; border-color: #2D5A44; top: 30px; left: 50%; transform: translateX(-50%); }
+.fc-node.nd-macro { background: #1E2A4A; border-color: #2A3A5A; top: 140px; left: 50%; transform: translateX(-50%); }
+.fc-node.nd-macro.glow { border-color: var(--accent); box-shadow: 0 0 12px rgba(91,184,207,0.2); }
+.fc-node.nd-cond { background: #3A2E1A; border-color: #5A4A2A; top: 270px; left: 30%; transform: translateX(-50%); }
+.fc-node.nd-delay { background: #2A1E3A; border-color: #3A2A5A; top: 270px; left: 70%; transform: translateX(-50%); }
+.fc-node .nd-sub { font-size: 10.5px; font-weight: 500; color: var(--text-secondary); margin-top: 3px; }
+.fc-pin { width: 10px; height: 10px; border-radius: 50%; position: absolute; border: 2px solid var(--bg); }
+.fc-pin.pin-out { bottom: -6px; left: 50%; transform: translateX(-50%); background: var(--text-muted); }
+.fc-pin.pin-in { top: -6px; left: 50%; transform: translateX(-50%); background: var(--text-muted); }
+.fc-pin.pin-ok { bottom: -6px; left: 30%; background: var(--success); }
+.fc-pin.pin-fail { bottom: -6px; left: 70%; background: var(--danger); }
+.pin-label { position: absolute; bottom: -20px; font-size: 9px; font-weight: 600; }
+.pin-label.pl-ok { left: 25%; color: var(--success); }
+.pin-label.pl-fail { left: 65%; color: var(--danger); }
+.canvas-zoom { position: absolute; bottom: 8px; right: 12px; font-size: 10px; color: var(--text-muted); font-family: var(--mono); }
+
+/* SVG lines */
+.canvas-area svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+.canvas-area .fc-node { z-index: 2; }
+
+/* ═══ ACCOUNTS TAB ═══ */
+.quick-section { background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 12px; margin-bottom: 8px; }
+.section-title { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 8px; }
+.form-row { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+.form-label { font-size: 10.5px; color: var(--text-muted); white-space: nowrap; }
+.form-input { height: 26px; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 0 8px; font-size: 11px; color: var(--text); font-family: var(--font); outline: none; flex: 1; min-width: 40px; }
+.chrome-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: 10.5px; color: var(--text-secondary); margin: 2px; }
+.chrome-pill .x { color: var(--danger); cursor: pointer; font-weight: 600; }
+.dash-card { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius); margin-bottom: 4px; transition: border-color 0.12s; }
+.dash-card:hover { border-color: var(--border); }
+.dash-row { display: flex; align-items: center; gap: 8px; padding: 6px 10px; background: var(--bg-subtle); border-radius: var(--radius-sm); transition: background 0.12s; }
+.dash-row:hover { background: var(--surface-hover); }
+.dash-row .chk { width: 15px; height: 15px; border: 1.5px solid var(--border); border-radius: 3px; flex-shrink: 0; }
+.dash-card .chk { width: 15px; height: 15px; border: 1.5px solid var(--border); border-radius: 3px; flex-shrink: 0; }
+.dash-conn { font-family: var(--mono); font-size: 10px; color: var(--success); min-width: 64px; }
+.dash-conn.offline { color: var(--danger); }
+.dash-name { font-size: 13px; font-weight: 600; min-width: 80px; }
+.dash-status { flex: 1; font-size: 11.5px; }
+.dash-status.running { color: var(--success); }
+.dash-status.scanning { color: var(--warning); }
+.dash-status.idle { color: var(--text-muted); }
+.dash-status.error { color: var(--danger); }
+.dash-info { font-size: 10px; color: var(--text-muted); padding: 0 12px 6px 50px; margin-top: -2px; }
+.batch-bar { display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap; align-items: center; }
+.assign-row { display: flex; gap: 6px; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border-subtle); }
+
+/* ═══ OUTPUT TAB ═══ */
+.log-area { flex: 1; background: var(--bg); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 12px; font-family: var(--mono); font-size: 11px; color: var(--text-secondary); overflow-y: auto; line-height: 1.7; }
+.log-line .time { color: var(--text-muted); }
+.log-line .msg { color: var(--text-secondary); }
+.log-line .highlight { color: var(--accent); }
+.log-line .ok { color: var(--success); }
+.log-line .err { color: var(--danger); }
+
+/* ═══ SELECT ALL ROW ═══ */
+.select-all-row { display: flex; align-items: center; gap: 6px; padding: 4px 10px; font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <img src="logo.svg" alt="LordNine" style="width:26px;height:26px;filter:invert(1) brightness(0.7) sepia(1) hue-rotate(190deg) saturate(0.5);" />
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-nav">
+      <div class="nav-item active" data-tooltip="Nodes" onclick="showTab(0)"><div class="nav-icon">◎</div></div>
+      <div class="nav-item" data-tooltip="Macros" onclick="showTab(1)"><div class="nav-icon">⚙</div></div>
+      <div class="nav-item" data-tooltip="Automation" onclick="showTab(2)"><div class="nav-icon">⟳</div></div>
+      <div class="nav-item" data-tooltip="Accounts" onclick="showTab(3)"><div class="nav-icon">⊞</div></div>
+      <div class="nav-item" data-tooltip="Output" onclick="showTab(4)"><div class="nav-icon">▤</div></div>
+    </div>
+    <div class="sidebar-footer">v2.0</div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- ═══ TAB 0: NODES ═══ -->
+    <div class="tab-content active tab-two-col">
+      <div class="pane-left">
+        <div class="panel-card">
+          <div class="panel-header">
+            <div class="panel-title-row">
+              <div class="panel-title">Target Nodes</div>
+              <div class="panel-actions">
+                <button class="pa-btn pa-add">+ Add</button>
+                <button class="pa-btn pa-del">Delete</button>
+              </div>
+            </div>
+            <div class="panel-search"><input placeholder="Search nodes..." /></div>
+            <div class="select-all-row"><div class="chk"></div> Select All</div>
+          </div>
+          <div class="panel-list">
+            <div class="list-item selected"><div class="chk"></div>hp_bar<div class="dot valid"></div></div>
+            <div class="list-item"><div class="chk"></div>potion_icon<div class="dot valid"></div></div>
+            <div class="list-item"><div class="chk"></div>settings_btn<div class="dot valid"></div></div>
+            <div class="list-item"><div class="chk"></div>close_dialog<div class="dot valid"></div></div>
+            <div class="list-item"><div class="chk"></div>guild_icon<div class="dot invalid"></div></div>
+            <div class="list-item"><div class="chk"></div>buy_confirm<div class="dot valid"></div></div>
+            <div class="list-item"><div class="chk"></div>npc_shop<div class="dot valid"></div></div>
+            <div class="list-item"><div class="chk"></div>map_button<div class="dot valid"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="pane-right">
+        <div class="detail-area">
+          <div class="detail-header">
+            <div class="detail-title">Template Preview</div>
+          </div>
+          <div class="detail-body">
+            <div class="preview-meta">
+              <span class="preview-name">hp_bar.png</span>
+              <span class="badge badge-success">Valid</span>
+            </div>
+            <div class="preview-image-area"><span>64 × 32 px — Template Preview</span></div>
+            <div style="text-align:right;font-size:11px;color:var(--text-muted);margin-bottom:8px">Resolution: 64×32 px</div>
+            <div class="settings-card">
+              <div class="settings-row">
+                <span class="settings-label">Accuracy Threshold: 0.85</span>
+                <div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
+                <span style="font-family:var(--mono);font-size:11px;color:var(--text-secondary)">0.85</span>
+              </div>
+              <div class="settings-row" style="margin-bottom:0">
+                <span class="settings-label">Show Click Position (Red Dot)</span>
+                <div class="toggle on"></div>
+              </div>
+            </div>
+          </div>
+          <div class="detail-actions">
+            <button class="btn btn-warning" style="flex:1">Test Node</button>
+            <button class="btn btn-primary" style="flex:1">Re-Capture</button>
+            <button class="btn btn-danger" style="flex:1">Delete Node</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TAB 1: MACROS ═══ -->
+    <div class="tab-content tab-two-col">
+      <div class="pane-left">
+        <div class="panel-card">
+          <div class="panel-header">
+            <div class="panel-title-row">
+              <div class="panel-title">Macros</div>
+              <div class="panel-actions">
+                <button class="pa-btn pa-add">+ Add</button>
+                <button class="pa-btn pa-del">Delete</button>
+              </div>
+            </div>
+            <div class="panel-search"><input placeholder="Search macros..." /></div>
+            <div class="select-all-row"><div class="chk"></div> Select All</div>
+          </div>
+          <div class="panel-list">
+            <div class="list-item selected"><div class="chk"></div>Buy Potion</div>
+            <div class="list-item"><div class="chk"></div>Auto Attack</div>
+            <div class="list-item"><div class="chk"></div>Guild Travel</div>
+            <div class="list-item"><div class="chk"></div>Heal Loop</div>
+            <div class="list-item"><div class="chk"></div>Daily Quest</div>
+          </div>
+        </div>
+      </div>
+      <div class="pane-right">
+        <div class="detail-area">
+          <div class="detail-header">
+            <div style="display:flex;align-items:center;gap:12px;flex:1">
+              <span style="font-size:14px;font-weight:700">Buy Potion</span>
+            </div>
+          </div>
+          <div class="detail-body">
+            <div class="loop-toolbar">
+              <div class="tb-group">
+                <button class="btn">+ Step</button>
+                <button class="btn">+ Delay</button>
+                <button class="btn">+ Marker</button>
+              </div>
+              <div class="tb-sep"></div>
+              <button class="btn btn-success btn-sm">Execute</button>
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </div>
+            <div class="step-item step-click"><span class="step-drag">⋮⋮</span><div class="step-text"><span class="step-num">1.</span><span class="step-label">Click: potion_icon</span></div><div class="step-actions"><button class="btn btn-ghost btn-sm">✎</button><button class="btn btn-ghost btn-sm" style="color:var(--danger)">✕</button></div></div>
+            <div class="step-item step-delay"><span class="step-drag">⋮⋮</span><div class="step-text"><span class="step-num">2.</span><span class="step-label" style="color:var(--purple)">Delay: 1500ms</span></div><div class="step-actions"><button class="btn btn-ghost btn-sm">✎</button><button class="btn btn-ghost btn-sm" style="color:var(--danger)">✕</button></div></div>
+            <div class="step-item step-marker"><span class="step-drag">⋮⋮</span><div class="step-text"><span class="step-num">3.</span><span class="step-label" style="color:var(--warning)">Wait: buy_confirm — Appear</span><div class="step-sub">hold 2000ms</div></div><div class="step-actions"><button class="btn btn-ghost btn-sm">✎</button><button class="btn btn-ghost btn-sm" style="color:var(--danger)">✕</button></div></div>
+            <div class="step-item step-click"><span class="step-drag">⋮⋮</span><div class="step-text"><span class="step-num">4.</span><span class="step-label">Click: confirm_btn</span></div><div class="step-actions"><button class="btn btn-ghost btn-sm">✎</button><button class="btn btn-ghost btn-sm" style="color:var(--danger)">✕</button></div></div>
+            <div class="step-item step-click"><span class="step-drag">⋮⋮</span><div class="step-text"><span class="step-num">5.</span><span class="step-label">Click: close_dialog</span></div><div class="step-actions"><button class="btn btn-ghost btn-sm">✎</button><button class="btn btn-ghost btn-sm" style="color:var(--danger)">✕</button></div></div>
+            <div class="verify-section">
+              <div class="section-title">Result Verification</div>
+              <div class="verify-row">
+                <div><div class="verify-label suc">Success Capture</div><div class="select-fake">buy_confirm</div></div>
+                <div><div class="verify-label fai">Failure Capture</div><div class="select-fake">None</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TAB 2: AUTOMATION ═══ -->
+    <div class="tab-content tab-two-col">
+      <div class="pane-left">
+        <div class="panel-card">
+          <div class="panel-header">
+            <div class="panel-title-row">
+              <div class="panel-title">Loops</div>
+              <div class="panel-actions">
+                <button class="pa-btn pa-add">+ Create</button>
+                <button class="pa-btn pa-del">Delete</button>
+              </div>
+            </div>
+            <div class="panel-search"><input placeholder="Search loops..." /></div>
+            <div class="select-all-row"><div class="chk"></div> Select All</div>
+          </div>
+          <div class="panel-list">
+            <div class="list-item selected"><div class="chk"></div>Bot Farm</div>
+            <div class="list-item"><div class="chk"></div>Auto Grind</div>
+            <div class="list-item"><div class="chk"></div>Daily Quest</div>
+          </div>
+        </div>
+      </div>
+      <div class="pane-right">
+        <div class="detail-area">
+          <div class="detail-header">
+            <div style="display:flex;align-items:center;gap:12px;flex:1">
+              <span style="font-size:14px;font-weight:700">Bot Farm</span>
+              <div style="display:flex;align-items:center;gap:8px;margin-left:4px">
+                <div class="status-dot running"></div>
+                <span class="status-text">Running — Executing Macro: Auto Attack</span>
+              </div>
+            </div>
+          </div>
+          <div class="detail-body" style="display:flex;flex-direction:column;gap:8px;padding:12px">
+            <div class="loop-toolbar">
+              <div class="tb-group">
+                <button class="btn">+ Start</button>
+                <button class="btn">+ Macro</button>
+                <button class="btn">+ If Image</button>
+                <button class="btn">+ Delay</button>
+                <button class="btn">+ Click</button>
+                <button class="btn">+ End</button>
+              </div>
+              <div class="tb-sep"></div>
+              <button class="btn btn-danger btn-sm">Start Loop</button>
+              <span class="toolbar-hint">Right-click node to edit · Drag pins to connect</span>
+            </div>
+            <div class="canvas-area">
+              <div class="canvas-grid"></div>
+              <svg viewBox="0 0 700 400">
+                <path d="M350,74 C350,107 350,107 350,140" stroke="#555A68" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+                <path d="M310,210 C310,240 240,240 240,270" stroke="#4CAF82" stroke-width="2" fill="none" marker-end="url(#arrowG)"/>
+                <path d="M390,210 C390,240 460,240 460,270" stroke="#D4626C" stroke-width="2" fill="none" marker-end="url(#arrowR)"/>
+                <defs>
+                  <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#555A68"/></marker>
+                  <marker id="arrowG" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#4CAF82"/></marker>
+                  <marker id="arrowR" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#D4626C"/></marker>
+                </defs>
+              </svg>
+              <div class="fc-node nd-start">START<div class="fc-pin pin-out"></div></div>
+              <div class="fc-node nd-macro glow">Macro<div class="nd-sub">Auto Attack</div><div class="fc-pin pin-in"></div><div class="fc-pin pin-ok"></div><div class="fc-pin pin-fail"></div><span class="pin-label pl-ok">OK</span><span class="pin-label pl-fail">FAIL</span></div>
+              <div class="fc-node nd-cond">If Found<div class="nd-sub">hp_low</div><div class="fc-pin pin-in"></div><div class="fc-pin pin-ok"></div><div class="fc-pin pin-fail"></div><span class="pin-label pl-ok">T</span><span class="pin-label pl-fail">F</span></div>
+              <div class="fc-node nd-delay">Wait<div class="nd-sub">3000ms</div><div class="fc-pin pin-in"></div><div class="fc-pin pin-out"></div></div>
+              <div class="canvas-zoom">100%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TAB 3: ACCOUNTS ═══ -->
+    <div class="tab-content" style="flex-direction:column;overflow:hidden">
+      <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;padding:12px 16px;gap:6px">
+        <!-- TOP: Quick Launch + Chrome compact row -->
+        <div style="display:flex;gap:8px;flex-shrink:0">
+          <div class="quick-section" style="margin:0;display:flex;align-items:center;gap:8px;padding:6px 12px;flex-shrink:0">
+            <span class="section-title" style="margin:0;white-space:nowrap;font-size:10px">LAUNCH</span>
+            <input class="form-input" placeholder="URL..." style="width:180px;height:24px;font-size:10px" />
+            <span class="form-label">×</span><input class="form-input" style="width:32px;flex:0;height:24px;font-size:10px;text-align:center" value="20" />
+            <span class="form-label">Max</span><input class="form-input" style="width:28px;flex:0;height:24px;font-size:10px;text-align:center" value="10" />
+            <button class="btn btn-primary btn-sm" style="height:24px;font-size:10px">Launch</button>
+          </div>
+          <div class="quick-section" style="margin:0;display:flex;align-items:center;gap:8px;padding:6px 12px;flex-shrink:0">
+            <span class="section-title" style="margin:0;white-space:nowrap;font-size:10px">CHROME</span>
+            <div style="display:flex;gap:4px;align-items:center">
+              <div style="display:flex;align-items:center;gap:6px;padding:3px 10px;background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);font-size:11px">
+                <span style="color:var(--success);font-size:8px">●</span>
+                <span style="font-family:var(--mono);color:var(--text-secondary);font-size:10px;font-weight:500">:9222</span>
+                <span style="color:var(--text-muted);font-size:10px">10 tabs</span>
+                <span style="color:var(--danger);cursor:pointer;font-size:10px;font-weight:600">✕</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;padding:3px 10px;background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);font-size:11px">
+                <span style="color:var(--success);font-size:8px">●</span>
+                <span style="font-family:var(--mono);color:var(--text-secondary);font-size:10px;font-weight:500">:9223</span>
+                <span style="color:var(--text-muted);font-size:10px">10 tabs</span>
+                <span style="color:var(--danger);cursor:pointer;font-size:10px;font-weight:600">✕</span>
+              </div>
+            </div>
+            <span style="font-size:10px;color:var(--text-muted)">20 tabs total</span>
+            <button class="pa-btn pa-add" style="font-size:10px;white-space:nowrap">+ Add</button>
+          </div>
+        </div>
+
+        <!-- TOOLBAR -->
+        <div class="loop-toolbar" style="flex-shrink:0">
+          <div class="tb-group">
+            <button class="btn" style="color:var(--success)">Start All</button>
+            <button class="btn" style="color:var(--danger)">Stop All</button>
+          </div>
+          <div class="tb-sep"></div>
+          <span style="font-size:12px;color:var(--text-secondary);font-weight:600">Loop:</span>
+          <div class="select-fake" style="height:28px;font-size:12px;padding:0 12px;min-width:140px;font-weight:500">Bot Farm</div>
+          <button class="btn btn-primary btn-sm" style="height:28px;font-size:11px;padding:0 14px">Assign</button>
+          <span class="toolbar-hint" style="margin-left:auto">
+            <span style="color:var(--success)">● 3 running</span> · 
+            <span style="color:var(--text-muted)">● 1 idle</span> · 
+            <span style="color:var(--danger)">● 1 error</span>
+          </span>
+        </div>
+
+        <!-- TABLE HEADER with Select All -->
+        <div style="display:flex;align-items:center;gap:8px;padding:4px 10px;font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.6px;flex-shrink:0;border-bottom:1px solid var(--border-subtle)">
+          <div class="chk" style="width:14px;height:14px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0;cursor:pointer"></div>
+          <span style="width:70px">Port</span>
+          <span style="width:90px">Name</span>
+          <span style="flex:1">Status</span>
+          <span style="width:80px">Loop</span>
+          <span style="width:50px;text-align:right">Action</span>
+        </div>
+
+        <!-- TABLE ROWS -->
+        <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:2px">
+          <div class="dash-row">
+            <div class="chk"></div>
+            <span class="dash-conn">:9222/T0</span>
+            <span class="dash-name">Phone-1</span>
+            <span class="dash-status running" style="flex:1">Running...</span>
+            <span style="font-size:10px;color:var(--text-muted);width:80px">Bot Farm</span>
+            <button class="btn btn-danger btn-sm" style="height:22px;font-size:10px;width:50px">Stop</button>
+          </div>
+          <div class="dash-row">
+            <div class="chk"></div>
+            <span class="dash-conn">:9222/T1</span>
+            <span class="dash-name">Phone-2</span>
+            <span class="dash-status scanning" style="flex:1">Delay 3s...</span>
+            <span style="font-size:10px;color:var(--text-muted);width:80px">Bot Farm</span>
+            <button class="btn btn-danger btn-sm" style="height:22px;font-size:10px;width:50px">Stop</button>
+          </div>
+          <div class="dash-row">
+            <div class="chk"></div>
+            <span class="dash-conn">:9222/T2</span>
+            <span class="dash-name">Phone-3</span>
+            <span class="dash-status scanning" style="flex:1">Scan: hp_bar</span>
+            <span style="font-size:10px;color:var(--text-muted);width:80px">Auto Grind</span>
+            <button class="btn btn-danger btn-sm" style="height:22px;font-size:10px;width:50px">Stop</button>
+          </div>
+          <div class="dash-row">
+            <div class="chk"></div>
+            <span class="dash-conn offline">:9223/T0</span>
+            <span class="dash-name">Phone-4</span>
+            <span class="dash-status idle" style="flex:1">Idle</span>
+            <span style="font-size:10px;color:var(--text-muted);width:80px">—</span>
+            <button class="btn btn-success btn-sm" style="height:22px;font-size:10px;width:50px">Start</button>
+          </div>
+          <div class="dash-row">
+            <div class="chk"></div>
+            <span class="dash-conn offline">:9223/T1</span>
+            <span class="dash-name">Phone-5</span>
+            <span class="dash-status error" style="flex:1">Conn. Failed</span>
+            <span style="font-size:10px;color:var(--text-muted);width:80px">Bot Farm</span>
+            <button class="btn btn-success btn-sm" style="height:22px;font-size:10px;width:50px">Start</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TAB 4: OUTPUT ═══ -->
+    <div class="tab-content" style="flex-direction:column;padding:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <span class="detail-title">System Log</span>
+        <button class="btn btn-danger btn-sm">Clear</button>
+      </div>
+      <div class="log-area">
+        <div class="log-line"><span class="time">[16:05:12]</span> <span class="highlight">[System]</span> <span class="msg">Setup restored 8 active nodes.</span></div>
+        <div class="log-line"><span class="time">[16:05:14]</span> <span class="highlight">[TEST]</span> <span class="msg">Port 9222 | Tabs: [0] LordNine [1] LordNine</span></div>
+        <div class="log-line"><span class="time">[16:05:15]</span> <span class="ok">[TEST]</span> <span class="ok">Found 'hp_bar' at (320, 45) — Accuracy: 0.92</span></div>
+        <div class="log-line"><span class="time">[16:06:01]</span> <span class="highlight">[FLOWCHART]</span> <span class="msg">---> START</span></div>
+        <div class="log-line"><span class="time">[16:06:02]</span> <span class="highlight">[FLOWCHART]</span> <span class="msg">Executing Macro: Auto Attack</span></div>
+        <div class="log-line"><span class="time">[16:06:03]</span> <span class="msg">[Macro] (1/3) Clicking 'potion_icon'...</span></div>
+        <div class="log-line"><span class="time">[16:06:04]</span> <span class="ok">[Macro]</span> <span class="ok">Step OK: Clicked 'potion_icon'</span></div>
+        <div class="log-line"><span class="time">[16:06:06]</span> <span class="msg">[Macro] (2/3) Delay: 1500ms...</span></div>
+        <div class="log-line"><span class="time">[16:06:08]</span> <span class="err">[Macro]</span> <span class="err">Step FAILED: Could not find 'confirm_btn' after 5s.</span></div>
+        <div class="log-line"><span class="time">[16:06:09]</span> <span class="highlight">[FLOWCHART]</span> <span class="err">-> Macro FAILED. Following failure path.</span></div>
+        <div class="log-line"><span class="time">[16:06:10]</span> <span class="highlight">[FLOWCHART]</span> <span class="msg">Waiting 3000ms...</span></div>
+      </div>
+    </div>
+
+    <!-- STATUS BAR -->
+    <div class="statusbar">
+      <div class="status-item"><span class="si-dot green"></span><span class="si-val">Network OK</span></div>
+      <div class="status-item"><span class="si-dot yellow"></span><span class="si-val">CPU 34%</span></div>
+      <div class="status-item"><span class="si-dot green"></span><span class="si-val">3 Running</span></div>
+      <div class="status-item"><span class="si-dot gray"></span><span class="si-val">2 Idle</span></div>
+      <div class="status-item"><span class="si-dot red"></span><span class="si-val">1 Error</span></div>
+      <div class="status-spacer"></div>
+      <div class="detail-inputs" style="gap:5px">Port <input value="9222" /> Tab <input value="0" /></div>
+      <div class="status-item"><span class="si-val">Threshold: 0.85</span></div>
+      <div class="status-item"><span class="si-val">v2.0</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(idx) {
+  document.querySelectorAll('.tab-content').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.nav-item').forEach((n,i) => n.classList.toggle('active', i===idx));
+}
+document.querySelectorAll('.list-item').forEach(item => {
+  item.addEventListener('click', function() {
+    this.parentElement.querySelectorAll('.list-item').forEach(i => i.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+document.querySelectorAll('.toggle').forEach(t => {
+  t.addEventListener('click', () => t.classList.toggle('on'));
+});
+</script>
+</body>
+</html>

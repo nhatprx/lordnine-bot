@@ -99,12 +99,6 @@
                 "to_pin": "in"
             },
             {
-                "from": "45f677d7",
-                "from_pin": "false",
-                "to": "0e62ec37",
-                "to_pin": "in"
-            },
-            {
                 "from": "0e62ec37",
                 "from_pin": "true",
                 "to": "4c9864f8",

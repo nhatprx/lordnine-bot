@@ -4,54 +4,58 @@ import customtkinter as ctk
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
 
-# --- Premium Color Palette ---
+# --- Premium Color Palette (Refined) ---
 COLOR = {
     # Backgrounds
-    "bg":           "#0B0F19",   # Deep space background
-    "surface":      "#141B2D",   # Panel/card background
-    "surface2":     "#1C2640",   # Elevated surface
-    "surface3":     "#243049",   # Highest elevation
-    "border":       "#1E293B",   # Subtle border for glassmorphism
-    "sidebar":      "#080C14",   # Sidebar dark bg
-    "sidebar_h":    "#0F1420",   # Sidebar hover
+    "bg":             "#0F1117",   # Deep dark bg
+    "bg_subtle":      "#13151C",   # Slightly lighter bg
+    "surface":        "#181B23",   # Panel/card background
+    "surface2":       "#1E2130",   # Elevated surface (hover)
+    "surface3":       "#222530",   # Highest elevation
+    "border":         "#2A2D38",   # Standard border
+    "border_subtle":  "#1F222C",   # Subtle border
+    "sidebar":        "#0C0E14",   # Sidebar dark bg
+    "sidebar_h":      "#14161E",   # Sidebar hover
 
     # Primary actions
-    "primary":      "#3B82F6",   # Electric blue
-    "primary_h":    "#2563EB",   # Blue hover
-    "primary_dim":  "#1E40AF",   # Blue muted
+    "primary":        "#5B8DEF",   # Softer blue
+    "primary_h":      "#4A7DE0",   # Blue hover
+    "primary_dim":    "#3A5A9E",   # Blue muted
 
     # Status colors
-    "success":      "#10B981",   # Emerald green (softer)
-    "success_h":    "#059669",   # Emerald hover
-    "danger":       "#F43F5E",   # Rose red (softer)
-    "danger_h":     "#E11D48",   # Rose hover
-    "warning":      "#F59E0B",   # Amber
-    "warning_h":    "#D97706",   # Amber hover
-    "accent":       "#06B6D4",   # Cyan accent
-    "accent_h":     "#0891B2",   # Cyan hover
-    "purple":       "#8B5CF6",   # Purple/violet
-    "purple_h":     "#7C3AED",   # Purple hover
+    "success":        "#4CAF82",   # Muted green
+    "success_h":      "#3D9B70",   # Green hover
+    "success_dim":    "#2D5A44",   # Green bg
+    "danger":         "#D4626C",   # Muted rose
+    "danger_h":       "#C4525C",   # Rose hover
+    "danger_dim":     "#5A2D32",   # Rose bg
+    "warning":        "#D4A24C",   # Muted amber
+    "warning_h":      "#C4923C",   # Amber hover
+    "accent":         "#5BB8CF",   # Muted cyan
+    "accent_h":       "#4BA8BF",   # Cyan hover
+    "purple":         "#9B7DCF",   # Muted purple
+    "purple_h":       "#8B6DBF",   # Purple hover
 
     # Text
-    "text":         "#E2E8F0",   # Primary text
-    "text_dim":     "#64748B",   # Secondary text
-    "text_dark":    "#1E293B",   # Dark text (on light bg)
-    "text_muted":   "#475569",   # Very dim text
+    "text":           "#D1D5DE",   # Primary text
+    "text_dim":       "#8B90A0",   # Secondary text
+    "text_dark":      "#1E293B",   # Dark text (on light bg)
+    "text_muted":     "#555A68",   # Very dim text
 }
 
 # --- Font System ---
 FONT = {
-    "family":       "Segoe UI",
+    "family":       "Inter",
     "mono":         "Consolas",
-    "h1":           ("Segoe UI", 18, "bold"),
-    "h2":           ("Segoe UI", 15, "bold"),
-    "h3":           ("Segoe UI", 13, "bold"),
-    "body":         ("Segoe UI", 12),
-    "small":        ("Segoe UI", 11),
-    "tiny":         ("Segoe UI", 10),
+    "h1":           ("Inter", 18, "bold"),
+    "h2":           ("Inter", 15, "bold"),
+    "h3":           ("Inter", 13, "bold"),
+    "body":         ("Inter", 12),
+    "small":        ("Inter", 11),
+    "tiny":         ("Inter", 10),
     "mono_body":    ("Consolas", 11),
-    "btn":          ("Segoe UI", 12, "bold"),
-    "btn_sm":       ("Segoe UI", 11, "bold"),
+    "btn":          ("Inter", 12, "bold"),
+    "btn_sm":       ("Inter", 11, "bold"),
 }
 
 # --- Spacing ---

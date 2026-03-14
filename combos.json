@@ -2,44 +2,14 @@
     "Buy Blood": {
         "steps": [
             {
-                "node": "Supplier"
-            },
-            {
-                "type": "marker",
-                "marker": "Supplier - inside",
+                "node": "Supplies",
+                "marker": "None",
                 "mode": "Wait until Appear",
                 "time": "0"
             },
             {
-                "node": "Blood - Type"
-            },
-            {
-                "node": "Blood - Amount"
-            },
-            {
-                "node": "Blood - Purchase"
-            },
-            {
-                "node": "Supplier - out"
-            },
-            {
                 "type": "marker",
-                "marker": "Home",
-                "mode": "Wait until Appear",
-                "time": "0"
-            }
-        ],
-        "success_capture": "Home",
-        "failure_capture": "Supplier - inside"
-    },
-    "Gather": {
-        "steps": [
-            {
-                "node": "Gathering"
-            },
-            {
-                "type": "marker",
-                "marker": "Gathering - Inside",
+                "marker": "Supplies - Inside",
                 "mode": "Wait until Appear",
                 "time": "250",
                 "timeout": "0",
@@ -47,68 +17,40 @@
                 "fail_mode": "Fail if Appear"
             },
             {
-                "node": "Gathering - OK"
-            },
-            {
-                "type": "delay",
-                "time": 10000.0
-            },
-            {
-                "type": "marker",
-                "marker": "Automove",
-                "mode": "Wait until Disappear",
-                "time": "2000",
-                "timeout": "0",
-                "fail_image": "None",
-                "fail_mode": "Fail if Appear"
-            }
-        ],
-        "success_capture": "Attack - Auto",
-        "failure_capture": "Supplier"
-    },
-    "Attack": {
-        "steps": [
-            {
-                "node": "Attack - Auto"
-            },
-            {
-                "type": "marker",
-                "marker": "Revive",
-                "mode": "Wait until Appear",
-                "time": "2000",
-                "timeout": "0",
-                "fail_image": "None",
-                "fail_mode": "Fail if Appear"
-            },
-            {
-                "node": "Revive"
-            }
-        ],
-        "success_capture": "Supplier",
-        "failure_capture": "None"
-    },
-    "Home": {
-        "steps": [
-            {
-                "node": "Home"
-            }
-        ],
-        "success_capture": "Supplier",
-        "failure_capture": "Attack - Auto"
-    },
-    "Revive": {
-        "steps": [
-            {
-                "node": "Revive",
+                "node": "Supplies - Blood Type",
                 "marker": "None",
                 "mode": "Wait until Appear",
                 "time": "0"
+            },
+            {
+                "node": "Supplies - Blood Amount",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            },
+            {
+                "node": "Supplies - Purchase",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            },
+            {
+                "node": "Supplies - Close",
+                "marker": "None",
+                "mode": "Wait until Appear",
+                "time": "0"
+            },
+            {
+                "type": "marker",
+                "marker": "Home",
+                "mode": "Wait until Appear",
+                "time": "200",
+                "timeout": "0",
+                "fail_image": "None",
+                "fail_mode": "Fail if Appear"
             }
         ],
-        "success_capture": "Supplier",
+        "success_capture": "Home",
         "failure_capture": "None"
-    },
-    "Click Lordnine": {
-        "steps": []
     }
 }
