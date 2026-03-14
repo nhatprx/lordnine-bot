@@ -15,6 +15,7 @@ import os
 import json
 import queue
 import shutil
+import threading
 import multiprocessing
 
 from vision import Vision
@@ -131,16 +132,21 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("Lordbot Control")
-        # Set window icon
+        # Set window icon + taskbar icon
         try:
-            import os as _os
-            _ico = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "logo.ico")
-            if _os.path.exists(_ico):
-                self.iconbitmap(_ico)
+            import ctypes
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("lordbot.control.app")
         except Exception:
             pass
-        self.geometry("1100x750")
-        self.minsize(900, 600)
+        try:
+            import os as _os
+            self._ico_path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "logo.ico")
+            if _os.path.exists(self._ico_path):
+                self.iconbitmap(self._ico_path)
+        except Exception:
+            pass
+        self.geometry("1000x550")
+        self.minsize(800, 500)
         self.configure(fg_color=COLOR["bg"])
 
         self.vision = Vision()
@@ -240,19 +246,32 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         self.tab_frames = [self.tab_setup, self.tab_combo, self.tab_loop, self.tab_multi, self.tab_output]
 
         # Left side: status indicators
-        self.status_label = ctk.CTkLabel(
-            self.statusbar, text="● Network OK",
-            font=ctk.CTkFont(family="Segoe UI", size=10),
+        ctk.CTkLabel(
+            self.statusbar, text="Network",
+            font=ctk.CTkFont(family="Consolas", size=10, weight="bold"),
             text_color=COLOR["success"]
+        ).pack(side="left", padx=(12, 2))
+
+        self.status_label = ctk.CTkLabel(
+            self.statusbar, text="—",
+            font=ctk.CTkFont(family="Consolas", size=10),
+            text_color=COLOR["text_muted"]
         )
-        self.status_label.pack(side="left", padx=(12, 8))
+        self.status_label.pack(side="left", padx=(0, 8))
 
         self.cpu_label = ctk.CTkLabel(
             self.statusbar, text="CPU —",
             font=ctk.CTkFont(family="Consolas", size=10),
             text_color=COLOR["text_muted"]
         )
-        self.cpu_label.pack(side="left", padx=(0, 8))
+        self.cpu_label.pack(side="left", padx=(0, 6))
+
+        self.ram_label = ctk.CTkLabel(
+            self.statusbar, text="RAM —",
+            font=ctk.CTkFont(family="Consolas", size=10),
+            text_color=COLOR["text_muted"]
+        )
+        self.ram_label.pack(side="left", padx=(0, 8))
 
         # Account stats
         self.stat_running = ctk.CTkLabel(
@@ -275,13 +294,6 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             text_color=COLOR["danger"]
         )
         self.stat_error.pack(side="left", padx=(0, 6))
-
-        self.status_threshold = ctk.CTkLabel(
-            self.statusbar, text="Threshold: 0.85",
-            font=ctk.CTkFont(family="Consolas", size=10),
-            text_color=COLOR["text_dim"]
-        )
-        self.status_threshold.pack(side="left", padx=(8, 0))
 
         # Right side: Port/Tab inputs + version
         self.status_version = ctk.CTkLabel(
@@ -339,6 +351,9 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
         # Start processing the thread-safe GUI queue
         self.process_gui_queue()
+
+        # Start real-time footer stats updater
+        self._start_footer_stats_updater()
 
     # ==================== Tab Switching ====================
     def switch_tab(self, index):
@@ -497,6 +512,171 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
     def update_status(self, text):
         """Update status bar text."""
         self.status_label.configure(text=text)
+
+    def _start_footer_stats_updater(self):
+        """Background thread: collect CPU, RAM, network bandwidth, account stats."""
+        import ctypes as _ct
+        import subprocess as _sp
+
+        # ── Windows kernel32 setup ──
+        _kernel32 = None
+        _filetime = None
+        _memstatus = None
+        try:
+            _kernel32 = _ct.windll.kernel32
+
+            class _FILETIME(_ct.Structure):
+                _fields_ = [("dwLowDateTime", _ct.c_ulong), ("dwHighDateTime", _ct.c_ulong)]
+            _filetime = _FILETIME
+
+            class _MEMORYSTATUSEX(_ct.Structure):
+                _fields_ = [
+                    ("dwLength", _ct.c_ulong),
+                    ("dwMemoryLoad", _ct.c_ulong),
+                    ("ullTotalPhys", _ct.c_ulonglong),
+                    ("ullAvailPhys", _ct.c_ulonglong),
+                    ("ullTotalPageFile", _ct.c_ulonglong),
+                    ("ullAvailPageFile", _ct.c_ulonglong),
+                    ("ullTotalVirtual", _ct.c_ulonglong),
+                    ("ullAvailVirtual", _ct.c_ulonglong),
+                    ("ullAvailExtendedVirtual", _ct.c_ulonglong),
+                ]
+            _memstatus = _MEMORYSTATUSEX
+        except Exception:
+            pass
+
+        # Previous samples
+        _prev_cpu = {"idle": 0, "kernel": 0, "user": 0}
+        _prev_net = {"recv": 0, "sent": 0, "time": time.time()}
+
+        def _get_cpu_pct():
+            if not _kernel32 or not _filetime:
+                return None
+            try:
+                idle, kernel, user = _filetime(), _filetime(), _filetime()
+                _kernel32.GetSystemTimes(_ct.byref(idle), _ct.byref(kernel), _ct.byref(user))
+                idle_t = (idle.dwHighDateTime << 32) | idle.dwLowDateTime
+                kern_t = (kernel.dwHighDateTime << 32) | kernel.dwLowDateTime
+                user_t = (user.dwHighDateTime << 32) | user.dwLowDateTime
+                d_idle = idle_t - _prev_cpu["idle"]
+                d_kern = kern_t - _prev_cpu["kernel"]
+                d_user = user_t - _prev_cpu["user"]
+                _prev_cpu["idle"] = idle_t
+                _prev_cpu["kernel"] = kern_t
+                _prev_cpu["user"] = user_t
+                total = d_kern + d_user
+                if total == 0:
+                    return 0.0
+                return max(0.0, min(100.0, ((total - d_idle) / total) * 100))
+            except Exception:
+                return None
+
+        def _get_ram():
+            """Return (usage_percent, used_gb, total_gb) or None."""
+            if not _kernel32 or not _memstatus:
+                return None
+            try:
+                mem = _memstatus()
+                mem.dwLength = _ct.sizeof(_memstatus)
+                _kernel32.GlobalMemoryStatusEx(_ct.byref(mem))
+                pct = mem.dwMemoryLoad
+                used = (mem.ullTotalPhys - mem.ullAvailPhys) / (1024 ** 3)
+                total = mem.ullTotalPhys / (1024 ** 3)
+                return (pct, used, total)
+            except Exception:
+                return None
+
+        def _get_net_bandwidth():
+            """Return (recv_kbps, sent_kbps) or None using netstat -e."""
+            try:
+                out = _sp.check_output("netstat -e", shell=True, text=True,
+                                       timeout=3, stderr=_sp.DEVNULL)
+                for line in out.splitlines():
+                    stripped = line.strip()
+                    if stripped.startswith("Bytes") or stripped.startswith("bytes"):
+                        parts = stripped.split()
+                        recv_bytes = int(parts[1])
+                        sent_bytes = int(parts[2])
+                        now = time.time()
+                        dt = now - _prev_net["time"]
+                        if dt < 0.5 or _prev_net["recv"] == 0:
+                            _prev_net["recv"] = recv_bytes
+                            _prev_net["sent"] = sent_bytes
+                            _prev_net["time"] = now
+                            return (0.0, 0.0)
+                        recv_rate = (recv_bytes - _prev_net["recv"]) / dt / 1024  # KB/s
+                        sent_rate = (sent_bytes - _prev_net["sent"]) / dt / 1024
+                        _prev_net["recv"] = recv_bytes
+                        _prev_net["sent"] = sent_bytes
+                        _prev_net["time"] = now
+                        return (max(0, recv_rate), max(0, sent_rate))
+            except Exception:
+                pass
+            return None
+
+        # Take initial CPU sample
+        _get_cpu_pct()
+
+        def _fmt_rate(kb):
+            """Format KB/s to human-readable."""
+            if kb >= 1024:
+                return f"{kb/1024:.1f}M"
+            return f"{kb:.0f}K"
+
+        def _collect_and_push():
+            while True:
+                try:
+                    cpu_pct = _get_cpu_pct()
+                    ram = _get_ram()
+                    net = _get_net_bandwidth()
+
+                    running = sum(1 for v in self.account_running.values() if v)
+                    total_acc = len(self.multi_accounts)
+                    idle = total_acc - running
+                    error_count = 0
+                    try:
+                        for acc in self.multi_accounts:
+                            state = self.state_db.get_account_state(acc["name"])
+                            if state and state.get("status") == "error":
+                                error_count += 1
+                    except Exception:
+                        pass
+
+                    def _update_ui(_cpu=cpu_pct, _ram=ram, _net=net,
+                                   _run=running, _idle=idle, _err=error_count):
+                        # Network bandwidth
+                        if _net is not None:
+                            recv_k, sent_k = _net
+                            net_text = f"↓{_fmt_rate(recv_k)} ↑{_fmt_rate(sent_k)}"
+                            net_color = COLOR["success"] if (recv_k + sent_k) > 0.1 else COLOR["text_muted"]
+                            self.status_label.configure(text=net_text, text_color=net_color)
+                        else:
+                            self.status_label.configure(text="—", text_color=COLOR["danger"])
+
+                        # CPU
+                        if _cpu is not None:
+                            pct = int(_cpu)
+                            color = COLOR["success"] if pct < 60 else (COLOR["warning"] if pct < 85 else COLOR["danger"])
+                            self.cpu_label.configure(text=f"CPU {pct}%", text_color=color)
+
+                        # RAM
+                        if _ram is not None:
+                            pct, used, total = _ram
+                            color = COLOR["success"] if pct < 60 else (COLOR["warning"] if pct < 85 else COLOR["danger"])
+                            self.ram_label.configure(text=f"RAM {pct}%", text_color=color)
+
+                        # Accounts
+                        self.stat_running.configure(text=f"● {_run} Running")
+                        self.stat_idle.configure(text=f"● {_idle} Idle")
+                        self.stat_error.configure(text=f"● {_err} Error")
+
+                    self.gui_queue.put(("run", _update_ui))
+                except Exception:
+                    pass
+                time.sleep(3)
+
+        t = threading.Thread(target=_collect_and_push, daemon=True)
+        t.start()
 
     # ==================== Data Persistence ====================
     def load_combos(self):

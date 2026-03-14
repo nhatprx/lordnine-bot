@@ -16,131 +16,144 @@ class AccountsMixin:
     """Mixin for the Accounts/Coordinator tab. Mixed into BotApp."""
 
     def setup_multi_tab(self):
-        self.tab_multi.grid_columnconfigure(0, weight=1, minsize=280)
-        self.tab_multi.grid_columnconfigure(1, weight=3)
+        # Full-width single column layout (no 2-column split)
+        self.tab_multi.grid_columnconfigure(0, weight=1)
         self.tab_multi.grid_rowconfigure(0, weight=1)
 
-        # ====== LEFT PANE ======
-        self.multi_left_pane = ctk.CTkFrame(self.tab_multi, fg_color=COLOR["surface"], corner_radius=RADIUS, border_width=1, border_color=COLOR["border"])
-        self.multi_left_pane.grid(row=0, column=0, sticky="nsew", padx=(PAD["lg"], PAD["sm"]), pady=PAD["lg"])
+        # Main container
+        main_frame = ctk.CTkFrame(self.tab_multi, fg_color="transparent")
+        main_frame.grid(row=0, column=0, sticky="nsew", padx=PAD["lg"], pady=(PAD["md"], PAD["lg"]))
+        main_frame.grid_columnconfigure(0, weight=1)
+        main_frame.grid_rowconfigure(4, weight=1)  # table rows expand
 
-        self.multi_title = ctk.CTkLabel(self.multi_left_pane, text="ACCOUNTS", text_color=COLOR["accent"], font=ctk.CTkFont(family="Segoe UI", weight="bold", size=13))
-        self.multi_title.pack(pady=(PAD["md"], PAD["sm"]))
+        # ═══ ROW 0: Launch + Chrome (side by side) ═══
+        top_row = ctk.CTkFrame(main_frame, fg_color="transparent")
+        top_row.grid(row=0, column=0, sticky="ew", pady=(0, PAD["sm"]))
+        top_row.grid_columnconfigure(0, weight=65, uniform="col")  # Launch (65%)
+        top_row.grid_columnconfigure(1, weight=35, uniform="col")  # Chrome (35%)
 
-        # Quick Launch Panel
-        quick_frame = ctk.CTkFrame(self.multi_left_pane, fg_color=COLOR["surface2"], corner_radius=RADIUS, border_width=1, border_color=COLOR["accent"])
-        quick_frame.pack(fill="x", padx=PAD["md"], pady=(PAD["xs"], PAD["xs"]))
+        # -- Quick Launch pill --
+        ql_pill = ctk.CTkFrame(top_row, fg_color=COLOR["bg_subtle"], corner_radius=8, border_width=1, border_color=COLOR["border_subtle"])
+        ql_pill.grid(row=0, column=0, sticky="ew", padx=(0, PAD["sm"]))
 
-        ctk.CTkLabel(quick_frame, text="QUICK LAUNCH", font=ctk.CTkFont(weight="bold", size=11), text_color=COLOR["accent"]).pack(padx=PAD["md"], pady=(PAD["sm"], 2), anchor="w")
+        ql_inner = ctk.CTkFrame(ql_pill, fg_color="transparent")
+        ql_inner.pack(fill="x", padx=PAD["sm"], pady=6)
 
-        # URL input
-        url_row = ctk.CTkFrame(quick_frame, fg_color="transparent")
-        url_row.pack(fill="x", padx=PAD["md"], pady=2)
-        ctk.CTkLabel(url_row, text="URL:", font=ctk.CTkFont(size=10), text_color=COLOR["text_dim"], width=30).pack(side="left")
-        self.quick_url_entry = ctk.CTkEntry(url_row, placeholder_text="https://www.cloudemulator.net/app/phone?channelCode=web", font=ctk.CTkFont(size=10))
-        self.quick_url_entry.pack(side="left", fill="x", expand=True, padx=(4, 0))
+        ctk.CTkLabel(ql_inner, text="LAUNCH", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold")).pack(side="left", padx=(0, 8))
+
+        self.quick_url_entry = ctk.CTkEntry(ql_inner, placeholder_text="URL...", fg_color=COLOR["surface"], corner_radius=4, height=24, border_width=1, border_color=COLOR["border_subtle"], font=ctk.CTkFont(size=10))
         self.quick_url_entry.insert(0, "https://www.cloudemulator.net/app/phone?channelCode=web")
+        self.quick_url_entry.pack(side="left", fill="x", expand=True, padx=(0, 8))
 
-        # Count + Max tabs row
-        num_row = ctk.CTkFrame(quick_frame, fg_color="transparent")
-        num_row.pack(fill="x", padx=PAD["md"], pady=2)
-        
-        ctk.CTkLabel(num_row, text="Accounts:", font=ctk.CTkFont(size=10), text_color=COLOR["text_dim"]).pack(side="left")
-        self.quick_count_entry = ctk.CTkEntry(num_row, width=45, font=ctk.CTkFont(size=10), placeholder_text="20")
-        self.quick_count_entry.pack(side="left", padx=(4, 10))
-        
-        ctk.CTkLabel(num_row, text="Max/Chrome:", font=ctk.CTkFont(size=10), text_color=COLOR["text_dim"]).pack(side="left")
-        self.quick_max_tabs_entry = ctk.CTkEntry(num_row, width=35, font=ctk.CTkFont(size=10))
+        ctk.CTkLabel(ql_inner, text="x", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10)).pack(side="left")
+        self.quick_count_entry = ctk.CTkEntry(ql_inner, width=40, fg_color=COLOR["surface"], corner_radius=4, height=24, border_width=1, border_color=COLOR["border_subtle"], font=ctk.CTkFont(size=10), justify="center")
+        self.quick_count_entry.pack(side="left", padx=(2, 8))
+
+        ctk.CTkLabel(ql_inner, text="Max", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10)).pack(side="left")
+        self.quick_max_tabs_entry = ctk.CTkEntry(ql_inner, width=40, fg_color=COLOR["surface"], corner_radius=4, height=24, border_width=1, border_color=COLOR["border_subtle"], font=ctk.CTkFont(size=10), justify="center")
         self.quick_max_tabs_entry.insert(0, "10")
-        self.quick_max_tabs_entry.pack(side="left", padx=(4, 10))
-        
-        ctk.CTkLabel(num_row, text="Start Phone:", font=ctk.CTkFont(size=10), text_color=COLOR["text_dim"]).pack(side="left")
-        self.quick_start_phone_entry = ctk.CTkEntry(num_row, width=35, font=ctk.CTkFont(size=10))
+        self.quick_max_tabs_entry.pack(side="left", padx=(2, 8))
+
+        ctk.CTkLabel(ql_inner, text="Phone", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10)).pack(side="left")
+        self.quick_start_phone_entry = ctk.CTkEntry(ql_inner, width=40, fg_color=COLOR["surface"], corner_radius=4, height=24, border_width=1, border_color=COLOR["border_subtle"], font=ctk.CTkFont(size=10), justify="center")
         self.quick_start_phone_entry.insert(0, "1")
-        self.quick_start_phone_entry.pack(side="left", padx=(4, 0))
+        self.quick_start_phone_entry.pack(side="left", padx=(2, 8))
 
-        # Launch button
-        self.quick_launch_btn = ctk.CTkButton(quick_frame, text="Launch", command=self._quick_launch, fg_color=COLOR["accent"], hover_color=COLOR["primary_h"], font=ctk.CTkFont(weight="bold", size=12), corner_radius=6, height=30)
-        self.quick_launch_btn.pack(fill="x", padx=PAD["md"], pady=(4, PAD["sm"]))
-        
-        self.quick_status_label = ctk.CTkLabel(quick_frame, text="", font=ctk.CTkFont(size=9), text_color=COLOR["text_dim"])
-        self.quick_status_label.pack(padx=PAD["md"], pady=(0, PAD["sm"]), anchor="w")
+        self.quick_launch_btn = ctk.CTkButton(ql_inner, text="Launch", command=self._quick_launch, fg_color=COLOR["primary"], hover_color=COLOR["primary_h"], font=ctk.CTkFont(size=10, weight="bold"), corner_radius=4, height=24, width=55)
+        self.quick_launch_btn.pack(side="left")
 
-        # Chrome Instances Panel
-        chrome_frame = ctk.CTkFrame(self.multi_left_pane, fg_color=COLOR["surface2"], corner_radius=RADIUS, border_width=1, border_color=COLOR["border"])
-        chrome_frame.pack(fill="x", padx=PAD["md"], pady=(PAD["xs"], PAD["xs"]))
+        self.quick_status_label = ctk.CTkLabel(ql_inner, text="", font=ctk.CTkFont(size=9), text_color=COLOR["text_muted"])
+        self.quick_status_label.pack(side="left", padx=4)
 
-        ctk.CTkLabel(chrome_frame, text="CHROME INSTANCES", font=ctk.CTkFont(weight="bold", size=11), text_color=COLOR["accent"]).pack(padx=PAD["md"], pady=(PAD["sm"], 2), anchor="w")
+        # -- Chrome Instances pill (same row, right) --
+        chrome_pill = ctk.CTkFrame(top_row, fg_color=COLOR["bg_subtle"], corner_radius=8, border_width=1, border_color=COLOR["border_subtle"])
+        chrome_pill.grid(row=0, column=1, sticky="nsew")
 
-        chrome_btn_row = ctk.CTkFrame(chrome_frame, fg_color="transparent")
-        chrome_btn_row.pack(fill="x", padx=PAD["md"], pady=2)
+        chrome_inner = ctk.CTkFrame(chrome_pill, fg_color="transparent")
+        chrome_inner.pack(fill="both", expand=True, padx=PAD["sm"], pady=6)
 
-        ctk.CTkButton(chrome_btn_row, text="+ Launch Chrome", command=self._launch_new_chrome, fg_color=COLOR["success"], hover_color=COLOR["success_h"], font=ctk.CTkFont(weight="bold", size=11), corner_radius=6, height=28).pack(side="left", expand=True, fill="x", padx=(0, 2))
+        chrome_top = ctk.CTkFrame(chrome_inner, fg_color="transparent")
+        chrome_top.pack(fill="x")
 
-        ctk.CTkButton(chrome_btn_row, text="Refresh", command=self._refresh_connection_status, fg_color=COLOR["surface3"], hover_color=COLOR["surface2"], text_color=COLOR["text"], corner_radius=6, height=28, width=70).pack(side="right", padx=(2, 0))
+        ctk.CTkLabel(chrome_top, text="CHROME", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold")).pack(side="left", padx=(0, 8))
 
-        self.chrome_instances_container = ctk.CTkFrame(chrome_frame, fg_color="transparent")
-        self.chrome_instances_container.pack(fill="x", padx=PAD["md"], pady=(2, PAD["sm"]))
+        self.chrome_instances_container = ctk.CTkFrame(chrome_top, fg_color="transparent")
+        self.chrome_instances_container.pack(side="left", fill="x", expand=True)
+        self.conn_status_label = ctk.CTkLabel(self.chrome_instances_container, text="Not checked", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10))
+        self.conn_status_label.pack(side="left")
 
-        self.conn_status_label = ctk.CTkLabel(self.chrome_instances_container, text="Not checked yet", text_color=COLOR["text_dim"], font=ctk.CTkFont(size=10))
-        self.conn_status_label.pack(anchor="w")
+        ctk.CTkButton(chrome_top, text="+ Add", command=self._launch_new_chrome, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["primary"], font=ctk.CTkFont(size=10, weight="bold"), width=40, height=24, corner_radius=4).pack(side="right")
 
-        # Account List
-        acc_header = ctk.CTkFrame(self.multi_left_pane, fg_color="transparent")
-        acc_header.pack(fill="x", padx=PAD["md"], pady=(PAD["xs"], 0))
-        ctk.CTkLabel(acc_header, text="Assigned Accounts:", text_color=COLOR["text"], font=ctk.CTkFont(weight="bold", size=12)).pack(side="left")
+        # ═══ ROW 1: Toolbar (full width) ═══
+        toolbar = ctk.CTkFrame(main_frame, fg_color=COLOR["bg_subtle"], corner_radius=8, border_width=1, border_color=COLOR["border_subtle"])
+        toolbar.grid(row=1, column=0, sticky="ew", pady=(0, PAD["sm"]))
 
-        self.acc_list_frame = ctk.CTkScrollableFrame(self.multi_left_pane, fg_color=COLOR["bg"], height=150, corner_radius=RADIUS, border_width=1, border_color=COLOR["border"])
-        self.acc_list_frame.pack(fill="both", expand=True, padx=PAD["md"], pady=PAD["xs"])
+        toolbar_inner = ctk.CTkFrame(toolbar, fg_color="transparent")
+        toolbar_inner.pack(fill="x", padx=PAD["sm"], pady=5)
 
-        self.multi_actions = ctk.CTkFrame(self.multi_left_pane, fg_color="transparent")
-        self.multi_actions.pack(side="bottom", fill="x", pady=PAD["md"], padx=PAD["md"])
+        # Left: Start All | Stop All
+        ctk.CTkButton(toolbar_inner, text="Start All", command=self._batch_start_all, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["success"], font=ctk.CTkFont(size=10, weight="bold"), width=55, height=24, corner_radius=4).pack(side="left", padx=(0, 1))
+        ctk.CTkButton(toolbar_inner, text="Stop All", command=self._batch_stop_all, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["danger"], font=ctk.CTkFont(size=10, weight="bold"), width=50, height=24, corner_radius=4).pack(side="left")
 
-        ctk.CTkButton(self.multi_actions, text="+ Add Account", command=self.add_multi_account, fg_color=COLOR["success"], hover_color=COLOR["success_h"], font=ctk.CTkFont(weight="bold"), corner_radius=RADIUS).pack(side="top", fill="x", pady=2)
-
-        # ====== RIGHT PANE (Dashboard) ======
-        self.multi_right_pane = ctk.CTkFrame(self.tab_multi, fg_color=COLOR["bg"], corner_radius=0)
-        self.multi_right_pane.grid(row=0, column=1, sticky="nsew", padx=(PAD["sm"], PAD["lg"]), pady=PAD["lg"])
-
-        self.dash_top_bar = ctk.CTkFrame(self.multi_right_pane, fg_color="transparent", height=40)
-        self.dash_top_bar.pack(fill="x", pady=(0, PAD["sm"]), padx=PAD["xl"])
-
-        self.dash_title = ctk.CTkLabel(self.dash_top_bar, text="COORDINATOR DASHBOARD", font=ctk.CTkFont(family="Segoe UI", weight="bold", size=15), text_color=COLOR["accent"])
-        self.dash_title.pack(side="left")
-
-        # Batch controls
-        batch_frame = ctk.CTkFrame(self.dash_top_bar, fg_color="transparent")
-        batch_frame.pack(side="right")
-
-        ctk.CTkButton(batch_frame, text="Start All", command=self._batch_start_all, fg_color=COLOR["success"], hover_color=COLOR["success_h"], font=ctk.CTkFont(weight="bold", size=11), corner_radius=6, height=30, width=80).pack(side="left", padx=2)
-
-        ctk.CTkButton(batch_frame, text="Stop All", command=self._batch_stop_all, fg_color=COLOR["danger"], hover_color=COLOR["danger_h"], font=ctk.CTkFont(weight="bold", size=11), corner_radius=6, height=30, width=80).pack(side="left", padx=2)
-
-        ctk.CTkButton(batch_frame, text="Start Selected", command=self._batch_start_selected, fg_color=COLOR["primary"], hover_color=COLOR["primary_h"], font=ctk.CTkFont(size=11), corner_radius=6, height=30, width=100).pack(side="left", padx=2)
-
-        ctk.CTkButton(batch_frame, text="Stop Selected", command=self._batch_stop_selected, fg_color=COLOR["surface2"], hover_color=COLOR["surface3"], text_color=COLOR["text"], font=ctk.CTkFont(size=11), corner_radius=6, height=30, width=100).pack(side="left", padx=2)
-
-        # Loop assignment row
-        loop_assign_frame = ctk.CTkFrame(self.multi_right_pane, fg_color="transparent", height=32)
-        loop_assign_frame.pack(fill="x", pady=(0, PAD["xs"]), padx=PAD["xl"])
-
-        self.select_all_var = ctk.BooleanVar(value=False)
-        ctk.CTkCheckBox(loop_assign_frame, text="Select All", variable=self.select_all_var,
-                        command=self._toggle_select_all, font=ctk.CTkFont(size=11),
-                        width=20, height=20).pack(side="left", padx=(0, 10))
-
-        ctk.CTkLabel(loop_assign_frame, text="Loop:", font=ctk.CTkFont(size=11), text_color=COLOR["text_dim"]).pack(side="left")
-        self.loop_assign_combo = ctk.CTkComboBox(loop_assign_frame, values=[], width=150, font=ctk.CTkFont(size=11), height=28)
-        self.loop_assign_combo.pack(side="left", padx=(4, 6))
+        # Right: Loop assignment
+        ctk.CTkButton(toolbar_inner, text="Assign", command=self._assign_loop_to_selected, fg_color=COLOR["primary"], hover_color=COLOR["primary_h"], font=ctk.CTkFont(size=10, weight="bold"), corner_radius=4, height=24, width=50).pack(side="right")
+        self.loop_assign_combo = ctk.CTkComboBox(toolbar_inner, values=[], width=120, font=ctk.CTkFont(size=10), height=24, corner_radius=4, fg_color=COLOR["surface"], border_color=COLOR["border_subtle"])
+        self.loop_assign_combo.pack(side="right", padx=(0, 4))
         self.loop_assign_combo.set("")
+        ctk.CTkLabel(toolbar_inner, text="Loop:", text_color=COLOR["text_dim"], font=ctk.CTkFont(size=10, weight="bold")).pack(side="right", padx=(0, 2))
 
-        ctk.CTkButton(loop_assign_frame, text="Assign Loop", command=self._assign_loop_to_selected,
-                       fg_color=COLOR["accent"], hover_color=COLOR["primary_h"],
-                       font=ctk.CTkFont(size=11, weight="bold"), corner_radius=6,
-                       height=28, width=100).pack(side="left", padx=2)
+        # Center: Stats summary (expands to fill middle)
+        self.acc_stats_label = ctk.CTkLabel(toolbar_inner, text="", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10))
+        self.acc_stats_label.pack(side="left", fill="x", expand=True)
 
-        self.dash_grid = ctk.CTkScrollableFrame(self.multi_right_pane, fg_color=COLOR["surface"], corner_radius=RADIUS, border_width=1, border_color=COLOR["border"])
-        self.dash_grid.pack(fill="both", expand=True, padx=PAD["xl"], pady=PAD["md"])
+        # ═══ TABLE HEADER ═══
+        # Column config grouped into 40%, 40%, 20% width pools
+        header_row = ctk.CTkFrame(main_frame, fg_color="transparent", height=28)
+        header_row.grid(row=2, column=0, sticky="ew", pady=(0, 2), padx=(7, 23)) # 7px left padding, 23px right (padding + scrollbar)
+        header_row.grid_propagate(False)
+        header_row.grid_columnconfigure(0, weight=1)
+
+        # Matched simulated container
+        header_bg = ctk.CTkFrame(header_row, fg_color="transparent", corner_radius=6)
+        header_bg.grid(row=0, column=0, sticky="ew")
+
+        # Matched inner layout
+        header_inner = ctk.CTkFrame(header_bg, fg_color="transparent")
+        header_inner.pack(fill="x", expand=True, padx=4, pady=5)
+        
+        # 40% - 40% - 20% System
+        header_inner.grid_columnconfigure(0, weight=4, uniform="base_col")
+        header_inner.grid_columnconfigure(1, weight=4, uniform="base_col")
+        header_inner.grid_columnconfigure(2, weight=2, uniform="base_col")
+
+        # Group 1 (40%): Checkbox, Port, Tab, Name (sitting next to each other, center anchored)
+        h_grp1 = ctk.CTkFrame(header_inner, fg_color="transparent")
+        h_grp1.grid(row=0, column=0, sticky="ew")
+        self.select_all_var = ctk.BooleanVar(value=False)
+        ctk.CTkCheckBox(h_grp1, text="", variable=self.select_all_var, command=self._toggle_select_all, checkbox_width=14, checkbox_height=14, corner_radius=3, border_width=1, border_color=COLOR["border"]).pack(side="left", padx=(4, 15))
+        ctk.CTkLabel(h_grp1, text="PORT", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=35, anchor="center").pack(side="left", padx=4)
+        ctk.CTkLabel(h_grp1, text="TAB", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=30, anchor="center").pack(side="left", padx=4)
+        ctk.CTkLabel(h_grp1, text="NAME", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), anchor="center").pack(side="left", padx=4, fill="x", expand=True)
+
+        # Group 2 (40%): Status
+        h_grp2 = ctk.CTkFrame(header_inner, fg_color="transparent")
+        h_grp2.grid(row=0, column=1, sticky="ew")
+        ctk.CTkLabel(h_grp2, text="STATUS", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), anchor="center").pack(fill="x", expand=True)
+
+        # Group 3 (20%): Loop, Action
+        h_grp3 = ctk.CTkFrame(header_inner, fg_color="transparent")
+        h_grp3.grid(row=0, column=2, sticky="ew")
+        h_grp3.grid_columnconfigure(0, weight=1)
+        h_grp3.grid_columnconfigure(1, weight=1)
+        ctk.CTkLabel(h_grp3, text="LOOP", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), anchor="center").grid(row=0, column=0, sticky="ew", padx=4)
+        ctk.CTkLabel(h_grp3, text="ACTION", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), anchor="center").grid(row=0, column=1, sticky="ew", padx=4)
+
+        # Header bottom border
+        ctk.CTkFrame(main_frame, fg_color=COLOR["border_subtle"], height=1).grid(row=3, column=0, sticky="ew", padx=(7, 23))
+
+        # ═══ TABLE ROWS (scrollable) ═══
+        self.dash_grid = ctk.CTkScrollableFrame(main_frame, fg_color="transparent", scrollbar_button_color=COLOR["border"], scrollbar_button_hover_color=COLOR["text_muted"])
+        self.dash_grid.grid(row=4, column=0, sticky="nsew", pady=(2, 0))
 
         self.dash_labels = {}
         self.dash_conn_labels = {}
@@ -181,11 +194,15 @@ class AccountsMixin:
         max_tabs_str = self.quick_max_tabs_entry.get().strip()
         
         if not url:
-            return messagebox.showerror("Error", "URL is required!")
+            self._acc_styled_info("Missing URL", "Enter a URL to launch")
+            return
         if not count_str.isdigit() or int(count_str) < 1:
-            return messagebox.showerror("Error", "Account count must be a positive number!")
+            self._acc_styled_info("Invalid count", "Account count must be a positive number")
+            return
         if not max_tabs_str.isdigit() or int(max_tabs_str) < 1:
-            return messagebox.showerror("Error", "Max tabs must be a positive number!")
+            self._acc_styled_info("Invalid max tabs", "Max tabs must be a positive number")
+            return
+
         
         total_accounts = int(count_str)
         max_tabs = int(max_tabs_str)
@@ -327,30 +344,57 @@ class AccountsMixin:
             w.destroy()
         
         if not ports_info:
-            ctk.CTkLabel(self.chrome_instances_container, text="No Chrome instances detected", text_color=COLOR["text_dim"], font=ctk.CTkFont(size=10)).pack(anchor="w")
+            ctk.CTkLabel(self.chrome_instances_container, text="No Chrome instances", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10)).pack(side="left")
             if hasattr(self, 'dash_conn_labels'):
                 for lbl in self.dash_conn_labels.values():
                     lbl.configure(text_color=COLOR["danger"])
             return
         
         total_tabs = sum(p["tab_count"] for p in ports_info)
-        summary = ctk.CTkLabel(self.chrome_instances_container, 
-                              text=f"{len(ports_info)} Chrome instance(s), {total_tabs} total tabs",
-                              text_color=COLOR["success"], font=ctk.CTkFont(size=10, weight="bold"))
-        summary.pack(anchor="w", pady=(0, 4))
+        num_instances = len(ports_info)
         
-        for pinfo in ports_info:
-            row = ctk.CTkFrame(self.chrome_instances_container, fg_color=COLOR["surface2"], corner_radius=4, height=24)
-            row.pack(fill="x", pady=1)
-            
-            proxy_text = f" | {pinfo['proxy']}" if pinfo.get('proxy') else ""
-            ctk.CTkLabel(row, text=f"Port {pinfo['port']} — {pinfo['tab_count']} tabs{proxy_text}", 
-                        font=ctk.CTkFont(size=10), text_color=COLOR["text"]).pack(side="left", padx=6)
-            
-            ctk.CTkButton(row, text="X", width=18, height=18, fg_color="transparent", 
-                         text_color=COLOR["danger"], hover_color=COLOR["surface"],
-                         font=ctk.CTkFont(size=10, weight="bold"),
-                         command=lambda p=pinfo['port']: self._kill_chrome_port(p)).pack(side="right", padx=2)
+        # Compact summary: green dot + count
+        ctk.CTkLabel(self.chrome_instances_container, text="●", text_color=COLOR["success"], font=ctk.CTkFont(size=8)).pack(side="left")
+        ctk.CTkLabel(
+            self.chrome_instances_container,
+            text=f" {num_instances} instance{'s' if num_instances > 1 else ''}, {total_tabs} tabs",
+            text_color=COLOR["text"], font=ctk.CTkFont(size=10, weight="bold")
+        ).pack(side="left", padx=(2, 6))
+
+        # Details button → opens popup
+        def _show_details():
+            dlg = ctk.CTkToplevel(self)
+            dlg.title("Lordbot Control")
+            h = min(60 + num_instances * 40, 320)
+            dlg.geometry(f"300x{h}")
+            dlg.resizable(False, False)
+            dlg.configure(fg_color=COLOR["surface"])
+            dlg.transient(self)
+            dlg.grab_set()
+            dlg.after(200, lambda: dlg.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+            dlg.update_idletasks()
+            x = self.winfo_x() + (self.winfo_width() - 300) // 2
+            y = self.winfo_y() + (self.winfo_height() - h) // 2
+            dlg.geometry(f"300x{h}+{x}+{y}")
+
+            ctk.CTkLabel(dlg, text="Chrome Instances", font=ctk.CTkFont(size=13, weight="bold"), text_color=COLOR["text"]).pack(pady=(12, 8))
+
+            for pinfo in ports_info:
+                row = ctk.CTkFrame(dlg, fg_color=COLOR["bg"], corner_radius=6)
+                row.pack(fill="x", padx=16, pady=2)
+                row_inner = ctk.CTkFrame(row, fg_color="transparent")
+                row_inner.pack(fill="x", padx=8, pady=4)
+                ctk.CTkLabel(row_inner, text="●", text_color=COLOR["success"], font=ctk.CTkFont(size=8)).pack(side="left")
+                ctk.CTkLabel(row_inner, text=f":{pinfo['port']}", text_color=COLOR["text"], font=ctk.CTkFont(family="Consolas", size=11, weight="bold")).pack(side="left", padx=(4, 8))
+                ctk.CTkLabel(row_inner, text=f"{pinfo['tab_count']} tabs", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10)).pack(side="left")
+                ctk.CTkButton(row_inner, text="Kill", width=40, height=20, fg_color=COLOR["danger_dim"], hover_color=COLOR["danger"], text_color=COLOR["danger"], font=ctk.CTkFont(size=9, weight="bold"), corner_radius=4, command=lambda p=pinfo['port']: (self._kill_chrome_port(p), dlg.destroy())).pack(side="right")
+
+        ctk.CTkButton(
+            self.chrome_instances_container, text="Details", width=50, height=20,
+            fg_color="transparent", hover_color=COLOR["surface2"],
+            text_color=COLOR["primary"], font=ctk.CTkFont(size=10, weight="bold"),
+            corner_radius=4, command=_show_details
+        ).pack(side="left")
         
         if hasattr(self, 'dash_conn_labels'):
             all_ports_tabs = {}
@@ -371,41 +415,68 @@ class AccountsMixin:
     # ---- Account Management ----
     def add_multi_account(self):
         if not self.tracked_icons or not self.loops:
-            return messagebox.showwarning("Warning", "You need to create Tracking Nodes and Loops first!")
+            self._acc_styled_info("Setup required", "Create Tracking Nodes and Loops first")
+            return
             
         top = ctk.CTkToplevel(self)
-        top.title("Add Account")
-        top.geometry("400x420")
-        top.attributes("-topmost", True)
+        top.title("Lordbot Control")
+        top.geometry("400x430")
+        top.resizable(False, False)
+        top.configure(fg_color=COLOR["surface"])
+        top.transient(self)
+        top.grab_set()
+        top.after(200, lambda: top.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        top.update_idletasks()
+        x = self.winfo_x() + (self.winfo_width() - 400) // 2
+        y = self.winfo_y() + (self.winfo_height() - 430) // 2
+        top.geometry(f"400x430+{x}+{y}")
 
-        ctk.CTkLabel(top, text="Display Name:", font=ctk.CTkFont(weight="bold")).pack(pady=(10,0), padx=20, anchor="w")
-        ent_name = ctk.CTkEntry(top, width=300)
-        ent_name.pack(pady=(0,8), padx=20)
+        ctk.CTkLabel(
+            top, text="Add Account",
+            font=ctk.CTkFont(size=14, weight="bold"),
+            text_color=COLOR["primary"]
+        ).pack(pady=(16, 8))
 
-        row1 = ctk.CTkFrame(top, fg_color="transparent")
-        row1.pack(fill="x", padx=20, pady=(0, 8))
+        form = ctk.CTkFrame(top, fg_color="transparent")
+        form.pack(fill="x", padx=20)
+
+        # Display Name
+        ctk.CTkLabel(form, text="Display Name:", font=ctk.CTkFont(size=11, weight="bold"), text_color=COLOR["text"]).pack(anchor="w", pady=(0, 2))
+        ent_name = ctk.CTkEntry(form, fg_color=COLOR["bg"], border_color=COLOR["border"], border_width=1, corner_radius=6, height=30, font=ctk.CTkFont(size=11), placeholder_text="Account name...")
+        ent_name.pack(fill="x", pady=(0, 8))
+
+        # Port + Tab row
+        row1 = ctk.CTkFrame(form, fg_color="transparent")
+        row1.pack(fill="x", pady=(0, 8))
         
-        ctk.CTkLabel(row1, text="Chrome Port:", font=ctk.CTkFont(weight="bold")).pack(side="left")
-        ent_port = ctk.CTkEntry(row1, width=70, placeholder_text="9222")
+        ctk.CTkLabel(row1, text="Port:", font=ctk.CTkFont(size=11, weight="bold"), text_color=COLOR["text"]).pack(side="left")
+        ent_port = ctk.CTkEntry(row1, width=70, fg_color=COLOR["bg"], border_color=COLOR["border"], border_width=1, corner_radius=6, height=28, font=ctk.CTkFont(size=11), placeholder_text="9222")
         ent_port.insert(0, "9222")
-        ent_port.pack(side="left", padx=(5, 15))
+        ent_port.pack(side="left", padx=(4, 12))
         
-        ctk.CTkLabel(row1, text="Tab Index:", font=ctk.CTkFont(weight="bold")).pack(side="left")
-        ent_target = ctk.CTkEntry(row1, width=50, placeholder_text="0")
-        ent_target.pack(side="left", padx=5)
+        ctk.CTkLabel(row1, text="Tab Index:", font=ctk.CTkFont(size=11, weight="bold"), text_color=COLOR["text"]).pack(side="left")
+        ent_target = ctk.CTkEntry(row1, width=50, fg_color=COLOR["bg"], border_color=COLOR["border"], border_width=1, corner_radius=6, height=28, font=ctk.CTkFont(size=11), placeholder_text="0")
+        ent_target.pack(side="left", padx=4)
 
-        ctk.CTkLabel(top, text="Assigned Loop:", font=ctk.CTkFont(weight="bold")).pack(padx=20, anchor="w")
-        combo_loop = ctk.CTkComboBox(top, values=list(self.loops.keys()), width=300)
-        combo_loop.pack(pady=(0,8), padx=20)
+        # Loop assignment
+        ctk.CTkLabel(form, text="Assigned Loop:", font=ctk.CTkFont(size=11, weight="bold"), text_color=COLOR["text"]).pack(anchor="w", pady=(0, 2))
+        combo_loop = ctk.CTkComboBox(form, values=list(self.loops.keys()), fg_color=COLOR["bg"], border_color=COLOR["border"], corner_radius=6, height=30, font=ctk.CTkFont(size=11))
+        combo_loop.pack(fill="x", pady=(0, 8))
 
-        ctk.CTkLabel(top, text="Proxy (optional):", font=ctk.CTkFont(weight="bold")).pack(pady=(8, 0), padx=20, anchor="w")
-        ent_proxy = ctk.CTkEntry(top, width=300, placeholder_text="socks5://1.2.3.4:1080")
-        ent_proxy.pack(pady=(0,8), padx=20)
+        # Proxy
+        ctk.CTkLabel(form, text="Proxy (optional):", font=ctk.CTkFont(size=11, weight="bold"), text_color=COLOR["text"]).pack(anchor="w", pady=(0, 2))
+        ent_proxy = ctk.CTkEntry(form, fg_color=COLOR["bg"], border_color=COLOR["border"], border_width=1, corner_radius=6, height=30, font=ctk.CTkFont(size=11), placeholder_text="socks5://1.2.3.4:1080")
+        ent_proxy.pack(fill="x", pady=(0, 8))
         
-        ctk.CTkLabel(top, text="Group:", font=ctk.CTkFont(weight="bold")).pack(padx=20, anchor="w")
-        ent_group = ctk.CTkEntry(top, width=300, placeholder_text="default")
+        # Group
+        ctk.CTkLabel(form, text="Group:", font=ctk.CTkFont(size=11, weight="bold"), text_color=COLOR["text"]).pack(anchor="w", pady=(0, 2))
+        ent_group = ctk.CTkEntry(form, fg_color=COLOR["bg"], border_color=COLOR["border"], border_width=1, corner_radius=6, height=30, font=ctk.CTkFont(size=11), placeholder_text="default")
         ent_group.insert(0, "default")
-        ent_group.pack(pady=(0,8), padx=20)
+        ent_group.pack(fill="x", pady=(0, 12))
+
+        # Buttons
+        btn_row = ctk.CTkFrame(top, fg_color="transparent")
+        btn_row.pack(fill="x", padx=20, pady=(0, 16))
 
         def on_save():
             name = ent_name.get().strip()
@@ -413,11 +484,14 @@ class AccountsMixin:
             port_str = ent_port.get().strip()
             
             if not name or not target:
-                return messagebox.showerror("Error", "Name and Tab Index are required!")
+                self._acc_styled_info("Missing fields", "Name and Tab Index are required")
+                return
             if not target.isdigit():
-                return messagebox.showerror("Error", "Tab Index must be a number!")
+                self._acc_styled_info("Invalid input", "Tab Index must be a number")
+                return
             if not port_str.isdigit():
-                return messagebox.showerror("Error", "Port must be a number!")
+                self._acc_styled_info("Invalid input", "Port must be a number")
+                return
                 
             self.multi_accounts.append({
                 "name": name,
@@ -432,65 +506,88 @@ class AccountsMixin:
             self.refresh_multi_acc_list()
             top.destroy()
 
-        ctk.CTkButton(top, text="Save Account", command=on_save, fg_color=COLOR["success"], hover_color=COLOR["success_h"], font=ctk.CTkFont(weight="bold"), corner_radius=6).pack(pady=15, fill="x", padx=20)
+        ctk.CTkButton(
+            btn_row, text="Save Account", command=on_save,
+            fg_color=COLOR["primary"], hover_color=COLOR["surface2"],
+            text_color="#FFFFFF", font=ctk.CTkFont(size=12, weight="bold"),
+            height=34, corner_radius=6
+        ).pack(side="left", expand=True, fill="x", padx=(0, 4))
+
+        ctk.CTkButton(
+            btn_row, text="Cancel", command=top.destroy,
+            fg_color="transparent", hover_color=COLOR["surface2"],
+            border_width=1, border_color=COLOR["border"],
+            text_color=COLOR["text_muted"], font=ctk.CTkFont(size=12, weight="bold"),
+            height=34, corner_radius=6
+        ).pack(side="left", expand=True, fill="x", padx=(4, 0))
 
     def refresh_multi_acc_list(self):
-        for widget in self.acc_list_frame.winfo_children():
-            widget.destroy()
         for widget in self.dash_grid.winfo_children():
             widget.destroy()
         self.dash_labels.clear()
         self.dash_conn_labels = {}
         self.dash_checkboxes = {}
 
+        running_count = 0
+        idle_count = 0
+        error_count = 0
+
         for idx, acc in enumerate(self.multi_accounts):
             name = acc['name']
             port = acc.get('port', 9222)
+            is_running = self.account_running.get(name, False)
             
-            # ---- Left panel list item ----
-            row = ctk.CTkFrame(self.acc_list_frame, fg_color=COLOR["surface2"], corner_radius=4)
-            row.pack(fill="x", pady=2)
-            
-            enabled = acc.get("enabled", True)
-            color = COLOR["success"] if enabled else COLOR["text_dim"]
-            ctk.CTkLabel(row, text=f"{name} (P{port}:T{acc.get('target', '?')})", 
-                        text_color=color, font=ctk.CTkFont(size=11)).pack(side="left", padx=5)
-            
-            def del_acc(i=idx):
-                self.multi_accounts.pop(i)
-                self.save_multi()
-                self.refresh_multi_acc_list()
-                
-            ctk.CTkButton(row, text="X", width=20, height=20, fg_color="transparent", 
-                         text_color=COLOR["danger"], hover_color=COLOR["surface"], 
-                         command=del_acc, corner_radius=4).pack(side="right", padx=2)
+            # Count stats
+            if is_running:
+                running_count += 1
+            else:
+                idle_count += 1
 
-            # ---- Right panel Dashboard Card ----
-            card = ctk.CTkFrame(self.dash_grid, fg_color=COLOR["surface2"], border_width=1, border_color="#3D5A80", corner_radius=8)
-            card.pack(fill="x", pady=3, padx=5)
-            
-            card_top = ctk.CTkFrame(card, fg_color="transparent")
-            card_top.pack(fill="x", padx=8, pady=(6, 2))
+            row = ctk.CTkFrame(self.dash_grid, fg_color=COLOR["bg_subtle"], corner_radius=6)
+            row.pack(fill="x", pady=1, expand=True)
+
+            row_inner = ctk.CTkFrame(row, fg_color="transparent")
+            row_inner.pack(fill="x", expand=True, padx=4, pady=5)
+            row_inner.grid_columnconfigure(0, weight=4, uniform="base_col")
+            row_inner.grid_columnconfigure(1, weight=4, uniform="base_col")
+            row_inner.grid_columnconfigure(2, weight=2, uniform="base_col")
+
+            # Group 1 (40%)
+            r_grp1 = ctk.CTkFrame(row_inner, fg_color="transparent")
+            r_grp1.grid(row=0, column=0, sticky="ew")
             
             chk_var = ctk.BooleanVar(value=False)
             self.dash_checkboxes[name] = chk_var
-            ctk.CTkCheckBox(card_top, text="", variable=chk_var, width=20, height=20).pack(side="left", padx=(0, 4))
-            
-            lbl_conn = ctk.CTkLabel(card_top, text=f"P{port}:T{acc.get('target', '?')}", 
-                                   font=ctk.CTkFont(size=10, weight="bold"), text_color=COLOR["text_dim"], width=60)
-            lbl_conn.pack(side="left", padx=(0, 4))
+            ctk.CTkCheckBox(r_grp1, text="", variable=chk_var, checkbox_width=14, checkbox_height=14, corner_radius=3, border_width=1, border_color=COLOR["border"]).pack(side="left", padx=(4, 15))
+
+            conn_color = COLOR["success"] if is_running else COLOR["text_muted"]
+            lbl_conn = ctk.CTkLabel(r_grp1, text=str(port), font=ctk.CTkFont(family="Consolas", size=10), text_color=conn_color, width=35, anchor="center")
+            lbl_conn.pack(side="left", padx=4)
             self.dash_conn_labels[name] = lbl_conn
-            
-            ctk.CTkLabel(card_top, text=name, font=ctk.CTkFont(weight="bold", size=13), 
-                        text_color=COLOR["text"], anchor="w").pack(side="left", padx=(0, 8))
-            
-            lbl_status = ctk.CTkLabel(card_top, text="Idle", text_color=COLOR["text_dim"], 
-                                     font=ctk.CTkFont(size=11), anchor="w")
-            lbl_status.pack(side="left", fill="x", expand=True)
+
+            ctk.CTkLabel(r_grp1, text=str(acc.get('target', '0')), font=ctk.CTkFont(family="Consolas", size=10), text_color=COLOR["text_dim"], width=30, anchor="center").pack(side="left", padx=4)
+            ctk.CTkLabel(r_grp1, text=name, font=ctk.CTkFont(size=12, weight="bold"), text_color=COLOR["text"], anchor="center").pack(side="left", padx=4, fill="x", expand=True)
+
+            # Group 2 (40%)
+            r_grp2 = ctk.CTkFrame(row_inner, fg_color="transparent")
+            r_grp2.grid(row=0, column=1, sticky="ew")
+            status_text = "Running..." if is_running else "Idle"
+            status_color = COLOR["success"] if is_running else COLOR["text_muted"]
+            lbl_status = ctk.CTkLabel(r_grp2, text=status_text, text_color=status_color, font=ctk.CTkFont(size=11), anchor="center")
+            lbl_status.pack(fill="x", expand=True)
             self.dash_labels[name] = lbl_status
-            
-            is_running = self.account_running.get(name, False)
+
+            # Group 3 (20%)
+            r_grp3 = ctk.CTkFrame(row_inner, fg_color="transparent")
+            r_grp3.grid(row=0, column=2, sticky="ew")
+            r_grp3.grid_columnconfigure(0, weight=1)
+            r_grp3.grid_columnconfigure(1, weight=1)
+
+            loop_name = acc.get('loop', '—') or "—"
+            ctk.CTkLabel(r_grp3, text=loop_name, text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10), anchor="center").grid(row=0, column=0, sticky="ew", padx=4)
+
             btn_text = "Stop" if is_running else "Start"
+            btn_fg = COLOR["danger_dim"] if is_running else COLOR["success_dim"]
             btn_color = COLOR["danger"] if is_running else COLOR["success"]
             
             def toggle_single(n=name):
@@ -499,17 +596,18 @@ class AccountsMixin:
                 else:
                     self._start_account(n)
             
-            ctk.CTkButton(card_top, text=btn_text, width=50, height=24, fg_color=btn_color, 
-                         corner_radius=4, font=ctk.CTkFont(size=11, weight="bold"),
-                         command=toggle_single).pack(side="right", padx=2)
-            
-            info_parts = [f"Loop: {acc.get('loop', '?')}",
-                         f"Group: {acc.get('group', 'default')}"]
-            if acc.get('proxy'):
-                info_parts.append(f"Proxy: {acc['proxy'][:25]}")
-            
-            ctk.CTkLabel(card, text=" | ".join(info_parts), font=ctk.CTkFont(size=10), 
-                        text_color=COLOR["text_dim"]).pack(padx=12, pady=(0, 6), anchor="w")
+            # Action button container
+            action_frame = ctk.CTkFrame(r_grp3, fg_color="transparent")
+            action_frame.grid(row=0, column=1, sticky="nsew")
+            ctk.CTkButton(action_frame, text=btn_text, width=50, height=22, fg_color=btn_fg, hover_color=COLOR["surface2"], text_color=btn_color, corner_radius=4, font=ctk.CTkFont(size=10, weight="bold"), command=toggle_single).pack(expand=True)
+
+        # Update stats label
+        if hasattr(self, 'acc_stats_label'):
+            parts = []
+            if running_count: parts.append(f"● {running_count} running")
+            if idle_count: parts.append(f"● {idle_count} idle")
+            if error_count: parts.append(f"● {error_count} error")
+            self.acc_stats_label.configure(text=" · ".join(parts) if parts else "")
 
         # Refresh loop dropdown values
         self._refresh_loop_combo()
@@ -551,7 +649,8 @@ class AccountsMixin:
     def _assign_loop_to_selected(self):
         loop_name = self.loop_assign_combo.get().strip()
         if not loop_name:
-            return messagebox.showerror("Error", "Please select a loop first!")
+            self._acc_styled_info("Select a loop", "Choose a loop from the dropdown first")
+            return
         
         count = 0
         for acc in self.multi_accounts:
@@ -561,7 +660,8 @@ class AccountsMixin:
                 count += 1
         
         if count == 0:
-            return messagebox.showwarning("Warning", "No accounts selected!")
+            self._acc_styled_info("No accounts selected", "Tick checkboxes to select accounts first")
+            return
         
         self.save_multi()
         self.refresh_multi_acc_list()
@@ -609,6 +709,24 @@ class AccountsMixin:
             self._batch_stop_all()
         else:
             self._batch_start_all()
+
+    def _acc_styled_info(self, title, text):
+        """Reusable styled info popup for Accounts tab."""
+        info = ctk.CTkToplevel(self)
+        info.title("Lordbot Control")
+        info.geometry("300x130")
+        info.resizable(False, False)
+        info.configure(fg_color=COLOR["surface"])
+        info.transient(self)
+        info.grab_set()
+        info.after(200, lambda: info.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        info.update_idletasks()
+        x = self.winfo_x() + (self.winfo_width() - 300) // 2
+        y = self.winfo_y() + (self.winfo_height() - 130) // 2
+        info.geometry(f"300x130+{x}+{y}")
+        ctk.CTkLabel(info, text=title, font=ctk.CTkFont(size=13, weight="bold"), text_color=COLOR["text"]).pack(pady=(20, 4))
+        ctk.CTkLabel(info, text=text, font=ctk.CTkFont(size=11), text_color=COLOR["text_muted"]).pack(pady=(0, 12))
+        ctk.CTkButton(info, text="OK", command=info.destroy, fg_color=COLOR["primary"], text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"), height=30, corner_radius=6, width=100).pack()
 
     # ---- Health Monitor ----
     def _start_health_monitor(self):

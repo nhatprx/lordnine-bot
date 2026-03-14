@@ -2,10 +2,7 @@
     "Buy Blood": {
         "steps": [
             {
-                "node": "Supplies",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Supplies"
             },
             {
                 "type": "marker",
@@ -17,28 +14,16 @@
                 "fail_mode": "Fail if Appear"
             },
             {
-                "node": "Supplies - Blood Type",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Supplies - Blood Type"
             },
             {
-                "node": "Supplies - Blood Amount",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Supplies - Blood Amount"
             },
             {
-                "node": "Supplies - Purchase",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Supplies - Purchase"
             },
             {
-                "node": "Supplies - Close",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Supplies - Close"
             },
             {
                 "type": "marker",
@@ -51,6 +36,15 @@
             }
         ],
         "success_capture": "Home",
-        "failure_capture": "Supplies"
+        "failure_capture": "None"
+    },
+    "Macro2": {
+        "steps": []
+    },
+    "Macro4": {
+        "steps": []
+    },
+    "Macro3": {
+        "steps": []
     }
 }

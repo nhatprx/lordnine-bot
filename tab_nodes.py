@@ -347,27 +347,11 @@ class NodesMixin:
         # Blur searchbox
         self._blur_search_entry()
 
-        # Toggle only this node's checkbox (independent multi-select)
-        is_now_checked = True
-        if name in self.icon_checkbox_vars:
-            var = self.icon_checkbox_vars[name]
-            is_now_checked = not var.get()
-            var.set(is_now_checked)
-        
-        # Update select-all checkbox state
-        all_checked = all(v.get() for v in self.icon_checkbox_vars.values())
-        self.node_select_all_var.set(all_checked)
-        self._update_delete_btn_color()
-
-        # Highlight the clicked node, or clear if unchecked
-        if is_now_checked:
-            self.current_selected_name = name
-        else:
-            if self.current_selected_name == name:
-                self.current_selected_name = None
+        # Just select this node (no checkbox toggle)
+        self.current_selected_name = name
         
         for n, btn in self.icon_buttons.items():
-            if n == self.current_selected_name:
+            if n == name:
                 btn.configure(fg_color=COLOR["surface3"], text_color=COLOR["text"])
             else:
                 btn.configure(fg_color="transparent", text_color=COLOR["text_dim"])
@@ -789,17 +773,14 @@ class NodesMixin:
             self.tracked_icons[name] = save_path
             self.log_gui(f"Template acquired for Node [{name}] ({w}x{h} px)")
             self.refresh_tracked_list()
-            # Restore highlight and checkbox for the recaptured node
+            # Restore highlight for the recaptured node
             self.current_selected_name = name
-            if name in self.icon_checkbox_vars:
-                self.icon_checkbox_vars[name].set(True)
             if name in self.icon_buttons:
                 for n, btn in self.icon_buttons.items():
                     if n == name:
                         btn.configure(fg_color=COLOR["surface3"], text_color=COLOR["text"])
                     else:
                         btn.configure(fg_color="transparent", text_color=COLOR["text_dim"])
-            self._update_delete_btn_color()
             # Refresh preview
             self.preview_name_label.configure(text=name)
             try:

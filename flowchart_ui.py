@@ -1,20 +1,21 @@
 import tkinter as tk
 import customtkinter as ctk
 import uuid
+import os
 from tkinter import messagebox, simpledialog
 
 # Unified palette (matches constants.py COLOR dict)
 _FC = {
-    "bg":       "#0B0F19",
-    "surface":  "#141B2D",
-    "surface2": "#1C2640",
-    "primary":  "#3B82F6",
-    "success":  "#10B981",
-    "danger":   "#F43F5E",
-    "warning":  "#F59E0B",
-    "accent":   "#06B6D4",
-    "text":     "#E2E8F0",
-    "text_dim": "#64748B",
+    "bg":       "#0F1117",
+    "surface":  "#181B23",
+    "surface2": "#1E2130",
+    "primary":  "#5B8DEF",
+    "success":  "#4CAF82",
+    "danger":   "#D4626C",
+    "warning":  "#D4A24C",
+    "accent":   "#5BB8CF",
+    "text":     "#D1D5DE",
+    "text_dim": "#6B7280",
     "node_macro":  "#2563EB",
     "node_cond":   "#D97706",
     "node_delay":  "#8B5CF6",
@@ -527,41 +528,59 @@ class FlowchartUI(ctk.CTkCanvas):
             if self.on_change_cb: self.on_change_cb()
             
     def show_node_menu(self, nid, x, y):
-        menu = tk.Menu(self, tearoff=0, bg=_FC["surface"], fg=_FC["text"],
+        menu = tk.Menu(self, tearoff=0,
+                      bg=_FC["surface2"], fg=_FC["text"],
                       activebackground=_FC["primary"], activeforeground="white",
-                      font=("Segoe UI", 10))
+                      font=("Segoe UI", 10),
+                      bd=1, relief="solid",
+                      selectcolor=_FC["primary"])
         n = self.nodes[nid]
         
         if n["type"] == "Macro":
-            menu.add_command(label="Select Macro...", command=lambda: self.config_macro(nid))
+            menu.add_command(label="  Select Macro...  ", command=lambda: self.config_macro(nid))
         elif n["type"] == "Condition":
-            menu.add_command(label="Select Target Image...", command=lambda: self.config_condition(nid))
+            menu.add_command(label="  Select Target Image...  ", command=lambda: self.config_condition(nid))
         elif n["type"] == "Delay":
-            menu.add_command(label="Set Delay Time...", command=lambda: self.config_delay(nid))
+            menu.add_command(label="  Set Delay Time...  ", command=lambda: self.config_delay(nid))
         elif n["type"] == "Click":
-            menu.add_command(label="Select Target Image...", command=lambda: self.config_click(nid))
+            menu.add_command(label="  Select Target Image...  ", command=lambda: self.config_click(nid))
             
         if n["type"] != "Start":
             menu.add_separator()
-            menu.add_command(label="Delete Node", command=lambda: self.delete_node(nid))
+            menu.add_command(label="  Delete Node  ", command=lambda: self.delete_node(nid),
+                           foreground=_FC["danger"], activebackground="#8B2020")
         menu.tk_popup(x, y)
         
     def config_macro(self, nid):
         if not self.get_macros_cb: return
         macros = self.get_macros_cb()
         if not macros:
-            messagebox.showinfo("Empty", "No macros available!")
+            self._fc_styled_info("No macros", "Create macros in the Macros tab first")
             return
         
         top = ctk.CTkToplevel(self)
-        top.title("Select Macro")
-        top.geometry("280x350")
-        top.attributes("-topmost", True)
+        top.title("Lordbot Control")
+        top.geometry("300x380")
+        top.resizable(False, False)
+        top.configure(fg_color=_FC["surface"])
+        top.transient(self.winfo_toplevel())
+        top.grab_set()
+        top.after(200, lambda: top.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        top.update_idletasks()
+        root = self.winfo_toplevel()
+        x = root.winfo_x() + (root.winfo_width() - 300) // 2
+        y = root.winfo_y() + (root.winfo_height() - 380) // 2
+        top.geometry(f"300x380+{x}+{y}")
         
-        ctk.CTkLabel(top, text="Choose a Macro", font=ctk.CTkFont(size=14, weight="bold")).pack(pady=(12, 8))
+        ctk.CTkLabel(
+            top, text="Select Macro",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            text_color=_FC["node_macro"]
+        ).pack(pady=(16, 8))
         
-        frame = ctk.CTkScrollableFrame(top, fg_color=_FC["surface"])
-        frame.pack(fill="both", expand=True, padx=12, pady=(0, 12))
+        frame = ctk.CTkScrollableFrame(top, fg_color=_FC["bg"],
+            scrollbar_button_color=_FC["text_dim"], corner_radius=8)
+        frame.pack(fill="both", expand=True, padx=16, pady=(0, 8))
         
         def on_sel(m):
             self.nodes[nid]["data"]["macro_name"] = m
@@ -572,24 +591,47 @@ class FlowchartUI(ctk.CTkCanvas):
         for m in macros:
             ctk.CTkButton(frame, text=m, command=lambda x=m: on_sel(x),
                          fg_color=_FC["node_macro"], hover_color=_FC["primary"],
-                         corner_radius=6).pack(pady=3, fill="x")
+                         text_color="#FFFFFF", font=ctk.CTkFont(size=11),
+                         height=32, corner_radius=6).pack(pady=3, fill="x", padx=4)
+
+        ctk.CTkButton(
+            top, text="Cancel", command=top.destroy,
+            fg_color="transparent", hover_color=_FC["surface2"],
+            border_width=1, border_color=_FC["text_dim"],
+            text_color=_FC["text_dim"], font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6, width=100
+        ).pack(pady=(0, 12))
         
     def config_condition(self, nid):
         if not self.get_images_cb: return
         images = self.get_images_cb()
         if not images:
-            messagebox.showinfo("Empty", "No images tracked!")
+            self._fc_styled_info("No images", "Track images in the Setup tab first")
             return
             
         top = ctk.CTkToplevel(self)
-        top.title("Select Image")
-        top.geometry("280x350")
-        top.attributes("-topmost", True)
+        top.title("Lordbot Control")
+        top.geometry("300x380")
+        top.resizable(False, False)
+        top.configure(fg_color=_FC["surface"])
+        top.transient(self.winfo_toplevel())
+        top.grab_set()
+        top.after(200, lambda: top.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        top.update_idletasks()
+        root = self.winfo_toplevel()
+        x = root.winfo_x() + (root.winfo_width() - 300) // 2
+        y = root.winfo_y() + (root.winfo_height() - 380) // 2
+        top.geometry(f"300x380+{x}+{y}")
         
-        ctk.CTkLabel(top, text="Choose Target Image", font=ctk.CTkFont(size=14, weight="bold")).pack(pady=(12, 8))
+        ctk.CTkLabel(
+            top, text="Select Target Image",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            text_color=_FC["node_cond"]
+        ).pack(pady=(16, 8))
         
-        frame = ctk.CTkScrollableFrame(top, fg_color=_FC["surface"])
-        frame.pack(fill="both", expand=True, padx=12, pady=(0, 12))
+        frame = ctk.CTkScrollableFrame(top, fg_color=_FC["bg"],
+            scrollbar_button_color=_FC["text_dim"], corner_radius=8)
+        frame.pack(fill="both", expand=True, padx=16, pady=(0, 8))
         
         def on_sel(m):
             self.nodes[nid]["data"]["image_name"] = m
@@ -600,13 +642,86 @@ class FlowchartUI(ctk.CTkCanvas):
         for m in images:
             ctk.CTkButton(frame, text=m, command=lambda x=m: on_sel(x),
                          fg_color=_FC["node_cond"], hover_color=_FC["warning"],
-                         corner_radius=6).pack(pady=3, fill="x")
+                         text_color="#FFFFFF", font=ctk.CTkFont(size=11),
+                         height=32, corner_radius=6).pack(pady=3, fill="x", padx=4)
+
+        ctk.CTkButton(
+            top, text="Cancel", command=top.destroy,
+            fg_color="transparent", hover_color=_FC["surface2"],
+            border_width=1, border_color=_FC["text_dim"],
+            text_color=_FC["text_dim"], font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6, width=100
+        ).pack(pady=(0, 12))
         
     def config_delay(self, nid):
-        val = simpledialog.askfloat("Set Delay", "Enter delay in milliseconds (ms):", 
-                                     initialvalue=self.nodes[nid]["data"].get("time", 1000))
-        if val is not None:
-            self.nodes[nid]["data"]["time"] = max(0, val)
+        dialog = ctk.CTkToplevel(self)
+        dialog.title("Lordbot Control")
+        dialog.geometry("340x190")
+        dialog.resizable(False, False)
+        dialog.configure(fg_color=_FC["surface"])
+        dialog.transient(self.winfo_toplevel())
+        dialog.grab_set()
+        dialog.after(200, lambda: dialog.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        dialog.update_idletasks()
+        root = self.winfo_toplevel()
+        x = root.winfo_x() + (root.winfo_width() - 340) // 2
+        y = root.winfo_y() + (root.winfo_height() - 190) // 2
+        dialog.geometry(f"340x190+{x}+{y}")
+
+        result = {"val": None}
+
+        ctk.CTkLabel(
+            dialog, text="Set Delay",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            text_color=_FC["node_delay"]
+        ).pack(pady=(16, 4))
+        ctk.CTkLabel(
+            dialog, text="Pause duration in milliseconds",
+            font=ctk.CTkFont(size=10), text_color=_FC["text_dim"]
+        ).pack(pady=(0, 8))
+
+        entry = ctk.CTkEntry(
+            dialog, fg_color=_FC["bg"], border_color=_FC["text_dim"],
+            border_width=1, corner_radius=6, height=34,
+            font=ctk.CTkFont(size=12), text_color=_FC["text"],
+            placeholder_text="e.g. 1000", placeholder_text_color=_FC["text_dim"]
+        )
+        entry.pack(fill="x", padx=24, pady=(0, 12))
+        entry.insert(0, str(int(self.nodes[nid]["data"].get("time", 1000))))
+        entry.select_range(0, "end")
+        entry.focus_set()
+
+        btn_row = ctk.CTkFrame(dialog, fg_color="transparent")
+        btn_row.pack(fill="x", padx=24, pady=(0, 16))
+
+        def on_ok(*_):
+            try:
+                result["val"] = max(0, float(entry.get()))
+            except ValueError: return
+            dialog.destroy()
+
+        entry.bind("<Return>", on_ok)
+        entry.bind("<Escape>", lambda _: dialog.destroy())
+
+        ctk.CTkButton(
+            btn_row, text="Set Delay", command=on_ok,
+            fg_color=_FC["node_delay"], hover_color=_FC["surface2"],
+            text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6
+        ).pack(side="left", expand=True, fill="x", padx=(0, 4))
+
+        ctk.CTkButton(
+            btn_row, text="Cancel", command=dialog.destroy,
+            fg_color="transparent", hover_color=_FC["surface2"],
+            border_width=1, border_color=_FC["text_dim"],
+            text_color=_FC["text_dim"], font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6
+        ).pack(side="left", expand=True, fill="x", padx=(4, 0))
+
+        dialog.wait_window()
+
+        if result["val"] is not None:
+            self.nodes[nid]["data"]["time"] = result["val"]
             self.redraw()
             if self.on_change_cb: self.on_change_cb()
     
@@ -614,18 +729,32 @@ class FlowchartUI(ctk.CTkCanvas):
         if not self.get_images_cb: return
         images = self.get_images_cb()
         if not images:
-            messagebox.showinfo("Empty", "No target images available!")
+            self._fc_styled_info("No images", "Track images in the Setup tab first")
             return
             
         top = ctk.CTkToplevel(self)
-        top.title("Select Click Target")
-        top.geometry("280x350")
-        top.attributes("-topmost", True)
+        top.title("Lordbot Control")
+        top.geometry("300x380")
+        top.resizable(False, False)
+        top.configure(fg_color=_FC["surface"])
+        top.transient(self.winfo_toplevel())
+        top.grab_set()
+        top.after(200, lambda: top.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        top.update_idletasks()
+        root = self.winfo_toplevel()
+        x = root.winfo_x() + (root.winfo_width() - 300) // 2
+        y = root.winfo_y() + (root.winfo_height() - 380) // 2
+        top.geometry(f"300x380+{x}+{y}")
         
-        ctk.CTkLabel(top, text="Choose Click Target", font=ctk.CTkFont(size=14, weight="bold")).pack(pady=(12, 8))
+        ctk.CTkLabel(
+            top, text="Select Click Target",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            text_color=_FC["node_click"]
+        ).pack(pady=(16, 8))
         
-        frame = ctk.CTkScrollableFrame(top, fg_color=_FC["surface"])
-        frame.pack(fill="both", expand=True, padx=12, pady=(0, 12))
+        frame = ctk.CTkScrollableFrame(top, fg_color=_FC["bg"],
+            scrollbar_button_color=_FC["text_dim"], corner_radius=8)
+        frame.pack(fill="both", expand=True, padx=16, pady=(0, 8))
         
         def on_sel(m):
             self.nodes[nid]["data"]["image_name"] = m
@@ -636,7 +765,35 @@ class FlowchartUI(ctk.CTkCanvas):
         for m in images:
             ctk.CTkButton(frame, text=m, command=lambda x=m: on_sel(x),
                          fg_color=_FC["node_click"], hover_color="#BE123C",
-                         corner_radius=6).pack(pady=3, fill="x")
+                         text_color="#FFFFFF", font=ctk.CTkFont(size=11),
+                         height=32, corner_radius=6).pack(pady=3, fill="x", padx=4)
+
+        ctk.CTkButton(
+            top, text="Cancel", command=top.destroy,
+            fg_color="transparent", hover_color=_FC["surface2"],
+            border_width=1, border_color=_FC["text_dim"],
+            text_color=_FC["text_dim"], font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6, width=100
+        ).pack(pady=(0, 12))
+
+    def _fc_styled_info(self, title, text):
+        """Reusable styled info popup for FlowchartUI."""
+        info = ctk.CTkToplevel(self)
+        info.title("Lordbot Control")
+        info.geometry("300x130")
+        info.resizable(False, False)
+        info.configure(fg_color=_FC["surface"])
+        info.transient(self.winfo_toplevel())
+        info.grab_set()
+        info.after(200, lambda: info.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        info.update_idletasks()
+        root = self.winfo_toplevel()
+        x = root.winfo_x() + (root.winfo_width() - 300) // 2
+        y = root.winfo_y() + (root.winfo_height() - 130) // 2
+        info.geometry(f"300x130+{x}+{y}")
+        ctk.CTkLabel(info, text=title, font=ctk.CTkFont(size=13, weight="bold"), text_color=_FC["text"]).pack(pady=(20, 4))
+        ctk.CTkLabel(info, text=text, font=ctk.CTkFont(size=11), text_color=_FC["text_dim"]).pack(pady=(0, 12))
+        ctk.CTkButton(info, text="OK", command=info.destroy, fg_color=_FC["primary"], text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"), height=30, corner_radius=6, width=100).pack()
             
     def delete_node(self, nid):
         if nid in self.nodes:
