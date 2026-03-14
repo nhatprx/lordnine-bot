@@ -1,28 +1,28 @@
 {
     "accounts": [
         {
-            "name": "33",
+            "name": "VIP-33",
             "target": "0",
             "port": 9222,
-            "loop": "Buy Blood",
+            "loop": "",
             "proxy": "",
             "enabled": true,
             "group": "default"
         },
         {
-            "name": "34",
+            "name": "VIP-34",
             "target": "1",
             "port": 9222,
-            "loop": "Buy Blood",
+            "loop": "",
             "proxy": "",
             "enabled": true,
             "group": "default"
         },
         {
-            "name": "35",
+            "name": "VIP-35",
             "target": "2",
             "port": 9222,
-            "loop": "Buy Blood",
+            "loop": "",
             "proxy": "",
             "enabled": true,
             "group": "default"

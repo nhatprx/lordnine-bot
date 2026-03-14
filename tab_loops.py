@@ -92,6 +92,8 @@ class LoopsMixin:
         ctk.CTkButton(self.flowchart_toolbar, text="+ Macro", width=80, fg_color=COLOR["primary"], hover_color=COLOR["primary_h"], command=lambda: self.flowchart_add_node("Macro"), corner_radius=6).pack(side="left", padx=5, pady=5)
         ctk.CTkButton(self.flowchart_toolbar, text="+ If Image", width=80, fg_color=COLOR["warning"], hover_color=COLOR["warning_h"], text_color=COLOR["text_dark"], command=lambda: self.flowchart_add_node("Condition"), corner_radius=6).pack(side="left", padx=5, pady=5)
         ctk.CTkButton(self.flowchart_toolbar, text="+ Delay", width=80, fg_color=COLOR["purple"], hover_color=COLOR["purple_h"], command=lambda: self.flowchart_add_node("Delay"), corner_radius=6).pack(side="left", padx=5, pady=5)
+        ctk.CTkButton(self.flowchart_toolbar, text="+ Click", width=80, fg_color="#E11D48", hover_color="#BE123C", command=lambda: self.flowchart_add_node("Click"), corner_radius=6).pack(side="left", padx=5, pady=5)
+        ctk.CTkButton(self.flowchart_toolbar, text="+ End", width=70, fg_color="#6B7280", hover_color="#4B5563", command=lambda: self.flowchart_add_node("End"), corner_radius=6).pack(side="left", padx=5, pady=5)
 
         ctk.CTkLabel(self.flowchart_toolbar, text="Right-click to edit. Drag pins to connect.", text_color=COLOR["text_dim"], font=ctk.CTkFont(size=11)).pack(side="right", padx=PAD["sm"])
 
@@ -224,16 +226,16 @@ class LoopsMixin:
         """Thread-safe update of the loop status bar."""
         if color is None:
             color = COLOR["accent"]
-        self.gui_queue.put(lambda: self.loop_status_label.configure(text=text))
-        self.gui_queue.put(lambda: self.loop_status_icon.configure(text_color=color))
+        self.gui_queue.put(("run", lambda: self.loop_status_label.configure(text=text)))
+        self.gui_queue.put(("run", lambda: self.loop_status_icon.configure(text_color=color)))
 
     def _highlight_node(self, node_id):
         """Thread-safe highlight of a node on the flowchart."""
-        self.gui_queue.put(lambda: self.flowchart.highlight_node(node_id))
+        self.gui_queue.put(("run", lambda: self.flowchart.highlight_node(node_id)))
 
     def _clear_highlight(self):
         """Thread-safe clear of the node highlight."""
-        self.gui_queue.put(lambda: self.flowchart.clear_highlight())
+        self.gui_queue.put(("run", lambda: self.flowchart.clear_highlight()))
 
     def toggle_loop_engine(self):
         if not self.is_looping:
@@ -307,6 +309,29 @@ class LoopsMixin:
                  return
                  
         bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
+        
+        def _get_phone_region():
+            """Get the active phone's bounding box as (x, y, w, h) in screenshot pixel space."""
+            if not page: return None
+            try:
+                bbox = page.evaluate("""() => {
+                    const imgs = document.querySelectorAll('img.screen-img');
+                    if (!imgs.length) return null;
+                    let best = null, bestArea = 0;
+                    for (let img of imgs) {
+                        const r = img.getBoundingClientRect();
+                        if (r.top < innerHeight && r.bottom > 0 && r.left < innerWidth && r.right > 0) {
+                            const a = r.width * r.height;
+                            if (a > bestArea) { bestArea = a; best = r; }
+                        }
+                    }
+                    if (!best) return null;
+                    const dpr = window.devicePixelRatio || 1;
+                    return [best.x * dpr, best.y * dpr, best.width * dpr, best.height * dpr];
+                }""")
+                return tuple(bbox) if bbox else None
+            except:
+                return None
         
         while self.is_looping:
             if not current_node_id or current_node_id not in nodes:
@@ -398,7 +423,43 @@ class LoopsMixin:
                         self.log_gui(f"[FLOWCHART] -> FALSE (Not Found)")
                         current_node_id = get_next_node(current_node_id, "false")
                 time.sleep(0.5)
+            
+            elif ntype == "Click":
+                img_name = ndata.get("image_name")
+                filepath = self.tracked_icons.get(img_name)
                 
+                if not filepath or not os.path.exists(filepath):
+                    self._set_loop_status(f"Click [{img_name}] → NOT FOUND", COLOR["danger"])
+                    self.log_gui(f"[FLOWCHART] Click target '{img_name}' image not found. Skipping.")
+                else:
+                    self._set_loop_status(f"Clicking: {img_name}...", COLOR["warning"])
+                    self.log_gui(f"[FLOWCHART] Looking for '{img_name}' to click...")
+                    
+                    frame_bytes = None
+                    if page:
+                        try: frame_bytes = page.screenshot()
+                        except: pass
+                    res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
+                    
+                    if res:
+                        cx, cy = res[0], res[1]
+                        self.log_gui(f"[FLOWCHART] Found '{img_name}' at ({cx}, {cy}). Clicking...")
+                        bot_instance.click_at(cx, cy)
+                        self._set_loop_status(f"Click [{img_name}] → OK", COLOR["success"])
+                        self.log_gui(f"[FLOWCHART] Clicked '{img_name}'")
+                    else:
+                        self._set_loop_status(f"Click [{img_name}] → NOT VISIBLE", COLOR["warning"])
+                        self.log_gui(f"[FLOWCHART] '{img_name}' not on screen. Skipping click.")
+                
+                current_node_id = get_next_node(current_node_id, "out")
+                time.sleep(0.3)
+
+            elif ntype == "End":
+                self._set_loop_status("END — Loop finished", COLOR["success"])
+                self.log_gui(f"[FLOWCHART] Reached END node. Stopping loop.")
+                self.is_looping = False
+                break
+
         self._clear_highlight()
         self._set_loop_status("Idle — Loop ended", COLOR["text_dim"])
         if browser: browser.close()

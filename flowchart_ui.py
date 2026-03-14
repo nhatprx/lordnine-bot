@@ -19,6 +19,8 @@ _FC = {
     "node_cond":   "#D97706",
     "node_delay":  "#8B5CF6",
     "node_start":  "#059669",
+    "node_click":  "#E11D48",
+    "node_end":    "#6B7280",
     "node_default":"#475569",
     "wire":     "#64748B",
     "wire_true":"#10B981",
@@ -166,6 +168,10 @@ class FlowchartUI(ctk.CTkCanvas):
             node["h"] = self.NODE_H_COND
         elif ntype == "Delay":
             node["data"] = {"time": 1000}
+        elif ntype == "Click":
+            node["data"] = {"image_name": "None"}
+        elif ntype == "End":
+            node["data"] = {"title": "End"}
             
         self.nodes[nid] = node
         self.redraw()
@@ -307,6 +313,8 @@ class FlowchartUI(ctk.CTkCanvas):
             elif n["type"] == "Macro":    bg = _FC["node_macro"]
             elif n["type"] == "Condition":bg = _FC["node_cond"]
             elif n["type"] == "Delay":    bg = _FC["node_delay"]
+            elif n["type"] == "Click":    bg = _FC["node_click"]
+            elif n["type"] == "End":      bg = _FC["node_end"]
             
             # Active execution glow (bright cyan pulse)
             is_active = (self.active_node_id == nid)
@@ -351,6 +359,10 @@ class FlowchartUI(ctk.CTkCanvas):
                 title = f"Wait\n{delay_val}ms"
             elif n["type"] == "Start":
                 title = "START"
+            elif n["type"] == "Click":
+                title = f"Click\n{n['data'].get('image_name','None')}"
+            elif n["type"] == "End":
+                title = "END"
             
             font_size = max(7, int(11 * z))
             self.create_text(sx+sw/2, sy+sh/2, text=title, fill=_FC["text"],
@@ -368,7 +380,9 @@ class FlowchartUI(ctk.CTkCanvas):
                                tags=("pin", nid, "in"))
                 
             # OUT pins
-            if n["type"] == "Condition" or n["type"] == "Macro":
+            if n["type"] == "End":
+                pass  # End node has no output pins
+            elif n["type"] == "Condition" or n["type"] == "Macro":
                 # Dual pins: success (left) / failure (right)
                 px, py = self.get_pin_coords(nid, "true")
                 self.create_oval(px-pr, py-pr, px+pr, py+pr,
@@ -524,6 +538,8 @@ class FlowchartUI(ctk.CTkCanvas):
             menu.add_command(label="Select Target Image...", command=lambda: self.config_condition(nid))
         elif n["type"] == "Delay":
             menu.add_command(label="Set Delay Time...", command=lambda: self.config_delay(nid))
+        elif n["type"] == "Click":
+            menu.add_command(label="Select Target Image...", command=lambda: self.config_click(nid))
             
         if n["type"] != "Start":
             menu.add_separator()
@@ -593,6 +609,34 @@ class FlowchartUI(ctk.CTkCanvas):
             self.nodes[nid]["data"]["time"] = max(0, val)
             self.redraw()
             if self.on_change_cb: self.on_change_cb()
+    
+    def config_click(self, nid):
+        if not self.get_images_cb: return
+        images = self.get_images_cb()
+        if not images:
+            messagebox.showinfo("Empty", "No target images available!")
+            return
+            
+        top = ctk.CTkToplevel(self)
+        top.title("Select Click Target")
+        top.geometry("280x350")
+        top.attributes("-topmost", True)
+        
+        ctk.CTkLabel(top, text="Choose Click Target", font=ctk.CTkFont(size=14, weight="bold")).pack(pady=(12, 8))
+        
+        frame = ctk.CTkScrollableFrame(top, fg_color=_FC["surface"])
+        frame.pack(fill="both", expand=True, padx=12, pady=(0, 12))
+        
+        def on_sel(m):
+            self.nodes[nid]["data"]["image_name"] = m
+            self.redraw()
+            if self.on_change_cb: self.on_change_cb()
+            top.destroy()
+            
+        for m in images:
+            ctk.CTkButton(frame, text=m, command=lambda x=m: on_sel(x),
+                         fg_color=_FC["node_click"], hover_color="#BE123C",
+                         corner_radius=6).pack(pady=3, fill="x")
             
     def delete_node(self, nid):
         if nid in self.nodes:

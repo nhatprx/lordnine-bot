@@ -107,5 +107,8 @@
         ],
         "success_capture": "Supplier",
         "failure_capture": "None"
+    },
+    "Click Lordnine": {
+        "steps": []
     }
 }

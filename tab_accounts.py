@@ -27,6 +27,45 @@ class AccountsMixin:
         self.multi_title = ctk.CTkLabel(self.multi_left_pane, text="ACCOUNTS", text_color=COLOR["accent"], font=ctk.CTkFont(family="Segoe UI", weight="bold", size=13))
         self.multi_title.pack(pady=(PAD["md"], PAD["sm"]))
 
+        # Quick Launch Panel
+        quick_frame = ctk.CTkFrame(self.multi_left_pane, fg_color=COLOR["surface2"], corner_radius=RADIUS, border_width=1, border_color=COLOR["accent"])
+        quick_frame.pack(fill="x", padx=PAD["md"], pady=(PAD["xs"], PAD["xs"]))
+
+        ctk.CTkLabel(quick_frame, text="QUICK LAUNCH", font=ctk.CTkFont(weight="bold", size=11), text_color=COLOR["accent"]).pack(padx=PAD["md"], pady=(PAD["sm"], 2), anchor="w")
+
+        # URL input
+        url_row = ctk.CTkFrame(quick_frame, fg_color="transparent")
+        url_row.pack(fill="x", padx=PAD["md"], pady=2)
+        ctk.CTkLabel(url_row, text="URL:", font=ctk.CTkFont(size=10), text_color=COLOR["text_dim"], width=30).pack(side="left")
+        self.quick_url_entry = ctk.CTkEntry(url_row, placeholder_text="https://www.cloudemulator.net/app/phone?channelCode=web", font=ctk.CTkFont(size=10))
+        self.quick_url_entry.pack(side="left", fill="x", expand=True, padx=(4, 0))
+        self.quick_url_entry.insert(0, "https://www.cloudemulator.net/app/phone?channelCode=web")
+
+        # Count + Max tabs row
+        num_row = ctk.CTkFrame(quick_frame, fg_color="transparent")
+        num_row.pack(fill="x", padx=PAD["md"], pady=2)
+        
+        ctk.CTkLabel(num_row, text="Accounts:", font=ctk.CTkFont(size=10), text_color=COLOR["text_dim"]).pack(side="left")
+        self.quick_count_entry = ctk.CTkEntry(num_row, width=45, font=ctk.CTkFont(size=10), placeholder_text="20")
+        self.quick_count_entry.pack(side="left", padx=(4, 10))
+        
+        ctk.CTkLabel(num_row, text="Max/Chrome:", font=ctk.CTkFont(size=10), text_color=COLOR["text_dim"]).pack(side="left")
+        self.quick_max_tabs_entry = ctk.CTkEntry(num_row, width=35, font=ctk.CTkFont(size=10))
+        self.quick_max_tabs_entry.insert(0, "10")
+        self.quick_max_tabs_entry.pack(side="left", padx=(4, 10))
+        
+        ctk.CTkLabel(num_row, text="Start Phone:", font=ctk.CTkFont(size=10), text_color=COLOR["text_dim"]).pack(side="left")
+        self.quick_start_phone_entry = ctk.CTkEntry(num_row, width=35, font=ctk.CTkFont(size=10))
+        self.quick_start_phone_entry.insert(0, "1")
+        self.quick_start_phone_entry.pack(side="left", padx=(4, 0))
+
+        # Launch button
+        self.quick_launch_btn = ctk.CTkButton(quick_frame, text="Launch", command=self._quick_launch, fg_color=COLOR["accent"], hover_color=COLOR["primary_h"], font=ctk.CTkFont(weight="bold", size=12), corner_radius=6, height=30)
+        self.quick_launch_btn.pack(fill="x", padx=PAD["md"], pady=(4, PAD["sm"]))
+        
+        self.quick_status_label = ctk.CTkLabel(quick_frame, text="", font=ctk.CTkFont(size=9), text_color=COLOR["text_dim"])
+        self.quick_status_label.pack(padx=PAD["md"], pady=(0, PAD["sm"]), anchor="w")
+
         # Chrome Instances Panel
         chrome_frame = ctk.CTkFrame(self.multi_left_pane, fg_color=COLOR["surface2"], corner_radius=RADIUS, border_width=1, border_color=COLOR["border"])
         chrome_frame.pack(fill="x", padx=PAD["md"], pady=(PAD["xs"], PAD["xs"]))
@@ -81,6 +120,25 @@ class AccountsMixin:
 
         ctk.CTkButton(batch_frame, text="Stop Selected", command=self._batch_stop_selected, fg_color=COLOR["surface2"], hover_color=COLOR["surface3"], text_color=COLOR["text"], font=ctk.CTkFont(size=11), corner_radius=6, height=30, width=100).pack(side="left", padx=2)
 
+        # Loop assignment row
+        loop_assign_frame = ctk.CTkFrame(self.multi_right_pane, fg_color="transparent", height=32)
+        loop_assign_frame.pack(fill="x", pady=(0, PAD["xs"]), padx=PAD["xl"])
+
+        self.select_all_var = ctk.BooleanVar(value=False)
+        ctk.CTkCheckBox(loop_assign_frame, text="Select All", variable=self.select_all_var,
+                        command=self._toggle_select_all, font=ctk.CTkFont(size=11),
+                        width=20, height=20).pack(side="left", padx=(0, 10))
+
+        ctk.CTkLabel(loop_assign_frame, text="Loop:", font=ctk.CTkFont(size=11), text_color=COLOR["text_dim"]).pack(side="left")
+        self.loop_assign_combo = ctk.CTkComboBox(loop_assign_frame, values=[], width=150, font=ctk.CTkFont(size=11), height=28)
+        self.loop_assign_combo.pack(side="left", padx=(4, 6))
+        self.loop_assign_combo.set("")
+
+        ctk.CTkButton(loop_assign_frame, text="Assign Loop", command=self._assign_loop_to_selected,
+                       fg_color=COLOR["accent"], hover_color=COLOR["primary_h"],
+                       font=ctk.CTkFont(size=11, weight="bold"), corner_radius=6,
+                       height=28, width=100).pack(side="left", padx=2)
+
         self.dash_grid = ctk.CTkScrollableFrame(self.multi_right_pane, fg_color=COLOR["surface"], corner_radius=RADIUS, border_width=1, border_color=COLOR["border"])
         self.dash_grid.pack(fill="both", expand=True, padx=PAD["xl"], pady=PAD["md"])
 
@@ -116,12 +174,152 @@ class AccountsMixin:
         self.state_db.remove_chrome_instance(port)
         self.after(500, self._refresh_connection_status)
 
+    def _quick_launch(self):
+        """Quick Launch: Auto-open Chrome instances with balanced tabs."""
+        url = self.quick_url_entry.get().strip()
+        count_str = self.quick_count_entry.get().strip()
+        max_tabs_str = self.quick_max_tabs_entry.get().strip()
+        
+        if not url:
+            return messagebox.showerror("Error", "URL is required!")
+        if not count_str.isdigit() or int(count_str) < 1:
+            return messagebox.showerror("Error", "Account count must be a positive number!")
+        if not max_tabs_str.isdigit() or int(max_tabs_str) < 1:
+            return messagebox.showerror("Error", "Max tabs must be a positive number!")
+        
+        total_accounts = int(count_str)
+        max_tabs = int(max_tabs_str)
+        
+        # Get start phone index
+        start_str = self.quick_start_phone_entry.get().strip()
+        start_phone = int(start_str) if start_str.isdigit() and int(start_str) >= 1 else 1
+        
+        # Calculate distribution
+        import math
+        num_chrome = math.ceil(total_accounts / max_tabs)
+        distribution = []
+        remaining = total_accounts
+        for i in range(num_chrome):
+            tabs = min(max_tabs, remaining)
+            distribution.append(tabs)
+            remaining -= tabs
+        
+        # Preview
+        dist_str = " + ".join(str(d) for d in distribution)
+        self.log_gui(f"[Quick Launch] {total_accounts} accounts → {num_chrome} Chrome instances ({dist_str})")
+        
+        self.quick_launch_btn.configure(state="disabled", text="Launching...")
+        self.quick_status_label.configure(text=f"Opening {num_chrome} Chrome ({dist_str})...", text_color=COLOR["warning"])
+        
+        def _do_launch():
+            base_port = 9222
+            ports_needed = [base_port + i for i in range(num_chrome)]
+            
+            # Kill only the ports we need (not all managed)
+            for p in ports_needed:
+                if p in self.chrome_mgr.processes:
+                    self.chrome_mgr.kill(p)
+            
+            # Launch all Chrome instances in PARALLEL
+            results = {}  # port -> (success, msg, actual)
+            
+            def _launch_one(port, tab_count):
+                success, msg, actual = self.chrome_mgr.launch_with_tabs(port, url, tab_count)
+                results[port] = (success, msg, actual)
+                self.gui_queue.put(("log", f"[Quick Launch] {msg}"))
+            
+            self.gui_queue.put(("log", f"[Quick Launch] Launching {num_chrome} Chrome(s) in parallel..."))
+            threads = []
+            for idx, tab_count in enumerate(distribution):
+                port = ports_needed[idx]
+                t = threading.Thread(target=_launch_one, args=(port, tab_count), daemon=True)
+                threads.append(t)
+                t.start()
+            
+            # Wait for all to finish
+            for t in threads:
+                t.join(timeout=15)
+            
+            # Auto-open cloud phones FIRST (to get phone names)
+            self.gui_queue.put(("log", f"[Quick Launch] Waiting for pages to load..."))
+            time.sleep(3)
+            
+            all_phone_names = {}  # (port, tab_idx) -> phone_name
+            phone_counter = start_phone - 1  # 0-based
+            for port in ports_needed:
+                if port not in results:
+                    continue
+                success, msg, actual = results[port]
+                if not success:
+                    continue
+                
+                indices = list(range(phone_counter, phone_counter + actual))
+                phone_counter += actual
+                
+                self.gui_queue.put(("log", f"[Quick Launch] Opening phones {indices[0]+1}-{indices[-1]+1} on port {port}..."))
+                opened, errors, phone_names = self.chrome_mgr.auto_open_cloud_phones(port, indices)
+                
+                for tab_idx, name in phone_names.items():
+                    all_phone_names[(port, tab_idx)] = name
+                
+                if errors:
+                    for err in errors:
+                        self.gui_queue.put(("log", f"[Quick Launch] Warning: {err}"))
+                self.gui_queue.put(("log", f"[Quick Launch] Port {port}: opened {opened}/{actual} cloud phones"))
+            
+            # Create accounts with phone names
+            created_accounts = []
+            for idx, port in enumerate(ports_needed):
+                if port not in results:
+                    continue
+                success, msg, actual = results[port]
+                if not success:
+                    continue
+                self.state_db.save_chrome_instance(port, status="running")
+                for tab_idx in range(actual):
+                    phone_name = all_phone_names.get((port, tab_idx), f"Phone-{len(created_accounts)+1}")
+                    acc_entry = {
+                        "name": phone_name,
+                        "target": str(tab_idx),
+                        "port": port,
+                        "loop": "",
+                        "proxy": "",
+                        "enabled": True,
+                        "group": "default",
+                    }
+                    created_accounts.append(acc_entry)
+            
+            # Save accounts
+            if created_accounts:
+                self.multi_accounts = created_accounts
+                self.save_multi()
+            
+            self.gui_queue.put(("log", f"[Quick Launch] All done! {len(created_accounts)} accounts ready."))
+            
+            # Update UI on main thread
+            def _update_ui():
+                self.quick_launch_btn.configure(state="normal", text="Launch")
+                self.quick_status_label.configure(
+                    text=f"Done: {len(created_accounts)} accounts, {num_chrome} Chrome",
+                    text_color=COLOR["success"]
+                )
+                self.refresh_multi_acc_list()
+                self._refresh_connection_status()
+            
+            self.after(100, _update_ui)
+        
+        threading.Thread(target=_do_launch, daemon=True).start()
+
     def _refresh_connection_status(self):
         def _check():
             ports_info = self.chrome_mgr.get_all_ports_info()
             self.gui_queue.put(("conn_status", ports_info))
         
-        self.conn_status_label.configure(text="Checking...", text_color=COLOR["warning"])
+        try:
+            if self.conn_status_label.winfo_exists():
+                self.conn_status_label.configure(text="Checking...", text_color=COLOR["warning"])
+        except:
+            pass
         threading.Thread(target=_check, daemon=True).start()
 
     def _render_connection_status(self, ports_info):
@@ -313,6 +511,9 @@ class AccountsMixin:
             ctk.CTkLabel(card, text=" | ".join(info_parts), font=ctk.CTkFont(size=10), 
                         text_color=COLOR["text_dim"]).pack(padx=12, pady=(0, 6), anchor="w")
 
+        # Refresh loop dropdown values
+        self._refresh_loop_combo()
+
     def update_dash_status(self, acc_name, status, color="white"):
         self.gui_queue.put(("dash_status", (acc_name, status, color)))
         
@@ -341,6 +542,36 @@ class AccountsMixin:
             name = acc['name']
             if self.dash_checkboxes.get(name) and self.dash_checkboxes[name].get():
                 self._stop_account(name)
+    
+    def _toggle_select_all(self):
+        val = self.select_all_var.get()
+        for chk_var in self.dash_checkboxes.values():
+            chk_var.set(val)
+    
+    def _assign_loop_to_selected(self):
+        loop_name = self.loop_assign_combo.get().strip()
+        if not loop_name:
+            return messagebox.showerror("Error", "Please select a loop first!")
+        
+        count = 0
+        for acc in self.multi_accounts:
+            name = acc['name']
+            if self.dash_checkboxes.get(name) and self.dash_checkboxes[name].get():
+                acc['loop'] = loop_name
+                count += 1
+        
+        if count == 0:
+            return messagebox.showwarning("Warning", "No accounts selected!")
+        
+        self.save_multi()
+        self.refresh_multi_acc_list()
+        self.log_gui(f"[Accounts] Assigned loop '{loop_name}' to {count} account(s)")
+    
+    def _refresh_loop_combo(self):
+        """Update the loop assignment dropdown with available loops."""
+        if hasattr(self, 'loop_assign_combo') and hasattr(self, 'loops'):
+            loop_names = list(self.loops.keys()) if self.loops else []
+            self.loop_assign_combo.configure(values=loop_names)
 
     def _start_account(self, acc_name):
         if self.account_running.get(acc_name, False):
@@ -589,6 +820,44 @@ class AccountsMixin:
                 else:
                     self.update_dash_status(acc_name, f"Macro error: Not found", COLOR["danger"])
                     next_nid = get_next_node(current_node_id, "false")
+
+            elif ntype == "Click":
+                img_name = ndata.get("image_name")
+                filepath = self.tracked_icons.get(img_name)
+                threshold_val = self.slider.get()
+                
+                if not filepath or not os.path.exists(filepath):
+                    self.update_dash_status(acc_name, f"Click Err: Missing", COLOR["danger"])
+                    self.state_db.log_action(acc_name, "click", img_name, "MISSING")
+                else:
+                    self.update_dash_status(acc_name, f"Click: {img_name}...", COLOR["warning"])
+                    frame_bytes = None
+                    try:
+                        frame_bytes = page.screenshot()
+                    except Exception as e:
+                        self.log_gui(f"[{acc_name}] Screenshot Error: {str(e)[:40]}")
+                        if connect_to_tab():
+                            bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
+                    
+                    if frame_bytes:
+                        res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
+                        if res:
+                            cx, cy = res[0], res[1]
+                            bot_instance.click_at(cx, cy)
+                            self.update_dash_status(acc_name, f"Clicked {img_name}", COLOR["success"])
+                            self.state_db.log_action(acc_name, "click", img_name, "OK")
+                        else:
+                            self.update_dash_status(acc_name, f"Click: Not visible", COLOR["warning"])
+                            self.state_db.log_action(acc_name, "click", img_name, "NOT_VISIBLE")
+                
+                next_nid = get_next_node(current_node_id, "out")
+                time.sleep(0.3)
+
+            elif ntype == "End":
+                self.update_dash_status(acc_name, "Finished", COLOR["success"])
+                self.state_db.log_action(acc_name, "end", "Loop finished")
+                self.log_gui(f"[{acc_name}] Reached END node. Stopping.")
+                break
 
             current_node_id = next_nid
 

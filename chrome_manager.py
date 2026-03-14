@@ -18,6 +18,7 @@ import os
 import time
 import json
 import urllib.request
+import urllib.parse
 import signal
 
 
@@ -54,7 +55,7 @@ class ChromeManager:
                 return p
         return None
     
-    def launch(self, port=9222, proxy=None):
+    def launch(self, port=9222, proxy=None, startup_url=None):
         """
         Launch a Chrome instance with remote debugging on the given port.
         
@@ -65,15 +66,11 @@ class ChromeManager:
         Returns:
             (success: bool, message: str)
         """
-        # Check if already running
-        if port in self.processes and self.processes[port].poll() is None:
-            return True, f"Chrome already running on port {port}"
-        
-        # Also check if port is externally occupied
-        if self._is_port_reachable(port):
-            # Port is occupied by external Chrome — register it
-            self.processes[port] = None  # Mark as external
-            return True, f"Chrome already active on port {port} (external)"
+        # Check if already running (managed process)
+        if port in self.processes:
+            proc = self.processes[port]
+            if proc is not None and proc.poll() is None:
+                return True, f"Chrome already running on port {port}"
         
         chrome_path = self._find_chrome_path()
         if not chrome_path:
@@ -94,6 +91,9 @@ class ChromeManager:
             cmd.append(f"--proxy-server={proxy}")
             self.proxies[port] = proxy
         
+        if startup_url:
+            cmd.append(startup_url)
+        
         try:
             proc = subprocess.Popen(cmd, shell=False, 
                                      stdout=subprocess.DEVNULL, 
@@ -101,8 +101,8 @@ class ChromeManager:
             self.processes[port] = proc
             
             # Wait for Chrome to start accepting connections
-            for attempt in range(15):  # 3 seconds max
-                time.sleep(0.2)
+            for attempt in range(10):  # 1 second max
+                time.sleep(0.1)
                 if self._is_port_reachable(port):
                     return True, f"Chrome launched on port {port} (PID: {proc.pid})"
             
@@ -117,13 +117,10 @@ class ChromeManager:
             proc = self.processes[port]
             if proc is not None and proc.poll() is None:
                 try:
-                    proc.terminate()
-                    proc.wait(timeout=5)
+                    proc.kill()
+                    proc.wait(timeout=2)
                 except:
-                    try:
-                        proc.kill()
-                    except:
-                        pass
+                    pass
             del self.processes[port]
             if port in self.proxies:
                 del self.proxies[port]
@@ -205,15 +202,148 @@ class ChromeManager:
     def _is_port_reachable(self, port):
         """Check if Chrome is reachable on the given port."""
         try:
-            resp = urllib.request.urlopen(f"http://localhost:{port}/json/version", timeout=0.3)
+            resp = urllib.request.urlopen(f"http://localhost:{port}/json/version", timeout=0.15)
             return resp.status == 200
         except:
             return False
     
     def get_next_available_port(self):
         """Find the next unused port in the default range."""
-        active = self.get_active_ports()
         for port in self.DEFAULT_PORT_RANGE:
-            if port not in active:
+            if port not in self.processes:
                 return port
         return None
+    
+    def open_tabs(self, port, url, count=1):
+        """
+        Open new tabs on an existing Chrome instance via CDP.
+        
+        Args:
+            port: Chrome debug port
+            url: URL to open in each tab
+            count: Number of tabs to open
+            
+        Returns:
+            (opened_count, error_msg or None)
+        """
+        opened = 0
+        for i in range(count):
+            try:
+                encoded_url = urllib.parse.quote(url, safe=':/')
+                req_url = f"http://localhost:{port}/json/new?{encoded_url}"
+                req = urllib.request.Request(req_url, method='PUT', data=b'')
+                resp = urllib.request.urlopen(req, timeout=5)
+                if resp.status == 200:
+                    opened += 1
+            except Exception as e:
+                print(f"[open_tabs] Tab {i+1} FAILED: {e}")
+                return opened, f"Failed at tab {i+1}: {e}"
+        return opened, None
+    
+    def launch_with_tabs(self, port, url, tab_count, proxy=None):
+        """
+        Launch Chrome on a port and open multiple tabs to the given URL.
+        
+        Args:
+            port: Debug port
+            url: URL to open in all tabs
+            tab_count: Total number of tabs to have
+            proxy: Optional proxy string
+            
+        Returns:
+            (success, message, actual_tab_count)
+        """
+        # Launch Chrome with URL as startup arg (first tab opens URL directly)
+        success, msg = self.launch(port=port, proxy=proxy, startup_url=url)
+        if not success:
+            return False, msg, 0
+        
+        # Brief wait (launch() already polls for port readiness)
+        time.sleep(0.5)
+        
+        # Open remaining tabs (tab_count - 1, since first tab already has URL)
+        remaining = tab_count - 1
+        if remaining > 0:
+            opened, err = self.open_tabs(port, url, remaining)
+            if err:
+                return True, f"Chrome port {port}: opened {opened + 1}/{tab_count} tabs. {err}", opened + 1
+        
+        # Verify final tab count
+        info = self.get_port_info(port)
+        actual = info["tab_count"] if info else tab_count
+        
+        return True, f"Chrome port {port}: {actual} tabs ready", actual
+    
+    def auto_open_cloud_phones(self, port, phone_indices, timeout=15):
+        """
+        Auto-click cloud phone cards on the Redfinger page.
+        
+        Uses Playwright to connect to Chrome via CDP, find cloud phone cards,
+        and click on the specified indices. Each tab clicks a different phone.
+        
+        Args:
+            port: Chrome debug port
+            phone_indices: list of 0-based indices, one per tab
+                e.g. [0, 1, 2] = click phone 1, 2, 3
+            timeout: max seconds to wait for page load
+            
+        Returns:
+            (opened_count, errors_list)
+        """
+        from playwright.sync_api import sync_playwright
+        
+        pw = sync_playwright().start()
+        opened = 0
+        errors = []
+        phone_names = {}  # tab_idx -> phone_name
+        
+        try:
+            browser = pw.chromium.connect_over_cdp(f"http://localhost:{port}")
+            pages = browser.contexts[0].pages
+            
+            # Filter to Redfinger pages only
+            rf_pages = [p for p in pages if "cloudemulator" in p.url or "redfinger" in p.url]
+            
+            if not rf_pages:
+                errors.append("No Redfinger pages found")
+                return opened, errors
+            
+            for tab_idx, page in enumerate(rf_pages):
+                if tab_idx >= len(phone_indices):
+                    break
+                
+                phone_idx = phone_indices[tab_idx]
+                
+                try:
+                    # Wait for phone cards to load
+                    page.wait_for_selector('div.phone-col.grid-item', timeout=timeout * 1000)
+                    
+                    # Find all phone cards
+                    cards = page.query_selector_all('div.phone-col.grid-item')
+                    
+                    if phone_idx >= len(cards):
+                        errors.append(f"Tab {tab_idx}: phone #{phone_idx+1} not found (only {len(cards)} phones)")
+                        continue
+                    
+                    # Get phone name for logging
+                    name_el = cards[phone_idx].query_selector('div.single-line')
+                    phone_name = name_el.inner_text() if name_el else f"Phone #{phone_idx+1}"
+                    
+                    # Click the phone card to open it
+                    cards[phone_idx].click()
+                    opened += 1
+                    phone_names[tab_idx] = phone_name
+                    print(f"[auto_open] Tab {tab_idx}: opened {phone_name}")
+                    
+                except Exception as e:
+                    errors.append(f"Tab {tab_idx}: {e}")
+            
+        except Exception as e:
+            errors.append(f"Connection error: {e}")
+        finally:
+            try:
+                pw.stop()
+            except:
+                pass
+        
+        return opened, errors, phone_names

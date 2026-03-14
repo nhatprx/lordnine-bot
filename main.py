@@ -294,6 +294,8 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                 elif msg_type == "test_notif":
                     text, color, bg = payload
                     self._show_test_notification(text, color, bg)
+                elif msg_type == "run":
+                    payload()  # Execute callable
 
                 self.gui_queue.task_done()
         except queue.Empty:

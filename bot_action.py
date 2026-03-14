@@ -96,7 +96,6 @@ class BotAction:
                 # --- THỰC THI CLICK ---
                 if self.cdp:
                     try:
-                        # Di chuyển chuột trước (đảm bảo cursor ở đúng vị trí)
                         self.cdp.send("Input.dispatchMouseEvent", {
                             "type": "mouseMoved",
                             "x": css_x, "y": css_y,
@@ -104,17 +103,14 @@ class BotAction:
                         })
                         time.sleep(random.uniform(0.03, 0.06))
                         
-                        # Mouse Down
                         self.cdp.send("Input.dispatchMouseEvent", {
                             "type": "mousePressed",
                             "x": css_x, "y": css_y,
                             "button": "left",
                             "clickCount": 1,
                         })
-                        # Giữ chuột — giả lập click thật
                         time.sleep(random.uniform(0.08, 0.15))
                         
-                        # Mouse Up
                         self.cdp.send("Input.dispatchMouseEvent", {
                             "type": "mouseReleased",
                             "x": css_x, "y": css_y,
@@ -122,7 +118,6 @@ class BotAction:
                             "clickCount": 1,
                         })
                     except Exception as cdp_err:
-                        # Fallback: Playwright mouse click
                         print(f"[BotAction] CDP mouse failed, fallback: {cdp_err}")
                         self.page.mouse.click(css_x, css_y, delay=random.randint(80, 180))
                 else:
