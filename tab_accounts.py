@@ -124,11 +124,13 @@ class AccountsMixin:
         self._btn_stop.pack(side="left")
         ctk.CTkButton(left_grp, text="Delete", command=self._delete_selected_accounts, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=45, height=24, corner_radius=4).pack(side="left", padx=(1, 0))
 
-        # Right group: Function assignment (loops + macros)
+        # Right group: Function assignment (type selector + name)
         right_grp = ctk.CTkFrame(toolbar_inner, fg_color="transparent")
         right_grp.pack(side="right")
-        ctk.CTkLabel(right_grp, text="Function:", text_color=COLOR["text_dim"], font=ctk.CTkFont(size=10, weight="bold")).pack(side="left", padx=(0, 2))
-        self.func_assign_combo = ctk.CTkComboBox(right_grp, values=[], width=160, font=ctk.CTkFont(size=10), height=24, corner_radius=4, fg_color=COLOR["surface"], border_color=COLOR["border_subtle"])
+        self.func_type_combo = ctk.CTkComboBox(right_grp, values=["Loop", "Macro"], width=70, font=ctk.CTkFont(size=10), height=24, corner_radius=4, fg_color=COLOR["surface"], border_color=COLOR["border_subtle"], command=self._on_func_type_changed)
+        self.func_type_combo.pack(side="left", padx=(0, 4))
+        self.func_type_combo.set("Loop")
+        self.func_assign_combo = ctk.CTkComboBox(right_grp, values=[], width=130, font=ctk.CTkFont(size=10), height=24, corner_radius=4, fg_color=COLOR["surface"], border_color=COLOR["border_subtle"])
         self.func_assign_combo.pack(side="left", padx=(0, 4))
         self.func_assign_combo.set("")
         ctk.CTkButton(right_grp, text="Assign", command=self._assign_function_to_selected, fg_color=COLOR["primary"], hover_color=COLOR["primary_h"], font=ctk.CTkFont(size=10, weight="bold"), corner_radius=4, height=24, width=50).pack(side="left")
@@ -771,16 +773,21 @@ class AccountsMixin:
             self._btn_stop.configure(text="Stop All", command=self._batch_stop_all)
     
     def _assign_function_to_selected(self):
+        func_type = self.func_type_combo.get().strip()
         func_name = self.func_assign_combo.get().strip()
         if not func_name:
-            self._acc_styled_info("Select a function", "Choose a loop or macro from the dropdown first")
+            self._acc_styled_info("Select a function", "Choose a function from the dropdown first")
             return
+        
+        # Build prefixed value: "loop - X" or "macro - X"
+        prefix = "loop" if func_type == "Loop" else "macro"
+        func_value = f"{prefix} - {func_name}"
         
         count = 0
         for acc in self.multi_accounts:
             name = acc['name']
             if self.dash_checkboxes.get(name) and self.dash_checkboxes[name].get():
-                acc['loop'] = func_name
+                acc['loop'] = func_value
                 count += 1
         
         if count == 0:
@@ -789,19 +796,23 @@ class AccountsMixin:
         
         self.save_multi()
         self.refresh_multi_acc_list()
-        self.log_gui(f"[Accounts] Assigned '{func_name}' to {count} account(s)")
+        self.log_gui(f"[Accounts] Assigned '{func_value}' to {count} account(s)")
+    
+    def _on_func_type_changed(self, value):
+        """Update function name dropdown when type changes."""
+        self._refresh_func_combo()
     
     def _refresh_func_combo(self):
-        """Update the function assignment dropdown with available loops + macros."""
-        if hasattr(self, 'func_assign_combo'):
-            items = []
-            if hasattr(self, 'loops') and self.loops:
-                for name in self.loops.keys():
-                    items.append(f"loop - {name}")
-            if hasattr(self, 'combos') and self.combos:
-                for name in self.combos.keys():
-                    items.append(f"macro - {name}")
-            self.func_assign_combo.configure(values=items)
+        """Update the function name dropdown based on selected type."""
+        if not hasattr(self, 'func_assign_combo'):
+            return
+        func_type = self.func_type_combo.get().strip() if hasattr(self, 'func_type_combo') else "Loop"
+        if func_type == "Macro":
+            items = list(self.combos.keys()) if hasattr(self, 'combos') and self.combos else []
+        else:
+            items = list(self.loops.keys()) if hasattr(self, 'loops') and self.loops else []
+        self.func_assign_combo.configure(values=items)
+        self.func_assign_combo.set("")
 
     # ---- Sort ----
     def _sort_by(self, key):
@@ -1112,39 +1123,28 @@ class AccountsMixin:
         self.update_dash_status(acc_name, "Connected, running...", COLOR["success"])
         bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
 
-        # ======== MACRO MODE: run standalone macro in repeat loop ========
+        # ======== MACRO MODE: run macro ONCE then stop ========
         if is_macro_mode:
             self.state_db.save_account_state(acc_name, status="running_macro", current_node=func_name)
-            run_count = 0
-            while self._is_running(acc_name):
-                run_count += 1
-                self.update_dash_status(acc_name, f"Macro: {func_name} (#{run_count})", "#C084FC")
-                self.state_db.log_action(acc_name, "macro_start", func_name, f"run #{run_count}")
-                try:
-                    result = self._internal_macro_runner(
-                        macro_steps, bot_instance, acc_name=acc_name,
-                        page=page, use_direct_vision=True
-                    )
-                    if result:
-                        self.state_db.log_action(acc_name, "macro_done", func_name, "OK")
-                    else:
-                        self.state_db.log_action(acc_name, "macro_done", func_name, "FAIL")
-                except Exception as e:
-                    self.log_gui(f"[{acc_name}] Macro error: {e}")
-                    self.state_db.log_action(acc_name, "macro_error", func_name, str(e)[:100])
-                    # Try to reconnect
-                    if connect_to_tab():
-                        bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
-                    else:
-                        self.update_dash_status(acc_name, "Connection Lost", COLOR["danger"])
-                        break
-                
-                # Brief pause between macro runs
-                if self._is_running(acc_name):
-                    time.sleep(1.0)
+            self.update_dash_status(acc_name, f"Macro: {func_name}", "#C084FC")
+            self.state_db.log_action(acc_name, "macro_start", func_name)
+            try:
+                result = self._internal_macro_runner(
+                    macro_steps, bot_instance, acc_name=acc_name,
+                    page=page, use_direct_vision=True
+                )
+                if result:
+                    self.state_db.log_action(acc_name, "macro_done", func_name, "OK")
+                    self.update_dash_status(acc_name, f"Macro Done ✓", COLOR["success"])
+                else:
+                    self.state_db.log_action(acc_name, "macro_done", func_name, "FAIL")
+                    self.update_dash_status(acc_name, f"Macro Failed", COLOR["danger"])
+            except Exception as e:
+                self.log_gui(f"[{acc_name}] Macro error: {e}")
+                self.state_db.log_action(acc_name, "macro_error", func_name, str(e)[:100])
+                self.update_dash_status(acc_name, f"Macro Error", COLOR["danger"])
             
-            # Macro mode cleanup
-            self.update_dash_status(acc_name, "Stopped", COLOR["text_muted"])
+            # Macro done — cleanup
             self._set_running(acc_name, False)
             try:
                 if browser: browser.close()
