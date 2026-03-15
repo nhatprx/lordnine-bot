@@ -216,8 +216,8 @@ class AccountsMixin:
         h_grp3.grid(row=0, column=2, sticky="ew")
         h_grp3.grid_columnconfigure(0, weight=1)
         h_grp3.grid_columnconfigure(1, weight=1)
-        self._sort_header_btns["loop"] = ctk.CTkButton(h_grp3, text="LOOP", command=lambda: self._sort_by("loop"), fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=55, height=20, corner_radius=3, cursor="hand2")
-        self._sort_header_btns["loop"].grid(row=0, column=0, sticky="ew", padx=4)
+        self._sort_header_btns["function"] = ctk.CTkButton(h_grp3, text="FUNCTION", command=lambda: self._sort_by("function"), fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=55, height=20, corner_radius=3, cursor="hand2")
+        self._sort_header_btns["function"].grid(row=0, column=0, sticky="ew", padx=4)
         ctk.CTkLabel(h_grp3, text="ACTION", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), anchor="center").grid(row=0, column=1, sticky="ew", padx=4)
 
         # Header bottom border
@@ -1112,6 +1112,49 @@ class AccountsMixin:
         self.update_dash_status(acc_name, "Connected, running...", COLOR["success"])
         bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
 
+        # ======== MACRO MODE: run standalone macro in repeat loop ========
+        if is_macro_mode:
+            self.state_db.save_account_state(acc_name, status="running_macro", current_node=func_name)
+            run_count = 0
+            while self._is_running(acc_name):
+                run_count += 1
+                self.update_dash_status(acc_name, f"Macro: {func_name} (#{run_count})", "#C084FC")
+                self.state_db.log_action(acc_name, "macro_start", func_name, f"run #{run_count}")
+                try:
+                    result = self._internal_macro_runner(
+                        macro_steps, bot_instance, acc_name=acc_name,
+                        page=page, use_direct_vision=True
+                    )
+                    if result:
+                        self.state_db.log_action(acc_name, "macro_done", func_name, "OK")
+                    else:
+                        self.state_db.log_action(acc_name, "macro_done", func_name, "FAIL")
+                except Exception as e:
+                    self.log_gui(f"[{acc_name}] Macro error: {e}")
+                    self.state_db.log_action(acc_name, "macro_error", func_name, str(e)[:100])
+                    # Try to reconnect
+                    if connect_to_tab():
+                        bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
+                    else:
+                        self.update_dash_status(acc_name, "Connection Lost", COLOR["danger"])
+                        break
+                
+                # Brief pause between macro runs
+                if self._is_running(acc_name):
+                    time.sleep(1.0)
+            
+            # Macro mode cleanup
+            self.update_dash_status(acc_name, "Stopped", COLOR["text_muted"])
+            self._set_running(acc_name, False)
+            try:
+                if browser: browser.close()
+            except: pass
+            try:
+                if pw: pw.stop()
+            except: pass
+            return
+
+        # ======== LOOP MODE: run loop graph (existing logic) ========
         def get_start_node():
             for nid, n in nodes.items():
                 if n["type"] == "Start": return nid
