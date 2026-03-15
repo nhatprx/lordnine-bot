@@ -91,8 +91,19 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
     best_ccorr  = None   # (score, loc, w, h)
     best_edge   = None   # (score, loc, w, h)
     
-    # Scale range: 0.8x to 1.2x, 9 steps (tighter range = faster + more precise)
-    for scale in np.linspace(0.8, 1.2, 9)[::-1]:
+    # Optimized: Web mode uses fewer scales + early exit on strong match.
+    # Screenshot resolution is fixed, so scale 1.0 is tested FIRST.
+    is_web_mode = frame_bytes is not None
+    
+    if is_web_mode:
+        # Web: test 1.0 first, then nearby. Early exit if strong.
+        scales = [1.0, 1.05, 0.95, 1.1, 0.9]
+    else:
+        scales = list(np.linspace(0.8, 1.2, 9)[::-1])
+    
+    early_exit = False
+    
+    for scale in scales:
         width = int(template_gray.shape[1] * scale)
         height = int(template_gray.shape[0] * scale)
         
@@ -102,22 +113,28 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
             continue
         
         resized_clahe = cv2.resize(tpl_clahe, (width, height))
-        resized_edge  = cv2.resize(tpl_edges, (width, height))
         
-        # Method 1: CLAHE-enhanced CCOEFF
+        # Method 1: CLAHE-enhanced CCOEFF (most reliable)
         res1 = cv2.matchTemplate(img_clahe, resized_clahe, cv2.TM_CCOEFF_NORMED)
         _, max_val1, _, max_loc1 = cv2.minMaxLoc(res1)
         if best_ccoeff is None or max_val1 > best_ccoeff[0]:
             best_ccoeff = (max_val1, max_loc1, width, height)
         
-        # Method 2: CLAHE-enhanced CCORR
-        res2 = cv2.matchTemplate(img_clahe, resized_clahe, cv2.TM_CCORR_NORMED)
-        _, max_val2, _, max_loc2 = cv2.minMaxLoc(res2)
-        if best_ccorr is None or max_val2 > best_ccorr[0]:
-            best_ccorr = (max_val2, max_loc2, width, height)
+        # EARLY EXIT: If CCOEFF alone is well above threshold, skip remaining.
+        # This saves ~80% time when the target is clearly visible.
+        if is_web_mode and max_val1 > threshold + 0.05:
+            early_exit = True
+            break
+        
+        # Method 2: CCORR — skip in web mode (weakest signal)
+        if not is_web_mode:
+            res2 = cv2.matchTemplate(img_clahe, resized_clahe, cv2.TM_CCORR_NORMED)
+            _, max_val2, _, max_loc2 = cv2.minMaxLoc(res2)
+            if best_ccorr is None or max_val2 > best_ccorr[0]:
+                best_ccorr = (max_val2, max_loc2, width, height)
         
         # Method 3: Edge-based CCOEFF (background-immune)
-        # Only match if template has enough edges (avoid blank edge maps)
+        resized_edge = cv2.resize(tpl_edges, (width, height))
         if np.count_nonzero(resized_edge) > 20:
             res3 = cv2.matchTemplate(img_edges, resized_edge, cv2.TM_CCOEFF_NORMED)
             _, max_val3, _, max_loc3 = cv2.minMaxLoc(res3)
@@ -134,43 +151,43 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
     # Normalize CCORR to comparable range
     ccorr_normalized = max(0, (ccorr_score - 0.9) * 10.0)
     
-    # ==========================================
-    # SMART SCORE FUSION (size-aware)
-    # ==========================================
-    if is_small_template:
-        # Small icons: use the BEST of edge or ccoeff as primary
-        # Don't let a low edge score drag down a decent ccoeff
-        primary = max(edge_score, ccoeff_score)
-        secondary = min(edge_score, ccoeff_score)
-        # Only blend secondary if it's actually helpful (> 0.3)
-        if secondary > 0.3:
-            fusion_score = primary * 0.60 + secondary * 0.25 + ccorr_normalized * 0.15
-        else:
-            fusion_score = primary * 0.80 + ccorr_normalized * 0.20
-        # If edge alone is very strong, trust it
-        if edge_score > 0.65:
-            fusion_score = max(fusion_score, edge_score * 0.85 + ccorr_normalized * 0.15)
+    # FAST PATH: Early exit → use CCOEFF directly (already above threshold)
+    if early_exit:
+        fusion_score = ccoeff_score
+        match_method = "CCOEFF"
+        best_val, best_loc, best_w, best_h = best_ccoeff
     else:
-        # Large templates: CCOEFF is reliable, edge is boost only
-        fusion_score = max(
-            ccoeff_score * 0.50 + edge_score * 0.30 + ccorr_normalized * 0.20,
-            ccoeff_score * 0.80 + ccorr_normalized * 0.20  # fallback: ignore weak edge
-        )
-    
-    # Pick the best location from whichever method scored highest
-    candidates = []
-    if best_ccoeff: candidates.append(("CCOEFF", ccoeff_score, best_ccoeff))
-    if best_edge:   candidates.append(("EDGE",   edge_score,   best_edge))
-    if best_ccorr:  candidates.append(("CCORR",  ccorr_normalized, best_ccorr))
-    
-    if not candidates:
-        return None
-    
-    # Use location from the highest-scoring method
-    candidates.sort(key=lambda c: c[1], reverse=True)
-    match_method = candidates[0][0]
-    best_result = candidates[0][2]
-    best_val, best_loc, best_w, best_h = best_result
+        # ==========================================
+        # SMART SCORE FUSION (size-aware)
+        # ==========================================
+        if is_small_template:
+            primary = max(edge_score, ccoeff_score)
+            secondary = min(edge_score, ccoeff_score)
+            if secondary > 0.3:
+                fusion_score = primary * 0.60 + secondary * 0.25 + ccorr_normalized * 0.15
+            else:
+                fusion_score = primary * 0.80 + ccorr_normalized * 0.20
+            if edge_score > 0.65:
+                fusion_score = max(fusion_score, edge_score * 0.85 + ccorr_normalized * 0.15)
+        else:
+            fusion_score = max(
+                ccoeff_score * 0.50 + edge_score * 0.30 + ccorr_normalized * 0.20,
+                ccoeff_score * 0.80 + ccorr_normalized * 0.20
+            )
+        
+        # Pick the best location from whichever method scored highest
+        candidates = []
+        if best_ccoeff: candidates.append(("CCOEFF", ccoeff_score, best_ccoeff))
+        if best_edge:   candidates.append(("EDGE",   edge_score,   best_edge))
+        if best_ccorr:  candidates.append(("CCORR",  ccorr_normalized, best_ccorr))
+        
+        if not candidates:
+            return None
+        
+        candidates.sort(key=lambda c: c[1], reverse=True)
+        match_method = candidates[0][0]
+        best_result = candidates[0][2]
+        best_val, best_loc, best_w, best_h = best_result
     
     # ==========================================
     # COLOR HISTOGRAM verification (boost factor)
@@ -201,13 +218,14 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
         fusion_score = min(1.0, fusion_score + 0.05)
     
     # ==========================================
-    # ORB FEATURE MATCHING (fallback layer)
+    # ORB FEATURE MATCHING (fallback — screen mode only)
     # ==========================================
     orb_score = 0.0
     orb_loc = None
     
+    # Skip ORB in web mode (expensive, rarely changes result with clean screenshots)
     # Only run ORB if we're below threshold and template has enough detail
-    if fusion_score < threshold and tpl_w_orig >= 20 and tpl_h_orig >= 20:
+    if not early_exit and not is_web_mode and fusion_score < threshold and tpl_w_orig >= 20 and tpl_h_orig >= 20:
         try:
             orb = cv2.ORB_create(nfeatures=500, scaleFactor=1.2, nlevels=8,
                                   edgeThreshold=10, patchSize=20)

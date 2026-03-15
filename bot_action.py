@@ -101,7 +101,7 @@ class BotAction:
                             "x": css_x, "y": css_y,
                             "button": "none",
                         })
-                        time.sleep(random.uniform(0.03, 0.06))
+                        time.sleep(random.uniform(0.015, 0.03))  # Optimized: was 0.03-0.06
                         
                         self.cdp.send("Input.dispatchMouseEvent", {
                             "type": "mousePressed",
@@ -109,7 +109,7 @@ class BotAction:
                             "button": "left",
                             "clickCount": 1,
                         })
-                        time.sleep(random.uniform(0.08, 0.15))
+                        time.sleep(random.uniform(0.04, 0.08))  # Optimized: was 0.08-0.15
                         
                         self.cdp.send("Input.dispatchMouseEvent", {
                             "type": "mouseReleased",
@@ -123,7 +123,7 @@ class BotAction:
                 else:
                     self.page.mouse.click(css_x, css_y, delay=random.randint(80, 180))
                     
-                time.sleep(random.uniform(0.1, 0.2))
+                time.sleep(random.uniform(0.05, 0.10))  # Optimized: was 0.1-0.2
             except Exception as e:
                 print(f"[BotAction] Lỗi Click Background: {str(e)}")
         else:

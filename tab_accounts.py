@@ -16,6 +16,10 @@ class AccountsMixin:
     """Mixin for the Accounts/Coordinator tab. Mixed into BotApp."""
 
     def setup_multi_tab(self):
+        # Sort state
+        self._acc_sort_key = None    # "port", "tab", "name", "status", "loop" or None
+        self._acc_sort_reverse = False
+
         # Full-width single column layout (no 2-column split)
         self.tab_multi.grid_columnconfigure(0, weight=1)
         self.tab_multi.grid_rowconfigure(0, weight=1)
@@ -91,20 +95,61 @@ class AccountsMixin:
         toolbar_inner = ctk.CTkFrame(toolbar, fg_color="transparent")
         toolbar_inner.pack(fill="x", padx=PAD["sm"], pady=5)
 
-        # Left: Start All | Stop All
-        ctk.CTkButton(toolbar_inner, text="Start All", command=self._batch_start_all, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["success"], font=ctk.CTkFont(size=10, weight="bold"), width=55, height=24, corner_radius=4).pack(side="left", padx=(0, 1))
-        ctk.CTkButton(toolbar_inner, text="Stop All", command=self._batch_stop_all, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["danger"], font=ctk.CTkFont(size=10, weight="bold"), width=50, height=24, corner_radius=4).pack(side="left")
+        # Left group: Start | Stop | Delete
+        left_grp = ctk.CTkFrame(toolbar_inner, fg_color="transparent")
+        left_grp.pack(side="left")
+        self._btn_start = ctk.CTkButton(left_grp, text="Start All", command=self._batch_start_all, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["success"], font=ctk.CTkFont(size=10, weight="bold"), width=75, height=24, corner_radius=4)
+        self._btn_start.pack(side="left", padx=(0, 1))
+        self._btn_stop = ctk.CTkButton(left_grp, text="Stop All", command=self._batch_stop_all, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["danger"], font=ctk.CTkFont(size=10, weight="bold"), width=65, height=24, corner_radius=4)
+        self._btn_stop.pack(side="left")
+        ctk.CTkButton(left_grp, text="Delete", command=self._delete_selected_accounts, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=45, height=24, corner_radius=4).pack(side="left", padx=(1, 0))
 
-        # Right: Loop assignment
-        ctk.CTkButton(toolbar_inner, text="Assign", command=self._assign_loop_to_selected, fg_color=COLOR["primary"], hover_color=COLOR["primary_h"], font=ctk.CTkFont(size=10, weight="bold"), corner_radius=4, height=24, width=50).pack(side="right")
-        self.loop_assign_combo = ctk.CTkComboBox(toolbar_inner, values=[], width=120, font=ctk.CTkFont(size=10), height=24, corner_radius=4, fg_color=COLOR["surface"], border_color=COLOR["border_subtle"])
-        self.loop_assign_combo.pack(side="right", padx=(0, 4))
+        # Right group: Loop assignment
+        right_grp = ctk.CTkFrame(toolbar_inner, fg_color="transparent")
+        right_grp.pack(side="right")
+        ctk.CTkLabel(right_grp, text="Loop:", text_color=COLOR["text_dim"], font=ctk.CTkFont(size=10, weight="bold")).pack(side="left", padx=(0, 2))
+        self.loop_assign_combo = ctk.CTkComboBox(right_grp, values=[], width=120, font=ctk.CTkFont(size=10), height=24, corner_radius=4, fg_color=COLOR["surface"], border_color=COLOR["border_subtle"])
+        self.loop_assign_combo.pack(side="left", padx=(0, 4))
         self.loop_assign_combo.set("")
-        ctk.CTkLabel(toolbar_inner, text="Loop:", text_color=COLOR["text_dim"], font=ctk.CTkFont(size=10, weight="bold")).pack(side="right", padx=(0, 2))
+        ctk.CTkButton(right_grp, text="Assign", command=self._assign_loop_to_selected, fg_color=COLOR["primary"], hover_color=COLOR["primary_h"], font=ctk.CTkFont(size=10, weight="bold"), corner_radius=4, height=24, width=50).pack(side="left")
 
-        # Center: Stats summary (expands to fill middle)
-        self.acc_stats_label = ctk.CTkLabel(toolbar_inner, text="", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10))
-        self.acc_stats_label.pack(side="left", fill="x", expand=True)
+        # Center group: Stats + Search (expands to fill middle, content centered)
+        center_grp = ctk.CTkFrame(toolbar_inner, fg_color="transparent")
+        center_grp.pack(side="left", fill="x", expand=True)
+        self.acc_stats_label = ctk.CTkLabel(center_grp, text="", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10))
+        self.acc_stats_label.pack(side="left", padx=(8, 4))
+
+        self._acc_search_debounce_id = None
+        def _debounced_acc_search(*a):
+            if self._acc_search_debounce_id:
+                self.after_cancel(self._acc_search_debounce_id)
+            self._acc_search_debounce_id = self.after(150, self.refresh_multi_acc_list)
+        self.acc_search_entry = ctk.CTkEntry(
+            center_grp, placeholder_text="Search...",
+            fg_color=COLOR["surface"], border_color=COLOR["border_subtle"],
+            border_width=1, corner_radius=4, height=24, width=140,
+            font=ctk.CTkFont(size=10)
+        )
+        self.acc_search_entry.pack(side="left")
+        self.acc_search_entry._entry.bind("<KeyRelease>", _debounced_acc_search)
+
+        # Blur searchbox when clicking anywhere outside any entry
+        def _blur_acc_search(event=None):
+            if not hasattr(self, 'acc_search_entry'):
+                return
+            try:
+                import tkinter
+                clicked = event.widget
+                # Don't steal focus if clicking on ANY entry widget
+                if isinstance(clicked, (tkinter.Entry, ctk.CTkEntry)):
+                    return
+                search_inner = self.acc_search_entry._entry
+                if clicked is not search_inner and clicked is not self.acc_search_entry:
+                    self.focus_set()
+            except Exception:
+                pass
+        self._blur_acc_search = _blur_acc_search
+        self.bind_all("<Button-1>", _blur_acc_search, add="+")
 
         # ═══ TABLE HEADER ═══
         # Column config grouped into 40%, 40%, 20% width pools
@@ -126,26 +171,33 @@ class AccountsMixin:
         header_inner.grid_columnconfigure(1, weight=4, uniform="base_col")
         header_inner.grid_columnconfigure(2, weight=2, uniform="base_col")
 
-        # Group 1 (40%): Checkbox, Port, Tab, Name (sitting next to each other, center anchored)
+        # Group 1 (40%): Checkbox, Port, Tab, Name — clickable sort headers
         h_grp1 = ctk.CTkFrame(header_inner, fg_color="transparent")
         h_grp1.grid(row=0, column=0, sticky="ew")
         self.select_all_var = ctk.BooleanVar(value=False)
         ctk.CTkCheckBox(h_grp1, text="", variable=self.select_all_var, command=self._toggle_select_all, checkbox_width=14, checkbox_height=14, corner_radius=3, border_width=1, border_color=COLOR["border"]).pack(side="left", padx=(4, 15))
-        ctk.CTkLabel(h_grp1, text="PORT", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=35, anchor="center").pack(side="left", padx=4)
-        ctk.CTkLabel(h_grp1, text="TAB", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=30, anchor="center").pack(side="left", padx=4)
-        ctk.CTkLabel(h_grp1, text="NAME", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), anchor="center").pack(side="left", padx=4, fill="x", expand=True)
+
+        self._sort_header_btns = {}
+        self._sort_header_btns["port"] = ctk.CTkButton(h_grp1, text="PORT", command=lambda: self._sort_by("port"), fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=35, height=20, corner_radius=3, cursor="hand2")
+        self._sort_header_btns["port"].pack(side="left", padx=4)
+        self._sort_header_btns["tab"] = ctk.CTkButton(h_grp1, text="TAB", command=lambda: self._sort_by("tab"), fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=30, height=20, corner_radius=3, cursor="hand2")
+        self._sort_header_btns["tab"].pack(side="left", padx=4)
+        self._sort_header_btns["name"] = ctk.CTkButton(h_grp1, text="NAME", command=lambda: self._sort_by("name"), fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), height=20, corner_radius=3, cursor="hand2")
+        self._sort_header_btns["name"].pack(side="left", padx=4, fill="x", expand=True)
 
         # Group 2 (40%): Status
         h_grp2 = ctk.CTkFrame(header_inner, fg_color="transparent")
         h_grp2.grid(row=0, column=1, sticky="ew")
-        ctk.CTkLabel(h_grp2, text="STATUS", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), anchor="center").pack(fill="x", expand=True)
+        self._sort_header_btns["status"] = ctk.CTkButton(h_grp2, text="STATUS", command=lambda: self._sort_by("status"), fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), height=20, corner_radius=3, cursor="hand2")
+        self._sort_header_btns["status"].pack(fill="x", expand=True)
 
         # Group 3 (20%): Loop, Action
         h_grp3 = ctk.CTkFrame(header_inner, fg_color="transparent")
         h_grp3.grid(row=0, column=2, sticky="ew")
         h_grp3.grid_columnconfigure(0, weight=1)
         h_grp3.grid_columnconfigure(1, weight=1)
-        ctk.CTkLabel(h_grp3, text="LOOP", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), anchor="center").grid(row=0, column=0, sticky="ew", padx=4)
+        self._sort_header_btns["loop"] = ctk.CTkButton(h_grp3, text="LOOP", command=lambda: self._sort_by("loop"), fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=55, height=20, corner_radius=3, cursor="hand2")
+        self._sort_header_btns["loop"].grid(row=0, column=0, sticky="ew", padx=4)
         ctk.CTkLabel(h_grp3, text="ACTION", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), anchor="center").grid(row=0, column=1, sticky="ew", padx=4)
 
         # Header bottom border
@@ -528,11 +580,47 @@ class AccountsMixin:
         self.dash_conn_labels = {}
         self.dash_checkboxes = {}
 
+        # Update sort header arrows
+        self._update_sort_headers()
+
         running_count = 0
         idle_count = 0
         error_count = 0
 
-        for idx, acc in enumerate(self.multi_accounts):
+        # Search filter
+        search_q = ""
+        if hasattr(self, 'acc_search_entry'):
+            search_q = self.acc_search_entry.get().strip().lower()
+
+        # Build sorted + filtered display list
+        display_list = list(self.multi_accounts)
+        if search_q:
+            def _matches(a):
+                fields = [
+                    a.get('name', ''),
+                    str(a.get('port', '')),
+                    str(a.get('target', '')),
+                    a.get('loop', '') or '',
+                    'running' if self.account_running.get(a['name'], False) else 'idle',
+                ]
+                return any(search_q in f.lower() for f in fields)
+            display_list = [a for a in display_list if _matches(a)]
+
+        if self._acc_sort_key:
+            try:
+                key_map = {
+                    "port": lambda a: a.get('port', 9222),
+                    "tab": lambda a: int(a.get('target', '0')) if str(a.get('target', '0')).isdigit() else 0,
+                    "name": lambda a: a['name'].lower(),
+                    "status": lambda a: 0 if self.account_running.get(a['name'], False) else 1,
+                    "loop": lambda a: (a.get('loop', '') or '').lower(),
+                }
+                if self._acc_sort_key in key_map:
+                    display_list.sort(key=key_map[self._acc_sort_key], reverse=self._acc_sort_reverse)
+            except Exception:
+                pass
+
+        for idx, acc in enumerate(display_list):
             name = acc['name']
             port = acc.get('port', 9222)
             is_running = self.account_running.get(name, False)
@@ -558,6 +646,8 @@ class AccountsMixin:
             
             chk_var = ctk.BooleanVar(value=False)
             self.dash_checkboxes[name] = chk_var
+            def _on_chk_change(*a, n=name): self._update_toolbar_buttons()
+            chk_var.trace_add("write", _on_chk_change)
             ctk.CTkCheckBox(r_grp1, text="", variable=chk_var, checkbox_width=14, checkbox_height=14, corner_radius=3, border_width=1, border_color=COLOR["border"]).pack(side="left", padx=(4, 15))
 
             conn_color = COLOR["success"] if is_running else COLOR["text_muted"]
@@ -630,21 +720,35 @@ class AccountsMixin:
             self._stop_account(acc['name'])
     
     def _batch_start_selected(self):
-        for acc in self.multi_accounts:
-            name = acc['name']
-            if self.dash_checkboxes.get(name) and self.dash_checkboxes[name].get():
-                self._start_account(name)
+        selected = [acc['name'] for acc in self.multi_accounts
+                    if self.dash_checkboxes.get(acc['name']) and self.dash_checkboxes[acc['name']].get()]
+        for name in selected:
+            self._start_account(name)
     
     def _batch_stop_selected(self):
-        for acc in self.multi_accounts:
-            name = acc['name']
-            if self.dash_checkboxes.get(name) and self.dash_checkboxes[name].get():
-                self._stop_account(name)
+        selected = [acc['name'] for acc in self.multi_accounts
+                    if self.dash_checkboxes.get(acc['name']) and self.dash_checkboxes[acc['name']].get()]
+        for name in selected:
+            self._stop_account(name)
     
     def _toggle_select_all(self):
         val = self.select_all_var.get()
         for chk_var in self.dash_checkboxes.values():
             chk_var.set(val)
+        self._update_toolbar_buttons()
+
+    def _update_toolbar_buttons(self):
+        """Update Start/Stop button text based on checkbox selection."""
+        if not hasattr(self, '_btn_start'):
+            return
+        selected = [n for n, v in self.dash_checkboxes.items() if v.get()]
+        total = len(self.dash_checkboxes)
+        if selected and len(selected) < total:
+            self._btn_start.configure(text="Start Sel.", command=self._batch_start_selected)
+            self._btn_stop.configure(text="Stop Sel.", command=self._batch_stop_selected)
+        else:
+            self._btn_start.configure(text="Start All", command=self._batch_start_all)
+            self._btn_stop.configure(text="Stop All", command=self._batch_stop_all)
     
     def _assign_loop_to_selected(self):
         loop_name = self.loop_assign_combo.get().strip()
@@ -672,6 +776,106 @@ class AccountsMixin:
         if hasattr(self, 'loop_assign_combo') and hasattr(self, 'loops'):
             loop_names = list(self.loops.keys()) if self.loops else []
             self.loop_assign_combo.configure(values=loop_names)
+
+    # ---- Sort ----
+    def _sort_by(self, key):
+        """Toggle sort by column key."""
+        if self._acc_sort_key == key:
+            self._acc_sort_reverse = not self._acc_sort_reverse
+        else:
+            self._acc_sort_key = key
+            self._acc_sort_reverse = False
+        self.refresh_multi_acc_list()
+
+    def _update_sort_headers(self):
+        """Update header button text with sort arrows."""
+        if not hasattr(self, '_sort_header_btns'):
+            return
+        labels = {"port": "PORT", "tab": "TAB", "name": "NAME", "status": "STATUS", "loop": "LOOP"}
+        for key, btn in self._sort_header_btns.items():
+            base = labels[key]
+            if self._acc_sort_key == key:
+                arrow = "▲" if not self._acc_sort_reverse else "▼"
+                btn.configure(text=f"{base} {arrow}", text_color=COLOR["text"])
+            else:
+                btn.configure(text=base, text_color=COLOR["text_muted"])
+
+    # ---- Delete Selected ----
+    def _delete_selected_accounts(self):
+        """Delete all checkbox-selected accounts after confirmation."""
+        to_delete = [name for name, var in self.dash_checkboxes.items() if var.get()]
+        if not to_delete:
+            self._acc_styled_info("No accounts selected", "Tick checkboxes to select accounts first")
+            return
+
+        # Check if any selected are running
+        running_selected = [n for n in to_delete if self.account_running.get(n, False)]
+
+        dialog = ctk.CTkToplevel(self)
+        dialog.title("Lordbot Control")
+        dialog.geometry("380x180")
+        dialog.resizable(False, False)
+        dialog.configure(fg_color=COLOR["surface"])
+        dialog.transient(self)
+        dialog.grab_set()
+        dialog.after(200, lambda: dialog.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        dialog.update_idletasks()
+        x = self.winfo_x() + (self.winfo_width() - 380) // 2
+        y = self.winfo_y() + (self.winfo_height() - 180) // 2
+        dialog.geometry(f"380x180+{x}+{y}")
+
+        result = {"confirmed": False}
+
+        ctk.CTkLabel(
+            dialog, text="Delete Accounts",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            text_color=COLOR["warning"]
+        ).pack(pady=(20, 4))
+
+        names_preview = ", ".join(to_delete[:3]) + ("..." if len(to_delete) > 3 else "")
+        warn_text = f"Delete {len(to_delete)} account(s)?\n{names_preview}"
+        if running_selected:
+            warn_text += f"\n⚠ {len(running_selected)} are still running — they will be stopped."
+        ctk.CTkLabel(
+            dialog, text=warn_text,
+            font=ctk.CTkFont(size=11),
+            text_color=COLOR["text_muted"], justify="center"
+        ).pack(pady=(0, 12))
+
+        btn_row = ctk.CTkFrame(dialog, fg_color="transparent")
+        btn_row.pack(fill="x", padx=24, pady=(0, 16))
+
+        def on_delete():
+            result["confirmed"] = True
+            dialog.destroy()
+
+        ctk.CTkButton(
+            btn_row, text="Delete", command=on_delete,
+            fg_color=COLOR["danger"], hover_color="#8B2020",
+            text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6
+        ).pack(side="left", expand=True, fill="x", padx=(0, 4))
+
+        ctk.CTkButton(
+            btn_row, text="Cancel", command=dialog.destroy,
+            fg_color="transparent", hover_color=COLOR["surface2"],
+            border_width=1, border_color=COLOR["border"],
+            text_color=COLOR["text_muted"], font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6
+        ).pack(side="left", expand=True, fill="x", padx=(4, 0))
+
+        dialog.wait_window()
+
+        if result["confirmed"]:
+            # Stop running accounts first
+            for name in running_selected:
+                self._stop_account(name)
+
+            # Remove from list
+            self.multi_accounts = [a for a in self.multi_accounts if a['name'] not in to_delete]
+            self.save_multi()
+            self.refresh_multi_acc_list()
+            self.log_gui(f"[Accounts] Deleted {len(to_delete)} account(s): {names_preview}")
 
     def _start_account(self, acc_name):
         if self.account_running.get(acc_name, False):
@@ -739,7 +943,25 @@ class AccountsMixin:
                     
                     for acc_name, thread in list(self.account_workers.items()):
                         if self.account_running.get(acc_name, False) and not thread.is_alive():
-                            self.gui_queue.put(("log", f"[Health] Worker {acc_name} died! Restarting..."))
+                            # Check DB status: only restart if it was actually running
+                            # (not finished normally or user-stopped)
+                            db_state = self.state_db.get_account_state(acc_name)
+                            db_status = db_state.get("status", "") if db_state else ""
+                            last_active = db_state.get("last_active", 0) if db_state else 0
+                            
+                            # Worker finished normally (idle) or was stopped by user
+                            # → just clean up the flag, do NOT restart
+                            if db_status in ("idle", "stopping", "stopped", "finished", "starting", "connection_failed", ""):
+                                self.account_running[acc_name] = False
+                                continue
+                            
+                            # If worker was active very recently (<10s), it likely just
+                            # finished but cleanup hasn't completed. Skip this cycle.
+                            if time.time() - last_active < 10:
+                                continue
+                            
+                            # Worker truly crashed (was running/connected but thread died)
+                            self.gui_queue.put(("log", f"[Health] Worker {acc_name} died (status={db_status})! Restarting..."))
                             self.account_running[acc_name] = False
                             self.state_db.save_account_state(acc_name, status="crashed")
                             for acc in self.multi_accounts:
@@ -987,10 +1209,10 @@ class AccountsMixin:
 
             current_node_id = next_nid
 
-        # ---- Cleanup ----
-        self.update_dash_status(acc_name, "Stopped", COLOR["text_dim"])
-        self.state_db.save_account_state(acc_name, status="idle", current_node=current_node_id or "")
+        # ---- Cleanup (set flags FIRST to prevent health monitor restart) ----
         self.account_running[acc_name] = False
+        self.state_db.save_account_state(acc_name, status="idle", current_node=current_node_id or "")
+        self.update_dash_status(acc_name, "Stopped", COLOR["text_dim"])
         
         if browser:
             try: browser.close()

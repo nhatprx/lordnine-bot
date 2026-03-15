@@ -4,7 +4,7 @@
             "name": "VIP-33",
             "target": "0",
             "port": 9222,
-            "loop": "1",
+            "loop": "",
             "proxy": "",
             "enabled": true,
             "group": "default"
@@ -13,7 +13,7 @@
             "name": "VIP-34",
             "target": "1",
             "port": 9222,
-            "loop": "1",
+            "loop": "",
             "proxy": "",
             "enabled": true,
             "group": "default"
@@ -22,25 +22,7 @@
             "name": "VIP-35",
             "target": "2",
             "port": 9222,
-            "loop": "1",
-            "proxy": "",
-            "enabled": true,
-            "group": "default"
-        },
-        {
-            "name": "VIP-41",
-            "target": "3",
-            "port": 9222,
-            "loop": "1",
-            "proxy": "",
-            "enabled": true,
-            "group": "default"
-        },
-        {
-            "name": "VIP-44",
-            "target": "4",
-            "port": 9222,
-            "loop": "1",
+            "loop": "",
             "proxy": "",
             "enabled": true,
             "group": "default"

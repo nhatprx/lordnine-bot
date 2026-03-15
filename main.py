@@ -132,6 +132,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("Lordbot Control")
+        self.protocol("WM_DELETE_WINDOW", self._confirm_quit)
         # Set window icon + taskbar icon
         try:
             import ctypes
@@ -145,8 +146,8 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                 self.iconbitmap(self._ico_path)
         except Exception:
             pass
-        self.geometry("1000x550")
-        self.minsize(800, 500)
+        self.geometry("1000x650")
+        self.resizable(False, False)
         self.configure(fg_color=COLOR["bg"])
 
         self.vision = Vision()
@@ -221,15 +222,37 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             btn.pack(fill="x", padx=4, pady=1)
             self.nav_buttons.append(btn)
 
-        # Sidebar bottom spacer
+        # Sidebar bottom spacer + utility buttons
         ctk.CTkFrame(self.sidebar, fg_color="transparent").pack(fill="both", expand=True)
 
-        # Quit button at bottom of sidebar
-        quit_btn = SidebarButton(
-            self.sidebar, icon="\uE7E8", label="Quit",
-            command=self.destroy
+        # Bottom utility group — fixed frame, never gets squeezed
+        bottom_group = ctk.CTkFrame(self.sidebar, fg_color="transparent")
+        bottom_group.pack(fill="x", side="bottom", padx=0, pady=(0, 6))
+
+        ctk.CTkFrame(bottom_group, height=1, fg_color=COLOR["border_subtle"]).pack(fill="x", padx=10, pady=(0, 4))
+
+        # Lock
+        self._is_locked = False
+        self._lock_btn = SidebarButton(
+            bottom_group, icon="\uE785", label="Lock",
+            command=self._toggle_lock
         )
-        quit_btn.pack(fill="x", padx=4, pady=(1, 8), side="bottom")
+        self._lock_btn.pack(fill="x", padx=4, pady=1)
+
+        # Refresh
+        refresh_btn = SidebarButton(
+            bottom_group, icon="\uE149", label="Refresh",
+            command=self._refresh_all
+        )
+        refresh_btn.icon_label.configure(font=ctk.CTkFont(family="Segoe MDL2 Assets", size=14))
+        refresh_btn.pack(fill="x", padx=4, pady=1)
+
+        # Quit
+        quit_btn = SidebarButton(
+            bottom_group, icon="\uE7E8", label="Quit",
+            command=self._confirm_quit
+        )
+        quit_btn.pack(fill="x", padx=4, pady=1)
 
         # ════ CONTENT AREA (fills remaining space) ════
         self.content_area = ctk.CTkFrame(self, fg_color=COLOR["bg"], corner_radius=0)
@@ -313,10 +336,11 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         )
         self.footer_tab_input.insert(0, "0")
         self.footer_tab_input.pack(side="right", padx=(0, 8))
-        ctk.CTkLabel(
+        self.footer_tab_label = ctk.CTkLabel(
             self.statusbar, text="Tab",
             font=ctk.CTkFont(size=10), text_color=COLOR["text_muted"]
-        ).pack(side="right", padx=(0, 3))
+        )
+        self.footer_tab_label.pack(side="right", padx=(0, 3))
 
         # Port input in footer
         self.footer_port_input = ctk.CTkEntry(
@@ -328,10 +352,11 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         )
         self.footer_port_input.insert(0, "9222")
         self.footer_port_input.pack(side="right", padx=(0, 8))
-        ctk.CTkLabel(
+        self.footer_port_label = ctk.CTkLabel(
             self.statusbar, text="Port",
             font=ctk.CTkFont(size=10), text_color=COLOR["text_muted"]
-        ).pack(side="right", padx=(0, 3))
+        )
+        self.footer_port_label.pack(side="right", padx=(0, 3))
 
         # ──── Initialize tabs ────
         self._setup_output_tab()
@@ -373,17 +398,217 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
         self.current_tab = index
 
+        # Hide port/tab inputs on Accounts (3) and Output (4) tabs
+        footer_widgets = [self.footer_port_label, self.footer_port_input,
+                          self.footer_tab_label, self.footer_tab_input]
+        if index in (3, 4):
+            for w in footer_widgets:
+                w.pack_forget()
+        else:
+            # Re-pack in correct order (right to left): Tab input, Tab label, Port input, Port label
+            for w in footer_widgets:
+                w.pack_forget()
+            self.footer_tab_input.pack(side="right", padx=(0, 8))
+            self.footer_tab_label.pack(side="right", padx=(0, 3))
+            self.footer_port_input.pack(side="right", padx=(0, 8))
+            self.footer_port_label.pack(side="right", padx=(0, 3))
+
+    # ==================== Refresh All ====================
+    def _refresh_all(self):
+        """Reload all data from disk and refresh UI components."""
+        self.load_combos()
+        self.load_loops()
+        self.load_multi()
+
+        # Refresh loop dropdown in Accounts tab
+        if hasattr(self, '_refresh_loop_combo'):
+            self._refresh_loop_combo()
+
+        # Refresh accounts list
+        if hasattr(self, 'refresh_multi_acc_list'):
+            self.refresh_multi_acc_list()
+
+        # Refresh tracked list in Nodes tab
+        if hasattr(self, 'refresh_tracked_list'):
+            self.refresh_tracked_list()
+
+        # Refresh loop list in Loops tab
+        if hasattr(self, 'refresh_loop_list'):
+            self.refresh_loop_list()
+
+        # Refresh combo list in Macros tab
+        if hasattr(self, 'refresh_combo_list'):
+            self.refresh_combo_list()
+
+        # Refresh info panel in Output tab
+        if hasattr(self, '_build_info_panel'):
+            self._build_info_panel()
+
+        self.log_gui("[System] All data refreshed ✓")
+
+    def _toggle_lock(self):
+        """Toggle window lock state with confirmation dialog."""
+        if self._is_locked:
+            self._confirm_unlock()
+        else:
+            self._confirm_lock()
+
+    def _confirm_lock(self):
+        dialog = ctk.CTkToplevel(self)
+        dialog.title("Lordbot Control")
+        dialog.geometry("320x140")
+        dialog.resizable(False, False)
+        dialog.configure(fg_color=COLOR["surface"])
+        dialog.transient(self)
+        dialog.grab_set()
+        dialog.after(200, lambda: dialog.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        dialog.update_idletasks()
+        x = self.winfo_x() + (self.winfo_width() - 320) // 2
+        y = self.winfo_y() + (self.winfo_height() - 140) // 2
+        dialog.geometry(f"320x140+{x}+{y}")
+
+        ctk.CTkLabel(dialog, text="Lock Application?", font=ctk.CTkFont(size=13, weight="bold"), text_color=COLOR["text"]).pack(pady=(20, 4))
+        ctk.CTkLabel(dialog, text="All interaction will be disabled.", font=ctk.CTkFont(size=11), text_color=COLOR["text_muted"]).pack(pady=(0, 12))
+
+        btn_row = ctk.CTkFrame(dialog, fg_color="transparent")
+        btn_row.pack(fill="x", padx=24, pady=(0, 16))
+
+        def on_lock():
+            dialog.destroy()
+            self._apply_lock()
+
+        ctk.CTkButton(btn_row, text="Lock", command=on_lock, fg_color=COLOR["warning"], hover_color="#B8860B", text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"), height=30, corner_radius=6).pack(side="left", expand=True, fill="x", padx=(0, 4))
+        ctk.CTkButton(btn_row, text="Cancel", command=dialog.destroy, fg_color="transparent", hover_color=COLOR["surface2"], border_width=1, border_color=COLOR["border"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=11, weight="bold"), height=30, corner_radius=6).pack(side="left", expand=True, fill="x", padx=(4, 0))
+
+    def _confirm_unlock(self):
+        dialog = ctk.CTkToplevel(self)
+        dialog.title("Lordbot Control")
+        dialog.geometry("320x140")
+        dialog.resizable(False, False)
+        dialog.configure(fg_color=COLOR["surface"])
+        dialog.transient(self)
+        dialog.grab_set()
+        dialog.after(200, lambda: dialog.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        dialog.update_idletasks()
+        x = self.winfo_x() + (self.winfo_width() - 320) // 2
+        y = self.winfo_y() + (self.winfo_height() - 140) // 2
+        dialog.geometry(f"320x140+{x}+{y}")
+
+        ctk.CTkLabel(dialog, text="Unlock Application?", font=ctk.CTkFont(size=13, weight="bold"), text_color=COLOR["text"]).pack(pady=(20, 4))
+        ctk.CTkLabel(dialog, text="Resume normal interaction.", font=ctk.CTkFont(size=11), text_color=COLOR["text_muted"]).pack(pady=(0, 12))
+
+        btn_row = ctk.CTkFrame(dialog, fg_color="transparent")
+        btn_row.pack(fill="x", padx=24, pady=(0, 16))
+
+        def on_unlock():
+            dialog.destroy()
+            self._apply_unlock()
+
+        ctk.CTkButton(btn_row, text="Unlock", command=on_unlock, fg_color=COLOR["success"], hover_color="#2E7D32", text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"), height=30, corner_radius=6).pack(side="left", expand=True, fill="x", padx=(0, 4))
+        ctk.CTkButton(btn_row, text="Cancel", command=dialog.destroy, fg_color="transparent", hover_color=COLOR["surface2"], border_width=1, border_color=COLOR["border"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=11, weight="bold"), height=30, corner_radius=6).pack(side="left", expand=True, fill="x", padx=(4, 0))
+
+    def _get_all_interactive_widgets(self):
+        """Collect all interactive widgets from all tab frames."""
+        widgets = []
+        def _collect(parent):
+            for child in parent.winfo_children():
+                cls = type(child).__name__
+                if cls in ("CTkButton", "CTkEntry", "CTkCheckBox", "CTkComboBox",
+                           "CTkSlider", "CTkSwitch", "CTkOptionMenu",
+                           "CTkSegmentedButton", "CTkTextbox"):
+                    widgets.append(child)
+                # Recurse into containers only (CTkFrame, CTkScrollableFrame, etc.)
+                # Skip recursing into leaf interactive widgets
+                if cls not in ("CTkButton", "CTkEntry", "CTkCheckBox", "CTkComboBox",
+                               "CTkSlider", "CTkSwitch", "CTkOptionMenu",
+                               "CTkSegmentedButton", "CTkTextbox"):
+                    _collect(child)
+        for frame in self.tab_frames:
+            _collect(frame)
+        return widgets
+
+    def _apply_lock(self):
+        self._is_locked = True
+        self._lock_btn.icon_label.configure(text="\uE72E")
+
+        for w in self._get_all_interactive_widgets():
+            try:
+                w.configure(state="disabled")
+            except Exception:
+                pass
+        self.log_gui("[System] Application locked")
+
+    def _apply_unlock(self):
+        self._is_locked = False
+        self._lock_btn.icon_label.configure(text="\uE785")
+
+        for w in self._get_all_interactive_widgets():
+            cls = type(w).__name__
+            try:
+                if cls == "CTkTextbox":
+                    w.configure(state="disabled")  # Keep log read-only
+                elif cls == "CTkEntry":
+                    w.configure(state="normal")
+                else:
+                    w.configure(state="normal")
+            except Exception:
+                pass
+        self.log_gui("[System] Application unlocked")
+
+    def _confirm_quit(self):
+        """Show a styled confirmation dialog before quitting."""
+        dialog = ctk.CTkToplevel(self)
+        dialog.title("Lordbot Control")
+        dialog.geometry("320x140")
+        dialog.resizable(False, False)
+        dialog.configure(fg_color=COLOR["surface"])
+        dialog.transient(self)
+        dialog.grab_set()
+        dialog.after(200, lambda: dialog.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
+        dialog.update_idletasks()
+        x = self.winfo_x() + (self.winfo_width() - 320) // 2
+        y = self.winfo_y() + (self.winfo_height() - 140) // 2
+        dialog.geometry(f"320x140+{x}+{y}")
+
+        ctk.CTkLabel(
+            dialog, text="Quit Application?",
+            font=ctk.CTkFont(size=13, weight="bold"), text_color=COLOR["text"]
+        ).pack(pady=(20, 4))
+        ctk.CTkLabel(
+            dialog, text="All running accounts will be stopped.",
+            font=ctk.CTkFont(size=11), text_color=COLOR["text_muted"]
+        ).pack(pady=(0, 12))
+
+        btn_row = ctk.CTkFrame(dialog, fg_color="transparent")
+        btn_row.pack(fill="x", padx=24, pady=(0, 16))
+
+        ctk.CTkButton(
+            btn_row, text="Quit", command=self.destroy,
+            fg_color=COLOR["danger"], hover_color="#8B2020",
+            text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6
+        ).pack(side="left", expand=True, fill="x", padx=(0, 4))
+
+        ctk.CTkButton(
+            btn_row, text="Cancel", command=dialog.destroy,
+            fg_color="transparent", hover_color=COLOR["surface2"],
+            border_width=1, border_color=COLOR["border"],
+            text_color=COLOR["text_muted"], font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6
+        ).pack(side="left", expand=True, fill="x", padx=(4, 0))
+
     # ==================== Output Tab ====================
     def _setup_output_tab(self):
-        self.tab_output.grid_columnconfigure(0, weight=1)
+        self.tab_output.grid_columnconfigure(0, weight=65, uniform="out_col")
+        self.tab_output.grid_columnconfigure(1, weight=35, uniform="out_col")
         self.tab_output.grid_rowconfigure(0, weight=1)
 
-        # Main Card
-        card = ctk.CTkFrame(self.tab_output, fg_color=COLOR["surface"], corner_radius=12, border_width=1, border_color=COLOR["border_subtle"])
-        card.grid(row=0, column=0, sticky="nsew", padx=PAD["lg"], pady=PAD["lg"])
-        
+        # ═══ LEFT: System Logs ═══
+        log_card = ctk.CTkFrame(self.tab_output, fg_color=COLOR["surface"], corner_radius=12, border_width=1, border_color=COLOR["border_subtle"])
+        log_card.grid(row=0, column=0, sticky="nsew", padx=(PAD["lg"], PAD["sm"]), pady=PAD["lg"])
+
         # Header Area
-        header_frame = ctk.CTkFrame(card, fg_color="transparent", height=40)
+        header_frame = ctk.CTkFrame(log_card, fg_color="transparent", height=40)
         header_frame.pack(fill="x", padx=PAD["lg"], pady=(PAD["md"], 0))
         header_frame.pack_propagate(False)
 
@@ -431,11 +656,11 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         ).pack(side="left")
 
         # Divider
-        divider = ctk.CTkFrame(card, height=1, fg_color=COLOR["border"])
+        divider = ctk.CTkFrame(log_card, height=1, fg_color=COLOR["border"])
         divider.pack(fill="x", padx=PAD["lg"], pady=PAD["sm"])
 
         # Textbox container
-        tb_container = ctk.CTkFrame(card, fg_color=COLOR["bg"], corner_radius=8, border_width=1, border_color=COLOR["border_subtle"])
+        tb_container = ctk.CTkFrame(log_card, fg_color=COLOR["bg"], corner_radius=8, border_width=1, border_color=COLOR["border_subtle"])
         tb_container.pack(fill="both", expand=True, padx=PAD["lg"], pady=(0, PAD["lg"]))
 
         self.log_textbox = ctk.CTkTextbox(
@@ -448,12 +673,127 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         self.log_textbox.pack(fill="both", expand=True, padx=10, pady=10)
         
         # Configure text tags for different log levels
-        self.log_textbox.tag_config("time", foreground=COLOR["text_dim"])
-        self.log_textbox.tag_config("default", foreground=COLOR["text"])
-        self.log_textbox.tag_config("success", foreground=COLOR["success"])
-        self.log_textbox.tag_config("warning", foreground=COLOR["warning"])
-        self.log_textbox.tag_config("error", foreground=COLOR["danger"])
-        self.log_textbox.tag_config("system", foreground=COLOR["primary"])
+        self.log_textbox.tag_config("time", foreground="#636e7b")
+        self.log_textbox.tag_config("default", foreground="#C8CCD0")
+        self.log_textbox.tag_config("success", foreground="#4ADE80")
+        self.log_textbox.tag_config("warning", foreground="#FACC15")
+        self.log_textbox.tag_config("error", foreground="#F87171")
+        self.log_textbox.tag_config("system", foreground="#60A5FA")
+        self.log_textbox.tag_config("test", foreground="#22D3EE")
+        self.log_textbox.tag_config("macro", foreground="#C084FC")
+        self.log_textbox.tag_config("flowchart", foreground="#FB923C")
+        self.log_textbox.tag_config("loop_engine", foreground="#2DD4BF")
+        self.log_textbox.tag_config("alert", foreground="#F87171")
+        self.log_textbox.tag_config("matched", foreground="#4ADE80")
+        self.log_textbox.tag_config("skip", foreground="#A1A1AA")
+        self.log_textbox.tag_config("info", foreground="#93C5FD")
+        self.log_textbox.tag_config("separator", foreground="#525866")
+        self.log_textbox.tag_config("account", foreground="#A78BFA")
+
+        # ═══ RIGHT: Software Info ═══
+        info_card = ctk.CTkFrame(self.tab_output, fg_color=COLOR["surface"], corner_radius=12, border_width=1, border_color=COLOR["border_subtle"])
+        info_card.grid(row=0, column=1, sticky="nsew", padx=(0, PAD["lg"]), pady=PAD["lg"])
+
+        # Info header
+        info_header = ctk.CTkFrame(info_card, fg_color="transparent", height=40)
+        info_header.pack(fill="x", padx=PAD["lg"], pady=(PAD["md"], 0))
+        info_header.pack_propagate(False)
+        ctk.CTkLabel(
+            info_header, text="Application Info",
+            font=ctk.CTkFont(family=FONT["family"], size=13, weight="bold"),
+            text_color="#FFFFFF"
+        ).pack(side="left", pady=10)
+
+        ctk.CTkFrame(info_card, height=1, fg_color=COLOR["border"]).pack(fill="x", padx=PAD["lg"], pady=PAD["sm"])
+
+        # Scrollable info content
+        info_scroll = ctk.CTkScrollableFrame(info_card, fg_color="transparent", scrollbar_button_color=COLOR["border"], scrollbar_button_hover_color=COLOR["text_muted"])
+        info_scroll.pack(fill="both", expand=True, padx=PAD["md"], pady=(0, PAD["lg"]))
+
+        self._info_container = info_scroll
+        self._build_info_panel()
+
+    def _build_info_panel(self):
+        """Build or rebuild the software info panel content."""
+        import sys
+        import platform
+
+        container = self._info_container
+        for w in container.winfo_children():
+            w.destroy()
+
+        lbl_font = ctk.CTkFont(size=10, weight="bold")
+        val_font = ctk.CTkFont(family="Consolas", size=10)
+        dim_color = COLOR["text_muted"]
+        val_color = COLOR["text_dim"]
+
+        def _section(title):
+            ctk.CTkLabel(container, text=title, font=ctk.CTkFont(size=11, weight="bold"), text_color=COLOR["primary"], anchor="w").pack(fill="x", pady=(12, 4))
+            ctk.CTkFrame(container, height=1, fg_color=COLOR["border_subtle"]).pack(fill="x", pady=(0, 6))
+
+        def _row(label, value, color=val_color):
+            row = ctk.CTkFrame(container, fg_color="transparent")
+            row.pack(fill="x", pady=1)
+            ctk.CTkLabel(row, text=label, font=lbl_font, text_color=dim_color, width=100, anchor="w").pack(side="left")
+            ctk.CTkLabel(row, text=str(value), font=val_font, text_color=color, anchor="w").pack(side="left", fill="x", expand=True)
+
+        # ── Version & Environment ──
+        _section("Environment")
+        _row("Version", "v2.0")
+        _row("Python", f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}")
+        _row("Platform", platform.system() + " " + platform.release())
+        _row("Architecture", platform.machine())
+
+        try:
+            from screeninfo import get_monitors
+            mon = get_monitors()[0]
+            _row("Display", f"{mon.width}×{mon.height}")
+        except Exception:
+            try:
+                import ctypes as _ct
+                w = _ct.windll.user32.GetSystemMetrics(0)
+                h = _ct.windll.user32.GetSystemMetrics(1)
+                _row("Display", f"{w}×{h}")
+            except Exception:
+                pass
+
+        # ── Data Counts ──
+        _section("Loaded Data")
+        tracker_count = len(self.trackers) if hasattr(self, 'trackers') else 0
+        combo_count = len(self.combos) if hasattr(self, 'combos') else 0
+        loop_count = len(self.loops) if hasattr(self, 'loops') else 0
+        acc_count = len(self.multi_accounts) if hasattr(self, 'multi_accounts') else 0
+        _row("Nodes", tracker_count)
+        _row("Macros", combo_count)
+        _row("Loops", loop_count)
+        _row("Accounts", acc_count)
+
+        # ── Chrome ──
+        _section("Chrome")
+        if hasattr(self, 'chrome_manager'):
+            active = self.chrome_manager.get_active_ports()
+            _row("Active Ports", len(active))
+            if active:
+                _row("Ports", ", ".join(str(p) for p in sorted(active)))
+        else:
+            _row("Status", "Not initialized")
+
+        # ── File Paths ──
+        _section("Paths")
+        base = os.path.dirname(os.path.abspath(__file__))
+        _row("App Dir", base)
+        _row("Trackers", os.path.join(base, "trackers"))
+        _row("Database", os.path.join(base, "bot_state.db"))
+        _row("Config", os.path.join(base, "config.json"))
+
+        # Refresh button
+        ctk.CTkButton(
+            container, text="↻ Refresh Info", command=self._build_info_panel,
+            fg_color="transparent", hover_color=COLOR["surface2"],
+            border_width=1, border_color=COLOR["border"],
+            text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"),
+            height=28, corner_radius=6
+        ).pack(fill="x", pady=(16, 4))
 
     # ==================== Thread-Safe GUI Queue ====================
     def process_gui_queue(self):
@@ -491,17 +831,49 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             self.log_textbox.delete("1.0", "20.0")
         current_time = time.strftime("%H:%M:%S")
         
-        # Determine tag
+        # Determine tag — priority-based pattern matching
         tag = "default"
         text_lower = text.lower()
-        if "error" in text_lower or "fail" in text_lower or "exception" in text_lower:
-            tag = "error"
-        elif "success" in text_lower or "complet" in text_lower or "done" in text_lower or "acquir" in text_lower or "restored" in text_lower:
-            tag = "success"
-        elif "warning" in text_lower or "timeout" in text_lower:
-            tag = "warning"
+
+        # Separators (===, ---, ***)
+        stripped = text.strip().replace(" ", "")
+        if stripped and len(stripped) >= 6 and stripped[0] in "=-*" and stripped.count(stripped[0]) >= len(stripped) * 0.5:
+            tag = "separator"
+        # Specific prefixes (highest priority)
+        elif "[test" in text_lower:
+            tag = "test"
+        elif "[macro]" in text_lower or "[test macro]" in text_lower:
+            tag = "macro"
+        elif "[flowchart]" in text_lower:
+            tag = "flowchart"
+        elif "[loop engine]" in text_lower:
+            tag = "loop_engine"
         elif "[system]" in text_lower:
             tag = "system"
+        elif "[alert]" in text_lower:
+            tag = "alert"
+        # Account worker logs (e.g. [VIP-33])
+        elif text.startswith("[") and "]" in text[:20]:
+            bracket_content = text[1:text.index("]")]
+            if any(c.isdigit() for c in bracket_content) and not bracket_content.startswith("0"):
+                tag = "account"
+        # Keyword fallbacks
+        if tag == "default":
+            if "error" in text_lower or "fail" in text_lower or "exception" in text_lower:
+                tag = "error"
+            elif "matched" in text_lower or "found" in text_lower and "not" not in text_lower:
+                tag = "matched"
+            elif "success" in text_lower or "complet" in text_lower or "done" in text_lower or "acquir" in text_lower or "restored" in text_lower or "✓" in text:
+                tag = "success"
+            elif "warning" in text_lower or "timeout" in text_lower:
+                tag = "warning"
+            elif "skip" in text_lower or "cancel" in text_lower or "abort" in text_lower:
+                tag = "skip"
+
+        # Override: error keywords always win
+        if tag not in ("error", "separator"):
+            if "error" in text_lower or "fail" in text_lower or "exception" in text_lower:
+                tag = "error"
 
         self.log_textbox.insert("end", f"[{current_time}] ", "time")
         self.log_textbox.insert("end", f"{text}\n", tag)

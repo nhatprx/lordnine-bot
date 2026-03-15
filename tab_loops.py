@@ -855,7 +855,7 @@ class LoopsMixin:
                             local_log(f"    - Marker interrupted. Resetting hold timer.")
                             hold_start = None
                             last_log_time = 0
-                    time.sleep(1.0)
+                    time.sleep(0.5)  # Optimized: was 1.0s
                 continue
             
             # --- CLICK step (find + click, no marker) ---
@@ -880,9 +880,9 @@ class LoopsMixin:
                     bot_instance.click_at(x, y, randomize=True)
                     local_log(f"    - Step OK: Clicked '{node_name}'")
                     found = True
-                    time.sleep(random.uniform(1.2, 2.0))
+                    time.sleep(random.uniform(0.3, 0.5))  # Optimized: was 1.2-2.0s
                     break
-                time.sleep(1.0)
+                time.sleep(0.3)  # Optimized: was 1.0s
             if not found:
                 local_log(f"    - Step FAILED: Could not find '{node_name}' after 5s.")
                 return False
