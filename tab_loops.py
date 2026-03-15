@@ -686,7 +686,7 @@ class LoopsMixin:
                     for attempt in range(3):
                         frame_bytes = None
                         if page:
-                            try: frame_bytes = page.screenshot()
+                            try: frame_bytes = page.screenshot(type="jpeg", quality=80)
                             except: pass
                         res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
                         if res:
@@ -717,7 +717,7 @@ class LoopsMixin:
                     
                     frame_bytes = None
                     if page:
-                        try: frame_bytes = page.screenshot()
+                        try: frame_bytes = page.screenshot(type="jpeg", quality=80)
                         except: pass
                     res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
                     
@@ -748,7 +748,11 @@ class LoopsMixin:
     def _internal_macro_runner(self, macro_data, bot_instance, acc_name=None, page=None, use_direct_vision=False):
         """Core macro runner used by loop engine and coordinator workers."""
         steps = macro_data.get("steps", [])
-        threshold_val = self.slider.get()
+        # [THREAD-SAFE] Cache threshold once at start
+        try:
+            threshold_val = self.slider.get()
+        except:
+            threshold_val = 0.54
         
         # Route vision calls: direct (multi-account) or pooled (single-tab)
         def _find(path, threshold, debug=False, frame_bytes=None):
@@ -763,17 +767,31 @@ class LoopsMixin:
                 self.log_gui(msg)
         
         for idx, step_data in enumerate(steps):
+            # [FIX] Check if worker was stopped before each step
+            if acc_name and not self.account_running.get(acc_name, False):
+                local_log(f"[Macro] Stopped at step {idx+1}/{len(steps)} (worker stopped)")
+                return False
+            if not acc_name and not self.is_looping:
+                return False
+            
             if isinstance(step_data, str):
                 step_data = {"node": step_data}
             
             step_type = step_data.get("type", "click")
             
-            # --- DELAY step ---
+            # --- DELAY step (interruptible) ---
             if step_type == "delay":
                 delay_ms = float(step_data.get("time", 1000))
                 delay_sec = delay_ms / 1000.0
                 local_log(f"[Macro] ({idx+1}/{len(steps)}) Delay: {delay_ms:.0f}ms ({delay_sec:.1f}s)...")
-                time.sleep(delay_sec)
+                # Split into small chunks so stop signal is honored
+                chunks = int(delay_sec * 10)
+                for _ in range(max(1, chunks)):
+                    if acc_name and not self.account_running.get(acc_name, False):
+                        return False
+                    if not acc_name and not self.is_looping:
+                        return False
+                    time.sleep(0.1)
                 local_log(f"[Macro] Delay completed.")
                 continue
             
@@ -822,7 +840,7 @@ class LoopsMixin:
                     
                     frame_bytes = None
                     if page:
-                        try: frame_bytes = page.screenshot()
+                        try: frame_bytes = page.screenshot(type="jpeg", quality=80)
                         except: pass
                     
                     # Fail image check
@@ -872,7 +890,7 @@ class LoopsMixin:
                 frame_bytes = None
                 if page:
                     try:
-                        frame_bytes = page.screenshot()
+                        frame_bytes = page.screenshot(type="jpeg", quality=80)
                     except: pass
                 res = _find(filepath, threshold_val, debug=False, frame_bytes=frame_bytes)
                 if res:
@@ -901,7 +919,7 @@ class LoopsMixin:
         
         frame_bytes = None
         if page:
-            try: frame_bytes = page.screenshot()
+            try: frame_bytes = page.screenshot(type="jpeg", quality=80)
             except: pass
         
         if success_capture != "None":

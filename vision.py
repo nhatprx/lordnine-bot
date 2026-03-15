@@ -5,12 +5,42 @@ import time
 import os
 import ctypes
 from concurrent.futures import ThreadPoolExecutor
+from node_features import load_features
 
 # DPI Aware
 try:
     ctypes.windll.shcore.SetProcessDpiAwareness(2) 
 except Exception:
     pass
+
+# Template cache: avoid re-reading from disk every detection
+_template_cache = {}  # path -> (bgr, gray, mtime)
+_TEMPLATE_CACHE_MAX = 50  # Evict oldest when full
+
+def _load_template_cached(template_path):
+    """Load template with caching. Re-reads if file changed on disk."""
+    global _template_cache
+    try:
+        mtime = os.path.getmtime(template_path)
+    except:
+        mtime = 0
+    
+    cached = _template_cache.get(template_path)
+    if cached and cached[2] == mtime:
+        return cached[0], cached[1]
+    
+    bgr = cv2.imread(template_path, cv2.IMREAD_COLOR)
+    if bgr is None:
+        return None, None
+    gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
+    
+    # Evict oldest if cache full
+    if len(_template_cache) >= _TEMPLATE_CACHE_MAX:
+        oldest = next(iter(_template_cache))
+        del _template_cache[oldest]
+    
+    _template_cache[template_path] = (bgr, gray, mtime)
+    return bgr, gray
 
 
 def _match_template_worker(template_path, threshold, debug, region, frame_bytes, write_debug=True):
@@ -24,13 +54,14 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
     
     Returns: (center_x, center_y, final_score) or None
     """
-    template_bgr = cv2.imread(template_path, cv2.IMREAD_COLOR)
+    template_bgr, template_gray = _load_template_cached(template_path)
     if template_bgr is None:
         return None
-        
-    template_gray = cv2.cvtColor(template_bgr, cv2.COLOR_BGR2GRAY)
     tpl_h_orig, tpl_w_orig = template_gray.shape[:2]
     is_small_template = tpl_w_orig < 60 or tpl_h_orig < 60
+    
+    # Try to load precomputed features (Node Learning)
+    precomputed = load_features(template_path)
 
     # 1. Capture screen
     if frame_bytes is not None:
@@ -62,27 +93,14 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
     
     # ==========================================
     # PREPROCESSING: CLAHE contrast enhancement
+    # Use precomputed template CLAHE if available
     # ==========================================
     clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
     img_clahe = clahe.apply(img_gray)
-    tpl_clahe = clahe.apply(template_gray)
+    tpl_clahe = precomputed["clahe"] if precomputed else clahe.apply(template_gray)
     
-    # ==========================================
-    # PREPROCESSING: Canny edge maps
-    # ==========================================
-    # Gaussian blur FIRST to suppress noise from complex 3D backgrounds
-    img_blur = cv2.GaussianBlur(img_clahe, (3, 3), 0)
-    tpl_blur = cv2.GaussianBlur(tpl_clahe, (3, 3), 0)
-    
-    # Higher thresholds for screen (very busy 3D game scene)
-    img_edges = cv2.Canny(img_blur, 80, 200)
-    # Lower thresholds for template (clean, small UI element)
-    tpl_edges = cv2.Canny(tpl_blur, 50, 150)
-    
-    # Dilate edges for overlap tolerance (thicker = more forgiving matching)
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-    img_edges = cv2.dilate(img_edges, kernel, iterations=1)
-    tpl_edges = cv2.dilate(tpl_edges, kernel, iterations=1)
+    # NOTE: Edge preprocessing is LAZY — only computed if needed
+    # (skipped entirely on early-exit)
 
     # ==========================================
     # MULTI-SCALE + MULTI-METHOD matching
@@ -91,17 +109,16 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
     best_ccorr  = None   # (score, loc, w, h)
     best_edge   = None   # (score, loc, w, h)
     
-    # Optimized: Web mode uses fewer scales + early exit on strong match.
-    # Screenshot resolution is fixed, so scale 1.0 is tested FIRST.
     is_web_mode = frame_bytes is not None
     
     if is_web_mode:
-        # Web: test 1.0 first, then nearby. Early exit if strong.
         scales = [1.0, 1.05, 0.95, 1.1, 0.9]
     else:
         scales = list(np.linspace(0.8, 1.2, 9)[::-1])
     
     early_exit = False
+    img_edges = None  # Lazy: computed only when needed
+    tpl_edges = None
     
     for scale in scales:
         width = int(template_gray.shape[1] * scale)
@@ -113,6 +130,10 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
             continue
         
         resized_clahe = cv2.resize(tpl_clahe, (width, height))
+        # Use precomputed scaled template if available at this exact scale
+        scale_key = f"clahe_{scale:.2f}"
+        if precomputed and scale_key in precomputed:
+            resized_clahe = precomputed[scale_key]
         
         # Method 1: CLAHE-enhanced CCOEFF (most reliable)
         res1 = cv2.matchTemplate(img_clahe, resized_clahe, cv2.TM_CCOEFF_NORMED)
@@ -120,20 +141,50 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
         if best_ccoeff is None or max_val1 > best_ccoeff[0]:
             best_ccoeff = (max_val1, max_loc1, width, height)
         
-        # EARLY EXIT: If CCOEFF alone is well above threshold, skip remaining.
-        # This saves ~80% time when the target is clearly visible.
-        if is_web_mode and max_val1 > threshold + 0.05:
-            early_exit = True
-            break
+        # EARLY EXIT: CCOEFF well above threshold + quick histogram confirm
+        # Raised from +0.05 to +0.10 for accuracy — only exit when VERY confident
+        if is_web_mode and max_val1 > threshold + 0.10:
+            # Quick histogram verify before accepting early exit
+            roi_x, roi_y = max(0, max_loc1[0]), max(0, max_loc1[1])
+            roi = img_bgr[roi_y:roi_y+height, roi_x:roi_x+width]
+            if roi.shape[0] > 0 and roi.shape[1] > 0:
+                resized_tpl = cv2.resize(template_bgr, (width, height))
+                h_scores = []
+                for ch in range(3):
+                    h1 = cv2.calcHist([roi], [ch], None, [32], [0, 256])
+                    h2 = cv2.calcHist([resized_tpl], [ch], None, [32], [0, 256])
+                    cv2.normalize(h1, h1)
+                    cv2.normalize(h2, h2)
+                    h_scores.append(cv2.compareHist(h1, h2, cv2.HISTCMP_CORREL))
+                hist_ok = float(np.mean(h_scores)) > 0.3
+            else:
+                hist_ok = False
+            
+            if hist_ok:
+                early_exit = True
+                break
         
-        # Method 2: CCORR — skip in web mode (weakest signal)
+        # Method 2: CCORR — skip in web mode
         if not is_web_mode:
             res2 = cv2.matchTemplate(img_clahe, resized_clahe, cv2.TM_CCORR_NORMED)
             _, max_val2, _, max_loc2 = cv2.minMaxLoc(res2)
             if best_ccorr is None or max_val2 > best_ccorr[0]:
                 best_ccorr = (max_val2, max_loc2, width, height)
         
-        # Method 3: Edge-based CCOEFF (background-immune)
+        # Method 3: Edge-based CCOEFF — use precomputed edges if available
+        if img_edges is None:
+            img_blur = cv2.GaussianBlur(img_clahe, (3, 3), 0)
+            img_edges = cv2.Canny(img_blur, 80, 200)
+            kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+            img_edges = cv2.dilate(img_edges, kernel, iterations=1)
+            # Use precomputed template edges if available
+            if precomputed and precomputed.get("edges_dilated") is not None:
+                tpl_edges = precomputed["edges_dilated"]
+            else:
+                tpl_blur = cv2.GaussianBlur(tpl_clahe, (3, 3), 0)
+                tpl_edges = cv2.Canny(tpl_blur, 50, 150)
+                tpl_edges = cv2.dilate(tpl_edges, kernel, iterations=1)
+        
         resized_edge = cv2.resize(tpl_edges, (width, height))
         if np.count_nonzero(resized_edge) > 20:
             res3 = cv2.matchTemplate(img_edges, resized_edge, cv2.TM_CCOEFF_NORMED)
@@ -230,7 +281,12 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
             orb = cv2.ORB_create(nfeatures=500, scaleFactor=1.2, nlevels=8,
                                   edgeThreshold=10, patchSize=20)
             
-            kp_tpl, des_tpl = orb.detectAndCompute(tpl_clahe, None)
+            # Use precomputed ORB keypoints/descriptors if available
+            if precomputed and len(precomputed.get("orb_keypoints", [])) >= 4 and precomputed.get("orb_des") is not None and precomputed["orb_des"].size > 0:
+                kp_tpl = precomputed["orb_keypoints"]
+                des_tpl = precomputed["orb_des"]
+            else:
+                kp_tpl, des_tpl = orb.detectAndCompute(tpl_clahe, None)
             kp_img, des_img = orb.detectAndCompute(img_clahe, None)
             
             if des_tpl is not None and des_img is not None and len(kp_tpl) >= 4 and len(kp_img) >= 4:
@@ -278,11 +334,12 @@ def _match_template_worker(template_path, threshold, debug, region, frame_bytes,
     # Final score
     final_score = fusion_score
     
-    # [DEBUG LOG]
-    tpl_name = os.path.basename(template_path)
-    is_web = frame_bytes is not None
-    small_tag = "[S]" if is_small_template else "[L]"
-    print(f"[Vision] [{tpl_name}] {small_tag} {'WEB' if is_web else 'MSS'} CC:{ccoeff_score:.3f} ED:{edge_score:.3f} CR:{ccorr_score:.3f} ORB:{orb_score:.2f} H:{hist_score:.3f} => final:{final_score:.3f} vs thresh:{threshold}")
+    # [DEBUG LOG] — only when debug=True to prevent stdout flooding
+    if debug:
+        tpl_name = os.path.basename(template_path)
+        is_web = frame_bytes is not None
+        small_tag = "[S]" if is_small_template else "[L]"
+        print(f"[Vision] [{tpl_name}] {small_tag} {'WEB' if is_web else 'MSS'} CC:{ccoeff_score:.3f} ED:{edge_score:.3f} CR:{ccorr_score:.3f} ORB:{orb_score:.2f} H:{hist_score:.3f} => final:{final_score:.3f} vs thresh:{threshold}")
 
     if debug and write_debug:
         try:

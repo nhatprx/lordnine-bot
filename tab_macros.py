@@ -1442,7 +1442,7 @@ class MacrosMixin:
                         
                         frame_bytes = None
                         if page:
-                            try: frame_bytes = page.screenshot()
+                            try: frame_bytes = page.screenshot(type="jpeg", quality=80)
                             except: pass
                         
                         # Fail image check
@@ -1492,7 +1492,7 @@ class MacrosMixin:
                 for attempt in range(5):
                     frame_bytes = None
                     if page:
-                        try: frame_bytes = page.screenshot()
+                        try: frame_bytes = page.screenshot(type="jpeg", quality=80)
                         except: pass
                     res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
                     if res:

@@ -10,14 +10,34 @@ from bot_action import BotAction
 from playwright.sync_api import sync_playwright
 from chrome_manager import ChromeManager
 from state_db import StateDB
-
+from connection_pool import PlaywrightPool
 
 class AccountsMixin:
     """Mixin for the Accounts/Coordinator tab. Mixed into BotApp."""
 
+    # ---- Thread-safe account_running helpers ----
+    _running_lock = threading.Lock()
+    _pw_pool = None  # Shared PlaywrightPool for all workers
+
+    def _is_running(self, acc_name):
+        """Thread-safe check if account is running."""
+        with self._running_lock:
+            return self.account_running.get(acc_name, False)
+
+    def _set_running(self, acc_name, val):
+        """Thread-safe set account running state."""
+        with self._running_lock:
+            self.account_running[acc_name] = val
+
+    def _get_pw_pool(self):
+        """Get or create shared PlaywrightPool."""
+        if self._pw_pool is None:
+            self._pw_pool = PlaywrightPool()
+        return self._pw_pool
+
     def setup_multi_tab(self):
         # Sort state
-        self._acc_sort_key = None    # "port", "tab", "name", "status", "loop" or None
+        self._acc_sort_key = None    # "port", "tab", "name", "status", "function" or None
         self._acc_sort_reverse = False
 
         # Full-width single column layout (no 2-column split)
@@ -104,14 +124,14 @@ class AccountsMixin:
         self._btn_stop.pack(side="left")
         ctk.CTkButton(left_grp, text="Delete", command=self._delete_selected_accounts, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=45, height=24, corner_radius=4).pack(side="left", padx=(1, 0))
 
-        # Right group: Loop assignment
+        # Right group: Function assignment (loops + macros)
         right_grp = ctk.CTkFrame(toolbar_inner, fg_color="transparent")
         right_grp.pack(side="right")
-        ctk.CTkLabel(right_grp, text="Loop:", text_color=COLOR["text_dim"], font=ctk.CTkFont(size=10, weight="bold")).pack(side="left", padx=(0, 2))
-        self.loop_assign_combo = ctk.CTkComboBox(right_grp, values=[], width=120, font=ctk.CTkFont(size=10), height=24, corner_radius=4, fg_color=COLOR["surface"], border_color=COLOR["border_subtle"])
-        self.loop_assign_combo.pack(side="left", padx=(0, 4))
-        self.loop_assign_combo.set("")
-        ctk.CTkButton(right_grp, text="Assign", command=self._assign_loop_to_selected, fg_color=COLOR["primary"], hover_color=COLOR["primary_h"], font=ctk.CTkFont(size=10, weight="bold"), corner_radius=4, height=24, width=50).pack(side="left")
+        ctk.CTkLabel(right_grp, text="Function:", text_color=COLOR["text_dim"], font=ctk.CTkFont(size=10, weight="bold")).pack(side="left", padx=(0, 2))
+        self.func_assign_combo = ctk.CTkComboBox(right_grp, values=[], width=160, font=ctk.CTkFont(size=10), height=24, corner_radius=4, fg_color=COLOR["surface"], border_color=COLOR["border_subtle"])
+        self.func_assign_combo.pack(side="left", padx=(0, 4))
+        self.func_assign_combo.set("")
+        ctk.CTkButton(right_grp, text="Assign", command=self._assign_function_to_selected, fg_color=COLOR["primary"], hover_color=COLOR["primary_h"], font=ctk.CTkFont(size=10, weight="bold"), corner_radius=4, height=24, width=50).pack(side="left")
 
         # Center group: Stats + Search (expands to fill middle, content centered)
         center_grp = ctk.CTkFrame(toolbar_inner, fg_color="transparent")
@@ -613,7 +633,7 @@ class AccountsMixin:
                     "tab": lambda a: int(a.get('target', '0')) if str(a.get('target', '0')).isdigit() else 0,
                     "name": lambda a: a['name'].lower(),
                     "status": lambda a: 0 if self.account_running.get(a['name'], False) else 1,
-                    "loop": lambda a: (a.get('loop', '') or '').lower(),
+                    "function": lambda a: (a.get('loop', '') or '').lower(),
                 }
                 if self._acc_sort_key in key_map:
                     display_list.sort(key=key_map[self._acc_sort_key], reverse=self._acc_sort_reverse)
@@ -623,7 +643,7 @@ class AccountsMixin:
         for idx, acc in enumerate(display_list):
             name = acc['name']
             port = acc.get('port', 9222)
-            is_running = self.account_running.get(name, False)
+            is_running = self._is_running(name)
             
             # Count stats
             if is_running:
@@ -681,7 +701,7 @@ class AccountsMixin:
             btn_color = COLOR["danger"] if is_running else COLOR["success"]
             
             def toggle_single(n=name):
-                if self.account_running.get(n, False):
+                if self._is_running(n):
                     self._stop_account(n)
                 else:
                     self._start_account(n)
@@ -700,7 +720,7 @@ class AccountsMixin:
             self.acc_stats_label.configure(text=" · ".join(parts) if parts else "")
 
         # Refresh loop dropdown values
-        self._refresh_loop_combo()
+        self._refresh_func_combo()
 
     def update_dash_status(self, acc_name, status, color="white"):
         self.gui_queue.put(("dash_status", (acc_name, status, color)))
@@ -750,17 +770,17 @@ class AccountsMixin:
             self._btn_start.configure(text="Start All", command=self._batch_start_all)
             self._btn_stop.configure(text="Stop All", command=self._batch_stop_all)
     
-    def _assign_loop_to_selected(self):
-        loop_name = self.loop_assign_combo.get().strip()
-        if not loop_name:
-            self._acc_styled_info("Select a loop", "Choose a loop from the dropdown first")
+    def _assign_function_to_selected(self):
+        func_name = self.func_assign_combo.get().strip()
+        if not func_name:
+            self._acc_styled_info("Select a function", "Choose a loop or macro from the dropdown first")
             return
         
         count = 0
         for acc in self.multi_accounts:
             name = acc['name']
             if self.dash_checkboxes.get(name) and self.dash_checkboxes[name].get():
-                acc['loop'] = loop_name
+                acc['loop'] = func_name
                 count += 1
         
         if count == 0:
@@ -769,13 +789,19 @@ class AccountsMixin:
         
         self.save_multi()
         self.refresh_multi_acc_list()
-        self.log_gui(f"[Accounts] Assigned loop '{loop_name}' to {count} account(s)")
+        self.log_gui(f"[Accounts] Assigned '{func_name}' to {count} account(s)")
     
-    def _refresh_loop_combo(self):
-        """Update the loop assignment dropdown with available loops."""
-        if hasattr(self, 'loop_assign_combo') and hasattr(self, 'loops'):
-            loop_names = list(self.loops.keys()) if self.loops else []
-            self.loop_assign_combo.configure(values=loop_names)
+    def _refresh_func_combo(self):
+        """Update the function assignment dropdown with available loops + macros."""
+        if hasattr(self, 'func_assign_combo'):
+            items = []
+            if hasattr(self, 'loops') and self.loops:
+                for name in self.loops.keys():
+                    items.append(f"loop - {name}")
+            if hasattr(self, 'combos') and self.combos:
+                for name in self.combos.keys():
+                    items.append(f"macro - {name}")
+            self.func_assign_combo.configure(values=items)
 
     # ---- Sort ----
     def _sort_by(self, key):
@@ -791,7 +817,7 @@ class AccountsMixin:
         """Update header button text with sort arrows."""
         if not hasattr(self, '_sort_header_btns'):
             return
-        labels = {"port": "PORT", "tab": "TAB", "name": "NAME", "status": "STATUS", "loop": "LOOP"}
+        labels = {"port": "PORT", "tab": "TAB", "name": "NAME", "status": "STATUS", "function": "FUNCTION"}
         for key, btn in self._sort_header_btns.items():
             base = labels[key]
             if self._acc_sort_key == key:
@@ -809,7 +835,7 @@ class AccountsMixin:
             return
 
         # Check if any selected are running
-        running_selected = [n for n in to_delete if self.account_running.get(n, False)]
+        running_selected = [n for n in to_delete if self._is_running(n)]
 
         dialog = ctk.CTkToplevel(self)
         dialog.title("Lordbot Control")
@@ -878,7 +904,7 @@ class AccountsMixin:
             self.log_gui(f"[Accounts] Deleted {len(to_delete)} account(s): {names_preview}")
 
     def _start_account(self, acc_name):
-        if self.account_running.get(acc_name, False):
+        if self._is_running(acc_name):
             return
         
         acc = None
@@ -889,7 +915,7 @@ class AccountsMixin:
         if not acc:
             return
         
-        self.account_running[acc_name] = True
+        self._set_running(acc_name, True)
         self.state_db.save_account_state(acc_name, status="starting")
         
         t = threading.Thread(target=self._account_worker_thread, args=(acc,), daemon=True)
@@ -901,14 +927,14 @@ class AccountsMixin:
         self.refresh_multi_acc_list()
     
     def _stop_account(self, acc_name):
-        self.account_running[acc_name] = False
+        self._set_running(acc_name, False)
         self.state_db.save_account_state(acc_name, status="stopping")
         self.update_dash_status(acc_name, "Stopping...", COLOR["warning"])
         self.log_gui(f"[{acc_name}] Stop signal sent")
         self.after(1500, self.refresh_multi_acc_list)
 
     def toggle_coordinator(self):
-        has_running = any(self.account_running.get(a['name'], False) for a in self.multi_accounts)
+        has_running = any(self._is_running(a['name']) for a in self.multi_accounts)
         if has_running:
             self._batch_stop_all()
         else:
@@ -932,50 +958,49 @@ class AccountsMixin:
         ctk.CTkLabel(info, text=text, font=ctk.CTkFont(size=11), text_color=COLOR["text_muted"]).pack(pady=(0, 12))
         ctk.CTkButton(info, text="OK", command=info.destroy, fg_color=COLOR["primary"], text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"), height=30, corner_radius=6, width=100).pack()
 
-    # ---- Health Monitor ----
+    # ---- Health Monitor (optimized: only check running account ports, 60s interval) ----
     def _start_health_monitor(self):
         self.health_monitor_active = True
         
         def _monitor_loop():
             while self.health_monitor_active:
                 try:
-                    active_ports = self.chrome_mgr.get_active_ports()
-                    
                     for acc_name, thread in list(self.account_workers.items()):
-                        if self.account_running.get(acc_name, False) and not thread.is_alive():
-                            # Check DB status: only restart if it was actually running
-                            # (not finished normally or user-stopped)
+                        if self._is_running(acc_name) and not thread.is_alive():
                             db_state = self.state_db.get_account_state(acc_name)
                             db_status = db_state.get("status", "") if db_state else ""
                             last_active = db_state.get("last_active", 0) if db_state else 0
                             
-                            # Worker finished normally (idle) or was stopped by user
-                            # → just clean up the flag, do NOT restart
                             if db_status in ("idle", "stopping", "stopped", "finished", "starting", "connection_failed", ""):
-                                self.account_running[acc_name] = False
+                                self._set_running(acc_name, False)
                                 continue
                             
-                            # If worker was active very recently (<10s), it likely just
-                            # finished but cleanup hasn't completed. Skip this cycle.
                             if time.time() - last_active < 10:
                                 continue
                             
-                            # Worker truly crashed (was running/connected but thread died)
                             self.gui_queue.put(("log", f"[Health] Worker {acc_name} died (status={db_status})! Restarting..."))
-                            self.account_running[acc_name] = False
+                            self._set_running(acc_name, False)
                             self.state_db.save_account_state(acc_name, status="crashed")
                             for acc in self.multi_accounts:
                                 if acc['name'] == acc_name:
-                                    self.account_running[acc_name] = True
+                                    self._set_running(acc_name, True)
                                     t = threading.Thread(target=self._account_worker_thread, args=(acc,), daemon=True)
                                     self.account_workers[acc_name] = t
                                     t.start()
                                     self.gui_queue.put(("log", f"[Health] Worker {acc_name} restarted"))
                                     break
+                    
+                    # Periodic DB maintenance
+                    try:
+                        self.state_db.checkpoint()
+                    except:
+                        pass
+                        
                 except Exception as e:
                     pass
                 
-                for _ in range(60):
+                # 60s interval (was 30s) — saves CPU/network
+                for _ in range(120):
                     if not self.health_monitor_active:
                         return
                     time.sleep(0.5)
@@ -984,17 +1009,43 @@ class AccountsMixin:
     # ---- Worker Thread (per account) ----
     def _account_worker_thread(self, acc):
         acc_name = acc['name']
-        loop_name = acc['loop']
+        func_value = acc.get('loop', '')
         tab_idx = int(acc.get('target', '0')) if str(acc.get('target', '0')).isdigit() else 0
         port = acc.get('port', 9222)
-        # NOTE: threshold is read fresh each iteration inside the loop, not frozen here
         
-        graph = self.loops.get(loop_name, {})
-        nodes = graph.get("nodes", {})
-        edges = graph.get("edges", [])
+        # Parse function prefix: "loop - name" or "macro - name" (legacy: plain loop name)
+        is_macro_mode = False
+        if func_value.startswith("macro - "):
+            is_macro_mode = True
+            func_name = func_value[8:]  # strip "macro - "
+        elif func_value.startswith("loop - "):
+            func_name = func_value[7:]  # strip "loop - "
+        else:
+            func_name = func_value  # legacy: treat as loop name
+        
+        # [THREAD-SAFE] Cache threshold from GUI once at start
+        try:
+            threshold_val = self.slider.get()
+        except:
+            threshold_val = 0.54
+        
+        if is_macro_mode:
+            # Macro mode: get macro steps from combos
+            macro_steps = self.combos.get(func_name)
+            if not macro_steps:
+                self.update_dash_status(acc_name, f"Macro '{func_name}' not found", COLOR["danger"])
+                self._set_running(acc_name, False)
+                return
+            graph = {}
+            nodes = {}
+            edges = []
+        else:
+            # Loop mode: get graph
+            graph = self.loops.get(func_name, {})
+            nodes = graph.get("nodes", {})
+            edges = graph.get("edges", [])
         
         # Stagger start — avoid all workers hitting Chrome CDP at the same instant
-        # Cap at 5s max, cycle through slots
         if tab_idx > 0:
             import random
             stagger = (tab_idx % 4) * 0.5 + random.uniform(0, 0.5)
@@ -1002,9 +1053,12 @@ class AccountsMixin:
             time.sleep(stagger)
         
         self.update_dash_status(acc_name, "Connecting...", COLOR["warning"])
-        self.state_db.save_account_state(acc_name, loop_name=loop_name, status="connecting", 
+        self.state_db.save_account_state(acc_name, loop_name=func_value, status="connecting", 
                                           port=port, tab_index=tab_idx)
         
+        # Each worker MUST own its own Playwright instance — sync_api is thread-affine (greenlet-based)
+        # Sharing across threads causes "Cannot switch to a different thread" crashes.
+        # The Chrome process (~100MB) is already shared per port; the pw connection is lightweight (~10-20MB).
         browser = None
         page = None
         pw = None
@@ -1014,7 +1068,7 @@ class AccountsMixin:
             
             max_retries = 5
             for attempt in range(max_retries):
-                if not self.account_running.get(acc_name, False):
+                if not self._is_running(acc_name):
                     return False
                 try:
                     if pw is None:
@@ -1049,7 +1103,7 @@ class AccountsMixin:
             self.update_dash_status(acc_name, "Connection Failed", COLOR["danger"])
             self.state_db.save_account_state(acc_name, status="connection_failed", 
                                               error_msg="Could not connect after retries")
-            self.account_running[acc_name] = False
+            self._set_running(acc_name, False)
             if pw: 
                 try: pw.stop()
                 except: pass
@@ -1070,15 +1124,25 @@ class AccountsMixin:
             return None
 
         current_node_id = get_start_node()
+        restart_count = 0  # Track consecutive restarts to prevent infinite loop
+        max_restarts = 3
         
         self.state_db.save_account_state(acc_name, status="running", current_node=current_node_id or "")
         
-        while self.account_running.get(acc_name, False):
+        while self._is_running(acc_name):
             if not current_node_id or current_node_id not in nodes:
-                self.update_dash_status(acc_name, "Restarting Loop", COLOR["warning"])
+                restart_count += 1
+                if restart_count > max_restarts:
+                    self.log_gui(f"[{acc_name}] Loop restarted {max_restarts} times. Stopping to prevent infinite loop.")
+                    self.update_dash_status(acc_name, "Loop Error: Too many restarts", COLOR["danger"])
+                    break
+                self.update_dash_status(acc_name, f"Restarting Loop ({restart_count}/{max_restarts})", COLOR["warning"])
                 time.sleep(1.0)
                 current_node_id = get_start_node()
                 continue
+            
+            # Reset restart counter on successful node execution
+            restart_count = 0
 
             n = nodes[current_node_id]
             ntype = n["type"]
@@ -1099,14 +1163,14 @@ class AccountsMixin:
                 self.state_db.log_action(acc_name, "delay", f"{delay_ms:.0f}ms")
                 steps = int(delay_sec * 10)
                 for _ in range(steps):
-                    if not self.account_running.get(acc_name, False): break
+                    if not self._is_running(acc_name): break
                     time.sleep(0.1)
                 next_nid = get_next_node(current_node_id, "out")
                 
             elif ntype == "Condition":
                 img_name = ndata.get("image_name")
                 filepath = self.tracked_icons.get(img_name)
-                threshold_val = self.slider.get()  # Fresh threshold each iteration
+                # Use cached threshold (thread-safe)
                 
                 if not filepath or not os.path.exists(filepath):
                     self.update_dash_status(acc_name, f"Cond Err: Missing Image", COLOR["danger"])
@@ -1118,7 +1182,7 @@ class AccountsMixin:
                     for attempt in range(3):
                         frame_bytes = None
                         try:
-                            frame_bytes = page.screenshot()
+                            frame_bytes = page.screenshot(type="jpeg", quality=80)
                         except Exception as e:
                             self.log_gui(f"[{acc_name}] Screenshot Error, reconnecting: {str(e)[:40]}")
                             self.state_db.log_action(acc_name, "reconnect", f"Screenshot failed: {e}")
@@ -1172,7 +1236,7 @@ class AccountsMixin:
             elif ntype == "Click":
                 img_name = ndata.get("image_name")
                 filepath = self.tracked_icons.get(img_name)
-                threshold_val = self.slider.get()
+                # Use cached threshold (thread-safe)
                 
                 if not filepath or not os.path.exists(filepath):
                     self.update_dash_status(acc_name, f"Click Err: Missing", COLOR["danger"])
@@ -1181,7 +1245,7 @@ class AccountsMixin:
                     self.update_dash_status(acc_name, f"Click: {img_name}...", COLOR["warning"])
                     frame_bytes = None
                     try:
-                        frame_bytes = page.screenshot()
+                        frame_bytes = page.screenshot(type="jpeg", quality=80)
                     except Exception as e:
                         self.log_gui(f"[{acc_name}] Screenshot Error: {str(e)[:40]}")
                         if connect_to_tab():
@@ -1208,11 +1272,25 @@ class AccountsMixin:
                 break
 
             current_node_id = next_nid
+            
+            # If next_nid is None and we didn't break (non-End node), try 'out' fallback
+            if current_node_id is None and ntype not in ("End",):
+                fallback = get_next_node(current_node_id if current_node_id else '', "out")
+                if fallback is None:
+                    # Try using the previous node's 'out' edge
+                    fallback = get_next_node(nodes.get(ntype, {}).get('id', ''), "out") if False else None
+                # current_node_id stays None → will trigger restart counter above
 
         # ---- Cleanup (set flags FIRST to prevent health monitor restart) ----
-        self.account_running[acc_name] = False
+        self._set_running(acc_name, False)
         self.state_db.save_account_state(acc_name, status="idle", current_node=current_node_id or "")
         self.update_dash_status(acc_name, "Stopped", COLOR["text_dim"])
+        
+        # Detach CDP session to prevent leaks
+        try:
+            bot_instance._detach_cdp()
+        except:
+            pass
         
         if browser:
             try: browser.close()

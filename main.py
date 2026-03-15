@@ -151,7 +151,22 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         self.configure(fg_color=COLOR["bg"])
 
         self.vision = Vision()
-        self.debug_visual_var = ctk.BooleanVar(value=True)
+        
+        # Load saved config for debug toggle
+        _saved_debug = True
+        _saved_port = "9222"
+        _saved_tab = "0"
+        try:
+            if os.path.exists("config.json"):
+                with open("config.json", "r") as f:
+                    _cfg = json.load(f)
+                _saved_debug = _cfg.get("debug_visual", True)
+                _saved_port = str(_cfg.get("port", 9222))
+                _saved_tab = str(_cfg.get("tab", 0))
+        except: pass
+        self.debug_visual_var = ctk.BooleanVar(value=_saved_debug)
+        self._saved_port = _saved_port
+        self._saved_tab = _saved_tab
 
         # Load saved data
         self.combos = {}
@@ -334,7 +349,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             font=ctk.CTkFont(family="Consolas", size=10),
             justify="center"
         )
-        self.footer_tab_input.insert(0, "0")
+        self.footer_tab_input.insert(0, self._saved_tab)
         self.footer_tab_input.pack(side="right", padx=(0, 8))
         self.footer_tab_label = ctk.CTkLabel(
             self.statusbar, text="Tab",
@@ -350,7 +365,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             font=ctk.CTkFont(family="Consolas", size=10),
             justify="center"
         )
-        self.footer_port_input.insert(0, "9222")
+        self.footer_port_input.insert(0, self._saved_port)
         self.footer_port_input.pack(side="right", padx=(0, 8))
         self.footer_port_label = ctk.CTkLabel(
             self.statusbar, text="Port",
@@ -421,8 +436,8 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         self.load_multi()
 
         # Refresh loop dropdown in Accounts tab
-        if hasattr(self, '_refresh_loop_combo'):
-            self._refresh_loop_combo()
+        if hasattr(self, '_refresh_func_combo'):
+            self._refresh_func_combo()
 
         # Refresh accounts list
         if hasattr(self, 'refresh_multi_acc_list'):
@@ -583,7 +598,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         btn_row.pack(fill="x", padx=24, pady=(0, 16))
 
         ctk.CTkButton(
-            btn_row, text="Quit", command=self.destroy,
+            btn_row, text="Quit", command=lambda: (self._save_config_settings(), self.destroy()),
             fg_color=COLOR["danger"], hover_color="#8B2020",
             text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"),
             height=30, corner_radius=6
@@ -822,13 +837,17 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
     # ==================== Logging ====================
     def log_gui(self, text):
+        # Cap queue at 500 items to prevent OOM if GUI freezes
+        if self.gui_queue.qsize() > 500:
+            try: self.gui_queue.get_nowait()
+            except: pass
         self.gui_queue.put(("log", text))
 
     def _internal_log_gui(self, text):
         self.log_textbox.configure(state="normal")
         lines = int(self.log_textbox.index('end').split('.')[0]) - 1
-        if lines > 150:
-            self.log_textbox.delete("1.0", "20.0")
+        if lines > 80:
+            self.log_textbox.delete("1.0", "40.0")
         current_time = time.strftime("%H:%M:%S")
         
         # Determine tag — priority-based pattern matching

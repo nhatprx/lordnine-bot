@@ -140,17 +140,25 @@ class StateDB:
         )
         conn.commit()
         
-        # Auto-cleanup: keep only last 5000 entries per account
-        conn.execute("""
-            DELETE FROM execution_log 
-            WHERE account = ? AND id NOT IN (
-                SELECT id FROM execution_log 
-                WHERE account = ? 
-                ORDER BY timestamp DESC 
-                LIMIT 5000
-            )
-        """, (account, account))
-        conn.commit()
+        # Auto-cleanup: batch prune only every ~100 inserts (not every call)
+        if not hasattr(self._local, '_log_count'):
+            self._local._log_count = 0
+        self._local._log_count += 1
+        if self._local._log_count >= 100:
+            self._local._log_count = 0
+            try:
+                conn.execute("""
+                    DELETE FROM execution_log 
+                    WHERE account = ? AND id NOT IN (
+                        SELECT id FROM execution_log 
+                        WHERE account = ? 
+                        ORDER BY timestamp DESC 
+                        LIMIT 2000
+                    )
+                """, (account, account))
+                conn.commit()
+            except:
+                pass
     
     def get_recent_logs(self, account=None, limit=100):
         """Get recent log entries."""
@@ -195,3 +203,29 @@ class StateDB:
         if hasattr(self._local, 'conn') and self._local.conn:
             self._local.conn.close()
             self._local.conn = None
+    
+    def checkpoint(self):
+        """Force WAL checkpoint to compact the database file.
+        Call periodically to prevent WAL file from growing unbounded."""
+        try:
+            conn = self._get_conn()
+            conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+        except:
+            pass
+    
+    def cleanup_old_logs(self, max_per_account=2000):
+        """Batch cleanup of old logs for all accounts."""
+        try:
+            conn = self._get_conn()
+            conn.execute(f"""
+                DELETE FROM execution_log
+                WHERE id NOT IN (
+                    SELECT id FROM (
+                        SELECT id, ROW_NUMBER() OVER (PARTITION BY account ORDER BY timestamp DESC) as rn
+                        FROM execution_log
+                    ) WHERE rn <= {max_per_account}
+                )
+            """)
+            conn.commit()
+        except:
+            pass

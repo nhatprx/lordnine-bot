@@ -7,6 +7,7 @@ import os
 import pyautogui
 from PIL import Image
 import json
+from node_features import precompute_features, batch_precompute
 
 from constants import COLOR, FONT, PAD, RADIUS, get_page_by_visual_index
 
@@ -56,6 +57,15 @@ class NodesMixin:
             width=50, height=24, corner_radius=4
         )
         self.del_selected_btn.pack(side="right", padx=(2, 0))
+
+        # Learn All button — right next to Delete
+        self.learn_btn = ctk.CTkButton(
+            title_row, text="⚡ Learn", command=self._learn_all_nodes,
+            fg_color="transparent", hover_color=COLOR["surface2"],
+            text_color=COLOR["warning"], font=ctk.CTkFont(size=11, weight="bold"),
+            width=55, height=24, corner_radius=4
+        )
+        self.learn_btn.pack(side="right", padx=(2, 0))
 
         self.add_btn = ctk.CTkButton(
             title_row, text="+ Add", command=self.add_new_target,
@@ -261,12 +271,24 @@ class NodesMixin:
     def _on_threshold_change(self, value):
         self.thresh_value_label.configure(text=f"{value:.2f}")
         self.status_threshold.configure(text=f"Threshold: {value:.2f}")
+        self._save_config_settings(threshold=round(value, 2))
+
+    def _save_config_settings(self, **kwargs):
+        """Save settings to config.json. Merges with existing values."""
         try:
             cfg = {}
             if os.path.exists("config.json"):
                 with open("config.json", "r") as f:
                     cfg = json.load(f)
-            cfg["threshold"] = round(value, 2)
+            # Always capture current state of all settings
+            try: cfg["debug_visual"] = self.debug_visual_var.get()
+            except: pass
+            try: cfg["port"] = int(self.footer_port_input.get())
+            except: pass
+            try: cfg["tab"] = int(self.footer_tab_input.get())
+            except: pass
+            # Merge any explicit overrides
+            cfg.update(kwargs)
             with open("config.json", "w") as f:
                 json.dump(cfg, f)
         except: pass
@@ -283,6 +305,8 @@ class NodesMixin:
             
             if self.tracked_icons:
                 self.after(500, lambda: self.log_gui(f"[System] Setup restored {len(self.tracked_icons)} active nodes."))
+                # Auto-learn features on startup for any templates missing .features.npz
+                self.after(1000, self._auto_learn_if_needed)
 
     def refresh_tracked_list(self):
         for widget in self.btn_container.winfo_children():
@@ -466,7 +490,7 @@ class NodesMixin:
             
             frame_bytes = None
             if page:
-                try: frame_bytes = page.screenshot()
+                try: frame_bytes = page.screenshot(type="jpeg", quality=80)
                 except: pass
             
             res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=True, frame_bytes=frame_bytes)
@@ -888,6 +912,66 @@ class NodesMixin:
             img.save(save_path)
             self.deiconify()
             success_callback(x2-x1, y2-y1)
+            # Auto-precompute features for the new/updated template
+            threading.Thread(target=self._precompute_node, args=(save_path,), daemon=True).start()
             
         snipper = ScreenCaptureTool(on_snip)
         snipper.run()
+
+    def _precompute_node(self, template_path):
+        """Precompute features for a single node (runs in background thread)."""
+        try:
+            name = os.path.splitext(os.path.basename(template_path))[0]
+            if precompute_features(template_path):
+                self.log_gui(f"[⚡ Learn] Learned features for [{name}]")
+            else:
+                self.log_gui(f"[⚡ Learn] Failed to learn [{name}]")
+        except Exception as e:
+            self.log_gui(f"[⚡ Learn] Error: {str(e)[:50]}")
+
+    def _auto_learn_if_needed(self):
+        """Check if any templates are missing features and auto-learn them."""
+        from node_features import get_feature_status
+        status = get_feature_status("trackers")
+        missing = [(name, has, stale) for name, has, stale in status if not has or stale]
+        if missing:
+            self.log_gui(f"[⚡ Learn] {len(missing)} nodes need learning, starting...")
+            threading.Thread(target=self._auto_learn_batch, daemon=True).start()
+
+    def _auto_learn_batch(self):
+        try:
+            s, f, sk = batch_precompute("trackers")
+            if s > 0:
+                self.log_gui(f"[⚡ Learn] Auto-learned {s} nodes on startup")
+        except:
+            pass
+
+    def _learn_all_nodes(self):
+        """Batch precompute features for all node templates."""
+        if hasattr(self, '_learn_done') and not self._learn_done:
+            return  # Already running
+        self.learn_btn.configure(state="disabled", text="Learning...")
+        self._learn_done = False
+        def _run():
+            try:
+                success, failed, skipped = batch_precompute("trackers")
+                total = success + failed + skipped
+                if success > 0:
+                    self.log_gui(f"[⚡ Learn] Done! {success} new nodes learned" + (f", {skipped} already learned" if skipped else ""))
+                elif skipped > 0:
+                    self.log_gui(f"[⚡ Learn] All {skipped} nodes already learned ✓ (features up-to-date)")
+                else:
+                    self.log_gui(f"[⚡ Learn] No nodes to learn")
+                if failed > 0:
+                    self.log_gui(f"[⚡ Learn] Warning: {failed} nodes failed")
+            except Exception as e:
+                self.log_gui(f"[⚡ Learn] Batch error: {str(e)[:60]}")
+            finally:
+                self._learn_done = True
+        threading.Thread(target=_run, daemon=True).start()
+        def _poll():
+            if self._learn_done:
+                self.learn_btn.configure(state="normal", text="⚡ Learn All")
+            else:
+                self.after(300, _poll)
+        self.after(300, _poll)
