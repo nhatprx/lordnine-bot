@@ -4,7 +4,7 @@
             "name": "VIP-33",
             "target": "0",
             "port": 9222,
-            "loop": "macro - Return Home",
+            "loop": "loop - Farm Mode 1",
             "proxy": "",
             "enabled": true,
             "group": "default"
@@ -13,7 +13,7 @@
             "name": "VIP-34",
             "target": "1",
             "port": 9222,
-            "loop": "macro - Return Home",
+            "loop": "loop - Farm Mode 1",
             "proxy": "",
             "enabled": true,
             "group": "default"
@@ -22,7 +22,34 @@
             "name": "VIP-35",
             "target": "2",
             "port": 9222,
-            "loop": "macro - Return Home",
+            "loop": "loop - Farm Mode 1",
+            "proxy": "",
+            "enabled": true,
+            "group": "default"
+        },
+        {
+            "name": "VIP-37",
+            "target": "0",
+            "port": 9223,
+            "loop": "loop - Farm Mode 1",
+            "proxy": "",
+            "enabled": true,
+            "group": "default"
+        },
+        {
+            "name": "VIP-39",
+            "target": "1",
+            "port": 9223,
+            "loop": "loop - Farm Mode 1",
+            "proxy": "",
+            "enabled": true,
+            "group": "default"
+        },
+        {
+            "name": "VIP-44",
+            "target": "2",
+            "port": 9223,
+            "loop": "loop - Farm Mode 1",
             "proxy": "",
             "enabled": true,
             "group": "default"
