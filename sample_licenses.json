@@ -1,0 +1,19 @@
+{
+    "licenses": {
+        "Q7LP-X4M3-K8T6-A9F2": {
+            "status": "active",
+            "client": "Client 1",
+            "expires": "2026-12-31"
+        },
+        "D8R1-Y6K3-Z4VN-H9QW": {
+            "status": "active",
+            "client": "Client 2",
+            "expires": "2026-12-31"
+        },
+        "P5XJ-LQ7C-8T2M-4D9A": {
+            "status": "active",
+            "client": "Client 3",
+            "expires": "2026-12-31"
+        }
+    }
+}

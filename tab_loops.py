@@ -8,7 +8,7 @@ import random
 
 from constants import COLOR, FONT, PAD, RADIUS, get_page_by_visual_index
 from bot_action import BotAction
-from playwright.sync_api import sync_playwright
+from cdp_client import CDPClient
 from flowchart_ui import FlowchartUI
 
 
@@ -564,37 +564,29 @@ class LoopsMixin:
                     return e["to"]
             return None
             
-        playwright_ctx = sync_playwright().start()
-        browser = None
-        page = None
+        from cdp_client import CDPClient
+        cdp_client = None
         
         if tab_id is not None:
              try:
                  self.log_gui(f"[Loop Engine] Connecting to Port {port}, Tab {tab_id}...")
-                 browser = playwright_ctx.chromium.connect_over_cdp(f"http://localhost:{port}")
-                 context = browser.contexts[0]
-                 page, info = get_page_by_visual_index(context, tab_id, port=port)
-                 if page:
-                     if isinstance(info, list):
-                         for idx_t, title_t, url_t in info:
-                             self.log_gui(f"[Loop Engine]   Tab {idx_t}: {title_t}")
-                     self.log_gui(f"[Loop Engine] Hooked to Tab {tab_id}")
-                 else:
-                     self.log_gui(f"[Loop Engine] {info}")
-                     playwright_ctx.stop()
-                     return
+                 cdp_client = CDPClient.connect(port=port, tab_index=tab_id)
+                 
+                 tabs = CDPClient.list_tabs(port)
+                 for idx_t, t in enumerate(tabs):
+                     self.log_gui(f"[Loop Engine]   Tab {idx_t}: {t.get('title', '?')[:25]}")
+                 self.log_gui(f"[Loop Engine] Hooked to Tab {tab_id}")
              except Exception as e:
                  self.log_gui(f"[Loop Engine] Connection fail: {e}")
-                 playwright_ctx.stop()
                  return
                  
-        bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
+        bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
         
         def _get_phone_region():
             """Get the active phone's bounding box as (x, y, w, h) in screenshot pixel space."""
-            if not page: return None
+            if not cdp_client: return None
             try:
-                bbox = page.evaluate("""() => {
+                bbox = cdp_client.evaluate("""(() => {
                     const imgs = document.querySelectorAll('img.screen-img');
                     if (!imgs.length) return null;
                     let best = null, bestArea = 0;
@@ -608,7 +600,7 @@ class LoopsMixin:
                     if (!best) return null;
                     const dpr = window.devicePixelRatio || 1;
                     return [best.x * dpr, best.y * dpr, best.width * dpr, best.height * dpr];
-                }""")
+                })()""")
                 return tuple(bbox) if bbox else None
             except:
                 return None
@@ -640,7 +632,7 @@ class LoopsMixin:
                     self._set_loop_status(f"Running Macro: {mac_name}", COLOR["accent"])
                     self.log_gui(f"[FLOWCHART] Executing Macro: {mac_name}")
                     macro_data = self.combos[mac_name]
-                    result = self._internal_macro_runner(macro_data, bot_instance, page=page)
+                    result = self._internal_macro_runner(macro_data, bot_instance, cdp_client=cdp_client)
                     if result:
                         self._set_loop_status(f"Macro [{mac_name}] → OK", COLOR["success"])
                         self.log_gui(f"[FLOWCHART] -> Macro OK. Following success path.")
@@ -685,8 +677,8 @@ class LoopsMixin:
                     found_res = None
                     for attempt in range(3):
                         frame_bytes = None
-                        if page:
-                            try: frame_bytes = page.screenshot(type="jpeg", quality=80)
+                        if cdp_client:
+                            try: frame_bytes = cdp_client.screenshot()
                             except: pass
                         res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
                         if res:
@@ -716,8 +708,8 @@ class LoopsMixin:
                     self.log_gui(f"[FLOWCHART] Looking for '{img_name}' to click...")
                     
                     frame_bytes = None
-                    if page:
-                        try: frame_bytes = page.screenshot(type="jpeg", quality=80)
+                    if cdp_client:
+                        try: frame_bytes = cdp_client.screenshot()
                         except: pass
                     res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
                     
@@ -742,10 +734,11 @@ class LoopsMixin:
 
         self._clear_highlight()
         self._set_loop_status("Idle — Loop ended", COLOR["text_dim"])
-        if browser: browser.close()
-        playwright_ctx.stop()
+        if cdp_client:
+            try: cdp_client.close()
+            except: pass
 
-    def _internal_macro_runner(self, macro_data, bot_instance, acc_name=None, page=None, use_direct_vision=False):
+    def _internal_macro_runner(self, macro_data, bot_instance, acc_name=None, page=None, cdp_client=None, use_direct_vision=False):
         """Core macro runner used by loop engine and coordinator workers."""
         steps = macro_data.get("steps", [])
         # [THREAD-SAFE] Cache threshold once at start
@@ -839,7 +832,10 @@ class LoopsMixin:
                         if not self.is_looping: break
                     
                     frame_bytes = None
-                    if page:
+                    if cdp_client:
+                        try: frame_bytes = cdp_client.screenshot()
+                        except: pass
+                    elif page:
                         try: frame_bytes = page.screenshot(type="jpeg", quality=80)
                         except: pass
                     
@@ -888,7 +884,11 @@ class LoopsMixin:
             found = False
             for attempt in range(5):
                 frame_bytes = None
-                if page:
+                if cdp_client:
+                    try:
+                        frame_bytes = cdp_client.screenshot()
+                    except: pass
+                elif page:
                     try:
                         frame_bytes = page.screenshot(type="jpeg", quality=80)
                     except: pass
@@ -918,7 +918,10 @@ class LoopsMixin:
         time.sleep(1.0)
         
         frame_bytes = None
-        if page:
+        if cdp_client:
+            try: frame_bytes = cdp_client.screenshot()
+            except: pass
+        elif page:
             try: frame_bytes = page.screenshot(type="jpeg", quality=80)
             except: pass
         

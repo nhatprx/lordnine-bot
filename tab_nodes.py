@@ -21,6 +21,8 @@ class NodesMixin:
         self.icon_buttons = {}
         self.icon_checkbox_vars = {}
         self.is_tracking = False
+        self.node_thresholds = {}  # per-node threshold: {name: float}
+        self._load_node_thresholds()
 
         os.makedirs("trackers", exist_ok=True)
 
@@ -208,15 +210,16 @@ class NodesMixin:
         )
         self.slider.pack(side="right", padx=(PAD["sm"], PAD["sm"]))
 
-        saved_thresh = 0.85
+        saved_thresh = 0.7
         try:
             if os.path.exists("config.json"):
                 with open("config.json", "r") as f:
                     cfg = json.load(f)
-                saved_thresh = cfg.get("threshold", 0.85)
+                saved_thresh = cfg.get("threshold", 0.7)
         except: pass
         self.slider.set(saved_thresh)
         self.thresh_value_label.configure(text=f"{saved_thresh:.2f}")
+        self._default_threshold = saved_thresh  # Global default for nodes without per-node threshold
 
         # Row 2: Debug toggle
         debug_row = ctk.CTkFrame(self.settings_frame, fg_color="transparent")
@@ -270,8 +273,14 @@ class NodesMixin:
 
     def _on_threshold_change(self, value):
         self.thresh_value_label.configure(text=f"{value:.2f}")
-        self.status_threshold.configure(text=f"Threshold: {value:.2f}")
-        self._save_config_settings(threshold=round(value, 2))
+        # Save per-node threshold only
+        if self.current_selected_name:
+            self.node_thresholds[self.current_selected_name] = round(value, 2)
+            self._save_node_thresholds()
+        else:
+            # No node selected → update global default
+            self._default_threshold = round(value, 2)
+            self._save_config_settings(threshold=round(value, 2))
 
     def _save_config_settings(self, **kwargs):
         """Save settings to config.json. Merges with existing values."""
@@ -292,6 +301,29 @@ class NodesMixin:
             with open("config.json", "w") as f:
                 json.dump(cfg, f)
         except: pass
+
+    def _load_node_thresholds(self):
+        """Load per-node thresholds from trackers/thresholds.json."""
+        try:
+            path = os.path.join("trackers", "thresholds.json")
+            if os.path.exists(path):
+                with open(path, "r") as f:
+                    self.node_thresholds = json.load(f)
+        except:
+            self.node_thresholds = {}
+
+    def _save_node_thresholds(self):
+        """Save per-node thresholds to trackers/thresholds.json."""
+        try:
+            path = os.path.join("trackers", "thresholds.json")
+            with open(path, "w") as f:
+                json.dump(self.node_thresholds, f, indent=2)
+        except:
+            pass
+
+    def get_node_threshold(self, name):
+        """Get threshold for a specific node, falling back to global."""
+        return self.node_thresholds.get(name, self.slider.get())
 
     def load_saved_trackers(self):
         if os.path.exists("trackers"):
@@ -408,6 +440,11 @@ class NodesMixin:
 
         self.recapture_btn.configure(state="normal")
         self.delete_btn.configure(state="normal")
+
+        # Load per-node threshold (fallback to global default)
+        node_thresh = self.node_thresholds.get(name, self._default_threshold)
+        self.slider.set(node_thresh)
+        self.thresh_value_label.configure(text=f"{node_thresh:.2f}")
         self.test_node_btn.configure(state="normal")
 
     def _show_test_notification(self, text, color, bg_color):
@@ -464,61 +501,48 @@ class NodesMixin:
             threshold_val = frozen_threshold
             
             page = None
-            playwright_ctx = None
-            browser = None
+            cdp_client = None
             try:
-                from playwright.sync_api import sync_playwright
-                playwright_ctx = sync_playwright().start()
-                browser = playwright_ctx.chromium.connect_over_cdp(f"http://localhost:{port}")
-                if browser.contexts and browser.contexts[0].pages:
-                    context = browser.contexts[0]
-                    
-                    # Log available tabs so user knows which index to use
-                    try:
-                        resp = urllib.request.urlopen(f"http://localhost:{port}/json")
-                        targets = _json_test.loads(resp.read().decode())
-                        page_targets = [t for t in targets if t.get("type") == "page"]
-                        tab_list = " | ".join([f"[{i}] {t.get('title', '?')[:25]}" for i, t in enumerate(page_targets)])
-                        self.log_gui(f"[TEST] Port {port} | Tabs: {tab_list}")
-                        self.log_gui(f"[TEST] Using Tab {tab_id}")
-                    except:
-                        pass
-                    
-                    page, info = get_page_by_visual_index(context, tab_id, port=port)
-            except:
-                pass
+                from cdp_client import CDPClient
+                
+                # Log available tabs
+                try:
+                    import urllib.request
+                    import json as _json_tabs
+                    resp = urllib.request.urlopen(f"http://localhost:{port}/json")
+                    targets = _json_tabs.loads(resp.read().decode())
+                    page_targets = [t for t in targets if t.get("type") == "page"]
+                    tab_list = " | ".join([f"[{i}] {t.get('title', '?')[:25]}" for i, t in enumerate(page_targets)])
+                    self.log_gui(f"[TEST] Port {port} | Tabs: {tab_list}")
+                    self.log_gui(f"[TEST] Using Tab {tab_id}")
+                except:
+                    pass
+                
+                cdp_client = CDPClient.connect(port=port, tab_index=tab_id)
+            except Exception as e:
+                self.log_gui(f"[TEST] Connection failed: {str(e)[:60]}")
             
             frame_bytes = None
-            if page:
-                try: frame_bytes = page.screenshot(type="jpeg", quality=80)
+            if cdp_client:
+                try: frame_bytes = cdp_client.screenshot()
                 except: pass
             
             res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=True, frame_bytes=frame_bytes)
             if res:
                 x, y, score = res
-                # Show success notification via gui_queue
                 self.gui_queue.put(("test_notif", (
                     f"Found '{name}' at ({x}, {y}) — Accuracy: {score:.2f}",
                     COLOR["success"], "#0D3320"
                 )))
                 self.log_gui(f"[TEST] Found '{name}' at ({x}, {y}) — Accuracy: {score:.2f}")
                 # Show red debug dot
-                if page and self.debug_visual_var.get():
+                if cdp_client and self.debug_visual_var.get():
                     try:
-                        dpr = float(page.evaluate("window.devicePixelRatio"))
+                        dpr = float(cdp_client.evaluate("window.devicePixelRatio"))
                     except:
                         dpr = 1.0
                     css_x = x / dpr
                     css_y = y / dpr
-                    
-                    target_frame = page.main_frame
-                    for f in page.frames:
-                        try:
-                            if f.evaluate("document.querySelectorAll('canvas').length > 0"):
-                                target_frame = f
-                                break
-                        except:
-                            pass
                     
                     js_dot = """
                     (args) => {
@@ -529,23 +553,26 @@ class NodesMixin:
                     }
                     """
                     try:
-                        target_frame.evaluate(js_dot, {'x': css_x, 'y': css_y})
+                        canvas_frame = cdp_client.find_canvas_frame()
+                        if canvas_frame:
+                            cdp_client.evaluate_in_specific_frame(
+                                canvas_frame,
+                                f"({js_dot})({{x: {css_x}, y: {css_y}}})"
+                            )
+                        else:
+                            cdp_client.evaluate(f"({js_dot})({{x: {css_x}, y: {css_y}}})")
                     except:
                         pass
             else:
-                # Show failure notification via gui_queue
                 self.gui_queue.put(("test_notif", (
                     f"Not found '{name}' on screen (Threshold: {threshold_val:.2f})",
                     COLOR["danger"], "#3D1111"
                 )))
                 self.log_gui(f"[TEST] Not found '{name}' on screen (Threshold: {threshold_val:.2f})")
             
-            # Cleanup — always runs
-            if browser:
-                try: browser.close()
-                except: pass
-            if playwright_ctx:
-                try: playwright_ctx.stop()
+            # Cleanup
+            if cdp_client:
+                try: cdp_client.close()
                 except: pass
         
         threading.Thread(target=_run_test, daemon=True).start()

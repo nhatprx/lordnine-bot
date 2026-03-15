@@ -7,17 +7,15 @@ import os
 
 from constants import COLOR, FONT, PAD, RADIUS, get_page_by_visual_index
 from bot_action import BotAction
-from playwright.sync_api import sync_playwright
+from cdp_client import CDPClient
 from chrome_manager import ChromeManager
 from state_db import StateDB
-from connection_pool import PlaywrightPool
 
 class AccountsMixin:
     """Mixin for the Accounts/Coordinator tab. Mixed into BotApp."""
 
     # ---- Thread-safe account_running helpers ----
     _running_lock = threading.Lock()
-    _pw_pool = None  # Shared PlaywrightPool for all workers
 
     def _is_running(self, acc_name):
         """Thread-safe check if account is running."""
@@ -28,12 +26,6 @@ class AccountsMixin:
         """Thread-safe set account running state."""
         with self._running_lock:
             self.account_running[acc_name] = val
-
-    def _get_pw_pool(self):
-        """Get or create shared PlaywrightPool."""
-        if self._pw_pool is None:
-            self._pw_pool = PlaywrightPool()
-        return self._pw_pool
 
     def setup_multi_tab(self):
         # Sort state
@@ -1056,10 +1048,12 @@ class AccountsMixin:
             nodes = graph.get("nodes", {})
             edges = graph.get("edges", [])
         
-        # Stagger start — avoid all workers hitting Chrome CDP at the same instant
+        # Stagger start — batch 50 acc/sec to avoid overloading Chrome CDP
         if tab_idx > 0:
             import random
-            stagger = (tab_idx % 4) * 0.5 + random.uniform(0, 0.5)
+            batch_delay = tab_idx / 50  # 50 accounts per second
+            jitter = random.uniform(0, 0.3)
+            stagger = batch_delay + jitter
             self.update_dash_status(acc_name, f"Starting in {stagger:.1f}s...", COLOR["text_dim"])
             time.sleep(stagger)
         
@@ -1067,38 +1061,26 @@ class AccountsMixin:
         self.state_db.save_account_state(acc_name, loop_name=func_value, status="connecting", 
                                           port=port, tab_index=tab_idx)
         
-        # Each worker MUST own its own Playwright instance — sync_api is thread-affine (greenlet-based)
-        # Sharing across threads causes "Cannot switch to a different thread" crashes.
-        # The Chrome process (~100MB) is already shared per port; the pw connection is lightweight (~10-20MB).
-        browser = None
-        page = None
-        pw = None
+        # [v3.15.6] Raw CDPClient — no Node.js/Playwright needed.
+        # Each CDPClient is ~1KB vs ~50-100MB per Playwright instance.
+        cdp_client = None
         
         def connect_to_tab():
-            nonlocal browser, page, pw
+            nonlocal cdp_client
             
             max_retries = 5
             for attempt in range(max_retries):
                 if not self._is_running(acc_name):
                     return False
                 try:
-                    if pw is None:
-                        pw = sync_playwright().start()
-                    if browser is not None:
-                        try: browser.close()
+                    if cdp_client:
+                        try: cdp_client.close()
                         except: pass
                     
-                    browser = pw.chromium.connect_over_cdp(f"http://localhost:{port}")
-                    context = browser.contexts[0]
-                    p, info = get_page_by_visual_index(context, tab_idx, port=port)
-                    
-                    if p:
-                        page = p
-                        self.log_gui(f"[{acc_name}] Connected to Port {port}, Tab {tab_idx}")
-                        self.state_db.save_account_state(acc_name, status="connected")
-                        return True
-                    else:
-                        self.log_gui(f"[{acc_name}] Tab {tab_idx} not found on port {port}")
+                    cdp_client = CDPClient.connect(port=port, tab_index=tab_idx)
+                    self.log_gui(f"[{acc_name}] Connected to Port {port}, Tab {tab_idx}")
+                    self.state_db.save_account_state(acc_name, status="connected")
+                    return True
                         
                 except Exception as e:
                     self.log_gui(f"[{acc_name}] Connection attempt {attempt+1}/{max_retries} failed: {str(e)[:60]}")
@@ -1115,13 +1097,13 @@ class AccountsMixin:
             self.state_db.save_account_state(acc_name, status="connection_failed", 
                                               error_msg="Could not connect after retries")
             self._set_running(acc_name, False)
-            if pw: 
-                try: pw.stop()
+            if cdp_client:
+                try: cdp_client.close()
                 except: pass
             return
         
         self.update_dash_status(acc_name, "Connected, running...", COLOR["success"])
-        bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
+        bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
 
         # ======== MACRO MODE: run macro ONCE then stop ========
         if is_macro_mode:
@@ -1131,7 +1113,7 @@ class AccountsMixin:
             try:
                 result = self._internal_macro_runner(
                     macro_steps, bot_instance, acc_name=acc_name,
-                    page=page, use_direct_vision=True
+                    cdp_client=cdp_client, use_direct_vision=True
                 )
                 if result:
                     self.state_db.log_action(acc_name, "macro_done", func_name, "OK")
@@ -1147,10 +1129,7 @@ class AccountsMixin:
             # Macro done — cleanup
             self._set_running(acc_name, False)
             try:
-                if browser: browser.close()
-            except: pass
-            try:
-                if pw: pw.stop()
+                if cdp_client: cdp_client.close()
             except: pass
             return
 
@@ -1225,12 +1204,12 @@ class AccountsMixin:
                     for attempt in range(3):
                         frame_bytes = None
                         try:
-                            frame_bytes = page.screenshot(type="jpeg", quality=80)
+                            frame_bytes = cdp_client.screenshot()
                         except Exception as e:
                             self.log_gui(f"[{acc_name}] Screenshot Error, reconnecting: {str(e)[:40]}")
                             self.state_db.log_action(acc_name, "reconnect", f"Screenshot failed: {e}")
                             if connect_to_tab():
-                                bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
+                                bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
                             else:
                                 self.update_dash_status(acc_name, "Reconnect Failed", COLOR["danger"])
                                 break
@@ -1256,7 +1235,7 @@ class AccountsMixin:
                     self.update_dash_status(acc_name, f"Macro: {mac_name}", "#C084FC")
                     self.state_db.log_action(acc_name, "macro_start", mac_name)
                     try:
-                        result = self._internal_macro_runner(self.combos[mac_name], bot_instance, acc_name=acc_name, page=page, use_direct_vision=True)
+                        result = self._internal_macro_runner(self.combos[mac_name], bot_instance, acc_name=acc_name, cdp_client=cdp_client, use_direct_vision=True)
                         if result:
                             self.state_db.log_action(acc_name, "macro_done", mac_name, "OK")
                             next_nid = get_next_node(current_node_id, "true")
@@ -1268,7 +1247,7 @@ class AccountsMixin:
                         self.state_db.log_action(acc_name, "macro_error", mac_name, str(e))
                         next_nid = get_next_node(current_node_id, "false")
                         if connect_to_tab():
-                            bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
+                            bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
                         else:
                             self.update_dash_status(acc_name, "Reconnect Failed", COLOR["danger"])
                             break
@@ -1288,11 +1267,11 @@ class AccountsMixin:
                     self.update_dash_status(acc_name, f"Click: {img_name}...", COLOR["warning"])
                     frame_bytes = None
                     try:
-                        frame_bytes = page.screenshot(type="jpeg", quality=80)
+                        frame_bytes = cdp_client.screenshot()
                     except Exception as e:
                         self.log_gui(f"[{acc_name}] Screenshot Error: {str(e)[:40]}")
                         if connect_to_tab():
-                            bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
+                            bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
                     
                     if frame_bytes:
                         res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
@@ -1329,17 +1308,9 @@ class AccountsMixin:
         self.state_db.save_account_state(acc_name, status="idle", current_node=current_node_id or "")
         self.update_dash_status(acc_name, "Stopped", COLOR["text_dim"])
         
-        # Detach CDP session to prevent leaks
-        try:
-            bot_instance._detach_cdp()
-        except:
-            pass
-        
-        if browser:
-            try: browser.close()
-            except: pass
-        if pw:
-            try: pw.stop()
+        # Close CDP connection
+        if cdp_client:
+            try: cdp_client.close()
             except: pass
         
         self.log_gui(f"[{acc_name}] Worker stopped")

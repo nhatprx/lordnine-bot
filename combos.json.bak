@@ -45,7 +45,7 @@
             }
         ],
         "success_capture": "Supplies",
-        "failure_capture": "None"
+        "failure_capture": "Auto Attack"
     },
     "Gathering": {
         "steps": [
@@ -100,10 +100,7 @@
     "Revive": {
         "steps": [
             {
-                "node": "Revivie",
-                "marker": "None",
-                "mode": "Wait until Appear",
-                "time": "0"
+                "node": "Revivie"
             },
             {
                 "type": "delay",

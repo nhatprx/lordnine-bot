@@ -8,7 +8,6 @@ import random
 
 from constants import COLOR, FONT, PAD, RADIUS, get_page_by_visual_index
 from bot_action import BotAction
-from playwright.sync_api import sync_playwright
 
 
 class MacrosMixin:
@@ -1362,33 +1361,26 @@ class MacrosMixin:
         steps = macro_data.get("steps", [])
         threshold_val = self.slider.get()
         
-        playwright_ctx = sync_playwright().start()
-        browser = None
-        page = None
+        from cdp_client import CDPClient
+        cdp_client = None
         
         if tab_id is not None:
              try:
                  self.log_gui(f"[Macro] Connecting to Port {port}, Tab {tab_id}...")
-                 browser = playwright_ctx.chromium.connect_over_cdp(f"http://localhost:{port}")
-                 context = browser.contexts[0]
-                 page, info = get_page_by_visual_index(context, tab_id, port=port)
-                 if page:
-                     if isinstance(info, list):
-                         for idx_t, title_t, url_t in info:
-                             self.log_gui(f"[Macro]   Tab {idx_t}: {title_t}")
-                     self.log_gui(f"[Macro] Hooked to Tab {tab_id}: {page.url[:60]}")
-                 else:
-                     self.log_gui(f"[Macro] Error: {info}")
-                     playwright_ctx.stop()
-                     return
+                 cdp_client = CDPClient.connect(port=port, tab_index=tab_id)
+                 
+                 # Log available tabs
+                 tabs = CDPClient.list_tabs(port)
+                 for idx_t, t in enumerate(tabs):
+                     self.log_gui(f"[Macro]   Tab {idx_t}: {t.get('title', '?')[:25]}")
+                 self.log_gui(f"[Macro] Hooked to Tab {tab_id}: {cdp_client.url[:60]}")
              except Exception as e:
                  self.log_gui(f"[Test Macro] Connection failed: {e}")
-                 playwright_ctx.stop()
                  return
         else:
             self.log_gui(f"[Test Macro] Running in foreground (PyAutoGUI focus)")
         
-        bot_instance = BotAction(page=page, debug_visual_var=self.debug_visual_var)
+        bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
         
         try:
             for idx, step_data in enumerate(steps):
@@ -1441,8 +1433,8 @@ class MacrosMixin:
                             break
                         
                         frame_bytes = None
-                        if page:
-                            try: frame_bytes = page.screenshot(type="jpeg", quality=80)
+                        if cdp_client:
+                            try: frame_bytes = cdp_client.screenshot()
                             except: pass
                         
                         # Fail image check
@@ -1491,8 +1483,8 @@ class MacrosMixin:
                 found = False
                 for attempt in range(5):
                     frame_bytes = None
-                    if page:
-                        try: frame_bytes = page.screenshot(type="jpeg", quality=80)
+                    if cdp_client:
+                        try: frame_bytes = cdp_client.screenshot()
                         except: pass
                     res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
                     if res:
@@ -1508,8 +1500,7 @@ class MacrosMixin:
                     self.log_gui(f"[Macro] SKIP: Could not find Node '{node_name}' after 5 seconds.")
                     continue
         finally:
-            if browser:
-                try: browser.close()
+            if cdp_client:
+                try: cdp_client.close()
                 except: pass
-            playwright_ctx.stop()
         self.log_gui(f"============== MACRO FINISHED ==============")

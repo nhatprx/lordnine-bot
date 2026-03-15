@@ -45,7 +45,7 @@
             }
         ],
         "success_capture": "Supplies",
-        "failure_capture": "None"
+        "failure_capture": "Auto Attack - On"
     },
     "Gathering": {
         "steps": [

@@ -146,6 +146,14 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                 self.iconbitmap(self._ico_path)
         except Exception:
             pass
+        
+        # --- License Check (before UI setup) ---
+        from license_manager import check_license
+        if not check_license(self):
+            self.destroy()
+            import sys
+            sys.exit(1)
+        
         self.geometry("1000x650")
         self.resizable(False, False)
         self.configure(fg_color=COLOR["bg"])
@@ -335,7 +343,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
         # Right side: Port/Tab inputs + version
         self.status_version = ctk.CTkLabel(
-            self.statusbar, text="v2.0",
+            self.statusbar, text="v3.15.6",
             font=ctk.CTkFont(family="Consolas", size=10),
             text_color=COLOR["text_muted"]
         )
@@ -754,7 +762,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
         # ── Version & Environment ──
         _section("Environment")
-        _row("Version", "v2.0")
+        _row("Version", "v3.15.6")
         _row("Python", f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}")
         _row("Platform", platform.system() + " " + platform.release())
         _row("Architecture", platform.machine())
@@ -1130,3 +1138,4 @@ if __name__ == "__main__":
         app.mainloop()
     finally:
         app.vision.shutdown_pool()
+
