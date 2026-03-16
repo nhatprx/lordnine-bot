@@ -211,8 +211,7 @@ class BotAction:
         parts = [p.strip().lower() for p in keys_str.split('+')]
         if not parts or parts == [""]:
             return
-            
-        print(f"[DEBUG HOTKEY] Sending keys -> {parts}")
+
         time.sleep(random.uniform(0.1, 0.3))
         
         if self.cdp_client:

@@ -6,7 +6,7 @@ import time
 import os
 import random
 
-from constants import COLOR, FONT, PAD, RADIUS, get_page_by_visual_index
+from constants import COLOR, FONT, PAD, RADIUS
 from bot_action import BotAction
 
 

@@ -9,7 +9,8 @@ import json
 from unittest.mock import MagicMock, patch
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from constants import get_page_by_visual_index, COLOR, FONT, PAD
+from constants import COLOR, FONT, PAD
+from connection_pool import get_page_by_visual_index
 
 
 class TestColorPalette:

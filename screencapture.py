@@ -9,11 +9,12 @@ class ScreenCaptureTool:
         self.master_coords_callback = master_coords_callback
         self.region_bounds = region_bounds
         
-        self.root = tk.Tk()
+        self.root = tk.Toplevel()
         self.root.attributes("-alpha", 0.5)  # Mờ hơn 1 xíu để thấy rõ
         self.root.attributes("-fullscreen", True)
         self.root.attributes("-topmost", True)
         self.root.config(cursor="cross")
+        self.root.focus_force()
 
         self.canvas = tk.Canvas(self.root, cursor="cross", bg="black")
         self.canvas.pack(fill="both", expand=True)
@@ -90,4 +91,4 @@ class ScreenCaptureTool:
             self.master_coords_callback(x1, y1, x2, y2)
 
     def run(self):
-        self.root.mainloop()
+        self.root.wait_window()

@@ -726,6 +726,27 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             font=ctk.CTkFont(family=FONT["family"], size=13, weight="bold"),
             text_color="#FFFFFF"
         ).pack(side="left", pady=10)
+        
+        # Preset buttons in header
+        preset_frame = ctk.CTkFrame(info_header, fg_color="transparent")
+        preset_frame.pack(side="right", pady=5)
+        
+        ctk.CTkButton(
+            preset_frame, text="📥 Import", width=75, height=26,
+            font=ctk.CTkFont(size=10, weight="bold"),
+            fg_color="transparent", hover_color=COLOR["surface2"],
+            border_width=1, border_color=COLOR["border"],
+            text_color=COLOR["text_dim"], corner_radius=6,
+            command=self._import_preset
+        ).pack(side="left", padx=(0, 6))
+        
+        ctk.CTkButton(
+            preset_frame, text="📦 Export", width=75, height=26,
+            font=ctk.CTkFont(size=10, weight="bold"),
+            fg_color=COLOR["primary"], hover_color=COLOR["primary_h"],
+            text_color="#FFFFFF", corner_radius=6,
+            command=self._export_preset
+        ).pack(side="left")
 
         ctk.CTkFrame(info_card, height=1, fg_color=COLOR["border"]).pack(fill="x", padx=PAD["lg"], pady=PAD["sm"])
 
@@ -820,25 +841,58 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
     # ==================== Thread-Safe GUI Queue ====================
     def process_gui_queue(self):
+        """Process GUI queue with batching to prevent main thread saturation."""
         try:
-            while True:
-                msg_type, payload = self.gui_queue.get_nowait()
-
-                if msg_type == "log":
-                    self._internal_log_gui(payload)
-                elif msg_type == "dash_status":
+            # Collect up to MAX_PER_TICK messages
+            MAX_PER_TICK = 30
+            messages = []
+            for _ in range(MAX_PER_TICK):
+                try:
+                    messages.append(self.gui_queue.get_nowait())
+                except queue.Empty:
+                    break
+            
+            if not messages:
+                self.after(100, self.process_gui_queue)
+                return
+            
+            # Coalesce dash_status: keep only LATEST per account
+            latest_dash = {}  # acc_name -> (status, color)
+            log_lines = []    # batch log inserts
+            other_msgs = []   # non-batchable messages
+            
+            for msg_type, payload in messages:
+                if msg_type == "dash_status":
                     acc_name, status, color = payload
-                    self._internal_update_dash_status(acc_name, status, color)
-                elif msg_type == "conn_status":
+                    latest_dash[acc_name] = (status, color)
+                elif msg_type == "log":
+                    log_lines.append(payload)
+                else:
+                    other_msgs.append((msg_type, payload))
+            
+            # Apply coalesced dash_status (one update per account)
+            for acc_name, (status, color) in latest_dash.items():
+                self._internal_update_dash_status(acc_name, status, color)
+            
+            # Batch insert logs (one widget operation instead of N)
+            if log_lines:
+                self._batch_log_gui(log_lines)
+            
+            # Process other messages
+            for msg_type, payload in other_msgs:
+                if msg_type == "conn_status":
                     self._render_connection_status(payload)
                 elif msg_type == "test_notif":
                     text, color, bg = payload
                     self._show_test_notification(text, color, bg)
                 elif msg_type == "run":
                     payload()  # Execute callable
-
+            
+            # Mark all as done
+            for _ in messages:
                 self.gui_queue.task_done()
-        except queue.Empty:
+                
+        except Exception:
             pass
 
         self.after(100, self.process_gui_queue)
@@ -851,61 +905,59 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             except: pass
         self.gui_queue.put(("log", text))
 
-    def _internal_log_gui(self, text):
+    def _batch_log_gui(self, lines):
+        """Batch insert multiple log lines in ONE widget operation."""
         self.log_textbox.configure(state="normal")
-        lines = int(self.log_textbox.index('end').split('.')[0]) - 1
-        if lines > 80:
-            self.log_textbox.delete("1.0", "40.0")
+        
+        # Trim old lines once
+        line_count = int(self.log_textbox.index('end').split('.')[0]) - 1
+        if line_count > 80:
+            self.log_textbox.delete("1.0", f"{max(1, line_count - 40)}.0")
+        
         current_time = time.strftime("%H:%M:%S")
         
-        # Determine tag — priority-based pattern matching
-        tag = "default"
-        text_lower = text.lower()
-
-        # Separators (===, ---, ***)
-        stripped = text.strip().replace(" ", "")
-        if stripped and len(stripped) >= 6 and stripped[0] in "=-*" and stripped.count(stripped[0]) >= len(stripped) * 0.5:
-            tag = "separator"
-        # Specific prefixes (highest priority)
-        elif "[test" in text_lower:
-            tag = "test"
-        elif "[macro]" in text_lower or "[test macro]" in text_lower:
-            tag = "macro"
-        elif "[flowchart]" in text_lower:
-            tag = "flowchart"
-        elif "[loop engine]" in text_lower:
-            tag = "loop_engine"
-        elif "[system]" in text_lower:
-            tag = "system"
-        elif "[alert]" in text_lower:
-            tag = "alert"
-        # Account worker logs (e.g. [VIP-33])
-        elif text.startswith("[") and "]" in text[:20]:
-            bracket_content = text[1:text.index("]")]
-            if any(c.isdigit() for c in bracket_content) and not bracket_content.startswith("0"):
-                tag = "account"
-        # Keyword fallbacks
-        if tag == "default":
-            if "error" in text_lower or "fail" in text_lower or "exception" in text_lower:
-                tag = "error"
-            elif "matched" in text_lower or "found" in text_lower and "not" not in text_lower:
-                tag = "matched"
-            elif "success" in text_lower or "complet" in text_lower or "done" in text_lower or "acquir" in text_lower or "restored" in text_lower or "✓" in text:
-                tag = "success"
-            elif "warning" in text_lower or "timeout" in text_lower:
-                tag = "warning"
-            elif "skip" in text_lower or "cancel" in text_lower or "abort" in text_lower:
-                tag = "skip"
-
-        # Override: error keywords always win
-        if tag not in ("error", "separator"):
-            if "error" in text_lower or "fail" in text_lower or "exception" in text_lower:
-                tag = "error"
-
-        self.log_textbox.insert("end", f"[{current_time}] ", "time")
-        self.log_textbox.insert("end", f"{text}\n", tag)
+        for text in lines:
+            tag = self._classify_log_tag(text)
+            self.log_textbox.insert("end", f"[{current_time}] ", "time")
+            self.log_textbox.insert("end", f"{text}\n", tag)
+        
         self.log_textbox.see("end")
         self.log_textbox.configure(state="disabled")
+    
+    def _classify_log_tag(self, text):
+        """Fast tag classification for log messages."""
+        text_lower = text.lower()
+        
+        # Fast checks first (most common case: account logs)
+        if text.startswith("[") and "]" in text[:20]:
+            bracket_content = text[1:text.index("]")]
+            if any(c.isdigit() for c in bracket_content):
+                return "account"
+        
+        # Separators
+        stripped = text.strip().replace(" ", "")
+        if stripped and len(stripped) >= 6 and stripped[0] in "=-*" and stripped.count(stripped[0]) >= len(stripped) * 0.5:
+            return "separator"
+        
+        # Error (always wins)
+        if "error" in text_lower or "fail" in text_lower or "exception" in text_lower:
+            return "error"
+        
+        # Keywords
+        if "success" in text_lower or "done" in text_lower or "✓" in text:
+            return "success"
+        if "warning" in text_lower or "timeout" in text_lower:
+            return "warning"
+        if "[macro]" in text_lower:
+            return "macro"
+        if "[system]" in text_lower:
+            return "system"
+        
+        return "default"
+    
+    def _internal_log_gui(self, text):
+        """Single log insert (fallback, used when not batching)."""
+        self._batch_log_gui([text])
 
     # ==================== Status Bar ====================
     def update_status(self, text):
@@ -1129,6 +1181,132 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                 json.dump({"accounts": self.multi_accounts}, f, indent=4)
         except Exception as e:
             print("Error saving multi:", e)
+
+    # ==================== Preset Import/Export ====================
+    def _export_preset(self):
+        """Bundle combos + loops + trackers into a .preset (zip) file."""
+        import tkinter.filedialog as fd
+        import zipfile
+        
+        filepath = fd.asksaveasfilename(
+            title="Export Preset",
+            defaultextension=".preset",
+            filetypes=[("Preset Files", "*.preset"), ("All Files", "*.*")],
+            initialfile=f"lordnine_preset_{time.strftime('%Y%m%d_%H%M%S')}.preset"
+        )
+        if not filepath:
+            return
+        
+        try:
+            with zipfile.ZipFile(filepath, 'w', zipfile.ZIP_DEFLATED) as zf:
+                # Add combos.json
+                if os.path.exists("combos.json"):
+                    zf.write("combos.json")
+                    self.log_gui("[Preset] ✓ combos.json")
+                
+                # Add loops.json
+                if os.path.exists("loops.json"):
+                    zf.write("loops.json")
+                    self.log_gui("[Preset] ✓ loops.json")
+                
+                # Add all files in trackers/
+                trackers_dir = "trackers"
+                if os.path.isdir(trackers_dir):
+                    count = 0
+                    for fname in os.listdir(trackers_dir):
+                        fpath = os.path.join(trackers_dir, fname)
+                        if os.path.isfile(fpath):
+                            zf.write(fpath, os.path.join("trackers", fname))
+                            count += 1
+                    self.log_gui(f"[Preset] ✓ trackers/ ({count} files)")
+            
+            self.log_gui(f"[Preset] ✅ Export complete: {os.path.basename(filepath)}")
+        except Exception as e:
+            self.log_gui(f"[Preset] ❌ Export failed: {e}")
+    
+    def _import_preset(self):
+        """Import a .preset file, backup current data, extract, and reload."""
+        import tkinter.filedialog as fd
+        import tkinter.messagebox as mb
+        import zipfile
+        
+        filepath = fd.askopenfilename(
+            title="Import Preset",
+            filetypes=[("Preset Files", "*.preset"), ("ZIP Files", "*.zip"), ("All Files", "*.*")]
+        )
+        if not filepath:
+            return
+        
+        # Validate it's a valid preset
+        try:
+            with zipfile.ZipFile(filepath, 'r') as zf:
+                names = zf.namelist()
+        except Exception as e:
+            self.log_gui(f"[Preset] ❌ Invalid preset file: {e}")
+            return
+        
+        has_combos = "combos.json" in names
+        has_loops = "loops.json" in names
+        tracker_files = [n for n in names if n.startswith("trackers/")]
+        
+        # Show content summary
+        summary = []
+        if has_combos: summary.append("Nodes/Macros")
+        if has_loops: summary.append("Loops")
+        if tracker_files: summary.append(f"{len(tracker_files)} template images")
+        
+        if not summary:
+            self.log_gui("[Preset] ❌ Preset file is empty or has no recognized data")
+            return
+        
+        confirm = mb.askyesno(
+            "Import Preset",
+            f"This preset contains:\n  • {chr(10) + '  • '.join(summary)}\n\n"
+            f"Current data will be backed up.\nProceed?"
+        )
+        if not confirm:
+            return
+        
+        try:
+            # Backup existing data
+            for fname in ["combos.json", "loops.json"]:
+                if os.path.exists(fname):
+                    shutil.copy(fname, f"{fname}.bak")
+            
+            if os.path.isdir("trackers") and tracker_files:
+                bak_dir = f"trackers_bak_{time.strftime('%Y%m%d_%H%M%S')}"
+                shutil.copytree("trackers", bak_dir)
+                self.log_gui(f"[Preset] Backup: trackers/ → {bak_dir}/")
+            
+            # Extract preset
+            with zipfile.ZipFile(filepath, 'r') as zf:
+                if has_combos:
+                    zf.extract("combos.json", ".")
+                    self.log_gui("[Preset] ✓ Imported combos.json")
+                
+                if has_loops:
+                    zf.extract("loops.json", ".")
+                    self.log_gui("[Preset] ✓ Imported loops.json")
+                
+                for tf in tracker_files:
+                    zf.extract(tf, ".")
+                if tracker_files:
+                    self.log_gui(f"[Preset] ✓ Imported {len(tracker_files)} tracker files")
+            
+            # Reload data
+            self.load_combos()
+            self.load_loops()
+            
+            # Refresh UI
+            if hasattr(self, 'refresh_trackers'):
+                self.refresh_trackers()
+            if hasattr(self, '_refresh_func_combo'):
+                self._refresh_func_combo()
+            self._build_info_panel()
+            
+            self.log_gui(f"[Preset] ✅ Import complete: {os.path.basename(filepath)}")
+        except Exception as e:
+            self.log_gui(f"[Preset] ❌ Import failed: {e}")
 
 
 if __name__ == "__main__":

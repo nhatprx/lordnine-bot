@@ -278,7 +278,7 @@ class ChromeManager:
         """
         Auto-click cloud phone cards on the Redfinger page.
         
-        Uses Playwright to connect to Chrome via CDP, find cloud phone cards,
+        Uses raw CDP to connect to Chrome, find cloud phone cards,
         and click on the specified indices. Each tab clicks a different phone.
         
         Args:
@@ -288,62 +288,122 @@ class ChromeManager:
             timeout: max seconds to wait for page load
             
         Returns:
-            (opened_count, errors_list)
+            (opened_count, errors_list, phone_names)
         """
-        from playwright.sync_api import sync_playwright
+        import urllib.request
+        import json as _json
         
-        pw = sync_playwright().start()
         opened = 0
         errors = []
         phone_names = {}  # tab_idx -> phone_name
         
         try:
-            browser = pw.chromium.connect_over_cdp(f"http://localhost:{port}")
-            pages = browser.contexts[0].pages
+            # Get all targets (tabs) via CDP
+            resp = urllib.request.urlopen(f"http://localhost:{port}/json", timeout=5)
+            targets = _json.loads(resp.read().decode())
             
-            # Filter to Redfinger pages only
-            rf_pages = [p for p in pages if "cloudemulator" in p.url or "redfinger" in p.url]
+            page_targets = [t for t in targets if t.get("type") == "page"]
+            print(f"[auto_open] Port {port}: {len(page_targets)} page targets found")
+            for i, t in enumerate(page_targets):
+                print(f"  Tab {i}: {t.get('url', '?')[:80]}")
             
-            if not rf_pages:
-                errors.append("No Redfinger pages found")
-                return opened, errors
+            # Filter to Redfinger pages (match cloudemulator, redfinger, or phone page)
+            rf_targets = [t for t in page_targets if 
+                         ("cloudemulator" in t.get("url", "") or 
+                          "redfinger" in t.get("url", "") or
+                          "phone" in t.get("url", ""))]
             
-            for tab_idx, page in enumerate(rf_pages):
+            if not rf_targets:
+                # Fallback: if no Redfinger URL found, try ALL page targets
+                # (URL might have redirected or changed)
+                print(f"[auto_open] No Redfinger URLs matched, using all {len(page_targets)} page targets")
+                rf_targets = page_targets
+            
+            if not rf_targets:
+                errors.append("No page targets found at all")
+                return opened, errors, phone_names
+            
+            print(f"[auto_open] Scanning {len(rf_targets)} tabs for phone cards...")
+            
+            from cdp_client import CDPClient
+            
+            for tab_idx, target in enumerate(rf_targets):
                 if tab_idx >= len(phone_indices):
                     break
                 
                 phone_idx = phone_indices[tab_idx]
+                ws_url = target.get("webSocketDebuggerUrl")
+                if not ws_url:
+                    errors.append(f"Tab {tab_idx}: no WebSocket URL")
+                    continue
                 
+                cdp = None
                 try:
-                    # Wait for phone cards to load
-                    page.wait_for_selector('div.phone-col.grid-item', timeout=timeout * 1000)
+                    cdp = CDPClient(ws_url, target)
                     
-                    # Find all phone cards
-                    cards = page.query_selector_all('div.phone-col.grid-item')
+                    # Wait for phone cards to load (multiple selector attempts)
+                    import time as _time
+                    card_count = 0
+                    selectors = [
+                        'div.phone-col.grid-item',
+                        'div.phone-col',
+                        'div.grid-item',
+                        '[class*="phone"]',
+                    ]
                     
-                    if phone_idx >= len(cards):
-                        errors.append(f"Tab {tab_idx}: phone #{phone_idx+1} not found (only {len(cards)} phones)")
+                    matched_selector = selectors[0]
+                    for _ in range(timeout * 2):
+                        for sel in selectors:
+                            card_count = cdp.evaluate(f"document.querySelectorAll('{sel}').length") or 0
+                            if card_count > 0:
+                                matched_selector = sel
+                                break
+                        if card_count > 0:
+                            break
+                        _time.sleep(0.5)
+                    
+                    print(f"[auto_open] Tab {tab_idx}: found {card_count} cards (selector: {matched_selector})")
+                    
+                    if card_count == 0:
+                        # Log page title for debugging
+                        title = cdp.evaluate("document.title") or "?"
+                        errors.append(f"Tab {tab_idx}: no phone cards found (title: {title})")
                         continue
                     
-                    # Get phone name for logging
-                    name_el = cards[phone_idx].query_selector('div.single-line')
-                    phone_name = name_el.inner_text() if name_el else f"Phone #{phone_idx+1}"
+                    # Get phone name + click
+                    js_code = f"""
+                    (() => {{
+                        const cards = document.querySelectorAll('{matched_selector}');
+                        if ({phone_idx} >= cards.length) return null;
+                        const card = cards[{phone_idx}];
+                        const nameEl = card.querySelector('div.single-line') || 
+                                       card.querySelector('[class*="name"]') ||
+                                       card.querySelector('span');
+                        const name = nameEl ? nameEl.innerText.trim() : 'Phone-{phone_idx+1}';
+                        card.click();
+                        return name;
+                    }})()
+                    """
+                    result = cdp.evaluate(js_code)
                     
-                    # Click the phone card to open it
-                    cards[phone_idx].click()
-                    opened += 1
-                    phone_names[tab_idx] = phone_name
-                    print(f"[auto_open] Tab {tab_idx}: opened {phone_name}")
+                    if result is not None:
+                        phone_names[tab_idx] = result
+                        opened += 1
+                        print(f"[auto_open] Tab {tab_idx}: opened '{result}' (phone #{phone_idx+1})")
+                    else:
+                        errors.append(f"Tab {tab_idx}: phone #{phone_idx+1} not found (have {card_count} cards)")
                     
                 except Exception as e:
                     errors.append(f"Tab {tab_idx}: {e}")
-            
+                finally:
+                    if cdp:
+                        try:
+                            cdp.close()
+                        except:
+                            pass
+        
         except Exception as e:
             errors.append(f"Connection error: {e}")
-        finally:
-            try:
-                pw.stop()
-            except:
-                pass
         
         return opened, errors, phone_names
+

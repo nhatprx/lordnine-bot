@@ -6,10 +6,11 @@ import time
 import os
 import random
 
-from constants import COLOR, FONT, PAD, RADIUS, get_page_by_visual_index
+from constants import COLOR, FONT, PAD, RADIUS
 from bot_action import BotAction
 from cdp_client import CDPClient
 from flowchart_ui import FlowchartUI
+from ui_dialogs import show_styled_info, show_input_dialog, show_confirm_dialog
 
 
 class LoopsMixin:
@@ -194,7 +195,7 @@ class LoopsMixin:
 
     def flowchart_add_node(self, ntype):
         if not self.current_loop_name:
-            self._show_loop_styled_info("Select a loop", "Choose a loop from the left panel first")
+            show_styled_info(self, "Select a loop", "Choose a loop from the left panel first")
             return
         self.flowchart.add_node(ntype)
 
@@ -383,7 +384,7 @@ class LoopsMixin:
             name = name.strip()
             if not name: return
             if name in self.loops:
-                self._show_loop_styled_info("Name exists", "A loop with this name already exists")
+                show_styled_info(self, "Name exists", "A loop with this name already exists")
                 return
             
             import uuid
@@ -399,7 +400,7 @@ class LoopsMixin:
     def delete_selected_loops(self):
         to_delete = [lname for lname, var in self.loop_checkbox_vars.items() if var.get()]
         if not to_delete:
-            self._show_loop_styled_info("No loops selected", "Tick checkboxes to select loops first")
+            show_styled_info(self, "No loops selected", "Tick checkboxes to select loops first")
             return
 
         dialog = ctk.CTkToplevel(self)
@@ -488,12 +489,12 @@ class LoopsMixin:
     def toggle_loop_engine(self):
         if not self.is_looping:
             if not self.current_loop_name:
-                self._show_loop_styled_info("Select a loop", "Choose a loop from the left panel first")
+                show_styled_info(self, "Select a loop", "Choose a loop from the left panel first")
                 return
             graph = self.loops.get(self.current_loop_name, {})
             nodes = graph.get("nodes", {})
             if not nodes:
-                self._show_loop_styled_info("Empty flowchart", "Add some nodes to the flowchart first")
+                show_styled_info(self, "Empty flowchart", "Add some nodes to the flowchart first")
                 return
                 
             start_node = None
@@ -503,7 +504,7 @@ class LoopsMixin:
                     break
                     
             if not start_node:
-                self._show_loop_styled_info("No Start node", "Add a Start node to the flowchart")
+                show_styled_info(self, "No Start node", "Add a Start node to the flowchart")
                 return
                 
             # Read Port/Tab from footer inputs (shared with Nodes tab)
@@ -534,418 +535,60 @@ class LoopsMixin:
             self._clear_highlight()
             self.log_gui("*** AUTO LOOP STOPPED ***")
 
-    def _show_loop_styled_info(self, title, text):
-        """Reusable styled info popup for Loops tab."""
-        info = ctk.CTkToplevel(self)
-        info.title("Lordbot Control")
-        info.geometry("300x130")
-        info.resizable(False, False)
-        info.configure(fg_color=COLOR["surface"])
-        info.transient(self)
-        info.grab_set()
-        info.after(200, lambda: info.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
-        info.update_idletasks()
-        x = self.winfo_x() + (self.winfo_width() - 300) // 2
-        y = self.winfo_y() + (self.winfo_height() - 130) // 2
-        info.geometry(f"300x130+{x}+{y}")
-        ctk.CTkLabel(info, text=title, font=ctk.CTkFont(size=13, weight="bold"), text_color=COLOR["text"]).pack(pady=(20, 4))
-        ctk.CTkLabel(info, text=text, font=ctk.CTkFont(size=11), text_color=COLOR["text_muted"]).pack(pady=(0, 12))
-        ctk.CTkButton(info, text="OK", command=info.destroy, fg_color=COLOR["primary"], text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"), height=30, corner_radius=6, width=100).pack()
-
     def _loop_engine_worker(self, graph, start_node, tab_id=0, port=9222):
-        nodes = graph.get("nodes", {})
-        edges = graph.get("edges", [])
-        
-        current_node_id = start_node
-        
-        def get_next_node(nid, pin_name):
-            for e in edges:
-                if e["from"] == nid and e["from_pin"] == pin_name:
-                    return e["to"]
-            return None
-            
         from cdp_client import CDPClient
-        cdp_client = None
-        
-        if tab_id is not None:
-             try:
-                 self.log_gui(f"[Loop Engine] Connecting to Port {port}, Tab {tab_id}...")
-                 cdp_client = CDPClient.connect(port=port, tab_index=tab_id)
-                 
-                 tabs = CDPClient.list_tabs(port)
-                 for idx_t, t in enumerate(tabs):
-                     self.log_gui(f"[Loop Engine]   Tab {idx_t}: {t.get('title', '?')[:25]}")
-                 self.log_gui(f"[Loop Engine] Hooked to Tab {tab_id}")
-             except Exception as e:
-                 self.log_gui(f"[Loop Engine] Connection fail: {e}")
-                 return
-                 
-        bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
-        
-        def _get_phone_region():
-            """Get the active phone's bounding box as (x, y, w, h) in screenshot pixel space."""
-            if not cdp_client: return None
-            try:
-                bbox = cdp_client.evaluate("""(() => {
-                    const imgs = document.querySelectorAll('img.screen-img');
-                    if (!imgs.length) return null;
-                    let best = null, bestArea = 0;
-                    for (let img of imgs) {
-                        const r = img.getBoundingClientRect();
-                        if (r.top < innerHeight && r.bottom > 0 && r.left < innerWidth && r.right > 0) {
-                            const a = r.width * r.height;
-                            if (a > bestArea) { bestArea = a; best = r; }
-                        }
-                    }
-                    if (!best) return null;
-                    const dpr = window.devicePixelRatio || 1;
-                    return [best.x * dpr, best.y * dpr, best.width * dpr, best.height * dpr];
-                })()""")
-                return tuple(bbox) if bbox else None
-            except:
-                return None
-        
-        while self.is_looping:
-            if not current_node_id or current_node_id not in nodes:
-                self.log_gui(f"[FLOWCHART] End of path reached. Restarting from Start Node in 1s...")
-                time.sleep(1.0)
-                current_node_id = start_node
-                continue
-                
-            n = nodes[current_node_id]
-            ntype = n["type"]
-            ndata = n.get("data", {})
-            threshold_val = self.slider.get()
-            
-            # Highlight the active node on the flowchart
-            self._highlight_node(current_node_id)
-            
-            if ntype == "Start":
-                self._set_loop_status("START → Following entry path", COLOR["success"])
-                self.log_gui(f"[FLOWCHART] ---> START")
-                current_node_id = get_next_node(current_node_id, "out")
-                time.sleep(0.5)
-                
-            elif ntype == "Macro":
-                mac_name = ndata.get("macro_name")
-                if mac_name and mac_name in self.combos:
-                    self._set_loop_status(f"Running Macro: {mac_name}", COLOR["accent"])
-                    self.log_gui(f"[FLOWCHART] Executing Macro: {mac_name}")
-                    macro_data = self.combos[mac_name]
-                    result = self._internal_macro_runner(macro_data, bot_instance, cdp_client=cdp_client)
-                    if result:
-                        self._set_loop_status(f"Macro [{mac_name}] → OK", COLOR["success"])
-                        self.log_gui(f"[FLOWCHART] -> Macro OK. Following success path.")
-                        current_node_id = get_next_node(current_node_id, "true")
-                    else:
-                        self._set_loop_status(f"Macro [{mac_name}] → FAILED", COLOR["danger"])
-                        self.log_gui(f"[FLOWCHART] -> Macro FAILED. Following failure path.")
-                        current_node_id = get_next_node(current_node_id, "false")
-                else:
-                    self._set_loop_status(f"Macro [{mac_name}] → INVALID", COLOR["danger"])
-                    self.log_gui(f"[FLOWCHART] Warning: Invalid Macro '{mac_name}'. Following failure path.")
-                    current_node_id = get_next_node(current_node_id, "false")
-                
-            elif ntype == "Delay":
-                delay_ms = float(ndata.get("time", 1000))
-                delay_sec = delay_ms / 1000.0
-                self._set_loop_status(f"Waiting {delay_ms:.0f}ms...", COLOR["warning"])
-                self.log_gui(f"[FLOWCHART] Waiting {delay_ms:.0f}ms ({delay_sec:.1f}s)...")
-                
-                steps = int(delay_sec * 10)
-                for i in range(steps):
-                    if not self.is_looping: break
-                    remaining_ms = delay_ms - (i * 100)
-                    if i % 10 == 0:  # Update status every second
-                        self._set_loop_status(f"Delay: {remaining_ms:.0f}ms remaining", COLOR["warning"])
-                    time.sleep(0.1)
-                
-                current_node_id = get_next_node(current_node_id, "out")
-                
-            elif ntype == "Condition":
-                img_name = ndata.get("image_name")
-                filepath = self.tracked_icons.get(img_name)
-                
-                if not filepath or not os.path.exists(filepath):
-                    self._set_loop_status(f"Condition [{img_name}] → NOT FOUND", COLOR["danger"])
-                    self.log_gui(f"[FLOWCHART] Image condition '{img_name}' not found. Defaulting to False.")
-                    current_node_id = get_next_node(current_node_id, "false")
-                else:
-                    self._set_loop_status(f"Checking: {img_name}...", COLOR["warning"])
-                    self.log_gui(f"[FLOWCHART] Checking: Is '{img_name}' on screen?")
-                    
-                    found_res = None
-                    for attempt in range(3):
-                        frame_bytes = None
-                        if cdp_client:
-                            try: frame_bytes = cdp_client.screenshot()
-                            except: pass
-                        res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
-                        if res:
-                            found_res = res
-                            break
-                        time.sleep(0.5)
-                    
-                    if found_res:
-                        self._set_loop_status(f"Condition [{img_name}] → TRUE", COLOR["success"])
-                        self.log_gui(f"[FLOWCHART] -> TRUE (Found '{img_name}')")
-                        current_node_id = get_next_node(current_node_id, "true")
-                    else:
-                        self._set_loop_status(f"Condition [{img_name}] → FALSE", COLOR["danger"])
-                        self.log_gui(f"[FLOWCHART] -> FALSE (Not Found)")
-                        current_node_id = get_next_node(current_node_id, "false")
-                time.sleep(0.5)
-            
-            elif ntype == "Click":
-                img_name = ndata.get("image_name")
-                filepath = self.tracked_icons.get(img_name)
-                
-                if not filepath or not os.path.exists(filepath):
-                    self._set_loop_status(f"Click [{img_name}] → NOT FOUND", COLOR["danger"])
-                    self.log_gui(f"[FLOWCHART] Click target '{img_name}' image not found. Skipping.")
-                else:
-                    self._set_loop_status(f"Clicking: {img_name}...", COLOR["warning"])
-                    self.log_gui(f"[FLOWCHART] Looking for '{img_name}' to click...")
-                    
-                    frame_bytes = None
-                    if cdp_client:
-                        try: frame_bytes = cdp_client.screenshot()
-                        except: pass
-                    res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
-                    
-                    if res:
-                        cx, cy = res[0], res[1]
-                        self.log_gui(f"[FLOWCHART] Found '{img_name}' at ({cx}, {cy}). Clicking...")
-                        bot_instance.click_at(cx, cy)
-                        self._set_loop_status(f"Click [{img_name}] → OK", COLOR["success"])
-                        self.log_gui(f"[FLOWCHART] Clicked '{img_name}'")
-                    else:
-                        self._set_loop_status(f"Click [{img_name}] → NOT VISIBLE", COLOR["warning"])
-                        self.log_gui(f"[FLOWCHART] '{img_name}' not on screen. Skipping click.")
-                
-                current_node_id = get_next_node(current_node_id, "out")
-                time.sleep(0.3)
+        from graph_engine import GraphEngine
 
-            elif ntype == "End":
-                self._set_loop_status("END — Loop finished", COLOR["success"])
-                self.log_gui(f"[FLOWCHART] Reached END node. Stopping loop.")
-                self.is_looping = False
-                break
+        cdp_client = None
+        if tab_id is not None:
+            try:
+                self.log_gui(f"[Loop Engine] Connecting to Port {port}, Tab {tab_id}...")
+                cdp_client = CDPClient.connect(port=port, tab_index=tab_id)
+                tabs = CDPClient.list_tabs(port)
+                for idx_t, t in enumerate(tabs):
+                    self.log_gui(f"[Loop Engine]   Tab {idx_t}: {t.get('title', '?')[:25]}")
+                self.log_gui(f"[Loop Engine] Hooked to Tab {tab_id}")
+            except Exception as e:
+                self.log_gui(f"[Loop Engine] Connection fail: {e}")
+                return
+
+        bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
+
+        # Map status_fn color strings to COLOR dict
+        color_map = {
+            "success": COLOR["success"], "danger": COLOR["danger"],
+            "warning": COLOR["warning"], "accent": COLOR["accent"],
+            "text_dim": COLOR["text_dim"],
+        }
+
+        def status_fn(msg, color_name):
+            c = color_map.get(color_name, COLOR["text_dim"])
+            self._set_loop_status(msg, c)
+
+        engine = GraphEngine(
+            graph=graph,
+            vision=self.vision,
+            tracked_icons=self.tracked_icons,
+            combos=self.combos,
+            bot_instance=bot_instance,
+            cdp_client=cdp_client,
+            threshold_fn=lambda: self.slider.get(),
+            log_fn=self.log_gui,
+            status_fn=status_fn,
+            is_running_fn=lambda: self.is_looping,
+            highlight_fn=self._highlight_node,
+        )
+
+        result = engine.run(start_node)
+
+        if result == "ended":
+            self.is_looping = False
 
         self._clear_highlight()
         self._set_loop_status("Idle — Loop ended", COLOR["text_dim"])
         if cdp_client:
-            try: cdp_client.close()
-            except: pass
+            try:
+                cdp_client.close()
+            except Exception:
+                pass
 
-    def _internal_macro_runner(self, macro_data, bot_instance, acc_name=None, page=None, cdp_client=None, use_direct_vision=False):
-        """Core macro runner used by loop engine and coordinator workers."""
-        steps = macro_data.get("steps", [])
-        # [THREAD-SAFE] Cache threshold once at start
-        try:
-            threshold_val = self.slider.get()
-        except:
-            threshold_val = 0.54
-        
-        # Route vision calls: direct (multi-account) or pooled (single-tab)
-        def _find(path, threshold, debug=False, frame_bytes=None):
-            if use_direct_vision:
-                return self.vision.find_template_direct(path, threshold=threshold, debug=debug, frame_bytes=frame_bytes)
-            return self.vision.find_template_on_screen(path, threshold=threshold, debug=debug, frame_bytes=frame_bytes)
-        
-        def local_log(msg):
-            if acc_name:
-                self.log_gui(f"[{acc_name}] {msg}")
-            else:
-                self.log_gui(msg)
-        
-        for idx, step_data in enumerate(steps):
-            # [FIX] Check if worker was stopped before each step
-            if acc_name and not self.account_running.get(acc_name, False):
-                local_log(f"[Macro] Stopped at step {idx+1}/{len(steps)} (worker stopped)")
-                return False
-            if not acc_name and not self.is_looping:
-                return False
-            
-            if isinstance(step_data, str):
-                step_data = {"node": step_data}
-            
-            step_type = step_data.get("type", "click")
-            
-            # --- DELAY step (interruptible) ---
-            if step_type == "delay":
-                delay_ms = float(step_data.get("time", 1000))
-                delay_sec = delay_ms / 1000.0
-                local_log(f"[Macro] ({idx+1}/{len(steps)}) Delay: {delay_ms:.0f}ms ({delay_sec:.1f}s)...")
-                # Split into small chunks so stop signal is honored
-                chunks = int(delay_sec * 10)
-                for _ in range(max(1, chunks)):
-                    if acc_name and not self.account_running.get(acc_name, False):
-                        return False
-                    if not acc_name and not self.is_looping:
-                        return False
-                    time.sleep(0.1)
-                local_log(f"[Macro] Delay completed.")
-                continue
-            
-            # --- MARKER step (standalone wait-for-image) ---
-            if step_type == "marker":
-                marker = step_data.get("marker", "")
-                marker_mode = step_data.get("mode", "Wait until Appear")
-                try:
-                    marker_time = float(step_data.get("time", "0")) / 1000.0
-                except:
-                    marker_time = 0
-                try:
-                    marker_timeout = float(step_data.get("timeout", "0")) / 1000.0
-                except:
-                    marker_timeout = 0
-                fail_image = step_data.get("fail_image", "None")
-                
-                mode_str = "APPEAR" if marker_mode == "Wait until Appear" else "DISAPPEAR"
-                timeout_str = f", timeout {marker_timeout:.0f}s" if marker_timeout > 0 else ""
-                local_log(f"[Macro] ({idx+1}/{len(steps)}) Waiting: '{marker}' to {mode_str} (hold {marker_time:.1f}s{timeout_str})...")
-                marker_path = self.tracked_icons.get(marker)
-                if not marker_path or not os.path.exists(marker_path):
-                    local_log(f"    - Step FAILED: Marker '{marker}' image missing.")
-                    return False
-                
-                fail_path = None
-                if fail_image and fail_image != "None":
-                    fail_path = self.tracked_icons.get(fail_image)
-                
-                hold_start = None
-                last_log_time = 0
-                start_time = time.time()
-                marker_failed = False
-                
-                for attempt in range(99999):
-                    # Timeout check
-                    if marker_timeout > 0 and (time.time() - start_time) > marker_timeout:
-                        local_log(f"    - Marker TIMEOUT ({marker_timeout:.0f}s): '{marker}'. Macro FAILED.")
-                        return False
-                    if acc_name:
-                        # Coordinator mode: check per-account running flag
-                        if not self.account_running.get(acc_name, False): break
-                    else:
-                        # Single-tab loop mode
-                        if not self.is_looping: break
-                    
-                    frame_bytes = None
-                    if cdp_client:
-                        try: frame_bytes = cdp_client.screenshot()
-                        except: pass
-                    elif page:
-                        try: frame_bytes = page.screenshot(type="jpeg", quality=80)
-                        except: pass
-                    
-                    # Fail image check
-                    if fail_path and os.path.exists(fail_path):
-                        fail_res = _find(fail_path, threshold_val, debug=False, frame_bytes=frame_bytes)
-                        fail_mode = step_data.get("fail_mode", "Fail if Appear")
-                        fail_triggered = (fail_mode == "Fail if Appear" and fail_res) or (fail_mode == "Fail if Disappear" and not fail_res)
-                        if fail_triggered:
-                            local_log(f"    - CANCEL: Fail image '{fail_image}' ({fail_mode})! Macro FAILED.")
-                            return False
-                    
-                    res = _find(marker_path, threshold_val, debug=False, frame_bytes=frame_bytes)
-                    is_condition_met = (marker_mode == "Wait until Appear" and res) or (marker_mode == "Wait until Disappear" and not res)
-                    
-                    if is_condition_met:
-                        if hold_start is None:
-                            hold_start = time.time()
-                            if marker_time > 0:
-                                local_log(f"    - Marker triggered. Holding {marker_time:.1f}s...")
-                        elapsed = time.time() - hold_start
-                        current_sec = int(elapsed)
-                        if marker_time > 0 and current_sec > last_log_time:
-                            local_log(f"    - Holding... {current_sec}/{marker_time:.0f}s")
-                            last_log_time = current_sec
-                        if elapsed >= marker_time:
-                            local_log(f"    - Marker OK: '{marker}' confirmed {mode_str}.")
-                            break
-                    else:
-                        if hold_start is not None:
-                            local_log(f"    - Marker interrupted. Resetting hold timer.")
-                            hold_start = None
-                            last_log_time = 0
-                    time.sleep(0.5)  # Optimized: was 1.0s
-                continue
-            
-            # --- CLICK step (find + click, no marker) ---
-            node_name = step_data.get("node", "")
-            if not node_name: continue
-            
-            filepath = self.tracked_icons.get(node_name)
-            if not filepath or not os.path.exists(filepath):
-                local_log(f"    - Step FAILED: Node '{node_name}' image file missing.")
-                return False
-                
-            found = False
-            for attempt in range(5):
-                frame_bytes = None
-                if cdp_client:
-                    try:
-                        frame_bytes = cdp_client.screenshot()
-                    except: pass
-                elif page:
-                    try:
-                        frame_bytes = page.screenshot(type="jpeg", quality=80)
-                    except: pass
-                res = _find(filepath, threshold_val, debug=False, frame_bytes=frame_bytes)
-                if res:
-                    x, y, _ = res
-                    bot_instance.click_at(x, y, randomize=True)
-                    local_log(f"    - Step OK: Clicked '{node_name}'")
-                    found = True
-                    time.sleep(random.uniform(0.3, 0.5))  # Optimized: was 1.2-2.0s
-                    break
-                time.sleep(0.3)  # Optimized: was 1.0s
-            if not found:
-                local_log(f"    - Step FAILED: Could not find '{node_name}' after 5s.")
-                return False
-                    
-        local_log(f"[STATE MACHINE] Macro steps completed. Checking result...")
-
-        # Result verification via success/failure capture
-        success_capture = macro_data.get("success_capture", "None")
-        failure_capture = macro_data.get("failure_capture", "None")
-        
-        if success_capture == "None" and failure_capture == "None":
-            local_log(f"[STATE MACHINE] Macro finished (no capture check configured).")
-            return True
-        
-        time.sleep(1.0)
-        
-        frame_bytes = None
-        if cdp_client:
-            try: frame_bytes = cdp_client.screenshot()
-            except: pass
-        elif page:
-            try: frame_bytes = page.screenshot(type="jpeg", quality=80)
-            except: pass
-        
-        if success_capture != "None":
-            s_path = self.tracked_icons.get(success_capture)
-            if s_path and os.path.exists(s_path):
-                res = _find(s_path, threshold_val, debug=False, frame_bytes=frame_bytes)
-                if res:
-                    local_log(f"[STATE MACHINE] Result: SUCCESS (found '{success_capture}')")
-                    return True
-                else:
-                    local_log(f"[STATE MACHINE] Result: FAILURE ('{success_capture}' not found)")
-                    return False
-        
-        if failure_capture != "None":
-            f_path = self.tracked_icons.get(failure_capture)
-            if f_path and os.path.exists(f_path):
-                res = _find(f_path, threshold_val, debug=False, frame_bytes=frame_bytes)
-                if res:
-                    local_log(f"[STATE MACHINE] Result: FAILURE (found '{failure_capture}')")
-                    return False
-                else:
-                    local_log(f"[STATE MACHINE] Result: SUCCESS ('{failure_capture}' not found)")
-                    return True
-        
-        local_log(f"[STATE MACHINE] Macro finished (capture images not available).")
-        return True

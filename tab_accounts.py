@@ -5,10 +5,11 @@ import threading
 import time
 import os
 
-from constants import COLOR, FONT, PAD, RADIUS, get_page_by_visual_index
+from constants import COLOR, FONT, PAD, RADIUS
 from bot_action import BotAction
 from cdp_client import CDPClient
 from chrome_manager import ChromeManager
+from macro_runner import run_macro
 from state_db import StateDB
 
 class AccountsMixin:
@@ -325,11 +326,11 @@ class AccountsMixin:
             
             # Auto-open cloud phones FIRST (to get phone names)
             self.gui_queue.put(("log", f"[Quick Launch] Waiting for pages to load..."))
-            time.sleep(3)
+            time.sleep(5)  # 5s for Redfinger page to fully load with multiple tabs
             
             all_phone_names = {}  # (port, tab_idx) -> phone_name
             phone_counter = start_phone - 1  # 0-based
-            for port in ports_needed:
+            for port_idx, port in enumerate(ports_needed):
                 if port not in results:
                     continue
                 success, msg, actual = results[port]
@@ -339,16 +340,23 @@ class AccountsMixin:
                 indices = list(range(phone_counter, phone_counter + actual))
                 phone_counter += actual
                 
-                self.gui_queue.put(("log", f"[Quick Launch] Opening phones {indices[0]+1}-{indices[-1]+1} on port {port}..."))
-                opened, errors, phone_names = self.chrome_mgr.auto_open_cloud_phones(port, indices)
+                # Wave-based: wait between ports so pages have time to stabilize
+                if port_idx > 0:
+                    time.sleep(2)
                 
-                for tab_idx, name in phone_names.items():
-                    all_phone_names[(port, tab_idx)] = name
-                
-                if errors:
-                    for err in errors:
-                        self.gui_queue.put(("log", f"[Quick Launch] Warning: {err}"))
-                self.gui_queue.put(("log", f"[Quick Launch] Port {port}: opened {opened}/{actual} cloud phones"))
+                self.gui_queue.put(("log", f"[Quick Launch] Scanning phones {indices[0]+1}-{indices[-1]+1} on port {port}..."))
+                try:
+                    opened, errors, phone_names = self.chrome_mgr.auto_open_cloud_phones(port, indices)
+                    
+                    for tab_idx, name in phone_names.items():
+                        all_phone_names[(port, tab_idx)] = name
+                    
+                    if errors:
+                        for err in errors:
+                            self.gui_queue.put(("log", f"[Quick Launch] ⚠ {err}"))
+                    self.gui_queue.put(("log", f"[Quick Launch] Port {port}: opened {opened}/{actual} cloud phones"))
+                except Exception as e:
+                    self.gui_queue.put(("log", f"[Quick Launch] ❌ Port {port} scan failed: {e}"))
             
             # Create accounts with phone names
             created_accounts = []
@@ -725,9 +733,17 @@ class AccountsMixin:
 
     # ---- Batch Operations ----
     def _batch_start_all(self):
+        # Smart wave-based start: groups of 5, 1s between waves
+        # 15 accounts → 3 waves → fully started in ~2s
+        WAVE_SIZE = 5
+        delay_ms = 0
+        count = 0
         for acc in self.multi_accounts:
             if acc.get("enabled", True):
-                self._start_account(acc['name'])
+                self.after(delay_ms, lambda n=acc['name']: self._start_account(n))
+                count += 1
+                if count % WAVE_SIZE == 0:
+                    delay_ms += 1000  # 1s between waves
     
     def _batch_stop_all(self):
         for acc in self.multi_accounts:
@@ -736,8 +752,12 @@ class AccountsMixin:
     def _batch_start_selected(self):
         selected = [acc['name'] for acc in self.multi_accounts
                     if self.dash_checkboxes.get(acc['name']) and self.dash_checkboxes[acc['name']].get()]
-        for name in selected:
-            self._start_account(name)
+        WAVE_SIZE = 5
+        delay_ms = 0
+        for i, name in enumerate(selected):
+            self.after(delay_ms, lambda n=name: self._start_account(n))
+            if (i + 1) % WAVE_SIZE == 0:
+                delay_ms += 1000
     
     def _batch_stop_selected(self):
         selected = [acc['name'] for acc in self.multi_accounts
@@ -927,7 +947,6 @@ class AccountsMixin:
         
         self.update_dash_status(acc_name, "Starting...", COLOR["warning"])
         self.log_gui(f"[{acc_name}] Worker started")
-        self.refresh_multi_acc_list()
     
     def _stop_account(self, acc_name):
         self._set_running(acc_name, False)
@@ -1111,9 +1130,13 @@ class AccountsMixin:
             self.update_dash_status(acc_name, f"Macro: {func_name}", "#C084FC")
             self.state_db.log_action(acc_name, "macro_start", func_name)
             try:
-                result = self._internal_macro_runner(
-                    macro_steps, bot_instance, acc_name=acc_name,
-                    cdp_client=cdp_client, use_direct_vision=True
+                result = run_macro(
+                    macro_steps, bot_instance, self.vision,
+                    self.tracked_icons, threshold_val=self.slider.get() if hasattr(self, 'slider') else 0.54,
+                    cdp_client=cdp_client,
+                    log_fn=lambda msg: self.log_gui(f"[{acc_name}] {msg}"),
+                    is_running_fn=lambda: self.account_running.get(acc_name, False),
+                    use_direct_vision=True,
                 )
                 if result:
                     self.state_db.log_action(acc_name, "macro_done", func_name, "OK")
@@ -1147,7 +1170,9 @@ class AccountsMixin:
 
         current_node_id = get_start_node()
         restart_count = 0  # Track consecutive restarts to prevent infinite loop
-        max_restarts = 3
+        max_restarts = 10
+        _last_node_type = ""  # Track last node type for debugging
+        _last_node_name = ""  
         
         self.state_db.save_account_state(acc_name, status="running", current_node=current_node_id or "")
         
@@ -1155,11 +1180,16 @@ class AccountsMixin:
             if not current_node_id or current_node_id not in nodes:
                 restart_count += 1
                 if restart_count > max_restarts:
-                    self.log_gui(f"[{acc_name}] Loop restarted {max_restarts} times. Stopping to prevent infinite loop.")
+                    self.log_gui(f"[{acc_name}] Loop restarted {max_restarts} times consecutively. Stopping.")
                     self.update_dash_status(acc_name, "Loop Error: Too many restarts", COLOR["danger"])
                     break
+                # Log exact cause of restart
+                if _last_node_type:
+                    self.log_gui(f"[{acc_name}] No next node after '{_last_node_type}' ({_last_node_name}). Restarting loop ({restart_count}/{max_restarts})...")
+                else:
+                    self.log_gui(f"[{acc_name}] Restarting loop ({restart_count}/{max_restarts})...")
                 self.update_dash_status(acc_name, f"Restarting Loop ({restart_count}/{max_restarts})", COLOR["warning"])
-                time.sleep(1.0)
+                time.sleep(3.0)  # Longer delay to avoid rapid restart spam
                 current_node_id = get_start_node()
                 continue
             
@@ -1170,6 +1200,8 @@ class AccountsMixin:
             ntype = n["type"]
             ndata = n.get("data", {})
             next_nid = None
+            _last_node_type = ntype
+            _last_node_name = ndata.get("image_name", ndata.get("name", current_node_id[:8]))
 
             self.state_db.save_account_state(acc_name, current_node=current_node_id)
 
@@ -1194,7 +1226,10 @@ class AccountsMixin:
                 filepath = self.tracked_icons.get(img_name)
                 # Use cached threshold (thread-safe)
                 
-                if not filepath or not os.path.exists(filepath):
+                # Check if this is a text node (OCR-based detection)
+                is_text = self._is_text_node(img_name) if img_name else False
+                
+                if not is_text and (not filepath or not os.path.exists(filepath)):
                     self.update_dash_status(acc_name, f"Cond Err: Missing Image", COLOR["danger"])
                     next_nid = get_next_node(current_node_id, "false")
                 else:
@@ -1204,7 +1239,7 @@ class AccountsMixin:
                     for attempt in range(3):
                         frame_bytes = None
                         try:
-                            frame_bytes = cdp_client.screenshot()
+                            frame_bytes = cdp_client.screenshot(quality=70)
                         except Exception as e:
                             self.log_gui(f"[{acc_name}] Screenshot Error, reconnecting: {str(e)[:40]}")
                             self.state_db.log_action(acc_name, "reconnect", f"Screenshot failed: {e}")
@@ -1215,7 +1250,11 @@ class AccountsMixin:
                                 break
                             continue
                         
-                        res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
+                        if is_text:
+                            search_text = self._get_text_node_search(img_name)
+                            res = self.vision.find_text_on_screen(search_text, frame_bytes=frame_bytes)
+                        else:
+                            res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes, fast_mode=True)
                         if res:
                             found_res = res
                             break
@@ -1235,7 +1274,14 @@ class AccountsMixin:
                     self.update_dash_status(acc_name, f"Macro: {mac_name}", "#C084FC")
                     self.state_db.log_action(acc_name, "macro_start", mac_name)
                     try:
-                        result = self._internal_macro_runner(self.combos[mac_name], bot_instance, acc_name=acc_name, cdp_client=cdp_client, use_direct_vision=True)
+                        result = run_macro(
+                            self.combos[mac_name], bot_instance, self.vision,
+                            self.tracked_icons, threshold_val=self.slider.get() if hasattr(self, 'slider') else 0.54,
+                            cdp_client=cdp_client,
+                            log_fn=lambda msg: self.log_gui(f"[{acc_name}] {msg}"),
+                            is_running_fn=lambda: self.account_running.get(acc_name, False),
+                            use_direct_vision=True,
+                        )
                         if result:
                             self.state_db.log_action(acc_name, "macro_done", mac_name, "OK")
                             next_nid = get_next_node(current_node_id, "true")
@@ -1260,21 +1306,28 @@ class AccountsMixin:
                 filepath = self.tracked_icons.get(img_name)
                 # Use cached threshold (thread-safe)
                 
-                if not filepath or not os.path.exists(filepath):
+                # Check if this is a text node (OCR-based detection)
+                is_text = self._is_text_node(img_name) if img_name else False
+                
+                if not is_text and (not filepath or not os.path.exists(filepath)):
                     self.update_dash_status(acc_name, f"Click Err: Missing", COLOR["danger"])
                     self.state_db.log_action(acc_name, "click", img_name, "MISSING")
                 else:
                     self.update_dash_status(acc_name, f"Click: {img_name}...", COLOR["warning"])
                     frame_bytes = None
                     try:
-                        frame_bytes = cdp_client.screenshot()
+                        frame_bytes = cdp_client.screenshot(quality=70)
                     except Exception as e:
                         self.log_gui(f"[{acc_name}] Screenshot Error: {str(e)[:40]}")
                         if connect_to_tab():
                             bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
                     
                     if frame_bytes:
-                        res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
+                        if is_text:
+                            search_text = self._get_text_node_search(img_name)
+                            res = self.vision.find_text_on_screen(search_text, frame_bytes=frame_bytes)
+                        else:
+                            res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes, fast_mode=True)
                         if res:
                             cx, cy = res[0], res[1]
                             bot_instance.click_at(cx, cy)
@@ -1288,20 +1341,14 @@ class AccountsMixin:
                 time.sleep(0.3)
 
             elif ntype == "End":
-                self.update_dash_status(acc_name, "Finished", COLOR["success"])
-                self.state_db.log_action(acc_name, "end", "Loop finished")
-                self.log_gui(f"[{acc_name}] Reached END node. Stopping.")
-                break
+                self.update_dash_status(acc_name, "Loop complete, restarting...", COLOR["success"])
+                self.state_db.log_action(acc_name, "end", "Loop complete")
+                self.log_gui(f"[{acc_name}] Reached END → restarting loop")
+                time.sleep(1.0)
+                current_node_id = get_start_node()
+                continue  # Skip setting current_node_id = next_nid
 
             current_node_id = next_nid
-            
-            # If next_nid is None and we didn't break (non-End node), try 'out' fallback
-            if current_node_id is None and ntype not in ("End",):
-                fallback = get_next_node(current_node_id if current_node_id else '', "out")
-                if fallback is None:
-                    # Try using the previous node's 'out' edge
-                    fallback = get_next_node(nodes.get(ntype, {}).get('id', ''), "out") if False else None
-                # current_node_id stays None → will trigger restart counter above
 
         # ---- Cleanup (set flags FIRST to prevent health monitor restart) ----
         self._set_running(acc_name, False)

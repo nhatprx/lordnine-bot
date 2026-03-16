@@ -1,28 +1,10 @@
 {
     "accounts": [
         {
-            "name": "VIP-33",
+            "name": "Kekidot",
             "target": "0",
             "port": 9222,
-            "loop": "loop - Farm Mode 1",
-            "proxy": "",
-            "enabled": true,
-            "group": "default"
-        },
-        {
-            "name": "VIP-34",
-            "target": "1",
-            "port": 9222,
-            "loop": "loop - Farm Mode 1",
-            "proxy": "",
-            "enabled": true,
-            "group": "default"
-        },
-        {
-            "name": "VIP-35",
-            "target": "2",
-            "port": 9222,
-            "loop": "loop - Farm Mode 1",
+            "loop": "",
             "proxy": "",
             "enabled": true,
             "group": "default"

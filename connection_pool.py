@@ -13,8 +13,70 @@ Usage:
 """
 
 import threading
+import json
+import urllib.request
 from playwright.sync_api import sync_playwright
-from constants import get_page_by_visual_index
+
+
+def get_page_by_visual_index(browser_context, tab_index, port=9222):
+    """
+    Get a Playwright Page by its VISUAL position in Chrome (left-to-right).
+    Chrome CDP /json returns targets in visual tab order.
+    Playwright context.pages returns them in creation order.
+    """
+    try:
+        resp = urllib.request.urlopen(f"http://localhost:{port}/json")
+        targets = json.loads(resp.read().decode())
+    except Exception as e:
+        return None, f"Cannot reach Chrome CDP at port {port}: {e}"
+
+    page_targets = [t for t in targets if t.get("type") == "page"]
+    if not page_targets:
+        return None, "No page tabs found in Chrome."
+    if tab_index >= len(page_targets):
+        return None, f"Tab index {tab_index} out of range (only {len(page_targets)} tabs)."
+
+    target_info = page_targets[tab_index]
+    target_id = target_info.get("id")
+    target_url = target_info.get("url", "")
+    tab_list = [(i, t.get("title", "?"), t.get("url", "")) for i, t in enumerate(page_targets)]
+    pw_pages = browser_context.pages
+
+    url_to_ids = {}
+    for t in page_targets:
+        url = t.get("url", "")
+        url_to_ids.setdefault(url, []).append(t.get("id"))
+
+    # Strategy 1: Match by unique URL
+    for p in pw_pages:
+        try:
+            p_url = p.url
+            if p_url in url_to_ids and len(url_to_ids[p_url]) == 1:
+                if url_to_ids[p_url][0] == target_id:
+                    return p, tab_list
+        except Exception:
+            continue
+
+    # Strategy 2: Position-based matching for duplicate URLs
+    target_url_occurrence = sum(
+        1 for i in range(tab_index + 1)
+        if page_targets[i].get("url", "") == target_url
+    )
+    seen_count = 0
+    for p in pw_pages:
+        try:
+            if p.url == target_url:
+                seen_count += 1
+                if seen_count == target_url_occurrence:
+                    return p, tab_list
+        except Exception:
+            continue
+
+    # Strategy 3: Index-based fallback
+    if tab_index < len(pw_pages):
+        return pw_pages[tab_index], tab_list
+
+    return None, f"Could not match Tab {tab_index} to any Playwright page."
 
 
 class PlaywrightPool:

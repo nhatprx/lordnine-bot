@@ -1,0 +1,37 @@
+# Build artifacts
+build/
+dist/
+installer_output/
+*.exe
+*.spec
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Debug output
+debug/
+
+# Database runtime files
+*.db-shm
+*.db-wal
+
+# Backup files
+*.bak
+
+# One-off / temp files
+scan_result.txt
+template_snip.png
+ui_mockup.html
+
+# Vercel
+.vercel
+
+# IDE
+.vscode/
+.idea/
+
+# License key (sensitive)
+license.key

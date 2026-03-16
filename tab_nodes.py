@@ -9,7 +9,7 @@ from PIL import Image
 import json
 from node_features import precompute_features, batch_precompute
 
-from constants import COLOR, FONT, PAD, RADIUS, get_page_by_visual_index
+from constants import COLOR, FONT, PAD, RADIUS
 
 
 class NodesMixin:
@@ -581,7 +581,7 @@ class NodesMixin:
         # Custom styled dialog
         dialog = ctk.CTkToplevel(self)
         dialog.title("New Tracking Node")
-        dialog.geometry("380x200")
+        dialog.geometry("380x280")
         dialog.resizable(False, False)
         dialog.transient(self)
         dialog.grab_set()
@@ -595,7 +595,7 @@ class NodesMixin:
         # Center on parent
         dialog.update_idletasks()
         x = self.winfo_rootx() + (self.winfo_width() // 2) - 190
-        y = self.winfo_rooty() + (self.winfo_height() // 2) - 100
+        y = self.winfo_rooty() + (self.winfo_height() // 2) - 140
         dialog.geometry(f"+{x}+{y}")
 
         # Flash animation when user clicks main window
@@ -627,16 +627,31 @@ class NodesMixin:
             dialog, text="New Tracking Node",
             font=ctk.CTkFont(family="Inter", size=15, weight="bold"),
             text_color=COLOR["text"]
-        ).pack(pady=(20, 4))
+        ).pack(pady=(16, 4))
+
+        # Mode toggle: Image / Text
+        mode_var = ctk.StringVar(value="Image")
+        mode_frame = ctk.CTkFrame(dialog, fg_color="transparent")
+        mode_frame.pack(pady=(4, 8))
+        
+        ctk.CTkSegmentedButton(
+            mode_frame, values=["Image", "Text"],
+            variable=mode_var, width=200,
+            font=ctk.CTkFont(size=11, weight="bold"),
+            selected_color=COLOR["primary"],
+            selected_hover_color=COLOR["primary_h"],
+            command=lambda v: _toggle_mode(v)
+        ).pack()
 
         # Subtitle
-        ctk.CTkLabel(
+        subtitle = ctk.CTkLabel(
             dialog, text="e.g., hp_bar, potion, settings...",
             font=ctk.CTkFont(family="Inter", size=11),
             text_color=COLOR["text_muted"]
-        ).pack(pady=(0, 12))
+        )
+        subtitle.pack(pady=(0, 6))
 
-        # Entry
+        # Name entry
         entry = ctk.CTkEntry(
             dialog, width=300, height=36,
             fg_color=COLOR["surface"], border_width=1,
@@ -644,23 +659,45 @@ class NodesMixin:
             font=ctk.CTkFont(family="Inter", size=12),
             placeholder_text="Enter node name..."
         )
-        entry.pack(pady=(0, 16))
+        entry.pack(pady=(0, 6))
         entry.focus_set()
 
-        result = {"name": None}
+        # Text search entry (hidden by default, shown in Text mode)
+        text_frame = ctk.CTkFrame(dialog, fg_color="transparent")
+        text_entry = ctk.CTkEntry(
+            text_frame, width=300, height=36,
+            fg_color=COLOR["surface"], border_width=1,
+            border_color=COLOR["accent"], corner_radius=8,
+            font=ctk.CTkFont(family="Inter", size=12),
+            placeholder_text="Text to search (e.g. Supplies, Auto Attack...)"
+        )
+        text_entry.pack()
+        
+        def _toggle_mode(v):
+            if v == "Text":
+                subtitle.configure(text="OCR will search for this text on screen")
+                text_frame.pack(after=entry, pady=(0, 6))
+            else:
+                subtitle.configure(text="e.g., hp_bar, potion, settings...")
+                text_frame.pack_forget()
+        
+        result = {"name": None, "mode": None, "search_text": None}
 
         def on_ok(*_):
             result["name"] = entry.get().strip()
+            result["mode"] = mode_var.get()
+            result["search_text"] = text_entry.get().strip() if mode_var.get() == "Text" else None
             _on_close()
 
         def on_cancel():
             _on_close()
 
         entry.bind("<Return>", on_ok)
+        text_entry.bind("<Return>", on_ok)
 
         # Button row
         btn_row = ctk.CTkFrame(dialog, fg_color="transparent")
-        btn_row.pack(fill="x", padx=40)
+        btn_row.pack(fill="x", padx=40, pady=(4, 0))
 
         ctk.CTkButton(
             btn_row, text="Create", command=on_ok,
@@ -685,10 +722,50 @@ class NodesMixin:
                 messagebox.showerror("Error", "This Node Name already exists! Provide a unique name.")
                 return
             
-            self._add_icon_to_list(name, "")
-            self.on_select_target(name)
-            
-            self._show_capture_confirm(name)
+            if result["mode"] == "Text" and result["search_text"]:
+                # Save text node config
+                self._save_text_node(name, result["search_text"])
+                self._add_icon_to_list(name, "")
+                self.on_select_target(name)
+                self.log_gui(f"[Nodes] 🔤 Text Node '{name}' created (search: '{result['search_text']}')")
+            else:
+                # Image mode — proceed with screenshot capture
+                self._add_icon_to_list(name, "")
+                self.on_select_target(name)
+                self._show_capture_confirm(name)
+    
+    def _load_text_nodes(self):
+        """Load text node configs from trackers/text_nodes.json."""
+        self.text_nodes = {}  # name -> search_text
+        path = os.path.join("trackers", "text_nodes.json")
+        if os.path.exists(path):
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    self.text_nodes = json.load(f)
+            except:
+                pass
+    
+    def _save_text_node(self, name, search_text):
+        """Save a text node config."""
+        if not hasattr(self, 'text_nodes'):
+            self._load_text_nodes()
+        self.text_nodes[name] = search_text
+        path = os.path.join("trackers", "text_nodes.json")
+        os.makedirs("trackers", exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(self.text_nodes, f, indent=2, ensure_ascii=False)
+    
+    def _is_text_node(self, name):
+        """Check if a node is a text node."""
+        if not hasattr(self, 'text_nodes'):
+            self._load_text_nodes()
+        return name in self.text_nodes
+    
+    def _get_text_node_search(self, name):
+        """Get search text for a text node."""
+        if not hasattr(self, 'text_nodes'):
+            self._load_text_nodes()
+        return self.text_nodes.get(name, "")
 
     def _show_capture_confirm(self, name):
         """Show styled confirm dialog for screen capture."""
@@ -931,7 +1008,7 @@ class NodesMixin:
             time.sleep(1.0)
 
     def snip_process(self, save_path, success_callback):
-        self.withdraw()
+        self.iconify()  # Minimize instead of withdraw (keeps Tk root active)
         time.sleep(0.3)
         from screencapture import ScreenCaptureTool
         def on_snip(x1, y1, x2, y2):
@@ -944,6 +1021,8 @@ class NodesMixin:
             
         snipper = ScreenCaptureTool(on_snip)
         snipper.run()
+        # Fallback: if user cancelled (Escape), re-show the app
+        self.deiconify()
 
     def _precompute_node(self, template_path):
         """Precompute features for a single node (runs in background thread)."""

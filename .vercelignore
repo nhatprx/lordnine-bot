@@ -1,0 +1,17 @@
+dist
+build
+__pycache__
+.pytest_cache
+*.pyc
+*.pyd
+*.db
+*.spec
+trackers
+debug
+tests
+installer_output
+_obfuscated
+_build_src
+_test_obf
+.git
+bot_state.db
