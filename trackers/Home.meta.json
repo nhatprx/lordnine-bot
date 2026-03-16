@@ -1,0 +1,31 @@
+{
+  "learned_position": {
+    "x": 354,
+    "y": 373,
+    "score": 0.7489217519760132,
+    "count": 3
+  },
+  "total_detections": 15,
+  "capture_position": {
+    "x": 354,
+    "y": 373
+  },
+  "capture_resolution": [
+    1920,
+    945
+  ],
+  "lock_region": {
+    "x1": 651,
+    "y1": 283,
+    "x2": 811,
+    "y2": 443
+  },
+  "hard_click_position": {
+    "x": 354,
+    "y": 373
+  },
+  "hard_click_resolution": [
+    1920,
+    945
+  ]
+}

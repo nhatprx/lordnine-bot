@@ -1,0 +1,25 @@
+{
+  "capture_position": {
+    "x": 586,
+    "y": 301
+  },
+  "capture_resolution": [
+    1920,
+    945
+  ],
+  "hard_click_position": {
+    "x": 586,
+    "y": 301
+  },
+  "hard_click_resolution": [
+    1920,
+    945
+  ],
+  "learned_position": {
+    "x": 553,
+    "y": 300,
+    "score": 0.952768532547898,
+    "count": 29
+  },
+  "total_detections": 27
+}

@@ -1,1 +1,217 @@
-{}
+{
+    "Farm V1": {
+        "nodes": {
+            "abfb9245": {
+                "id": "abfb9245",
+                "type": "Start",
+                "x": 300,
+                "y": 50,
+                "w": 140,
+                "h": 60,
+                "data": {
+                    "title": "Start"
+                }
+            },
+            "a4d38038": {
+                "id": "a4d38038",
+                "type": "Start",
+                "x": 40.873592758409856,
+                "y": 50.07062443337706,
+                "w": 160,
+                "h": 70,
+                "data": {
+                    "title": "Start"
+                }
+            },
+            "6f96d0f8": {
+                "id": "6f96d0f8",
+                "type": "Condition",
+                "x": 165.0,
+                "y": 202.0,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "image_name": "Supplies"
+                }
+            },
+            "ad649a80": {
+                "id": "ad649a80",
+                "type": "Macro",
+                "x": 4.0,
+                "y": 416.0,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "macro_name": "Buy Blood"
+                }
+            },
+            "38ef6fd1": {
+                "id": "38ef6fd1",
+                "type": "Macro",
+                "x": 193.83265157536107,
+                "y": 600.5762533997374,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "macro_name": "Revivie"
+                }
+            },
+            "cc882d55": {
+                "id": "cc882d55",
+                "type": "Macro",
+                "x": -117.96182751956398,
+                "y": 602.4282225542455,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "macro_name": "Gathering"
+                }
+            },
+            "6ab78a5b": {
+                "id": "6ab78a5b",
+                "type": "Condition",
+                "x": 326.2901854029737,
+                "y": 415.04897010300544,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "image_name": "Revive"
+                }
+            },
+            "e48d4853": {
+                "id": "e48d4853",
+                "type": "Condition",
+                "x": 471.0,
+                "y": 608.0,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "image_name": "Supplies - In"
+                }
+            },
+            "12bdd539": {
+                "id": "12bdd539",
+                "type": "Click",
+                "x": 342.0,
+                "y": 778.0,
+                "w": 160,
+                "h": 70,
+                "data": {
+                    "image_name": "Supplies - Exit"
+                }
+            },
+            "dd23ac4f": {
+                "id": "dd23ac4f",
+                "type": "Condition",
+                "x": 608.653477462079,
+                "y": 786.7326126896053,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "image_name": "Attack - Auto"
+                }
+            },
+            "a4a539f0": {
+                "id": "a4a539f0",
+                "type": "Macro",
+                "x": 431.6139098483157,
+                "y": 978.346522537921,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "macro_name": "Gathering"
+                }
+            },
+            "16ff624d": {
+                "id": "16ff624d",
+                "type": "Condition",
+                "x": 745.0343014296184,
+                "y": 979.6957249747035,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "image_name": "Attack - Auto On"
+                }
+            },
+            "3694bbe0": {
+                "id": "3694bbe0",
+                "type": "Macro",
+                "x": 590.1638139268273,
+                "y": 1174.4570956221532,
+                "w": 160,
+                "h": 90,
+                "data": {
+                    "macro_name": "Revivie"
+                }
+            }
+        },
+        "edges": [
+            {
+                "from": "abfb9245",
+                "from_pin": "out",
+                "to": "6f96d0f8",
+                "to_pin": "in"
+            },
+            {
+                "from": "6f96d0f8",
+                "from_pin": "true",
+                "to": "ad649a80",
+                "to_pin": "in"
+            },
+            {
+                "from": "ad649a80",
+                "from_pin": "true",
+                "to": "cc882d55",
+                "to_pin": "in"
+            },
+            {
+                "from": "6f96d0f8",
+                "from_pin": "false",
+                "to": "6ab78a5b",
+                "to_pin": "in"
+            },
+            {
+                "from": "6ab78a5b",
+                "from_pin": "true",
+                "to": "38ef6fd1",
+                "to_pin": "in"
+            },
+            {
+                "from": "6ab78a5b",
+                "from_pin": "false",
+                "to": "e48d4853",
+                "to_pin": "in"
+            },
+            {
+                "from": "e48d4853",
+                "from_pin": "true",
+                "to": "12bdd539",
+                "to_pin": "in"
+            },
+            {
+                "from": "e48d4853",
+                "from_pin": "false",
+                "to": "dd23ac4f",
+                "to_pin": "in"
+            },
+            {
+                "from": "dd23ac4f",
+                "from_pin": "true",
+                "to": "a4a539f0",
+                "to_pin": "in"
+            },
+            {
+                "from": "dd23ac4f",
+                "from_pin": "false",
+                "to": "16ff624d",
+                "to_pin": "in"
+            },
+            {
+                "from": "16ff624d",
+                "from_pin": "true",
+                "to": "3694bbe0",
+                "to_pin": "in"
+            }
+        ]
+    }
+}

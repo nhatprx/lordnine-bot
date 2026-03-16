@@ -1,0 +1,17 @@
+{
+  "capture_position": {
+    "x": 1033,
+    "y": 793
+  },
+  "capture_resolution": [
+    1920,
+    1080
+  ],
+  "learned_position": {
+    "x": 1033,
+    "y": 706,
+    "score": 0.9689205899703555,
+    "count": 22
+  },
+  "total_detections": 22
+}

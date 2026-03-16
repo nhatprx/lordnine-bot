@@ -109,6 +109,22 @@ def run_macro(macro_data, bot_instance, vision, tracked_icons,
             log_fn(f"    - Step FAILED: Node '{node_name}' image file missing.")
             return False
 
+        # ── HARD CLICK: skip detection, click at saved coordinates ──
+        if step_data.get("hard_click"):
+            from node_features import get_click_zone
+            zone = get_click_zone(filepath)
+            if zone:
+                cx, cy, w, h = zone
+                rx = cx + random.randint(-w * 35 // 100, w * 35 // 100)
+                ry = cy + random.randint(-h * 35 // 100, h * 35 // 100)
+                bot_instance.click_at(rx, ry, randomize=False)
+                log_fn(f"    - Step OK: ⚡ Hard Click '{node_name}' at ({rx},{ry})")
+                time.sleep(random.uniform(0.3, 0.5))
+                continue
+            else:
+                log_fn(f"    - ⚡ Hard Click: No learned position yet (need ≥3 detections). Falling back to detection.")
+
+        # ── Normal detect-then-click ──
         found = False
         for attempt in range(5):
             frame_bytes = _capture_frame(cdp_client)
@@ -118,6 +134,12 @@ def run_macro(macro_data, bot_instance, vision, tracked_icons,
                 bot_instance.click_at(x, y, randomize=True)
                 log_fn(f"    - Step OK: Clicked '{node_name}'")
                 found = True
+                # Update learned position for future hard clicks
+                try:
+                    from node_features import update_learned_position
+                    update_learned_position(filepath, x, y, _)
+                except Exception:
+                    pass
                 time.sleep(random.uniform(0.3, 0.5))
                 break
             time.sleep(0.3)

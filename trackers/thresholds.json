@@ -1,6 +1,7 @@
 {
-  "Home": 0.75,
-  "Supplies": 0.5,
+  "Home": 0.5,
+  "Supplies": 0.65,
   "Revivie": 0.5,
-  "Revive": 0.91
+  "Revive": 0.7,
+  "Gathering - Automove": 0.65
 }

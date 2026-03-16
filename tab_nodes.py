@@ -7,7 +7,9 @@ import os
 import pyautogui
 from PIL import Image
 import json
-from node_features import precompute_features, batch_precompute
+from node_features import (precompute_features, batch_precompute, save_capture_position,
+                           reset_learned_position, update_learned_position,
+                           save_hard_click_position)
 
 from constants import COLOR, FONT, PAD, RADIUS
 
@@ -527,14 +529,43 @@ class NodesMixin:
                 try: frame_bytes = cdp_client.screenshot()
                 except: pass
             
-            res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=True, frame_bytes=frame_bytes)
+            debug_result = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=True, frame_bytes=frame_bytes)
+            # debug=True returns (result, debug_lines)
+            if isinstance(debug_result, tuple) and len(debug_result) == 2 and isinstance(debug_result[1], list):
+                res, debug_lines = debug_result
+            else:
+                res = debug_result
+                debug_lines = []
+            
             if res:
                 x, y, score = res
+                # Store for Mark Wrong
+                self._last_test = {
+                    "filepath": filepath,
+                    "frame_bytes": frame_bytes,
+                    "x": x, "y": y, "score": score,
+                    "name": name
+                }
                 self.gui_queue.put(("test_notif", (
                     f"Found '{name}' at ({x}, {y}) — Accuracy: {score:.2f}",
                     COLOR["success"], "#0D3320"
                 )))
                 self.log_gui(f"[TEST] Found '{name}' at ({x}, {y}) — Accuracy: {score:.2f}")
+                # Log debug details
+                for line in debug_lines:
+                    self.log_gui(f"  {line}")
+                # Save detected position
+                if frame_bytes and score >= 0.65:
+                    import numpy as np
+                    _arr = np.frombuffer(frame_bytes, np.uint8)
+                    _img = __import__('cv2').imdecode(_arr, __import__('cv2').IMREAD_GRAYSCALE)
+                    if _img is not None:
+                        fh, fw = _img.shape[:2]
+                        save_capture_position(filepath, x, y, fw, fh)
+                        reset_learned_position(filepath, x, y, score)
+                        save_hard_click_position(filepath, x, y, fw, fh)
+                        self.vision.refresh_template(filepath)
+                        self.log_gui(f"[TEST] Saved Hard Click position ({x}, {y}) in CDP space")
                 # Show red debug dot
                 if cdp_client and self.debug_visual_var.get():
                     try:
@@ -569,6 +600,9 @@ class NodesMixin:
                     COLOR["danger"], "#3D1111"
                 )))
                 self.log_gui(f"[TEST] Not found '{name}' on screen (Threshold: {threshold_val:.2f})")
+                # Log debug details showing WHY it failed
+                for line in debug_lines:
+                    self.log_gui(f"  {line}")
             
             # Cleanup
             if cdp_client:
@@ -576,6 +610,7 @@ class NodesMixin:
                 except: pass
         
         threading.Thread(target=_run_test, daemon=True).start()
+
 
     def add_new_target(self):
         # Custom styled dialog
@@ -927,6 +962,7 @@ class NodesMixin:
             
         self.snip_process(save_path, success)
 
+
     def delete_selected_targets(self):
         to_delete = [name for name, var in self.icon_checkbox_vars.items() if var.get()]
         if not to_delete:
@@ -1008,7 +1044,7 @@ class NodesMixin:
             time.sleep(1.0)
 
     def snip_process(self, save_path, success_callback):
-        self.iconify()  # Minimize instead of withdraw (keeps Tk root active)
+        self.iconify()
         time.sleep(0.3)
         from screencapture import ScreenCaptureTool
         def on_snip(x1, y1, x2, y2):
@@ -1016,24 +1052,112 @@ class NodesMixin:
             img.save(save_path)
             self.deiconify()
             success_callback(x2-x1, y2-y1)
-            # Auto-precompute features for the new/updated template
-            threading.Thread(target=self._precompute_node, args=(save_path,), daemon=True).start()
-            
+            # Save screen coords
+            cx = (x1 + x2) // 2
+            cy = (y1 + y2) // 2
+            sw = pyautogui.size()[0]
+            sh = pyautogui.size()[1]
+            save_capture_position(save_path, cx, cy, sw, sh)
+            # Auto-detect CDP position for hard click
+            threading.Thread(
+                target=self._detect_hard_click_position,
+                args=(save_path,),
+                daemon=True
+            ).start()
+            threading.Thread(
+                target=self._precompute_and_validate,
+                args=(save_path, cx, cy),
+                daemon=True
+            ).start()
+
         snipper = ScreenCaptureTool(on_snip)
         snipper.run()
-        # Fallback: if user cancelled (Escape), re-show the app
         self.deiconify()
 
-    def _precompute_node(self, template_path):
-        """Precompute features for a single node (runs in background thread)."""
+    def _detect_hard_click_position(self, template_path):
+        """Match snipped template against CDP screenshot to get CDP-space coords for hard click."""
+        try:
+            port_str = self.footer_port_input.get().strip()
+            port = int(port_str) if port_str.isdigit() else 9222
+            tab_str = self.footer_tab_input.get().strip()
+            tab_id = int(tab_str) if tab_str.isdigit() else 0
+        except:
+            port, tab_id = 9222, 0
+
+        cdp_client = None
+        try:
+            import cv2
+            import numpy as np
+            from cdp_client import CDPClient
+
+            cdp_client = CDPClient.connect(port=port, tab_index=tab_id)
+            frame_bytes = cdp_client.screenshot()
+
+            # Decode screenshot and template
+            frame = cv2.imdecode(np.frombuffer(frame_bytes, np.uint8), cv2.IMREAD_GRAYSCALE)
+            template = cv2.imread(template_path, cv2.IMREAD_GRAYSCALE)
+            if frame is None or template is None:
+                self.log_gui(f"[Nodes] Hard Click: Could not read images")
+                return
+
+            th, tw = template.shape[:2]
+            fh, fw = frame.shape[:2]
+            if tw > fw or th > fh:
+                self.log_gui(f"[Nodes] Hard Click: Template larger than viewport")
+                return
+
+            result = cv2.matchTemplate(frame, template, cv2.TM_CCOEFF_NORMED)
+            _, max_val, _, max_loc = cv2.minMaxLoc(result)
+
+            if max_val > 0.7:
+                cdp_cx = max_loc[0] + tw // 2
+                cdp_cy = max_loc[1] + th // 2
+                save_hard_click_position(template_path, cdp_cx, cdp_cy, fw, fh)
+                self.log_gui(f"[Nodes] ⚡ Hard Click position saved: ({cdp_cx},{cdp_cy}) in CDP space (match={max_val:.2f})")
+            else:
+                self.log_gui(f"[Nodes] Hard Click: Template not found in viewport (best={max_val:.2f})")
+        except Exception as e:
+            name = os.path.splitext(os.path.basename(template_path))[0]
+            self.log_gui(f"[Nodes] Hard Click auto-detect failed for '{name}': {str(e)[:80]}")
+        finally:
+            if cdp_client:
+                try: cdp_client.close()
+                except: pass
+
+    def _precompute_and_validate(self, template_path, cap_x, cap_y):
+        """Extract features + auto-validate at captured coords."""
         try:
             name = os.path.splitext(os.path.basename(template_path))[0]
-            if precompute_features(template_path):
-                self.log_gui(f"[⚡ Learn] Learned features for [{name}]")
-            else:
-                self.log_gui(f"[⚡ Learn] Failed to learn [{name}]")
+            if not extract_and_store_features(template_path):
+                self.log_gui(f"[⚡ Learn] Failed to extract features for [{name}]")
+                return
+
+            vc = get_variant_count(template_path)
+            self.log_gui(f"[⚡ Learn] Extracted features for [{name}] ({vc} capture{'s' if vc > 1 else ''})")
+
+            # Auto-validate: re-detect at captured coords
+            self.vision.refresh_template(template_path)
+            try:
+                from cdp_client import CDPClient
+                cdp = CDPClient.connect(port=self.port_var.get(), tab_index=self.tab_var.get())
+                fb = cdp.screenshot(format='jpeg', quality=80)
+                cdp.close()
+                res = self.vision.find_template_on_screen(
+                    template_path, threshold=0.65, frame_bytes=fb)
+                if res:
+                    x, y, score = res
+                    self.log_gui(f"[⚡ Validate] ✓ [{name}] found at ({x},{y}) score={score:.2f}")
+                else:
+                    self.log_gui(f"[⚡ Validate] ✗ [{name}] NOT found — try re-capturing or adding variant")
+            except Exception as e:
+                self.log_gui(f"[⚡ Validate] Skip — no CDP: {str(e)[:40]}")
+
         except Exception as e:
             self.log_gui(f"[⚡ Learn] Error: {str(e)[:50]}")
+
+    def _precompute_node(self, template_path):
+        """Legacy: precompute features."""
+        self._precompute_and_validate(template_path, 0, 0)
 
     def _auto_learn_if_needed(self):
         """Check if any templates are missing features and auto-learn them."""

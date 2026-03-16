@@ -1,0 +1,18 @@
+{
+  "capture_position": {
+    "x": 938,
+    "y": 429
+  },
+  "capture_resolution": [
+    1920,
+    1080
+  ],
+  "hard_click_position": {
+    "x": 938,
+    "y": 342
+  },
+  "hard_click_resolution": [
+    1920,
+    945
+  ]
+}

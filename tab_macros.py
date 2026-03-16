@@ -316,13 +316,18 @@ class MacrosMixin:
             for s in steps:
                 if isinstance(s, dict) and s.get("type") not in ("delay", "marker") and s.get("marker", "None") != "None":
                     # Split: click step (without marker) + marker step
-                    new_steps.append({"node": s["node"]})
+                    click_step = {"node": s["node"]}
+                    if s.get("hard_click"):
+                        click_step["hard_click"] = True
+                    new_steps.append(click_step)
                     new_steps.append({"type": "marker", "marker": s["marker"], "mode": s.get("mode", "Wait until Appear"), "time": s.get("time", "0")})
                     migrated = True
                 else:
                     # Clean up old marker fields from click steps
                     if isinstance(s, dict) and s.get("type") not in ("delay", "marker") and "marker" in s:
                         clean = {"node": s["node"]}
+                        if s.get("hard_click"):
+                            clean["hard_click"] = True
                         new_steps.append(clean)
                         migrated = True
                     else:
@@ -489,7 +494,10 @@ class MacrosMixin:
             else:
                 num_lbl = ctk.CTkLabel(top_row, text=f"{i+1}.", font=ctk.CTkFont(size=12), text_color=COLOR["text_muted"], width=20)
                 num_lbl.pack(side="left", padx=(0, 4))
-                lbl = ctk.CTkLabel(top_row, text=f"Click: {step_data.get('node', '?')}", font=ctk.CTkFont(size=12, weight="bold"), text_color=COLOR["text"], anchor="w")
+                click_label = f"Click: {step_data.get('node', '?')}"
+                if step_data.get('hard_click'):
+                    click_label = f"⚡ Hard Click: {step_data.get('node', '?')}"
+                lbl = ctk.CTkLabel(top_row, text=click_label, font=ctk.CTkFont(size=12, weight="bold"), text_color=COLOR["text"], anchor="w")
                 lbl.pack(side="left", fill="x", expand=True)
 
     def _drag_start(self, event, index):
@@ -598,7 +606,7 @@ class MacrosMixin:
         
         top = ctk.CTkToplevel(self)
         top.title("Lordbot Control")
-        top.geometry("380x200")
+        top.geometry("380x250")
         top.resizable(False, False)
         top.configure(fg_color=COLOR["surface"])
         top.transient(self)
@@ -606,8 +614,8 @@ class MacrosMixin:
         top.after(200, lambda: top.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico")))
         top.update_idletasks()
         x = self.winfo_x() + (self.winfo_width() - 380) // 2
-        y = self.winfo_y() + (self.winfo_height() - 200) // 2
-        top.geometry(f"380x200+{x}+{y}")
+        y = self.winfo_y() + (self.winfo_height() - 250) // 2
+        top.geometry(f"380x250+{x}+{y}")
 
         ctk.CTkLabel(
             top, text=f"Edit Click — Step {index+1}",
@@ -622,12 +630,26 @@ class MacrosMixin:
         cb_node = ctk.CTkOptionMenu(form, values=valid_nodes, fg_color=COLOR["bg"], button_color=COLOR["border"], corner_radius=6, height=30, font=ctk.CTkFont(size=11))
         cb_node.set(step_data.get("node", valid_nodes[0]))
         cb_node.pack(fill="x", pady=(0, 8))
-        
+
+        # Hard Click toggle
+        hard_click_var = ctk.BooleanVar(value=step_data.get("hard_click", False))
+        hc_row = ctk.CTkFrame(form, fg_color="transparent")
+        hc_row.pack(fill="x", pady=(0, 8))
+        ctk.CTkLabel(hc_row, text="⚡ Hard Click:", font=ctk.CTkFont(size=11, weight="bold"), text_color=COLOR["text"]).pack(side="left")
+        ctk.CTkSwitch(
+            hc_row, text="Click at saved position",
+            variable=hard_click_var, onvalue=True, offvalue=False,
+            font=ctk.CTkFont(size=10), text_color=COLOR["text_dim"],
+            fg_color=COLOR["border"], progress_color=COLOR["primary"],
+            height=20
+        ).pack(side="left", padx=(8, 0))
+
         btn_row = ctk.CTkFrame(top, fg_color="transparent")
         btn_row.pack(fill="x", padx=20, pady=(0, 12))
 
         def _save():
             step_data["node"] = cb_node.get()
+            step_data["hard_click"] = hard_click_var.get()
             self.save_combos()
             self.refresh_steps_view()
             top.destroy()
@@ -1479,7 +1501,36 @@ class MacrosMixin:
                 if not filepath or not os.path.exists(filepath):
                     self.log_gui(f"[Macro] SKIP: Node '{node_name}' missing image file.")
                     continue
-                    
+
+                # ── HARD CLICK: skip detection, click at saved coordinates ──
+                if step_data.get("hard_click"):
+                    from node_features import get_click_zone, load_meta
+                    zone = get_click_zone(filepath)
+                    if zone:
+                        cx, cy, w, h = zone
+                        # Random point within 70% of the zone (avoid edge pixels)
+                        rx = cx + random.randint(-w * 35 // 100, w * 35 // 100)
+                        ry = cy + random.randint(-h * 35 // 100, h * 35 // 100)
+                        # Debug: log full coordinate chain
+                        meta = load_meta(filepath)
+                        lp = meta.get('learned_position', {})
+                        cp = meta.get('capture_position', {})
+                        self.log_gui(f"        -> ⚡ Hard Click '{node_name}'")
+                        self.log_gui(f"           learned_pos=({lp.get('x','?')},{lp.get('y','?')}) count={lp.get('count','?')}")
+                        self.log_gui(f"           capture_pos=({cp.get('x','?')},{cp.get('y','?')}) [NOT USED]")
+                        self.log_gui(f"           zone=({cx},{cy}) template={w}x{h}")
+                        self.log_gui(f"           click_raw=({rx},{ry})")
+                        try:
+                            dpr = float(cdp_client.evaluate("window.devicePixelRatio")) if cdp_client else 1.0
+                            self.log_gui(f"           DPR={dpr} -> css=({rx/dpr:.0f},{ry/dpr:.0f})")
+                        except: pass
+                        bot_instance.click_at(rx, ry, randomize=False)
+                        time.sleep(random.uniform(1.2, 2.0))
+                        continue
+                    else:
+                        self.log_gui(f"        -> ⚡ Hard Click: No learned position yet (need ≥1 detection). Falling back.")
+
+                # ── Normal detect-then-click ──
                 found = False
                 for attempt in range(5):
                     frame_bytes = None
