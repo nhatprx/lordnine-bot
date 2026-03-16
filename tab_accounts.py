@@ -1132,7 +1132,7 @@ class AccountsMixin:
             try:
                 result = run_macro(
                     macro_steps, bot_instance, self.vision,
-                    self.tracked_icons, threshold_val=self.slider.get() if hasattr(self, 'slider') else 0.54,
+                    self.tracked_icons, threshold_val=threshold_val,
                     cdp_client=cdp_client,
                     log_fn=lambda msg: self.log_gui(f"[{acc_name}] {msg}"),
                     is_running_fn=lambda: self.account_running.get(acc_name, False),
@@ -1276,7 +1276,7 @@ class AccountsMixin:
                     try:
                         result = run_macro(
                             self.combos[mac_name], bot_instance, self.vision,
-                            self.tracked_icons, threshold_val=self.slider.get() if hasattr(self, 'slider') else 0.54,
+                            self.tracked_icons, threshold_val=threshold_val,
                             cdp_client=cdp_client,
                             log_fn=lambda msg: self.log_gui(f"[{acc_name}] {msg}"),
                             is_running_fn=lambda: self.account_running.get(acc_name, False),

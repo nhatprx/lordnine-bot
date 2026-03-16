@@ -162,6 +162,11 @@ def load_features(template_path):
     return None
 
 
+def get_feature_status(trackers_dir="trackers"):
+    """Stub — returns empty list (no feature status tracking yet)."""
+    return []
+
+
 def batch_precompute(trackers_dir="trackers"):
     """Stub — no batch feature extraction."""
     return 0, 0, 0

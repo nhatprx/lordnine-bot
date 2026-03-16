@@ -17,6 +17,13 @@ class BotAction:
         self.cdp_client = cdp_client
         self.debug_visual_var = debug_visual_var
         self.cdp = None
+        self._cached_dpr = None  # Cache DPR to avoid repeated CDP calls
+        
+        # Cache debug flag at init (avoid tkinter access from worker threads)
+        try:
+            self._show_debug = debug_visual_var.get() if debug_visual_var else False
+        except:
+            self._show_debug = False
         
         # Only create legacy CDP session if using Playwright page
         if page and not cdp_client:
@@ -31,6 +38,22 @@ class BotAction:
             except Exception as e:
                 print(f"[BotAction] Could not hook CDP: {e}")
                 self.cdp = None
+
+    def _get_dpr(self):
+        """Get device pixel ratio, cached after first call."""
+        if self._cached_dpr is not None:
+            return self._cached_dpr
+        try:
+            if self.cdp_client:
+                dpr = float(self.cdp_client.evaluate("window.devicePixelRatio"))
+            elif self.page:
+                dpr = float(self.page.evaluate("window.devicePixelRatio"))
+            else:
+                dpr = 1.0
+        except:
+            dpr = 1.0
+        self._cached_dpr = dpr
+        return dpr
     
     def _detach_cdp(self):
         """Safely detach and close the current CDP session."""
@@ -94,22 +117,15 @@ class BotAction:
         if self.cdp_client or self.page:
             # BACKGROUND CLICK
             try:
-                # Get devicePixelRatio for coordinate conversion
-                try:
-                    if self.cdp_client:
-                        dpr = float(self.cdp_client.evaluate("window.devicePixelRatio"))
-                    else:
-                        dpr = float(self.page.evaluate("window.devicePixelRatio"))
-                except:
-                    dpr = 1.0
+                # Get devicePixelRatio (cached after first call)
+                dpr = self._get_dpr()
                 
                 css_x = x / dpr
                 css_y = y / dpr
                 
                 # --- VISUAL DEBUGGER & CLICK INJECTION ---
-                show_dot = self.debug_visual_var.get() if self.debug_visual_var else False
-                
-                if show_dot:
+                # Use cached debug flag (set at __init__, avoids tkinter access from worker threads)
+                if self._show_debug:
                     js_draw_dot = """
                     (args) => {
                         const dot = document.createElement('div');
@@ -154,20 +170,6 @@ class BotAction:
                             target_frame.evaluate(js_draw_dot, {'x': css_x, 'y': css_y})
                     except:
                         pass
-                
-                # [SAFETY] Bound check
-                try:
-                    if self.cdp_client:
-                        viewport_size = self.cdp_client.evaluate("({w: window.innerWidth, h: window.innerHeight})")
-                    else:
-                        viewport_size = self.page.evaluate("({w: window.innerWidth, h: window.innerHeight})")
-                    vw = viewport_size['w']
-                    vh = viewport_size['h']
-                    if css_x < 0 or css_x > vw or css_y < 0 or css_y > vh:
-                        print(f"[BotAction] BLOCKED CLICK: ({css_x:.0f},{css_y:.0f}) outside viewport ({vw}x{vh})")
-                        return
-                except:
-                    pass
                 
                 # --- EXECUTE CLICK ---
                 if self.cdp_client:
