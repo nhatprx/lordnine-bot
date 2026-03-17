@@ -73,10 +73,10 @@ class PortScheduler:
         self._CACHE_TTL = 1.5  # seconds — fresh frames for accurate condition/marker checks
 
         # Adaptive rate limiting (AIMD congestion control)
-        self._GAP_MIN = 0.15          # floor: 150ms (normal load)
-        self._GAP_MAX = 0.80          # ceiling: 800ms (heavy load)
+        self._GAP_MIN = 0.05          # floor: 50ms (max performance)
+        self._GAP_MAX = 0.40          # ceiling: 400ms (heavy load)
         self._GAP_INCREASE_FACTOR = 1.5  # multiplicative increase on failure
-        self._GAP_DECREASE_STEP = 0.05   # additive decrease on success (50ms)
+        self._GAP_DECREASE_STEP = 0.10   # additive decrease on success (100ms — fast recovery)
         self._current_gap = self._GAP_MIN  # starts at minimum
         self._last_shot_time = 0.0
 

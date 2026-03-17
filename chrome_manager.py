@@ -85,6 +85,17 @@ class ChromeManager:
             f"--user-data-dir={user_data_dir}",
             "--no-first-run",
             "--no-default-browser-check",
+            # Anti-throttle: prevent Chrome from stopping rendering when
+            # minimized, hidden, or occluded by other windows.
+            # Without these, CDP captureScreenshot fails when Chrome is hidden.
+            "--disable-backgrounding-occluded-windows",
+            "--disable-renderer-backgrounding",
+            "--disable-background-timer-throttling",
+            # Full performance: let Chrome use all resources needed
+            "--disable-ipc-flooding-protection",
+            "--disable-hang-monitor",
+            "--disable-features=CalculateNativeWinOcclusion",  # Windows occlusion bypass
+            "--force-device-scale-factor=1",                    # Consistent rendering
         ]
         
         if proxy:
