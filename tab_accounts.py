@@ -390,8 +390,29 @@ class AccountsMixin:
             # Save accounts
             # Merge new accounts with existing (preserve other ports)
             if created_accounts:
+                # Deduplicate names: if a name already exists on a DIFFERENT port, add suffix
+                existing_names = {}  # name → port
+                for a in self.multi_accounts:
+                    existing_names[a['name']] = a.get('port', 9222)
+                
+                for acc in created_accounts:
+                    base_name = acc['name']
+                    if base_name in existing_names and existing_names[base_name] != acc['port']:
+                        # Name exists on different port → make unique
+                        acc['name'] = f"{base_name} ({acc['port']})"
+                    # Also check for duplicates within created_accounts itself
+                    used_names = {a['name'] for a in created_accounts if a is not acc}
+                    while acc['name'] in used_names:
+                        acc['name'] = f"{acc['name']} ({acc['port']})"
+                
+                # Also rename OLD accounts that conflict with new ones
+                new_base_names = {all_phone_names.get((a['port'], int(a['target'])), a['name']): a['port'] 
+                                  for a in created_accounts}
+                for a in self.multi_accounts:
+                    if a['name'] in new_base_names and new_base_names[a['name']] != a.get('port', 9222):
+                        a['name'] = f"{a['name']} ({a.get('port', 9222)})"
+                
                 new_names = {a['name'] for a in created_accounts}
-                # Keep existing accounts that aren't being replaced
                 merged = [a for a in self.multi_accounts if a['name'] not in new_names]
                 merged.extend(created_accounts)
                 self.multi_accounts = merged
