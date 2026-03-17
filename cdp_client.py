@@ -102,33 +102,48 @@ class CDPClient:
             return []
     
     @staticmethod
-    def connect(port=9222, tab_index=0):
+    def connect(port=9222, tab_index=0, retries=3):
         """
         Connect to a Chrome tab by visual index.
         Returns CDPClient instance or raises ConnectionError.
         
         Uses per-port lock to serialize connections — prevents 20+ threads
         from simultaneously calling /json on the same Chrome instance.
+        Retries up to `retries` times on transient failures.
         """
-        port_lock = _get_port_lock(port)
-        with port_lock:
-            tabs = CDPClient.list_tabs(port)
-            if not tabs:
-                raise ConnectionError(f"No tabs found on port {port}")
-            if tab_index >= len(tabs):
-                raise ConnectionError(
-                    f"Tab {tab_index} out of range (only {len(tabs)} tabs on port {port})"
-                )
-            
-            tab = tabs[tab_index]
-            ws_url = tab.get("webSocketDebuggerUrl")
-            if not ws_url:
-                raise ConnectionError(
-                    f"Tab {tab_index} has no webSocketDebuggerUrl — "
-                    "is another debugger already attached?"
-                )
-            
-            return CDPClient(ws_url, tab_info=tab)
+        last_error = None
+        for attempt in range(retries):
+            try:
+                port_lock = _get_port_lock(port)
+                with port_lock:
+                    # Clear cache on retry to get fresh tab list
+                    if attempt > 0:
+                        _tab_cache.pop(port, None)
+                        time.sleep(1)  # brief pause before retry
+                    
+                    tabs = CDPClient.list_tabs(port)
+                    if not tabs:
+                        raise ConnectionError(f"No tabs found on port {port}")
+                    if tab_index >= len(tabs):
+                        raise ConnectionError(
+                            f"Tab {tab_index} out of range (only {len(tabs)} tabs on port {port})"
+                        )
+                    
+                    tab = tabs[tab_index]
+                    ws_url = tab.get("webSocketDebuggerUrl")
+                    if not ws_url:
+                        raise ConnectionError(
+                            f"Tab {tab_index} has no webSocketDebuggerUrl — "
+                            "is another debugger already attached?"
+                        )
+                    
+                    return CDPClient(ws_url, tab_info=tab)
+            except Exception as e:
+                last_error = e
+                if attempt < retries - 1:
+                    time.sleep(0.5)
+        
+        raise ConnectionError(f"Failed after {retries} attempts: {last_error}")
     
     def _send(self, method, params=None, timeout=15):
         """Send CDP command and wait for response."""
