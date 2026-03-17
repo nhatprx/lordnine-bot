@@ -1281,15 +1281,17 @@ class AccountsMixin:
         def flog(msg):
             _file_logger.info(f"[{acc_name}] {msg}")
         
-        # ── Throttled screenshot error logging (max 1/60s to GUI) ──
+        # ── Throttled screenshot error logging (max 1/60s to GUI, only after 3+ fails) ──
         _last_ss_error_gui = 0
-        def log_ss_error(error_msg):
+        def log_ss_error(error_msg, fail_count=1):
             nonlocal _last_ss_error_gui
             flog(f"Screenshot error: {error_msg}")  # always log to file
-            now = time.time()
-            if (now - _last_ss_error_gui) >= 60.0:
-                self.log_gui(f"[{acc_name}] Screenshot Error: {str(error_msg)[:40]}")
-                _last_ss_error_gui = now
+            # Only show in GUI after 3+ consecutive fails (fail #1-2 are transient)
+            if fail_count >= 3:
+                now = time.time()
+                if (now - _last_ss_error_gui) >= 60.0:
+                    self.log_gui(f"[{acc_name}] Screenshot Error: {str(error_msg)[:40]}")
+                    _last_ss_error_gui = now
         
         # ── Screenshot backoff state ──
         _ss_fail_count = 0
@@ -1312,7 +1314,7 @@ class AccountsMixin:
             else:
                 _ss_fail_count += 1
                 backoff = min(_SS_MAX_BACKOFF, 2 ** _ss_fail_count)
-                log_ss_error(f"Screenshot failed (backoff {backoff}s, fail #{_ss_fail_count})")
+                log_ss_error(f"Screenshot failed (backoff {backoff}s, fail #{_ss_fail_count})", _ss_fail_count)
                 time.sleep(backoff)
                 return None
         
