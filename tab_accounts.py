@@ -4,6 +4,20 @@ from tkinter import messagebox
 import threading
 import time
 import os
+import logging
+from logging.handlers import RotatingFileHandler
+
+# ── File Logger (debug-level, rotated 5MB × 3) ────────────────
+_log_dir = os.path.dirname(os.path.abspath(__file__))
+_file_logger = logging.getLogger("lordnine")
+_file_logger.setLevel(logging.DEBUG)
+if not _file_logger.handlers:
+    _fh = RotatingFileHandler(
+        os.path.join(_log_dir, "lordnine_debug.log"),
+        maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8"
+    )
+    _fh.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S"))
+    _file_logger.addHandler(_fh)
 
 from constants import COLOR, FONT, PAD, RADIUS
 from bot_action import BotAction
@@ -1179,6 +1193,30 @@ class AccountsMixin:
         tab_idx = int(acc.get('target', '0')) if str(acc.get('target', '0')).isdigit() else 0
         port = acc.get('port', 9222)
         
+        # ── Throttled status update (max 1/sec per account) ──
+        _last_dash_time = 0
+        _last_dash_text = ""
+        def throttled_dash(text, color, force=False):
+            nonlocal _last_dash_time, _last_dash_text
+            now = time.time()
+            if force or text != _last_dash_text or (now - _last_dash_time) >= 1.0:
+                self.update_dash_status(acc_name, text, color)
+                _last_dash_time = now
+                _last_dash_text = text
+        
+        # ── Throttled state_db write (max every 5s during loop) ──
+        _last_state_save = 0
+        def throttled_state_save(**kwargs):
+            nonlocal _last_state_save
+            now = time.time()
+            if (now - _last_state_save) >= 5.0:
+                self.state_db.save_account_state(acc_name, **kwargs)
+                _last_state_save = now
+        
+        # ── File-only logger (no GUI flooding) ──
+        def flog(msg):
+            _file_logger.info(f"[{acc_name}] {msg}")
+        
         # Parse function prefix: "loop - name" or "macro - name" (legacy: plain loop name)
         is_macro_mode = False
         if func_value.startswith("macro - "):
@@ -1223,6 +1261,7 @@ class AccountsMixin:
         self.update_dash_status(acc_name, "Connecting...", COLOR["warning"])
         self.state_db.save_account_state(acc_name, loop_name=func_value, status="connecting", 
                                           port=port, tab_index=tab_idx)
+        flog(f"Starting worker: func={func_value}, port={port}, tab={tab_idx}")
         
         # [v3.15.6] Raw CDPClient — no Node.js/Playwright needed.
         # Each CDPClient is ~1KB vs ~50-100MB per Playwright instance.
@@ -1241,12 +1280,13 @@ class AccountsMixin:
                         except: pass
                     
                     cdp_client = CDPClient.connect(port=port, tab_index=tab_idx)
-                    self.log_gui(f"[{acc_name}] Connected to Port {port}, Tab {tab_idx}")
+                    flog(f"Connected to Port {port}, Tab {tab_idx}")
                     self.state_db.save_account_state(acc_name, status="connected")
                     return True
                         
                 except Exception as e:
-                    self.log_gui(f"[{acc_name}] Connection attempt {attempt+1}/{max_retries} failed: {str(e)[:60]}")
+                    self.log_gui(f"[{acc_name}] Connection failed ({attempt+1}/{max_retries}): {str(e)[:60]}")
+                    flog(f"Connection attempt {attempt+1}/{max_retries} failed: {e}")
                 
                 if attempt < max_retries - 1:
                     wait_time = 2 ** (attempt + 1) + random.uniform(0, 1.5)  # Add jitter
@@ -1282,7 +1322,7 @@ class AccountsMixin:
                     macro_steps, bot_instance, self.vision,
                     self.tracked_icons, threshold_val=threshold_val,
                     cdp_client=cdp_client,
-                    log_fn=lambda msg: self.log_gui(f"[{acc_name}] {msg}"),
+                    log_fn=lambda msg: flog(msg),  # macro logs → file only
                     is_running_fn=lambda: self.account_running.get(acc_name, False),
                     use_direct_vision=True,
                 )
@@ -1341,9 +1381,12 @@ class AccountsMixin:
                     break
                 # Log exact cause of restart
                 if _last_node_type:
-                    self.log_gui(f"[{acc_name}] No next node after '{_last_node_type}' ({_last_node_name}). Restarting loop ({restart_count}/{max_restarts})...")
+                    msg = f"No next node after '{_last_node_type}' ({_last_node_name}). Restart {restart_count}/{max_restarts}"
                 else:
-                    self.log_gui(f"[{acc_name}] Restarting loop ({restart_count}/{max_restarts})...")
+                    msg = f"Restarting loop ({restart_count}/{max_restarts})"
+                flog(msg)
+                if restart_count >= 3:  # Only log to GUI after 3+ restarts
+                    self.log_gui(f"[{acc_name}] {msg}")
                 self.update_dash_status(acc_name, f"Restarting Loop ({restart_count}/{max_restarts})", COLOR["warning"])
                 time.sleep(3.0)  # Longer delay to avoid rapid restart spam
                 current_node_id = get_start_node()
@@ -1359,18 +1402,18 @@ class AccountsMixin:
             _last_node_type = ntype
             _last_node_name = ndata.get("image_name", ndata.get("name", current_node_id[:8]))
 
-            self.state_db.save_account_state(acc_name, current_node=current_node_id)
+            throttled_state_save(current_node=current_node_id)
 
             if ntype == "Start":
-                self.update_dash_status(acc_name, "Running...", COLOR["success"])
+                throttled_dash("Running...", COLOR["success"])
                 next_nid = get_next_node(current_node_id, "out")
                 time.sleep(0.5)
                 
             elif ntype == "Delay":
                 delay_ms = float(ndata.get("time", 1000))
                 delay_sec = delay_ms / 1000.0
-                self.update_dash_status(acc_name, f"Delay ({delay_ms:.0f}ms)...", COLOR["accent"])
-                self.state_db.log_action(acc_name, "delay", f"{delay_ms:.0f}ms")
+                throttled_dash(f"Delay ({delay_ms:.0f}ms)...", COLOR["accent"])
+                flog(f"Delay {delay_ms:.0f}ms")
                 steps = int(delay_sec * 10)
                 for _ in range(steps):
                     if not self._is_running(acc_name): break
@@ -1389,7 +1432,8 @@ class AccountsMixin:
                     self.update_dash_status(acc_name, f"Cond Err: Missing Image", COLOR["danger"])
                     next_nid = get_next_node(current_node_id, "false")
                 else:
-                    self.update_dash_status(acc_name, f"Scanning: {img_name}...", COLOR["warning"])
+                    throttled_dash(f"Scanning: {img_name}...", COLOR["warning"])
+                    flog(f"Condition scan: {img_name}")
                     
                     found_res = None
                     for attempt in range(3):
@@ -1397,7 +1441,8 @@ class AccountsMixin:
                         try:
                             frame_bytes = cdp_client.screenshot(quality=70)
                         except Exception as e:
-                            self.log_gui(f"[{acc_name}] Screenshot Error, reconnecting: {str(e)[:40]}")
+                            self.log_gui(f"[{acc_name}] Screenshot Error: {str(e)[:40]}")
+                            flog(f"Screenshot failed, reconnecting: {e}")
                             self.state_db.log_action(acc_name, "reconnect", f"Screenshot failed: {e}")
                             if connect_to_tab():
                                 bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
@@ -1420,35 +1465,35 @@ class AccountsMixin:
                     
                     if found_res:
                         next_nid = get_next_node(current_node_id, "true")
-                        self.state_db.log_action(acc_name, "condition", img_name, "TRUE")
+                        flog(f"Condition {img_name} → TRUE")
                     else:
                         next_nid = get_next_node(current_node_id, "false")
-                        self.state_db.log_action(acc_name, "condition", img_name, "FALSE")
+                        flog(f"Condition {img_name} → FALSE")
                     time.sleep(0.5)
                     
             elif ntype == "Macro":
                 mac_name = ndata.get("macro_name")
                 if mac_name and mac_name in self.combos:
-                    self.update_dash_status(acc_name, f"Macro: {mac_name}", "#C084FC")
-                    self.state_db.log_action(acc_name, "macro_start", mac_name)
+                    throttled_dash(f"Macro: {mac_name}", "#C084FC")
+                    flog(f"Macro start: {mac_name}")
                     try:
                         result = run_macro(
                             self.combos[mac_name], bot_instance, self.vision,
                             self.tracked_icons, threshold_val=threshold_val,
                             cdp_client=cdp_client,
-                            log_fn=lambda msg: self.log_gui(f"[{acc_name}] {msg}"),
+                            log_fn=lambda msg: flog(msg),  # macro logs → file only
                             is_running_fn=lambda: self.account_running.get(acc_name, False),
                             use_direct_vision=True,
                         )
                         if result:
-                            self.state_db.log_action(acc_name, "macro_done", mac_name, "OK")
+                            flog(f"Macro done: {mac_name} → OK")
                             next_nid = get_next_node(current_node_id, "true")
                         else:
-                            self.state_db.log_action(acc_name, "macro_done", mac_name, "FAIL")
+                            flog(f"Macro done: {mac_name} → FAIL")
                             next_nid = get_next_node(current_node_id, "false")
                     except Exception as e:
                         self.log_gui(f"[{acc_name}] Macro error: {e}")
-                        self.state_db.log_action(acc_name, "macro_error", mac_name, str(e))
+                        flog(f"Macro error: {mac_name}: {e}")
                         next_nid = get_next_node(current_node_id, "false")
                         if connect_to_tab():
                             bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
@@ -1471,12 +1516,14 @@ class AccountsMixin:
                     self.update_dash_status(acc_name, f"Click Err: Missing", COLOR["danger"])
                     self.state_db.log_action(acc_name, "click", img_name, "MISSING")
                 else:
-                    self.update_dash_status(acc_name, f"Click: {img_name}...", COLOR["warning"])
+                    throttled_dash(f"Click: {img_name}...", COLOR["warning"])
+                    flog(f"Click scan: {img_name}")
                     frame_bytes = None
                     try:
                         frame_bytes = cdp_client.screenshot(quality=70)
                     except Exception as e:
                         self.log_gui(f"[{acc_name}] Screenshot Error: {str(e)[:40]}")
+                        flog(f"Screenshot failed in click: {e}")
                         if connect_to_tab():
                             bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
                     
@@ -1491,19 +1538,18 @@ class AccountsMixin:
                         if res:
                             cx, cy = res[0], res[1]
                             bot_instance.click_at(cx, cy)
-                            self.update_dash_status(acc_name, f"Clicked {img_name}", COLOR["success"])
-                            self.state_db.log_action(acc_name, "click", img_name, "OK")
+                            throttled_dash(f"Clicked {img_name}", COLOR["success"])
+                            flog(f"Clicked {img_name} at ({cx},{cy})")
                         else:
-                            self.update_dash_status(acc_name, f"Click: Not visible", COLOR["warning"])
-                            self.state_db.log_action(acc_name, "click", img_name, "NOT_VISIBLE")
+                            throttled_dash(f"Click: Not visible", COLOR["warning"])
+                            flog(f"Click: {img_name} not visible")
                 
                 next_nid = get_next_node(current_node_id, "out")
                 time.sleep(0.3)
 
             elif ntype == "End":
-                self.update_dash_status(acc_name, "Loop complete, restarting...", COLOR["success"])
-                self.state_db.log_action(acc_name, "end", "Loop complete")
-                self.log_gui(f"[{acc_name}] Reached END → restarting loop")
+                throttled_dash("Loop complete, restarting...", COLOR["success"], force=True)
+                flog("Reached END → restarting loop")
                 time.sleep(1.0)
                 current_node_id = get_start_node()
                 continue  # Skip setting current_node_id = next_nid

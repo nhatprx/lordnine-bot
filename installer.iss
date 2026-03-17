@@ -1,13 +1,13 @@
 [Setup]
 AppId={{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}
 AppName=LordNine Bot
-AppVersion=3.19.7
+AppVersion=3.19.8
 AppPublisher=LordNine
 DefaultDirName={autopf}\LordNine Bot
 DefaultGroupName=LordNine Bot
 DisableProgramGroupPage=yes
 OutputDir=installer_output
-OutputBaseFilename=LordNineBotSetup_v3.19.7
+OutputBaseFilename=LordNineBotSetup_v3.19.8
 SetupIconFile=logo.ico
 Compression=lzma2/ultra64
 SolidCompression=yes
