@@ -1589,7 +1589,7 @@ class AccountsMixin:
                                 break
                         finally:
                             del frame_bytes  # explicit cleanup
-                        time.sleep(0.5)
+                        time.sleep(random.uniform(0.3, 0.8))  # Jitter
                     
                     if found_res:
                         next_nid = get_next_node(current_node_id, "true")
@@ -1597,7 +1597,7 @@ class AccountsMixin:
                     else:
                         next_nid = get_next_node(current_node_id, "false")
                         flog(f"Condition {img_name} → FALSE")
-                    time.sleep(0.5)
+                    time.sleep(random.uniform(0.3, 0.8))  # Jitter
                     
             elif ntype == "Macro":
                 mac_name = ndata.get("macro_name")

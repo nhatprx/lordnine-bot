@@ -268,7 +268,7 @@ def _run_marker_step(step_data, idx, total,
                 hold_start = None
                 last_log_time = 0
 
-        time.sleep(0.5)
+        time.sleep(random.uniform(0.3, 1.2))  # Jitter to stagger multi-account polling
 
 
 def _verify_result(macro_data, tracked_icons, threshold_val,
