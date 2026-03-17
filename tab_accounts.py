@@ -1129,6 +1129,10 @@ class AccountsMixin:
         self.update_dash_status(acc_name, "Connected, running...", COLOR["success"])
         bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
 
+        # Keep-alive: prevent cloud phone (Redfinger) from timing out
+        _last_keepalive = time.time()
+        _KEEPALIVE_INTERVAL = 270  # Send mouse move every 4.5 minutes
+
         # ======== MACRO MODE: run macro ONCE then stop ========
         if is_macro_mode:
             self.state_db.save_account_state(acc_name, status="running_macro", current_node=func_name)
@@ -1182,6 +1186,14 @@ class AccountsMixin:
         self.state_db.save_account_state(acc_name, status="running", current_node=current_node_id or "")
         
         while self._is_running(acc_name):
+            # ── Keep-alive: prevent cloud phone idle timeout ──
+            if cdp_client and (time.time() - _last_keepalive) >= _KEEPALIVE_INTERVAL:
+                try:
+                    cdp_client.mouse_move(1, 1)
+                except Exception:
+                    pass
+                _last_keepalive = time.time()
+
             if not current_node_id or current_node_id not in nodes:
                 restart_count += 1
                 if restart_count > max_restarts:

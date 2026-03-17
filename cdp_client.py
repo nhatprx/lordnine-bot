@@ -242,6 +242,17 @@ class CDPClient:
         result = self._send("Runtime.callFunctionOn", params)
         return result.get("result", {}).get("value")
     
+    def mouse_move(self, x=1, y=1):
+        """Send a lightweight mouseMoved event (keep-alive for cloud phones)."""
+        try:
+            self._send("Input.dispatchMouseEvent", {
+                "type": "mouseMoved",
+                "x": x, "y": y,
+                "button": "none",
+            })
+        except Exception:
+            pass  # Best-effort, don't crash on failure
+
     def click(self, x, y, delay_ms=None):
         """
         Click at (x, y) coordinates using CDP Input events.
