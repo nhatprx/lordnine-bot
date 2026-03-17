@@ -794,8 +794,24 @@ class AccountsMixin:
         self.gui_queue.put(("dash_status", (acc_name, status, color)))
         
     def _internal_update_dash_status(self, acc_name, status, color):
-        if acc_name in self.dash_labels:
-            self.dash_labels[acc_name].configure(text=f"{status}", text_color=color)
+        """Buffer status update — actual rendering deferred to _flush_dirty_labels()."""
+        if not hasattr(self, '_dirty_dash'):
+            self._dirty_dash = {}
+        self._dirty_dash[acc_name] = (status, color)
+    
+    def _flush_dirty_labels(self):
+        """Batch-render all pending status updates in ONE pass.
+        
+        Called once per GUI queue tick instead of per-message.
+        With 20 accounts, this coalesces ~20 configure() calls into
+        only the ones that actually changed.
+        """
+        if not hasattr(self, '_dirty_dash') or not self._dirty_dash:
+            return
+        for acc_name, (text, color) in self._dirty_dash.items():
+            if acc_name in self.dash_labels:
+                self.dash_labels[acc_name].configure(text=text, text_color=color)
+        self._dirty_dash.clear()
 
     def _update_row_states(self):
         """Lightweight in-place update of row widgets (no destroy/recreate).
@@ -1200,7 +1216,7 @@ class AccountsMixin:
         def throttled_dash(text, color, force=False):
             nonlocal _last_dash_time, _last_dash_text
             now = time.time()
-            if force or text != _last_dash_text or (now - _last_dash_time) >= 1.0:
+            if force or text != _last_dash_text or (now - _last_dash_time) >= 2.0:
                 self.update_dash_status(acc_name, text, color)
                 _last_dash_time = now
                 _last_dash_text = text

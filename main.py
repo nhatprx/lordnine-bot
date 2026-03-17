@@ -870,9 +870,9 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
     def process_gui_queue(self):
         """Process GUI queue with batching to prevent main thread saturation.
         
-        v3.19.9: Reduced MAX_PER_TICK 30→15, dynamic tick rate (100ms idle → 200ms
-        under load), aggressive queue drain when severely backed up.
+        v3.20.0: Dirty-flag rendering, adaptive tick timing, skip hidden log.
         """
+        _tick_start = time.perf_counter()
         try:
             qsize = self.gui_queue.qsize()
             
@@ -887,7 +887,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                         break
 
             # Collect up to MAX_PER_TICK messages
-            MAX_PER_TICK = 15  # was 30 — less work per main-thread tick
+            MAX_PER_TICK = 15
             messages = []
             for _ in range(MAX_PER_TICK):
                 try:
@@ -900,10 +900,10 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                 return
             
             # Coalesce dash_status: keep only LATEST per account
-            latest_dash = {}  # acc_name -> (status, color)
-            log_lines = []    # batch log inserts
-            other_msgs = []   # non-batchable messages
-            latest_run = None # keep only LATEST "run" callable
+            latest_dash = {}
+            log_lines = []
+            other_msgs = []
+            latest_run = None
             
             for msg_type, payload in messages:
                 if msg_type == "dash_status":
@@ -912,17 +912,20 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                 elif msg_type == "log":
                     log_lines.append(payload)
                 elif msg_type == "run":
-                    latest_run = payload  # coalesce: keep only latest
+                    latest_run = payload
                 else:
                     other_msgs.append((msg_type, payload))
             
-            # Apply coalesced dash_status (one update per account)
+            # Apply coalesced dash_status (buffered → rendered later)
             for acc_name, (status, color) in latest_dash.items():
                 self._internal_update_dash_status(acc_name, status, color)
             
-            # Batch insert logs (one widget operation instead of N)
+            # Batch insert logs — skip if Output tab is NOT active
             if log_lines:
-                self._batch_log_gui(log_lines)
+                is_output_visible = (hasattr(self, 'tab_output') and
+                                     self.tab_output.winfo_ismapped())
+                if is_output_visible:
+                    self._batch_log_gui(log_lines)
             
             # Process other messages
             for msg_type, payload in other_msgs:
@@ -932,9 +935,12 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                     text, color, bg = payload
                     self._show_test_notification(text, color, bg)
             
-            # Execute only the latest "run" callable (skip stale ones)
+            # Execute only the latest "run" callable
             if latest_run:
                 latest_run()
+            
+            # Flush dirty labels — ONE batch render for all buffered updates
+            self._flush_dirty_labels()
             
             # Mark all as done
             for _ in messages:
@@ -943,9 +949,15 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         except Exception:
             pass
 
-        # Dynamic tick rate: slower when queue is heavy (reduces main thread load)
-        tick_ms = 200 if self.gui_queue.qsize() > 50 else 100
-        self.after(tick_ms, self.process_gui_queue)
+        # Adaptive tick: scale interval based on actual tick duration
+        _tick_ms = (time.perf_counter() - _tick_start) * 1000
+        if _tick_ms > 50:
+            next_tick = 250  # tick was slow → give main thread breathing room
+        elif self.gui_queue.qsize() > 50:
+            next_tick = 200  # queue backed up → slower ticks
+        else:
+            next_tick = 100  # idle → responsive
+        self.after(next_tick, self.process_gui_queue)
 
     # ==================== Logging ====================
     def log_gui(self, text):
@@ -959,10 +971,10 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         """Batch insert multiple log lines in ONE widget operation."""
         self.log_textbox.configure(state="normal")
         
-        # Trim old lines once
+        # Trim old lines — keep max 40 lines (was 80)
         line_count = int(self.log_textbox.index('end').split('.')[0]) - 1
-        if line_count > 80:
-            self.log_textbox.delete("1.0", f"{max(1, line_count - 40)}.0")
+        if line_count > 40:
+            self.log_textbox.delete("1.0", f"{max(1, line_count - 20)}.0")
         
         current_time = time.strftime("%H:%M:%S")
         

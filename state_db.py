@@ -65,6 +65,8 @@ class StateDB:
             self._writer_conn = sqlite3.connect(self.db_path, timeout=15)
             self._writer_conn.execute("PRAGMA journal_mode=WAL")
             self._writer_conn.execute("PRAGMA synchronous=NORMAL")
+            self._writer_conn.execute("PRAGMA cache_size=-8000")  # 8MB cache
+            self._writer_conn.execute("PRAGMA mmap_size=67108864")  # 64MB mmap
         return self._writer_conn
     
     def _init_db(self):
@@ -156,6 +158,9 @@ class StateDB:
     def log_action(self, account, action, detail="", result=""):
         """Buffer a log entry. Flushed to DB every 2 seconds."""
         with self._log_lock:
+            # Cap buffer to prevent OOM under heavy load (100+ accounts)
+            if len(self._log_buffer) > 5000:
+                self._log_buffer = self._log_buffer[-2000:]
             self._log_buffer.append((time.time(), account, action, detail, result))
     
     # ── Background Flush ──
@@ -201,12 +206,16 @@ class StateDB:
                 
                 # Auto-prune old logs every 500 buffered inserts
                 if len(logs) >= 50:
+                    # Delete logs older than 24h
+                    cutoff = time.time() - 86400
+                    conn.execute("DELETE FROM execution_log WHERE timestamp < ?", (cutoff,))
+                    # Also cap total to 5000 most recent
                     conn.execute("""
                         DELETE FROM execution_log
                         WHERE id NOT IN (
                             SELECT id FROM execution_log
                             ORDER BY timestamp DESC
-                            LIMIT 10000
+                            LIMIT 5000
                         )
                     """)
             
