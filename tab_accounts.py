@@ -860,9 +860,9 @@ class AccountsMixin:
 
     # ---- Batch Operations ----
     def _batch_start_all(self):
-        # Smart wave-based start: groups of 5, 1s between waves
-        # 15 accounts → 3 waves → fully started in ~2s
-        WAVE_SIZE = 3
+        # Staggered start: groups of 2, 3s between waves
+        # 39 accounts → 20 waves → fully started in ~57s (prevents screenshot storm)
+        WAVE_SIZE = 2
         delay_ms = 0
         count = 0
         for acc in self.multi_accounts:
@@ -870,7 +870,7 @@ class AccountsMixin:
                 self.after(delay_ms, lambda n=acc['name']: self._start_account(n))
                 count += 1
                 if count % WAVE_SIZE == 0:
-                    delay_ms += 2000  # 2s between waves (was 1s)
+                    delay_ms += 3000  # 3s between waves
     
     def _batch_stop_all(self):
         for acc in self.multi_accounts:
@@ -884,12 +884,12 @@ class AccountsMixin:
     def _batch_start_selected(self):
         selected = [acc['name'] for acc in self.multi_accounts
                     if self.dash_checkboxes.get(acc['name']) and self.dash_checkboxes[acc['name']].get()]
-        WAVE_SIZE = 3
+        WAVE_SIZE = 2
         delay_ms = 0
         for i, name in enumerate(selected):
             self.after(delay_ms, lambda n=name: self._start_account(n))
             if (i + 1) % WAVE_SIZE == 0:
-                delay_ms += 2000
+                delay_ms += 3000
     
     def _batch_stop_selected(self):
         selected = [acc['name'] for acc in self.multi_accounts
@@ -1422,6 +1422,11 @@ class AccountsMixin:
         
         self.update_dash_status(acc_name, "Connected, running...", COLOR["success"])
         bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
+
+        # Initial jitter: desync workers started in the same wave
+        # Prevents simultaneous screenshot requests from same-wave accounts
+        _jitter = random.uniform(0, 2.0)
+        time.sleep(_jitter)
 
         # Keep-alive: prevent Redfinger idle timeout (5 min)
         _last_keepalive = time.time()
