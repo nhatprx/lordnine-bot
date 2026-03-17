@@ -55,10 +55,13 @@ class handler(BaseHTTPRequestHandler):
         latest_v = _parse_version(LATEST_VERSION)
 
         if latest_v > client_v:
+            # Use our download proxy (/api/download) since repo is private
+            # Direct GitHub URLs return 404 for private repos
+            proxy_url = "https://lordnine-update.vercel.app/api/download"
             self._respond(200, {
                 "update_available": True,
                 "latest_version": LATEST_VERSION,
-                "download_url": DOWNLOAD_URL,
+                "download_url": proxy_url,
                 "changelog": CHANGELOG,
                 "size": UPDATE_SIZE,
                 "sha256": UPDATE_SHA256,
