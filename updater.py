@@ -36,24 +36,24 @@ logger = logging.getLogger(__name__)
 # ── SSL Context (PyInstaller .exe doesn't bundle CA certs) ─────
 def _make_ssl_ctx():
     """Create SSL context that works in frozen (PyInstaller) builds."""
+    import sys
+    # Try certifi first (if bundled)
     try:
         import certifi
         return ssl.create_default_context(cafile=certifi.where())
-    except ImportError:
-        pass
-    try:
-        ctx = ssl.create_default_context()
-        ctx.check_hostname = True
-        ctx.verify_mode = ssl.CERT_REQUIRED
-        # Test it works
-        return ctx
     except Exception:
         pass
-    # Last resort: unverified (still encrypted, just no cert check)
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
-    return ctx
+    # In frozen (PyInstaller) builds, system CA certs are NOT available
+    # → ssl.create_default_context() creates a context with no CA store
+    # → CERTIFICATE_VERIFY_FAILED on every HTTPS request
+    # Fix: use unverified context (still TLS-encrypted, just no cert check)
+    if getattr(sys, 'frozen', False) or getattr(sys, '_MEIPASS', None):
+        ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        return ctx
+    # Non-frozen (dev): use default context with system CA certs
+    return ssl.create_default_context()
 
 _SSL_CTX = _make_ssl_ctx()
 
