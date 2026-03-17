@@ -1423,9 +1423,9 @@ class AccountsMixin:
         self.update_dash_status(acc_name, "Connected, running...", COLOR["success"])
         bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
 
-        # Keep-alive: prevent cloud phone (Redfinger) from timing out
+        # Keep-alive: prevent Redfinger idle timeout (5 min)
         _last_keepalive = time.time()
-        _KEEPALIVE_INTERVAL = 270  # Send mouse move every 4.5 minutes
+        _KEEPALIVE_INTERVAL = 120  # Touch tap every 2 minutes (safe margin for 5 min timeout)
         
         # v3.21: Connection health monitoring
         _last_health_check = time.time()
@@ -1495,10 +1495,10 @@ class AccountsMixin:
         self.state_db.save_account_state(acc_name, status="running", current_node=current_node_id or "")
         
         while self._is_running(acc_name):
-            # ── Keep-alive: prevent cloud phone idle timeout ──
+            # ── Keep-alive: prevent Redfinger idle timeout ──
             if cdp_client and (time.time() - _last_keepalive) >= _KEEPALIVE_INTERVAL:
                 try:
-                    cdp_client.mouse_move(1, 1)
+                    cdp_client.touch_tap(1, 1)  # Touch event for Android cloud phone
                 except Exception:
                     pass
                 _last_keepalive = time.time()

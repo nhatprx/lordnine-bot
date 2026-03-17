@@ -284,6 +284,28 @@ class CDPClient:
         except Exception:
             pass  # Best-effort, don't crash on failure
 
+    def touch_tap(self, x=1, y=1):
+        """Send a touch tap event — proper Android interaction for Redfinger keep-alive.
+        
+        Redfinger cloud phones run Android and detect idle based on touch events,
+        not mouse events. A touchStart+touchEnd at a safe corner coordinate
+        registers as real user interaction and resets the idle timer.
+        """
+        try:
+            touch_point = {"x": x, "y": y}
+            self._send("Input.dispatchTouchEvent", {
+                "type": "touchStart",
+                "touchPoints": [touch_point],
+            }, timeout=5)
+            time.sleep(0.05)
+            self._send("Input.dispatchTouchEvent", {
+                "type": "touchEnd",
+                "touchPoints": [],
+            }, timeout=5)
+        except Exception:
+            # Fallback to mouse_move if touch not supported
+            self.mouse_move(x, y)
+
     def click(self, x, y, delay_ms=None):
         """
         Click at (x, y) coordinates using CDP Input events.
