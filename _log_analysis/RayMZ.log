@@ -1,0 +1,1400 @@
+03:08:46 ============================================================
+03:08:46 SESSION START — RayMZ (port:9227 tab:1)
+03:08:46 ============================================================
+03:08:46 [RayMZ] Starting worker: func=loop - Farm V1, port=9227, tab=1
+03:08:54 [RayMZ] Connected to Port 9227, Tab 1
+03:09:20 [SHOT] FAIL #1 (25002ms)
+03:09:20 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:09:47 [SHOT] FAIL #2 (25006ms)
+03:09:47 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:09:51 [SCAN] Gathering - Inside → FALSE (56010ms)
+03:09:57 [SHOT] OK (4936ms)
+03:09:57 [SCAN] Supplies → TRUE (4947ms)
+03:09:57 [MACRO] Buy Blood: Starting (0ms)
+03:10:02     - Step OK: ⚡ Hard Click 'Supplies' at (1334,557)
+03:10:02 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:10:27 [SHOT] OK (24601ms)
+03:10:27     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:10:32     - Step OK: ⚡ Hard Click 'Supplies - Type' at (507,313)
+03:10:33 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:10:58 [SHOT] FAIL #1 (25006ms)
+03:10:58 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:11:01 [SHOT] OK (243ms)
+03:11:01     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:11:06     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (850,546)
+03:11:06 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:11:06 [Macro] Delay completed.
+03:11:12     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (999,721)
+03:11:12 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:11:13 [Macro] Delay completed.
+03:11:18     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1543,159)
+03:11:19 [Macro] Steps completed. Checking result...
+03:11:45 [SHOT] FAIL #1 (25011ms)
+03:11:45 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:11:47 [Macro] Result: FAILURE ('Home' not found)
+03:11:47 [MACRO] Buy Blood: FAILED (109695ms total)
+03:11:47 [RayMZ] No next node after 'Macro' (ad649a80). Restart 1/10
+03:12:06 [SHOT] OK (15930ms)
+03:12:07 [SHOT] OK (0ms)
+03:12:08 [SCAN] Gathering - Inside → FALSE (17493ms)
+03:12:08 [SHOT] OK (0ms)
+03:12:08 [SCAN] Supplies → TRUE (12ms)
+03:12:09 [MACRO] Buy Blood: Starting (0ms)
+03:12:14     - Step OK: ⚡ Hard Click 'Supplies' at (1313,589)
+03:12:14 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:12:39 [SHOT] FAIL #1 (25002ms)
+03:12:39 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:13:07 [SHOT] FAIL #2 (25010ms)
+03:13:07 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:13:36 [SHOT] FAIL #3 (25003ms)
+03:13:36 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:14:09 [SHOT] FAIL #4 (25003ms)
+03:14:09 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:14:51 [SHOT] FAIL #5 (25012ms)
+03:14:51 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:15:47 [SHOT] FAIL #6 (25007ms)
+03:15:47 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:16:43 [SHOT] FAIL #7 (25009ms)
+03:16:43 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:17:40 [SHOT] FAIL #8 (25012ms)
+03:17:40 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:18:35 [SHOT] FAIL #9 (25012ms)
+03:18:35 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:19:31 [SHOT] FAIL #10 (25015ms)
+03:19:31 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:20:27 [SHOT] FAIL #11 (25012ms)
+03:20:27 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+03:21:03 [SHOT] OK (4388ms)
+03:21:03     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:21:03     - Step OK: ⚡ Hard Click 'Supplies - Type' at (563,294)
+03:21:03 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:21:03 [SHOT] OK (0ms)
+03:21:04 [SHOT] OK (0ms)
+03:21:05 [SHOT] OK (0ms)
+03:21:05 [SHOT] OK (0ms)
+03:21:31 [SHOT] FAIL #1 (25004ms)
+03:21:31 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:21:37 [SHOT] OK (2814ms)
+03:21:38 [SHOT] OK (0ms)
+03:21:39 [SHOT] OK (0ms)
+03:21:40 [SHOT] OK (0ms)
+03:21:53 [SHOT] OK (13049ms)
+03:21:54     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:21:59     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (791,566)
+03:21:59 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:21:59 [Macro] Delay completed.
+03:22:05     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (996,713)
+03:22:05 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:22:06 [Macro] Delay completed.
+03:22:11     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1528,153)
+03:22:11 [Macro] Steps completed. Checking result...
+03:22:38 [SHOT] FAIL #1 (25004ms)
+03:22:38 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:22:40 [Macro] Result: FAILURE ('Home' not found)
+03:22:40 [MACRO] Buy Blood: FAILED (630759ms total)
+03:22:44 [RayMZ] No next node after 'Macro' (ad649a80). Restart 1/10
+03:22:48 [SHOT] OK (164ms)
+03:22:49 [SHOT] OK (0ms)
+03:22:50 [SCAN] Gathering - Inside → FALSE (1948ms)
+03:22:50 [SHOT] OK (0ms)
+03:22:50 [SCAN] Supplies → TRUE (12ms)
+03:22:51 [MACRO] Buy Blood: Starting (0ms)
+03:22:51     - Step OK: ⚡ Hard Click 'Supplies' at (1320,588)
+03:22:52 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:22:52 [SHOT] OK (246ms)
+03:22:53 [SHOT] OK (0ms)
+03:22:54 [SHOT] OK (0ms)
+03:22:56 [SHOT] OK (310ms)
+03:22:56     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:22:56     - Step OK: ⚡ Hard Click 'Supplies - Type' at (561,324)
+03:22:57 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:22:57 [SHOT] OK (0ms)
+03:22:58 [SHOT] OK (0ms)
+03:22:59 [SHOT] OK (142ms)
+03:22:59     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:22:59     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (879,564)
+03:23:00 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:23:00 [Macro] Delay completed.
+03:23:00     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1045,707)
+03:23:00 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:23:01 [Macro] Delay completed.
+03:23:01     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1532,139)
+03:23:02 [Macro] Steps completed. Checking result...
+03:23:03 [SHOT] OK (243ms)
+03:23:03 [Macro] Result: SUCCESS (found 'Home')
+03:23:03 [MACRO] Buy Blood: PASSED (12016ms total)
+03:23:03 [MACRO] Gathering: Starting (0ms)
+03:23:03 [SHOT] OK (0ms)
+03:23:03     - Step OK: Clicked 'Gathering'
+03:23:04 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+03:23:04 [SHOT] OK (0ms)
+03:23:04 [SHOT] OK (0ms)
+03:23:05 [SHOT] OK (0ms)
+03:23:06 [SHOT] OK (209ms)
+03:23:07     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:23:07     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1062,585)
+03:23:07 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:23:20 [Macro] Delay completed.
+03:23:20 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+03:23:20 [SHOT] OK (196ms)
+03:23:21 [SHOT] OK (0ms)
+03:23:21 [SHOT] OK (0ms)
+03:23:22 [SHOT] OK (0ms)
+03:23:23 [SHOT] OK (0ms)
+03:23:24 [SHOT] OK (162ms)
+03:23:24 [SHOT] OK (0ms)
+03:23:25 [SHOT] OK (0ms)
+03:23:27 [SHOT] OK (0ms)
+03:23:28 [SHOT] OK (169ms)
+03:23:28     - Marker triggered. Holding 6.5s...
+03:23:29 [SHOT] OK (0ms)
+03:23:30 [SHOT] OK (0ms)
+03:23:31 [SHOT] OK (0ms)
+03:23:31     - Holding... 3/6s
+03:23:33 [SHOT] OK (747ms)
+03:23:33     - Marker interrupted. Resetting hold timer.
+03:23:34 [SHOT] OK (0ms)
+03:23:34 [SHOT] OK (0ms)
+03:23:35 [SHOT] OK (0ms)
+03:23:36 [SHOT] OK (0ms)
+03:23:36 [SHOT] OK (167ms)
+03:23:37 [SHOT] OK (0ms)
+03:23:39 [SHOT] OK (0ms)
+03:23:40 [SHOT] OK (339ms)
+03:23:41 [SHOT] OK (0ms)
+03:23:41 [SHOT] OK (0ms)
+03:23:42 [SHOT] OK (0ms)
+03:23:43 [SHOT] OK (0ms)
+03:23:43 [SHOT] OK (0ms)
+03:23:44 [SHOT] OK (275ms)
+03:23:45 [SHOT] OK (0ms)
+03:23:45 [SHOT] OK (0ms)
+03:23:46 [SHOT] OK (0ms)
+03:23:46 [SHOT] OK (0ms)
+03:23:48 [SHOT] OK (711ms)
+03:23:49 [SHOT] OK (0ms)
+03:23:50 [SHOT] OK (0ms)
+03:23:51 [SHOT] OK (0ms)
+03:23:52 [SHOT] OK (438ms)
+03:23:53 [SHOT] OK (0ms)
+03:23:53 [SHOT] OK (0ms)
+03:23:54 [SHOT] OK (0ms)
+03:23:54 [SHOT] OK (0ms)
+03:23:55 [SHOT] OK (0ms)
+03:23:56 [SHOT] OK (398ms)
+03:23:58 [SHOT] OK (0ms)
+03:23:58 [SHOT] OK (0ms)
+03:23:59 [SHOT] OK (0ms)
+03:24:00 [SHOT] OK (356ms)
+03:24:01 [SHOT] OK (0ms)
+03:24:02 [SHOT] OK (0ms)
+03:24:02 [SHOT] OK (0ms)
+03:24:04 [SHOT] OK (259ms)
+03:24:05 [SHOT] OK (0ms)
+03:24:06 [SHOT] OK (0ms)
+03:24:06 [SHOT] OK (0ms)
+03:24:07 [SHOT] OK (155ms)
+03:24:08 [SHOT] OK (0ms)
+03:24:08 [SHOT] OK (0ms)
+03:24:09 [SHOT] OK (0ms)
+03:24:10 [SHOT] OK (0ms)
+03:24:11 [SHOT] OK (186ms)
+03:24:11 [SHOT] OK (0ms)
+03:24:13 [SHOT] OK (0ms)
+03:24:13 [SHOT] OK (0ms)
+03:24:15 [SHOT] OK (383ms)
+03:24:15 [SHOT] OK (0ms)
+03:24:16 [SHOT] OK (0ms)
+03:24:16 [SHOT] OK (0ms)
+03:24:17 [SHOT] OK (0ms)
+03:24:17 [SHOT] OK (0ms)
+03:24:19 [SHOT] OK (1006ms)
+03:24:20 [SHOT] OK (0ms)
+03:24:21 [SHOT] OK (0ms)
+03:24:23 [SHOT] OK (622ms)
+03:24:24 [SHOT] OK (0ms)
+03:24:25 [SHOT] OK (0ms)
+03:24:26 [SHOT] OK (149ms)
+03:24:27 [SHOT] OK (0ms)
+03:24:28 [SHOT] OK (0ms)
+03:24:28 [SHOT] OK (0ms)
+03:24:30 [SHOT] OK (626ms)
+03:24:30 [SHOT] OK (0ms)
+03:24:31 [SHOT] OK (0ms)
+03:24:32 [SHOT] OK (0ms)
+03:24:33 [SHOT] OK (359ms)
+03:24:34 [SHOT] OK (0ms)
+03:24:35 [SHOT] OK (0ms)
+03:24:36 [SHOT] OK (0ms)
+03:24:37 [SHOT] OK (358ms)
+03:24:38 [SHOT] OK (0ms)
+03:24:38 [SHOT] OK (0ms)
+03:24:40 [SHOT] OK (0ms)
+03:24:41 [SHOT] OK (164ms)
+03:24:42 [SHOT] OK (0ms)
+03:24:42 [SHOT] OK (0ms)
+03:24:43 [SHOT] OK (0ms)
+03:24:44 [SHOT] OK (0ms)
+03:24:45 [SHOT] OK (226ms)
+03:24:45 [SHOT] OK (0ms)
+03:24:47 [SHOT] OK (0ms)
+03:24:47 [SHOT] OK (0ms)
+03:24:49 [SHOT] OK (166ms)
+03:24:49 [SHOT] OK (0ms)
+03:24:50 [SHOT] OK (0ms)
+03:24:51 [SHOT] OK (0ms)
+03:24:52 [SHOT] OK (350ms)
+03:24:54 [SHOT] OK (0ms)
+03:24:54 [SHOT] OK (0ms)
+03:24:55 [SHOT] OK (0ms)
+03:24:57 [SHOT] OK (291ms)
+03:24:57 [SHOT] OK (0ms)
+03:24:58 [SHOT] OK (0ms)
+03:24:59 [SHOT] OK (0ms)
+03:25:00 [SHOT] OK (509ms)
+03:25:01 [SHOT] OK (0ms)
+03:25:02 [SHOT] OK (0ms)
+03:25:03 [SHOT] OK (0ms)
+03:25:04 [SHOT] OK (161ms)
+03:25:05 [SHOT] OK (0ms)
+03:25:05 [SHOT] OK (0ms)
+03:25:06 [SHOT] OK (0ms)
+03:25:06 [SHOT] OK (0ms)
+03:25:07 [SHOT] OK (161ms)
+03:25:08 [SHOT] OK (0ms)
+03:25:09 [SHOT] OK (0ms)
+03:25:10 [SHOT] OK (0ms)
+03:25:11 [SHOT] OK (193ms)
+03:25:12 [SHOT] OK (0ms)
+03:25:12 [SHOT] OK (0ms)
+03:25:13 [SHOT] OK (0ms)
+03:25:15 [SHOT] OK (245ms)
+03:25:15 [SHOT] OK (0ms)
+03:25:16 [SHOT] OK (0ms)
+03:25:17 [SHOT] OK (0ms)
+03:25:18 [SHOT] OK (604ms)
+03:25:19 [SHOT] OK (0ms)
+03:25:20 [SHOT] OK (0ms)
+03:25:21 [SHOT] OK (0ms)
+03:25:22 [SHOT] OK (784ms)
+03:25:23 [SHOT] OK (0ms)
+03:25:24 [SHOT] OK (0ms)
+03:25:24 [SHOT] OK (0ms)
+03:25:25 [SHOT] OK (0ms)
+03:25:25 [SHOT] OK (0ms)
+03:25:27 [SHOT] OK (706ms)
+03:25:27 [SHOT] OK (0ms)
+03:25:28 [SHOT] OK (0ms)
+03:25:29 [SHOT] OK (0ms)
+03:25:32 [SHOT] OK (1319ms)
+03:25:33 [SHOT] OK (0ms)
+03:25:34 [SHOT] OK (0ms)
+03:25:34 [SHOT] OK (0ms)
+03:25:36 [SHOT] OK (136ms)
+03:25:36     - Marker triggered. Holding 6.5s...
+03:25:36 [SHOT] OK (0ms)
+03:25:38 [SHOT] OK (0ms)
+03:25:39 [SHOT] OK (0ms)
+03:25:41 [SHOT] OK (779ms)
+03:25:41     - Marker interrupted. Resetting hold timer.
+03:25:42 [SHOT] OK (0ms)
+03:25:42 [SHOT] OK (0ms)
+03:25:43 [SHOT] OK (0ms)
+03:25:45 [SHOT] OK (873ms)
+03:25:46 [SHOT] OK (0ms)
+03:25:47 [SHOT] OK (0ms)
+03:25:47 [SHOT] OK (0ms)
+03:25:48 [SHOT] OK (0ms)
+03:25:49 [SHOT] OK (526ms)
+03:25:50 [SHOT] OK (0ms)
+03:25:51 [SHOT] OK (0ms)
+03:25:52 [SHOT] OK (0ms)
+03:25:53 [SHOT] OK (180ms)
+03:25:54 [SHOT] OK (0ms)
+03:25:55 [SHOT] OK (0ms)
+03:25:56 [SHOT] OK (251ms)
+03:25:58 [SHOT] OK (0ms)
+03:25:59 [SHOT] OK (0ms)
+03:25:59 [SHOT] OK (0ms)
+03:26:00 [SHOT] OK (185ms)
+03:26:01 [SHOT] OK (0ms)
+03:26:02 [SHOT] OK (0ms)
+03:26:03 [SHOT] OK (0ms)
+03:26:05 [SHOT] OK (976ms)
+03:26:05 [SHOT] OK (0ms)
+03:26:06 [SHOT] OK (0ms)
+03:26:07 [SHOT] OK (0ms)
+03:26:08 [SHOT] OK (627ms)
+03:26:10 [SHOT] OK (0ms)
+03:26:10 [SHOT] OK (0ms)
+03:26:11 [SHOT] OK (0ms)
+03:26:13 [SHOT] OK (1199ms)
+03:26:14 [SHOT] OK (0ms)
+03:26:15 [SHOT] OK (0ms)
+03:26:18 [SHOT] OK (1876ms)
+03:26:19 [SHOT] OK (0ms)
+03:26:20 [SHOT] OK (0ms)
+03:26:20 [SHOT] OK (0ms)
+03:26:21 [SHOT] OK (0ms)
+03:26:23 [SHOT] OK (906ms)
+03:26:23 [SHOT] OK (0ms)
+03:26:24 [SHOT] OK (0ms)
+03:26:25 [SHOT] OK (0ms)
+03:26:51 [SHOT] FAIL #1 (25006ms)
+03:26:51 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:26:53     - Marker triggered. Holding 6.5s...
+03:26:57 [SHOT] OK (2419ms)
+03:26:57     - Marker interrupted. Resetting hold timer.
+03:26:57 [SHOT] OK (0ms)
+03:26:58 [SHOT] OK (0ms)
+03:26:58 [SHOT] OK (0ms)
+03:26:59 [SHOT] OK (0ms)
+03:27:25 [SHOT] FAIL #1 (25013ms)
+03:27:25 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:27:27     - Marker triggered. Holding 6.5s...
+03:27:49 [SHOT] FAIL #2 (21211ms)
+03:27:49 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:27:53     - Holding... 26/6s
+03:27:53     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:27:53 [Macro] Stopped at step 6/8 (worker stopped)
+03:27:53 [MACRO] Gathering: FAILED (290400ms total)
+03:27:53 ============================================================
+03:27:53 SESSION END — RayMZ (19.1 min)
+03:27:53   Loops: 0
+03:27:53   Screenshots: 236 ok / 20 fail (7.8%)
+03:27:53   Avg latency: 390ms
+03:27:53   Macros: 1 ok / 3 fail
+03:27:53   Errors: 0
+03:27:53 ============================================================
+03:31:15 ============================================================
+03:31:15 SESSION START — RayMZ (port:9227 tab:1)
+03:31:15 ============================================================
+03:31:15 [RayMZ] Starting worker: func=loop - Farm V1, port=9227, tab=1
+03:31:23 [RayMZ] Connected to Port 9227, Tab 1
+03:31:49 [SHOT] FAIL #1 (25002ms)
+03:31:49 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:16 [SHOT] FAIL #2 (25008ms)
+03:32:16 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:32:20 [SCAN] Supplies → FALSE (56012ms)
+03:32:46 [SHOT] FAIL #3 (25015ms)
+03:32:46 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:33:19 [SHOT] FAIL #4 (25007ms)
+03:33:19 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:33:35 [SCAN] Revive → FALSE (74024ms)
+03:34:00 [SHOT] FAIL #5 (25030ms)
+03:34:00 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:34:55 [SHOT] FAIL #6 (25003ms)
+03:34:55 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:35:25 [SCAN] Supplies - In → FALSE (110035ms)
+03:35:26 [SHOT] OK (181ms)
+03:35:26 [SHOT] OK (0ms)
+03:35:27 [SCAN] Attack - Auto → FALSE (1070ms)
+03:35:27 [SHOT] OK (0ms)
+03:35:28 [SHOT] OK (0ms)
+03:35:29 [SCAN] Gathering - Automove → FALSE (1319ms)
+03:35:54 [SHOT] FAIL #1 (25009ms)
+03:35:54 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:36:00 [SHOT] OK (3345ms)
+03:36:00 [SCAN] Attack - Auto On → FALSE (30740ms)
+03:36:30 [SHOT] FAIL #1 (25001ms)
+03:36:30 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:36:37 [SHOT] OK (4271ms)
+03:36:38 [SCAN] Revive → FALSE (32024ms)
+03:36:38 [NODE] → Click: Attack - Auto
+03:36:38 [SHOT] OK (0ms)
+03:36:38 [SCAN] Attack - Auto → FALSE (0ms)
+03:36:38 [NODE] → Click: Click 5P
+03:36:38 [SHOT] OK (0ms)
+03:36:44 [SCAN] Click 5P → TRUE (0ms)
+03:36:44 [RayMZ] No next node after 'Click' (Click 5P). Restart 1/10
+03:37:12 [SHOT] OK (24190ms)
+03:37:12 [SCAN] Supplies → TRUE (24200ms)
+03:37:12 [MACRO] Buy Blood: Starting (0ms)
+03:37:17     - Step OK: ⚡ Hard Click 'Supplies' at (1307,585)
+03:37:18 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:37:43 [SHOT] OK (24848ms)
+03:37:43     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:37:48     - Step OK: ⚡ Hard Click 'Supplies - Type' at (519,294)
+03:37:48 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:38:13 [SHOT] OK (24961ms)
+03:38:13     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:38:18     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (903,573)
+03:38:19 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:38:19 [Macro] Delay completed.
+03:38:24     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1061,711)
+03:38:30     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1539,138)
+03:38:30 [Macro] Steps completed. Checking result...
+03:38:44 [SHOT] OK (12509ms)
+03:38:44 [Macro] Result: SUCCESS (found 'Home')
+03:38:44 [MACRO] Buy Blood: PASSED (91494ms total)
+03:38:44 [MACRO] Gathering: Starting (0ms)
+03:38:44 [SHOT] OK (0ms)
+03:38:49     - Step OK: Clicked 'Gathering'
+03:38:49 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+03:39:14 [SHOT] FAIL #1 (25013ms)
+03:39:14 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:39:36 [SHOT] OK (19807ms)
+03:39:36     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:39:41     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1042,574)
+03:39:42 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:39:54 [Macro] Delay completed.
+03:39:54 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+03:40:19 [SHOT] FAIL #1 (25002ms)
+03:40:19 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:40:21     - Marker triggered. Holding 6.5s...
+03:40:43 [SHOT] OK (21162ms)
+03:40:43     - Marker interrupted. Resetting hold timer.
+03:40:44 [SHOT] OK (0ms)
+03:40:45 [SHOT] OK (0ms)
+03:40:45 [SHOT] OK (0ms)
+03:40:46 [SHOT] OK (0ms)
+03:40:47 [SHOT] OK (202ms)
+03:40:48 [SHOT] OK (0ms)
+03:40:49 [SHOT] OK (0ms)
+03:40:49 [SHOT] OK (0ms)
+03:40:50 [SHOT] OK (0ms)
+03:41:16 [SHOT] FAIL #1 (25008ms)
+03:41:16 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:41:18     - Marker triggered. Holding 6.5s...
+03:41:22 [SHOT] OK (3309ms)
+03:41:22     - Marker interrupted. Resetting hold timer.
+03:41:23 [SHOT] OK (0ms)
+03:41:24 [SHOT] OK (0ms)
+03:41:25 [SHOT] OK (0ms)
+03:41:50 [SHOT] FAIL #1 (25001ms)
+03:41:50 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:41:52     - Marker triggered. Holding 6.5s...
+03:42:18 [SHOT] FAIL #2 (25001ms)
+03:42:18 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:42:22     - Holding... 29/6s
+03:42:22     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:42:24 [SHOT] OK (2537ms)
+03:42:30     - Step OK: Clicked 'Attack - Auto'
+03:42:30 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:42:31 [Macro] Delay completed.
+03:42:56 [SHOT] OK (24561ms)
+03:43:01     - Step OK: Clicked 'Click 5P'
+03:43:01 [Macro] Steps completed. Checking result...
+03:43:27 [SHOT] FAIL #1 (25002ms)
+03:43:27 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:43:29 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+03:43:29 [MACRO] Gathering: FAILED (285711ms total)
+03:43:34 [RayMZ] No next node after 'Macro' (cc882d55). Restart 1/10
+03:43:44 [SHOT] OK (5958ms)
+03:43:44 [SHOT] OK (0ms)
+03:43:45 [SCAN] Supplies → FALSE (7064ms)
+03:43:45 [SHOT] OK (0ms)
+03:43:46 [SHOT] OK (0ms)
+03:43:46 [SCAN] Revive → FALSE (1128ms)
+03:43:47 [SHOT] OK (0ms)
+03:44:12 [SHOT] FAIL #1 (25003ms)
+03:44:12 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:44:14 [SCAN] Supplies - In → FALSE (27799ms)
+03:44:15 [SHOT] OK (179ms)
+03:44:15 [SCAN] Attack - Auto → TRUE (188ms)
+03:44:16 [SHOT] OK (0ms)
+03:44:16 [SHOT] OK (0ms)
+03:44:17 [SCAN] Gathering - Automove → FALSE (1264ms)
+03:44:17 [SHOT] OK (0ms)
+03:44:17 [SCAN] Attack - Auto On → TRUE (19ms)
+03:44:18 [MACRO] Click 5P: Starting (0ms)
+03:44:23     - Step OK: ⚡ Hard Click 'Click 5P' at (1504,90)
+03:44:24 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:44:24 [Macro] Delay completed.
+03:44:24 [Macro] Steps completed. Checking result...
+03:44:24 [Macro] Finished (no capture check configured).
+03:44:24 [MACRO] Click 5P: PASSED (5816ms total)
+03:44:24 [MACRO] Revivie: Starting (0ms)
+03:44:29 [SHOT] OK (4630ms)
+03:44:29 [SHOT] OK (0ms)
+03:44:29 [SHOT] OK (0ms)
+03:44:30 [SHOT] OK (0ms)
+03:44:30 [SHOT] OK (0ms)
+03:44:31     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:44:31 [MACRO] Revivie: FAILED (6679ms total)
+03:44:31 [RayMZ] No next node after 'Macro' (ed214390). Restart 1/10
+03:44:34 [SHOT] OK (150ms)
+03:44:35 [SHOT] OK (0ms)
+03:44:36 [SCAN] Supplies → FALSE (1420ms)
+03:44:36 [SHOT] OK (0ms)
+03:44:37 [SHOT] OK (0ms)
+03:44:37 [SCAN] Revive → FALSE (1495ms)
+03:45:03 [SHOT] FAIL #1 (25009ms)
+03:45:03 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:45:30 [SHOT] FAIL #2 (25002ms)
+03:45:30 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:45:34 [SCAN] Supplies - In → FALSE (56013ms)
+03:46:00 [SHOT] FAIL #3 (25014ms)
+03:46:00 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:46:08 [SHOT] OK (939ms)
+03:46:08 [SCAN] Attack - Auto → TRUE (33964ms)
+03:46:09 [SHOT] OK (0ms)
+03:46:10 [SHOT] OK (0ms)
+03:46:10 [SCAN] Gathering - Automove → FALSE (1522ms)
+03:46:11 [SHOT] OK (0ms)
+03:46:11 [SCAN] Attack - Auto On → TRUE (20ms)
+03:46:12 [MACRO] Click 5P: Starting (0ms)
+03:46:17     - Step OK: ⚡ Hard Click 'Click 5P' at (1527,92)
+03:46:17 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:46:17 [Macro] Delay completed.
+03:46:17 [Macro] Steps completed. Checking result...
+03:46:17 [Macro] Finished (no capture check configured).
+03:46:17 [MACRO] Click 5P: PASSED (5613ms total)
+03:46:17 [MACRO] Revivie: Starting (0ms)
+03:46:17 [SHOT] OK (179ms)
+03:46:18 [SHOT] OK (0ms)
+03:46:18 [SHOT] OK (0ms)
+03:46:19 [SHOT] OK (0ms)
+03:46:19 [SHOT] OK (0ms)
+03:46:19     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:46:19 [MACRO] Revivie: FAILED (2221ms total)
+03:46:19 [RayMZ] No next node after 'Macro' (ed214390). Restart 1/10
+03:46:48 [SHOT] FAIL #1 (25009ms)
+03:46:48 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:47:15 [SHOT] FAIL #2 (25014ms)
+03:47:15 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:47:19 [SCAN] Supplies → FALSE (56024ms)
+03:47:44 [SHOT] FAIL #3 (25010ms)
+03:47:44 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:48:17 [SHOT] FAIL #4 (25003ms)
+03:48:17 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:48:33 [SCAN] Revive → FALSE (74015ms)
+03:48:55 [SHOT] OK (16378ms)
+03:48:56 [SHOT] OK (0ms)
+03:48:57 [SCAN] Supplies - In → FALSE (17524ms)
+03:48:57 [SHOT] OK (0ms)
+03:48:57 [SCAN] Attack - Auto → TRUE (7ms)
+03:48:57 [SHOT] OK (0ms)
+03:48:58 [SHOT] OK (0ms)
+03:48:59 [SCAN] Gathering - Automove → FALSE (1319ms)
+03:49:24 [SHOT] FAIL #1 (25004ms)
+03:49:24 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:49:51 [SHOT] FAIL #2 (25015ms)
+03:49:51 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:49:55 [SCAN] Attack - Auto On → FALSE (56021ms)
+03:50:21 [SHOT] FAIL #3 (25002ms)
+03:50:21 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:50:29 [SHOT] OK (155ms)
+03:50:30 [SCAN] Revive → FALSE (33890ms)
+03:50:31 [NODE] → Click: Attack - Auto
+03:50:31 [SHOT] OK (0ms)
+03:50:36 [SCAN] Attack - Auto → TRUE (0ms)
+03:50:36 [NODE] → Click: Click 5P
+03:51:01 [SHOT] FAIL #1 (25005ms)
+03:51:01 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:51:04 [RayMZ] No next node after 'Click' (Click 5P). Restart 1/10
+03:51:32 [SHOT] FAIL #2 (25012ms)
+03:51:32 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:52:01 [SHOT] FAIL #3 (25030ms)
+03:52:01 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:52:09 [SCAN] Supplies → FALSE (62097ms)
+03:52:35 [SHOT] FAIL #4 (25000ms)
+03:52:35 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:53:16 [SHOT] FAIL #5 (25000ms)
+03:53:16 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:53:46 [SCAN] Revive → FALSE (96003ms)
+03:54:15 [SHOT] OK (23386ms)
+03:54:15 [SHOT] OK (0ms)
+03:54:16 [SCAN] Supplies - In → FALSE (24774ms)
+03:54:17 [SHOT] OK (0ms)
+03:54:17 [SCAN] Attack - Auto → TRUE (8ms)
+03:54:17 [SHOT] OK (0ms)
+03:54:43 [SHOT] FAIL #1 (25013ms)
+03:54:43 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:54:45 [SCAN] Gathering - Automove → FALSE (27594ms)
+03:55:10 [SHOT] FAIL #2 (25001ms)
+03:55:10 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:55:39 [SHOT] FAIL #3 (25005ms)
+03:55:39 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:55:47 [SCAN] Attack - Auto On → FALSE (62008ms)
+03:55:48 [SHOT] OK (223ms)
+03:55:49 [SHOT] OK (0ms)
+03:55:49 [SCAN] Revive → FALSE (1296ms)
+03:55:50 [NODE] → Click: Attack - Auto
+03:55:50 [SHOT] OK (0ms)
+03:55:55 [SCAN] Attack - Auto → TRUE (0ms)
+03:55:56 [NODE] → Click: Click 5P
+03:56:20 [SHOT] OK (24308ms)
+03:56:25 [SCAN] Click 5P → TRUE (0ms)
+03:56:25 [RayMZ] No next node after 'Click' (Click 5P). Restart 1/10
+03:56:51 [SHOT] OK (21835ms)
+03:56:51 [SHOT] OK (0ms)
+03:56:52 [SCAN] Supplies → FALSE (23417ms)
+03:56:53 [SHOT] OK (0ms)
+03:56:53 [SHOT] OK (0ms)
+03:56:54 [SCAN] Revive → FALSE (1066ms)
+03:57:19 [SHOT] FAIL #1 (25009ms)
+03:57:19 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:57:23 [SHOT] OK (2073ms)
+03:57:24 [SCAN] Supplies - In → FALSE (29962ms)
+03:57:25 [SHOT] OK (0ms)
+03:57:25 [SCAN] Attack - Auto → TRUE (10ms)
+03:57:25 [SHOT] OK (0ms)
+03:57:26 [SHOT] OK (0ms)
+03:57:27 [SCAN] Gathering - Automove → FALSE (1358ms)
+03:57:52 [SHOT] FAIL #1 (25006ms)
+03:57:52 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:58:19 [SHOT] FAIL #2 (25011ms)
+03:58:19 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:58:23 [SCAN] Attack - Auto On → FALSE (56019ms)
+03:58:58 [SHOT] OK (19817ms)
+03:58:59 [SHOT] OK (0ms)
+03:59:00 [SCAN] Revive → FALSE (21343ms)
+03:59:00 [NODE] → Click: Attack - Auto
+03:59:00 [SHOT] OK (0ms)
+03:59:06 [SCAN] Attack - Auto → TRUE (0ms)
+03:59:06 [NODE] → Click: Click 5P
+03:59:29 [SHOT] OK (22836ms)
+03:59:34 [SCAN] Click 5P → TRUE (0ms)
+03:59:34 [RayMZ] No next node after 'Click' (Click 5P). Restart 1/10
+04:00:01 [SHOT] OK (23333ms)
+04:00:02 [SHOT] OK (0ms)
+04:00:03 [SCAN] Supplies → FALSE (24941ms)
+04:00:03 [SHOT] OK (0ms)
+04:00:04 [SCAN] Revive → TRUE (89ms)
+04:00:04 [MACRO] Revivie: Starting (0ms)
+04:00:04 [SHOT] OK (0ms)
+04:00:09     - Step OK: Clicked 'Revive'
+04:00:10 [Macro] (2/2) Delay: 3000ms (3.0s)...
+04:00:13 [Macro] Delay completed.
+04:00:13 [Macro] Steps completed. Checking result...
+04:00:34 [SHOT] OK (20125ms)
+04:00:34 [Macro] Result: SUCCESS (found 'Supplies')
+04:00:34 [MACRO] Revivie: PASSED (29930ms total)
+04:00:34 [MACRO] Click 5P: Starting (0ms)
+04:00:39     - Step OK: ⚡ Hard Click 'Click 5P' at (1487,90)
+04:00:40 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:00:40 [Macro] Delay completed.
+04:00:40 [Macro] Steps completed. Checking result...
+04:00:40 [Macro] Finished (no capture check configured).
+04:00:40 [MACRO] Click 5P: PASSED (5687ms total)
+04:00:40 [MACRO] Revivie: Starting (0ms)
+04:01:04 [SHOT] OK (24819ms)
+04:01:05 [SHOT] OK (0ms)
+04:01:05 [SHOT] OK (0ms)
+04:01:06 [SHOT] OK (0ms)
+04:01:06 [SHOT] OK (0ms)
+04:01:07     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:01:07 [MACRO] Revivie: FAILED (26857ms total)
+04:01:07 [RayMZ] No next node after 'Macro' (ed214390). Restart 1/10
+04:01:35 [SHOT] OK (24970ms)
+04:01:35 [SCAN] Supplies → TRUE (24980ms)
+04:01:36 [RayMZ] Connection rotation — periodic reconnect
+04:01:38 [RayMZ] Connection rotated successfully
+04:01:38 [MACRO] Buy Blood: Starting (0ms)
+04:01:43     - Step OK: ⚡ Hard Click 'Supplies' at (1310,567)
+04:01:43 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:02:08 [SHOT] FAIL #1 (25009ms)
+04:02:08 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:02:36 [SHOT] FAIL #2 (25005ms)
+04:02:36 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:03:06 [SHOT] FAIL #3 (25014ms)
+04:03:06 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:03:15 [SHOT] OK (159ms)
+04:03:15     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:03:20     - Step OK: ⚡ Hard Click 'Supplies - Type' at (482,312)
+04:03:20 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:03:45 [SHOT] FAIL #1 (25005ms)
+04:03:45 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:04:13 [SHOT] FAIL #2 (25002ms)
+04:04:13 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:04:43 [SHOT] FAIL #3 (25009ms)
+04:04:43 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:05:17 [SHOT] FAIL #4 (25010ms)
+04:05:17 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:05:54 [SHOT] OK (20961ms)
+04:05:54     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:05:59     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (830,549)
+04:06:00 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:06:00 [Macro] Delay completed.
+04:06:05     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1002,698)
+04:06:11     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1544,157)
+04:06:11 [Macro] Steps completed. Checking result...
+04:06:27 [SHOT] OK (14574ms)
+04:06:27 [Macro] Result: SUCCESS (found 'Home')
+04:06:27 [MACRO] Buy Blood: PASSED (289040ms total)
+04:06:32 [MACRO] Gathering: Starting (0ms)
+04:06:57 [SHOT] FAIL #1 (25008ms)
+04:06:57 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:07:24 [SHOT] FAIL #2 (25005ms)
+04:07:24 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:07:30 [SHOT] OK (1859ms)
+04:07:35     - Step OK: Clicked 'Gathering'
+04:07:36 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+04:08:01 [SHOT] FAIL #1 (25012ms)
+04:08:01 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:08:03 [SHOT] OK (166ms)
+04:08:03     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+04:08:08     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1105,571)
+04:08:09 [Macro] (4/8) Delay: 12000ms (12.0s)...
+04:08:21 [Macro] Delay completed.
+04:08:21 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+04:08:46 [SHOT] FAIL #1 (25011ms)
+04:08:46 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:08:48     - Marker triggered. Holding 6.5s...
+04:09:05 [SHOT] OK (16075ms)
+04:09:05     - Marker interrupted. Resetting hold timer.
+04:09:06 [SHOT] OK (0ms)
+04:09:07 [SHOT] OK (0ms)
+04:09:08 [SHOT] OK (0ms)
+04:09:33 [SHOT] FAIL #1 (25008ms)
+04:09:33 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:09:35     - Marker triggered. Holding 6.5s...
+04:10:01 [SHOT] FAIL #2 (25015ms)
+04:10:01 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:10:05     - Holding... 29/6s
+04:10:05     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+04:10:30 [SHOT] FAIL #3 (25001ms)
+04:10:30 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:11:04 [SHOT] FAIL #4 (25024ms)
+04:11:04 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:11:41 [SHOT] OK (21509ms)
+04:11:47     - Step OK: Clicked 'Attack - Auto'
+04:11:47 [Macro] (7/8) Delay: 1000ms (1.0s)...
+04:11:48 [Macro] Delay completed.
+04:12:13 [SHOT] FAIL #1 (25007ms)
+04:12:13 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:12:20 [SHOT] OK (4017ms)
+04:12:25     - Step OK: Clicked 'Click 5P'
+04:12:25 [Macro] Steps completed. Checking result...
+04:12:51 [SHOT] FAIL #1 (25010ms)
+04:12:51 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:12:53 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+04:12:53 [MACRO] Gathering: FAILED (381591ms total)
+04:13:12 [RayMZ] Health check FAILED — reconnecting
+04:13:14 [RayMZ] Reconnected successfully
+04:13:14 [RayMZ] No next node after 'Macro' (cc882d55). Restart 1/10
+04:13:43 [SHOT] FAIL #2 (25009ms)
+04:13:43 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:14:12 [SHOT] FAIL #3 (25007ms)
+04:14:12 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:14:20 [SCAN] Supplies → FALSE (62019ms)
+04:14:46 [SHOT] FAIL #4 (25008ms)
+04:14:46 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:15:27 [SHOT] FAIL #5 (25003ms)
+04:15:27 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:15:57 [SCAN] Revive → FALSE (96014ms)
+04:16:19 [SHOT] OK (21464ms)
+04:16:19 [SHOT] OK (0ms)
+04:16:20 [SCAN] Supplies - In → FALSE (22846ms)
+04:16:20 [SHOT] OK (0ms)
+04:16:20 [SCAN] Attack - Auto → TRUE (7ms)
+04:16:21 [SHOT] OK (0ms)
+04:16:21 [SHOT] OK (0ms)
+04:16:22 [SCAN] Gathering - Automove → FALSE (831ms)
+04:16:47 [SHOT] FAIL #1 (25014ms)
+04:16:47 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:17:14 [SHOT] FAIL #2 (25006ms)
+04:17:14 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:17:18 [SCAN] Attack - Auto On → FALSE (56021ms)
+04:17:20 [SHOT] OK (1470ms)
+04:17:21 [SHOT] OK (0ms)
+04:17:22 [SCAN] Revive → FALSE (2880ms)
+04:17:22 [NODE] → Click: Attack - Auto
+04:17:22 [SHOT] OK (0ms)
+04:17:28 [SCAN] Attack - Auto → TRUE (0ms)
+04:17:28 [NODE] → Click: Click 5P
+04:17:52 [SHOT] OK (24550ms)
+04:17:58 [SCAN] Click 5P → TRUE (0ms)
+04:18:03 [RayMZ] No next node after 'Click' (Click 5P). Restart 1/10
+04:18:24 [SHOT] OK (17693ms)
+04:18:25 [SHOT] OK (0ms)
+04:18:25 [SCAN] Supplies → FALSE (18878ms)
+04:18:26 [SHOT] OK (0ms)
+04:18:27 [SHOT] OK (0ms)
+04:18:27 [SCAN] Revive → FALSE (1347ms)
+04:18:53 [SHOT] FAIL #1 (25002ms)
+04:18:53 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:19:20 [SHOT] FAIL #2 (25005ms)
+04:19:20 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:19:24 [SCAN] Supplies - In → FALSE (56020ms)
+04:19:50 [SHOT] FAIL #3 (25008ms)
+04:19:50 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:20:23 [SHOT] FAIL #4 (25009ms)
+04:20:23 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:20:39 [SCAN] Attack - Auto → FALSE (74034ms)
+04:21:04 [SHOT] FAIL #5 (25014ms)
+04:21:04 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:21:38 [SHOT] OK (3925ms)
+04:21:39 [SCAN] Gathering - Automove → FALSE (59721ms)
+04:21:40 [SHOT] OK (0ms)
+04:21:40 [SHOT] OK (0ms)
+04:21:40 [SCAN] Attack - Auto On → FALSE (802ms)
+04:21:41 [SHOT] OK (0ms)
+04:21:42 [SHOT] OK (140ms)
+04:21:43 [SCAN] Revive → FALSE (1730ms)
+04:21:43 [NODE] → Click: Attack - Auto
+04:21:43 [SHOT] OK (0ms)
+04:21:48 [SCAN] Attack - Auto → TRUE (0ms)
+04:21:49 [NODE] → Click: Click 5P
+04:22:14 [SHOT] FAIL #1 (25014ms)
+04:22:14 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:22:16 [RayMZ] No next node after 'Click' (Click 5P). Restart 1/10
+04:22:44 [SHOT] FAIL #2 (25002ms)
+04:22:44 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:22:49 [SHOT] OK (717ms)
+04:22:50 [SCAN] Supplies → FALSE (30383ms)
+04:23:20 [SHOT] FAIL #1 (25005ms)
+04:23:20 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:23:47 [SHOT] FAIL #2 (25013ms)
+04:23:47 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:23:51 [SCAN] Revive → FALSE (56019ms)
+04:24:17 [SHOT] FAIL #3 (25002ms)
+04:24:17 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:24:50 [SHOT] FAIL #4 (25002ms)
+04:24:50 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:25:06 [SCAN] Supplies - In → FALSE (74024ms)
+04:25:25 [SHOT] OK (18630ms)
+04:25:25 [SCAN] Attack - Auto → TRUE (18637ms)
+04:25:26 [SHOT] OK (0ms)
+04:25:26 [SHOT] OK (0ms)
+04:25:27 [SCAN] Gathering - Automove → FALSE (1195ms)
+04:25:28 [SHOT] OK (0ms)
+04:25:28 [SHOT] OK (0ms)
+04:25:29 [SCAN] Attack - Auto On → FALSE (1432ms)
+04:25:54 [SHOT] FAIL #1 (25006ms)
+04:25:54 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:26:21 [SHOT] FAIL #2 (25008ms)
+04:26:21 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:26:25 [SCAN] Revive → FALSE (56017ms)
+04:26:26 [NODE] → Click: Attack - Auto
+04:26:27 [SHOT] OK (622ms)
+04:26:32 [SCAN] Attack - Auto → TRUE (0ms)
+04:26:32 [NODE] → Click: Click 5P
+04:26:32 [SHOT] OK (231ms)
+04:26:37 [SCAN] Click 5P → TRUE (0ms)
+04:26:38 [RayMZ] No next node after 'Click' (Click 5P). Restart 1/10
+04:27:06 [SHOT] FAIL #1 (25007ms)
+04:27:06 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:27:33 [SHOT] FAIL #2 (25002ms)
+04:27:33 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:27:37 [SCAN] Supplies → FALSE (56012ms)
+04:28:14 [SHOT] OK (21687ms)
+04:28:14 [SCAN] Revive → TRUE (21698ms)
+04:28:15 [MACRO] Revivie: Starting (0ms)
+04:28:15 [SHOT] OK (0ms)
+04:28:20     - Step OK: Clicked 'Revive'
+04:28:21 [Macro] (2/2) Delay: 3000ms (3.0s)...
+04:28:24 [Macro] Delay completed.
+04:28:24 [Macro] Steps completed. Checking result...
+04:28:50 [SHOT] FAIL #1 (25001ms)
+04:28:50 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:28:52 [Macro] Result: FAILURE ('Supplies' not found)
+04:28:52 [MACRO] Revivie: FAILED (36687ms total)
+04:28:52 [RayMZ] No next node after 'Macro' (38ef6fd1). Restart 1/10
+04:29:20 [SHOT] FAIL #2 (25010ms)
+04:29:20 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:29:49 [SHOT] FAIL #3 (25015ms)
+04:29:49 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:29:57 [SCAN] Supplies → FALSE (62027ms)
+04:30:23 [SHOT] FAIL #4 (25001ms)
+04:30:23 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:30:59 [SHOT] OK (20311ms)
+04:31:00 [SCAN] Revive → FALSE (61769ms)
+04:31:00 [SHOT] OK (0ms)
+04:31:01 [SHOT] OK (0ms)
+04:31:01 [SCAN] Supplies - In → FALSE (910ms)
+04:31:02 [SHOT] OK (0ms)
+04:31:27 [SHOT] FAIL #1 (25013ms)
+04:31:27 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:31:29 [SCAN] Attack - Auto → FALSE (27597ms)
+04:31:30 [SHOT] OK (564ms)
+04:31:31 [SHOT] OK (0ms)
+04:31:31 [SCAN] Gathering - Automove → FALSE (1600ms)
+04:31:32 [SHOT] OK (0ms)
+04:31:32 [SHOT] OK (0ms)
+04:31:33 [SCAN] Attack - Auto On → FALSE (1174ms)
+04:31:33 [SHOT] OK (0ms)
+04:31:59 [SHOT] FAIL #1 (25012ms)
+04:31:59 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:32:01 [SCAN] Revive → FALSE (27694ms)
+04:32:02 [RayMZ] Connection rotation — periodic reconnect
+04:32:04 [RayMZ] Connection rotated successfully
+04:32:04 [NODE] → Click: Attack - Auto
+04:32:29 [SHOT] FAIL #2 (25012ms)
+04:32:29 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:32:38 [NODE] → Click: Click 5P
+04:33:02 [SHOT] OK (23617ms)
+04:33:07 [SCAN] Click 5P → TRUE (0ms)
+04:33:07 [RayMZ] No next node after 'Click' (Click 5P). Restart 1/10
+04:33:32 [SHOT] OK (21493ms)
+04:33:32 [SCAN] Supplies → TRUE (21502ms)
+04:33:33 [MACRO] Buy Blood: Starting (0ms)
+04:33:38     - Step OK: ⚡ Hard Click 'Supplies' at (1292,587)
+04:33:38 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:34:03 [SHOT] FAIL #1 (25011ms)
+04:34:03 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:34:31 [SHOT] FAIL #2 (25008ms)
+04:34:31 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:34:36 [SHOT] OK (793ms)
+04:34:36     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:34:42     - Step OK: ⚡ Hard Click 'Supplies - Type' at (562,314)
+04:34:42 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:35:07 [SHOT] FAIL #1 (25005ms)
+04:35:07 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:35:35 [SHOT] FAIL #2 (25000ms)
+04:35:35 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:36:04 [SHOT] FAIL #3 (25001ms)
+04:36:04 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:36:39 [SHOT] FAIL #4 (25014ms)
+04:36:39 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:37:15 [SHOT] OK (19820ms)
+04:37:15     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:37:20     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (856,546)
+04:37:21 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:37:21 [Macro] Delay completed.
+04:37:26     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1057,721)
+04:37:31     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1530,144)
+04:37:32 [Macro] Steps completed. Checking result...
+04:37:47 [SHOT] OK (14490ms)
+04:37:47 [Macro] Result: SUCCESS (found 'Home')
+04:37:47 [MACRO] Buy Blood: PASSED (254698ms total)
+04:37:49 [MACRO] Gathering: Starting (0ms)
+04:37:49 [SHOT] OK (0ms)
+04:37:50     - Step OK: Clicked 'Gathering'
+04:37:50 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+04:37:50 [SHOT] OK (0ms)
+04:37:51 [SHOT] OK (169ms)
+04:37:51     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+04:37:56     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1092,579)
+04:37:57 [Macro] (4/8) Delay: 12000ms (12.0s)...
+04:38:09 [Macro] Delay completed.
+04:38:09 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+04:38:32 [SHOT] OK (23532ms)
+04:38:33 [SHOT] OK (0ms)
+04:38:34 [SHOT] OK (0ms)
+04:38:34 [SHOT] OK (0ms)
+04:38:35 [SHOT] OK (0ms)
+04:39:01 [SHOT] FAIL #1 (25007ms)
+04:39:01 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:39:03     - Marker triggered. Holding 6.5s...
+04:39:29 [SHOT] FAIL #2 (25003ms)
+04:39:29 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:39:33     - Holding... 29/6s
+04:39:33     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+04:39:58 [SHOT] FAIL #3 (25014ms)
+04:39:58 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:40:07 [SHOT] OK (648ms)
+04:40:12     - Step OK: Clicked 'Attack - Auto'
+04:40:13 [Macro] (7/8) Delay: 1000ms (1.0s)...
+04:40:14 [Macro] Delay completed.
+04:40:39 [SHOT] FAIL #1 (25009ms)
+04:40:39 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:41:06 [SHOT] FAIL #2 (25004ms)
+04:41:06 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:41:15 [SHOT] OK (4080ms)
+04:41:20     - Step OK: Clicked 'Click 5P'
+04:41:20 [Macro] Steps completed. Checking result...
+04:41:46 [SHOT] FAIL #1 (25005ms)
+04:41:46 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:41:48 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+04:41:48 [MACRO] Gathering: FAILED (238655ms total)
+04:41:48 [RayMZ] No next node after 'Macro' (cc882d55). Restart 1/10
+04:42:15 [SHOT] OK (22873ms)
+04:42:15 [SHOT] OK (0ms)
+04:42:16 [SCAN] Supplies → FALSE (23947ms)
+04:42:16 ============================================================
+04:42:16 SESSION END — RayMZ (71.0 min)
+04:42:16   Loops: 0
+04:42:16   Screenshots: 161 ok / 93 fail (36.6%)
+04:42:16   Avg latency: 4627ms
+04:42:16   Macros: 7 ok / 7 fail
+04:42:16   Errors: 0
+04:42:16 ============================================================
+04:54:26 ============================================================
+04:54:26 SESSION START — RayMZ (port:9227 tab:1)
+04:54:26 ============================================================
+04:54:27 [RayMZ] Starting worker: func=loop - Farm V1, port=9227, tab=1
+04:54:39 [RayMZ] Connected to Port 9227, Tab 1
+04:55:04 [SHOT] FAIL #1 (25011ms)
+04:55:04 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:55:31 [SHOT] FAIL #2 (25004ms)
+04:55:31 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:55:35 [SCAN] Supplies → FALSE (56016ms)
+04:55:50 [SHOT] OK (14899ms)
+04:55:51 [SHOT] OK (0ms)
+04:55:52 [SCAN] Revive → FALSE (16445ms)
+04:55:52 [SHOT] OK (0ms)
+04:55:53 [SHOT] OK (0ms)
+04:55:53 [SCAN] Supplies - In → FALSE (1112ms)
+04:55:54 [SHOT] OK (202ms)
+04:55:55 [SHOT] OK (0ms)
+04:55:55 [SCAN] Attack - Auto → FALSE (1406ms)
+04:55:56 [SHOT] OK (0ms)
+04:55:57 [SHOT] OK (0ms)
+04:55:57 [SCAN] Gathering - Automove → FALSE (1262ms)
+04:55:58 [SHOT] OK (119ms)
+04:55:58 [SCAN] Attack - Auto On → TRUE (144ms)
+04:55:58 [MACRO] Click 5P: Starting (0ms)
+04:55:59     - Step OK: ⚡ Hard Click 'Click 5P' at (1533,85)
+04:55:59 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:55:59 [Macro] Delay completed.
+04:55:59 [Macro] Steps completed. Checking result...
+04:55:59 [Macro] Finished (no capture check configured).
+04:55:59 [MACRO] Click 5P: PASSED (594ms total)
+04:55:59 [MACRO] Revivie: Starting (0ms)
+04:55:59 [SHOT] OK (0ms)
+04:55:59 [SHOT] OK (0ms)
+04:56:00 [SHOT] OK (0ms)
+04:56:00 [SHOT] OK (0ms)
+04:56:01 [SHOT] OK (0ms)
+04:56:01     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:56:01 [MACRO] Revivie: FAILED (1995ms total)
+04:56:01 [RayMZ] No next node after 'Macro' (ed214390). Restart 1/10
+04:56:05 [SHOT] OK (227ms)
+04:56:06 [SHOT] OK (0ms)
+04:56:06 [SCAN] Supplies → FALSE (1743ms)
+04:56:07 [SHOT] OK (0ms)
+04:56:08 [SHOT] OK (0ms)
+04:56:09 [SCAN] Revive → FALSE (1529ms)
+04:56:09 [SHOT] OK (169ms)
+04:56:10 [SHOT] OK (0ms)
+04:56:10 [SCAN] Supplies - In → FALSE (1418ms)
+04:56:11 [SHOT] OK (0ms)
+04:56:11 [SCAN] Attack - Auto → TRUE (34ms)
+04:56:11 [SHOT] OK (0ms)
+04:56:37 [SHOT] FAIL #1 (25015ms)
+04:56:37 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:56:39 [SCAN] Gathering - Automove → FALSE (27795ms)
+04:57:05 [SHOT] FAIL #2 (25013ms)
+04:57:05 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:57:34 [SHOT] FAIL #3 (25012ms)
+04:57:34 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:57:42 [SCAN] Attack - Auto On → FALSE (62027ms)
+04:57:48 [SHOT] OK (5709ms)
+04:57:49 [SHOT] OK (0ms)
+04:57:50 [SCAN] Revive → FALSE (7331ms)
+04:57:50 [NODE] → Click: Attack - Auto
+04:57:50 [SHOT] OK (0ms)
+04:57:55 [SCAN] Attack - Auto → TRUE (0ms)
+04:57:56 [NODE] → Click: Click 5P
+04:58:21 [SHOT] FAIL #1 (25002ms)
+04:58:21 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:58:23 [RayMZ] No next node after 'Click' (Click 5P). Restart 1/10
+04:58:51 [SHOT] FAIL #2 (25001ms)
+04:58:51 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:59:02 [SHOT] OK (6211ms)
+04:59:02 [SCAN] Supplies → FALSE (35944ms)
+04:59:03 [SHOT] OK (0ms)
+04:59:04 [SHOT] OK (0ms)
+04:59:04 [SCAN] Revive → FALSE (1365ms)
+04:59:30 [SHOT] FAIL #1 (25011ms)
+04:59:30 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:59:34 [SHOT] OK (1724ms)
+04:59:34 [SCAN] Supplies - In → FALSE (29529ms)
+05:00:05 [SHOT] FAIL #1 (25006ms)
+05:00:05 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:00:32 [SHOT] FAIL #2 (25009ms)
+05:00:32 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:00:36 [SCAN] Attack - Auto → FALSE (56019ms)
+05:01:02 [SHOT] FAIL #3 (25005ms)
+05:01:02 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:01:35 [SHOT] FAIL #4 (25010ms)
+05:01:35 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:01:51 [SCAN] Gathering - Automove → FALSE (74016ms)
+05:02:14 [SHOT] OK (22997ms)
+05:02:14 [SCAN] Attack - Auto On → TRUE (23130ms)
+05:02:15 [MACRO] Click 5P: Starting (0ms)
+05:02:20     - Step OK: ⚡ Hard Click 'Click 5P' at (1531,92)
+05:02:20 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:02:20 [Macro] Delay completed.
+05:02:20 [Macro] Steps completed. Checking result...
+05:02:20 [Macro] Finished (no capture check configured).
+05:02:20 [MACRO] Click 5P: PASSED (5666ms total)
+05:02:20 [MACRO] Revivie: Starting (0ms)
+05:02:45 [SHOT] OK (24487ms)
+05:02:45 [SHOT] OK (0ms)
+05:02:46 [SHOT] OK (0ms)
+05:02:46 [SHOT] OK (0ms)
+05:02:47 [SHOT] OK (0ms)
+05:02:47     - Step FAILED: Could not find 'Revive' after 5 attempts.
+05:02:47 [MACRO] Revivie: FAILED (26678ms total)
+05:02:47 [RayMZ] No next node after 'Macro' (ed214390). Restart 1/10
+05:03:16 [SHOT] OK (25030ms)
+05:03:16 [SHOT] OK (0ms)
+05:03:17 [SCAN] Supplies → FALSE (26206ms)
+05:03:17 [SHOT] OK (0ms)
+05:03:18 [SHOT] OK (0ms)
+05:03:19 [SCAN] Revive → FALSE (1370ms)
+05:03:44 [SHOT] FAIL #1 (25005ms)
+05:03:44 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:04:11 [SHOT] FAIL #2 (25001ms)
+05:04:11 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:04:15 [SCAN] Supplies - In → FALSE (56020ms)
+05:04:50 [SHOT] OK (19187ms)
+05:04:50 [SCAN] Attack - Auto → TRUE (19195ms)
+05:04:50 [SHOT] OK (0ms)
+05:04:51 [SHOT] OK (0ms)
+05:04:51 [SCAN] Gathering - Automove → FALSE (1272ms)
+05:04:52 [SHOT] OK (0ms)
+05:04:52 [SCAN] Attack - Auto On → TRUE (22ms)
+05:04:52 [MACRO] Click 5P: Starting (0ms)
+05:04:57     - Step OK: ⚡ Hard Click 'Click 5P' at (1528,96)
+05:04:58 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:04:58 [Macro] Delay completed.
+05:04:58 [Macro] Steps completed. Checking result...
+05:04:58 [Macro] Finished (no capture check configured).
+05:04:58 [MACRO] Click 5P: PASSED (5673ms total)
+05:04:58 [MACRO] Revivie: Starting (0ms)
+05:05:22 [SHOT] OK (24469ms)
+05:05:23 [SHOT] OK (0ms)
+05:05:23 [SHOT] OK (0ms)
+05:05:24 [SHOT] OK (0ms)
+05:05:24 [SHOT] OK (0ms)
+05:05:24     - Step FAILED: Could not find 'Revive' after 5 attempts.
+05:05:24 [MACRO] Revivie: FAILED (26532ms total)
+05:05:24 [RayMZ] No next node after 'Macro' (ed214390). Restart 1/10
+05:05:50 [SHOT] OK (21807ms)
+05:05:51 [SHOT] OK (0ms)
+05:05:51 [SCAN] Supplies → FALSE (23491ms)
+05:05:52 [SHOT] OK (0ms)
+05:05:52 [SHOT] OK (0ms)
+05:05:53 [SCAN] Revive → FALSE (1494ms)
+05:06:19 [SHOT] FAIL #1 (25005ms)
+05:06:19 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:06:26 [SHOT] OK (4529ms)
+05:06:26 [SCAN] Supplies - In → FALSE (31987ms)
+05:06:27 ============================================================
+05:06:27 SESSION END — RayMZ (12.0 min)
+05:06:27   Loops: 0
+05:06:27   Screenshots: 53 ok / 15 fail (22.1%)
+05:06:27   Avg latency: 3241ms
+05:06:27   Macros: 3 ok / 3 fail
+05:06:27   Errors: 0
+05:06:27 ============================================================
+05:07:26 ============================================================
+05:07:26 SESSION START — RayMZ (port:9227 tab:1)
+05:07:26 ============================================================
+05:07:27 [RayMZ] Starting worker: func=macro - Home, port=9227, tab=1
+05:07:34 [RayMZ] Connected to Port 9227, Tab 1
+05:07:34 [MACRO] Home: Starting (0ms)
+05:07:39     - Step OK: ⚡ Hard Click 'Home' at (348,380)
+05:07:39 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:08:04 [SHOT] FAIL #1 (25013ms)
+05:08:04 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:08:13 [SHOT] OK (6363ms)
+05:08:14 [SHOT] OK (0ms)
+05:08:15 [SHOT] OK (0ms)
+05:08:15 [SHOT] OK (0ms)
+05:08:16 [SHOT] OK (0ms)
+05:08:17 [SHOT] OK (281ms)
+05:08:18 [SHOT] OK (0ms)
+05:08:18 [SHOT] OK (0ms)
+05:08:20 [SHOT] OK (0ms)
+05:08:21 [SHOT] OK (170ms)
+05:08:21     - Marker OK: 'Supplies' confirmed APPEAR.
+05:08:21 [Macro] Steps completed. Checking result...
+05:08:22 [SHOT] OK (0ms)
+05:08:22 [Macro] Result: SUCCESS (found 'Supplies')
+05:08:22 [MACRO] Home: PASSED (48332ms total)
+05:08:22 ============================================================
+05:08:22 SESSION END — RayMZ (0.9 min)
+05:08:22   Loops: 0
+05:08:22   Screenshots: 11 ok / 1 fail (8.3%)
+05:08:22   Avg latency: 620ms
+05:08:22   Macros: 1 ok / 0 fail
+05:08:22   Errors: 0
+05:08:22 ============================================================
+05:11:37 ============================================================
+05:11:37 SESSION START — RayMZ (port:9227 tab:1)
+05:11:37 ============================================================
+05:11:38 [RayMZ] Starting worker: func=loop - Farm V1, port=9227, tab=1
+05:11:45 [RayMZ] Connected to Port 9227, Tab 1
+05:11:45 [LOOP] ── Loop iteration start ──
+05:12:10 [SHOT] FAIL #1 (25012ms)
+05:12:10 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:37 [SHOT] FAIL #2 (25012ms)
+05:12:37 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:41 [SCAN] Supplies → FALSE (56026ms)
+05:13:07 [SHOT] FAIL #3 (25010ms)
+05:13:07 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:13:40 [SHOT] FAIL #4 (25003ms)
+05:13:40 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:13:56 [SCAN] Revive → FALSE (74015ms)
+05:14:32 [SHOT] FAIL #5 (25005ms)
+05:14:32 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:15:08 [SHOT] OK (6099ms)
+05:15:09 [SCAN] Supplies - In → FALSE (61879ms)
+05:15:09 [SHOT] OK (0ms)
+05:15:10 [SHOT] OK (0ms)
+05:15:10 [SCAN] Attack - Auto → FALSE (1375ms)
+05:15:12 [SHOT] OK (1049ms)
+05:15:13 [SHOT] OK (0ms)
+05:15:14 [SCAN] Gathering - Automove → FALSE (3228ms)
+05:15:15 [SHOT] OK (0ms)
+05:15:17 [SHOT] OK (1769ms)
+05:15:18 [SCAN] Attack - Auto On → FALSE (3277ms)
+05:15:19 [SHOT] OK (0ms)
+05:15:19 [SHOT] OK (0ms)
+05:15:20 [SCAN] Revive → FALSE (1412ms)
+05:15:20 [NODE] → Click: Attack - Auto
+05:15:45 [SHOT] FAIL #1 (25030ms)
+05:15:45 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:15:47 [ERR] Click SKIP: 'Attack - Auto' screenshot failed
+05:15:48 [NODE] → Click: Click 5P
+05:16:13 [SHOT] FAIL #2 (25002ms)
+05:16:13 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:16:17 [ERR] Click SKIP: 'Click 5P' screenshot failed
+05:16:17 [ERR] DEAD END: No edge from 'Click' (Click 5P) — will trigger restart
+05:16:27 [ERR] RESTART: No next node after 'Click' (Click 5P). Restart 1/10
+05:16:30 [LOOP] ── Loop iteration start ──
+05:16:56 [SHOT] FAIL #3 (25014ms)
+05:16:56 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:17:29 [SHOT] FAIL #4 (25016ms)
+05:17:29 [RayMZ] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:17:45 [SCAN] Supplies → FALSE (74032ms)
+05:18:10 [SHOT] FAIL #5 (25022ms)
+05:18:10 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:19:05 [SHOT] FAIL #6 (25009ms)
+05:19:05 [RayMZ] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:19:35 [SCAN] Revive → FALSE (110084ms)
+05:20:08 [SHOT] OK (22093ms)
+05:20:08 [SHOT] OK (0ms)
+05:20:09 [SCAN] Supplies - In → FALSE (23395ms)
+05:20:10 [SHOT] OK (0ms)
+05:20:11 [SHOT] OK (0ms)
+05:20:12 [SCAN] Attack - Auto → FALSE (1675ms)
+05:20:37 [SHOT] FAIL #1 (25030ms)
+05:20:37 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:21:04 [SHOT] FAIL #2 (25010ms)
+05:21:04 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:21:08 [SCAN] Gathering - Automove → FALSE (56049ms)
+05:21:34 [SHOT] FAIL #3 (25007ms)
+05:21:34 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:21:47 ============================================================
+05:21:47 SESSION START — RayMZ (port:9227 tab:1)
+05:21:47 ============================================================
+05:21:47 [RayMZ] Starting worker: func=macro - Home, port=9227, tab=1
+05:21:55 [RayMZ] Connected to Port 9227, Tab 1
+05:21:55 [MACRO] Home: Starting (0ms)
+05:21:55     - Step OK: ⚡ Hard Click 'Home' at (343,367)
+05:21:56 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:21:58 [SHOT] OK (2060ms)
+05:21:58     - Marker OK: 'Supplies' confirmed APPEAR.
+05:21:58 [Macro] Steps completed. Checking result...
+05:21:59 [SHOT] OK (0ms)
+05:21:59 [Macro] Result: SUCCESS (found 'Supplies')
+05:21:59 [MACRO] Home: PASSED (3746ms total)
+05:21:59 ============================================================
+05:21:59 SESSION END — RayMZ (0.2 min)
+05:21:59   Loops: 0
+05:21:59   Screenshots: 2 ok / 0 fail (0.0%)
+05:21:59   Avg latency: 1030ms
+05:21:59   Macros: 1 ok / 0 fail
+05:21:59   Errors: 0
+05:21:59 ============================================================
+05:24:06 ============================================================
+05:24:06 SESSION START — RayMZ (port:9227 tab:1)
+05:24:06 ============================================================
+05:24:06 [RayMZ] Starting worker: func=macro - Home, port=9227, tab=1
+05:24:11 [RayMZ] Connected to Port 9227, Tab 1
+05:24:13 [MACRO] Home: Starting (0ms)
+05:24:18     - Step OK: ⚡ Hard Click 'Home' at (349,388)
+05:24:18 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:43 [SHOT] FAIL #1 (25006ms)
+05:24:43 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:25:11 [SHOT] FAIL #2 (25009ms)
+05:25:11 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:25:23 [SHOT] OK (7435ms)
+05:25:23     - Marker OK: 'Supplies' confirmed APPEAR.
+05:25:23 [Macro] Steps completed. Checking result...
+05:25:24 [SHOT] OK (0ms)
+05:25:24 [Macro] Result: SUCCESS (found 'Supplies')
+05:25:24 [MACRO] Home: PASSED (70959ms total)
+05:25:24 ============================================================
+05:25:24 SESSION END — RayMZ (1.3 min)
+05:25:24   Loops: 0
+05:25:24   Screenshots: 2 ok / 2 fail (50.0%)
+05:25:24   Avg latency: 3718ms
+05:25:24   Macros: 1 ok / 0 fail
+05:25:24   Errors: 0
+05:25:24 ============================================================
+05:27:05 ============================================================
+05:27:05 SESSION START — RayMZ (port:9227 tab:1)
+05:27:05 ============================================================
+05:27:06 [RayMZ] Starting worker: func=loop - Farm V1, port=9227, tab=1
+05:27:10 [RayMZ] Connected to Port 9227, Tab 1
+05:27:11 [LOOP] ── Loop iteration start ──
+05:27:11 [SHOT] OK (176ms)
+05:27:12 [SHOT] OK (0ms)
+05:27:13 [SCAN] Gathering - Inside → FALSE (1864ms)
+05:27:14 [SHOT] OK (0ms)
+05:27:14 [SCAN] Supplies → TRUE (16ms)
+05:27:14 [MACRO] Buy Blood: Starting (0ms)
+05:27:19     - Step OK: ⚡ Hard Click 'Supplies' at (1309,562)
+05:27:20 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:27:45 [SHOT] FAIL #1 (25010ms)
+05:27:45 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:27:48 [SHOT] OK (595ms)
+05:27:49 [SHOT] OK (0ms)
+05:27:50 [SHOT] OK (0ms)
+05:27:51 [SHOT] OK (181ms)
+05:27:52 [SHOT] OK (0ms)
+05:27:53 [SHOT] OK (0ms)
+05:27:54 [SHOT] OK (0ms)
+05:27:54 [SHOT] OK (0ms)
+05:28:20 [SHOT] FAIL #1 (25014ms)
+05:28:20 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:28:47 [SHOT] FAIL #2 (25010ms)
+05:28:47 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:28:54 [SHOT] OK (2065ms)
+05:28:55 [SHOT] OK (0ms)
+05:28:55 [SHOT] OK (0ms)
+05:28:56 [SHOT] OK (0ms)
+05:28:57 [SHOT] OK (0ms)
+05:29:23 [SHOT] FAIL #1 (25014ms)
+05:29:23 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:29:50 [SHOT] FAIL #2 (25013ms)
+05:29:50 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:30:20 [SHOT] FAIL #3 (25024ms)
+05:30:20 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:30:28 [SHOT] OK (186ms)
+05:30:29 [SHOT] OK (0ms)
+05:30:30 [SHOT] OK (0ms)
+05:30:31 [SHOT] OK (0ms)
+05:30:57 [SHOT] FAIL #1 (25001ms)
+05:30:57 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:31:03 [SHOT] OK (3611ms)
+05:31:04 [SHOT] OK (0ms)
+05:31:05 [SHOT] OK (0ms)
+05:31:05 [SHOT] OK (0ms)
+05:31:32 [SHOT] FAIL #1 (25005ms)
+05:31:32 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:31:35 [SHOT] OK (1234ms)
+05:31:36 [SHOT] OK (0ms)
+05:31:37 [SHOT] OK (0ms)
+05:31:38 [SHOT] OK (0ms)
+05:32:04 [SHOT] FAIL #1 (25011ms)
+05:32:04 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:32:32 [SHOT] FAIL #2 (25013ms)
+05:32:32 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:32:38 [SHOT] OK (1723ms)
+05:32:39 [SHOT] OK (0ms)
+05:32:40 [SHOT] OK (0ms)
+05:32:41 [SHOT] OK (0ms)
+05:32:41 [SHOT] OK (178ms)
+05:32:43 [SHOT] OK (0ms)
+05:32:44 [SHOT] OK (0ms)
+05:33:10 [SHOT] FAIL #1 (25002ms)
+05:33:10 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:33:38 [SHOT] FAIL #2 (25010ms)
+05:33:38 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:34:07 [SHOT] FAIL #3 (25002ms)
+05:34:07 [RayMZ] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:34:16 [SHOT] OK (754ms)
+05:34:18 [SHOT] OK (0ms)
+05:34:19 [SHOT] OK (0ms)
+05:34:45 [SHOT] FAIL #1 (25010ms)
+05:34:45 [RayMZ] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:35:09 [SHOT] FAIL #2 (22123ms)
+05:35:09 [RayMZ] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:35:14 [MACRO] Buy Blood: FAILED (479436ms total)
+05:35:14 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:35:14 ============================================================
+05:35:14 SESSION END — RayMZ (8.1 min)
+05:35:14   Loops: 0
+05:35:14   Screenshots: 38 ok / 15 fail (28.3%)
+05:35:14   Avg latency: 282ms
+05:35:14   Macros: 0 ok / 1 fail
+05:35:14   Errors: 1
+05:35:14 ============================================================

@@ -1,0 +1,1242 @@
+03:08:46 ============================================================
+03:08:46 SESSION START — Quizzle (port:9227 tab:0)
+03:08:46 ============================================================
+03:08:46 [Quizzle] Starting worker: func=loop - Farm V1, port=9227, tab=0
+03:08:50 [Quizzle] Connected to Port 9227, Tab 0
+03:08:54 [SHOT] OK (3259ms)
+03:08:55 [SHOT] OK (0ms)
+03:08:56 [SCAN] Gathering - Inside → FALSE (4750ms)
+03:08:56 [SHOT] OK (0ms)
+03:08:56 [SCAN] Supplies → TRUE (11ms)
+03:08:57 [MACRO] Buy Blood: Starting (0ms)
+03:09:02     - Step OK: ⚡ Hard Click 'Supplies' at (1320,572)
+03:09:03 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:09:25 [SHOT] OK (22722ms)
+03:09:25     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:09:31     - Step OK: ⚡ Hard Click 'Supplies - Type' at (516,306)
+03:09:31 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:09:56 [SHOT] OK (24828ms)
+03:09:56     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:10:01     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (855,554)
+03:10:01 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:10:02 [Macro] Delay completed.
+03:10:07     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1028,729)
+03:10:07 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:10:08 [Macro] Delay completed.
+03:10:13     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1533,137)
+03:10:14 [Macro] Steps completed. Checking result...
+03:10:28 [SHOT] OK (13240ms)
+03:10:28 [Macro] Result: SUCCESS (found 'Home')
+03:10:28 [MACRO] Buy Blood: PASSED (91042ms total)
+03:10:28 [MACRO] Gathering: Starting (0ms)
+03:10:28 [SHOT] OK (0ms)
+03:10:33     - Step OK: Clicked 'Gathering'
+03:10:34 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+03:10:59 [SHOT] FAIL #1 (25015ms)
+03:10:59 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:11:01     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+03:11:01 [MACRO] Gathering: FAILED (33271ms total)
+03:11:01 [Quizzle] No next node after 'Macro' (cc882d55). Restart 1/10
+03:11:30 [SHOT] FAIL #2 (25007ms)
+03:11:30 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:11:59 [SHOT] FAIL #3 (25006ms)
+03:11:59 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:12:07 [SCAN] Gathering - Inside → FALSE (62016ms)
+03:12:20 [SHOT] OK (12685ms)
+03:12:20 [SCAN] Supplies → TRUE (12858ms)
+03:12:21 [MACRO] Buy Blood: Starting (0ms)
+03:12:26     - Step OK: ⚡ Hard Click 'Supplies' at (1307,562)
+03:12:27 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:12:52 [SHOT] FAIL #1 (25014ms)
+03:12:52 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:13:19 [SHOT] FAIL #2 (25014ms)
+03:13:19 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:13:49 [SHOT] FAIL #3 (25003ms)
+03:13:49 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:14:22 [SHOT] FAIL #4 (25005ms)
+03:14:22 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:15:04 [SHOT] FAIL #5 (25010ms)
+03:15:04 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:15:53 [SHOT] OK (18476ms)
+03:15:54 [SHOT] OK (0ms)
+03:15:54 [SHOT] OK (0ms)
+03:15:55 [SHOT] OK (0ms)
+03:16:21 [SHOT] FAIL #1 (25015ms)
+03:16:21 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:16:49 [SHOT] FAIL #2 (25012ms)
+03:16:49 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:17:19 [SHOT] FAIL #3 (25013ms)
+03:17:19 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:17:53 [SHOT] FAIL #4 (25015ms)
+03:17:53 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:18:35 [SHOT] FAIL #5 (25006ms)
+03:18:35 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:19:06 [SHOT] OK (213ms)
+03:19:06 [SHOT] OK (0ms)
+03:19:07 [SHOT] OK (0ms)
+03:19:08 [SHOT] OK (0ms)
+03:19:08 [SHOT] OK (0ms)
+03:19:34 [SHOT] FAIL #1 (25014ms)
+03:19:34 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:20:02 [SHOT] FAIL #2 (25007ms)
+03:20:02 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:20:32 [SHOT] FAIL #3 (25009ms)
+03:20:32 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:21:01 [SHOT] OK (20599ms)
+03:21:02 [SHOT] OK (0ms)
+03:21:03 [SHOT] OK (0ms)
+03:21:03 [SHOT] OK (0ms)
+03:21:04 [SHOT] OK (0ms)
+03:21:05 [SHOT] OK (347ms)
+03:21:06 [SHOT] OK (0ms)
+03:21:07 [SHOT] OK (0ms)
+03:21:08 [SHOT] OK (0ms)
+03:21:33 [SHOT] FAIL #1 (25015ms)
+03:21:33 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:21:53 [SHOT] OK (16364ms)
+03:21:54 [SHOT] OK (0ms)
+03:21:55 [SHOT] OK (0ms)
+03:22:21 [SHOT] FAIL #1 (25002ms)
+03:22:21 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:22:45 [SHOT] OK (20543ms)
+03:22:46 [SHOT] OK (0ms)
+03:22:47 [SHOT] OK (0ms)
+03:22:49 [SHOT] OK (464ms)
+03:22:50 [SHOT] OK (0ms)
+03:22:51 [SHOT] OK (0ms)
+03:22:52 [SHOT] OK (295ms)
+03:22:53 [SHOT] OK (0ms)
+03:22:55 [SHOT] OK (0ms)
+03:22:56 [SHOT] OK (684ms)
+03:22:58 [SHOT] OK (0ms)
+03:22:59 [SHOT] OK (0ms)
+03:23:00 [SHOT] OK (253ms)
+03:23:01 [SHOT] OK (0ms)
+03:23:02 [SHOT] OK (0ms)
+03:23:03 [SHOT] OK (0ms)
+03:23:05 [SHOT] OK (457ms)
+03:23:06 [SHOT] OK (0ms)
+03:23:07 [SHOT] OK (0ms)
+03:23:08 [SHOT] OK (516ms)
+03:23:09 [SHOT] OK (0ms)
+03:23:10 [SHOT] OK (0ms)
+03:23:10 [SHOT] OK (0ms)
+03:23:11 [SHOT] OK (0ms)
+03:23:13 [SHOT] OK (978ms)
+03:23:14 [SHOT] OK (0ms)
+03:23:15 [SHOT] OK (0ms)
+03:23:16 [SHOT] OK (0ms)
+03:23:17 [SHOT] OK (217ms)
+03:23:18 [SHOT] OK (0ms)
+03:23:19 [SHOT] OK (0ms)
+03:23:20 [SHOT] OK (0ms)
+03:23:21 [SHOT] OK (215ms)
+03:23:22 [SHOT] OK (0ms)
+03:23:23 [SHOT] OK (0ms)
+03:23:24 [SHOT] OK (211ms)
+03:23:25 [SHOT] OK (0ms)
+03:23:26 [SHOT] OK (0ms)
+03:23:27 [SHOT] OK (0ms)
+03:23:29 [SHOT] OK (274ms)
+03:23:29 [SHOT] OK (0ms)
+03:23:31 [SHOT] OK (0ms)
+03:23:32 [SHOT] OK (607ms)
+03:23:33 [SHOT] OK (0ms)
+03:23:34 [SHOT] OK (0ms)
+03:23:35 [SHOT] OK (0ms)
+03:23:36 [SHOT] OK (173ms)
+03:23:37 [SHOT] OK (0ms)
+03:23:38 [SHOT] OK (0ms)
+03:23:38 [SHOT] OK (0ms)
+03:23:40 [SHOT] OK (350ms)
+03:23:40 [SHOT] OK (0ms)
+03:23:41 [SHOT] OK (0ms)
+03:23:43 [SHOT] OK (0ms)
+03:23:44 [SHOT] OK (248ms)
+03:23:45 [SHOT] OK (0ms)
+03:23:46 [SHOT] OK (0ms)
+03:23:46 [SHOT] OK (0ms)
+03:23:48 [SHOT] OK (231ms)
+03:23:48 [SHOT] OK (0ms)
+03:23:50 [SHOT] OK (0ms)
+03:23:51 [SHOT] OK (446ms)
+03:23:52 [SHOT] OK (0ms)
+03:23:53 [SHOT] OK (0ms)
+03:23:54 [SHOT] OK (0ms)
+03:23:55 [SHOT] OK (252ms)
+03:23:56 [SHOT] OK (0ms)
+03:23:58 [SHOT] OK (0ms)
+03:23:59 [SHOT] OK (798ms)
+03:24:00 [SHOT] OK (0ms)
+03:24:01 [SHOT] OK (0ms)
+03:24:02 [SHOT] OK (0ms)
+03:24:03 [SHOT] OK (366ms)
+03:24:04 [SHOT] OK (0ms)
+03:24:05 [SHOT] OK (0ms)
+03:24:06 [SHOT] OK (233ms)
+03:24:08 [SHOT] OK (0ms)
+03:24:09 [SHOT] OK (0ms)
+03:24:10 [SHOT] OK (194ms)
+03:24:10 [SHOT] OK (0ms)
+03:24:11 [SHOT] OK (0ms)
+03:24:12 [SHOT] OK (0ms)
+03:24:13 [SHOT] OK (0ms)
+03:24:14 [SHOT] OK (539ms)
+03:24:15 [SHOT] OK (0ms)
+03:24:16 [SHOT] OK (0ms)
+03:24:18 [SHOT] OK (894ms)
+03:24:19 [SHOT] OK (0ms)
+03:24:20 [SHOT] OK (0ms)
+03:24:21 [SHOT] OK (0ms)
+03:24:22 [SHOT] OK (352ms)
+03:24:23 [SHOT] OK (0ms)
+03:24:24 [SHOT] OK (0ms)
+03:24:25 [SHOT] OK (0ms)
+03:24:26 [SHOT] OK (646ms)
+03:24:27 [SHOT] OK (0ms)
+03:24:29 [SHOT] OK (0ms)
+03:24:29 [SHOT] OK (0ms)
+03:24:30 [SHOT] OK (476ms)
+03:24:32 [SHOT] OK (0ms)
+03:24:33 [SHOT] OK (0ms)
+03:24:34 [SHOT] OK (334ms)
+03:24:35 [SHOT] OK (0ms)
+03:24:36 [SHOT] OK (0ms)
+03:24:37 [SHOT] OK (0ms)
+03:24:39 [SHOT] OK (287ms)
+03:24:39 [SHOT] OK (0ms)
+03:24:40 [SHOT] OK (0ms)
+03:24:41 [SHOT] OK (0ms)
+03:24:42 [SHOT] OK (320ms)
+03:24:43 [SHOT] OK (0ms)
+03:24:44 [SHOT] OK (0ms)
+03:24:46 [SHOT] OK (288ms)
+03:24:47 [SHOT] OK (0ms)
+03:24:48 [SHOT] OK (0ms)
+03:24:49 [SHOT] OK (0ms)
+03:24:50 [SHOT] OK (453ms)
+03:24:51 [SHOT] OK (0ms)
+03:24:52 [SHOT] OK (0ms)
+03:24:54 [SHOT] OK (418ms)
+03:24:54 [SHOT] OK (0ms)
+03:24:56 [SHOT] OK (0ms)
+03:24:58 [SHOT] OK (369ms)
+03:24:59 [SHOT] OK (0ms)
+03:24:59 [SHOT] OK (0ms)
+03:25:00 [SHOT] OK (0ms)
+03:25:00 [SHOT] OK (0ms)
+03:25:01 [SHOT] OK (290ms)
+03:25:03 [SHOT] OK (0ms)
+03:25:03 [SHOT] OK (0ms)
+03:25:04 [SHOT] OK (0ms)
+03:25:05 [SHOT] OK (216ms)
+03:25:06 [SHOT] OK (0ms)
+03:25:07 [SHOT] OK (0ms)
+03:25:08 [SHOT] OK (0ms)
+03:25:09 [SHOT] OK (482ms)
+03:25:11 [SHOT] OK (0ms)
+03:25:11 [SHOT] OK (0ms)
+03:25:12 [SHOT] OK (0ms)
+03:25:14 [SHOT] OK (361ms)
+03:25:15 [SHOT] OK (0ms)
+03:25:15 [SHOT] OK (0ms)
+03:25:16 [SHOT] OK (0ms)
+03:25:17 [SHOT] OK (312ms)
+03:25:19 [SHOT] OK (0ms)
+03:25:20 [SHOT] OK (0ms)
+03:25:22 [SHOT] OK (465ms)
+03:25:23 [SHOT] OK (0ms)
+03:25:24 [SHOT] OK (0ms)
+03:25:24 [SHOT] OK (0ms)
+03:25:26 [SHOT] OK (383ms)
+03:25:27 [SHOT] OK (0ms)
+03:25:29 [SHOT] OK (0ms)
+03:25:31 [SHOT] OK (1209ms)
+03:25:33 [SHOT] OK (0ms)
+03:25:34 [SHOT] OK (0ms)
+03:25:35 [SHOT] OK (250ms)
+03:25:36 [SHOT] OK (0ms)
+03:25:38 [SHOT] OK (0ms)
+03:25:40 [SHOT] OK (594ms)
+03:25:41 [SHOT] OK (0ms)
+03:25:43 [SHOT] OK (0ms)
+03:25:44 [SHOT] OK (570ms)
+03:25:46 [SHOT] OK (0ms)
+03:25:47 [SHOT] OK (0ms)
+03:25:51 [SHOT] OK (1556ms)
+03:25:52 [SHOT] OK (0ms)
+03:25:53 [SHOT] OK (0ms)
+03:25:53 [SHOT] OK (0ms)
+03:25:54 [SHOT] OK (258ms)
+03:25:55 [SHOT] OK (0ms)
+03:25:56 [SHOT] OK (0ms)
+03:25:58 [SHOT] OK (270ms)
+03:25:58 [SHOT] OK (0ms)
+03:25:59 [SHOT] OK (0ms)
+03:26:00 [SHOT] OK (0ms)
+03:26:01 [SHOT] OK (0ms)
+03:26:04 [SHOT] OK (1346ms)
+03:26:05 [SHOT] OK (0ms)
+03:26:06 [SHOT] OK (0ms)
+03:26:08 [SHOT] OK (274ms)
+03:26:08 [SHOT] OK (0ms)
+03:26:10 [SHOT] OK (0ms)
+03:26:12 [SHOT] OK (705ms)
+03:26:13 [SHOT] OK (0ms)
+03:26:14 [SHOT] OK (0ms)
+03:26:17 [SHOT] OK (2011ms)
+03:26:19 [SHOT] OK (0ms)
+03:26:20 [SHOT] OK (0ms)
+03:26:22 [SHOT] OK (797ms)
+03:26:23 [SHOT] OK (0ms)
+03:26:24 [SHOT] OK (0ms)
+03:26:25 [SHOT] OK (0ms)
+03:26:51 [SHOT] FAIL #1 (25002ms)
+03:26:51 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:26:56 [SHOT] OK (2660ms)
+03:26:58 [SHOT] OK (0ms)
+03:26:58 [SHOT] OK (0ms)
+03:27:24 [SHOT] FAIL #1 (25009ms)
+03:27:24 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:27:49 [SHOT] FAIL #2 (22620ms)
+03:27:49 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:27:55 [MACRO] Buy Blood: FAILED (933666ms total)
+03:27:55 ============================================================
+03:27:55 SESSION END — Quizzle (19.1 min)
+03:27:55   Loops: 0
+03:27:55   Screenshots: 225 ok / 21 fail (8.5%)
+03:27:55   Avg latency: 809ms
+03:27:55   Macros: 1 ok / 2 fail
+03:27:55   Errors: 0
+03:27:55 ============================================================
+03:31:15 ============================================================
+03:31:15 SESSION START — Quizzle (port:9227 tab:0)
+03:31:15 ============================================================
+03:31:15 [Quizzle] Starting worker: func=loop - Farm V1, port=9227, tab=0
+03:31:19 [Quizzle] Connected to Port 9227, Tab 0
+03:31:20 [SHOT] OK (227ms)
+03:31:20 [SCAN] Supplies → TRUE (237ms)
+03:31:20 [MACRO] Buy Blood: Starting (0ms)
+03:31:26     - Step OK: ⚡ Hard Click 'Supplies' at (1314,580)
+03:31:26 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:31:51 [SHOT] FAIL #1 (25004ms)
+03:31:51 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:19 [SHOT] FAIL #2 (25012ms)
+03:32:19 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:32:48 [SHOT] FAIL #3 (25001ms)
+03:32:48 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:33:22 [SHOT] FAIL #4 (25008ms)
+03:33:22 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:34:04 [SHOT] FAIL #5 (25006ms)
+03:34:04 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:35:00 [SHOT] FAIL #6 (25002ms)
+03:35:00 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:35:56 [SHOT] FAIL #7 (25002ms)
+03:35:56 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:36:36 [SHOT] OK (9777ms)
+03:36:36     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:36:41     - Step OK: ⚡ Hard Click 'Supplies - Type' at (500,311)
+03:36:42 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:37:07 [SHOT] FAIL #1 (25003ms)
+03:37:07 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:37:35 [SHOT] FAIL #2 (25005ms)
+03:37:35 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:38:05 [SHOT] FAIL #3 (25002ms)
+03:38:05 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:38:39 [SHOT] FAIL #4 (25013ms)
+03:38:39 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:39:16 [SHOT] OK (20089ms)
+03:39:17 [SHOT] OK (0ms)
+03:39:17 [SHOT] OK (0ms)
+03:39:19 [SHOT] OK (0ms)
+03:39:37 [SHOT] OK (17376ms)
+03:39:37     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:39:37     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (874,569)
+03:39:38 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:39:38 [Macro] Delay completed.
+03:39:38     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1055,693)
+03:39:39     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1526,143)
+03:39:39 [Macro] Steps completed. Checking result...
+03:39:40 [SHOT] OK (0ms)
+03:39:40 [Macro] Result: FAILURE ('Home' not found)
+03:39:40 [MACRO] Buy Blood: FAILED (499494ms total)
+03:39:40 [Quizzle] No next node after 'Macro' (ad649a80). Restart 1/10
+03:39:44 [SHOT] OK (327ms)
+03:39:44 [SCAN] Supplies → TRUE (337ms)
+03:39:44 [MACRO] Buy Blood: Starting (0ms)
+03:39:50     - Step OK: ⚡ Hard Click 'Supplies' at (1308,549)
+03:39:50 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:40:15 [SHOT] FAIL #1 (25008ms)
+03:40:15 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:40:20 [SHOT] OK (2498ms)
+03:40:20     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:40:25     - Step OK: ⚡ Hard Click 'Supplies - Type' at (547,324)
+03:40:25 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:40:44 [SHOT] OK (18093ms)
+03:40:44     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:40:49     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (889,557)
+03:40:49 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:40:49 [Macro] Delay completed.
+03:40:55     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1062,721)
+03:41:00     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1537,137)
+03:41:00 [Macro] Steps completed. Checking result...
+03:41:22 [SHOT] OK (20335ms)
+03:41:22 [Macro] Result: SUCCESS (found 'Home')
+03:41:22 [MACRO] Buy Blood: PASSED (97278ms total)
+03:41:22 [MACRO] Gathering: Starting (0ms)
+03:41:22 [SHOT] OK (0ms)
+03:41:27     - Step OK: Clicked 'Gathering'
+03:41:27 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+03:41:52 [SHOT] FAIL #1 (25010ms)
+03:41:52 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:42:20 [SHOT] FAIL #2 (25012ms)
+03:42:20 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:42:50 [SHOT] FAIL #3 (25014ms)
+03:42:50 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:43:24 [SHOT] FAIL #4 (25003ms)
+03:43:24 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:44:06 [SHOT] FAIL #5 (25005ms)
+03:44:06 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:45:02 [SHOT] FAIL #6 (25003ms)
+03:45:02 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:45:57 [SHOT] FAIL #7 (25012ms)
+03:45:57 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:46:53 [SHOT] FAIL #8 (25009ms)
+03:46:53 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:47:49 [SHOT] FAIL #9 (25012ms)
+03:47:49 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:48:45 [SHOT] FAIL #10 (25053ms)
+03:48:45 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:49:26 [SHOT] OK (11087ms)
+03:49:26     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:49:31     - Step OK: ⚡ Hard Click 'Gathering - OK' at (995,597)
+03:49:32 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:49:44 [Macro] Delay completed.
+03:49:44 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+03:49:57 [SHOT] OK (12621ms)
+03:49:58 [SHOT] OK (0ms)
+03:49:59 [SHOT] OK (0ms)
+03:49:59 [SHOT] OK (0ms)
+03:50:25 [SHOT] FAIL #1 (25008ms)
+03:50:25 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:50:27     - Marker triggered. Holding 6.5s...
+03:50:28 [SHOT] OK (229ms)
+03:50:28     - Marker interrupted. Resetting hold timer.
+03:50:29 [SHOT] OK (0ms)
+03:50:30 [SHOT] OK (0ms)
+03:50:30 [SHOT] OK (0ms)
+03:50:57 [SHOT] FAIL #1 (25001ms)
+03:50:57 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:50:59     - Marker triggered. Holding 6.5s...
+03:51:03 [SHOT] OK (2960ms)
+03:51:03     - Marker interrupted. Resetting hold timer.
+03:51:04 [SHOT] OK (0ms)
+03:51:05 [SHOT] OK (0ms)
+03:51:05 [SHOT] OK (0ms)
+03:51:31 [SHOT] FAIL #1 (25002ms)
+03:51:31 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:51:33     - Marker triggered. Holding 6.5s...
+03:51:59 [SHOT] FAIL #2 (25007ms)
+03:51:59 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:52:03     - Holding... 30/6s
+03:52:03     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:52:07 [SHOT] OK (3858ms)
+03:52:12     - Step OK: Clicked 'Attack - Auto'
+03:52:12 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:52:13 [Macro] Delay completed.
+03:52:37 [SHOT] OK (23895ms)
+03:52:42     - Step OK: Clicked 'Click 5P'
+03:52:43 [Macro] Steps completed. Checking result...
+03:53:08 [SHOT] OK (24269ms)
+03:53:08 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+03:53:08 [MACRO] Gathering: PASSED (706302ms total)
+03:53:13 [MACRO] Click 5P: Starting (0ms)
+03:53:18     - Step OK: ⚡ Hard Click 'Click 5P' at (1520,95)
+03:53:19 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:53:19 [Macro] Delay completed.
+03:53:19 [Macro] Steps completed. Checking result...
+03:53:19 [Macro] Finished (no capture check configured).
+03:53:19 [MACRO] Click 5P: PASSED (5697ms total)
+03:53:19 [MACRO] Revivie: Starting (0ms)
+03:53:39 [SHOT] OK (20731ms)
+03:53:40 [SHOT] OK (0ms)
+03:53:40 [SHOT] OK (0ms)
+03:53:41 [SHOT] OK (0ms)
+03:53:41 [SHOT] OK (0ms)
+03:53:41     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:53:41 [MACRO] Revivie: FAILED (22743ms total)
+03:53:41 [Quizzle] No next node after 'Macro' (ed214390). Restart 1/10
+03:54:10 [SHOT] FAIL #1 (25009ms)
+03:54:10 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:54:37 [SHOT] FAIL #2 (25013ms)
+03:54:37 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:54:41 [SCAN] Supplies → FALSE (56025ms)
+03:54:45 [SHOT] OK (3412ms)
+03:54:45 [SCAN] Revive → TRUE (3424ms)
+03:54:45 [MACRO] Revivie: Starting (0ms)
+03:54:45 [SHOT] OK (0ms)
+03:54:51     - Step OK: Clicked 'Revive'
+03:54:51 [Macro] (2/2) Delay: 3000ms (3.0s)...
+03:54:54 [Macro] Delay completed.
+03:54:54 [Macro] Steps completed. Checking result...
+03:55:17 [SHOT] OK (21430ms)
+03:55:17 [Macro] Result: SUCCESS (found 'Supplies')
+03:55:17 [MACRO] Revivie: PASSED (31078ms total)
+03:55:17 [MACRO] Click 5P: Starting (0ms)
+03:55:22     - Step OK: ⚡ Hard Click 'Click 5P' at (1525,93)
+03:55:22 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:55:22 [Macro] Delay completed.
+03:55:22 [Macro] Steps completed. Checking result...
+03:55:22 [Macro] Finished (no capture check configured).
+03:55:22 [MACRO] Click 5P: PASSED (5705ms total)
+03:55:22 [MACRO] Revivie: Starting (0ms)
+03:55:47 [SHOT] FAIL #1 (25004ms)
+03:55:47 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:56:15 [SHOT] FAIL #2 (25006ms)
+03:56:15 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:56:44 [SHOT] FAIL #3 (25014ms)
+03:56:44 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:57:17 [SHOT] FAIL #4 (25011ms)
+03:57:17 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:57:55 [SHOT] OK (21385ms)
+03:57:55     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:57:55 [MACRO] Revivie: FAILED (153021ms total)
+03:58:00 [Quizzle] No next node after 'Macro' (ed214390). Restart 1/10
+03:58:27 [SHOT] OK (22956ms)
+03:58:27 [SCAN] Supplies → TRUE (22967ms)
+03:58:27 [MACRO] Buy Blood: Starting (0ms)
+03:58:33     - Step OK: ⚡ Hard Click 'Supplies' at (1336,588)
+03:58:33 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:58:58 [SHOT] FAIL #1 (25009ms)
+03:58:58 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:59:26 [SHOT] FAIL #2 (25011ms)
+03:59:26 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:59:56 [SHOT] FAIL #3 (25003ms)
+03:59:56 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:00:29 [SHOT] FAIL #4 (25002ms)
+04:00:29 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:01:11 [SHOT] FAIL #5 (25010ms)
+04:01:11 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:02:08 [SHOT] FAIL #6 (25002ms)
+04:02:08 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:02:42 [SHOT] OK (3170ms)
+04:02:42     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:02:47     - Step OK: ⚡ Hard Click 'Supplies - Type' at (468,313)
+04:02:47 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:03:12 [SHOT] OK (24686ms)
+04:03:12     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:03:17     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (840,560)
+04:03:18 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:03:18 [Macro] Delay completed.
+04:03:23     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (992,713)
+04:03:29     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1542,148)
+04:03:29 [Macro] Steps completed. Checking result...
+04:03:55 [SHOT] FAIL #1 (25006ms)
+04:03:55 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:03:57 [Macro] Result: FAILURE ('Home' not found)
+04:03:57 [MACRO] Buy Blood: FAILED (329695ms total)
+04:04:16 [Quizzle] Health check FAILED — reconnecting
+04:04:18 [Quizzle] Reconnected successfully
+04:04:18 [Quizzle] Connection rotation — periodic reconnect
+04:04:20 [Quizzle] Connection rotated successfully
+04:04:20 [Quizzle] No next node after 'Macro' (ad649a80). Restart 1/10
+04:04:49 [SHOT] FAIL #2 (25014ms)
+04:04:49 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:05:17 [SHOT] OK (24674ms)
+04:05:17 [SCAN] Supplies → TRUE (53699ms)
+04:05:18 [MACRO] Buy Blood: Starting (0ms)
+04:05:23     - Step OK: ⚡ Hard Click 'Supplies' at (1295,558)
+04:05:24 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:05:49 [SHOT] FAIL #1 (25015ms)
+04:05:49 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:05:54 [SHOT] OK (3384ms)
+04:05:54     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:06:00     - Step OK: ⚡ Hard Click 'Supplies - Type' at (536,311)
+04:06:00 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:06:25 [SHOT] FAIL #1 (25000ms)
+04:06:25 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:06:53 [SHOT] FAIL #2 (25020ms)
+04:06:53 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:07:23 [SHOT] FAIL #3 (25014ms)
+04:07:23 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:07:57 [SHOT] FAIL #4 (25013ms)
+04:07:57 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:08:35 [SHOT] OK (21361ms)
+04:08:35     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:08:40     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (888,556)
+04:08:40 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:08:40 [Macro] Delay completed.
+04:08:46     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (976,710)
+04:08:51     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1526,136)
+04:08:52 [Macro] Steps completed. Checking result...
+04:09:18 [SHOT] FAIL #1 (25044ms)
+04:09:18 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:09:20 [Macro] Result: FAILURE ('Home' not found)
+04:09:20 [MACRO] Buy Blood: FAILED (241714ms total)
+04:09:38 [Quizzle] Health check FAILED — reconnecting
+04:09:40 [Quizzle] Reconnected successfully
+04:09:40 [Quizzle] No next node after 'Macro' (ad649a80). Restart 1/10
+04:10:08 [SHOT] FAIL #2 (25008ms)
+04:10:08 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:10:37 [SHOT] FAIL #3 (25015ms)
+04:10:37 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:10:45 [SCAN] Supplies → FALSE (62024ms)
+04:11:07 [SHOT] OK (21327ms)
+04:11:08 [SHOT] OK (0ms)
+04:11:09 [SCAN] Revive → FALSE (22731ms)
+04:11:09 [SHOT] OK (0ms)
+04:11:10 [SHOT] OK (0ms)
+04:11:11 [SCAN] Supplies - In → FALSE (1265ms)
+04:11:36 [SHOT] FAIL #1 (25012ms)
+04:11:36 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:11:42 [SHOT] OK (3691ms)
+04:11:43 [SCAN] Attack - Auto → FALSE (31452ms)
+04:11:43 [SHOT] OK (0ms)
+04:11:44 [SHOT] OK (0ms)
+04:11:44 [SCAN] Gathering - Automove → FALSE (1113ms)
+04:11:45 [SHOT] OK (0ms)
+04:11:46 [SHOT] OK (157ms)
+04:11:47 [SCAN] Attack - Auto On → FALSE (1692ms)
+04:11:47 [SHOT] OK (0ms)
+04:11:48 [SHOT] OK (0ms)
+04:11:49 [SCAN] Revive → FALSE (1515ms)
+04:11:49 [NODE] → Click: Attack - Auto
+04:12:14 [SHOT] FAIL #1 (25014ms)
+04:12:14 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:12:17 [NODE] → Click: Click 5P
+04:12:42 [SHOT] FAIL #2 (25002ms)
+04:12:42 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:12:46 [Quizzle] No next node after 'Click' (Click 5P). Restart 1/10
+04:13:13 [SHOT] OK (23390ms)
+04:13:13 [SCAN] Supplies → TRUE (23400ms)
+04:13:13 [MACRO] Buy Blood: Starting (0ms)
+04:13:19     - Step OK: ⚡ Hard Click 'Supplies' at (1325,553)
+04:13:19 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:13:44 [SHOT] FAIL #1 (25014ms)
+04:13:44 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:14:12 [SHOT] FAIL #2 (25005ms)
+04:14:12 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:14:41 [SHOT] FAIL #3 (25011ms)
+04:14:41 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:15:15 [SHOT] FAIL #4 (25003ms)
+04:15:15 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:15:48 [SHOT] OK (15679ms)
+04:15:48     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:15:53     - Step OK: ⚡ Hard Click 'Supplies - Type' at (547,295)
+04:15:53 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:16:18 [SHOT] FAIL #1 (25002ms)
+04:16:18 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:16:21 [SHOT] OK (0ms)
+04:16:21     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:16:26     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (893,541)
+04:16:26 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:16:26 [Macro] Delay completed.
+04:16:32     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1073,728)
+04:16:37     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1539,152)
+04:16:38 [Macro] Steps completed. Checking result...
+04:16:50 [SHOT] OK (11111ms)
+04:16:50 [Macro] Result: SUCCESS (found 'Home')
+04:16:50 [MACRO] Buy Blood: PASSED (216306ms total)
+04:16:55 [MACRO] Gathering: Starting (0ms)
+04:17:20 [SHOT] FAIL #1 (25013ms)
+04:17:20 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:17:47 [SHOT] FAIL #2 (25001ms)
+04:17:47 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:18:16 [SHOT] FAIL #3 (25015ms)
+04:18:16 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:18:50 [SHOT] FAIL #4 (25014ms)
+04:18:50 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:19:31 [SHOT] FAIL #5 (25015ms)
+04:19:31 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:20:01     - Step FAILED: Could not find 'Gathering' after 5 attempts.
+04:20:01 [MACRO] Gathering: FAILED (186573ms total)
+04:20:01 [Quizzle] No next node after 'Macro' (cc882d55). Restart 1/10
+04:20:28 [SHOT] OK (23262ms)
+04:20:28 [SCAN] Supplies → TRUE (23272ms)
+04:20:29 [MACRO] Buy Blood: Starting (0ms)
+04:20:34     - Step OK: ⚡ Hard Click 'Supplies' at (1332,569)
+04:20:34 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:20:34 [SHOT] OK (215ms)
+04:20:35 [SHOT] OK (0ms)
+04:20:36 [SHOT] OK (0ms)
+04:20:36 [SHOT] OK (0ms)
+04:21:03 [SHOT] FAIL #1 (25006ms)
+04:21:03 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:21:30 [SHOT] FAIL #2 (25014ms)
+04:21:30 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:21:39 [SHOT] OK (3675ms)
+04:21:39     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:21:44     - Step OK: ⚡ Hard Click 'Supplies - Type' at (545,316)
+04:21:44 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:22:09 [SHOT] FAIL #1 (25000ms)
+04:22:09 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:22:15 [SHOT] OK (2779ms)
+04:22:15     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:22:20     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (827,570)
+04:22:21 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:22:21 [Macro] Delay completed.
+04:22:26     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1010,702)
+04:22:31     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1528,140)
+04:22:32 [Macro] Steps completed. Checking result...
+04:22:47 [SHOT] OK (13897ms)
+04:22:47 [Macro] Result: SUCCESS (found 'Home')
+04:22:47 [MACRO] Buy Blood: PASSED (138018ms total)
+04:22:52 [MACRO] Gathering: Starting (0ms)
+04:23:17 [SHOT] FAIL #1 (25009ms)
+04:23:17 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:23:23 [SHOT] OK (3905ms)
+04:23:28     - Step OK: Clicked 'Gathering'
+04:23:28 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+04:23:53 [SHOT] OK (24854ms)
+04:23:53     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+04:23:58     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1050,586)
+04:23:59 [Macro] (4/8) Delay: 12000ms (12.0s)...
+04:24:11 [Macro] Delay completed.
+04:24:11 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+04:24:36 [SHOT] FAIL #1 (25001ms)
+04:24:36 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:24:38     - Marker triggered. Holding 6.5s...
+04:25:04 [SHOT] FAIL #2 (25029ms)
+04:25:04 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:25:08     - Holding... 29/6s
+04:25:08     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+04:25:33 [SHOT] FAIL #3 (25008ms)
+04:25:33 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:26:06 [SHOT] FAIL #4 (25013ms)
+04:26:06 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:26:26 [SHOT] OK (3790ms)
+04:26:31     - Step OK: Clicked 'Attack - Auto'
+04:26:32 [Macro] (7/8) Delay: 1000ms (1.0s)...
+04:26:33 [Macro] Delay completed.
+04:26:33 [SHOT] OK (161ms)
+04:26:38     - Step OK: Clicked 'Click 5P'
+04:26:39 [Macro] Steps completed. Checking result...
+04:26:40 [SHOT] OK (254ms)
+04:26:40 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+04:26:40 [MACRO] Gathering: PASSED (228443ms total)
+04:26:40 [MACRO] Click 5P: Starting (0ms)
+04:26:45     - Step OK: ⚡ Hard Click 'Click 5P' at (1533,91)
+04:26:46 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:26:46 [Macro] Delay completed.
+04:26:46 [Macro] Steps completed. Checking result...
+04:26:46 [Macro] Finished (no capture check configured).
+04:26:46 [MACRO] Click 5P: PASSED (5785ms total)
+04:26:46 [MACRO] Revivie: Starting (0ms)
+04:27:10 [SHOT] OK (24713ms)
+04:27:11 [SHOT] OK (0ms)
+04:27:11 [SHOT] OK (0ms)
+04:27:12 [SHOT] OK (0ms)
+04:27:12 [SHOT] OK (0ms)
+04:27:13     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:27:13 [MACRO] Revivie: FAILED (26781ms total)
+04:27:13 [Quizzle] No next node after 'Macro' (ed214390). Restart 1/10
+04:27:41 [SHOT] FAIL #1 (25014ms)
+04:27:41 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:28:08 [SHOT] FAIL #2 (25005ms)
+04:28:08 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:28:12 [SCAN] Supplies → FALSE (56021ms)
+04:28:53 [SHOT] OK (24974ms)
+04:28:53 [SHOT] OK (0ms)
+04:28:54 [SCAN] Revive → FALSE (26329ms)
+04:28:54 [SHOT] OK (0ms)
+04:28:55 [SHOT] OK (0ms)
+04:28:56 [SCAN] Supplies - In → FALSE (1166ms)
+04:29:21 [SHOT] FAIL #1 (25009ms)
+04:29:21 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:29:24 [SHOT] OK (962ms)
+04:29:24 [SCAN] Attack - Auto → TRUE (27981ms)
+04:29:25 [SHOT] OK (0ms)
+04:29:25 [SHOT] OK (0ms)
+04:29:26 [SCAN] Gathering - Automove → FALSE (848ms)
+04:29:26 [SHOT] OK (0ms)
+04:29:26 [SCAN] Attack - Auto On → TRUE (18ms)
+04:29:27 [MACRO] Click 5P: Starting (0ms)
+04:29:32     - Step OK: ⚡ Hard Click 'Click 5P' at (1525,93)
+04:29:32 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:29:32 [Macro] Delay completed.
+04:29:32 [Macro] Steps completed. Checking result...
+04:29:32 [Macro] Finished (no capture check configured).
+04:29:32 [MACRO] Click 5P: PASSED (5641ms total)
+04:29:32 [MACRO] Revivie: Starting (0ms)
+04:29:57 [SHOT] FAIL #1 (25011ms)
+04:29:57 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:30:24 [SHOT] FAIL #2 (25012ms)
+04:30:24 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:30:54 [SHOT] FAIL #3 (25010ms)
+04:30:54 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:31:27 [SHOT] FAIL #4 (25008ms)
+04:31:27 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:32:04 [SHOT] OK (20176ms)
+04:32:04     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:32:04 [MACRO] Revivie: FAILED (151818ms total)
+04:32:04 [Quizzle] No next node after 'Macro' (ed214390). Restart 1/10
+04:32:29 [SHOT] OK (21994ms)
+04:32:30 [SHOT] OK (0ms)
+04:32:31 [SCAN] Supplies → FALSE (23277ms)
+04:32:31 [SHOT] OK (0ms)
+04:32:32 [SHOT] OK (0ms)
+04:32:32 [SCAN] Revive → FALSE (1119ms)
+04:32:58 [SHOT] FAIL #1 (25015ms)
+04:32:58 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:33:25 [SHOT] FAIL #2 (25006ms)
+04:33:25 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:33:29 [SCAN] Supplies - In → FALSE (56023ms)
+04:34:00 [SHOT] FAIL #3 (25012ms)
+04:34:00 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:34:33 [SHOT] FAIL #4 (25015ms)
+04:34:33 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:34:49 [SCAN] Attack - Auto → FALSE (74029ms)
+04:34:49 [Quizzle] Connection rotation — periodic reconnect
+04:34:51 [Quizzle] Connection rotated successfully
+04:35:16 [SHOT] FAIL #5 (25007ms)
+04:35:16 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:36:11 [SHOT] FAIL #6 (25013ms)
+04:36:11 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:36:41 [SCAN] Gathering - Automove → FALSE (110021ms)
+04:36:44 [SHOT] OK (2067ms)
+04:36:44 [SCAN] Attack - Auto On → TRUE (2084ms)
+04:36:45 [MACRO] Click 5P: Starting (0ms)
+04:36:50     - Step OK: ⚡ Hard Click 'Click 5P' at (1530,88)
+04:36:50 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:36:50 [Macro] Delay completed.
+04:36:50 [Macro] Steps completed. Checking result...
+04:36:50 [Macro] Finished (no capture check configured).
+04:36:50 [MACRO] Click 5P: PASSED (5637ms total)
+04:36:50 [MACRO] Revivie: Starting (0ms)
+04:37:15 [SHOT] OK (24304ms)
+04:37:15 [SHOT] OK (0ms)
+04:37:15 [SHOT] OK (0ms)
+04:37:16 [SHOT] OK (0ms)
+04:37:16 [SHOT] OK (0ms)
+04:37:17     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:37:17 [MACRO] Revivie: FAILED (26345ms total)
+04:37:17 [Quizzle] No next node after 'Macro' (ed214390). Restart 1/10
+04:37:45 [SHOT] FAIL #1 (25012ms)
+04:37:45 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:37:48 [SHOT] OK (1176ms)
+04:37:49 [SCAN] Supplies → FALSE (29110ms)
+04:37:50 [SHOT] OK (0ms)
+04:37:51 [SHOT] OK (0ms)
+04:37:51 [SCAN] Revive → FALSE (1200ms)
+04:37:52 [SHOT] OK (333ms)
+04:37:53 [SHOT] OK (0ms)
+04:37:53 [SCAN] Supplies - In → FALSE (2053ms)
+04:37:54 [SHOT] OK (0ms)
+04:37:54 [SCAN] Attack - Auto → TRUE (7ms)
+04:37:54 [SHOT] OK (0ms)
+04:37:55 [SHOT] OK (294ms)
+04:37:56 [SCAN] Gathering - Automove → FALSE (1272ms)
+04:37:56 [SHOT] OK (0ms)
+04:37:56 [SCAN] Attack - Auto On → TRUE (18ms)
+04:37:57 [MACRO] Click 5P: Starting (0ms)
+04:38:02     - Step OK: ⚡ Hard Click 'Click 5P' at (1521,88)
+04:38:02 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:38:02 [Macro] Delay completed.
+04:38:02 [Macro] Steps completed. Checking result...
+04:38:02 [Macro] Finished (no capture check configured).
+04:38:02 [MACRO] Click 5P: PASSED (5607ms total)
+04:38:02 [MACRO] Revivie: Starting (0ms)
+04:38:27 [SHOT] FAIL #1 (25000ms)
+04:38:27 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:38:55 [SHOT] FAIL #2 (25003ms)
+04:38:55 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:39:24 [SHOT] FAIL #3 (25006ms)
+04:39:24 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:39:57 [SHOT] FAIL #4 (25008ms)
+04:39:57 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:40:38 [SHOT] FAIL #5 (25006ms)
+04:40:38 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:41:09     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:41:09 [MACRO] Revivie: FAILED (186571ms total)
+04:41:14 [Quizzle] No next node after 'Macro' (ed214390). Restart 1/10
+04:41:42 [SHOT] OK (24570ms)
+04:41:43 [SHOT] OK (0ms)
+04:41:43 [SCAN] Supplies → FALSE (25922ms)
+04:41:44 [SHOT] OK (0ms)
+04:41:45 [SHOT] OK (0ms)
+04:41:45 [SCAN] Revive → FALSE (1275ms)
+04:42:11 [SHOT] FAIL #1 (25006ms)
+04:42:11 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:42:38 [SHOT] FAIL #2 (25009ms)
+04:42:38 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:42:42 [SCAN] Supplies - In → FALSE (56017ms)
+04:42:42 ============================================================
+04:42:42 SESSION END — Quizzle (71.5 min)
+04:42:42   Loops: 0
+04:42:42   Screenshots: 109 ok / 90 fail (45.2%)
+04:42:42   Avg latency: 5803ms
+04:42:42   Macros: 12 ok / 10 fail
+04:42:42   Errors: 0
+04:42:42 ============================================================
+04:54:26 ============================================================
+04:54:26 SESSION START — Quizzle (port:9227 tab:0)
+04:54:26 ============================================================
+04:54:26 [Quizzle] Starting worker: func=loop - Farm V1, port=9227, tab=0
+04:54:30 [Quizzle] Connected to Port 9227, Tab 0
+04:54:56 [SHOT] FAIL #1 (25009ms)
+04:54:56 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:55:23 [SHOT] FAIL #2 (25005ms)
+04:55:23 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:55:27 [SCAN] Supplies → FALSE (56016ms)
+04:55:49 [SHOT] OK (22002ms)
+04:55:50 [SHOT] OK (0ms)
+04:55:51 [SCAN] Revive → FALSE (23287ms)
+04:55:51 [SHOT] OK (0ms)
+04:55:52 [SHOT] OK (0ms)
+04:55:53 [SCAN] Supplies - In → FALSE (1216ms)
+04:55:54 [SHOT] OK (658ms)
+04:55:54 [SCAN] Attack - Auto → TRUE (666ms)
+04:55:55 [SHOT] OK (0ms)
+04:55:56 [SHOT] OK (0ms)
+04:55:56 [SCAN] Gathering - Automove → FALSE (1707ms)
+04:55:57 [SHOT] OK (181ms)
+04:55:58 [SHOT] OK (0ms)
+04:55:59 [SCAN] Attack - Auto On → FALSE (1410ms)
+04:55:59 [SHOT] OK (0ms)
+04:56:00 [SHOT] OK (0ms)
+04:56:01 [SCAN] Revive → FALSE (1556ms)
+04:56:01 [NODE] → Click: Attack - Auto
+04:56:02 [SHOT] OK (331ms)
+04:56:02 [SCAN] Attack - Auto → FALSE (0ms)
+04:56:02 [NODE] → Click: Click 5P
+04:56:02 [SHOT] OK (0ms)
+04:56:07 [SCAN] Click 5P → TRUE (0ms)
+04:56:08 [Quizzle] No next node after 'Click' (Click 5P). Restart 1/10
+04:56:36 [SHOT] FAIL #1 (25007ms)
+04:56:36 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:56:41 [SHOT] OK (3418ms)
+04:56:41 [SCAN] Supplies → TRUE (30436ms)
+04:56:42 [MACRO] Buy Blood: Starting (0ms)
+04:56:47     - Step OK: ⚡ Hard Click 'Supplies' at (1305,551)
+04:56:48 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:57:13 [SHOT] FAIL #1 (25001ms)
+04:57:13 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:57:40 [SHOT] FAIL #2 (25007ms)
+04:57:40 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:57:49 [SHOT] OK (4551ms)
+04:57:49     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:57:54     - Step OK: ⚡ Hard Click 'Supplies - Type' at (545,307)
+04:57:55 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:58:20 [SHOT] FAIL #1 (25011ms)
+04:58:20 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:58:47 [SHOT] FAIL #2 (25030ms)
+04:58:47 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:58:57 [SHOT] OK (4958ms)
+04:58:57     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:59:02     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (893,569)
+04:59:02 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:59:03 [Macro] Delay completed.
+04:59:08     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (982,711)
+04:59:13     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1543,142)
+04:59:14 [Macro] Steps completed. Checking result...
+04:59:32 [SHOT] OK (17776ms)
+04:59:32 [Macro] Result: SUCCESS (found 'Home')
+04:59:32 [MACRO] Buy Blood: PASSED (170386ms total)
+04:59:37 [MACRO] Gathering: Starting (0ms)
+05:00:02 [SHOT] FAIL #1 (25007ms)
+05:00:02 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:00:30 [SHOT] FAIL #2 (25010ms)
+05:00:30 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:00:38 [SHOT] OK (3686ms)
+05:00:43     - Step OK: Clicked 'Gathering'
+05:00:43 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+05:01:08 [SHOT] FAIL #1 (25029ms)
+05:01:08 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:01:11 [SHOT] OK (0ms)
+05:01:11     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:01:16     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1087,580)
+05:01:16 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:01:29 [Macro] Delay completed.
+05:01:29 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+05:01:40 [SHOT] OK (11539ms)
+05:01:41 [SHOT] OK (0ms)
+05:01:42 [SHOT] OK (0ms)
+05:01:43 [SHOT] OK (0ms)
+05:02:09 [SHOT] FAIL #1 (25015ms)
+05:02:09 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:02:36 [SHOT] FAIL #2 (25008ms)
+05:02:36 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:03:06 [SHOT] FAIL #3 (25009ms)
+05:03:06 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:03:39 [SHOT] FAIL #4 (25015ms)
+05:03:39 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:04:18 [SHOT] OK (22584ms)
+05:04:18     - Marker triggered. Holding 6.5s...
+05:04:19 [SHOT] OK (0ms)
+05:04:20 [SHOT] OK (0ms)
+05:04:21 [SHOT] OK (0ms)
+05:04:47 [SHOT] FAIL #1 (25008ms)
+05:04:47 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:05:15 [SHOT] FAIL #2 (25008ms)
+05:05:15 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:05:44 [SHOT] FAIL #3 (25006ms)
+05:05:44 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:06:18 [SHOT] FAIL #4 (25009ms)
+05:06:18 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:06:34 [MACRO] Gathering: FAILED (416619ms total)
+05:06:34 ============================================================
+05:06:34 SESSION END — Quizzle (12.1 min)
+05:06:34   Loops: 0
+05:06:34   Screenshots: 27 ok / 18 fail (40.0%)
+05:06:34   Avg latency: 3396ms
+05:06:34   Macros: 1 ok / 1 fail
+05:06:34   Errors: 0
+05:06:34 ============================================================
+05:07:26 ============================================================
+05:07:26 SESSION START — Quizzle (port:9227 tab:0)
+05:07:26 ============================================================
+05:07:26 [Quizzle] Starting worker: func=macro - Home, port=9227, tab=0
+05:07:30 [Quizzle] Connected to Port 9227, Tab 0
+05:07:30 [MACRO] Home: Starting (0ms)
+05:07:35     - Step OK: ⚡ Hard Click 'Home' at (348,372)
+05:07:35 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:08:00 [SHOT] FAIL #1 (25015ms)
+05:08:00 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:08:13 [SHOT] OK (10039ms)
+05:08:13 [SHOT] OK (0ms)
+05:08:14 [SHOT] OK (0ms)
+05:08:15 [SHOT] OK (0ms)
+05:08:17 [SHOT] OK (128ms)
+05:08:17 [SHOT] OK (0ms)
+05:08:19 [SHOT] OK (0ms)
+05:08:20 [SHOT] OK (0ms)
+05:08:21 [SHOT] OK (181ms)
+05:08:22 [SHOT] OK (0ms)
+05:08:23 [SHOT] OK (0ms)
+05:08:24 [SHOT] OK (0ms)
+05:08:24 [SHOT] OK (186ms)
+05:08:24     - Marker OK: 'Supplies' confirmed APPEAR.
+05:08:24 [Macro] Steps completed. Checking result...
+05:08:25 [SHOT] OK (0ms)
+05:08:25 [Macro] Result: SUCCESS (found 'Supplies')
+05:08:25 [MACRO] Home: PASSED (55471ms total)
+05:08:25 ============================================================
+05:08:25 SESSION END — Quizzle (1.0 min)
+05:08:25   Loops: 0
+05:08:25   Screenshots: 14 ok / 1 fail (6.7%)
+05:08:25   Avg latency: 752ms
+05:08:25   Macros: 1 ok / 0 fail
+05:08:25   Errors: 0
+05:08:25 ============================================================
+05:11:37 ============================================================
+05:11:37 SESSION START — Quizzle (port:9227 tab:0)
+05:11:37 ============================================================
+05:11:37 [Quizzle] Starting worker: func=loop - Farm V1, port=9227, tab=0
+05:11:41 [Quizzle] Connected to Port 9227, Tab 0
+05:11:41 [LOOP] ── Loop iteration start ──
+05:12:06 [SHOT] FAIL #1 (25014ms)
+05:12:06 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:33 [SHOT] FAIL #2 (25001ms)
+05:12:33 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:37 [SCAN] Supplies → FALSE (56017ms)
+05:13:03 [SHOT] FAIL #3 (25012ms)
+05:13:03 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:13:36 [SHOT] FAIL #4 (25010ms)
+05:13:36 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:13:52 [SCAN] Revive → FALSE (74025ms)
+05:14:28 [SHOT] FAIL #5 (25014ms)
+05:14:28 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:15:07 [SHOT] OK (9057ms)
+05:15:07 [SCAN] Supplies - In → FALSE (64639ms)
+05:15:08 [SHOT] OK (0ms)
+05:15:09 [SHOT] OK (0ms)
+05:15:09 [SCAN] Attack - Auto → FALSE (1478ms)
+05:15:11 [SHOT] OK (1242ms)
+05:15:12 [SHOT] OK (0ms)
+05:15:13 [SCAN] Gathering - Automove → FALSE (3169ms)
+05:15:14 [SHOT] OK (0ms)
+05:15:17 [SHOT] OK (1982ms)
+05:15:17 [SCAN] Attack - Auto On → FALSE (3470ms)
+05:15:18 [SHOT] OK (0ms)
+05:15:19 [SHOT] OK (0ms)
+05:15:20 [SCAN] Revive → FALSE (1642ms)
+05:15:20 [NODE] → Click: Attack - Auto
+05:15:45 [SHOT] FAIL #1 (25009ms)
+05:15:45 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:15:47 [ERR] Click SKIP: 'Attack - Auto' screenshot failed
+05:15:47 [NODE] → Click: Click 5P
+05:16:12 [SHOT] FAIL #2 (25002ms)
+05:16:12 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:16:16 [ERR] Click SKIP: 'Click 5P' screenshot failed
+05:16:17 [ERR] DEAD END: No edge from 'Click' (Click 5P) — will trigger restart
+05:16:27 [ERR] RESTART: No next node after 'Click' (Click 5P). Restart 1/10
+05:16:30 [LOOP] ── Loop iteration start ──
+05:16:55 [SHOT] FAIL #3 (25008ms)
+05:16:55 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:17:28 [SHOT] FAIL #4 (25015ms)
+05:17:28 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:17:44 [SCAN] Supplies → FALSE (74025ms)
+05:18:10 [SHOT] FAIL #5 (25014ms)
+05:18:10 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:19:05 [SHOT] FAIL #6 (25010ms)
+05:19:05 [Quizzle] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:19:35 [SCAN] Revive → FALSE (110051ms)
+05:20:08 [SHOT] OK (21865ms)
+05:20:08 [SHOT] OK (0ms)
+05:20:09 [SCAN] Supplies - In → FALSE (23235ms)
+05:20:10 [SHOT] OK (0ms)
+05:20:10 [SHOT] OK (0ms)
+05:20:11 [SCAN] Attack - Auto → FALSE (1017ms)
+05:20:36 [SHOT] FAIL #1 (25013ms)
+05:20:36 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:20:42 [SHOT] OK (3824ms)
+05:20:42 [SCAN] Gathering - Automove → FALSE (31485ms)
+05:20:43 [SHOT] OK (0ms)
+05:20:44 [SHOT] OK (0ms)
+05:20:44 [SCAN] Attack - Auto On → FALSE (1263ms)
+05:20:45 [SHOT] OK (0ms)
+05:21:10 [SHOT] FAIL #1 (25003ms)
+05:21:10 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:21:12 [SCAN] Revive → FALSE (27702ms)
+05:21:13 [NODE] → Click: Attack - Auto
+05:21:36 [SHOT] FAIL #2 (23195ms)
+05:21:36 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:21:40 [ERR] Click SKIP: 'Attack - Auto' screenshot failed
+05:21:40 ============================================================
+05:21:40 SESSION END — Quizzle (10.1 min)
+05:21:40   Loops: 0
+05:21:40   Screenshots: 17 ok / 14 fail (45.2%)
+05:21:40   Avg latency: 2234ms
+05:21:40   Macros: 0 ok / 0 fail
+05:21:40   Errors: 5
+05:21:40 ============================================================
+05:21:47 ============================================================
+05:21:47 SESSION START — Quizzle (port:9227 tab:0)
+05:21:47 ============================================================
+05:21:47 [Quizzle] Starting worker: func=macro - Home, port=9227, tab=0
+05:21:51 [Quizzle] Connected to Port 9227, Tab 0
+05:21:51 [MACRO] Home: Starting (0ms)
+05:21:56     - Step OK: ⚡ Hard Click 'Home' at (343,376)
+05:21:57 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:22:19 ============================================================
+05:22:19 SESSION START — Quizzle (port:9227 tab:0)
+05:22:19 ============================================================
+05:22:19 [Quizzle] Starting worker: func=macro - Home, port=9227, tab=0
+05:22:22 [SHOT] FAIL #1 (25009ms)
+05:22:22 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:22:23 [Quizzle] Connected to Port 9227, Tab 0
+05:22:23 [MACRO] Home: Starting (0ms)
+05:22:23     - Step OK: ⚡ Hard Click 'Home' at (355,385)
+05:22:24 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:22:24 [SHOT] OK (501ms)
+05:22:24 [SHOT] OK (253ms)
+05:22:24     - Marker OK: 'Supplies' confirmed APPEAR.
+05:22:24 [Macro] Steps completed. Checking result...
+05:22:24     - Marker OK: 'Supplies' confirmed APPEAR.
+05:22:24 [Macro] Steps completed. Checking result...
+05:22:25 [SHOT] OK (0ms)
+05:22:25 [SHOT] OK (0ms)
+05:22:25 [Macro] Result: SUCCESS (found 'Supplies')
+05:22:25 [MACRO] Home: PASSED (2334ms total)
+05:22:25 ============================================================
+05:22:25 SESSION END — Quizzle (0.1 min)
+05:22:25   Loops: 0
+05:22:25   Screenshots: 4 ok / 1 fail (20.0%)
+05:22:25   Avg latency: 189ms
+05:22:25   Macros: 1 ok / 0 fail
+05:22:25   Errors: 0
+05:22:25 ============================================================
+05:24:03 ============================================================
+05:24:03 SESSION START — Quizzle (port:9227 tab:0)
+05:24:03 ============================================================
+05:24:03 [Quizzle] Starting worker: func=macro - Home, port=9227, tab=0
+05:24:07 [Quizzle] Connected to Port 9227, Tab 0
+05:24:07 [MACRO] Home: Starting (0ms)
+05:24:12     - Step OK: ⚡ Hard Click 'Home' at (343,378)
+05:24:13 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:13 [SHOT] OK (249ms)
+05:24:13     - Marker OK: 'Supplies' confirmed APPEAR.
+05:24:13 [Macro] Steps completed. Checking result...
+05:24:14 [SHOT] OK (0ms)
+05:24:14 [Macro] Result: SUCCESS (found 'Supplies')
+05:24:14 [MACRO] Home: PASSED (6807ms total)
+05:24:14 ============================================================
+05:24:14 SESSION END — Quizzle (0.2 min)
+05:24:14   Loops: 0
+05:24:14   Screenshots: 2 ok / 0 fail (0.0%)
+05:24:14   Avg latency: 124ms
+05:24:14   Macros: 1 ok / 0 fail
+05:24:14   Errors: 0
+05:24:14 ============================================================
+05:27:02 ============================================================
+05:27:02 SESSION START — Quizzle (port:9227 tab:0)
+05:27:02 ============================================================
+05:27:02 [Quizzle] Starting worker: func=loop - Farm V1, port=9227, tab=0
+05:27:06 [Quizzle] Connected to Port 9227, Tab 0
+05:27:07 [LOOP] ── Loop iteration start ──
+05:27:08 [SHOT] OK (203ms)
+05:27:09 [SHOT] OK (0ms)
+05:27:09 [SCAN] Gathering - Inside → FALSE (1428ms)
+05:27:10 [SHOT] OK (0ms)
+05:27:10 [SCAN] Supplies → TRUE (11ms)
+05:27:11 [MACRO] Buy Blood: Starting (0ms)
+05:27:16     - Step OK: ⚡ Hard Click 'Supplies' at (1308,592)
+05:27:16 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:27:41 [SHOT] FAIL #1 (25007ms)
+05:27:41 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:27:47 [SHOT] OK (3596ms)
+05:27:47     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:27:52     - Step OK: ⚡ Hard Click 'Supplies - Type' at (541,290)
+05:27:53 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:28:18 [SHOT] FAIL #1 (25011ms)
+05:28:18 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:28:45 [SHOT] FAIL #2 (25001ms)
+05:28:45 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:28:53 [SHOT] OK (3487ms)
+05:28:53     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:28:59     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (802,573)
+05:28:59 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:28:59 [Macro] Delay completed.
+05:29:04     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (988,693)
+05:29:04 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:29:05 [Macro] Delay completed.
+05:29:11     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1526,139)
+05:29:11 [Macro] Steps completed. Checking result...
+05:29:25 [SHOT] OK (12602ms)
+05:29:25 [Macro] Result: SUCCESS (found 'Home')
+05:29:25 [MACRO] Buy Blood: PASSED (134126ms total)
+05:29:35 [MACRO] Gathering: Starting (0ms)
+05:29:55 [SHOT] OK (20691ms)
+05:30:01     - Step OK: Clicked 'Gathering'
+05:30:01 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:30:26 [SHOT] FAIL #1 (25011ms)
+05:30:26 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:30:28     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:30:28 [MACRO] Gathering: FAILED (53761ms total)
+05:30:28 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:30:28 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:30:31 [LOOP] ── Loop iteration start ──
+05:30:57 [SHOT] FAIL #2 (25010ms)
+05:30:57 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:31:26 [SHOT] FAIL #3 (25004ms)
+05:31:26 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:31:34 [SCAN] Gathering - Inside → FALSE (62016ms)
+05:32:00 [SHOT] FAIL #4 (25000ms)
+05:32:00 [Quizzle] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:32:37 [SHOT] OK (21859ms)
+05:32:37 [SCAN] Supplies → TRUE (62922ms)
+05:32:48 [MACRO] Buy Blood: Starting (0ms)
+05:32:53     - Step OK: ⚡ Hard Click 'Supplies' at (1332,581)
+05:32:53 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:33:18 [SHOT] FAIL #1 (25003ms)
+05:33:18 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:33:45 [SHOT] OK (24007ms)
+05:33:46 [SHOT] OK (0ms)
+05:33:46 [SHOT] OK (0ms)
+05:33:48 [SHOT] OK (0ms)
+05:34:14 [SHOT] FAIL #1 (25033ms)
+05:34:14 [Quizzle] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:34:42 [SHOT] FAIL #2 (25008ms)
+05:34:42 [Quizzle] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:35:11 [SHOT] FAIL #3 (25008ms)
+05:35:11 [Quizzle] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:35:20 [MACRO] Buy Blood: FAILED (151779ms total)
+05:35:20 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:35:20 ============================================================
+05:35:20 SESSION END — Quizzle (8.3 min)
+05:35:20   Loops: 0
+05:35:20   Screenshots: 12 ok / 11 fail (47.8%)
+05:35:20   Avg latency: 7204ms
+05:35:20   Macros: 1 ok / 2 fail
+05:35:20   Errors: 3
+05:35:20 ============================================================

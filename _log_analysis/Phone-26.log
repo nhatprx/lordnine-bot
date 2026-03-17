@@ -1,0 +1,736 @@
+03:08:44 ============================================================
+03:08:44 SESSION START — Phone-26 (port:9226 tab:5)
+03:08:44 ============================================================
+03:08:46 [Phone-26] Starting worker: func=loop - Farm V1, port=9226, tab=5
+03:09:01 [Phone-26] Connected to Port 9226, Tab 5
+03:09:26 [SHOT] FAIL #1 (25009ms)
+03:09:26 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:09:52 [SHOT] OK (23962ms)
+03:09:53 [SCAN] Gathering - Inside → FALSE (51668ms)
+03:09:53 [SHOT] OK (0ms)
+03:09:53 [SCAN] Supplies → TRUE (13ms)
+03:09:54 [MACRO] Buy Blood: Starting (0ms)
+03:09:59     - Step OK: ⚡ Hard Click 'Supplies' at (1331,581)
+03:10:00 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:10:25 [SHOT] FAIL #1 (25009ms)
+03:10:25 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:10:53 [SHOT] OK (24933ms)
+03:10:53     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:10:58     - Step OK: ⚡ Hard Click 'Supplies - Type' at (526,318)
+03:10:59 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:11:24 [SHOT] FAIL #1 (25008ms)
+03:11:24 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:11:52 [SHOT] FAIL #2 (25012ms)
+03:11:52 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:12:20 [SHOT] OK (23413ms)
+03:12:20     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:12:26     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (831,564)
+03:12:26 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:12:26 [Macro] Delay completed.
+03:12:31     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1030,704)
+03:12:32 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:12:33 [Macro] Delay completed.
+03:12:38     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1531,149)
+03:12:38 [Macro] Steps completed. Checking result...
+03:13:04 [SHOT] FAIL #1 (25010ms)
+03:13:04 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:13:06 [Macro] Result: FAILURE ('Home' not found)
+03:13:06 [MACRO] Buy Blood: FAILED (191959ms total)
+03:13:06 [Phone-26] No next node after 'Macro' (ad649a80). Restart 1/10
+03:13:35 [SHOT] FAIL #2 (25006ms)
+03:13:35 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:14:04 [SHOT] FAIL #3 (25006ms)
+03:14:04 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:14:12 [SCAN] Gathering - Inside → FALSE (62014ms)
+03:14:42 [SHOT] FAIL #4 (25004ms)
+03:14:42 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:15:23 [SHOT] FAIL #5 (25001ms)
+03:15:23 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:15:53 [SCAN] Supplies → FALSE (96007ms)
+03:16:19 [SHOT] FAIL #6 (25003ms)
+03:16:19 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:17:14 [SHOT] FAIL #7 (25005ms)
+03:17:14 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:17:44 [SCAN] Revive → FALSE (110010ms)
+03:18:09 [SHOT] FAIL #8 (25004ms)
+03:18:09 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:19:04 [SHOT] FAIL #9 (25015ms)
+03:19:04 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:19:34 [SCAN] Supplies - In → FALSE (110020ms)
+03:20:05 [SHOT] FAIL #10 (25002ms)
+03:20:05 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:21:00 [SHOT] FAIL #11 (25004ms)
+03:21:00 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+03:21:30 [SCAN] Gathering - Automove → FALSE (110008ms)
+03:21:56 [SHOT] FAIL #12 (25013ms)
+03:21:56 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #12)
+03:22:51 [SHOT] FAIL #13 (25011ms)
+03:22:51 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #13)
+03:23:21 [SCAN] Attack - Auto → FALSE (110025ms)
+03:23:46 [SHOT] FAIL #14 (25004ms)
+03:23:46 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #14)
+03:24:40 [SHOT] OK (24036ms)
+03:24:41 [SCAN] Attack - Auto On → FALSE (79898ms)
+03:24:47 [Phone-26] No next node after 'Condition' (Attack - Auto On). Restart 1/10
+03:25:15 [SHOT] FAIL #1 (25007ms)
+03:25:15 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:25:43 [SHOT] FAIL #2 (25045ms)
+03:25:43 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:25:47 [SCAN] Gathering - Inside → FALSE (56070ms)
+03:26:12 [SHOT] FAIL #3 (25004ms)
+03:26:12 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:26:45 [SHOT] FAIL #4 (25010ms)
+03:26:45 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:27:01 [SCAN] Supplies → FALSE (74019ms)
+03:27:26 [SHOT] FAIL #5 (25000ms)
+03:27:27 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:27:57 [SHOT] OK (256ms)
+03:27:57 [SCAN] Revive → FALSE (55806ms)
+03:27:58 ============================================================
+03:27:58 SESSION END — Phone-26 (19.2 min)
+03:27:58   Loops: 0
+03:27:58   Screenshots: 6 ok / 23 fail (79.3%)
+03:27:58   Avg latency: 16100ms
+03:27:58   Macros: 0 ok / 1 fail
+03:27:58   Errors: 0
+03:27:58 ============================================================
+03:31:13 ============================================================
+03:31:13 SESSION START — Phone-26 (port:9226 tab:5)
+03:31:13 ============================================================
+03:31:15 [Phone-26] Starting worker: func=loop - Farm V1, port=9226, tab=5
+03:31:34 [Phone-26] Connected to Port 9226, Tab 5
+03:31:59 [SHOT] FAIL #1 (25006ms)
+03:31:59 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:26 [SHOT] FAIL #2 (25014ms)
+03:32:26 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:32:30 [SCAN] Supplies → FALSE (56022ms)
+03:32:56 [SHOT] FAIL #3 (25010ms)
+03:32:56 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:33:29 [SHOT] FAIL #4 (25007ms)
+03:33:29 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:33:45 [SCAN] Revive → FALSE (74033ms)
+03:34:06 [SHOT] OK (20838ms)
+03:34:06 [SHOT] OK (0ms)
+03:34:07 [SCAN] Supplies - In → FALSE (21893ms)
+03:34:08 [SHOT] OK (0ms)
+03:34:08 [SHOT] OK (0ms)
+03:34:09 [SCAN] Attack - Auto → FALSE (1170ms)
+03:34:34 [SHOT] FAIL #1 (25015ms)
+03:34:34 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:35:01 [SHOT] FAIL #2 (25013ms)
+03:35:01 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:35:05 [SCAN] Gathering - Automove → FALSE (56030ms)
+03:35:31 [SHOT] FAIL #3 (25004ms)
+03:35:31 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:36:04 [SHOT] FAIL #4 (25015ms)
+03:36:04 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:36:20 [SCAN] Attack - Auto On → FALSE (74025ms)
+03:36:50 [SHOT] FAIL #5 (25000ms)
+03:36:50 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:37:45 [SHOT] FAIL #6 (25004ms)
+03:37:45 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:38:15 [SCAN] Revive → FALSE (110005ms)
+03:38:16 [NODE] → Click: Attack - Auto
+03:38:41 [SHOT] OK (24954ms)
+03:38:41 [SCAN] Attack - Auto → FALSE (0ms)
+03:38:41 [NODE] → Click: Click 5P
+03:38:41 [SHOT] OK (0ms)
+03:38:46 [SCAN] Click 5P → TRUE (0ms)
+03:38:47 [Phone-26] No next node after 'Click' (Click 5P). Restart 1/10
+03:39:12 [SHOT] OK (22166ms)
+03:39:12 [SCAN] Supplies → TRUE (22176ms)
+03:39:13 [MACRO] Buy Blood: Starting (0ms)
+03:39:17     - Step OK: ⚡ Hard Click 'Supplies' at (1334,569)
+03:39:17 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:39:17 [SHOT] OK (125ms)
+03:39:18 [SHOT] OK (0ms)
+03:39:19 [SHOT] OK (0ms)
+03:39:20 [SHOT] OK (0ms)
+03:39:21 [SHOT] OK (181ms)
+03:39:21     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:39:26     - Step OK: ⚡ Hard Click 'Supplies - Type' at (493,310)
+03:39:26 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:39:26 [SHOT] OK (164ms)
+03:39:26     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:39:32     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (782,554)
+03:39:32 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:39:32 [Macro] Delay completed.
+03:39:37     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1078,704)
+03:39:43     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1536,153)
+03:39:44 [Macro] Steps completed. Checking result...
+03:40:10 [SHOT] FAIL #1 (25005ms)
+03:40:10 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:40:12 [Macro] Result: FAILURE ('Home' not found)
+03:40:12 [MACRO] Buy Blood: FAILED (58447ms total)
+03:40:12 [Phone-26] No next node after 'Macro' (ad649a80). Restart 1/10
+03:40:39 [SHOT] OK (23771ms)
+03:40:39 [SCAN] Supplies → TRUE (23792ms)
+03:40:39 [MACRO] Buy Blood: Starting (0ms)
+03:40:44     - Step OK: ⚡ Hard Click 'Supplies' at (1328,592)
+03:40:45 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:41:09 [SHOT] OK (24572ms)
+03:41:09     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:41:15     - Step OK: ⚡ Hard Click 'Supplies - Type' at (505,302)
+03:41:15 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:41:40 [SHOT] FAIL #1 (25003ms)
+03:41:40 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:42:07 [SHOT] FAIL #2 (25015ms)
+03:42:07 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:42:37 [SHOT] FAIL #3 (25014ms)
+03:42:37 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:43:11 [SHOT] FAIL #4 (25010ms)
+03:43:11 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:43:53 [SHOT] FAIL #5 (25008ms)
+03:43:53 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:44:49 [SHOT] FAIL #6 (25001ms)
+03:44:49 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:45:45 [SHOT] OK (24826ms)
+03:45:45     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:45:50     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (787,542)
+03:45:50 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:45:50 [Macro] Delay completed.
+03:45:55     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1085,702)
+03:46:01     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1530,140)
+03:46:01 [Macro] Steps completed. Checking result...
+03:46:27 [SHOT] FAIL #1 (25009ms)
+03:46:27 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:46:29 [Macro] Result: FAILURE ('Home' not found)
+03:46:29 [MACRO] Buy Blood: FAILED (350124ms total)
+03:46:34 [Phone-26] No next node after 'Macro' (ad649a80). Restart 1/10
+03:47:03 [SHOT] FAIL #2 (25009ms)
+03:47:03 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:47:20 [SHOT] OK (12684ms)
+03:47:20 [SCAN] Supplies → TRUE (41705ms)
+03:47:20 [MACRO] Buy Blood: Starting (0ms)
+03:47:25     - Step OK: ⚡ Hard Click 'Supplies' at (1304,573)
+03:47:26 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:47:50 [SHOT] OK (24480ms)
+03:47:50     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:47:55     - Step OK: ⚡ Hard Click 'Supplies - Type' at (471,320)
+03:47:56 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:48:21 [SHOT] OK (24886ms)
+03:48:21     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:48:26     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (850,556)
+03:48:26 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:48:26 [Macro] Delay completed.
+03:48:31     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1010,699)
+03:48:37     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1525,157)
+03:48:38 [Macro] Steps completed. Checking result...
+03:49:04 [SHOT] FAIL #1 (25005ms)
+03:49:04 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:49:06 [Macro] Result: FAILURE ('Home' not found)
+03:49:06 [MACRO] Buy Blood: FAILED (105637ms total)
+03:49:06 [Phone-26] No next node after 'Macro' (ad649a80). Restart 1/10
+03:49:34 [SHOT] FAIL #2 (25003ms)
+03:49:34 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:49:54 [SHOT] OK (15622ms)
+03:49:54 [SCAN] Supplies → TRUE (44637ms)
+03:49:54 [MACRO] Buy Blood: Starting (0ms)
+03:49:59     - Step OK: ⚡ Hard Click 'Supplies' at (1337,550)
+03:50:00 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:50:24 [SHOT] OK (24262ms)
+03:50:24     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:50:29     - Step OK: ⚡ Hard Click 'Supplies - Type' at (495,318)
+03:50:30 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:50:55 [SHOT] FAIL #1 (25003ms)
+03:50:55 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:51:23 [SHOT] FAIL #2 (25015ms)
+03:51:23 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:51:52 [SHOT] FAIL #3 (25002ms)
+03:51:52 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:52:26 [SHOT] FAIL #4 (25001ms)
+03:52:26 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:52:57 [SHOT] OK (14358ms)
+03:52:57     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:53:02     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (852,548)
+03:53:03 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:53:03 [Macro] Delay completed.
+03:53:08     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (985,723)
+03:53:14     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1539,138)
+03:53:14 [Macro] Steps completed. Checking result...
+03:53:29 [SHOT] OK (13687ms)
+03:53:29 [Macro] Result: SUCCESS (found 'Home')
+03:53:29 [MACRO] Buy Blood: PASSED (214344ms total)
+03:53:34 [MACRO] Gathering: Starting (0ms)
+03:53:59 [SHOT] FAIL #1 (25003ms)
+03:53:59 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:54:26 [SHOT] FAIL #2 (25031ms)
+03:54:26 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:54:55 [SHOT] FAIL #3 (25003ms)
+03:54:55 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:55:29 [SHOT] FAIL #4 (25001ms)
+03:55:29 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:56:10 [SHOT] FAIL #5 (25008ms)
+03:56:10 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:56:40     - Step FAILED: Could not find 'Gathering' after 5 attempts.
+03:56:40 [MACRO] Gathering: FAILED (186557ms total)
+03:56:40 [Phone-26] No next node after 'Macro' (cc882d55). Restart 1/10
+03:57:03 [SHOT] OK (19374ms)
+03:57:03 [SCAN] Supplies → TRUE (19386ms)
+03:57:04 [MACRO] Buy Blood: Starting (0ms)
+03:57:09     - Step OK: ⚡ Hard Click 'Supplies' at (1305,582)
+03:57:09 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:57:34 [SHOT] OK (24480ms)
+03:57:34     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:57:39     - Step OK: ⚡ Hard Click 'Supplies - Type' at (570,296)
+03:57:39 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:58:04 [SHOT] OK (24807ms)
+03:58:04     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:58:09     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (813,554)
+03:58:10 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:58:10 [Macro] Delay completed.
+03:58:15     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1036,708)
+03:58:20     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1529,144)
+03:58:21 [Macro] Steps completed. Checking result...
+03:58:47 [SHOT] FAIL #1 (25014ms)
+03:58:47 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:58:49 [Macro] Result: FAILURE ('Home' not found)
+03:58:49 [MACRO] Buy Blood: FAILED (105287ms total)
+03:58:54 [Phone-26] No next node after 'Macro' (ad649a80). Restart 1/10
+03:59:22 [SHOT] FAIL #2 (25009ms)
+03:59:22 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:59:51 [SHOT] FAIL #3 (25024ms)
+03:59:51 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:00:00 [SCAN] Supplies → FALSE (62071ms)
+04:00:25 [SHOT] FAIL #4 (25015ms)
+04:00:25 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:01:06 [SHOT] FAIL #5 (25011ms)
+04:01:06 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:01:36 [SCAN] Revive → FALSE (96028ms)
+04:01:36 [Phone-26] Connection rotation — periodic reconnect
+04:01:38 [Phone-26] Connection rotated successfully
+04:02:03 [SHOT] FAIL #6 (25015ms)
+04:02:03 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:02:58 [SHOT] FAIL #7 (25013ms)
+04:02:58 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:03:28 [SCAN] Supplies - In → FALSE (110030ms)
+04:03:59 [SHOT] FAIL #8 (25003ms)
+04:03:59 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+04:04:41 [SHOT] OK (11767ms)
+04:04:41 [SCAN] Attack - Auto → FALSE (67183ms)
+04:04:42 [SHOT] OK (0ms)
+04:04:42 [SHOT] OK (0ms)
+04:04:43 [SCAN] Gathering - Automove → FALSE (1292ms)
+04:05:09 [SHOT] FAIL #1 (25003ms)
+04:05:09 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:05:36 [SHOT] FAIL #2 (25031ms)
+04:05:36 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:05:40 [SCAN] Attack - Auto On → FALSE (56074ms)
+04:06:06 [SHOT] FAIL #3 (25010ms)
+04:06:06 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:06:39 [SHOT] FAIL #4 (25004ms)
+04:06:39 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:06:55 [SCAN] Revive → FALSE (74028ms)
+04:06:55 [NODE] → Click: Attack - Auto
+04:07:20 [SHOT] FAIL #5 (25010ms)
+04:07:20 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:07:51 [NODE] → Click: Click 5P
+04:08:15 [SHOT] OK (24525ms)
+04:08:20 [SCAN] Click 5P → TRUE (0ms)
+04:08:26 [Phone-26] No next node after 'Click' (Click 5P). Restart 1/10
+04:08:54 [SHOT] FAIL #1 (25001ms)
+04:08:54 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:09:16 [SHOT] OK (19951ms)
+04:09:16 [SCAN] Supplies → TRUE (47011ms)
+04:09:17 [MACRO] Buy Blood: Starting (0ms)
+04:09:22     - Step OK: ⚡ Hard Click 'Supplies' at (1315,591)
+04:09:22 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:09:47 [SHOT] FAIL #1 (25002ms)
+04:09:47 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:10:15 [SHOT] FAIL #2 (25003ms)
+04:10:15 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:10:46 [SHOT] FAIL #3 (25004ms)
+04:10:46 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:11:17 [SHOT] OK (23422ms)
+04:11:17     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:11:23     - Step OK: ⚡ Hard Click 'Supplies - Type' at (481,296)
+04:11:23 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:11:48 [SHOT] OK (25011ms)
+04:11:48     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:11:53     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (784,556)
+04:11:54 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:11:54 [Macro] Delay completed.
+04:11:59     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1045,725)
+04:12:05     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1545,158)
+04:12:05 [Macro] Steps completed. Checking result...
+04:12:31 [SHOT] FAIL #1 (25003ms)
+04:12:31 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:12:33 [Macro] Result: FAILURE ('Home' not found)
+04:12:33 [MACRO] Buy Blood: FAILED (196184ms total)
+04:12:33 [Phone-26] No next node after 'Macro' (ad649a80). Restart 1/10
+04:12:49 [SHOT] OK (12324ms)
+04:12:49 [SCAN] Supplies → TRUE (12334ms)
+04:12:49 [MACRO] Buy Blood: Starting (0ms)
+04:12:55     - Step OK: ⚡ Hard Click 'Supplies' at (1314,582)
+04:12:55 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:13:20 [SHOT] FAIL #1 (25001ms)
+04:13:20 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:13:48 [SHOT] FAIL #2 (25002ms)
+04:13:48 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:14:18 [SHOT] FAIL #3 (25024ms)
+04:14:18 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:14:52 [SHOT] FAIL #4 (25007ms)
+04:14:52 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:15:34 [SHOT] FAIL #5 (25000ms)
+04:15:34 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:16:27 [SHOT] OK (22434ms)
+04:16:27     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:16:32     - Step OK: ⚡ Hard Click 'Supplies - Type' at (471,322)
+04:16:33 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:16:58 [SHOT] FAIL #1 (25009ms)
+04:16:58 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:17:26 [SHOT] FAIL #2 (25014ms)
+04:17:26 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:17:55 [SHOT] FAIL #3 (25007ms)
+04:17:55 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:18:29 [SHOT] FAIL #4 (25003ms)
+04:18:29 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:19:11 [SHOT] FAIL #5 (25004ms)
+04:19:11 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:20:01 [SHOT] OK (18390ms)
+04:20:01     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:20:06     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (878,546)
+04:20:06 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:20:07 [Macro] Delay completed.
+04:20:12     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1006,699)
+04:20:17     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1537,153)
+04:20:18 [Macro] Steps completed. Checking result...
+04:20:32 [SHOT] OK (13007ms)
+04:20:32 [Macro] Result: SUCCESS (found 'Home')
+04:20:32 [MACRO] Buy Blood: PASSED (462451ms total)
+04:20:37 [MACRO] Gathering: Starting (0ms)
+04:21:02 [SHOT] FAIL #1 (25003ms)
+04:21:02 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:21:29 [SHOT] FAIL #2 (25014ms)
+04:21:29 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:21:58 [SHOT] FAIL #3 (25011ms)
+04:21:58 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:22:32 [SHOT] FAIL #4 (25006ms)
+04:22:32 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:23:13 [SHOT] FAIL #5 (25004ms)
+04:23:13 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:23:43     - Step FAILED: Could not find 'Gathering' after 5 attempts.
+04:23:43 [MACRO] Gathering: FAILED (186548ms total)
+04:23:43 [Phone-26] No next node after 'Macro' (cc882d55). Restart 1/10
+04:24:12 [SHOT] FAIL #6 (25010ms)
+04:24:12 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:25:06 [SHOT] OK (24463ms)
+04:25:06 [SCAN] Supplies → TRUE (79523ms)
+04:25:12 [MACRO] Buy Blood: Starting (0ms)
+04:25:17     - Step OK: ⚡ Hard Click 'Supplies' at (1305,588)
+04:25:18 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:25:38 [SHOT] OK (20468ms)
+04:25:38     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:25:43     - Step OK: ⚡ Hard Click 'Supplies - Type' at (507,302)
+04:25:44 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:26:09 [SHOT] FAIL #1 (25006ms)
+04:26:09 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:26:36 [SHOT] FAIL #2 (25011ms)
+04:26:36 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:27:06 [SHOT] FAIL #3 (25011ms)
+04:27:06 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:27:40 [SHOT] FAIL #4 (25007ms)
+04:27:40 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:28:22 [SHOT] FAIL #5 (25010ms)
+04:28:22 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:29:18 [SHOT] FAIL #6 (25005ms)
+04:29:18 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:30:13 [SHOT] FAIL #7 (25001ms)
+04:30:13 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:31:09 [SHOT] FAIL #8 (25010ms)
+04:31:09 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+04:32:05 [SHOT] FAIL #9 (25010ms)
+04:32:05 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+04:33:01 [SHOT] FAIL #10 (25004ms)
+04:33:01 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+04:33:56 [SHOT] FAIL #11 (25002ms)
+04:33:57 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+04:34:52 [SHOT] FAIL #12 (25006ms)
+04:34:52 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #12)
+04:35:48 [SHOT] FAIL #13 (25005ms)
+04:35:48 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #13)
+04:36:44 [SHOT] FAIL #14 (25000ms)
+04:36:44 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #14)
+04:37:40 [SHOT] FAIL #15 (25004ms)
+04:37:40 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #15)
+04:38:36 [SHOT] FAIL #16 (25008ms)
+04:38:36 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #16)
+04:39:32 [SHOT] FAIL #17 (25001ms)
+04:39:32 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #17)
+04:40:27 [SHOT] FAIL #18 (25009ms)
+04:40:27 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #18)
+04:41:18 [SHOT] OK (19936ms)
+04:41:18     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:41:23     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (813,565)
+04:41:23 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:41:24 [Macro] Delay completed.
+04:41:29     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1037,710)
+04:41:34     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1535,151)
+04:41:35 [Macro] Steps completed. Checking result...
+04:42:01 [SHOT] FAIL #1 (25001ms)
+04:42:01 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:42:03 [Macro] Result: FAILURE ('Home' not found)
+04:42:03 [MACRO] Buy Blood: FAILED (1010716ms total)
+04:42:18 [Phone-26] Connection rotation — periodic reconnect
+04:42:30 [Phone-26] Connection rotated successfully
+04:42:30 [Phone-26] No next node after 'Macro' (ad649a80). Restart 1/10
+04:42:33 ============================================================
+04:42:33 SESSION END — Phone-26 (71.3 min)
+04:42:33   Loops: 0
+04:42:33   Screenshots: 40 ok / 83 fail (67.5%)
+04:42:33   Avg latency: 14398ms
+04:42:33   Macros: 2 ok / 8 fail
+04:42:33   Errors: 0
+04:42:33 ============================================================
+04:54:24 ============================================================
+04:54:24 SESSION START — Phone-26 (port:9226 tab:5)
+04:54:24 ============================================================
+04:54:26 [Phone-26] Starting worker: func=loop - Farm V1, port=9226, tab=5
+04:54:41 [Phone-26] Connected to Port 9226, Tab 5
+04:55:06 [SHOT] FAIL #1 (25010ms)
+04:55:06 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:55:33 [SHOT] FAIL #2 (25003ms)
+04:55:33 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:55:37 [SCAN] Supplies → FALSE (56016ms)
+04:55:43 [SHOT] OK (4662ms)
+04:55:43 [SHOT] OK (0ms)
+04:55:44 [SCAN] Revive → FALSE (6064ms)
+04:55:45 [SHOT] OK (0ms)
+04:55:45 [SHOT] OK (0ms)
+04:55:46 [SCAN] Supplies - In → FALSE (1236ms)
+04:55:47 [SHOT] OK (564ms)
+04:55:48 [SHOT] OK (0ms)
+04:55:49 [SCAN] Attack - Auto → FALSE (2031ms)
+04:55:49 [SHOT] OK (0ms)
+04:55:55 [SHOT] OK (4970ms)
+04:55:56 [SCAN] Gathering - Automove → FALSE (6242ms)
+04:55:56 [SHOT] OK (0ms)
+04:55:57 [SHOT] OK (0ms)
+04:55:58 [SCAN] Attack - Auto On → FALSE (1447ms)
+04:56:23 [SHOT] FAIL #1 (25000ms)
+04:56:23 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:56:50 [SHOT] FAIL #2 (25003ms)
+04:56:50 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:56:54 [SCAN] Revive → FALSE (56016ms)
+04:56:55 [NODE] → Click: Attack - Auto
+04:57:20 [SHOT] FAIL #3 (25004ms)
+04:57:20 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:57:28 [NODE] → Click: Click 5P
+04:57:32 [SHOT] OK (3790ms)
+04:57:37 [SCAN] Click 5P → TRUE (0ms)
+04:57:37 [Phone-26] No next node after 'Click' (Click 5P). Restart 1/10
+04:58:03 [SHOT] OK (22506ms)
+04:58:03 [SCAN] Supplies → TRUE (22519ms)
+04:58:04 [MACRO] Buy Blood: Starting (0ms)
+04:58:09     - Step OK: ⚡ Hard Click 'Supplies' at (1313,578)
+04:58:10 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:58:34 [SHOT] OK (24227ms)
+04:58:34     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:58:39     - Step OK: ⚡ Hard Click 'Supplies - Type' at (520,299)
+04:58:40 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:59:05 [SHOT] FAIL #1 (25012ms)
+04:59:05 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:59:32 [SHOT] FAIL #2 (25005ms)
+04:59:32 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:00:02 [SHOT] FAIL #3 (25015ms)
+05:00:02 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:00:35 [SHOT] FAIL #4 (25002ms)
+05:00:35 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:01:17 [SHOT] FAIL #5 (25005ms)
+05:01:17 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:02:12 [SHOT] FAIL #6 (25008ms)
+05:02:12 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:03:08 [SHOT] FAIL #7 (25010ms)
+05:03:08 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:04:03 [SHOT] FAIL #8 (25014ms)
+05:04:03 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:04:54 [SHOT] OK (20249ms)
+05:04:54     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:04:59     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (901,571)
+05:05:00 [Macro] (6/8) Delay: 100ms (0.1s)...
+05:05:00 [Macro] Delay completed.
+05:05:05     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (975,699)
+05:05:10     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1538,140)
+05:05:11 [Macro] Steps completed. Checking result...
+05:05:37 [SHOT] FAIL #1 (25001ms)
+05:05:37 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:05:39 [Macro] Result: FAILURE ('Home' not found)
+05:05:39 [MACRO] Buy Blood: FAILED (454676ms total)
+05:05:44 [Phone-26] No next node after 'Macro' (ad649a80). Restart 1/10
+05:06:12 [SHOT] FAIL #2 (25013ms)
+05:06:12 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:06:41 [SHOT] FAIL #3 (25005ms)
+05:06:41 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:06:49 [SCAN] Supplies → FALSE (62019ms)
+05:06:50 ============================================================
+05:06:50 SESSION END — Phone-26 (12.4 min)
+05:06:50   Loops: 0
+05:06:50   Screenshots: 14 ok / 16 fail (53.3%)
+05:06:50   Avg latency: 5783ms
+05:06:50   Macros: 0 ok / 1 fail
+05:06:50   Errors: 0
+05:06:50 ============================================================
+05:07:24 ============================================================
+05:07:24 SESSION START — Phone-26 (port:9226 tab:5)
+05:07:24 ============================================================
+05:07:25 [Phone-26] Starting worker: func=macro - Home, port=9226, tab=5
+05:07:40 [Phone-26] Connected to Port 9226, Tab 5
+05:07:40 [MACRO] Home: Starting (0ms)
+05:07:45     - Step OK: ⚡ Hard Click 'Home' at (353,377)
+05:07:46 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:08:02 [SHOT] OK (16859ms)
+05:08:03     - Marker OK: 'Supplies' confirmed APPEAR.
+05:08:03 [Macro] Steps completed. Checking result...
+05:08:04 [SHOT] OK (0ms)
+05:08:04 [Macro] Result: SUCCESS (found 'Supplies')
+05:08:04 [MACRO] Home: PASSED (23415ms total)
+05:08:04 ============================================================
+05:08:04 SESSION END — Phone-26 (0.7 min)
+05:08:04   Loops: 0
+05:08:04   Screenshots: 2 ok / 0 fail (0.0%)
+05:08:04   Avg latency: 8430ms
+05:08:04   Macros: 1 ok / 0 fail
+05:08:04   Errors: 0
+05:08:04 ============================================================
+05:11:35 ============================================================
+05:11:35 SESSION START — Phone-26 (port:9226 tab:5)
+05:11:35 ============================================================
+05:11:37 [Phone-26] Starting worker: func=loop - Farm V1, port=9226, tab=5
+05:11:59 [Phone-26] Connected to Port 9226, Tab 5
+05:11:59 [LOOP] ── Loop iteration start ──
+05:12:25 [SHOT] FAIL #1 (25015ms)
+05:12:25 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:52 [SHOT] FAIL #2 (25010ms)
+05:12:52 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:56 [SCAN] Supplies → FALSE (56028ms)
+05:13:21 [SHOT] FAIL #3 (25012ms)
+05:13:21 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:13:54 [SHOT] FAIL #4 (25005ms)
+05:13:54 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:14:10 [SCAN] Revive → FALSE (74020ms)
+05:14:41 [SHOT] FAIL #5 (25007ms)
+05:14:41 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:15:36 [SHOT] FAIL #6 (25001ms)
+05:15:36 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:16:06 [SCAN] Supplies - In → FALSE (110012ms)
+05:16:32 [SHOT] FAIL #7 (25010ms)
+05:16:32 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:17:27 [SHOT] FAIL #8 (25001ms)
+05:17:27 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:17:57 [SCAN] Attack - Auto → FALSE (110013ms)
+05:18:32 [SHOT] FAIL #9 (25008ms)
+05:18:32 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+05:19:27 [SHOT] FAIL #10 (25001ms)
+05:19:27 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+05:19:57 [SCAN] Gathering - Automove → FALSE (110011ms)
+05:20:23 [SHOT] FAIL #11 (25007ms)
+05:20:23 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+05:21:18 [SHOT] FAIL #12 (25004ms)
+05:21:18 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #12)
+05:21:47 ============================================================
+05:21:47 SESSION START — Phone-26 (port:9226 tab:5)
+05:21:47 ============================================================
+05:21:48 [SCAN] Attack - Auto On → FALSE (110012ms)
+05:21:48 [Phone-26] Starting worker: func=macro - Home, port=9226, tab=5
+05:22:08 [Phone-26] Connected to Port 9226, Tab 5
+05:22:15 [MACRO] Home: Starting (0ms)
+05:22:15 [Macro] Stopped at step 1/2 (worker stopped)
+05:22:15 [MACRO] Home: FAILED (1ms total)
+05:22:15 ============================================================
+05:22:15 SESSION END — Phone-26 (0.5 min)
+05:22:15   Loops: 0
+05:22:15   Screenshots: 0 ok / 0 fail (0.0%)
+05:22:15   Avg latency: 0ms
+05:22:15   Macros: 0 ok / 1 fail
+05:22:15   Errors: 0
+05:22:15 ============================================================
+05:22:19 ============================================================
+05:22:19 SESSION START — Phone-26 (port:9226 tab:5)
+05:22:19 ============================================================
+05:22:20 [Phone-26] Starting worker: func=macro - Home, port=9226, tab=5
+05:22:21 [SHOT] OK (22516ms)
+05:22:21 [SHOT] OK (0ms)
+05:22:22 [SCAN] Revive → FALSE (23909ms)
+05:22:23 [NODE] → Click: Attack - Auto
+05:22:23 [SHOT] OK (0ms)
+05:22:23 [SCAN] Attack - Auto → FALSE (0ms)
+05:22:23 [NODE] → Click: Click 5P
+05:22:23 [SHOT] OK (0ms)
+05:22:28 [SCAN] Click 5P → TRUE (0ms)
+05:22:29 [ERR] DEAD END: No edge from 'Click' (Click 5P) — will trigger restart
+05:22:29 [ERR] RESTART: No next node after 'Click' (Click 5P). Restart 1/10
+05:22:32 [LOOP] ── Loop iteration start ──
+05:22:35 [Phone-26] Connected to Port 9226, Tab 5
+05:22:35 [MACRO] Home: Starting (0ms)
+05:22:40     - Step OK: ⚡ Hard Click 'Home' at (360,369)
+05:22:41 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:00 ============================================================
+05:24:00 SESSION START — Phone-26 (port:9226 tab:5)
+05:24:00 ============================================================
+05:24:01 [Phone-26] Starting worker: func=macro - Home, port=9226, tab=5
+05:24:19 [Phone-26] Connected to Port 9226, Tab 5
+05:24:20 [MACRO] Home: Starting (0ms)
+05:24:26     - Step OK: ⚡ Hard Click 'Home' at (356,377)
+05:24:26 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:51 [SHOT] FAIL #1 (25015ms)
+05:24:51 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:25:15 [SHOT] OK (21276ms)
+05:25:15     - Marker OK: 'Supplies' confirmed APPEAR.
+05:25:15 [Macro] Steps completed. Checking result...
+05:25:16 [SHOT] OK (0ms)
+05:25:16 [Macro] Result: SUCCESS (found 'Supplies')
+05:25:16 [MACRO] Home: PASSED (55456ms total)
+05:25:16 ============================================================
+05:25:16 SESSION END — Phone-26 (1.3 min)
+05:25:16   Loops: 0
+05:25:16   Screenshots: 2 ok / 1 fail (33.3%)
+05:25:16   Avg latency: 10638ms
+05:25:16   Macros: 1 ok / 0 fail
+05:25:16   Errors: 0
+05:25:16 ============================================================
+05:26:59 ============================================================
+05:26:59 SESSION START — Phone-26 (port:9226 tab:5)
+05:26:59 ============================================================
+05:27:00 [Phone-26] Starting worker: func=loop - Farm V1, port=9226, tab=5
+05:27:14 [Phone-26] Connected to Port 9226, Tab 5
+05:27:15 [LOOP] ── Loop iteration start ──
+05:27:40 [SHOT] FAIL #1 (25006ms)
+05:27:40 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:28:07 [SHOT] FAIL #2 (25009ms)
+05:28:07 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:28:11 [SCAN] Gathering - Inside → FALSE (56017ms)
+05:28:35 [SHOT] OK (23229ms)
+05:28:35 [SCAN] Supplies → TRUE (23243ms)
+05:28:36 [MACRO] Buy Blood: Starting (0ms)
+05:28:41     - Step OK: ⚡ Hard Click 'Supplies' at (1324,592)
+05:28:41 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:29:06 [SHOT] OK (24855ms)
+05:29:06     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:29:11     - Step OK: ⚡ Hard Click 'Supplies - Type' at (521,317)
+05:29:12 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:29:37 [SHOT] FAIL #1 (25002ms)
+05:29:37 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:30:04 [SHOT] FAIL #2 (25024ms)
+05:30:04 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:30:34 [SHOT] FAIL #3 (25014ms)
+05:30:34 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:31:07 [SHOT] FAIL #4 (25002ms)
+05:31:07 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:31:49 [SHOT] FAIL #5 (25011ms)
+05:31:49 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:32:44 [SHOT] FAIL #6 (25001ms)
+05:32:44 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:33:40 [SHOT] FAIL #7 (25005ms)
+05:33:40 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:34:35 [SHOT] FAIL #8 (25012ms)
+05:34:35 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:35:06 [MACRO] Buy Blood: FAILED (390302ms total)
+05:35:06 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:35:06 ============================================================
+05:35:06 SESSION END — Phone-26 (8.1 min)
+05:35:06   Loops: 0
+05:35:06   Screenshots: 2 ok / 10 fail (83.3%)
+05:35:06   Avg latency: 24042ms
+05:35:06   Macros: 0 ok / 1 fail
+05:35:06   Errors: 1
+05:35:06 ============================================================

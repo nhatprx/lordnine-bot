@@ -1,0 +1,24 @@
+=== ANALYSIS REPORT (2026-03-18 05:35) ===
+Accounts: 3 running / 39 total
+
+📊 SCREENSHOT HEALTH (by port)
+  Port 9222 (5 tabs): 98% success, avg 258ms
+  Port 9223 (5 tabs): 71% success, avg 3471ms  ⚠ BOTTLENECK
+  Port 9224 (5 tabs): 90% success, avg 825ms
+  Port 9225 (5 tabs): 50% success, avg 4318ms  ⚠ BOTTLENECK
+  Port 9226 (7 tabs): 26% success, avg 9232ms  ⚠ BOTTLENECK
+  Port 9227 (5 tabs): 61% success, avg 4065ms  ⚠ BOTTLENECK
+  Port 9228 (5 tabs): 85% success, avg 1730ms
+  Port 9229 (2 tabs): 96% success, avg 222ms
+
+❌ TOP ERRORS (by frequency)
+  1. DEAD END: No edge from 'Macro' (cc882d55) — will t (30 times)
+  2. RESTART: No next node after 'Macro' (cc882d55). Re (19 times)
+  3. DEAD END: No edge from 'Macro' (14253c0e) — will t (16 times)
+  4. RESTART: No next node after 'Macro' (14253c0e). Re (16 times)
+  5. DEAD END: No edge from 'Macro' (ad649a80) — will t (15 times)
+
+⚠ ACCOUNTS NEEDING ATTENTION
+  LowkeyCuto — 79% screenshot fail, avg latency 8322ms
+  HILDODO — 75% screenshot fail, avg latency 568ms
+  Wongdu — 72% screenshot fail, avg latency 7132ms

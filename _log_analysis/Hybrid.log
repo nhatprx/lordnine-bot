@@ -1,0 +1,1387 @@
+03:08:38 ============================================================
+03:08:38 SESSION START — Hybrid (port:9225 tab:0)
+03:08:38 ============================================================
+03:08:38 [Hybrid] Starting worker: func=loop - Farm V1, port=9225, tab=0
+03:08:42 [Hybrid] Connected to Port 9225, Tab 0
+03:08:43 [SHOT] OK (178ms)
+03:08:44 [SHOT] OK (0ms)
+03:08:44 [SCAN] Gathering - Inside → FALSE (1618ms)
+03:08:45 [SHOT] OK (0ms)
+03:08:45 [SCAN] Supplies → TRUE (11ms)
+03:08:45 [MACRO] Buy Blood: Starting (0ms)
+03:08:50     - Step OK: ⚡ Hard Click 'Supplies' at (1317,579)
+03:08:51 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:09:16 [SHOT] FAIL #1 (25010ms)
+03:09:16 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:09:44 [SHOT] FAIL #2 (25010ms)
+03:09:44 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:10:10 [SHOT] OK (21521ms)
+03:10:10     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:10:15     - Step OK: ⚡ Hard Click 'Supplies - Type' at (491,318)
+03:10:15 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:10:40 [SHOT] FAIL #1 (25004ms)
+03:10:40 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:11:08 [SHOT] FAIL #2 (25001ms)
+03:11:08 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:11:38 [SHOT] FAIL #3 (25012ms)
+03:11:38 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:12:12 [SHOT] FAIL #4 (25010ms)
+03:12:12 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:12:53 [SHOT] FAIL #5 (25007ms)
+03:12:53 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:13:49 [SHOT] FAIL #6 (25014ms)
+03:13:49 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:14:45 [SHOT] FAIL #7 (25006ms)
+03:14:45 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:15:41 [SHOT] FAIL #8 (25002ms)
+03:15:41 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:16:27 [SHOT] OK (14680ms)
+03:16:27     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:16:32     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (811,558)
+03:16:33 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:16:33 [Macro] Delay completed.
+03:16:38     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (997,697)
+03:16:38 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:16:39 [Macro] Delay completed.
+03:16:44     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1545,134)
+03:16:45 [Macro] Steps completed. Checking result...
+03:17:11 [SHOT] FAIL #1 (25006ms)
+03:17:11 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:17:13 [Macro] Result: FAILURE ('Home' not found)
+03:17:13 [MACRO] Buy Blood: FAILED (507623ms total)
+03:17:18 [Hybrid] No next node after 'Macro' (ad649a80). Restart 1/10
+03:17:46 [SHOT] FAIL #2 (25006ms)
+03:17:46 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:18:15 [SHOT] FAIL #3 (25015ms)
+03:18:15 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:18:23 [SCAN] Gathering - Inside → FALSE (62023ms)
+03:18:49 [SHOT] FAIL #4 (25010ms)
+03:18:49 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:19:30 [SHOT] FAIL #5 (25004ms)
+03:19:30 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:20:00 [SCAN] Supplies → FALSE (96016ms)
+03:20:26 [SHOT] FAIL #6 (25015ms)
+03:20:26 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:20:59 [SHOT] OK (3362ms)
+03:21:00 [SCAN] Revive → FALSE (59155ms)
+03:21:00 [SHOT] OK (0ms)
+03:21:01 [SHOT] OK (0ms)
+03:21:01 [SCAN] Supplies - In → FALSE (1260ms)
+03:21:02 [SHOT] OK (307ms)
+03:21:03 [SHOT] OK (0ms)
+03:21:04 [SCAN] Gathering - Automove → FALSE (1912ms)
+03:21:04 [SHOT] OK (0ms)
+03:21:05 [SHOT] OK (0ms)
+03:21:06 [SCAN] Attack - Auto → FALSE (1099ms)
+03:21:31 [SHOT] FAIL #1 (25012ms)
+03:21:31 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:21:37 [SHOT] OK (3850ms)
+03:21:38 [SCAN] Attack - Auto On → FALSE (31703ms)
+03:21:38 [Hybrid] No next node after 'Condition' (Attack - Auto On). Restart 1/10
+03:22:07 [SHOT] FAIL #1 (25008ms)
+03:22:07 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:22:26 [SHOT] OK (17048ms)
+03:22:27 [SCAN] Gathering - Inside → FALSE (44977ms)
+03:22:46 [SHOT] OK (13776ms)
+03:22:46 [SCAN] Supplies → TRUE (13841ms)
+03:22:46 [MACRO] Buy Blood: Starting (0ms)
+03:22:52     - Step OK: ⚡ Hard Click 'Supplies' at (1336,564)
+03:22:53 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:22:53 [SHOT] OK (138ms)
+03:22:54 [SHOT] OK (0ms)
+03:22:54 [SHOT] OK (0ms)
+03:22:56 [SHOT] OK (0ms)
+03:22:57 [SHOT] OK (293ms)
+03:22:57     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:23:02     - Step OK: ⚡ Hard Click 'Supplies - Type' at (530,307)
+03:23:03 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:23:03 [SHOT] OK (304ms)
+03:23:03     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:23:08     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (857,570)
+03:23:09 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:23:09 [Macro] Delay completed.
+03:23:14     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1072,717)
+03:23:14 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:23:15 [Macro] Delay completed.
+03:23:21     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1536,133)
+03:23:21 [Macro] Steps completed. Checking result...
+03:23:23 [SHOT] OK (401ms)
+03:23:23 [Macro] Result: SUCCESS (found 'Home')
+03:23:23 [MACRO] Buy Blood: PASSED (36135ms total)
+03:23:23 [MACRO] Gathering: Starting (0ms)
+03:23:23 [SHOT] OK (0ms)
+03:23:28     - Step OK: Clicked 'Gathering'
+03:23:28 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+03:23:29 [SHOT] OK (346ms)
+03:23:29     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:23:34     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1027,598)
+03:23:34 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:23:47 [Macro] Delay completed.
+03:23:47 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+03:23:47 [SHOT] OK (264ms)
+03:23:48 [SHOT] OK (0ms)
+03:23:49 [SHOT] OK (0ms)
+03:23:49 [SHOT] OK (0ms)
+03:23:50 [SHOT] OK (142ms)
+03:23:50     - Marker triggered. Holding 6.5s...
+03:23:51 [SHOT] OK (0ms)
+03:23:52 [SHOT] OK (0ms)
+03:23:54 [SHOT] OK (322ms)
+03:23:54     - Marker interrupted. Resetting hold timer.
+03:23:54 [SHOT] OK (0ms)
+03:23:55 [SHOT] OK (0ms)
+03:23:56 [SHOT] OK (0ms)
+03:23:57 [SHOT] OK (0ms)
+03:23:58 [SHOT] OK (627ms)
+03:23:59 [SHOT] OK (0ms)
+03:24:00 [SHOT] OK (0ms)
+03:24:01 [SHOT] OK (0ms)
+03:24:02 [SHOT] OK (218ms)
+03:24:03 [SHOT] OK (0ms)
+03:24:04 [SHOT] OK (0ms)
+03:24:04 [SHOT] OK (0ms)
+03:24:06 [SHOT] OK (272ms)
+03:24:07 [SHOT] OK (0ms)
+03:24:08 [SHOT] OK (0ms)
+03:24:08 [SHOT] OK (0ms)
+03:24:09 [SHOT] OK (351ms)
+03:24:10 [SHOT] OK (0ms)
+03:24:11 [SHOT] OK (0ms)
+03:24:11 [SHOT] OK (0ms)
+03:24:12 [SHOT] OK (0ms)
+03:24:12 [SHOT] OK (0ms)
+03:24:13 [SHOT] OK (221ms)
+03:24:14 [SHOT] OK (0ms)
+03:24:15 [SHOT] OK (0ms)
+03:24:16 [SHOT] OK (0ms)
+03:24:17 [SHOT] OK (534ms)
+03:24:18 [SHOT] OK (0ms)
+03:24:18 [SHOT] OK (0ms)
+03:24:19 [SHOT] OK (0ms)
+03:24:21 [SHOT] OK (872ms)
+03:24:22 [SHOT] OK (0ms)
+03:24:23 [SHOT] OK (0ms)
+03:24:23 [SHOT] OK (0ms)
+03:24:24 [SHOT] OK (0ms)
+03:24:25 [SHOT] OK (222ms)
+03:24:25 [SHOT] OK (0ms)
+03:24:26 [SHOT] OK (0ms)
+03:24:26 [SHOT] OK (0ms)
+03:24:28 [SHOT] OK (0ms)
+03:24:29 [SHOT] OK (492ms)
+03:24:30 [SHOT] OK (0ms)
+03:24:31 [SHOT] OK (0ms)
+03:24:32 [SHOT] OK (0ms)
+03:24:33 [SHOT] OK (517ms)
+03:24:33 [SHOT] OK (0ms)
+03:24:34 [SHOT] OK (0ms)
+03:24:34 [SHOT] OK (0ms)
+03:24:35 [SHOT] OK (0ms)
+03:24:36 [SHOT] OK (732ms)
+03:24:37 [SHOT] OK (0ms)
+03:24:38 [SHOT] OK (0ms)
+03:24:39 [SHOT] OK (0ms)
+03:24:40 [SHOT] OK (565ms)
+03:24:41 [SHOT] OK (0ms)
+03:24:41 [SHOT] OK (0ms)
+03:24:42 [SHOT] OK (0ms)
+03:24:43 [SHOT] OK (0ms)
+03:24:44 [SHOT] OK (406ms)
+03:24:45 [SHOT] OK (0ms)
+03:24:46 [SHOT] OK (0ms)
+03:24:47 [SHOT] OK (0ms)
+03:24:49 [SHOT] OK (1102ms)
+03:24:49 [SHOT] OK (0ms)
+03:24:50 [SHOT] OK (0ms)
+03:24:51 [SHOT] OK (0ms)
+03:24:52 [SHOT] OK (829ms)
+03:24:53 [SHOT] OK (0ms)
+03:24:54 [SHOT] OK (0ms)
+03:24:54 [SHOT] OK (0ms)
+03:24:56 [SHOT] OK (978ms)
+03:24:58 [SHOT] OK (0ms)
+03:24:58 [SHOT] OK (0ms)
+03:24:59 [SHOT] OK (0ms)
+03:25:00 [SHOT] OK (627ms)
+03:25:01 [SHOT] OK (0ms)
+03:25:02 [SHOT] OK (0ms)
+03:25:03 [SHOT] OK (0ms)
+03:25:04 [SHOT] OK (385ms)
+03:25:05 [SHOT] OK (0ms)
+03:25:06 [SHOT] OK (0ms)
+03:25:07 [SHOT] OK (0ms)
+03:25:08 [SHOT] OK (210ms)
+03:25:09 [SHOT] OK (0ms)
+03:25:10 [SHOT] OK (0ms)
+03:25:10 [SHOT] OK (0ms)
+03:25:11 [SHOT] OK (0ms)
+03:25:12 [SHOT] OK (204ms)
+03:25:12 [SHOT] OK (0ms)
+03:25:13 [SHOT] OK (0ms)
+03:25:14 [SHOT] OK (0ms)
+03:25:15 [SHOT] OK (178ms)
+03:25:16 [SHOT] OK (0ms)
+03:25:17 [SHOT] OK (0ms)
+03:25:17 [SHOT] OK (0ms)
+03:25:19 [SHOT] OK (863ms)
+03:25:20 [SHOT] OK (0ms)
+03:25:21 [SHOT] OK (0ms)
+03:25:22 [SHOT] OK (0ms)
+03:25:24 [SHOT] OK (794ms)
+03:25:25 [SHOT] OK (0ms)
+03:25:25 [SHOT] OK (0ms)
+03:25:26 [SHOT] OK (0ms)
+03:25:27 [SHOT] OK (395ms)
+03:25:28 [SHOT] OK (0ms)
+03:25:29 [SHOT] OK (0ms)
+03:25:30 [SHOT] OK (0ms)
+03:25:32 [SHOT] OK (788ms)
+03:25:32 [SHOT] OK (0ms)
+03:25:33 [SHOT] OK (0ms)
+03:25:34 [SHOT] OK (0ms)
+03:25:36 [SHOT] OK (478ms)
+03:25:36 [SHOT] OK (0ms)
+03:25:37 [SHOT] OK (0ms)
+03:25:38 [SHOT] OK (0ms)
+03:25:40 [SHOT] OK (515ms)
+03:25:41 [SHOT] OK (0ms)
+03:25:41 [SHOT] OK (0ms)
+03:25:42 [SHOT] OK (0ms)
+03:25:43 [SHOT] OK (0ms)
+03:25:44 [SHOT] OK (580ms)
+03:25:45     - Marker triggered. Holding 6.5s...
+03:25:45 [SHOT] OK (0ms)
+03:25:46 [SHOT] OK (0ms)
+03:25:48     - Holding... 3/6s
+03:25:49 [SHOT] OK (408ms)
+03:25:50 [SHOT] OK (0ms)
+03:25:51 [SHOT] OK (0ms)
+03:25:51     - Holding... 6/6s
+03:25:51     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:25:51 [SHOT] OK (0ms)
+03:25:57     - Step OK: Clicked 'Attack - Auto'
+03:25:57 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:25:58 [Macro] Delay completed.
+03:25:58 [SHOT] OK (468ms)
+03:26:04     - Step OK: Clicked 'Click 5P'
+03:26:04 [Macro] Steps completed. Checking result...
+03:26:06 [SHOT] OK (257ms)
+03:26:06 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+03:26:06 [MACRO] Gathering: FAILED (163121ms total)
+03:26:06 [Hybrid] No next node after 'Macro' (cc882d55). Restart 1/10
+03:26:09 [SHOT] OK (225ms)
+03:26:10 [SHOT] OK (0ms)
+03:26:11 [SCAN] Gathering - Inside → FALSE (1587ms)
+03:26:11 [SHOT] OK (0ms)
+03:26:12 [SHOT] OK (0ms)
+03:26:13 [SCAN] Supplies → FALSE (1805ms)
+03:26:14 [SHOT] OK (327ms)
+03:26:14 [SCAN] Revive → TRUE (439ms)
+03:26:15 [MACRO] Revivie: Starting (0ms)
+03:26:15 [SHOT] OK (0ms)
+03:26:20     - Step OK: Clicked 'Revive'
+03:26:21 [Macro] (2/2) Delay: 3000ms (3.0s)...
+03:26:24 [Macro] Delay completed.
+03:26:24 [Macro] Steps completed. Checking result...
+03:26:25 [SHOT] OK (521ms)
+03:26:25 [Macro] Result: FAILURE ('Supplies' not found)
+03:26:25 [MACRO] Revivie: FAILED (10735ms total)
+03:26:25 [Hybrid] No next node after 'Macro' (38ef6fd1). Restart 1/10
+03:26:54 [SHOT] FAIL #1 (25012ms)
+03:26:54 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:26:57 [SHOT] OK (1393ms)
+03:26:58 [SCAN] Gathering - Inside → FALSE (29017ms)
+03:26:59 [SHOT] OK (0ms)
+03:26:59 [SCAN] Supplies → TRUE (11ms)
+03:26:59 [MACRO] Buy Blood: Starting (0ms)
+03:27:04     - Step OK: ⚡ Hard Click 'Supplies' at (1329,592)
+03:27:05 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:27:30 [SHOT] FAIL #1 (25014ms)
+03:27:30 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:27:32 [MACRO] Buy Blood: FAILED (33104ms total)
+03:27:32 ============================================================
+03:27:32 SESSION END — Hybrid (18.9 min)
+03:27:32   Loops: 0
+03:27:32   Screenshots: 170 ok / 20 fail (10.5%)
+03:27:32   Avg latency: 562ms
+03:27:32   Macros: 1 ok / 4 fail
+03:27:32   Errors: 0
+03:27:32 ============================================================
+03:31:07 ============================================================
+03:31:07 SESSION START — Hybrid (port:9225 tab:0)
+03:31:07 ============================================================
+03:31:07 [Hybrid] Starting worker: func=loop - Farm V1, port=9225, tab=0
+03:31:11 [Hybrid] Connected to Port 9225, Tab 0
+03:31:12 [SHOT] OK (201ms)
+03:31:12 [SCAN] Supplies → TRUE (212ms)
+03:31:13 [MACRO] Buy Blood: Starting (0ms)
+03:31:18     - Step OK: ⚡ Hard Click 'Supplies' at (1294,592)
+03:31:18 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:31:23 [SHOT] OK (4883ms)
+03:31:23     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:31:28     - Step OK: ⚡ Hard Click 'Supplies - Type' at (546,317)
+03:31:29 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:31:54 [SHOT] FAIL #1 (25007ms)
+03:31:54 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:22 [SHOT] FAIL #2 (25014ms)
+03:32:22 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:32:51 [SHOT] FAIL #3 (25007ms)
+03:32:51 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:33:25 [SHOT] FAIL #4 (25002ms)
+03:33:25 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:33:59 [SHOT] OK (17210ms)
+03:33:59     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:34:04     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (860,561)
+03:34:05 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:34:05 [Macro] Delay completed.
+03:34:10     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1029,698)
+03:34:16     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1544,147)
+03:34:16 [Macro] Steps completed. Checking result...
+03:34:33 [SHOT] OK (16069ms)
+03:34:33 [Macro] Result: SUCCESS (found 'Home')
+03:34:33 [MACRO] Buy Blood: PASSED (200677ms total)
+03:34:33 [MACRO] Gathering: Starting (0ms)
+03:34:33 [SHOT] OK (0ms)
+03:34:38     - Step OK: Clicked 'Gathering'
+03:34:39 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+03:35:04 [SHOT] FAIL #1 (25003ms)
+03:35:04 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:35:07 [SHOT] OK (160ms)
+03:35:07     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:35:12     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1084,592)
+03:35:13 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:35:25 [Macro] Delay completed.
+03:35:25 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+03:35:50 [SHOT] FAIL #1 (25001ms)
+03:35:50 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:35:52     - Marker triggered. Holding 6.5s...
+03:36:10 [SHOT] OK (17437ms)
+03:36:10     - Marker interrupted. Resetting hold timer.
+03:36:12 [SHOT] OK (0ms)
+03:36:12 [SHOT] OK (0ms)
+03:36:13 [SHOT] OK (0ms)
+03:36:39 [SHOT] FAIL #1 (25014ms)
+03:36:39 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:36:41     - Marker triggered. Holding 6.5s...
+03:37:06 [SHOT] FAIL #2 (25010ms)
+03:37:06 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:37:10     - Holding... 29/6s
+03:37:10     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:37:13 [SHOT] OK (3155ms)
+03:37:19     - Step OK: Clicked 'Attack - Auto'
+03:37:19 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:37:20 [Macro] Delay completed.
+03:37:44 [SHOT] OK (24284ms)
+03:37:49     - Step OK: Clicked 'Click 5P'
+03:37:50 [Macro] Steps completed. Checking result...
+03:38:16 [SHOT] FAIL #1 (25014ms)
+03:38:16 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:38:18 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+03:38:18 [MACRO] Gathering: FAILED (224583ms total)
+03:38:23 [Hybrid] No next node after 'Macro' (cc882d55). Restart 1/10
+03:38:50 [SHOT] OK (23727ms)
+03:38:50 [SHOT] OK (0ms)
+03:38:51 [SCAN] Supplies → FALSE (24782ms)
+03:38:52 [SHOT] OK (0ms)
+03:38:52 [SHOT] OK (0ms)
+03:38:53 [SCAN] Revive → FALSE (1141ms)
+03:39:08 [SHOT] OK (14414ms)
+03:39:08 [SHOT] OK (0ms)
+03:39:09 [SCAN] Supplies - In → FALSE (15896ms)
+03:39:10 [SHOT] OK (0ms)
+03:39:10 [SCAN] Attack - Auto → TRUE (8ms)
+03:39:10 [SHOT] OK (0ms)
+03:39:10 [SHOT] OK (0ms)
+03:39:11 [SCAN] Gathering - Automove → FALSE (1233ms)
+03:39:12 [SHOT] OK (180ms)
+03:39:12 [SCAN] Attack - Auto On → TRUE (276ms)
+03:39:12 [MACRO] Click 5P: Starting (0ms)
+03:39:14     - Step OK: ⚡ Hard Click 'Click 5P' at (1496,96)
+03:39:14 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:39:14 [Macro] Delay completed.
+03:39:14 [Macro] Steps completed. Checking result...
+03:39:14 [Macro] Finished (no capture check configured).
+03:39:14 [MACRO] Click 5P: PASSED (2051ms total)
+03:39:14 [MACRO] Revivie: Starting (0ms)
+03:39:14 [SHOT] OK (0ms)
+03:39:15 [SHOT] OK (0ms)
+03:39:15 [SHOT] OK (275ms)
+03:39:16 [SHOT] OK (0ms)
+03:39:16 [SHOT] OK (0ms)
+03:39:17     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:39:17 [MACRO] Revivie: FAILED (2293ms total)
+03:39:17 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+03:39:20 [SHOT] OK (187ms)
+03:39:21 [SHOT] OK (0ms)
+03:39:22 [SCAN] Supplies → FALSE (1831ms)
+03:39:22 [SHOT] OK (0ms)
+03:39:48 [SHOT] FAIL #1 (25002ms)
+03:39:48 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:39:50 [SCAN] Revive → FALSE (27810ms)
+03:39:53 [SHOT] OK (2386ms)
+03:39:54 [SHOT] OK (0ms)
+03:39:55 [SCAN] Supplies - In → FALSE (3841ms)
+03:39:55 [SHOT] OK (0ms)
+03:39:55 [SCAN] Attack - Auto → TRUE (8ms)
+03:39:56 [SHOT] OK (0ms)
+03:40:21 [SHOT] FAIL #1 (25003ms)
+03:40:21 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:40:23 [SCAN] Gathering - Automove → FALSE (27671ms)
+03:40:49 [SHOT] FAIL #2 (25007ms)
+03:40:49 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:40:55 [SHOT] OK (2155ms)
+03:40:55 [SCAN] Attack - Auto On → TRUE (31183ms)
+03:40:56 [MACRO] Click 5P: Starting (0ms)
+03:41:01     - Step OK: ⚡ Hard Click 'Click 5P' at (1509,91)
+03:41:02 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:41:02 [Macro] Delay completed.
+03:41:02 [Macro] Steps completed. Checking result...
+03:41:02 [Macro] Finished (no capture check configured).
+03:41:02 [MACRO] Click 5P: PASSED (5660ms total)
+03:41:02 [MACRO] Revivie: Starting (0ms)
+03:41:27 [SHOT] FAIL #1 (25006ms)
+03:41:27 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:41:54 [SHOT] FAIL #2 (25014ms)
+03:41:54 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:42:23 [SHOT] FAIL #3 (25011ms)
+03:42:23 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:42:57 [SHOT] FAIL #4 (25012ms)
+03:42:57 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:43:32 [SHOT] OK (19291ms)
+03:43:33     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:43:33 [MACRO] Revivie: FAILED (150943ms total)
+03:43:38 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+03:44:05 [SHOT] OK (23986ms)
+03:44:06 [SHOT] OK (0ms)
+03:44:06 [SCAN] Supplies → FALSE (25029ms)
+03:44:07 [SHOT] OK (0ms)
+03:44:07 [SHOT] OK (0ms)
+03:44:08 [SCAN] Revive → FALSE (1243ms)
+03:44:09 [SHOT] OK (188ms)
+03:44:10 [SHOT] OK (0ms)
+03:44:10 [SCAN] Supplies - In → FALSE (1622ms)
+03:44:11 [SHOT] OK (0ms)
+03:44:11 [SCAN] Attack - Auto → TRUE (8ms)
+03:44:11 [SHOT] OK (0ms)
+03:44:12 [SHOT] OK (0ms)
+03:44:13 [SCAN] Gathering - Automove → FALSE (1157ms)
+03:44:13 [SHOT] OK (158ms)
+03:44:13 [SCAN] Attack - Auto On → TRUE (177ms)
+03:44:14 [MACRO] Click 5P: Starting (0ms)
+03:44:19     - Step OK: ⚡ Hard Click 'Click 5P' at (1531,84)
+03:44:19 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:44:19 [Macro] Delay completed.
+03:44:19 [Macro] Steps completed. Checking result...
+03:44:19 [Macro] Finished (no capture check configured).
+03:44:19 [MACRO] Click 5P: PASSED (5703ms total)
+03:44:19 [MACRO] Revivie: Starting (0ms)
+03:44:44 [SHOT] FAIL #1 (25001ms)
+03:44:44 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:45:12 [SHOT] FAIL #2 (25006ms)
+03:45:12 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:45:41 [SHOT] FAIL #3 (25010ms)
+03:45:41 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:46:14 [SHOT] FAIL #4 (25004ms)
+03:46:14 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:46:56 [SHOT] FAIL #5 (25004ms)
+03:46:56 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:47:26     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:47:26 [MACRO] Revivie: FAILED (186535ms total)
+03:47:26 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+03:47:52 [SHOT] OK (22741ms)
+03:47:53 [SHOT] OK (0ms)
+03:47:53 [SCAN] Supplies → FALSE (23771ms)
+03:47:54 [SHOT] OK (0ms)
+03:47:54 [SHOT] OK (0ms)
+03:47:55 [SCAN] Revive → FALSE (1275ms)
+03:47:56 [SHOT] OK (181ms)
+03:47:57 [SHOT] OK (0ms)
+03:47:57 [SCAN] Supplies - In → FALSE (1336ms)
+03:47:58 [SHOT] OK (0ms)
+03:47:58 [SCAN] Attack - Auto → TRUE (7ms)
+03:47:58 [SHOT] OK (0ms)
+03:47:59 [SHOT] OK (0ms)
+03:48:00 [SCAN] Gathering - Automove → FALSE (1506ms)
+03:48:25 [SHOT] FAIL #1 (25004ms)
+03:48:25 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:48:31 [SHOT] OK (3887ms)
+03:48:31 [SCAN] Attack - Auto On → TRUE (30909ms)
+03:48:37 [MACRO] Click 5P: Starting (0ms)
+03:48:42     - Step OK: ⚡ Hard Click 'Click 5P' at (1522,89)
+03:48:42 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:48:43 [Macro] Delay completed.
+03:48:43 [Macro] Steps completed. Checking result...
+03:48:43 [Macro] Finished (no capture check configured).
+03:48:43 [MACRO] Click 5P: PASSED (5751ms total)
+03:48:43 [MACRO] Revivie: Starting (0ms)
+03:49:08 [SHOT] FAIL #1 (25002ms)
+03:49:08 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:49:35 [SHOT] FAIL #2 (25006ms)
+03:49:35 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:50:04 [SHOT] FAIL #3 (25013ms)
+03:50:04 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:50:37 [SHOT] OK (24246ms)
+03:50:37 [SHOT] OK (0ms)
+03:50:38     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:50:38 [MACRO] Revivie: FAILED (115012ms total)
+03:50:38 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+03:50:41 [SHOT] OK (154ms)
+03:50:42 [SHOT] OK (0ms)
+03:50:42 [SCAN] Supplies → FALSE (1218ms)
+03:50:43 [SHOT] OK (0ms)
+03:50:43 [SHOT] OK (0ms)
+03:50:44 [SCAN] Revive → FALSE (1356ms)
+03:51:09 [SHOT] FAIL #1 (25007ms)
+03:51:09 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:51:36 [SHOT] FAIL #2 (25001ms)
+03:51:36 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:51:40 [SCAN] Supplies - In → FALSE (56009ms)
+03:51:44 [SHOT] OK (3523ms)
+03:51:44 [SCAN] Attack - Auto → TRUE (3573ms)
+03:51:45 [SHOT] OK (0ms)
+03:51:46 [SHOT] OK (0ms)
+03:51:46 [SCAN] Gathering - Automove → FALSE (1148ms)
+03:51:47 [SHOT] OK (0ms)
+03:51:47 [SCAN] Attack - Auto On → TRUE (18ms)
+03:51:47 [MACRO] Click 5P: Starting (0ms)
+03:51:53     - Step OK: ⚡ Hard Click 'Click 5P' at (1487,90)
+03:51:53 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:51:53 [Macro] Delay completed.
+03:51:53 [Macro] Steps completed. Checking result...
+03:51:53 [Macro] Finished (no capture check configured).
+03:51:53 [MACRO] Click 5P: PASSED (5731ms total)
+03:51:53 [MACRO] Revivie: Starting (0ms)
+03:52:17 [SHOT] OK (24329ms)
+03:52:18 [SHOT] OK (0ms)
+03:52:18 [SHOT] OK (0ms)
+03:52:19 [SHOT] OK (0ms)
+03:52:19 [SHOT] OK (0ms)
+03:52:19     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:52:20 [MACRO] Revivie: FAILED (26354ms total)
+03:52:20 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+03:52:48 [SHOT] FAIL #1 (25007ms)
+03:52:48 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:53:15 [SHOT] FAIL #2 (25001ms)
+03:53:15 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:53:19 [SCAN] Supplies → FALSE (56010ms)
+03:53:25 [SHOT] OK (157ms)
+03:53:25 [SHOT] OK (0ms)
+03:53:26 [SCAN] Revive → FALSE (1286ms)
+03:53:27 [SHOT] OK (0ms)
+03:53:27 [SHOT] OK (0ms)
+03:53:28 [SCAN] Supplies - In → FALSE (1190ms)
+03:53:53 [SHOT] FAIL #1 (25009ms)
+03:53:53 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:54:20 [SHOT] FAIL #2 (25015ms)
+03:54:20 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:54:24 [SCAN] Attack - Auto → FALSE (56026ms)
+03:54:50 [SHOT] FAIL #3 (25004ms)
+03:54:50 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:55:23 [SHOT] FAIL #4 (25002ms)
+03:55:23 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:55:39 [SCAN] Gathering - Automove → FALSE (74008ms)
+03:55:59 [SHOT] OK (19292ms)
+03:55:59 [SCAN] Attack - Auto On → TRUE (19311ms)
+03:55:59 [MACRO] Click 5P: Starting (0ms)
+03:56:04     - Step OK: ⚡ Hard Click 'Click 5P' at (1514,97)
+03:56:05 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:56:05 [Macro] Delay completed.
+03:56:05 [Macro] Steps completed. Checking result...
+03:56:05 [Macro] Finished (no capture check configured).
+03:56:05 [MACRO] Click 5P: PASSED (5679ms total)
+03:56:05 [MACRO] Revivie: Starting (0ms)
+03:56:29 [SHOT] OK (24776ms)
+03:56:30 [SHOT] OK (0ms)
+03:56:30 [SHOT] OK (0ms)
+03:56:31 [SHOT] OK (0ms)
+03:56:31 [SHOT] OK (0ms)
+03:56:32     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:56:32 [MACRO] Revivie: FAILED (26797ms total)
+03:56:32 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+03:57:00 [SHOT] FAIL #1 (25006ms)
+03:57:00 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:57:27 [SHOT] FAIL #2 (25014ms)
+03:57:27 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:57:31 [SCAN] Supplies → FALSE (56023ms)
+03:57:56 [SHOT] FAIL #3 (25013ms)
+03:57:56 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:58:29 [SHOT] FAIL #4 (25001ms)
+03:58:29 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:58:46 [SCAN] Revive → FALSE (74016ms)
+03:59:16 [SHOT] FAIL #5 (25010ms)
+03:59:16 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:00:05 [SHOT] OK (18512ms)
+04:00:05 [SCAN] Supplies - In → FALSE (74093ms)
+04:00:06 [SHOT] OK (0ms)
+04:00:06 [SCAN] Attack - Auto → TRUE (63ms)
+04:00:07 [SHOT] OK (0ms)
+04:00:07 [SHOT] OK (0ms)
+04:00:08 [SCAN] Gathering - Automove → FALSE (1018ms)
+04:00:34 [SHOT] FAIL #1 (25014ms)
+04:00:34 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:01:01 [SHOT] FAIL #2 (25015ms)
+04:01:01 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:01:05 [SCAN] Attack - Auto On → FALSE (56031ms)
+04:01:10 [SHOT] OK (5117ms)
+04:01:11 [SHOT] OK (0ms)
+04:01:11 [SCAN] Revive → FALSE (6128ms)
+04:01:12 [Hybrid] Connection rotation — periodic reconnect
+04:01:14 [Hybrid] Connection rotated successfully
+04:01:14 [NODE] → Click: Attack - Auto
+04:01:39 [SHOT] FAIL #1 (25012ms)
+04:01:39 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:01:41 [NODE] → Click: Click 5P
+04:02:06 [SHOT] FAIL #2 (25003ms)
+04:02:06 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:02:10 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+04:02:39 [SHOT] FAIL #3 (25009ms)
+04:02:39 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:03:12 [SHOT] FAIL #4 (25004ms)
+04:03:12 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:03:28 [SCAN] Supplies → FALSE (74016ms)
+04:03:58 [SHOT] OK (24764ms)
+04:03:59 [SHOT] OK (0ms)
+04:03:59 [SCAN] Revive → FALSE (26043ms)
+04:04:00 [SHOT] OK (0ms)
+04:04:00 [SHOT] OK (0ms)
+04:04:01 [SCAN] Supplies - In → FALSE (970ms)
+04:04:26 [SHOT] FAIL #1 (25014ms)
+04:04:26 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:04:30 [SHOT] OK (1411ms)
+04:04:30 [SCAN] Attack - Auto → TRUE (28434ms)
+04:04:31 [SHOT] OK (0ms)
+04:04:31 [SHOT] OK (0ms)
+04:04:32 [SCAN] Gathering - Automove → FALSE (1057ms)
+04:04:32 [SHOT] OK (0ms)
+04:04:32 [SCAN] Attack - Auto On → TRUE (18ms)
+04:04:33 [MACRO] Click 5P: Starting (0ms)
+04:04:38     - Step OK: ⚡ Hard Click 'Click 5P' at (1531,84)
+04:04:38 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:04:39 [Macro] Delay completed.
+04:04:39 [Macro] Steps completed. Checking result...
+04:04:39 [Macro] Finished (no capture check configured).
+04:04:39 [MACRO] Click 5P: PASSED (5685ms total)
+04:04:39 [MACRO] Revivie: Starting (0ms)
+04:05:04 [SHOT] FAIL #1 (25010ms)
+04:05:04 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:05:31 [SHOT] FAIL #2 (25012ms)
+04:05:31 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:06:00 [SHOT] FAIL #3 (25004ms)
+04:06:00 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:06:34 [SHOT] FAIL #4 (25008ms)
+04:06:34 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:07:15 [SHOT] FAIL #5 (25014ms)
+04:07:15 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:07:45     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:07:45 [MACRO] Revivie: FAILED (186567ms total)
+04:07:45 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+04:08:14 [SHOT] FAIL #6 (25013ms)
+04:08:14 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:09:09 [SHOT] FAIL #7 (25002ms)
+04:09:09 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:09:39 [SCAN] Supplies → FALSE (110017ms)
+04:09:55 [SHOT] OK (10596ms)
+04:09:56 [SHOT] OK (0ms)
+04:09:57 [SCAN] Revive → FALSE (12275ms)
+04:09:57 [SHOT] OK (0ms)
+04:09:58 [SHOT] OK (0ms)
+04:09:58 [SCAN] Supplies - In → FALSE (1449ms)
+04:10:24 [SHOT] FAIL #1 (25014ms)
+04:10:24 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:10:51 [SHOT] FAIL #2 (25007ms)
+04:10:51 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:10:55 [SCAN] Attack - Auto → FALSE (56023ms)
+04:10:56 [SHOT] OK (613ms)
+04:10:57 [SHOT] OK (0ms)
+04:10:57 [SCAN] Gathering - Automove → FALSE (1892ms)
+04:10:58 [SHOT] OK (0ms)
+04:10:58 [SHOT] OK (0ms)
+04:10:59 [SCAN] Attack - Auto On → FALSE (1320ms)
+04:11:25 [SHOT] FAIL #1 (25002ms)
+04:11:25 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:11:28 [SHOT] OK (1553ms)
+04:11:29 [SCAN] Revive → FALSE (29211ms)
+04:11:30 [NODE] → Click: Attack - Auto
+04:11:30 [SHOT] OK (0ms)
+04:11:30 [SCAN] Attack - Auto → FALSE (0ms)
+04:11:30 [NODE] → Click: Click 5P
+04:11:30 [SHOT] OK (0ms)
+04:11:30 [SCAN] Click 5P → FALSE (0ms)
+04:11:30 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+04:11:59 [SHOT] FAIL #1 (25007ms)
+04:11:59 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:12:01 [SHOT] OK (0ms)
+04:12:02 [SCAN] Supplies → FALSE (27663ms)
+04:12:27 [SHOT] FAIL #1 (25010ms)
+04:12:27 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:12:30 [SHOT] OK (433ms)
+04:12:30 [SCAN] Revive → FALSE (27906ms)
+04:12:31 [SHOT] OK (0ms)
+04:12:31 [SHOT] OK (0ms)
+04:12:32 [SCAN] Supplies - In → FALSE (1447ms)
+04:12:33 [SHOT] OK (0ms)
+04:12:58 [SHOT] FAIL #1 (25004ms)
+04:12:58 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:13:00 [SCAN] Attack - Auto → FALSE (27509ms)
+04:13:01 [SHOT] OK (128ms)
+04:13:02 [SHOT] OK (0ms)
+04:13:02 [SCAN] Gathering - Automove → FALSE (1402ms)
+04:13:03 [SHOT] OK (0ms)
+04:13:04 [SHOT] OK (0ms)
+04:13:04 [SCAN] Attack - Auto On → FALSE (1200ms)
+04:13:30 [SHOT] FAIL #1 (25008ms)
+04:13:30 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:13:57 [SHOT] FAIL #2 (25003ms)
+04:13:57 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:14:01 [SCAN] Revive → FALSE (56013ms)
+04:14:01 [NODE] → Click: Attack - Auto
+04:14:26 [SHOT] FAIL #3 (25005ms)
+04:14:26 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:14:39 [NODE] → Click: Click 5P
+04:15:04 [SHOT] FAIL #4 (25005ms)
+04:15:04 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:15:21 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+04:15:37 [SHOT] OK (12278ms)
+04:15:37 [SHOT] OK (0ms)
+04:15:38 [SCAN] Supplies → FALSE (13513ms)
+04:15:38 [SHOT] OK (0ms)
+04:15:39 [SHOT] OK (0ms)
+04:15:40 [SCAN] Revive → FALSE (1306ms)
+04:16:05 [SHOT] FAIL #1 (25007ms)
+04:16:05 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:16:32 [SHOT] FAIL #2 (25001ms)
+04:16:32 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:16:36 [SCAN] Supplies - In → FALSE (56011ms)
+04:17:02 [SHOT] FAIL #3 (25005ms)
+04:17:02 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:17:10 [SHOT] OK (213ms)
+04:17:11 [SCAN] Attack - Auto → FALSE (33816ms)
+04:17:11 [SHOT] OK (0ms)
+04:17:12 [SHOT] OK (0ms)
+04:17:12 [SCAN] Gathering - Automove → FALSE (1056ms)
+04:17:13 [SHOT] OK (0ms)
+04:17:38 [SHOT] FAIL #1 (25010ms)
+04:17:38 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:17:40 [SCAN] Attack - Auto On → FALSE (27484ms)
+04:17:43 [SHOT] OK (2359ms)
+04:17:44 [SHOT] OK (0ms)
+04:17:45 [SCAN] Revive → FALSE (3506ms)
+04:17:45 [NODE] → Click: Attack - Auto
+04:17:45 [SHOT] OK (0ms)
+04:17:45 [SCAN] Attack - Auto → FALSE (0ms)
+04:17:45 [NODE] → Click: Click 5P
+04:17:45 [SHOT] OK (0ms)
+04:17:45 [SCAN] Click 5P → FALSE (0ms)
+04:17:46 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+04:17:49 [SHOT] OK (130ms)
+04:17:50 [SHOT] OK (0ms)
+04:17:50 [SCAN] Supplies → FALSE (1323ms)
+04:17:51 [SHOT] OK (0ms)
+04:17:51 [SHOT] OK (0ms)
+04:17:52 [SCAN] Revive → FALSE (1404ms)
+04:18:18 [SHOT] FAIL #1 (25015ms)
+04:18:18 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:18:22 [SHOT] OK (1723ms)
+04:18:22 [SCAN] Supplies - In → FALSE (29602ms)
+04:18:23 [SHOT] OK (0ms)
+04:18:23 [SHOT] OK (0ms)
+04:18:24 [SCAN] Attack - Auto → FALSE (1390ms)
+04:18:50 [SHOT] FAIL #1 (25004ms)
+04:18:50 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:19:17 [SHOT] FAIL #2 (25004ms)
+04:19:17 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:19:21 [SCAN] Gathering - Automove → FALSE (56009ms)
+04:19:52 [SHOT] FAIL #3 (25009ms)
+04:19:52 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:20:25 [SHOT] FAIL #4 (25011ms)
+04:20:25 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:20:41 [SCAN] Attack - Auto On → FALSE (74021ms)
+04:21:06 [SHOT] FAIL #5 (25005ms)
+04:21:06 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:22:01 [SHOT] FAIL #6 (25010ms)
+04:22:01 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:22:31 [SCAN] Revive → FALSE (110017ms)
+04:22:32 [NODE] → Click: Attack - Auto
+04:22:53 [SHOT] OK (21652ms)
+04:22:53 [SCAN] Attack - Auto → FALSE (0ms)
+04:22:54 [NODE] → Click: Click 5P
+04:22:54 [SHOT] OK (0ms)
+04:22:54 [SCAN] Click 5P → FALSE (0ms)
+04:22:54 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+04:23:23 [SHOT] FAIL #1 (25014ms)
+04:23:23 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:23:50 [SHOT] FAIL #2 (25011ms)
+04:23:50 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:23:54 [SCAN] Supplies → FALSE (56028ms)
+04:24:19 [SHOT] FAIL #3 (25011ms)
+04:24:19 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:24:52 [SHOT] FAIL #4 (25000ms)
+04:24:52 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:25:08 [SCAN] Revive → FALSE (74030ms)
+04:25:26 [SHOT] OK (12614ms)
+04:25:27 [SHOT] OK (0ms)
+04:25:27 [SCAN] Supplies - In → FALSE (13482ms)
+04:25:28 [SHOT] OK (0ms)
+04:25:28 [SHOT] OK (0ms)
+04:25:29 [SCAN] Attack - Auto → FALSE (883ms)
+04:25:29 [SHOT] OK (139ms)
+04:25:30 [SHOT] OK (0ms)
+04:25:31 [SCAN] Gathering - Automove → FALSE (1699ms)
+04:25:32 [SHOT] OK (0ms)
+04:25:32 [SHOT] OK (0ms)
+04:25:33 [SCAN] Attack - Auto On → FALSE (1250ms)
+04:25:58 [SHOT] FAIL #1 (25006ms)
+04:25:58 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:26:01 [SHOT] OK (508ms)
+04:26:01 [SCAN] Revive → FALSE (27991ms)
+04:26:02 [NODE] → Click: Attack - Auto
+04:26:02 [SHOT] OK (0ms)
+04:26:02 [SCAN] Attack - Auto → FALSE (0ms)
+04:26:02 [NODE] → Click: Click 5P
+04:26:02 [SHOT] OK (0ms)
+04:26:03 [SCAN] Click 5P → FALSE (0ms)
+04:26:03 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+04:26:07 [SHOT] OK (137ms)
+04:26:07 [SHOT] OK (0ms)
+04:26:08 [SCAN] Supplies → FALSE (1224ms)
+04:26:08 [SHOT] OK (0ms)
+04:26:09 [SHOT] OK (0ms)
+04:26:10 [SCAN] Revive → FALSE (1310ms)
+04:26:35 [SHOT] FAIL #1 (25003ms)
+04:26:35 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:27:02 [SHOT] FAIL #2 (25004ms)
+04:27:02 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:27:06 [SCAN] Supplies - In → FALSE (56009ms)
+04:27:10 [SHOT] OK (2859ms)
+04:27:10 [SHOT] OK (0ms)
+04:27:11 [SCAN] Attack - Auto → FALSE (3964ms)
+04:27:12 [SHOT] OK (0ms)
+04:27:12 [SHOT] OK (0ms)
+04:27:13 [SCAN] Gathering - Automove → FALSE (1141ms)
+04:27:38 [SHOT] FAIL #1 (25004ms)
+04:27:38 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:28:05 [SHOT] FAIL #2 (25012ms)
+04:28:05 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:28:09 [SCAN] Attack - Auto On → FALSE (56019ms)
+04:28:35 [SHOT] FAIL #3 (25015ms)
+04:28:35 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:28:43 [SHOT] OK (125ms)
+04:28:44 [SCAN] Revive → FALSE (33658ms)
+04:28:44 [NODE] → Click: Attack - Auto
+04:28:44 [SHOT] OK (0ms)
+04:28:45 [SCAN] Attack - Auto → FALSE (0ms)
+04:28:45 [NODE] → Click: Click 5P
+04:28:45 [SHOT] OK (0ms)
+04:28:45 [SCAN] Click 5P → FALSE (0ms)
+04:28:45 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+04:29:14 [SHOT] FAIL #1 (25010ms)
+04:29:14 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:29:41 [SHOT] FAIL #2 (25009ms)
+04:29:41 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:29:45 [SCAN] Supplies → FALSE (56020ms)
+04:30:15 [SHOT] FAIL #3 (25006ms)
+04:30:15 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:30:46 [SHOT] OK (22981ms)
+04:30:47 [SCAN] Revive → FALSE (56880ms)
+04:30:47 [SHOT] OK (0ms)
+04:30:48 [SHOT] OK (0ms)
+04:30:49 [SCAN] Supplies - In → FALSE (1291ms)
+04:31:15 [SHOT] FAIL #1 (25009ms)
+04:31:15 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:31:42 [SHOT] FAIL #2 (25009ms)
+04:31:42 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:31:46 [SCAN] Attack - Auto → FALSE (56019ms)
+04:31:46 [Hybrid] Connection rotation — periodic reconnect
+04:31:48 [Hybrid] Connection rotated successfully
+04:31:48 [SHOT] OK (133ms)
+04:31:49 [SHOT] OK (0ms)
+04:31:49 [SCAN] Gathering - Automove → FALSE (1498ms)
+04:31:50 [SHOT] OK (0ms)
+04:31:51 [SHOT] OK (0ms)
+04:31:52 [SCAN] Attack - Auto On → FALSE (1624ms)
+04:31:52 [SHOT] OK (132ms)
+04:31:53 [SHOT] OK (0ms)
+04:31:54 [SCAN] Revive → FALSE (1325ms)
+04:31:54 [NODE] → Click: Attack - Auto
+04:31:54 [SHOT] OK (0ms)
+04:31:54 [SCAN] Attack - Auto → FALSE (0ms)
+04:31:55 [NODE] → Click: Click 5P
+04:31:55 [SHOT] OK (0ms)
+04:31:55 [SCAN] Click 5P → FALSE (0ms)
+04:31:55 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+04:32:23 [SHOT] FAIL #1 (25014ms)
+04:32:23 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:32:25 [SHOT] OK (0ms)
+04:32:26 [SCAN] Supplies → FALSE (27710ms)
+04:32:26 [SHOT] OK (0ms)
+04:32:52 [SHOT] FAIL #1 (25002ms)
+04:32:52 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:32:54 [SCAN] Revive → FALSE (27532ms)
+04:32:55 [SHOT] OK (122ms)
+04:32:55 [SHOT] OK (0ms)
+04:32:56 [SCAN] Supplies - In → FALSE (1390ms)
+04:32:56 [SHOT] OK (0ms)
+04:32:57 [SHOT] OK (0ms)
+04:32:58 [SCAN] Attack - Auto → FALSE (1360ms)
+04:32:58 [SHOT] OK (118ms)
+04:32:59 [SHOT] OK (0ms)
+04:33:00 [SCAN] Gathering - Automove → FALSE (1600ms)
+04:33:00 [SHOT] OK (0ms)
+04:33:01 [SHOT] OK (0ms)
+04:33:02 [SCAN] Attack - Auto On → FALSE (1266ms)
+04:33:27 [SHOT] FAIL #1 (25017ms)
+04:33:27 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:33:54 [SHOT] FAIL #2 (25015ms)
+04:33:54 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:33:58 [SCAN] Revive → FALSE (56062ms)
+04:33:58 [NODE] → Click: Attack - Auto
+04:34:01 [SHOT] OK (2788ms)
+04:34:01 [SCAN] Attack - Auto → FALSE (0ms)
+04:34:02 [NODE] → Click: Click 5P
+04:34:02 [SHOT] OK (0ms)
+04:34:02 [SCAN] Click 5P → FALSE (0ms)
+04:34:02 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+04:34:30 [SHOT] FAIL #1 (25004ms)
+04:34:30 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:34:57 [SHOT] FAIL #2 (25007ms)
+04:34:57 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:35:01 [SCAN] Supplies → FALSE (56013ms)
+04:35:07 [SHOT] OK (117ms)
+04:35:08 [SHOT] OK (0ms)
+04:35:08 [SCAN] Revive → FALSE (1499ms)
+04:35:09 [SHOT] OK (0ms)
+04:35:10 [SHOT] OK (0ms)
+04:35:10 [SCAN] Supplies - In → FALSE (1322ms)
+04:35:36 [SHOT] FAIL #1 (25015ms)
+04:35:36 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:35:39 [SHOT] OK (1434ms)
+04:35:40 [SCAN] Attack - Auto → FALSE (29163ms)
+04:35:41 [SHOT] OK (0ms)
+04:35:41 [SHOT] OK (0ms)
+04:35:42 [SCAN] Gathering - Automove → FALSE (1374ms)
+04:36:08 [SHOT] FAIL #1 (25007ms)
+04:36:08 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:36:35 [SHOT] FAIL #2 (25010ms)
+04:36:35 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:36:39 [SCAN] Attack - Auto On → FALSE (56020ms)
+04:37:05 [SHOT] FAIL #3 (25001ms)
+04:37:05 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:37:14 [SHOT] OK (1504ms)
+04:37:15 [SCAN] Revive → FALSE (35272ms)
+04:37:16 [NODE] → Click: Attack - Auto
+04:37:16 [SHOT] OK (0ms)
+04:37:16 [SCAN] Attack - Auto → FALSE (0ms)
+04:37:16 [NODE] → Click: Click 5P
+04:37:16 [SHOT] OK (0ms)
+04:37:16 [SCAN] Click 5P → FALSE (0ms)
+04:37:16 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+04:37:24 [SHOT] OK (3805ms)
+04:37:24 [SHOT] OK (0ms)
+04:37:25 [SCAN] Supplies → FALSE (5410ms)
+04:37:26 [SHOT] OK (0ms)
+04:37:26 [SHOT] OK (0ms)
+04:37:27 [SCAN] Revive → FALSE (1155ms)
+04:37:28 [SHOT] OK (532ms)
+04:37:29 [SHOT] OK (0ms)
+04:37:29 [SCAN] Supplies - In → FALSE (1684ms)
+04:37:30 [SHOT] OK (0ms)
+04:37:30 [SCAN] Attack - Auto → TRUE (7ms)
+04:37:30 [SHOT] OK (0ms)
+04:37:31 [SHOT] OK (0ms)
+04:37:31 [SCAN] Gathering - Automove → FALSE (1117ms)
+04:37:32 [SHOT] OK (153ms)
+04:37:32 [SCAN] Attack - Auto On → TRUE (172ms)
+04:37:33 [MACRO] Click 5P: Starting (0ms)
+04:37:38     - Step OK: ⚡ Hard Click 'Click 5P' at (1490,88)
+04:37:39 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:37:39 [Macro] Delay completed.
+04:37:39 [Macro] Steps completed. Checking result...
+04:37:39 [Macro] Finished (no capture check configured).
+04:37:39 [MACRO] Click 5P: PASSED (5718ms total)
+04:37:39 [MACRO] Revivie: Starting (0ms)
+04:37:39 [SHOT] OK (222ms)
+04:37:39 [SHOT] OK (0ms)
+04:37:40 [SHOT] OK (0ms)
+04:37:40 [SHOT] OK (0ms)
+04:37:40 [SHOT] OK (0ms)
+04:37:41     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:37:41 [MACRO] Revivie: FAILED (2189ms total)
+04:37:41 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+04:38:09 [SHOT] FAIL #1 (25012ms)
+04:38:09 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:38:13 [SHOT] OK (1341ms)
+04:38:13 [SCAN] Supplies → FALSE (28874ms)
+04:38:14 [SHOT] OK (0ms)
+04:38:14 [SHOT] OK (0ms)
+04:38:15 [SCAN] Revive → FALSE (1154ms)
+04:38:15 [SHOT] OK (0ms)
+04:38:23 [SHOT] OK (6982ms)
+04:38:23 [SCAN] Supplies - In → FALSE (8107ms)
+04:38:24 [SHOT] OK (0ms)
+04:38:24 [SCAN] Attack - Auto → TRUE (7ms)
+04:38:24 [SHOT] OK (0ms)
+04:38:25 [SHOT] OK (0ms)
+04:38:25 [SCAN] Gathering - Automove → FALSE (1235ms)
+04:38:51 [SHOT] FAIL #1 (25004ms)
+04:38:51 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:39:04 [SHOT] OK (11362ms)
+04:39:04 [SCAN] Attack - Auto On → TRUE (38385ms)
+04:39:05 [MACRO] Click 5P: Starting (0ms)
+04:39:10     - Step OK: ⚡ Hard Click 'Click 5P' at (1507,92)
+04:39:11 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:39:11 [Macro] Delay completed.
+04:39:11 [Macro] Steps completed. Checking result...
+04:39:11 [Macro] Finished (no capture check configured).
+04:39:11 [MACRO] Click 5P: PASSED (5631ms total)
+04:39:11 [MACRO] Revivie: Starting (0ms)
+04:39:35 [SHOT] OK (24713ms)
+04:39:36 [SHOT] OK (0ms)
+04:39:36 [SHOT] OK (0ms)
+04:39:37 [SHOT] OK (0ms)
+04:39:37 [SHOT] OK (0ms)
+04:39:38     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:39:38 [MACRO] Revivie: FAILED (27010ms total)
+04:39:43 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+04:40:07 [SHOT] OK (20841ms)
+04:40:08 [SHOT] OK (0ms)
+04:40:09 [SCAN] Supplies → FALSE (22478ms)
+04:40:09 [SHOT] OK (0ms)
+04:40:10 [SHOT] OK (0ms)
+04:40:11 [SCAN] Revive → FALSE (1434ms)
+04:40:36 [SHOT] FAIL #1 (25003ms)
+04:40:36 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:40:39 [SHOT] OK (631ms)
+04:40:40 [SCAN] Supplies - In → FALSE (28329ms)
+04:40:40 [SHOT] OK (0ms)
+04:40:40 [SCAN] Attack - Auto → TRUE (8ms)
+04:40:40 [SHOT] OK (0ms)
+04:40:41 [SHOT] OK (0ms)
+04:40:42 [SCAN] Gathering - Automove → FALSE (1269ms)
+04:41:07 [SHOT] FAIL #1 (25013ms)
+04:41:07 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:41:10 [SHOT] OK (249ms)
+04:41:10 [SCAN] Attack - Auto On → TRUE (27282ms)
+04:41:10 [MACRO] Click 5P: Starting (0ms)
+04:41:16     - Step OK: ⚡ Hard Click 'Click 5P' at (1534,95)
+04:41:16 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:41:16 [Macro] Delay completed.
+04:41:16 [Macro] Steps completed. Checking result...
+04:41:16 [Macro] Finished (no capture check configured).
+04:41:16 [MACRO] Click 5P: PASSED (5730ms total)
+04:41:16 [MACRO] Revivie: Starting (0ms)
+04:41:41 [SHOT] FAIL #1 (25013ms)
+04:41:41 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:41:45 [SHOT] OK (1386ms)
+04:41:45 [SHOT] OK (0ms)
+04:41:46 [SHOT] OK (0ms)
+04:41:46 [SHOT] OK (0ms)
+04:41:47     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:41:47 [MACRO] Revivie: FAILED (30432ms total)
+04:41:47 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+04:42:14 [SHOT] OK (23797ms)
+04:42:15 [SHOT] OK (0ms)
+04:42:15 [SCAN] Supplies → FALSE (25227ms)
+04:42:16 ============================================================
+04:42:16 SESSION END — Hybrid (71.1 min)
+04:42:16   Loops: 0
+04:42:16   Screenshots: 235 ok / 103 fail (30.5%)
+04:42:16   Avg latency: 2284ms
+04:42:16   Macros: 11 ok / 11 fail
+04:42:16   Errors: 0
+04:42:16 ============================================================
+04:54:18 ============================================================
+04:54:18 SESSION START — Hybrid (port:9225 tab:0)
+04:54:18 ============================================================
+04:54:18 [Hybrid] Starting worker: func=loop - Farm V1, port=9225, tab=0
+04:54:22 [Hybrid] Connected to Port 9225, Tab 0
+04:54:24 [SHOT] OK (1300ms)
+04:54:25 [SHOT] OK (0ms)
+04:54:26 [SCAN] Supplies → FALSE (3122ms)
+04:54:26 [SHOT] OK (0ms)
+04:54:27 [SHOT] OK (0ms)
+04:54:27 [SCAN] Revive → FALSE (1009ms)
+04:54:29 [SHOT] OK (1012ms)
+04:54:30 [SHOT] OK (0ms)
+04:54:30 [SCAN] Supplies - In → FALSE (2296ms)
+04:54:31 [SHOT] OK (0ms)
+04:54:31 [SCAN] Attack - Auto → TRUE (9ms)
+04:54:31 [SHOT] OK (0ms)
+04:54:32 [SHOT] OK (0ms)
+04:54:32 [SCAN] Gathering - Automove → FALSE (1448ms)
+04:54:58 [SHOT] FAIL #1 (25006ms)
+04:54:58 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:55:13 [SHOT] OK (13161ms)
+04:55:13 [SCAN] Attack - Auto On → TRUE (40296ms)
+04:55:14 [MACRO] Click 5P: Starting (0ms)
+04:55:19     - Step OK: ⚡ Hard Click 'Click 5P' at (1531,86)
+04:55:20 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:55:20 [Macro] Delay completed.
+04:55:20 [Macro] Steps completed. Checking result...
+04:55:20 [Macro] Finished (no capture check configured).
+04:55:20 [MACRO] Click 5P: PASSED (6040ms total)
+04:55:20 [MACRO] Revivie: Starting (0ms)
+04:55:33 [SHOT] OK (13426ms)
+04:55:34 [SHOT] OK (0ms)
+04:55:34 [SHOT] OK (0ms)
+04:55:35 [SHOT] OK (0ms)
+04:55:35 [SHOT] OK (0ms)
+04:55:35     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:55:35 [MACRO] Revivie: FAILED (15494ms total)
+04:55:35 [Hybrid] No next node after 'Macro' (ed214390). Restart 1/10
+04:55:39 [SHOT] OK (139ms)
+04:55:39 [SHOT] OK (0ms)
+04:55:40 [SCAN] Supplies → FALSE (1280ms)
+04:55:41 [SHOT] OK (0ms)
+04:55:41 [SHOT] OK (0ms)
+04:55:42 [SCAN] Revive → FALSE (1226ms)
+04:55:43 [SHOT] OK (398ms)
+04:55:44 [SHOT] OK (0ms)
+04:55:45 [SCAN] Supplies - In → FALSE (1699ms)
+04:55:45 [SHOT] OK (0ms)
+04:55:45 [SCAN] Attack - Auto → TRUE (8ms)
+04:55:46 [SHOT] OK (0ms)
+04:55:46 [SHOT] OK (0ms)
+04:55:47 [SCAN] Gathering - Automove → FALSE (1269ms)
+04:56:13 [SHOT] FAIL #1 (25012ms)
+04:56:13 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:56:40 [SHOT] FAIL #2 (25002ms)
+04:56:40 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:56:44 [SCAN] Attack - Auto On → FALSE (56016ms)
+04:57:09 [SHOT] FAIL #3 (25002ms)
+04:57:09 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:57:42 [SHOT] FAIL #4 (25014ms)
+04:57:42 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:57:58 [SCAN] Revive → FALSE (74019ms)
+04:57:58 [NODE] → Click: Attack - Auto
+04:58:24 [SHOT] FAIL #5 (25005ms)
+04:58:24 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:58:59 [NODE] → Click: Click 5P
+04:59:24 [SHOT] FAIL #6 (25007ms)
+04:59:24 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:59:54 [Hybrid] No next node after 'Click' (Click 5P). Restart 1/10
+05:00:23 [SHOT] FAIL #7 (25000ms)
+05:00:23 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:01:09 [SHOT] OK (16306ms)
+05:01:09 [SCAN] Supplies → TRUE (71319ms)
+05:01:09 [MACRO] Buy Blood: Starting (0ms)
+05:01:15     - Step OK: ⚡ Hard Click 'Supplies' at (1320,585)
+05:01:15 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:01:40 [SHOT] FAIL #1 (25002ms)
+05:01:40 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:02:07 [SHOT] FAIL #2 (25014ms)
+05:02:07 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:02:37 [SHOT] FAIL #3 (25014ms)
+05:02:37 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:03:11 [SHOT] FAIL #4 (25015ms)
+05:03:11 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:03:50 [SHOT] OK (23454ms)
+05:03:50     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:03:56     - Step OK: ⚡ Hard Click 'Supplies - Type' at (498,302)
+05:03:56 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:04:21 [SHOT] FAIL #1 (25010ms)
+05:04:21 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:04:49 [SHOT] FAIL #2 (25002ms)
+05:04:49 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:05:18 [SHOT] FAIL #3 (25015ms)
+05:05:18 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:05:29 [SHOT] OK (2800ms)
+05:05:29     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:05:35     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (790,542)
+05:05:35 [Macro] (6/8) Delay: 100ms (0.1s)...
+05:05:35 [Macro] Delay completed.
+05:05:40     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1009,713)
+05:05:46     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1529,133)
+05:05:46 [Macro] Steps completed. Checking result...
+05:06:12 [SHOT] FAIL #1 (25008ms)
+05:06:12 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:06:14 [Macro] Result: FAILURE ('Home' not found)
+05:06:14 [MACRO] Buy Blood: FAILED (304941ms total)
+05:06:14 ============================================================
+05:06:14 SESSION END — Hybrid (11.9 min)
+05:06:14   Loops: 0
+05:06:14   Screenshots: 27 ok / 16 fail (37.2%)
+05:06:14   Avg latency: 2667ms
+05:06:14   Macros: 1 ok / 2 fail
+05:06:14   Errors: 0
+05:06:14 ============================================================
+05:07:18 ============================================================
+05:07:18 SESSION START — Hybrid (port:9225 tab:0)
+05:07:18 ============================================================
+05:07:18 [Hybrid] Starting worker: func=macro - Home, port=9225, tab=0
+05:07:22 [Hybrid] Connected to Port 9225, Tab 0
+05:07:22 [MACRO] Home: Starting (0ms)
+05:07:27     - Step OK: ⚡ Hard Click 'Home' at (356,370)
+05:07:27 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:07:28 [SHOT] OK (234ms)
+05:07:28     - Marker OK: 'Supplies' confirmed APPEAR.
+05:07:28 [Macro] Steps completed. Checking result...
+05:07:29 [SHOT] OK (0ms)
+05:07:29 [Macro] Result: SUCCESS (found 'Supplies')
+05:07:29 [MACRO] Home: PASSED (6886ms total)
+05:07:29 ============================================================
+05:07:29 SESSION END — Hybrid (0.2 min)
+05:07:29   Loops: 0
+05:07:29   Screenshots: 2 ok / 0 fail (0.0%)
+05:07:29   Avg latency: 117ms
+05:07:29   Macros: 1 ok / 0 fail
+05:07:29   Errors: 0
+05:07:29 ============================================================
+05:11:29 ============================================================
+05:11:29 SESSION START — Hybrid (port:9225 tab:0)
+05:11:29 ============================================================
+05:11:29 [Hybrid] Starting worker: func=loop - Farm V1, port=9225, tab=0
+05:11:33 [Hybrid] Connected to Port 9225, Tab 0
+05:11:33 [LOOP] ── Loop iteration start ──
+05:11:58 [SHOT] FAIL #1 (25003ms)
+05:11:58 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:25 [SHOT] FAIL #2 (25013ms)
+05:12:25 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:29 [SCAN] Supplies → FALSE (56018ms)
+05:12:55 [SHOT] FAIL #3 (25014ms)
+05:12:55 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:13:28 [SHOT] FAIL #4 (25009ms)
+05:13:28 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:13:44 [SCAN] Revive → FALSE (74025ms)
+05:14:20 [SHOT] FAIL #5 (25014ms)
+05:14:20 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:15:15 [SHOT] FAIL #6 (25008ms)
+05:15:15 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:15:45 [SCAN] Supplies - In → FALSE (110024ms)
+05:16:10 [SHOT] FAIL #7 (25004ms)
+05:16:10 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:17:05 [SHOT] FAIL #8 (25009ms)
+05:17:05 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:17:35 [SCAN] Attack - Auto → FALSE (110016ms)
+05:17:46 [SHOT] OK (10004ms)
+05:17:47 [SHOT] OK (0ms)
+05:17:48 [SCAN] Gathering - Automove → FALSE (11348ms)
+05:17:48 [SHOT] OK (0ms)
+05:17:49 [SHOT] OK (0ms)
+05:17:49 [SCAN] Attack - Auto On → FALSE (1299ms)
+05:18:15 [SHOT] FAIL #1 (25012ms)
+05:18:15 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:18:42 [SHOT] FAIL #2 (25005ms)
+05:18:42 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:18:46 [SCAN] Revive → FALSE (56020ms)
+05:18:47 [NODE] → Click: Attack - Auto
+05:19:12 [SHOT] FAIL #3 (25013ms)
+05:19:12 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:19:20 [ERR] Click SKIP: 'Attack - Auto' screenshot failed
+05:19:20 [NODE] → Click: Click 5P
+05:19:45 [SHOT] FAIL #4 (25013ms)
+05:19:45 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:20:01 [ERR] Click SKIP: 'Click 5P' screenshot failed
+05:20:01 [ERR] DEAD END: No edge from 'Click' (Click 5P) — will trigger restart
+05:20:11 [ERR] RESTART: No next node after 'Click' (Click 5P). Restart 1/10
+05:20:14 [LOOP] ── Loop iteration start ──
+05:20:40 [SHOT] FAIL #5 (25003ms)
+05:20:40 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:21:26 [SHOT] FAIL #6 (16245ms)
+05:21:26 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:21:56 [SCAN] Supplies → FALSE (101250ms)
+05:21:56 ============================================================
+05:21:56 SESSION END — Hybrid (10.5 min)
+05:21:56   Loops: 0
+05:21:56   Screenshots: 4 ok / 14 fail (77.8%)
+05:21:56   Avg latency: 2501ms
+05:21:56   Macros: 0 ok / 0 fail
+05:21:56   Errors: 4
+05:21:56 ============================================================
+05:23:45 ============================================================
+05:23:45 SESSION START — Hybrid (port:9225 tab:0)
+05:23:45 ============================================================
+05:23:45 [Hybrid] Starting worker: func=macro - Home, port=9225, tab=0
+05:23:49 [Hybrid] Connected to Port 9225, Tab 0
+05:23:49 [MACRO] Home: Starting (0ms)
+05:23:55     - Step OK: ⚡ Hard Click 'Home' at (364,381)
+05:23:55 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:20 [SHOT] FAIL #1 (25014ms)
+05:24:20 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:24:48 [SHOT] FAIL #2 (25001ms)
+05:24:48 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:25:10 [SHOT] OK (17921ms)
+05:25:10     - Marker OK: 'Supplies' confirmed APPEAR.
+05:25:10 [Macro] Steps completed. Checking result...
+05:25:11 [SHOT] OK (0ms)
+05:25:11 [Macro] Result: SUCCESS (found 'Supplies')
+05:25:11 [MACRO] Home: PASSED (81637ms total)
+05:25:11 ============================================================
+05:25:11 SESSION END — Hybrid (1.4 min)
+05:25:11   Loops: 0
+05:25:11   Screenshots: 2 ok / 2 fail (50.0%)
+05:25:11   Avg latency: 8960ms
+05:25:11   Macros: 1 ok / 0 fail
+05:25:11   Errors: 0
+05:25:11 ============================================================
+05:26:44 ============================================================
+05:26:44 SESSION START — Hybrid (port:9225 tab:0)
+05:26:44 ============================================================
+05:26:44 [Hybrid] Starting worker: func=loop - Farm V1, port=9225, tab=0
+05:26:48 [Hybrid] Connected to Port 9225, Tab 0
+05:26:50 [LOOP] ── Loop iteration start ──
+05:26:51 [SHOT] OK (192ms)
+05:26:51 [SHOT] OK (0ms)
+05:26:52 [SCAN] Gathering - Inside → FALSE (1099ms)
+05:26:52 [SHOT] OK (0ms)
+05:26:53 [SCAN] Supplies → TRUE (14ms)
+05:26:53 [MACRO] Buy Blood: Starting (0ms)
+05:26:58     - Step OK: ⚡ Hard Click 'Supplies' at (1293,581)
+05:26:59 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:27:24 [SHOT] FAIL #1 (25014ms)
+05:27:24 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:27:51 [SHOT] FAIL #2 (25004ms)
+05:27:51 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:28:21 [SHOT] FAIL #3 (25002ms)
+05:28:21 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:28:54 [SHOT] FAIL #4 (25003ms)
+05:28:54 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:29:36 [SHOT] FAIL #5 (25003ms)
+05:29:36 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:30:18 [SHOT] OK (12259ms)
+05:30:18     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:30:24     - Step OK: ⚡ Hard Click 'Supplies - Type' at (502,318)
+05:30:24 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:30:49 [SHOT] FAIL #1 (25015ms)
+05:30:49 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:30:54 [SHOT] OK (2648ms)
+05:30:54     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:31:00     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (867,546)
+05:31:00 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:31:00 [Macro] Delay completed.
+05:31:05     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1004,719)
+05:31:06 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:31:07 [Macro] Delay completed.
+05:31:12     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1531,132)
+05:31:12 [Macro] Steps completed. Checking result...
+05:31:14 [SHOT] OK (183ms)
+05:31:14 [Macro] Result: SUCCESS (found 'Home')
+05:31:14 [MACRO] Buy Blood: PASSED (260616ms total)
+05:31:24 [MACRO] Gathering: Starting (0ms)
+05:31:49 [SHOT] FAIL #1 (25010ms)
+05:31:49 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:32:16 [SHOT] FAIL #2 (25007ms)
+05:32:16 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:32:45 [SHOT] FAIL #3 (25046ms)
+05:32:45 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:33:19 [SHOT] FAIL #4 (25008ms)
+05:33:19 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:33:54 [SHOT] OK (18893ms)
+05:33:59     - Step OK: Clicked 'Gathering'
+05:33:59 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:34:24 [SHOT] FAIL #1 (25003ms)
+05:34:24 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:34:27     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:34:27 [MACRO] Gathering: FAILED (183227ms total)
+05:34:27 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:34:37 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:34:40 [LOOP] ── Loop iteration start ──
+05:34:57 [SHOT] OK (16684ms)
+05:34:57 [SCAN] Gathering - Inside → TRUE (16703ms)
+05:34:58 ============================================================
+05:34:58 SESSION END — Hybrid (8.2 min)
+05:34:58   Loops: 0
+05:34:58   Screenshots: 8 ok / 11 fail (57.9%)
+05:34:58   Avg latency: 6357ms
+05:34:58   Macros: 1 ok / 1 fail
+05:34:58   Errors: 2
+05:34:58 ============================================================

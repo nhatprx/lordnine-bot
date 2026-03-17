@@ -1,0 +1,1888 @@
+03:08:36 ============================================================
+03:08:36 SESSION START — Xuka (port:9224 tab:2)
+03:08:36 ============================================================
+03:08:37 [Xuka] Starting worker: func=loop - Farm V1, port=9224, tab=2
+03:08:47 [Xuka] Connected to Port 9224, Tab 2
+03:09:12 [SHOT] FAIL #1 (25013ms)
+03:09:12 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:09:39 [SHOT] FAIL #2 (25003ms)
+03:09:39 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:09:43 [SCAN] Gathering - Inside → FALSE (56018ms)
+03:09:45 [SHOT] OK (1791ms)
+03:09:45 [SCAN] Supplies → TRUE (1802ms)
+03:09:46 [MACRO] Buy Blood: Starting (0ms)
+03:09:51     - Step OK: ⚡ Hard Click 'Supplies' at (1332,584)
+03:09:51 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:10:16 [SHOT] FAIL #1 (25001ms)
+03:10:16 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:10:44 [SHOT] FAIL #2 (25002ms)
+03:10:44 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:10:59 [SHOT] OK (9619ms)
+03:10:59     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:11:04     - Step OK: ⚡ Hard Click 'Supplies - Type' at (491,314)
+03:11:04 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:11:29 [SHOT] FAIL #1 (25006ms)
+03:11:29 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:11:57 [SHOT] FAIL #2 (25002ms)
+03:11:57 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:12:27 [SHOT] FAIL #3 (25005ms)
+03:12:27 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:13:01 [SHOT] FAIL #4 (25013ms)
+03:13:01 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:13:44 [SHOT] FAIL #5 (25011ms)
+03:13:44 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:14:39 [SHOT] FAIL #6 (25010ms)
+03:14:39 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:15:35 [SHOT] FAIL #7 (25001ms)
+03:15:35 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:16:30 [SHOT] FAIL #8 (25002ms)
+03:16:30 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:17:24 [SHOT] OK (23135ms)
+03:17:24     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:17:29     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (822,556)
+03:17:30 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:17:30 [Macro] Delay completed.
+03:17:35     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1044,727)
+03:17:35 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:17:36 [Macro] Delay completed.
+03:17:42     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1527,140)
+03:17:42 [Macro] Steps completed. Checking result...
+03:18:08 [SHOT] FAIL #1 (25017ms)
+03:18:08 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:18:10 [Macro] Result: FAILURE ('Home' not found)
+03:18:10 [MACRO] Buy Blood: FAILED (504286ms total)
+03:18:25 [Xuka] No next node after 'Macro' (ad649a80). Restart 1/10
+03:18:54 [SHOT] FAIL #2 (25001ms)
+03:18:54 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:19:23 [SHOT] FAIL #3 (25014ms)
+03:19:23 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:19:31 [SCAN] Gathering - Inside → FALSE (62018ms)
+03:19:56 [SHOT] FAIL #4 (25009ms)
+03:19:56 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:20:37 [SHOT] FAIL #5 (25015ms)
+03:20:37 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:21:07 [SCAN] Supplies → FALSE (96026ms)
+03:21:33 [SHOT] OK (24927ms)
+03:21:33 [SHOT] OK (0ms)
+03:21:34 [SCAN] Revive → FALSE (26214ms)
+03:21:34 [SHOT] OK (0ms)
+03:21:35 [SHOT] OK (0ms)
+03:21:36 [SCAN] Supplies - In → FALSE (1326ms)
+03:21:36 [SHOT] OK (168ms)
+03:21:37 [SHOT] OK (0ms)
+03:21:38 [SCAN] Gathering - Automove → FALSE (1517ms)
+03:21:38 [SHOT] OK (0ms)
+03:21:39 [SHOT] OK (0ms)
+03:21:40 [SCAN] Attack - Auto → FALSE (1502ms)
+03:21:54 [SHOT] OK (14091ms)
+03:21:55 [SHOT] OK (0ms)
+03:21:56 [SCAN] Attack - Auto On → FALSE (15535ms)
+03:21:56 [Xuka] No next node after 'Condition' (Attack - Auto On). Restart 1/10
+03:22:25 [SHOT] FAIL #1 (25015ms)
+03:22:25 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:22:30 [SHOT] OK (2905ms)
+03:22:30 [SCAN] Gathering - Inside → FALSE (30713ms)
+03:22:31 [SHOT] OK (0ms)
+03:22:31 [SCAN] Supplies → TRUE (10ms)
+03:22:32 [MACRO] Buy Blood: Starting (0ms)
+03:22:37     - Step OK: ⚡ Hard Click 'Supplies' at (1325,554)
+03:22:37 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:22:46 [SHOT] OK (8288ms)
+03:22:46     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:22:46     - Step OK: ⚡ Hard Click 'Supplies - Type' at (534,317)
+03:22:46 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:22:46 [SHOT] OK (0ms)
+03:22:47 [SHOT] OK (0ms)
+03:22:48 [SHOT] OK (0ms)
+03:22:50 [SHOT] OK (251ms)
+03:22:50     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:22:50     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (902,544)
+03:22:51 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:22:51 [Macro] Delay completed.
+03:22:51     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1086,723)
+03:22:51 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:22:53 [Macro] Delay completed.
+03:22:53     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1532,149)
+03:22:53 [Macro] Steps completed. Checking result...
+03:22:54 [SHOT] OK (165ms)
+03:22:54 [Macro] Result: SUCCESS (found 'Home')
+03:22:54 [MACRO] Buy Blood: PASSED (22632ms total)
+03:22:54 [MACRO] Gathering: Starting (0ms)
+03:22:54 [SHOT] OK (0ms)
+03:22:54     - Step OK: Clicked 'Gathering'
+03:22:55 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+03:22:55 [SHOT] OK (0ms)
+03:22:56 [SHOT] OK (0ms)
+03:22:56 [SHOT] OK (0ms)
+03:22:58 [SHOT] OK (224ms)
+03:22:58     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:22:58     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1113,598)
+03:22:58 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:23:11 [Macro] Delay completed.
+03:23:11 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+03:23:12 [SHOT] OK (616ms)
+03:23:13 [SHOT] OK (0ms)
+03:23:14 [SHOT] OK (0ms)
+03:23:14 [SHOT] OK (0ms)
+03:23:15 [SHOT] OK (252ms)
+03:23:15     - Marker triggered. Holding 6.5s...
+03:23:16 [SHOT] OK (0ms)
+03:23:17 [SHOT] OK (0ms)
+03:23:19 [SHOT] OK (630ms)
+03:23:19     - Marker interrupted. Resetting hold timer.
+03:23:19 [SHOT] OK (0ms)
+03:23:20 [SHOT] OK (0ms)
+03:23:21 [SHOT] OK (0ms)
+03:23:21 [SHOT] OK (0ms)
+03:23:22 [SHOT] OK (139ms)
+03:23:23 [SHOT] OK (0ms)
+03:23:24 [SHOT] OK (0ms)
+03:23:25 [SHOT] OK (0ms)
+03:23:25 [SHOT] OK (0ms)
+03:23:26 [SHOT] OK (129ms)
+03:23:27 [SHOT] OK (0ms)
+03:23:28 [SHOT] OK (0ms)
+03:23:29 [SHOT] OK (0ms)
+03:23:29 [SHOT] OK (151ms)
+03:23:30 [SHOT] OK (0ms)
+03:23:31 [SHOT] OK (0ms)
+03:23:32 [SHOT] OK (0ms)
+03:23:33 [SHOT] OK (158ms)
+03:23:34 [SHOT] OK (0ms)
+03:23:34 [SHOT] OK (0ms)
+03:23:35 [SHOT] OK (0ms)
+03:23:36 [SHOT] OK (240ms)
+03:23:37 [SHOT] OK (0ms)
+03:23:38 [SHOT] OK (0ms)
+03:23:39 [SHOT] OK (0ms)
+03:23:40 [SHOT] OK (204ms)
+03:23:41 [SHOT] OK (0ms)
+03:23:42 [SHOT] OK (0ms)
+03:23:42 [SHOT] OK (0ms)
+03:23:44 [SHOT] OK (192ms)
+03:23:45 [SHOT] OK (0ms)
+03:23:46 [SHOT] OK (0ms)
+03:23:47 [SHOT] OK (258ms)
+03:23:48 [SHOT] OK (0ms)
+03:23:49 [SHOT] OK (0ms)
+03:23:50 [SHOT] OK (0ms)
+03:23:51 [SHOT] OK (200ms)
+03:23:51 [SHOT] OK (0ms)
+03:23:52 [SHOT] OK (0ms)
+03:23:53 [SHOT] OK (0ms)
+03:23:55 [SHOT] OK (268ms)
+03:23:55 [SHOT] OK (0ms)
+03:23:56 [SHOT] OK (0ms)
+03:23:57 [SHOT] OK (0ms)
+03:23:59 [SHOT] OK (842ms)
+03:24:00 [SHOT] OK (0ms)
+03:24:01 [SHOT] OK (0ms)
+03:24:03 [SHOT] OK (266ms)
+03:24:03 [SHOT] OK (0ms)
+03:24:04 [SHOT] OK (0ms)
+03:24:04 [SHOT] OK (0ms)
+03:24:05 [SHOT] OK (0ms)
+03:24:06 [SHOT] OK (428ms)
+03:24:07 [SHOT] OK (0ms)
+03:24:07 [SHOT] OK (0ms)
+03:24:08 [SHOT] OK (0ms)
+03:24:08 [SHOT] OK (0ms)
+03:24:10 [SHOT] OK (1205ms)
+03:24:11 [SHOT] OK (0ms)
+03:24:12 [SHOT] OK (0ms)
+03:24:12 [SHOT] OK (0ms)
+03:24:13 [SHOT] OK (0ms)
+03:24:14 [SHOT] OK (382ms)
+03:24:15 [SHOT] OK (0ms)
+03:24:15 [SHOT] OK (0ms)
+03:24:16 [SHOT] OK (0ms)
+03:24:16 [SHOT] OK (0ms)
+03:24:17 [SHOT] OK (0ms)
+03:24:19 [SHOT] OK (522ms)
+03:24:20 [SHOT] OK (0ms)
+03:24:21 [SHOT] OK (0ms)
+03:24:21 [SHOT] OK (0ms)
+03:24:23 [SHOT] OK (850ms)
+03:24:24 [SHOT] OK (0ms)
+03:24:24 [SHOT] OK (0ms)
+03:24:25 [SHOT] OK (0ms)
+03:24:26 [SHOT] OK (0ms)
+03:24:27 [SHOT] OK (528ms)
+03:24:27     - Marker triggered. Holding 6.5s...
+03:24:28 [SHOT] OK (0ms)
+03:24:29 [SHOT] OK (0ms)
+03:24:30 [SHOT] OK (0ms)
+03:24:30 [SHOT] OK (278ms)
+03:24:30     - Marker interrupted. Resetting hold timer.
+03:24:31 [SHOT] OK (0ms)
+03:24:32 [SHOT] OK (0ms)
+03:24:34 [SHOT] OK (162ms)
+03:24:34 [SHOT] OK (0ms)
+03:24:35 [SHOT] OK (0ms)
+03:24:36 [SHOT] OK (0ms)
+03:24:37 [SHOT] OK (247ms)
+03:24:38 [SHOT] OK (0ms)
+03:24:39 [SHOT] OK (0ms)
+03:24:39 [SHOT] OK (0ms)
+03:24:40 [SHOT] OK (0ms)
+03:24:41 [SHOT] OK (184ms)
+03:24:42 [SHOT] OK (0ms)
+03:24:43 [SHOT] OK (0ms)
+03:24:44 [SHOT] OK (0ms)
+03:24:45 [SHOT] OK (158ms)
+03:24:46 [SHOT] OK (0ms)
+03:24:46 [SHOT] OK (0ms)
+03:24:47 [SHOT] OK (0ms)
+03:24:48 [SHOT] OK (0ms)
+03:24:49 [SHOT] OK (288ms)
+03:24:50 [SHOT] OK (0ms)
+03:24:51 [SHOT] OK (0ms)
+03:24:51 [SHOT] OK (0ms)
+03:24:53 [SHOT] OK (317ms)
+03:24:54 [SHOT] OK (0ms)
+03:24:54 [SHOT] OK (0ms)
+03:24:55 [SHOT] OK (0ms)
+03:24:56 [SHOT] OK (0ms)
+03:24:58 [SHOT] OK (512ms)
+03:24:59 [SHOT] OK (0ms)
+03:24:59 [SHOT] OK (0ms)
+03:25:00 [SHOT] OK (0ms)
+03:25:01 [SHOT] OK (422ms)
+03:25:02 [SHOT] OK (0ms)
+03:25:03 [SHOT] OK (0ms)
+03:25:04 [SHOT] OK (0ms)
+03:25:05 [SHOT] OK (155ms)
+03:25:06 [SHOT] OK (0ms)
+03:25:06 [SHOT] OK (0ms)
+03:25:07 [SHOT] OK (0ms)
+03:25:08 [SHOT] OK (0ms)
+03:25:09 [SHOT] OK (388ms)
+03:25:10 [SHOT] OK (0ms)
+03:25:11 [SHOT] OK (0ms)
+03:25:12 [SHOT] OK (0ms)
+03:25:13 [SHOT] OK (931ms)
+03:25:14     - Marker triggered. Holding 6.5s...
+03:25:14 [SHOT] OK (0ms)
+03:25:15 [SHOT] OK (0ms)
+03:25:16 [SHOT] OK (0ms)
+03:25:17 [SHOT] OK (195ms)
+03:25:17     - Holding... 3/6s
+03:25:18 [SHOT] OK (0ms)
+03:25:19 [SHOT] OK (0ms)
+03:25:21 [SHOT] OK (937ms)
+03:25:21     - Holding... 7/6s
+03:25:21     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:25:21 [SHOT] OK (0ms)
+03:25:22     - Step OK: Clicked 'Attack - Auto'
+03:25:23 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:25:24 [Macro] Delay completed.
+03:25:24 [SHOT] OK (0ms)
+03:25:24     - Step OK: Clicked 'Click 5P'
+03:25:24 [Macro] Steps completed. Checking result...
+03:25:26 [SHOT] OK (280ms)
+03:25:26 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+03:25:26 [MACRO] Gathering: PASSED (151410ms total)
+03:25:26 [Xuka] No next node after 'Macro' (cc882d55). Restart 1/10
+03:25:31 [SHOT] OK (2310ms)
+03:25:32 [SHOT] OK (0ms)
+03:25:33 [SCAN] Gathering - Inside → FALSE (3812ms)
+03:25:33 [SHOT] OK (0ms)
+03:25:34 [SHOT] OK (0ms)
+03:25:35 [SCAN] Supplies → FALSE (1175ms)
+03:25:35 [SHOT] OK (143ms)
+03:25:36 [SHOT] OK (0ms)
+03:25:37 [SCAN] Revive → FALSE (1612ms)
+03:25:37 [SHOT] OK (0ms)
+03:25:38 [SHOT] OK (0ms)
+03:25:39 [SCAN] Supplies - In → FALSE (1722ms)
+03:25:40 [SHOT] OK (403ms)
+03:25:41 [SHOT] OK (0ms)
+03:25:41 [SCAN] Gathering - Automove → FALSE (1804ms)
+03:25:42 [SHOT] OK (0ms)
+03:25:43 [SHOT] OK (0ms)
+03:25:43 [SCAN] Attack - Auto → FALSE (1207ms)
+03:25:44 [SHOT] OK (386ms)
+03:25:45 [SCAN] Attack - Auto On → TRUE (550ms)
+03:25:45 [MACRO] Click 5P: Starting (0ms)
+03:25:45     - Step OK: ⚡ Hard Click 'Click 5P' at (1502,84)
+03:25:46 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:25:46 [Macro] Delay completed.
+03:25:46 [Macro] Steps completed. Checking result...
+03:25:46 [Macro] Finished (no capture check configured).
+03:25:46 [MACRO] Click 5P: PASSED (1235ms total)
+03:25:46 [Xuka] No next node after 'Macro' (14253c0e). Restart 1/10
+03:25:50 [SHOT] OK (519ms)
+03:25:51 [SHOT] OK (0ms)
+03:25:52 [SCAN] Gathering - Inside → FALSE (2119ms)
+03:25:53 [SHOT] OK (0ms)
+03:25:53 [SHOT] OK (0ms)
+03:25:54 [SCAN] Supplies → FALSE (1116ms)
+03:25:55 [SHOT] OK (580ms)
+03:25:55 [SHOT] OK (0ms)
+03:25:56 [SCAN] Revive → FALSE (2228ms)
+03:25:57 [SHOT] OK (0ms)
+03:25:57 [SHOT] OK (0ms)
+03:25:58 [SCAN] Supplies - In → FALSE (1862ms)
+03:25:59 [SHOT] OK (152ms)
+03:26:00 [SHOT] OK (0ms)
+03:26:01 [SCAN] Gathering - Automove → FALSE (1522ms)
+03:26:01 [SHOT] OK (0ms)
+03:26:02 [SHOT] OK (0ms)
+03:26:03 [SCAN] Attack - Auto → FALSE (1618ms)
+03:26:04 [SHOT] OK (422ms)
+03:26:04 [SCAN] Attack - Auto On → TRUE (561ms)
+03:26:04 [MACRO] Click 5P: Starting (0ms)
+03:26:04     - Step OK: ⚡ Hard Click 'Click 5P' at (1509,98)
+03:26:05 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:26:05 [Macro] Delay completed.
+03:26:05 [Macro] Steps completed. Checking result...
+03:26:05 [Macro] Finished (no capture check configured).
+03:26:05 [MACRO] Click 5P: PASSED (814ms total)
+03:26:05 [Xuka] No next node after 'Macro' (14253c0e). Restart 1/10
+03:26:09 [SHOT] OK (152ms)
+03:26:09 [SHOT] OK (0ms)
+03:26:11 [SCAN] Gathering - Inside → FALSE (2166ms)
+03:26:11 [SHOT] OK (0ms)
+03:26:13 [SHOT] OK (572ms)
+03:26:13 [SCAN] Supplies → FALSE (2113ms)
+03:26:14 [SHOT] OK (0ms)
+03:26:16 [SHOT] OK (0ms)
+03:26:18 [SCAN] Revive → FALSE (3290ms)
+03:26:22 [SHOT] OK (3752ms)
+03:26:23 [SHOT] OK (0ms)
+03:26:23 [SCAN] Supplies - In → FALSE (5280ms)
+03:26:24 [SHOT] OK (0ms)
+03:26:26 [SHOT] OK (784ms)
+03:26:26 [SCAN] Gathering - Automove → FALSE (2087ms)
+03:26:27 [SHOT] OK (0ms)
+03:26:27 [SHOT] OK (0ms)
+03:26:28 [SCAN] Attack - Auto → FALSE (785ms)
+03:26:28 [SHOT] OK (0ms)
+03:26:28 [SCAN] Attack - Auto On → TRUE (23ms)
+03:26:28 [MACRO] Click 5P: Starting (0ms)
+03:26:34     - Step OK: ⚡ Hard Click 'Click 5P' at (1508,89)
+03:26:34 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:26:34 [Macro] Delay completed.
+03:26:34 [Macro] Steps completed. Checking result...
+03:26:34 [Macro] Finished (no capture check configured).
+03:26:34 [MACRO] Click 5P: PASSED (5680ms total)
+03:26:34 [Xuka] No next node after 'Macro' (14253c0e). Restart 1/10
+03:27:01 [SHOT] OK (23553ms)
+03:27:02 [SHOT] OK (0ms)
+03:27:03 [SCAN] Gathering - Inside → FALSE (24989ms)
+03:27:03 [SHOT] OK (0ms)
+03:27:04 [SHOT] OK (0ms)
+03:27:05 [SCAN] Supplies → FALSE (1259ms)
+03:27:30 [SHOT] FAIL #1 (25004ms)
+03:27:30 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:27:36 [SHOT] FAIL #2 (4245ms)
+03:27:36 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:27:40 [SCAN] Revive → FALSE (35253ms)
+03:27:41 ============================================================
+03:27:41 SESSION END — Xuka (19.1 min)
+03:27:41   Loops: 0
+03:27:41   Screenshots: 216 ok / 20 fail (8.5%)
+03:27:41   Avg latency: 617ms
+03:27:41   Macros: 5 ok / 1 fail
+03:27:41   Errors: 0
+03:27:41 ============================================================
+03:31:05 ============================================================
+03:31:05 SESSION START — Xuka (port:9224 tab:2)
+03:31:05 ============================================================
+03:31:06 [Xuka] Starting worker: func=loop - Farm V1, port=9224, tab=2
+03:31:20 [Xuka] Connected to Port 9224, Tab 2
+03:31:45 [SHOT] FAIL #1 (25005ms)
+03:31:45 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:09 [SHOT] OK (21889ms)
+03:32:10 [SCAN] Supplies → FALSE (49490ms)
+03:32:10 [SHOT] OK (0ms)
+03:32:11 [SHOT] OK (0ms)
+03:32:11 [SCAN] Revive → FALSE (1344ms)
+03:32:12 [SHOT] OK (0ms)
+03:32:37 [SHOT] FAIL #1 (25010ms)
+03:32:37 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:39 [SCAN] Supplies - In → FALSE (27753ms)
+03:32:41 [SHOT] OK (546ms)
+03:32:41 [SCAN] Attack - Auto → TRUE (554ms)
+03:32:41 [SHOT] OK (0ms)
+03:32:42 [SHOT] OK (0ms)
+03:32:42 [SCAN] Gathering - Automove → FALSE (1228ms)
+03:32:43 [SHOT] OK (0ms)
+03:32:43 [SCAN] Attack - Auto On → TRUE (18ms)
+03:32:44 [MACRO] Click 5P: Starting (0ms)
+03:32:49     - Step OK: ⚡ Hard Click 'Click 5P' at (1508,94)
+03:32:49 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:32:49 [Macro] Delay completed.
+03:32:49 [Macro] Steps completed. Checking result...
+03:32:49 [Macro] Finished (no capture check configured).
+03:32:49 [MACRO] Click 5P: PASSED (5777ms total)
+03:32:49 [MACRO] Revivie: Starting (0ms)
+03:33:11 [SHOT] OK (22085ms)
+03:33:12 [SHOT] OK (0ms)
+03:33:12 [SHOT] OK (0ms)
+03:33:13 [SHOT] OK (0ms)
+03:33:13 [SHOT] OK (0ms)
+03:33:14     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:33:14 [MACRO] Revivie: FAILED (24119ms total)
+03:33:14 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:33:17 [SHOT] OK (153ms)
+03:33:18 [SHOT] OK (0ms)
+03:33:19 [SCAN] Supplies → FALSE (1555ms)
+03:33:19 [SHOT] OK (0ms)
+03:33:20 [SHOT] OK (0ms)
+03:33:21 [SCAN] Revive → FALSE (1322ms)
+03:33:46 [SHOT] FAIL #1 (25014ms)
+03:33:46 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:34:13 [SHOT] FAIL #2 (25006ms)
+03:34:13 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:34:17 [SCAN] Supplies - In → FALSE (56021ms)
+03:34:22 [SHOT] OK (3507ms)
+03:34:22 [SCAN] Attack - Auto → TRUE (3515ms)
+03:34:22 [SHOT] OK (0ms)
+03:34:23 [SHOT] OK (0ms)
+03:34:24 [SCAN] Gathering - Automove → FALSE (1368ms)
+03:34:24 [SHOT] OK (0ms)
+03:34:24 [SCAN] Attack - Auto On → TRUE (18ms)
+03:34:25 [MACRO] Click 5P: Starting (0ms)
+03:34:30     - Step OK: ⚡ Hard Click 'Click 5P' at (1532,91)
+03:34:30 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:34:30 [Macro] Delay completed.
+03:34:30 [Macro] Steps completed. Checking result...
+03:34:30 [Macro] Finished (no capture check configured).
+03:34:30 [MACRO] Click 5P: PASSED (5663ms total)
+03:34:30 [MACRO] Revivie: Starting (0ms)
+03:34:52 [SHOT] OK (21717ms)
+03:34:52 [SHOT] OK (0ms)
+03:34:53 [SHOT] OK (0ms)
+03:34:53 [SHOT] OK (0ms)
+03:34:54 [SHOT] OK (0ms)
+03:34:54     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:34:54 [MACRO] Revivie: FAILED (23670ms total)
+03:34:54 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:35:22 [SHOT] FAIL #1 (25000ms)
+03:35:22 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:35:49 [SHOT] FAIL #2 (25009ms)
+03:35:49 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:35:53 [SCAN] Supplies → FALSE (56010ms)
+03:36:34 [SHOT] FAIL #3 (25011ms)
+03:36:34 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:37:07 [SHOT] FAIL #4 (25012ms)
+03:37:07 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:37:23 [SCAN] Revive → FALSE (74025ms)
+03:37:49 [SHOT] FAIL #5 (25004ms)
+03:37:49 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:38:44 [SHOT] FAIL #6 (25008ms)
+03:38:44 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:39:14 [SCAN] Supplies - In → FALSE (110064ms)
+03:39:38 [SHOT] OK (23345ms)
+03:39:38 [SCAN] Attack - Auto → TRUE (23353ms)
+03:39:38 [SHOT] OK (0ms)
+03:39:39 [SHOT] OK (0ms)
+03:39:40 [SCAN] Gathering - Automove → FALSE (1340ms)
+03:39:40 [SHOT] OK (0ms)
+03:39:40 [SCAN] Attack - Auto On → TRUE (18ms)
+03:39:41 [MACRO] Click 5P: Starting (0ms)
+03:39:46     - Step OK: ⚡ Hard Click 'Click 5P' at (1526,87)
+03:39:46 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:39:46 [Macro] Delay completed.
+03:39:46 [Macro] Steps completed. Checking result...
+03:39:46 [Macro] Finished (no capture check configured).
+03:39:46 [MACRO] Click 5P: PASSED (5702ms total)
+03:39:46 [MACRO] Revivie: Starting (0ms)
+03:40:08 [SHOT] OK (21824ms)
+03:40:09 [SHOT] OK (0ms)
+03:40:09 [SHOT] OK (0ms)
+03:40:09 [SHOT] OK (0ms)
+03:40:10 [SHOT] OK (0ms)
+03:40:10     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:40:10 [MACRO] Revivie: FAILED (23794ms total)
+03:40:10 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:40:31 [SHOT] OK (17427ms)
+03:40:32 [SHOT] OK (0ms)
+03:40:32 [SCAN] Supplies → FALSE (18750ms)
+03:40:33 [SHOT] OK (0ms)
+03:40:33 [SHOT] OK (0ms)
+03:40:34 [SCAN] Revive → FALSE (1533ms)
+03:41:00 [SHOT] FAIL #1 (25011ms)
+03:41:00 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:41:06 [SHOT] OK (3941ms)
+03:41:06 [SCAN] Supplies - In → FALSE (31724ms)
+03:41:12 [SHOT] OK (159ms)
+03:41:12 [SCAN] Attack - Auto → TRUE (167ms)
+03:41:13 [SHOT] OK (0ms)
+03:41:13 [SHOT] OK (0ms)
+03:41:14 [SCAN] Gathering - Automove → FALSE (1491ms)
+03:41:15 [SHOT] OK (0ms)
+03:41:15 [SCAN] Attack - Auto On → TRUE (19ms)
+03:41:15 [MACRO] Click 5P: Starting (0ms)
+03:41:20     - Step OK: ⚡ Hard Click 'Click 5P' at (1488,85)
+03:41:21 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:41:21 [Macro] Delay completed.
+03:41:21 [Macro] Steps completed. Checking result...
+03:41:21 [Macro] Finished (no capture check configured).
+03:41:21 [MACRO] Click 5P: PASSED (5620ms total)
+03:41:21 [MACRO] Revivie: Starting (0ms)
+03:41:21 [SHOT] OK (170ms)
+03:41:21 [SHOT] OK (0ms)
+03:41:22 [SHOT] OK (0ms)
+03:41:22 [SHOT] OK (0ms)
+03:41:22 [SHOT] OK (0ms)
+03:41:23     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:41:23 [MACRO] Revivie: FAILED (2211ms total)
+03:41:23 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:41:27 [SHOT] OK (172ms)
+03:41:27 [SHOT] OK (0ms)
+03:41:28 [SCAN] Supplies → FALSE (1718ms)
+03:41:29 [SHOT] OK (0ms)
+03:41:30 [SHOT] OK (140ms)
+03:41:31 [SCAN] Revive → FALSE (1795ms)
+03:41:31 [SHOT] OK (0ms)
+03:41:32 [SHOT] OK (0ms)
+03:41:33 [SCAN] Supplies - In → FALSE (1484ms)
+03:41:33 [SHOT] OK (272ms)
+03:41:33 [SCAN] Attack - Auto → TRUE (280ms)
+03:41:34 [SHOT] OK (0ms)
+03:41:35 [SHOT] OK (0ms)
+03:41:36 [SCAN] Gathering - Automove → FALSE (1667ms)
+03:41:36 [SHOT] OK (0ms)
+03:41:36 [SCAN] Attack - Auto On → TRUE (18ms)
+03:41:37 [MACRO] Click 5P: Starting (0ms)
+03:41:42     - Step OK: ⚡ Hard Click 'Click 5P' at (1505,83)
+03:41:42 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:41:42 [Macro] Delay completed.
+03:41:42 [Macro] Steps completed. Checking result...
+03:41:42 [Macro] Finished (no capture check configured).
+03:41:42 [MACRO] Click 5P: PASSED (5703ms total)
+03:41:42 [MACRO] Revivie: Starting (0ms)
+03:41:43 [SHOT] OK (272ms)
+03:41:43 [SHOT] OK (0ms)
+03:41:44 [SHOT] OK (0ms)
+03:41:44 [SHOT] OK (0ms)
+03:41:45 [SHOT] OK (0ms)
+03:41:45     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:41:45 [MACRO] Revivie: FAILED (2522ms total)
+03:41:45 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:41:49 [SHOT] OK (449ms)
+03:41:50 [SHOT] OK (0ms)
+03:41:51 [SCAN] Supplies → FALSE (2052ms)
+03:41:51 [SHOT] OK (0ms)
+03:41:52 [SHOT] OK (0ms)
+03:41:52 [SCAN] Revive → FALSE (1230ms)
+03:41:53 [SHOT] OK (150ms)
+03:41:54 [SHOT] OK (0ms)
+03:41:54 [SCAN] Supplies - In → FALSE (1434ms)
+03:41:55 [SHOT] OK (0ms)
+03:41:55 [SCAN] Attack - Auto → TRUE (7ms)
+03:41:56 [SHOT] OK (0ms)
+03:41:57 [SHOT] OK (158ms)
+03:41:58 [SCAN] Gathering - Automove → FALSE (1732ms)
+03:41:58 [SHOT] OK (0ms)
+03:41:58 [SCAN] Attack - Auto On → TRUE (18ms)
+03:41:58 [MACRO] Click 5P: Starting (0ms)
+03:42:04     - Step OK: ⚡ Hard Click 'Click 5P' at (1507,91)
+03:42:04 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:42:04 [Macro] Delay completed.
+03:42:04 [Macro] Steps completed. Checking result...
+03:42:04 [Macro] Finished (no capture check configured).
+03:42:04 [MACRO] Click 5P: PASSED (5860ms total)
+03:42:04 [MACRO] Revivie: Starting (0ms)
+03:42:05 [SHOT] OK (207ms)
+03:42:05 [SHOT] OK (0ms)
+03:42:05 [SHOT] OK (0ms)
+03:42:06 [SHOT] OK (0ms)
+03:42:06 [SHOT] OK (0ms)
+03:42:07     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:42:07 [MACRO] Revivie: FAILED (2186ms total)
+03:42:07 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:42:10 [SHOT] OK (151ms)
+03:42:11 [SHOT] OK (0ms)
+03:42:12 [SCAN] Supplies → FALSE (1531ms)
+03:42:12 [SHOT] OK (0ms)
+03:42:13 [SHOT] OK (0ms)
+03:42:13 [SCAN] Revive → FALSE (1271ms)
+03:42:14 [SHOT] OK (155ms)
+03:42:15 [SHOT] OK (0ms)
+03:42:15 [SCAN] Supplies - In → FALSE (1718ms)
+03:42:16 [SHOT] OK (0ms)
+03:42:16 [SCAN] Attack - Auto → TRUE (8ms)
+03:42:17 [SHOT] OK (0ms)
+03:42:17 [SHOT] OK (151ms)
+03:42:18 [SCAN] Gathering - Automove → FALSE (1450ms)
+03:42:19 [SHOT] OK (0ms)
+03:42:19 [SCAN] Attack - Auto On → TRUE (21ms)
+03:42:19 [MACRO] Click 5P: Starting (0ms)
+03:42:25     - Step OK: ⚡ Hard Click 'Click 5P' at (1502,100)
+03:42:25 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:42:25 [Macro] Delay completed.
+03:42:25 [Macro] Steps completed. Checking result...
+03:42:25 [Macro] Finished (no capture check configured).
+03:42:25 [MACRO] Click 5P: PASSED (5648ms total)
+03:42:25 [MACRO] Revivie: Starting (0ms)
+03:42:25 [SHOT] OK (181ms)
+03:42:26 [SHOT] OK (0ms)
+03:42:26 [SHOT] OK (0ms)
+03:42:26 [SHOT] OK (0ms)
+03:42:27 [SHOT] OK (0ms)
+03:42:27     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:42:27 [MACRO] Revivie: FAILED (2180ms total)
+03:42:27 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:42:31 [SHOT] OK (161ms)
+03:42:32 [SHOT] OK (0ms)
+03:42:32 [SCAN] Supplies → FALSE (1708ms)
+03:42:33 [SHOT] OK (0ms)
+03:42:33 [SHOT] OK (0ms)
+03:42:34 [SCAN] Revive → FALSE (1200ms)
+03:42:35 [SHOT] OK (153ms)
+03:42:36 [SHOT] OK (0ms)
+03:42:36 [SCAN] Supplies - In → FALSE (1637ms)
+03:42:37 [SHOT] OK (0ms)
+03:42:37 [SCAN] Attack - Auto → TRUE (8ms)
+03:42:37 [SHOT] OK (0ms)
+03:42:38 [SHOT] OK (163ms)
+03:42:39 [SCAN] Gathering - Automove → FALSE (1356ms)
+03:42:39 [SHOT] OK (0ms)
+03:42:39 [SCAN] Attack - Auto On → TRUE (22ms)
+03:42:40 [MACRO] Click 5P: Starting (0ms)
+03:42:45     - Step OK: ⚡ Hard Click 'Click 5P' at (1498,97)
+03:42:46 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:42:46 [Macro] Delay completed.
+03:42:46 [Macro] Steps completed. Checking result...
+03:42:46 [Macro] Finished (no capture check configured).
+03:42:46 [MACRO] Click 5P: PASSED (5770ms total)
+03:42:46 [MACRO] Revivie: Starting (0ms)
+03:42:46 [SHOT] OK (172ms)
+03:42:46 [SHOT] OK (0ms)
+03:42:47 [SHOT] OK (0ms)
+03:42:47 [SHOT] OK (0ms)
+03:42:47 [SHOT] OK (0ms)
+03:42:48     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:42:48 [MACRO] Revivie: FAILED (2145ms total)
+03:42:48 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:42:52 [SHOT] OK (304ms)
+03:42:52 [SHOT] OK (0ms)
+03:42:53 [SCAN] Supplies → FALSE (1292ms)
+03:42:53 [SHOT] OK (0ms)
+03:42:54 [SHOT] OK (0ms)
+03:42:55 [SCAN] Revive → FALSE (1678ms)
+03:42:56 [SHOT] OK (431ms)
+03:42:57 [SHOT] OK (0ms)
+03:42:58 [SCAN] Supplies - In → FALSE (2023ms)
+03:42:58 [SHOT] OK (0ms)
+03:42:58 [SCAN] Attack - Auto → TRUE (7ms)
+03:42:59 [SHOT] OK (0ms)
+03:43:00 [SHOT] OK (360ms)
+03:43:00 [SCAN] Gathering - Automove → FALSE (1406ms)
+03:43:01 [SHOT] OK (0ms)
+03:43:01 [SCAN] Attack - Auto On → TRUE (19ms)
+03:43:01 [MACRO] Click 5P: Starting (0ms)
+03:43:07     - Step OK: ⚡ Hard Click 'Click 5P' at (1530,85)
+03:43:07 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:43:07 [Macro] Delay completed.
+03:43:07 [Macro] Steps completed. Checking result...
+03:43:07 [Macro] Finished (no capture check configured).
+03:43:07 [MACRO] Click 5P: PASSED (5697ms total)
+03:43:07 [MACRO] Revivie: Starting (0ms)
+03:43:07 [SHOT] OK (179ms)
+03:43:08 [SHOT] OK (0ms)
+03:43:08 [SHOT] OK (0ms)
+03:43:08 [SHOT] OK (0ms)
+03:43:09 [SHOT] OK (0ms)
+03:43:09     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:43:09 [MACRO] Revivie: FAILED (2174ms total)
+03:43:09 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:43:13 [SHOT] OK (169ms)
+03:43:13 [SHOT] OK (0ms)
+03:43:14 [SCAN] Supplies → FALSE (1059ms)
+03:43:15 [SHOT] OK (0ms)
+03:43:15 [SHOT] OK (0ms)
+03:43:16 [SCAN] Revive → FALSE (1740ms)
+03:43:17 [SHOT] OK (345ms)
+03:43:18 [SHOT] OK (0ms)
+03:43:18 [SCAN] Supplies - In → FALSE (1445ms)
+03:43:19 [SHOT] OK (0ms)
+03:43:19 [SCAN] Attack - Auto → TRUE (7ms)
+03:43:19 [SHOT] OK (0ms)
+03:43:20 [SHOT] OK (0ms)
+03:43:21 [SCAN] Gathering - Automove → FALSE (1350ms)
+03:43:21 [SHOT] OK (169ms)
+03:43:21 [SCAN] Attack - Auto On → TRUE (187ms)
+03:43:22 [MACRO] Click 5P: Starting (0ms)
+03:43:27     - Step OK: ⚡ Hard Click 'Click 5P' at (1493,83)
+03:43:27 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:43:27 [Macro] Delay completed.
+03:43:27 [Macro] Steps completed. Checking result...
+03:43:27 [Macro] Finished (no capture check configured).
+03:43:27 [MACRO] Click 5P: PASSED (5601ms total)
+03:43:27 [MACRO] Revivie: Starting (0ms)
+03:43:28 [SHOT] OK (169ms)
+03:43:28 [SHOT] OK (0ms)
+03:43:28 [SHOT] OK (0ms)
+03:43:29 [SHOT] OK (0ms)
+03:43:29 [SHOT] OK (0ms)
+03:43:30     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:43:30 [MACRO] Revivie: FAILED (2136ms total)
+03:43:30 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:43:33 [SHOT] OK (157ms)
+03:43:34 [SHOT] OK (0ms)
+03:43:35 [SCAN] Supplies → FALSE (1453ms)
+03:43:35 [SHOT] OK (0ms)
+03:43:36 [SHOT] OK (0ms)
+03:43:36 [SCAN] Revive → FALSE (1044ms)
+03:43:37 [SHOT] OK (180ms)
+03:43:38 [SHOT] OK (0ms)
+03:43:38 [SCAN] Supplies - In → FALSE (1228ms)
+03:43:39 [SHOT] OK (0ms)
+03:43:39 [SCAN] Attack - Auto → TRUE (9ms)
+03:43:39 [SHOT] OK (0ms)
+03:43:40 [SHOT] OK (153ms)
+03:43:41 [SCAN] Gathering - Automove → FALSE (1450ms)
+03:43:42 [SHOT] OK (0ms)
+03:43:42 [SCAN] Attack - Auto On → TRUE (18ms)
+03:43:42 [MACRO] Click 5P: Starting (0ms)
+03:43:47     - Step OK: ⚡ Hard Click 'Click 5P' at (1532,86)
+03:43:48 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:43:48 [Macro] Delay completed.
+03:43:48 [Macro] Steps completed. Checking result...
+03:43:48 [Macro] Finished (no capture check configured).
+03:43:48 [MACRO] Click 5P: PASSED (5641ms total)
+03:43:48 [MACRO] Revivie: Starting (0ms)
+03:43:48 [SHOT] OK (170ms)
+03:43:48 [SHOT] OK (0ms)
+03:43:49 [SHOT] OK (0ms)
+03:43:49 [SHOT] OK (0ms)
+03:43:50 [SHOT] OK (0ms)
+03:43:50     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:43:50 [MACRO] Revivie: FAILED (2199ms total)
+03:43:50 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:43:54 [SHOT] OK (206ms)
+03:43:54 [SHOT] OK (0ms)
+03:43:55 [SCAN] Supplies → FALSE (1210ms)
+03:43:56 [SHOT] OK (0ms)
+03:43:56 [SHOT] OK (0ms)
+03:43:57 [SCAN] Revive → FALSE (1165ms)
+03:43:57 [SHOT] OK (222ms)
+03:43:58 [SHOT] OK (0ms)
+03:43:59 [SCAN] Supplies - In → FALSE (1767ms)
+03:43:59 [SHOT] OK (0ms)
+03:43:59 [SCAN] Attack - Auto → TRUE (8ms)
+03:44:00 [SHOT] OK (0ms)
+03:44:01 [SHOT] OK (216ms)
+03:44:02 [SCAN] Gathering - Automove → FALSE (1893ms)
+03:44:03 [SHOT] OK (0ms)
+03:44:03 [SCAN] Attack - Auto On → TRUE (19ms)
+03:44:03 [MACRO] Click 5P: Starting (0ms)
+03:44:08     - Step OK: ⚡ Hard Click 'Click 5P' at (1487,89)
+03:44:09 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:44:09 [Macro] Delay completed.
+03:44:09 [Macro] Steps completed. Checking result...
+03:44:09 [Macro] Finished (no capture check configured).
+03:44:09 [MACRO] Click 5P: PASSED (5801ms total)
+03:44:09 [MACRO] Revivie: Starting (0ms)
+03:44:10 [SHOT] OK (904ms)
+03:44:10 [SHOT] OK (0ms)
+03:44:11 [SHOT] OK (0ms)
+03:44:11 [SHOT] OK (0ms)
+03:44:11 [SHOT] OK (0ms)
+03:44:12     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:44:12 [MACRO] Revivie: FAILED (2959ms total)
+03:44:12 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:44:16 [SHOT] OK (362ms)
+03:44:16 [SHOT] OK (0ms)
+03:44:17 [SCAN] Supplies → FALSE (1444ms)
+03:44:17 [SHOT] OK (0ms)
+03:44:18 [SHOT] OK (0ms)
+03:44:19 [SCAN] Revive → FALSE (1464ms)
+03:44:20 [SHOT] OK (162ms)
+03:44:20 [SHOT] OK (0ms)
+03:44:21 [SCAN] Supplies - In → FALSE (1558ms)
+03:44:22 [SHOT] OK (0ms)
+03:44:22 [SCAN] Attack - Auto → TRUE (8ms)
+03:44:22 [SHOT] OK (0ms)
+03:44:23 [SHOT] OK (151ms)
+03:44:24 [SCAN] Gathering - Automove → FALSE (1520ms)
+03:44:24 [SHOT] OK (0ms)
+03:44:24 [SCAN] Attack - Auto On → TRUE (22ms)
+03:44:25 [MACRO] Click 5P: Starting (0ms)
+03:44:30     - Step OK: ⚡ Hard Click 'Click 5P' at (1495,95)
+03:44:30 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:44:30 [Macro] Delay completed.
+03:44:30 [Macro] Steps completed. Checking result...
+03:44:30 [Macro] Finished (no capture check configured).
+03:44:30 [MACRO] Click 5P: PASSED (5717ms total)
+03:44:30 [MACRO] Revivie: Starting (0ms)
+03:44:55 [SHOT] FAIL #1 (25004ms)
+03:44:55 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:45:23 [SHOT] FAIL #2 (25014ms)
+03:45:23 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:45:52 [SHOT] FAIL #3 (25031ms)
+03:45:52 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:46:01 [SHOT] OK (887ms)
+03:46:02 [SHOT] OK (0ms)
+03:46:02     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:46:02 [MACRO] Revivie: FAILED (91639ms total)
+03:46:07 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:46:33 [SHOT] OK (22831ms)
+03:46:34 [SHOT] OK (0ms)
+03:46:35 [SCAN] Supplies → FALSE (24298ms)
+03:46:35 [SHOT] OK (0ms)
+03:46:36 [SHOT] OK (0ms)
+03:46:37 [SCAN] Revive → FALSE (1602ms)
+03:47:03 [SHOT] FAIL #1 (25007ms)
+03:47:03 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:47:30 [SHOT] FAIL #2 (25007ms)
+03:47:30 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:47:34 [SCAN] Supplies - In → FALSE (56016ms)
+03:47:59 [SHOT] FAIL #3 (25015ms)
+03:47:59 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:48:09 [SHOT] OK (1898ms)
+03:48:09 [SCAN] Attack - Auto → TRUE (34921ms)
+03:48:10 [SHOT] OK (0ms)
+03:48:11 [SHOT] OK (0ms)
+03:48:11 [SCAN] Gathering - Automove → FALSE (1534ms)
+03:48:12 [SHOT] OK (0ms)
+03:48:12 [SCAN] Attack - Auto On → TRUE (18ms)
+03:48:12 [MACRO] Click 5P: Starting (0ms)
+03:48:18     - Step OK: ⚡ Hard Click 'Click 5P' at (1526,92)
+03:48:18 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:48:18 [Macro] Delay completed.
+03:48:18 [Macro] Steps completed. Checking result...
+03:48:18 [Macro] Finished (no capture check configured).
+03:48:18 [MACRO] Click 5P: PASSED (5602ms total)
+03:48:18 [MACRO] Revivie: Starting (0ms)
+03:48:43 [SHOT] FAIL #1 (25014ms)
+03:48:43 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:49:10 [SHOT] FAIL #2 (25016ms)
+03:49:10 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:49:17 [SHOT] OK (2256ms)
+03:49:17 [SHOT] OK (0ms)
+03:49:18 [SHOT] OK (0ms)
+03:49:18     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:49:18 [MACRO] Revivie: FAILED (60156ms total)
+03:49:18 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:49:22 [SHOT] OK (160ms)
+03:49:22 [SHOT] OK (0ms)
+03:49:23 [SCAN] Supplies → FALSE (1306ms)
+03:49:24 [SHOT] OK (0ms)
+03:49:24 [SHOT] OK (0ms)
+03:49:25 [SCAN] Revive → FALSE (1204ms)
+03:49:51 [SHOT] FAIL #1 (25003ms)
+03:49:51 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:50:18 [SHOT] FAIL #2 (25005ms)
+03:50:18 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:50:22 [SCAN] Supplies - In → FALSE (56008ms)
+03:50:47 [SHOT] FAIL #3 (25005ms)
+03:50:47 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:51:20 [SHOT] FAIL #4 (25009ms)
+03:51:20 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:51:36 [SCAN] Attack - Auto → FALSE (74016ms)
+03:52:06 [SHOT] FAIL #5 (25003ms)
+03:52:06 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:53:01 [SHOT] FAIL #6 (25003ms)
+03:53:01 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:53:31 [SCAN] Gathering - Automove → FALSE (110008ms)
+03:53:57 [SHOT] FAIL #7 (25014ms)
+03:53:57 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:54:43 [SHOT] OK (16050ms)
+03:54:43 [SCAN] Attack - Auto On → TRUE (71083ms)
+03:54:43 [MACRO] Click 5P: Starting (0ms)
+03:54:49     - Step OK: ⚡ Hard Click 'Click 5P' at (1510,100)
+03:54:49 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:54:49 [Macro] Delay completed.
+03:54:49 [Macro] Steps completed. Checking result...
+03:54:49 [Macro] Finished (no capture check configured).
+03:54:49 [MACRO] Click 5P: PASSED (5720ms total)
+03:54:49 [MACRO] Revivie: Starting (0ms)
+03:55:14 [SHOT] OK (24452ms)
+03:55:14 [SHOT] OK (0ms)
+03:55:14 [SHOT] OK (0ms)
+03:55:15 [SHOT] OK (0ms)
+03:55:15 [SHOT] OK (0ms)
+03:55:16     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:55:16 [MACRO] Revivie: FAILED (26436ms total)
+03:55:16 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+03:55:44 [SHOT] OK (25008ms)
+03:55:45 [SHOT] OK (0ms)
+03:55:46 [SCAN] Supplies → FALSE (26390ms)
+03:55:46 [SHOT] OK (0ms)
+03:55:47 [SHOT] OK (0ms)
+03:55:48 [SCAN] Revive → FALSE (1465ms)
+03:56:13 [SHOT] FAIL #1 (25001ms)
+03:56:13 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:56:18 [SHOT] OK (3126ms)
+03:56:19 [SCAN] Supplies - In → FALSE (30790ms)
+03:56:49 [SHOT] FAIL #1 (25002ms)
+03:56:49 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:57:16 [SHOT] FAIL #2 (25015ms)
+03:57:16 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:57:20 [SCAN] Attack - Auto → FALSE (56020ms)
+03:57:46 [SHOT] FAIL #3 (25011ms)
+03:57:46 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:58:19 [SHOT] FAIL #4 (25014ms)
+03:58:19 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:58:35 [SCAN] Gathering - Automove → FALSE (74026ms)
+03:59:00 [SHOT] FAIL #5 (25008ms)
+03:59:00 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:59:37 [SHOT] OK (6364ms)
+03:59:37 [SCAN] Attack - Auto On → FALSE (61774ms)
+03:59:37 [SHOT] OK (0ms)
+03:59:38 [SHOT] OK (0ms)
+03:59:39 [SCAN] Revive → FALSE (1286ms)
+03:59:39 [NODE] → Click: Attack - Auto
+03:59:39 [SHOT] OK (0ms)
+03:59:39 [SCAN] Attack - Auto → FALSE (0ms)
+03:59:40 [NODE] → Click: Click 5P
+03:59:40 [SHOT] OK (0ms)
+03:59:40 [SCAN] Click 5P → FALSE (0ms)
+03:59:40 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:00:07 [SHOT] OK (24079ms)
+04:00:08 [SHOT] OK (0ms)
+04:00:09 [SCAN] Supplies → FALSE (25321ms)
+04:00:09 [SHOT] OK (0ms)
+04:00:10 [SHOT] OK (0ms)
+04:00:11 [SCAN] Revive → FALSE (1221ms)
+04:00:36 [SHOT] FAIL #1 (25008ms)
+04:00:36 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:01:03 [SHOT] FAIL #2 (25008ms)
+04:01:03 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:01:07 [SCAN] Supplies - In → FALSE (56023ms)
+04:01:38 [SHOT] FAIL #3 (25014ms)
+04:01:38 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:02:11 [SHOT] FAIL #4 (25007ms)
+04:02:11 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:02:27 [SCAN] Attack - Auto → FALSE (74024ms)
+04:02:27 [Xuka] Connection rotation — periodic reconnect
+04:02:30 [Xuka] Connection rotated successfully
+04:02:55 [SHOT] FAIL #5 (25004ms)
+04:02:55 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:03:30 [SHOT] OK (5878ms)
+04:03:31 [SCAN] Gathering - Automove → FALSE (61789ms)
+04:03:32 [SHOT] OK (0ms)
+04:03:33 [SHOT] OK (0ms)
+04:03:33 [SCAN] Attack - Auto On → FALSE (1316ms)
+04:03:59 [SHOT] FAIL #1 (25004ms)
+04:03:59 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:04:02 [SHOT] OK (1554ms)
+04:04:03 [SCAN] Revive → FALSE (29049ms)
+04:04:03 [NODE] → Click: Attack - Auto
+04:04:03 [SHOT] OK (0ms)
+04:04:03 [SCAN] Attack - Auto → FALSE (0ms)
+04:04:03 [NODE] → Click: Click 5P
+04:04:03 [SHOT] OK (0ms)
+04:04:03 [SCAN] Click 5P → FALSE (0ms)
+04:04:04 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:04:32 [SHOT] FAIL #1 (25007ms)
+04:04:32 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:04:34 [SHOT] OK (0ms)
+04:04:35 [SCAN] Supplies → FALSE (27599ms)
+04:04:35 [SHOT] OK (0ms)
+04:05:01 [SHOT] FAIL #1 (25015ms)
+04:05:01 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:05:03 [SCAN] Revive → FALSE (27687ms)
+04:05:29 [SHOT] FAIL #2 (25002ms)
+04:05:29 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:05:36 [SHOT] OK (3387ms)
+04:05:37 [SCAN] Supplies - In → FALSE (32922ms)
+04:05:37 [SHOT] OK (0ms)
+04:05:38 [SHOT] OK (0ms)
+04:05:39 [SCAN] Attack - Auto → FALSE (1324ms)
+04:06:04 [SHOT] FAIL #1 (25012ms)
+04:06:04 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:06:08 [SHOT] OK (1189ms)
+04:06:08 [SCAN] Gathering - Automove → FALSE (28643ms)
+04:06:14 [SHOT] OK (280ms)
+04:06:14 [SHOT] OK (0ms)
+04:06:15 [SCAN] Attack - Auto On → FALSE (1325ms)
+04:06:15 [SHOT] OK (0ms)
+04:06:16 [SHOT] OK (0ms)
+04:06:17 [SCAN] Revive → FALSE (1628ms)
+04:06:18 [NODE] → Click: Attack - Auto
+04:06:43 [SHOT] FAIL #1 (25004ms)
+04:06:43 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:06:45 [NODE] → Click: Click 5P
+04:07:10 [SHOT] FAIL #2 (25015ms)
+04:07:10 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:07:14 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:07:43 [SHOT] FAIL #3 (25013ms)
+04:07:43 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:08:16 [SHOT] FAIL #4 (25007ms)
+04:08:16 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:08:32 [SCAN] Supplies → FALSE (74022ms)
+04:08:51 [SHOT] OK (18828ms)
+04:08:52 [SHOT] OK (0ms)
+04:08:53 [SCAN] Revive → FALSE (20189ms)
+04:08:53 [SHOT] OK (0ms)
+04:08:54 [SHOT] OK (0ms)
+04:08:54 [SCAN] Supplies - In → FALSE (1034ms)
+04:09:20 [SHOT] FAIL #1 (25012ms)
+04:09:20 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:09:23 [SHOT] OK (966ms)
+04:09:23 [SCAN] Attack - Auto → FALSE (28789ms)
+04:09:24 [SHOT] OK (0ms)
+04:09:25 [SHOT] OK (0ms)
+04:09:26 [SCAN] Gathering - Automove → FALSE (1398ms)
+04:09:51 [SHOT] FAIL #1 (25015ms)
+04:09:51 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:09:55 [SHOT] OK (1299ms)
+04:09:55 [SCAN] Attack - Auto On → FALSE (28747ms)
+04:09:56 [SHOT] OK (0ms)
+04:09:56 [SHOT] OK (0ms)
+04:09:57 [SCAN] Revive → FALSE (1161ms)
+04:09:57 [NODE] → Click: Attack - Auto
+04:09:57 [SHOT] OK (0ms)
+04:09:57 [SCAN] Attack - Auto → FALSE (0ms)
+04:09:58 [NODE] → Click: Click 5P
+04:10:23 [SHOT] FAIL #1 (25004ms)
+04:10:23 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:10:25 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:10:53 [SHOT] FAIL #2 (25005ms)
+04:10:53 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:11:22 [SHOT] FAIL #3 (25014ms)
+04:11:22 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:11:30 [SCAN] Supplies → FALSE (62020ms)
+04:12:01 [SHOT] FAIL #4 (25012ms)
+04:12:01 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:12:42 [SHOT] FAIL #5 (25012ms)
+04:12:42 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:13:12 [SCAN] Revive → FALSE (96026ms)
+04:13:21 [SHOT] OK (9059ms)
+04:13:22 [SHOT] OK (0ms)
+04:13:23 [SCAN] Supplies - In → FALSE (10165ms)
+04:13:23 [SHOT] OK (0ms)
+04:13:24 [SHOT] OK (0ms)
+04:13:24 [SCAN] Attack - Auto → FALSE (1376ms)
+04:13:50 [SHOT] FAIL #1 (25010ms)
+04:13:50 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:14:17 [SHOT] FAIL #2 (25010ms)
+04:14:17 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:14:21 [SCAN] Gathering - Automove → FALSE (56022ms)
+04:14:46 [SHOT] FAIL #3 (25005ms)
+04:14:46 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:15:19 [SHOT] FAIL #4 (25001ms)
+04:15:19 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:15:35 [SCAN] Attack - Auto On → FALSE (74008ms)
+04:16:01 [SHOT] FAIL #5 (25014ms)
+04:16:01 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:16:33 [SHOT] OK (2026ms)
+04:16:33 [SCAN] Revive → FALSE (57431ms)
+04:16:39 [NODE] → Click: Attack - Auto
+04:17:04 [SHOT] FAIL #1 (25024ms)
+04:17:04 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:17:06 [NODE] → Click: Click 5P
+04:17:06 [SHOT] OK (0ms)
+04:17:06 [SCAN] Click 5P → FALSE (0ms)
+04:17:06 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:17:34 [SHOT] OK (24249ms)
+04:17:35 [SHOT] OK (0ms)
+04:17:35 [SCAN] Supplies → FALSE (25435ms)
+04:17:36 [SHOT] OK (0ms)
+04:17:37 [SHOT] OK (0ms)
+04:17:37 [SCAN] Revive → FALSE (1201ms)
+04:17:38 [SHOT] OK (102ms)
+04:17:39 [SHOT] OK (0ms)
+04:17:39 [SCAN] Supplies - In → FALSE (1096ms)
+04:17:40 [SHOT] OK (0ms)
+04:17:40 [SHOT] OK (0ms)
+04:17:41 [SCAN] Attack - Auto → FALSE (927ms)
+04:17:41 [SHOT] OK (0ms)
+04:18:07 [SHOT] FAIL #1 (25011ms)
+04:18:07 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:18:09 [SCAN] Gathering - Automove → FALSE (27565ms)
+04:18:13 [SHOT] OK (3315ms)
+04:18:13 [SHOT] OK (0ms)
+04:18:14 [SCAN] Attack - Auto On → FALSE (4574ms)
+04:18:14 [SHOT] OK (0ms)
+04:18:15 [SHOT] OK (0ms)
+04:18:15 [SCAN] Revive → FALSE (1109ms)
+04:18:16 [NODE] → Click: Attack - Auto
+04:18:41 [SHOT] FAIL #1 (25001ms)
+04:18:41 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:18:43 [NODE] → Click: Click 5P
+04:19:08 [SHOT] FAIL #2 (25006ms)
+04:19:08 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:19:13 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:19:41 [SHOT] FAIL #3 (25007ms)
+04:19:41 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:20:14 [SHOT] FAIL #4 (25000ms)
+04:20:14 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:20:30 [SCAN] Supplies → FALSE (74009ms)
+04:20:51 [SHOT] OK (20125ms)
+04:20:51 [SHOT] OK (0ms)
+04:20:52 [SCAN] Revive → FALSE (21201ms)
+04:20:52 [SHOT] OK (0ms)
+04:20:53 [SHOT] OK (0ms)
+04:20:53 [SCAN] Supplies - In → FALSE (1220ms)
+04:21:19 [SHOT] FAIL #1 (25002ms)
+04:21:19 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:21:21 [SHOT] OK (133ms)
+04:21:21 [SCAN] Attack - Auto → FALSE (27625ms)
+04:21:52 [SHOT] FAIL #1 (25000ms)
+04:21:52 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:21:54 [SHOT] OK (0ms)
+04:21:55 [SCAN] Gathering - Automove → FALSE (27707ms)
+04:21:55 [SHOT] OK (0ms)
+04:22:21 [SHOT] FAIL #1 (25015ms)
+04:22:21 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:22:23 [SCAN] Attack - Auto On → FALSE (27678ms)
+04:22:48 [SHOT] FAIL #2 (25014ms)
+04:22:48 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:23:17 [SHOT] FAIL #3 (25008ms)
+04:23:17 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:23:25 [SCAN] Revive → FALSE (62072ms)
+04:23:26 [NODE] → Click: Attack - Auto
+04:23:51 [SHOT] FAIL #4 (25014ms)
+04:23:51 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:24:07 [NODE] → Click: Click 5P
+04:24:27 [SHOT] OK (19790ms)
+04:24:27 [SCAN] Click 5P → FALSE (0ms)
+04:24:28 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:24:56 [SHOT] FAIL #1 (25006ms)
+04:24:56 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:25:23 [SHOT] FAIL #2 (25015ms)
+04:25:23 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:25:27 [SCAN] Supplies → FALSE (56022ms)
+04:25:28 [SHOT] OK (612ms)
+04:25:29 [SHOT] OK (0ms)
+04:25:30 [SCAN] Revive → FALSE (1837ms)
+04:25:30 [SHOT] OK (0ms)
+04:25:31 [SHOT] OK (0ms)
+04:25:32 [SCAN] Supplies - In → FALSE (1572ms)
+04:25:57 [SHOT] FAIL #1 (25001ms)
+04:25:57 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:26:24 [SHOT] FAIL #2 (25007ms)
+04:26:24 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:26:28 [SCAN] Attack - Auto → FALSE (56010ms)
+04:27:09 [SHOT] FAIL #3 (25002ms)
+04:27:09 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:27:34 [SHOT] OK (16661ms)
+04:27:34 [SCAN] Gathering - Automove → FALSE (50258ms)
+04:27:35 [SHOT] OK (0ms)
+04:27:35 [SHOT] OK (0ms)
+04:27:36 [SCAN] Attack - Auto On → FALSE (1273ms)
+04:28:02 [SHOT] FAIL #1 (25002ms)
+04:28:02 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:28:04 [SHOT] OK (715ms)
+04:28:05 [SCAN] Revive → FALSE (28146ms)
+04:28:05 [NODE] → Click: Attack - Auto
+04:28:05 [SHOT] OK (0ms)
+04:28:05 [SCAN] Attack - Auto → FALSE (0ms)
+04:28:06 [NODE] → Click: Click 5P
+04:28:06 [SHOT] OK (0ms)
+04:28:06 [SCAN] Click 5P → FALSE (0ms)
+04:28:06 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:28:10 [SHOT] OK (104ms)
+04:28:10 [SHOT] OK (0ms)
+04:28:11 [SCAN] Supplies → FALSE (1409ms)
+04:28:11 [SHOT] OK (0ms)
+04:28:12 [SHOT] OK (0ms)
+04:28:13 [SCAN] Revive → FALSE (1476ms)
+04:28:38 [SHOT] FAIL #1 (25005ms)
+04:28:38 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:28:44 [SHOT] OK (3662ms)
+04:28:45 [SCAN] Supplies - In → FALSE (31372ms)
+04:28:45 [SHOT] OK (0ms)
+04:28:46 [SHOT] OK (0ms)
+04:28:47 [SCAN] Attack - Auto → FALSE (1586ms)
+04:29:13 [SHOT] FAIL #1 (25010ms)
+04:29:13 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:29:18 [SHOT] OK (3261ms)
+04:29:19 [SCAN] Gathering - Automove → FALSE (30997ms)
+04:29:19 [SHOT] OK (0ms)
+04:29:20 [SHOT] OK (0ms)
+04:29:20 [SCAN] Attack - Auto On → FALSE (957ms)
+04:29:21 [SHOT] OK (0ms)
+04:29:47 [SHOT] FAIL #1 (25001ms)
+04:29:47 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:29:49 [SCAN] Revive → FALSE (27814ms)
+04:29:49 [NODE] → Click: Attack - Auto
+04:29:50 [SHOT] OK (273ms)
+04:29:50 [SCAN] Attack - Auto → FALSE (0ms)
+04:29:50 [NODE] → Click: Click 5P
+04:29:50 [SHOT] OK (0ms)
+04:29:50 [SCAN] Click 5P → FALSE (0ms)
+04:29:50 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:30:19 [SHOT] FAIL #1 (25015ms)
+04:30:19 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:30:46 [SHOT] FAIL #2 (25014ms)
+04:30:46 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:30:50 [SCAN] Supplies → FALSE (56032ms)
+04:30:54 [SHOT] OK (4000ms)
+04:30:55 [SHOT] OK (0ms)
+04:30:56 [SCAN] Revive → FALSE (5362ms)
+04:30:56 [SHOT] OK (0ms)
+04:30:57 [SHOT] OK (0ms)
+04:30:57 [SCAN] Supplies - In → FALSE (904ms)
+04:31:23 [SHOT] FAIL #1 (25014ms)
+04:31:23 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:31:50 [SHOT] FAIL #2 (25014ms)
+04:31:50 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:31:54 [SCAN] Attack - Auto → FALSE (56034ms)
+04:32:32 [SHOT] OK (22943ms)
+04:32:33 [SHOT] OK (0ms)
+04:32:33 [SCAN] Gathering - Automove → FALSE (23963ms)
+04:32:34 [Xuka] Connection rotation — periodic reconnect
+04:32:36 [Xuka] Connection rotated successfully
+04:33:01 [SHOT] FAIL #1 (25009ms)
+04:33:01 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:33:06 [SHOT] OK (3609ms)
+04:33:07 [SCAN] Attack - Auto On → FALSE (31103ms)
+04:33:08 [SHOT] OK (0ms)
+04:33:08 [SHOT] OK (0ms)
+04:33:09 [SCAN] Revive → FALSE (1454ms)
+04:33:10 [NODE] → Click: Attack - Auto
+04:33:35 [SHOT] FAIL #1 (25010ms)
+04:33:35 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:33:37 [NODE] → Click: Click 5P
+04:33:38 [SHOT] OK (1144ms)
+04:33:38 [SCAN] Click 5P → FALSE (0ms)
+04:33:39 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:33:42 [SHOT] OK (117ms)
+04:33:43 [SHOT] OK (0ms)
+04:33:44 [SCAN] Supplies → FALSE (1542ms)
+04:33:44 [SHOT] OK (0ms)
+04:33:45 [SHOT] OK (0ms)
+04:33:46 [SCAN] Revive → FALSE (1448ms)
+04:34:11 [SHOT] FAIL #1 (25002ms)
+04:34:11 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:34:16 [SHOT] OK (2338ms)
+04:34:16 [SCAN] Supplies - In → FALSE (29934ms)
+04:34:17 [SHOT] OK (0ms)
+04:34:17 [SHOT] OK (0ms)
+04:34:18 [SCAN] Attack - Auto → FALSE (1413ms)
+04:34:19 [SHOT] OK (0ms)
+04:34:44 [SHOT] FAIL #1 (25011ms)
+04:34:44 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:34:46 [SCAN] Gathering - Automove → FALSE (27400ms)
+04:35:12 [SHOT] FAIL #2 (25003ms)
+04:35:12 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:35:18 [SHOT] OK (1907ms)
+04:35:18 [SCAN] Attack - Auto On → FALSE (31446ms)
+04:35:19 [SHOT] OK (0ms)
+04:35:19 [SHOT] OK (0ms)
+04:35:20 [SCAN] Revive → FALSE (1161ms)
+04:35:20 [NODE] → Click: Attack - Auto
+04:35:20 [SHOT] OK (0ms)
+04:35:20 [SCAN] Attack - Auto → FALSE (0ms)
+04:35:21 [NODE] → Click: Click 5P
+04:35:21 [SHOT] OK (0ms)
+04:35:21 [SCAN] Click 5P → FALSE (0ms)
+04:35:21 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:35:49 [SHOT] FAIL #1 (25015ms)
+04:35:49 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:35:52 [SHOT] OK (141ms)
+04:35:52 [SCAN] Supplies → FALSE (27846ms)
+04:35:53 [SHOT] OK (0ms)
+04:35:54 [SHOT] OK (0ms)
+04:35:54 [SCAN] Revive → FALSE (1636ms)
+04:36:20 [SHOT] FAIL #1 (25008ms)
+04:36:20 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:36:47 [SHOT] FAIL #2 (25004ms)
+04:36:47 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:36:51 [SCAN] Supplies - In → FALSE (56014ms)
+04:37:12 [SHOT] OK (5749ms)
+04:37:13 [SHOT] OK (0ms)
+04:37:14 [SCAN] Attack - Auto → FALSE (7203ms)
+04:37:14 [SHOT] OK (0ms)
+04:37:15 [SHOT] OK (0ms)
+04:37:16 [SCAN] Gathering - Automove → FALSE (1584ms)
+04:37:16 [SHOT] OK (104ms)
+04:37:17 [SHOT] OK (0ms)
+04:37:18 [SCAN] Attack - Auto On → FALSE (1288ms)
+04:37:18 [SHOT] OK (0ms)
+04:37:19 [SHOT] OK (0ms)
+04:37:20 [SCAN] Revive → FALSE (1502ms)
+04:37:20 [NODE] → Click: Attack - Auto
+04:37:20 [SHOT] OK (204ms)
+04:37:25 [SCAN] Attack - Auto → TRUE (0ms)
+04:37:26 [NODE] → Click: Click 5P
+04:37:27 [SHOT] OK (1079ms)
+04:37:32 [SCAN] Click 5P → TRUE (0ms)
+04:37:32 [Xuka] No next node after 'Click' (Click 5P). Restart 1/10
+04:37:38 [SHOT] OK (2029ms)
+04:37:39 [SHOT] OK (0ms)
+04:37:39 [SCAN] Supplies → FALSE (3537ms)
+04:37:40 [SHOT] OK (0ms)
+04:37:40 [SCAN] Revive → TRUE (11ms)
+04:37:41 [MACRO] Revivie: Starting (0ms)
+04:37:41 [SHOT] OK (0ms)
+04:37:46     - Step OK: Clicked 'Revive'
+04:37:46 [Macro] (2/2) Delay: 3000ms (3.0s)...
+04:37:49 [Macro] Delay completed.
+04:37:49 [Macro] Steps completed. Checking result...
+04:38:08 [SHOT] OK (18099ms)
+04:38:08 [Macro] Result: SUCCESS (found 'Supplies')
+04:38:08 [MACRO] Revivie: PASSED (27726ms total)
+04:38:08 [MACRO] Click 5P: Starting (0ms)
+04:38:14     - Step OK: ⚡ Hard Click 'Click 5P' at (1492,96)
+04:38:14 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:38:14 [Macro] Delay completed.
+04:38:14 [Macro] Steps completed. Checking result...
+04:38:14 [Macro] Finished (no capture check configured).
+04:38:14 [MACRO] Click 5P: PASSED (5829ms total)
+04:38:14 [MACRO] Revivie: Starting (0ms)
+04:38:39 [SHOT] FAIL #1 (25008ms)
+04:38:39 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:38:42 [SHOT] OK (175ms)
+04:38:42 [SHOT] OK (0ms)
+04:38:42 [SHOT] OK (0ms)
+04:38:43 [SHOT] OK (0ms)
+04:38:43     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:38:43 [MACRO] Revivie: FAILED (29119ms total)
+04:38:43 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+04:38:47 [SHOT] OK (163ms)
+04:38:47 [SCAN] Supplies → TRUE (173ms)
+04:38:47 [MACRO] Buy Blood: Starting (0ms)
+04:38:52     - Step OK: ⚡ Hard Click 'Supplies' at (1323,581)
+04:38:53 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:38:53 [SHOT] OK (183ms)
+04:38:54 [SHOT] OK (0ms)
+04:38:55 [SHOT] OK (0ms)
+04:38:56 [SHOT] OK (0ms)
+04:38:57 [SHOT] OK (125ms)
+04:38:57 [SHOT] OK (0ms)
+04:38:58 [SHOT] OK (0ms)
+04:38:59 [SHOT] OK (0ms)
+04:39:25 [SHOT] FAIL #1 (25005ms)
+04:39:25 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:39:29 [SHOT] OK (810ms)
+04:39:29     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:39:34     - Step OK: ⚡ Hard Click 'Supplies - Type' at (514,305)
+04:39:35 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:39:35 [SHOT] OK (247ms)
+04:39:36 [SHOT] OK (0ms)
+04:39:37 [SHOT] OK (0ms)
+04:40:03 [SHOT] FAIL #1 (25007ms)
+04:40:03 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:40:07 [SHOT] OK (650ms)
+04:40:07     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:40:12     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (883,559)
+04:40:13 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:40:13 [Macro] Delay completed.
+04:40:18     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1056,693)
+04:40:24     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1543,151)
+04:40:24 [Macro] Steps completed. Checking result...
+04:40:38 [SHOT] OK (12619ms)
+04:40:38 [Macro] Result: SUCCESS (found 'Home')
+04:40:38 [MACRO] Buy Blood: PASSED (110318ms total)
+04:40:38 [MACRO] Gathering: Starting (0ms)
+04:40:38 [SHOT] OK (0ms)
+04:40:43     - Step OK: Clicked 'Gathering'
+04:40:43 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+04:41:08 [SHOT] OK (24851ms)
+04:41:08     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+04:41:13     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1085,601)
+04:41:14 [Macro] (4/8) Delay: 12000ms (12.0s)...
+04:41:26 [Macro] Delay completed.
+04:41:26 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+04:41:39 [SHOT] OK (12581ms)
+04:41:40 [SHOT] OK (0ms)
+04:41:40 [SHOT] OK (0ms)
+04:41:41 [SHOT] OK (0ms)
+04:41:44 [SHOT] OK (1556ms)
+04:41:45 [SHOT] OK (0ms)
+04:41:46 [SHOT] OK (0ms)
+04:41:46 [SHOT] OK (0ms)
+04:41:57 [SHOT] OK (9618ms)
+04:41:57 [SHOT] OK (0ms)
+04:41:58 [SHOT] OK (0ms)
+04:41:59 [SHOT] OK (0ms)
+04:41:59 [SHOT] OK (0ms)
+04:42:14 [SHOT] FAIL #1 (13862ms)
+04:42:14 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:42:16     - Marker triggered. Holding 6.5s...
+04:42:17 [MACRO] Gathering: FAILED (99034ms total)
+04:42:17 ============================================================
+04:42:17 SESSION END — Xuka (71.2 min)
+04:42:17   Loops: 0
+04:42:17   Screenshots: 368 ok / 95 fail (20.5%)
+04:42:17   Avg latency: 1458ms
+04:42:17   Macros: 18 ok / 17 fail
+04:42:17   Errors: 0
+04:42:17 ============================================================
+04:54:16 ============================================================
+04:54:16 SESSION START — Xuka (port:9224 tab:2)
+04:54:16 ============================================================
+04:54:17 [Xuka] Starting worker: func=loop - Farm V1, port=9224, tab=2
+04:54:27 [Xuka] Connected to Port 9224, Tab 2
+04:54:28 [SHOT] OK (511ms)
+04:54:29 [SHOT] OK (0ms)
+04:54:29 [SCAN] Supplies → FALSE (2236ms)
+04:54:30 [SHOT] OK (0ms)
+04:54:30 [SCAN] Revive → TRUE (11ms)
+04:54:31 [MACRO] Revivie: Starting (0ms)
+04:54:31 [SHOT] OK (212ms)
+04:54:36     - Step OK: Clicked 'Revive'
+04:54:37 [Macro] (2/2) Delay: 3000ms (3.0s)...
+04:54:40 [Macro] Delay completed.
+04:54:40 [Macro] Steps completed. Checking result...
+04:55:03 [SHOT] OK (22462ms)
+04:55:03 [Macro] Result: SUCCESS (found 'Supplies')
+04:55:03 [MACRO] Revivie: PASSED (32344ms total)
+04:55:03 [MACRO] Click 5P: Starting (0ms)
+04:55:08     - Step OK: ⚡ Hard Click 'Click 5P' at (1510,100)
+04:55:09 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:55:09 [Macro] Delay completed.
+04:55:09 [Macro] Steps completed. Checking result...
+04:55:09 [Macro] Finished (no capture check configured).
+04:55:09 [MACRO] Click 5P: PASSED (5851ms total)
+04:55:09 [MACRO] Revivie: Starting (0ms)
+04:55:13 [SHOT] OK (4331ms)
+04:55:14 [SHOT] OK (0ms)
+04:55:14 [SHOT] OK (0ms)
+04:55:15 [SHOT] OK (0ms)
+04:55:16 [SHOT] OK (0ms)
+04:55:16     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:55:16 [MACRO] Revivie: FAILED (7311ms total)
+04:55:16 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+04:55:21 [SHOT] OK (1240ms)
+04:55:21 [SCAN] Supplies → TRUE (1250ms)
+04:55:21 [MACRO] Buy Blood: Starting (0ms)
+04:55:26     - Step OK: ⚡ Hard Click 'Supplies' at (1295,562)
+04:55:27 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:55:27 [SHOT] OK (183ms)
+04:55:28 [SHOT] OK (0ms)
+04:55:29 [SHOT] OK (0ms)
+04:55:30 [SHOT] OK (0ms)
+04:55:31 [SHOT] OK (173ms)
+04:55:32 [SHOT] OK (0ms)
+04:55:33 [SHOT] OK (0ms)
+04:55:34 [SHOT] OK (174ms)
+04:55:34     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:55:39     - Step OK: ⚡ Hard Click 'Supplies - Type' at (552,295)
+04:55:40 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:56:05 [SHOT] OK (24972ms)
+04:56:05     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:56:10     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (908,549)
+04:56:10 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:56:10 [Macro] Delay completed.
+04:56:15     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1052,699)
+04:56:21     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1526,152)
+04:56:21 [Macro] Steps completed. Checking result...
+04:56:36 [SHOT] OK (13202ms)
+04:56:36 [Macro] Result: SUCCESS (found 'Home')
+04:56:36 [MACRO] Buy Blood: PASSED (74327ms total)
+04:56:36 [MACRO] Gathering: Starting (0ms)
+04:56:36 [SHOT] OK (0ms)
+04:56:41     - Step OK: Clicked 'Gathering'
+04:56:41 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+04:57:06 [SHOT] FAIL #1 (25015ms)
+04:57:06 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:57:09 [SHOT] OK (0ms)
+04:57:09     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+04:57:14     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1023,601)
+04:57:14 [Macro] (4/8) Delay: 12000ms (12.0s)...
+04:57:26 [Macro] Delay completed.
+04:57:26 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+04:57:39 [SHOT] OK (12792ms)
+04:57:40 [SHOT] OK (0ms)
+04:57:41 [SHOT] OK (0ms)
+04:57:42 [SHOT] OK (0ms)
+04:58:07 [SHOT] FAIL #1 (25011ms)
+04:58:07 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:58:19 [SHOT] OK (8865ms)
+04:58:20 [SHOT] OK (0ms)
+04:58:21 [SHOT] OK (0ms)
+04:58:22 [SHOT] OK (0ms)
+04:58:47 [SHOT] FAIL #1 (25002ms)
+04:58:47 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:59:15 [SHOT] FAIL #2 (25009ms)
+04:59:15 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:59:44 [SHOT] FAIL #3 (25010ms)
+04:59:44 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:00:18 [SHOT] FAIL #4 (25006ms)
+05:00:18 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:00:54 [SHOT] OK (20194ms)
+05:00:54     - Marker triggered. Holding 6.5s...
+05:00:55 [SHOT] OK (0ms)
+05:00:55 [SHOT] OK (0ms)
+05:00:56 [SHOT] OK (0ms)
+05:00:57 [SHOT] OK (0ms)
+05:01:23 [SHOT] FAIL #1 (25013ms)
+05:01:23 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:01:50 [SHOT] FAIL #2 (25011ms)
+05:01:50 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:01:57 [SHOT] OK (1899ms)
+05:01:57     - Holding... 62/6s
+05:01:57     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:01:57 [SHOT] OK (0ms)
+05:02:02     - Step OK: Clicked 'Attack - Auto'
+05:02:02 [Macro] (7/8) Delay: 1000ms (1.0s)...
+05:02:03 [Macro] Delay completed.
+05:02:28 [SHOT] FAIL #1 (25006ms)
+05:02:28 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:02:31 [SHOT] OK (0ms)
+05:02:36     - Step OK: Clicked 'Click 5P'
+05:02:36 [Macro] Steps completed. Checking result...
+05:02:59 [SHOT] OK (21903ms)
+05:02:59 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+05:02:59 [MACRO] Gathering: FAILED (383562ms total)
+05:03:04 [Xuka] No next node after 'Macro' (cc882d55). Restart 1/10
+05:03:31 [SHOT] OK (22838ms)
+05:03:31 [SHOT] OK (0ms)
+05:03:32 [SCAN] Supplies → FALSE (24448ms)
+05:03:33 [SHOT] OK (0ms)
+05:03:33 [SCAN] Revive → TRUE (17ms)
+05:03:33 [MACRO] Revivie: Starting (0ms)
+05:03:33 [SHOT] OK (0ms)
+05:03:39     - Step OK: Clicked 'Revive'
+05:03:39 [Macro] (2/2) Delay: 3000ms (3.0s)...
+05:03:42 [Macro] Delay completed.
+05:03:42 [Macro] Steps completed. Checking result...
+05:04:06 [SHOT] OK (22564ms)
+05:04:06 [Macro] Result: SUCCESS (found 'Supplies')
+05:04:06 [MACRO] Revivie: PASSED (32290ms total)
+05:04:06 [MACRO] Click 5P: Starting (0ms)
+05:04:11     - Step OK: ⚡ Hard Click 'Click 5P' at (1487,90)
+05:04:11 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:04:11 [Macro] Delay completed.
+05:04:11 [Macro] Steps completed. Checking result...
+05:04:11 [Macro] Finished (no capture check configured).
+05:04:11 [MACRO] Click 5P: PASSED (5747ms total)
+05:04:11 [MACRO] Revivie: Starting (0ms)
+05:04:12 [SHOT] OK (189ms)
+05:04:12 [SHOT] OK (0ms)
+05:04:12 [SHOT] OK (0ms)
+05:04:13 [SHOT] OK (0ms)
+05:04:13 [SHOT] OK (0ms)
+05:04:14     - Step FAILED: Could not find 'Revive' after 5 attempts.
+05:04:14 [MACRO] Revivie: FAILED (2315ms total)
+05:04:14 [Xuka] No next node after 'Macro' (ed214390). Restart 1/10
+05:04:42 [SHOT] FAIL #1 (25014ms)
+05:04:42 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:04:44 [SHOT] OK (0ms)
+05:04:44 [SCAN] Supplies → TRUE (27025ms)
+05:04:45 [MACRO] Buy Blood: Starting (0ms)
+05:04:50     - Step OK: ⚡ Hard Click 'Supplies' at (1327,560)
+05:04:50 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:05:13 [SHOT] OK (23060ms)
+05:05:13     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:05:18     - Step OK: ⚡ Hard Click 'Supplies - Type' at (549,318)
+05:05:19 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:05:44 [SHOT] OK (25032ms)
+05:05:44     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:05:49     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (847,572)
+05:05:50 [Macro] (6/8) Delay: 100ms (0.1s)...
+05:05:50 [Macro] Delay completed.
+05:05:55     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1031,717)
+05:06:01     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1525,141)
+05:06:01 [Macro] Steps completed. Checking result...
+05:06:19 [SHOT] FAIL #1 (16490ms)
+05:06:19 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:06:21 [Macro] Result: FAILURE ('Home' not found)
+05:06:21 [MACRO] Buy Blood: FAILED (96373ms total)
+05:06:21 ============================================================
+05:06:21 SESSION END — Xuka (12.1 min)
+05:06:21   Loops: 0
+05:06:21   Screenshots: 53 ok / 11 fail (17.2%)
+05:06:21   Avg latency: 4279ms
+05:06:21   Macros: 5 ok / 4 fail
+05:06:21   Errors: 0
+05:06:21 ============================================================
+05:07:16 ============================================================
+05:07:16 SESSION START — Xuka (port:9224 tab:2)
+05:07:16 ============================================================
+05:07:17 [Xuka] Starting worker: func=macro - Home, port=9224, tab=2
+05:07:30 [Xuka] Connected to Port 9224, Tab 2
+05:07:30 [MACRO] Home: Starting (0ms)
+05:07:35     - Step OK: ⚡ Hard Click 'Home' at (349,378)
+05:07:36 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:07:48 [SHOT] OK (12383ms)
+05:07:48     - Marker OK: 'Supplies' confirmed APPEAR.
+05:07:48 [Macro] Steps completed. Checking result...
+05:07:49 [SHOT] OK (0ms)
+05:07:49 [Macro] Result: SUCCESS (found 'Supplies')
+05:07:49 [MACRO] Home: PASSED (19008ms total)
+05:07:49 ============================================================
+05:07:49 SESSION END — Xuka (0.6 min)
+05:07:49   Loops: 0
+05:07:49   Screenshots: 2 ok / 0 fail (0.0%)
+05:07:49   Avg latency: 6191ms
+05:07:49   Macros: 1 ok / 0 fail
+05:07:49   Errors: 0
+05:07:49 ============================================================
+05:11:27 ============================================================
+05:11:27 SESSION START — Xuka (port:9224 tab:2)
+05:11:27 ============================================================
+05:11:28 [Xuka] Starting worker: func=loop - Farm V1, port=9224, tab=2
+05:11:43 [Xuka] Connected to Port 9224, Tab 2
+05:11:43 [LOOP] ── Loop iteration start ──
+05:12:09 [SHOT] FAIL #1 (25012ms)
+05:12:09 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:36 [SHOT] FAIL #2 (25004ms)
+05:12:36 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:40 [SCAN] Supplies → FALSE (56019ms)
+05:13:05 [SHOT] FAIL #3 (25005ms)
+05:13:05 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:13:38 [SHOT] FAIL #4 (25002ms)
+05:13:38 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:13:54 [SCAN] Revive → FALSE (74011ms)
+05:14:20 [SHOT] FAIL #5 (25015ms)
+05:14:20 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:14:51 [SHOT] OK (1034ms)
+05:14:52 [SCAN] Supplies - In → FALSE (56757ms)
+05:14:52 [SHOT] OK (0ms)
+05:14:53 [SHOT] OK (0ms)
+05:14:54 [SCAN] Attack - Auto → FALSE (1412ms)
+05:14:55 [SHOT] OK (173ms)
+05:14:55 [SHOT] OK (0ms)
+05:14:56 [SCAN] Gathering - Automove → FALSE (1027ms)
+05:14:56 [SHOT] OK (0ms)
+05:14:57 [SHOT] OK (0ms)
+05:14:57 [SCAN] Attack - Auto On → FALSE (1528ms)
+05:14:58 [SHOT] OK (185ms)
+05:14:59 [SHOT] OK (0ms)
+05:14:59 [SCAN] Revive → FALSE (1507ms)
+05:15:00 [NODE] → Click: Attack - Auto
+05:15:00 [SHOT] OK (0ms)
+05:15:00 [SCAN] Attack - Auto → FALSE (0ms)
+05:15:01 [NODE] → Click: Click 5P
+05:15:01 [SHOT] OK (0ms)
+05:15:01 [SCAN] Click 5P → TRUE (0ms)
+05:15:01 [ERR] DEAD END: No edge from 'Click' (Click 5P) — will trigger restart
+05:15:01 [ERR] RESTART: No next node after 'Click' (Click 5P). Restart 1/10
+05:15:04 [LOOP] ── Loop iteration start ──
+05:15:05 [SHOT] OK (600ms)
+05:15:05 [SCAN] Supplies → TRUE (611ms)
+05:15:06 [MACRO] Buy Blood: Starting (0ms)
+05:15:11     - Step OK: ⚡ Hard Click 'Supplies' at (1336,549)
+05:15:11 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:15:12 [SHOT] OK (825ms)
+05:15:13 [SHOT] OK (0ms)
+05:15:14 [SHOT] OK (0ms)
+05:15:14 [SHOT] OK (0ms)
+05:15:15 [SHOT] OK (128ms)
+05:15:16 [SHOT] OK (0ms)
+05:15:17 [SHOT] OK (0ms)
+05:15:18 [SHOT] OK (0ms)
+05:15:44 [SHOT] FAIL #1 (25004ms)
+05:15:44 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:16:11 [SHOT] FAIL #2 (25014ms)
+05:16:11 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:16:38 [SHOT] OK (21972ms)
+05:16:38     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:16:43     - Step OK: ⚡ Hard Click 'Supplies - Type' at (509,297)
+05:16:43 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:17:01 [SHOT] OK (17865ms)
+05:17:01     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:17:06     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (844,573)
+05:17:07 [Macro] (6/8) Delay: 100ms (0.1s)...
+05:17:07 [Macro] Delay completed.
+05:17:12     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (996,693)
+05:17:18     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1545,150)
+05:17:18 [Macro] Steps completed. Checking result...
+05:17:35 [SHOT] OK (15637ms)
+05:17:35 [Macro] Result: SUCCESS (found 'Home')
+05:17:35 [MACRO] Buy Blood: PASSED (149001ms total)
+05:17:45 [MACRO] Gathering: Starting (0ms)
+05:18:09 [SHOT] OK (23790ms)
+05:18:14     - Step OK: Clicked 'Gathering'
+05:18:14 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+05:18:39 [SHOT] FAIL #1 (25014ms)
+05:18:39 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:19:07 [SHOT] FAIL #2 (25005ms)
+05:19:07 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:19:36 [SHOT] FAIL #3 (25004ms)
+05:19:36 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:20:10 [SHOT] FAIL #4 (25007ms)
+05:20:10 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:20:51 [SHOT] FAIL #5 (25004ms)
+05:20:51 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:21:22 [MACRO] Gathering: FAILED (216834ms total)
+05:21:22 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:21:22 ============================================================
+05:21:22 SESSION END — Xuka (9.9 min)
+05:21:22   Loops: 0
+05:21:22   Screenshots: 24 ok / 12 fail (33.3%)
+05:21:22   Avg latency: 3425ms
+05:21:22   Macros: 1 ok / 1 fail
+05:21:22   Errors: 3
+05:21:22 ============================================================
+05:23:42 ============================================================
+05:23:42 SESSION START — Xuka (port:9224 tab:2)
+05:23:42 ============================================================
+05:23:43 [Xuka] Starting worker: func=macro - Home, port=9224, tab=2
+05:23:51 [Xuka] Connected to Port 9224, Tab 2
+05:23:52 [MACRO] Home: Starting (0ms)
+05:23:57     - Step OK: ⚡ Hard Click 'Home' at (349,387)
+05:23:57 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:23:58 [SHOT] OK (648ms)
+05:23:58     - Marker OK: 'Supplies' confirmed APPEAR.
+05:23:58 [Macro] Steps completed. Checking result...
+05:23:59 [SHOT] OK (0ms)
+05:23:59 [Macro] Result: SUCCESS (found 'Supplies')
+05:23:59 [MACRO] Home: PASSED (7196ms total)
+05:23:59 ============================================================
+05:23:59 SESSION END — Xuka (0.3 min)
+05:23:59   Loops: 0
+05:23:59   Screenshots: 2 ok / 0 fail (0.0%)
+05:23:59   Avg latency: 324ms
+05:23:59   Macros: 1 ok / 0 fail
+05:23:59   Errors: 0
+05:23:59 ============================================================
+05:26:41 ============================================================
+05:26:41 SESSION START — Xuka (port:9224 tab:2)
+05:26:41 ============================================================
+05:26:42 [Xuka] Starting worker: func=loop - Farm V1, port=9224, tab=2
+05:26:51 [Xuka] Connected to Port 9224, Tab 2
+05:26:52 [LOOP] ── Loop iteration start ──
+05:27:18 [SHOT] FAIL #1 (25001ms)
+05:27:18 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:27:20 [SHOT] OK (341ms)
+05:27:21 [SCAN] Gathering - Inside → FALSE (28253ms)
+05:27:22 [SHOT] OK (0ms)
+05:27:22 [SCAN] Supplies → TRUE (11ms)
+05:27:22 [MACRO] Buy Blood: Starting (0ms)
+05:27:27     - Step OK: ⚡ Hard Click 'Supplies' at (1312,583)
+05:27:28 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:27:53 [SHOT] FAIL #1 (25005ms)
+05:27:53 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:27:55 [SHOT] OK (159ms)
+05:27:55     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:28:00     - Step OK: ⚡ Hard Click 'Supplies - Type' at (488,314)
+05:28:01 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:28:01 [SHOT] OK (403ms)
+05:28:01     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:28:07     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (881,563)
+05:28:07 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:28:07 [Macro] Delay completed.
+05:28:12     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1037,723)
+05:28:13 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:28:14 [Macro] Delay completed.
+05:28:19     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1532,153)
+05:28:19 [Macro] Steps completed. Checking result...
+05:28:45 [SHOT] FAIL #1 (25014ms)
+05:28:45 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:28:47 [Macro] Result: FAILURE ('Home' not found)
+05:28:47 [MACRO] Buy Blood: FAILED (85242ms total)
+05:28:47 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:28:47 [ERR] RESTART: No next node after 'Macro' (ad649a80). Restart 1/10
+05:28:50 [LOOP] ── Loop iteration start ──
+05:28:52 [SHOT] OK (807ms)
+05:28:52 [SHOT] OK (0ms)
+05:28:53 [SCAN] Gathering - Inside → FALSE (1968ms)
+05:29:28 [SHOT] FAIL #1 (25005ms)
+05:29:28 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:29:34 [SHOT] OK (3978ms)
+05:29:34 [SCAN] Supplies → TRUE (31002ms)
+05:29:35 [MACRO] Buy Blood: Starting (0ms)
+05:29:40     - Step OK: ⚡ Hard Click 'Supplies' at (1327,590)
+05:29:41 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:29:41 [SHOT] OK (115ms)
+05:29:42 [SHOT] OK (0ms)
+05:29:43 [SHOT] OK (0ms)
+05:29:44 [SHOT] OK (0ms)
+05:30:10 [SHOT] FAIL #1 (25011ms)
+05:30:10 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:30:14 [SHOT] OK (2003ms)
+05:30:14     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:30:19     - Step OK: ⚡ Hard Click 'Supplies - Type' at (559,312)
+05:30:20 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:30:20 [SHOT] OK (140ms)
+05:30:20     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:30:25     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (831,559)
+05:30:25 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:30:26 [Macro] Delay completed.
+05:30:31     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1053,707)
+05:30:31 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:30:32 [Macro] Delay completed.
+05:30:37     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1533,155)
+05:30:38 [Macro] Steps completed. Checking result...
+05:30:39 [SHOT] OK (197ms)
+05:30:39 [Macro] Result: SUCCESS (found 'Home')
+05:30:39 [MACRO] Buy Blood: PASSED (63969ms total)
+05:30:39 [MACRO] Gathering: Starting (0ms)
+05:30:39 [SHOT] OK (0ms)
+05:30:44     - Step OK: Clicked 'Gathering'
+05:30:44 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:30:45 [SHOT] OK (166ms)
+05:30:45     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:30:50     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1048,576)
+05:30:50 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:31:03 [Macro] Delay completed.
+05:31:03 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+05:31:28 [SHOT] FAIL #1 (25006ms)
+05:31:28 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:31:33 [SHOT] OK (3334ms)
+05:31:34 [SHOT] OK (0ms)
+05:31:35 [SHOT] OK (0ms)
+05:31:36 [SHOT] OK (0ms)
+05:31:36 [SHOT] OK (0ms)
+05:32:03 [SHOT] FAIL #1 (25007ms)
+05:32:03 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:32:09 [SHOT] OK (3445ms)
+05:32:09 [SHOT] OK (0ms)
+05:32:10 [SHOT] OK (0ms)
+05:32:11 [SHOT] OK (0ms)
+05:32:11 [SHOT] OK (0ms)
+05:32:37 [SHOT] FAIL #1 (25019ms)
+05:32:37 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:32:43 [SHOT] OK (3673ms)
+05:32:44 [SHOT] OK (0ms)
+05:32:44 [SHOT] OK (0ms)
+05:32:45 [SHOT] OK (0ms)
+05:32:46 [SHOT] OK (0ms)
+05:32:47 [SHOT] OK (171ms)
+05:32:48 [SHOT] OK (0ms)
+05:32:49 [SHOT] OK (0ms)
+05:32:50 [SHOT] OK (0ms)
+05:32:51 [SHOT] OK (650ms)
+05:32:52 [SHOT] OK (0ms)
+05:32:53 [SHOT] OK (0ms)
+05:32:54 [SHOT] OK (0ms)
+05:32:55 [SHOT] OK (174ms)
+05:32:57 [SHOT] OK (0ms)
+05:32:58 [SHOT] OK (0ms)
+05:32:58 [SHOT] OK (0ms)
+05:32:59 [SHOT] OK (175ms)
+05:32:59 [SHOT] OK (0ms)
+05:33:00 [SHOT] OK (0ms)
+05:33:01 [SHOT] OK (0ms)
+05:33:02 [SHOT] OK (0ms)
+05:33:02 [SHOT] OK (166ms)
+05:33:03 [SHOT] OK (0ms)
+05:33:04 [SHOT] OK (0ms)
+05:33:05 [SHOT] OK (0ms)
+05:33:06 [SHOT] OK (167ms)
+05:33:06     - Marker triggered. Holding 6.5s...
+05:33:07 [SHOT] OK (0ms)
+05:33:07 [SHOT] OK (0ms)
+05:33:08 [SHOT] OK (0ms)
+05:33:09 [SHOT] OK (169ms)
+05:33:09     - Holding... 3/6s
+05:33:10 [SHOT] OK (0ms)
+05:33:12 [SHOT] OK (0ms)
+05:33:37 [SHOT] FAIL #1 (25013ms)
+05:33:37 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:34:05 [SHOT] FAIL #2 (25001ms)
+05:34:05 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:34:14 [SHOT] OK (4376ms)
+05:34:14     - Holding... 67/6s
+05:34:14     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:34:14 [SHOT] OK (0ms)
+05:34:14 [SHOT] OK (0ms)
+05:34:14 [SHOT] OK (0ms)
+05:34:15 [SHOT] OK (0ms)
+05:34:15 [SHOT] OK (0ms)
+05:34:16     - Step FAILED: Could not find 'Attack - Auto' after 5 attempts.
+05:34:16 [MACRO] Gathering: FAILED (216676ms total)
+05:34:16 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:34:26 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:34:29 [LOOP] ── Loop iteration start ──
+05:34:29 [SHOT] OK (139ms)
+05:34:30 [SHOT] OK (0ms)
+05:34:30 [SCAN] Gathering - Inside → FALSE (1058ms)
+05:34:31 [SHOT] OK (0ms)
+05:34:31 [SHOT] OK (0ms)
+05:34:32 [SCAN] Supplies → FALSE (1229ms)
+05:34:54 [SHOT] FAIL #1 (21748ms)
+05:34:54 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:35:21 [SHOT] FAIL #2 (25013ms)
+05:35:21 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:35:25 [SCAN] Revive → FALSE (52765ms)
+05:35:26 ============================================================
+05:35:26 SESSION END — Xuka (8.7 min)
+05:35:26   Loops: 0
+05:35:26   Screenshots: 69 ok / 12 fail (14.8%)
+05:35:26   Avg latency: 362ms
+05:35:26   Macros: 1 ok / 2 fail
+05:35:26   Errors: 4
+05:35:26 ============================================================

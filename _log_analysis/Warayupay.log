@@ -1,0 +1,1223 @@
+03:08:38 ============================================================
+03:08:38 SESSION START — Warayupay (port:9225 tab:2)
+03:08:38 ============================================================
+03:08:39 [Warayupay] Starting worker: func=loop - Farm V1, port=9225, tab=2
+03:08:46 [Warayupay] Connected to Port 9225, Tab 2
+03:08:47 [SHOT] OK (198ms)
+03:08:48 [SHOT] OK (0ms)
+03:08:48 [SCAN] Gathering - Inside → FALSE (1531ms)
+03:08:49 [SHOT] OK (0ms)
+03:08:49 [SCAN] Supplies → TRUE (11ms)
+03:08:50 [MACRO] Buy Blood: Starting (0ms)
+03:08:55     - Step OK: ⚡ Hard Click 'Supplies' at (1304,552)
+03:08:55 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:09:20 [SHOT] FAIL #1 (25005ms)
+03:09:20 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:09:48 [SHOT] FAIL #2 (25014ms)
+03:09:48 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:10:11 [SHOT] OK (17851ms)
+03:10:11     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:10:16     - Step OK: ⚡ Hard Click 'Supplies - Type' at (512,311)
+03:10:16 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:10:41 [SHOT] FAIL #1 (25007ms)
+03:10:41 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:11:09 [SHOT] FAIL #2 (25003ms)
+03:11:09 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:11:39 [SHOT] FAIL #3 (25000ms)
+03:11:39 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:12:13 [SHOT] FAIL #4 (25010ms)
+03:12:13 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:12:55 [SHOT] FAIL #5 (25005ms)
+03:12:55 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:13:51 [SHOT] FAIL #6 (25010ms)
+03:13:51 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:14:47 [SHOT] FAIL #7 (25001ms)
+03:14:47 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:15:43 [SHOT] FAIL #8 (25013ms)
+03:15:43 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:16:38 [SHOT] FAIL #9 (25001ms)
+03:16:38 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:17:34 [SHOT] FAIL #10 (25015ms)
+03:17:34 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:18:30 [SHOT] FAIL #11 (25012ms)
+03:18:30 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+03:19:25 [SHOT] FAIL #12 (25009ms)
+03:19:25 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #12)
+03:19:59 [SHOT] OK (3342ms)
+03:19:59     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:20:05     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (851,568)
+03:20:05 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:20:05 [Macro] Delay completed.
+03:20:10     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1007,698)
+03:20:11 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:20:12 [Macro] Delay completed.
+03:20:17     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1530,150)
+03:20:17 [Macro] Steps completed. Checking result...
+03:20:43 [SHOT] FAIL #1 (25002ms)
+03:20:43 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:20:45 [Macro] Result: FAILURE ('Home' not found)
+03:20:45 [MACRO] Buy Blood: FAILED (715621ms total)
+03:20:50 [Warayupay] No next node after 'Macro' (ad649a80). Restart 1/10
+03:20:59 [SHOT] OK (4716ms)
+03:20:59 [SHOT] OK (0ms)
+03:21:00 [SCAN] Gathering - Inside → FALSE (5812ms)
+03:21:00 [SHOT] OK (0ms)
+03:21:00 [SCAN] Supplies → TRUE (10ms)
+03:21:00 [MACRO] Buy Blood: Starting (0ms)
+03:21:06     - Step OK: ⚡ Hard Click 'Supplies' at (1302,585)
+03:21:06 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:21:31 [SHOT] FAIL #1 (25012ms)
+03:21:31 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:21:53 [SHOT] OK (19260ms)
+03:21:53     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:21:58     - Step OK: ⚡ Hard Click 'Supplies - Type' at (571,324)
+03:21:59 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:22:24 [SHOT] FAIL #1 (25014ms)
+03:22:24 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:22:45 [SHOT] OK (18704ms)
+03:22:46     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:22:51     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (807,544)
+03:22:51 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:22:52 [Macro] Delay completed.
+03:22:57     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1039,696)
+03:22:57 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:22:58 [Macro] Delay completed.
+03:23:03     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1532,137)
+03:23:04 [Macro] Steps completed. Checking result...
+03:23:06 [SHOT] OK (810ms)
+03:23:06 [Macro] Result: SUCCESS (found 'Home')
+03:23:06 [MACRO] Buy Blood: PASSED (125422ms total)
+03:23:06 [MACRO] Gathering: Starting (0ms)
+03:23:06 [SHOT] OK (0ms)
+03:23:11     - Step OK: Clicked 'Gathering'
+03:23:12 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+03:23:12 [SHOT] OK (966ms)
+03:23:13     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:23:18     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1086,596)
+03:23:18 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:23:31 [Macro] Delay completed.
+03:23:31 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+03:23:32 [SHOT] OK (1727ms)
+03:23:33 [SHOT] OK (0ms)
+03:23:34 [SHOT] OK (0ms)
+03:23:35 [SHOT] OK (0ms)
+03:23:36 [SHOT] OK (144ms)
+03:23:36     - Marker triggered. Holding 6.5s...
+03:23:37 [SHOT] OK (0ms)
+03:23:38 [SHOT] OK (0ms)
+03:23:39 [SHOT] OK (0ms)
+03:23:40 [SHOT] OK (388ms)
+03:23:40     - Marker interrupted. Resetting hold timer.
+03:23:41 [SHOT] OK (0ms)
+03:23:42 [SHOT] OK (0ms)
+03:23:43 [SHOT] OK (0ms)
+03:23:43 [SHOT] OK (0ms)
+03:23:44 [SHOT] OK (438ms)
+03:23:45 [SHOT] OK (0ms)
+03:23:46 [SHOT] OK (0ms)
+03:23:47 [SHOT] OK (0ms)
+03:23:48 [SHOT] OK (361ms)
+03:23:48 [SHOT] OK (0ms)
+03:23:49 [SHOT] OK (0ms)
+03:23:50 [SHOT] OK (0ms)
+03:23:52 [SHOT] OK (664ms)
+03:23:52 [SHOT] OK (0ms)
+03:23:53 [SHOT] OK (0ms)
+03:23:53 [SHOT] OK (0ms)
+03:23:54 [SHOT] OK (0ms)
+03:23:56 [SHOT] OK (423ms)
+03:23:57 [SHOT] OK (0ms)
+03:23:58 [SHOT] OK (0ms)
+03:24:00 [SHOT] OK (288ms)
+03:24:01 [SHOT] OK (0ms)
+03:24:01 [SHOT] OK (0ms)
+03:24:01 [SHOT] OK (0ms)
+03:24:02 [SHOT] OK (0ms)
+03:24:03 [SHOT] OK (0ms)
+03:24:04 [SHOT] OK (489ms)
+03:24:05 [SHOT] OK (0ms)
+03:24:05 [SHOT] OK (0ms)
+03:24:06 [SHOT] OK (0ms)
+03:24:07 [SHOT] OK (0ms)
+03:24:08 [SHOT] OK (426ms)
+03:24:09 [SHOT] OK (0ms)
+03:24:09 [SHOT] OK (0ms)
+03:24:10 [SHOT] OK (0ms)
+03:24:11 [SHOT] OK (0ms)
+03:24:12 [SHOT] OK (311ms)
+03:24:12 [SHOT] OK (0ms)
+03:24:13 [SHOT] OK (0ms)
+03:24:14 [SHOT] OK (0ms)
+03:24:15 [SHOT] OK (448ms)
+03:24:16 [SHOT] OK (0ms)
+03:24:17 [SHOT] OK (0ms)
+03:24:18 [SHOT] OK (0ms)
+03:24:18 [SHOT] OK (0ms)
+03:24:20 [SHOT] OK (544ms)
+03:24:21 [SHOT] OK (0ms)
+03:24:22 [SHOT] OK (0ms)
+03:24:22 [SHOT] OK (0ms)
+03:24:24 [SHOT] OK (533ms)
+03:24:25 [SHOT] OK (0ms)
+03:24:26 [SHOT] OK (0ms)
+03:24:27 [SHOT] OK (0ms)
+03:24:28 [SHOT] OK (836ms)
+03:24:29 [SHOT] OK (0ms)
+03:24:31 [SHOT] OK (0ms)
+03:24:32 [SHOT] OK (489ms)
+03:24:33 [SHOT] OK (0ms)
+03:24:34 [SHOT] OK (0ms)
+03:24:35 [SHOT] OK (0ms)
+03:24:36 [SHOT] OK (367ms)
+03:24:36 [SHOT] OK (0ms)
+03:24:37 [SHOT] OK (0ms)
+03:24:38 [SHOT] OK (0ms)
+03:24:38 [SHOT] OK (0ms)
+03:24:39 [SHOT] OK (205ms)
+03:24:40 [SHOT] OK (0ms)
+03:24:41 [SHOT] OK (0ms)
+03:24:42 [SHOT] OK (0ms)
+03:24:43 [SHOT] OK (274ms)
+03:24:43     - Marker triggered. Holding 6.5s...
+03:24:44 [SHOT] OK (0ms)
+03:24:45 [SHOT] OK (0ms)
+03:24:46 [SHOT] OK (351ms)
+03:24:46     - Holding... 3/6s
+03:24:47 [SHOT] OK (0ms)
+03:24:48 [SHOT] OK (0ms)
+03:24:50 [SHOT] OK (635ms)
+03:24:51     - Marker interrupted. Resetting hold timer.
+03:24:51 [SHOT] OK (0ms)
+03:24:52 [SHOT] OK (0ms)
+03:24:53 [SHOT] OK (0ms)
+03:24:54 [SHOT] OK (207ms)
+03:24:54 [SHOT] OK (0ms)
+03:24:55 [SHOT] OK (0ms)
+03:24:56 [SHOT] OK (0ms)
+03:24:58 [SHOT] OK (653ms)
+03:24:58 [SHOT] OK (0ms)
+03:24:59 [SHOT] OK (0ms)
+03:24:59 [SHOT] OK (0ms)
+03:25:00 [SHOT] OK (0ms)
+03:25:02 [SHOT] OK (276ms)
+03:25:03 [SHOT] OK (0ms)
+03:25:04 [SHOT] OK (0ms)
+03:25:05 [SHOT] OK (0ms)
+03:25:05 [SHOT] OK (172ms)
+03:25:06 [SHOT] OK (0ms)
+03:25:07 [SHOT] OK (0ms)
+03:25:07 [SHOT] OK (0ms)
+03:25:08 [SHOT] OK (0ms)
+03:25:09 [SHOT] OK (454ms)
+03:25:10 [SHOT] OK (0ms)
+03:25:11 [SHOT] OK (0ms)
+03:25:12 [SHOT] OK (0ms)
+03:25:13 [SHOT] OK (1055ms)
+03:25:14 [SHOT] OK (0ms)
+03:25:15 [SHOT] OK (0ms)
+03:25:16 [SHOT] OK (0ms)
+03:25:18 [SHOT] OK (405ms)
+03:25:18 [SHOT] OK (0ms)
+03:25:19 [SHOT] OK (0ms)
+03:25:20 [SHOT] OK (0ms)
+03:25:22 [SHOT] OK (1471ms)
+03:25:23 [SHOT] OK (0ms)
+03:25:24 [SHOT] OK (0ms)
+03:25:24 [SHOT] OK (0ms)
+03:25:25 [SHOT] OK (0ms)
+03:25:26 [SHOT] OK (340ms)
+03:25:27 [SHOT] OK (0ms)
+03:25:28 [SHOT] OK (0ms)
+03:25:31 [SHOT] OK (1850ms)
+03:25:31     - Marker triggered. Holding 6.5s...
+03:25:32 [SHOT] OK (0ms)
+03:25:34 [SHOT] OK (0ms)
+03:25:35 [SHOT] OK (264ms)
+03:25:35     - Holding... 3/6s
+03:25:36 [SHOT] OK (0ms)
+03:25:37 [SHOT] OK (0ms)
+03:25:38 [SHOT] OK (0ms)
+03:25:38     - Holding... 6/6s
+03:25:38     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:25:38 [SHOT] OK (306ms)
+03:25:44     - Step OK: Clicked 'Attack - Auto'
+03:25:44 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:25:45 [Macro] Delay completed.
+03:25:45 [SHOT] OK (234ms)
+03:25:51     - Step OK: Clicked 'Click 5P'
+03:25:51 [Macro] Steps completed. Checking result...
+03:25:53 [SHOT] OK (260ms)
+03:25:53 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+03:25:53 [MACRO] Gathering: PASSED (166890ms total)
+03:25:58 [Warayupay] No next node after 'Macro' (cc882d55). Restart 1/10
+03:26:03 [SHOT] OK (1339ms)
+03:26:03 [SHOT] OK (0ms)
+03:26:05 [SCAN] Gathering - Inside → FALSE (3366ms)
+03:26:05 [SHOT] OK (0ms)
+03:26:06 [SHOT] OK (633ms)
+03:26:07 [SCAN] Supplies → FALSE (1842ms)
+03:26:08 [SHOT] OK (0ms)
+03:26:09 [SHOT] OK (0ms)
+03:26:09 [SCAN] Revive → FALSE (1570ms)
+03:26:10 [SHOT] OK (438ms)
+03:26:11 [SHOT] OK (0ms)
+03:26:12 [SCAN] Supplies - In → FALSE (2064ms)
+03:26:13 [SHOT] OK (0ms)
+03:26:14 [SHOT] OK (554ms)
+03:26:15 [SCAN] Gathering - Automove → FALSE (2230ms)
+03:26:15 [SHOT] OK (0ms)
+03:26:16 [SHOT] OK (0ms)
+03:26:17 [SCAN] Attack - Auto → FALSE (1943ms)
+03:26:19 [SHOT] OK (694ms)
+03:26:19 [SCAN] Attack - Auto On → TRUE (732ms)
+03:26:19 [MACRO] Click 5P: Starting (0ms)
+03:26:25     - Step OK: ⚡ Hard Click 'Click 5P' at (1509,86)
+03:26:25 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:26:25 [Macro] Delay completed.
+03:26:25 [Macro] Steps completed. Checking result...
+03:26:25 [Macro] Finished (no capture check configured).
+03:26:25 [MACRO] Click 5P: PASSED (5732ms total)
+03:26:25 [Warayupay] No next node after 'Macro' (14253c0e). Restart 1/10
+03:26:53 [SHOT] FAIL #1 (25007ms)
+03:26:53 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:26:57 [SHOT] OK (1501ms)
+03:26:58 [SCAN] Gathering - Inside → FALSE (29121ms)
+03:26:58 [SHOT] OK (0ms)
+03:26:59 [SHOT] OK (0ms)
+03:27:00 [SCAN] Supplies → FALSE (1322ms)
+03:27:25 [SHOT] FAIL #1 (25004ms)
+03:27:25 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:27:41 [SHOT] FAIL #2 (14479ms)
+03:27:41 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:27:45 [SCAN] Revive → FALSE (45486ms)
+03:27:46 ============================================================
+03:27:46 SESSION END — Warayupay (19.1 min)
+03:27:46   Loops: 0
+03:27:46   Screenshots: 165 ok / 20 fail (10.8%)
+03:27:46   Avg latency: 541ms
+03:27:46   Macros: 3 ok / 1 fail
+03:27:46   Errors: 0
+03:27:46 ============================================================
+03:31:07 ============================================================
+03:31:07 SESSION START — Warayupay (port:9225 tab:2)
+03:31:07 ============================================================
+03:31:09 [Warayupay] Starting worker: func=loop - Farm V1, port=9225, tab=2
+03:31:19 [Warayupay] Connected to Port 9225, Tab 2
+03:31:24 [SHOT] OK (3637ms)
+03:31:24 [SHOT] OK (0ms)
+03:31:24 [SCAN] Supplies → FALSE (4492ms)
+03:31:25 [SHOT] OK (0ms)
+03:31:26 [SHOT] OK (0ms)
+03:31:26 [SCAN] Revive → FALSE (1354ms)
+03:31:52 [SHOT] FAIL #1 (25010ms)
+03:31:52 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:31:55 [SHOT] OK (705ms)
+03:31:56 [SCAN] Supplies - In → FALSE (28417ms)
+03:31:56 [SHOT] OK (0ms)
+03:31:56 [SCAN] Attack - Auto → TRUE (9ms)
+03:31:57 [SHOT] OK (0ms)
+03:31:57 [SHOT] OK (0ms)
+03:31:58 [SCAN] Gathering - Automove → FALSE (1412ms)
+03:32:24 [SHOT] FAIL #1 (25011ms)
+03:32:24 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:51 [SHOT] FAIL #2 (25007ms)
+03:32:51 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:32:55 [SCAN] Attack - Auto On → FALSE (56019ms)
+03:33:20 [SHOT] FAIL #3 (25010ms)
+03:33:20 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:33:53 [SHOT] FAIL #4 (25005ms)
+03:33:53 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:34:09 [SCAN] Revive → FALSE (74049ms)
+03:34:10 [NODE] → Click: Attack - Auto
+03:34:33 [SHOT] OK (23037ms)
+03:34:38 [SCAN] Attack - Auto → TRUE (0ms)
+03:34:38 [NODE] → Click: Click 5P
+03:35:03 [SHOT] FAIL #1 (25005ms)
+03:35:03 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:35:06 [Warayupay] No next node after 'Click' (Click 5P). Restart 1/10
+03:35:34 [SHOT] FAIL #2 (25002ms)
+03:35:34 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:36:03 [SHOT] FAIL #3 (25014ms)
+03:36:03 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:36:11 [SCAN] Supplies → FALSE (62018ms)
+03:36:41 [SHOT] OK (24484ms)
+03:36:42 [SHOT] OK (0ms)
+03:36:43 [SCAN] Revive → FALSE (25922ms)
+03:36:43 [SHOT] OK (0ms)
+03:36:44 [SHOT] OK (0ms)
+03:36:44 [SCAN] Supplies - In → FALSE (1138ms)
+03:37:10 [SHOT] FAIL #1 (25006ms)
+03:37:10 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:37:14 [SHOT] OK (1933ms)
+03:37:14 [SCAN] Attack - Auto → TRUE (29027ms)
+03:37:14 [SHOT] OK (0ms)
+03:37:15 [SHOT] OK (0ms)
+03:37:16 [SCAN] Gathering - Automove → FALSE (1421ms)
+03:37:17 [SHOT] OK (0ms)
+03:37:42 [SHOT] FAIL #1 (25008ms)
+03:37:42 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:37:44 [SCAN] Attack - Auto On → FALSE (27761ms)
+03:37:45 [SHOT] OK (165ms)
+03:37:46 [SHOT] OK (0ms)
+03:37:46 [SCAN] Revive → FALSE (1450ms)
+03:37:47 [NODE] → Click: Attack - Auto
+03:37:47 [SHOT] OK (0ms)
+03:37:52 [SCAN] Attack - Auto → TRUE (0ms)
+03:37:53 [NODE] → Click: Click 5P
+03:38:18 [SHOT] FAIL #1 (25013ms)
+03:38:18 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:38:20 [Warayupay] No next node after 'Click' (Click 5P). Restart 1/10
+03:38:48 [SHOT] FAIL #2 (25005ms)
+03:38:48 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:39:07 [SHOT] OK (14844ms)
+03:39:08 [SCAN] Supplies → FALSE (44656ms)
+03:39:09 [SHOT] OK (0ms)
+03:39:10 [SHOT] OK (0ms)
+03:39:10 [SCAN] Revive → FALSE (1315ms)
+03:39:11 [SHOT] OK (209ms)
+03:39:12 [SHOT] OK (0ms)
+03:39:13 [SCAN] Supplies - In → FALSE (1983ms)
+03:39:13 [SHOT] OK (0ms)
+03:39:13 [SCAN] Attack - Auto → TRUE (8ms)
+03:39:14 [SHOT] OK (171ms)
+03:39:15 [SHOT] OK (0ms)
+03:39:15 [SCAN] Gathering - Automove → FALSE (1264ms)
+03:39:16 [SHOT] OK (0ms)
+03:39:16 [SCAN] Attack - Auto On → TRUE (23ms)
+03:39:16 [MACRO] Click 5P: Starting (0ms)
+03:39:22     - Step OK: ⚡ Hard Click 'Click 5P' at (1488,90)
+03:39:22 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:39:22 [Macro] Delay completed.
+03:39:22 [Macro] Steps completed. Checking result...
+03:39:22 [Macro] Finished (no capture check configured).
+03:39:22 [MACRO] Click 5P: PASSED (5639ms total)
+03:39:22 [MACRO] Revivie: Starting (0ms)
+03:39:22 [SHOT] OK (177ms)
+03:39:23 [SHOT] OK (0ms)
+03:39:23 [SHOT] OK (0ms)
+03:39:23 [SHOT] OK (0ms)
+03:39:24 [SHOT] OK (0ms)
+03:39:24     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:39:24 [MACRO] Revivie: FAILED (2191ms total)
+03:39:24 [Warayupay] No next node after 'Macro' (ed214390). Restart 1/10
+03:39:53 [SHOT] FAIL #1 (25013ms)
+03:39:53 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:40:20 [SHOT] FAIL #2 (25011ms)
+03:40:20 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:40:24 [SCAN] Supplies → FALSE (56025ms)
+03:40:49 [SHOT] FAIL #3 (25002ms)
+03:40:49 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:41:22 [SHOT] FAIL #4 (25010ms)
+03:41:22 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:41:38 [SCAN] Revive → FALSE (74016ms)
+03:42:09 [SHOT] FAIL #5 (25027ms)
+03:42:09 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:43:04 [SHOT] FAIL #6 (25009ms)
+03:43:04 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:43:34 [SCAN] Supplies - In → FALSE (110044ms)
+03:44:00 [SHOT] FAIL #7 (25011ms)
+03:44:00 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:44:55 [SHOT] FAIL #8 (25004ms)
+03:44:55 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:45:25 [SCAN] Attack - Auto → FALSE (110031ms)
+03:45:51 [SHOT] FAIL #9 (25015ms)
+03:45:51 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:46:46 [SHOT] FAIL #10 (25010ms)
+03:46:46 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:47:16 [SCAN] Gathering - Automove → FALSE (110027ms)
+03:47:46 [SHOT] FAIL #11 (25006ms)
+03:47:46 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+03:48:30 [SHOT] OK (14215ms)
+03:48:30 [SCAN] Attack - Auto On → TRUE (69240ms)
+03:48:31 [MACRO] Click 5P: Starting (0ms)
+03:48:36     - Step OK: ⚡ Hard Click 'Click 5P' at (1485,95)
+03:48:37 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:48:37 [Macro] Delay completed.
+03:48:37 [Macro] Steps completed. Checking result...
+03:48:37 [Macro] Finished (no capture check configured).
+03:48:37 [MACRO] Click 5P: PASSED (5739ms total)
+03:48:37 [MACRO] Revivie: Starting (0ms)
+03:49:02 [SHOT] FAIL #1 (25005ms)
+03:49:02 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:49:29 [SHOT] FAIL #2 (25001ms)
+03:49:29 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:49:58 [SHOT] FAIL #3 (25014ms)
+03:49:58 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:50:32 [SHOT] FAIL #4 (25015ms)
+03:50:32 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:51:13 [SHOT] FAIL #5 (25011ms)
+03:51:13 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:51:43     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:51:43 [MACRO] Revivie: FAILED (186556ms total)
+03:51:43 [Warayupay] No next node after 'Macro' (ed214390). Restart 1/10
+03:52:12 [SHOT] FAIL #6 (25013ms)
+03:52:12 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:52:49 [SHOT] OK (6739ms)
+03:52:49 [SCAN] Supplies → FALSE (62406ms)
+03:53:20 [SHOT] FAIL #1 (25010ms)
+03:53:20 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:53:22 [SHOT] OK (146ms)
+03:53:23 [SCAN] Revive → FALSE (27695ms)
+03:53:23 [SHOT] OK (0ms)
+03:53:24 [SHOT] OK (0ms)
+03:53:25 [SCAN] Supplies - In → FALSE (1451ms)
+03:53:51 [SHOT] FAIL #1 (25005ms)
+03:53:51 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:54:18 [SHOT] FAIL #2 (25009ms)
+03:54:18 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:54:22 [SCAN] Attack - Auto → FALSE (56015ms)
+03:54:47 [SHOT] FAIL #3 (25001ms)
+03:54:47 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:54:57 [SHOT] OK (1961ms)
+03:54:58 [SCAN] Gathering - Automove → FALSE (35680ms)
+03:54:58 [SHOT] OK (0ms)
+03:54:58 [SCAN] Attack - Auto On → TRUE (19ms)
+03:54:59 [MACRO] Click 5P: Starting (0ms)
+03:55:04     - Step OK: ⚡ Hard Click 'Click 5P' at (1485,96)
+03:55:04 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:55:04 [Macro] Delay completed.
+03:55:04 [Macro] Steps completed. Checking result...
+03:55:04 [Macro] Finished (no capture check configured).
+03:55:04 [MACRO] Click 5P: PASSED (5761ms total)
+03:55:04 [MACRO] Revivie: Starting (0ms)
+03:55:27 [SHOT] OK (22946ms)
+03:55:28 [SHOT] OK (0ms)
+03:55:28 [SHOT] OK (0ms)
+03:55:29 [SHOT] OK (0ms)
+03:55:29 [SHOT] OK (0ms)
+03:55:29     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:55:29 [MACRO] Revivie: FAILED (24928ms total)
+03:55:29 [Warayupay] No next node after 'Macro' (ed214390). Restart 1/10
+03:55:58 [SHOT] FAIL #1 (25004ms)
+03:55:58 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:56:00 [SHOT] OK (0ms)
+03:56:01 [SCAN] Supplies → FALSE (27715ms)
+03:56:26 [SHOT] FAIL #1 (25015ms)
+03:56:26 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:56:53 [SHOT] FAIL #2 (25014ms)
+03:56:53 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:56:57 [SCAN] Revive → FALSE (56031ms)
+03:57:01 [SHOT] OK (3398ms)
+03:57:01 [SHOT] OK (0ms)
+03:57:02 [SCAN] Supplies - In → FALSE (4453ms)
+03:57:03 [SHOT] OK (0ms)
+03:57:03 [SCAN] Attack - Auto → TRUE (11ms)
+03:57:03 [SHOT] OK (0ms)
+03:57:04 [SHOT] OK (0ms)
+03:57:04 [SCAN] Gathering - Automove → FALSE (1176ms)
+03:57:30 [SHOT] FAIL #1 (25003ms)
+03:57:30 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:57:57 [SHOT] FAIL #2 (25010ms)
+03:57:57 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:58:01 [SCAN] Attack - Auto On → FALSE (56014ms)
+03:58:32 [SHOT] FAIL #3 (25007ms)
+03:58:32 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:59:03 [SHOT] OK (23606ms)
+03:59:04 [SCAN] Revive → FALSE (57344ms)
+03:59:04 [NODE] → Click: Attack - Auto
+03:59:04 [SHOT] OK (0ms)
+03:59:10 [SCAN] Attack - Auto → TRUE (0ms)
+03:59:10 [NODE] → Click: Click 5P
+03:59:34 [SHOT] OK (23728ms)
+03:59:39 [SCAN] Click 5P → TRUE (0ms)
+03:59:39 [Warayupay] No next node after 'Click' (Click 5P). Restart 1/10
+04:00:04 [SHOT] OK (21426ms)
+04:00:05 [SHOT] OK (0ms)
+04:00:06 [SCAN] Supplies → FALSE (22770ms)
+04:00:06 [SHOT] OK (0ms)
+04:00:07 [SHOT] OK (0ms)
+04:00:08 [SCAN] Revive → FALSE (1396ms)
+04:00:33 [SHOT] FAIL #1 (25007ms)
+04:00:33 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:01:00 [SHOT] FAIL #2 (25013ms)
+04:01:00 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:01:04 [SCAN] Supplies - In → FALSE (56020ms)
+04:01:10 [SHOT] OK (5451ms)
+04:01:10 [SCAN] Attack - Auto → TRUE (5459ms)
+04:01:11 [SHOT] OK (0ms)
+04:01:11 [SHOT] OK (0ms)
+04:01:12 [SCAN] Gathering - Automove → FALSE (1076ms)
+04:01:12 [SHOT] OK (0ms)
+04:01:13 [SHOT] OK (0ms)
+04:01:13 [SCAN] Attack - Auto On → FALSE (897ms)
+04:01:39 [SHOT] FAIL #1 (25008ms)
+04:01:39 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:02:06 [SHOT] FAIL #2 (25009ms)
+04:02:06 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:02:10 [SCAN] Revive → FALSE (56020ms)
+04:02:11 [Warayupay] Connection rotation — periodic reconnect
+04:02:13 [Warayupay] Connection rotated successfully
+04:02:13 [NODE] → Click: Attack - Auto
+04:02:38 [SHOT] FAIL #3 (25009ms)
+04:02:38 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:02:51 [NODE] → Click: Click 5P
+04:03:16 [SHOT] FAIL #4 (25012ms)
+04:03:16 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:03:32 [Warayupay] No next node after 'Click' (Click 5P). Restart 1/10
+04:04:01 [SHOT] FAIL #5 (25001ms)
+04:04:01 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:04:31 [SHOT] OK (137ms)
+04:04:31 [SCAN] Supplies → FALSE (55621ms)
+04:04:32 [SHOT] OK (0ms)
+04:04:32 [SHOT] OK (0ms)
+04:04:33 [SCAN] Revive → FALSE (1143ms)
+04:04:33 [SHOT] OK (0ms)
+04:04:34 [SHOT] OK (0ms)
+04:04:34 [SCAN] Supplies - In → FALSE (1058ms)
+04:05:00 [SHOT] FAIL #1 (25000ms)
+04:05:00 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:05:27 [SHOT] FAIL #2 (25013ms)
+04:05:27 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:05:31 [SCAN] Attack - Auto → FALSE (56015ms)
+04:05:35 [SHOT] OK (3374ms)
+04:05:36 [SHOT] OK (0ms)
+04:05:37 [SCAN] Gathering - Automove → FALSE (4840ms)
+04:05:37 [SHOT] OK (0ms)
+04:05:38 [SHOT] OK (0ms)
+04:05:38 [SCAN] Attack - Auto On → FALSE (989ms)
+04:06:04 [SHOT] FAIL #1 (25002ms)
+04:06:04 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:06:31 [SHOT] FAIL #2 (25012ms)
+04:06:31 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:06:35 [SCAN] Revive → FALSE (56016ms)
+04:06:35 [NODE] → Click: Attack - Auto
+04:07:00 [SHOT] FAIL #3 (25006ms)
+04:07:00 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:07:08 [NODE] → Click: Click 5P
+04:07:34 [SHOT] FAIL #4 (25001ms)
+04:07:34 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:07:55 [Warayupay] No next node after 'Click' (Click 5P). Restart 1/10
+04:08:15 [SHOT] OK (16645ms)
+04:08:16 [SHOT] OK (0ms)
+04:08:16 [SCAN] Supplies → FALSE (17979ms)
+04:08:17 [SHOT] OK (0ms)
+04:08:18 [SHOT] OK (0ms)
+04:08:18 [SCAN] Revive → FALSE (1279ms)
+04:08:19 [SHOT] OK (152ms)
+04:08:20 [SHOT] OK (0ms)
+04:08:20 [SCAN] Supplies - In → FALSE (1814ms)
+04:08:21 [SHOT] OK (0ms)
+04:08:21 [SCAN] Attack - Auto → TRUE (7ms)
+04:08:21 [SHOT] OK (0ms)
+04:08:47 [SHOT] FAIL #1 (25012ms)
+04:08:47 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:08:49 [SCAN] Gathering - Automove → FALSE (27759ms)
+04:09:15 [SHOT] FAIL #2 (25011ms)
+04:09:15 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:09:21 [SHOT] OK (2502ms)
+04:09:22 [SCAN] Attack - Auto On → FALSE (32315ms)
+04:09:23 [SHOT] OK (0ms)
+04:09:23 [SHOT] OK (0ms)
+04:09:24 [SCAN] Revive → FALSE (1268ms)
+04:09:24 [NODE] → Click: Attack - Auto
+04:09:49 [SHOT] FAIL #1 (25008ms)
+04:09:49 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:09:52 [NODE] → Click: Click 5P
+04:10:17 [SHOT] FAIL #2 (25006ms)
+04:10:17 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:10:21 [Warayupay] No next node after 'Click' (Click 5P). Restart 1/10
+04:10:50 [SHOT] FAIL #3 (25000ms)
+04:10:50 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:11:23 [SHOT] FAIL #4 (25013ms)
+04:11:23 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:11:39 [SCAN] Supplies → FALSE (74015ms)
+04:12:04 [SHOT] FAIL #5 (25015ms)
+04:12:04 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:12:59 [SHOT] FAIL #6 (25006ms)
+04:12:59 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:13:29 [SCAN] Revive → FALSE (110023ms)
+04:14:00 [SHOT] FAIL #7 (25014ms)
+04:14:00 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:14:34 [SHOT] OK (4752ms)
+04:14:35 [SCAN] Supplies - In → FALSE (60409ms)
+04:14:36 [SHOT] OK (0ms)
+04:14:36 [SCAN] Attack - Auto → TRUE (8ms)
+04:14:36 [SHOT] OK (0ms)
+04:14:37 [SHOT] OK (0ms)
+04:14:37 [SCAN] Gathering - Automove → FALSE (998ms)
+04:15:02 [SHOT] FAIL #1 (25004ms)
+04:15:02 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:15:29 [SHOT] FAIL #2 (25002ms)
+04:15:29 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:15:33 [SCAN] Attack - Auto On → FALSE (56007ms)
+04:15:59 [SHOT] FAIL #3 (25009ms)
+04:15:59 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:16:07 [SHOT] OK (145ms)
+04:16:08 [SCAN] Revive → FALSE (33953ms)
+04:16:09 [NODE] → Click: Attack - Auto
+04:16:09 [SHOT] OK (0ms)
+04:16:14 [SCAN] Attack - Auto → TRUE (0ms)
+04:16:14 [NODE] → Click: Click 5P
+04:16:38 [SHOT] OK (23601ms)
+04:16:43 [SCAN] Click 5P → TRUE (0ms)
+04:16:43 [Warayupay] No next node after 'Click' (Click 5P). Restart 1/10
+04:17:08 [SHOT] OK (21434ms)
+04:17:09 [SHOT] OK (0ms)
+04:17:09 [SCAN] Supplies → FALSE (22421ms)
+04:17:10 [SHOT] OK (0ms)
+04:17:11 [SHOT] OK (0ms)
+04:17:11 [SCAN] Revive → FALSE (1706ms)
+04:17:37 [SHOT] FAIL #1 (25000ms)
+04:17:37 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:17:43 [SHOT] OK (3643ms)
+04:17:43 [SCAN] Supplies - In → FALSE (31244ms)
+04:17:44 [SHOT] OK (0ms)
+04:17:44 [SCAN] Attack - Auto → TRUE (7ms)
+04:17:45 [SHOT] OK (0ms)
+04:17:45 [SHOT] OK (0ms)
+04:17:46 [SCAN] Gathering - Automove → FALSE (1000ms)
+04:17:47 [SHOT] OK (143ms)
+04:17:47 [SCAN] Attack - Auto On → TRUE (162ms)
+04:17:47 [MACRO] Click 5P: Starting (0ms)
+04:17:53     - Step OK: ⚡ Hard Click 'Click 5P' at (1489,88)
+04:17:53 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:17:53 [Macro] Delay completed.
+04:17:53 [Macro] Steps completed. Checking result...
+04:17:53 [Macro] Finished (no capture check configured).
+04:17:53 [MACRO] Click 5P: PASSED (5736ms total)
+04:17:53 [MACRO] Revivie: Starting (0ms)
+04:18:18 [SHOT] FAIL #1 (25000ms)
+04:18:18 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:18:45 [SHOT] FAIL #2 (25013ms)
+04:18:45 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:19:15 [SHOT] FAIL #3 (25012ms)
+04:19:15 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:19:45 [SHOT] OK (22162ms)
+04:19:46 [SHOT] OK (0ms)
+04:19:46     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:19:46 [MACRO] Revivie: FAILED (112917ms total)
+04:19:51 [Warayupay] No next node after 'Macro' (ed214390). Restart 1/10
+04:20:19 [SHOT] FAIL #1 (25006ms)
+04:20:19 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:20:46 [SHOT] OK (24634ms)
+04:20:47 [SCAN] Supplies → FALSE (52258ms)
+04:20:47 [SHOT] OK (0ms)
+04:20:48 [SHOT] OK (0ms)
+04:20:49 [SCAN] Revive → FALSE (1582ms)
+04:21:15 [SHOT] FAIL #1 (25004ms)
+04:21:15 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:21:42 [SHOT] FAIL #2 (25008ms)
+04:21:42 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:21:46 [SCAN] Supplies - In → FALSE (56013ms)
+04:22:12 [SHOT] FAIL #3 (25008ms)
+04:22:12 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:22:20 [SHOT] OK (170ms)
+04:22:20 [SCAN] Attack - Auto → TRUE (33187ms)
+04:22:20 [SHOT] OK (0ms)
+04:22:21 [SHOT] OK (0ms)
+04:22:22 [SCAN] Gathering - Automove → FALSE (1511ms)
+04:22:48 [SHOT] FAIL #1 (25008ms)
+04:22:48 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:22:54 [SHOT] OK (4198ms)
+04:22:54 [SCAN] Attack - Auto On → TRUE (31282ms)
+04:22:54 [MACRO] Click 5P: Starting (0ms)
+04:23:00     - Step OK: ⚡ Hard Click 'Click 5P' at (1533,98)
+04:23:00 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:23:00 [Macro] Delay completed.
+04:23:00 [Macro] Steps completed. Checking result...
+04:23:00 [Macro] Finished (no capture check configured).
+04:23:00 [MACRO] Click 5P: PASSED (5616ms total)
+04:23:00 [MACRO] Revivie: Starting (0ms)
+04:23:24 [SHOT] OK (24361ms)
+04:23:25 [SHOT] OK (0ms)
+04:23:25 [SHOT] OK (0ms)
+04:23:26 [SHOT] OK (0ms)
+04:23:26 [SHOT] OK (0ms)
+04:23:26     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:23:26 [MACRO] Revivie: FAILED (26340ms total)
+04:23:26 [Warayupay] No next node after 'Macro' (ed214390). Restart 1/10
+04:23:55 [SHOT] OK (25042ms)
+04:23:56 [SHOT] OK (0ms)
+04:23:56 [SCAN] Supplies → FALSE (26540ms)
+04:23:57 [SHOT] OK (0ms)
+04:24:23 [SHOT] FAIL #1 (25008ms)
+04:24:23 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:24:25 [SCAN] Revive → FALSE (27870ms)
+04:24:56 [SHOT] FAIL #2 (25010ms)
+04:24:56 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:25:25 [SHOT] FAIL #3 (25012ms)
+04:25:25 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:25:33 [SCAN] Supplies - In → FALSE (62025ms)
+04:25:58 [SHOT] FAIL #4 (25004ms)
+04:25:58 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:26:38 [SHOT] OK (23997ms)
+04:26:38 [SCAN] Attack - Auto → TRUE (65024ms)
+04:26:39 [SHOT] OK (0ms)
+04:26:39 [SHOT] OK (0ms)
+04:26:39 [SCAN] Gathering - Automove → FALSE (827ms)
+04:26:40 [SHOT] OK (0ms)
+04:26:40 [SCAN] Attack - Auto On → TRUE (17ms)
+04:26:41 [MACRO] Click 5P: Starting (0ms)
+04:26:46     - Step OK: ⚡ Hard Click 'Click 5P' at (1505,96)
+04:26:46 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:26:47 [Macro] Delay completed.
+04:26:47 [Macro] Steps completed. Checking result...
+04:26:47 [Macro] Finished (no capture check configured).
+04:26:47 [MACRO] Click 5P: PASSED (5823ms total)
+04:26:47 [MACRO] Revivie: Starting (0ms)
+04:27:09 [SHOT] OK (22459ms)
+04:27:09 [SHOT] OK (0ms)
+04:27:10 [SHOT] OK (0ms)
+04:27:10 [SHOT] OK (0ms)
+04:27:11 [SHOT] OK (0ms)
+04:27:11     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:27:11 [MACRO] Revivie: FAILED (24501ms total)
+04:27:11 [Warayupay] No next node after 'Macro' (ed214390). Restart 1/10
+04:27:40 [SHOT] FAIL #1 (25013ms)
+04:27:40 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:28:07 [SHOT] FAIL #2 (25010ms)
+04:28:07 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:28:11 [SCAN] Supplies → FALSE (56025ms)
+04:28:36 [SHOT] FAIL #3 (25010ms)
+04:28:36 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:29:09 [SHOT] FAIL #4 (25001ms)
+04:29:09 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:29:25 [SCAN] Revive → FALSE (74024ms)
+04:29:56 [SHOT] FAIL #5 (25001ms)
+04:29:56 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:30:51 [SHOT] FAIL #6 (25014ms)
+04:30:51 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:31:21 [SCAN] Supplies - In → FALSE (110017ms)
+04:31:46 [SHOT] FAIL #7 (25008ms)
+04:31:46 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:32:41 [SHOT] FAIL #8 (25002ms)
+04:32:41 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+04:33:11 [SCAN] Attack - Auto → FALSE (110024ms)
+04:33:12 [Warayupay] Connection rotation — periodic reconnect
+04:33:14 [Warayupay] Connection rotated successfully
+04:33:30 [SHOT] OK (15997ms)
+04:33:31 [SHOT] OK (0ms)
+04:33:32 [SCAN] Gathering - Automove → FALSE (17329ms)
+04:33:32 [SHOT] OK (0ms)
+04:33:33 [SHOT] OK (0ms)
+04:33:33 [SCAN] Attack - Auto On → FALSE (1342ms)
+04:33:59 [SHOT] FAIL #1 (25002ms)
+04:33:59 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:34:26 [SHOT] FAIL #2 (25008ms)
+04:34:26 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:34:30 [SCAN] Revive → FALSE (56011ms)
+04:34:36 [NODE] → Click: Attack - Auto
+04:35:01 [SHOT] FAIL #3 (25000ms)
+04:35:01 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:35:09 [NODE] → Click: Click 5P
+04:35:34 [SHOT] FAIL #4 (25007ms)
+04:35:34 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:35:50 [Warayupay] No next node after 'Click' (Click 5P). Restart 1/10
+04:36:13 [SHOT] OK (18670ms)
+04:36:13 [SHOT] OK (0ms)
+04:36:14 [SCAN] Supplies → FALSE (19939ms)
+04:36:14 [SHOT] OK (0ms)
+04:36:14 [SCAN] Revive → TRUE (96ms)
+04:36:15 [MACRO] Revivie: Starting (0ms)
+04:36:15 [SHOT] OK (0ms)
+04:36:20     - Step OK: Clicked 'Revive'
+04:36:21 [Macro] (2/2) Delay: 3000ms (3.0s)...
+04:36:24 [Macro] Delay completed.
+04:36:24 [Macro] Steps completed. Checking result...
+04:36:43 [SHOT] OK (18482ms)
+04:36:43 [Macro] Result: SUCCESS (found 'Supplies')
+04:36:43 [MACRO] Revivie: PASSED (28089ms total)
+04:36:43 [MACRO] Click 5P: Starting (0ms)
+04:36:48     - Step OK: ⚡ Hard Click 'Click 5P' at (1534,88)
+04:36:49 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:36:49 [Macro] Delay completed.
+04:36:49 [Macro] Steps completed. Checking result...
+04:36:49 [Macro] Finished (no capture check configured).
+04:36:49 [MACRO] Click 5P: PASSED (5742ms total)
+04:36:49 [MACRO] Revivie: Starting (0ms)
+04:37:14 [SHOT] FAIL #1 (25008ms)
+04:37:14 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:37:16 [SHOT] OK (0ms)
+04:37:17 [SHOT] OK (0ms)
+04:37:23 [SHOT] OK (6014ms)
+04:37:23 [SHOT] OK (0ms)
+04:37:24     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:37:24 [MACRO] Revivie: FAILED (35001ms total)
+04:37:24 [Warayupay] No next node after 'Macro' (ed214390). Restart 1/10
+04:37:28 [SHOT] OK (328ms)
+04:37:28 [SCAN] Supplies → TRUE (339ms)
+04:37:28 [MACRO] Buy Blood: Starting (0ms)
+04:37:34     - Step OK: ⚡ Hard Click 'Supplies' at (1330,580)
+04:37:34 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:37:34 [SHOT] OK (196ms)
+04:37:35 [SHOT] OK (0ms)
+04:37:36 [SHOT] OK (0ms)
+04:37:36 [SHOT] OK (0ms)
+04:37:38 [SHOT] OK (173ms)
+04:37:38 [SHOT] OK (0ms)
+04:37:39 [SHOT] OK (0ms)
+04:37:40 [SHOT] OK (0ms)
+04:37:41 [SHOT] OK (272ms)
+04:37:41     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:37:47     - Step OK: ⚡ Hard Click 'Supplies - Type' at (475,321)
+04:37:47 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:38:12 [SHOT] FAIL #1 (25000ms)
+04:38:12 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:38:15 [SHOT] OK (0ms)
+04:38:15     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:38:20     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (843,549)
+04:38:20 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:38:20 [Macro] Delay completed.
+04:38:25     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1039,699)
+04:38:31     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1533,142)
+04:38:31 [Macro] Steps completed. Checking result...
+04:38:53 [SHOT] OK (20923ms)
+04:38:53 [Macro] Result: SUCCESS (found 'Home')
+04:38:53 [MACRO] Buy Blood: PASSED (84860ms total)
+04:38:53 [MACRO] Gathering: Starting (0ms)
+04:38:53 [SHOT] OK (0ms)
+04:38:58     - Step OK: Clicked 'Gathering'
+04:38:59 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+04:39:05 [SHOT] OK (6010ms)
+04:39:05     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+04:39:10     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1093,582)
+04:39:11 [Macro] (4/8) Delay: 12000ms (12.0s)...
+04:39:23 [Macro] Delay completed.
+04:39:23 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+04:39:36 [SHOT] OK (13367ms)
+04:39:37 [SHOT] OK (0ms)
+04:39:37 [SHOT] OK (0ms)
+04:39:38 [SHOT] OK (0ms)
+04:40:04 [SHOT] FAIL #1 (25009ms)
+04:40:04 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:40:06     - Marker triggered. Holding 6.5s...
+04:40:32 [SHOT] FAIL #2 (25003ms)
+04:40:32 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:40:36     - Holding... 29/6s
+04:40:36     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+04:40:38 [SHOT] OK (1487ms)
+04:40:38 [SHOT] OK (0ms)
+04:40:38 [SHOT] OK (0ms)
+04:40:39 [SHOT] OK (0ms)
+04:40:39 [SHOT] OK (0ms)
+04:40:40     - Step FAILED: Could not find 'Attack - Auto' after 5 attempts.
+04:40:40 [MACRO] Gathering: FAILED (106335ms total)
+04:40:45 [Warayupay] No next node after 'Macro' (cc882d55). Restart 1/10
+04:41:09 [SHOT] OK (21339ms)
+04:41:10 [SHOT] OK (0ms)
+04:41:11 [SCAN] Supplies → FALSE (22838ms)
+04:41:12 [SHOT] OK (0ms)
+04:41:37 [SHOT] FAIL #1 (25007ms)
+04:41:37 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:41:39 [SCAN] Revive → FALSE (27716ms)
+04:41:44 [SHOT] OK (3496ms)
+04:41:44 [SHOT] OK (0ms)
+04:41:45 [SCAN] Supplies - In → FALSE (5074ms)
+04:41:46 [SHOT] OK (0ms)
+04:41:46 [SCAN] Attack - Auto → TRUE (8ms)
+04:41:46 [SHOT] OK (0ms)
+04:42:12 [SHOT] FAIL #1 (25013ms)
+04:42:12 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:42:14 [SCAN] Gathering - Automove → FALSE (27541ms)
+04:42:14 ============================================================
+04:42:14 SESSION END — Warayupay (71.1 min)
+04:42:14   Loops: 0
+04:42:14   Screenshots: 169 ok / 95 fail (36.0%)
+04:42:14   Avg latency: 3215ms
+04:42:14   Macros: 9 ok / 8 fail
+04:42:14   Errors: 0
+04:42:14 ============================================================
+04:54:18 ============================================================
+04:54:18 SESSION START — Warayupay (port:9225 tab:2)
+04:54:18 ============================================================
+04:54:19 [Warayupay] Starting worker: func=loop - Farm V1, port=9225, tab=2
+04:54:27 [Warayupay] Connected to Port 9225, Tab 2
+04:54:27 [SHOT] OK (132ms)
+04:54:28 [SHOT] OK (0ms)
+04:54:29 [SCAN] Supplies → FALSE (1611ms)
+04:54:29 [SHOT] OK (0ms)
+04:54:29 [SCAN] Revive → TRUE (12ms)
+04:54:30 [MACRO] Revivie: Starting (0ms)
+04:54:30 [SHOT] OK (0ms)
+04:54:35     - Step OK: Clicked 'Revive'
+04:54:35 [Macro] (2/2) Delay: 3000ms (3.0s)...
+04:54:38 [Macro] Delay completed.
+04:54:38 [Macro] Steps completed. Checking result...
+04:55:02 [SHOT] OK (22837ms)
+04:55:02 [Macro] Result: SUCCESS (found 'Supplies')
+04:55:02 [MACRO] Revivie: PASSED (32563ms total)
+04:55:02 [MACRO] Click 5P: Starting (0ms)
+04:55:08     - Step OK: ⚡ Hard Click 'Click 5P' at (1488,91)
+04:55:08 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:55:08 [Macro] Delay completed.
+04:55:08 [Macro] Steps completed. Checking result...
+04:55:08 [Macro] Finished (no capture check configured).
+04:55:08 [MACRO] Click 5P: PASSED (5688ms total)
+04:55:08 [MACRO] Revivie: Starting (0ms)
+04:55:15 [SHOT] OK (7446ms)
+04:55:16 [SHOT] OK (0ms)
+04:55:16 [SHOT] OK (0ms)
+04:55:17 [SHOT] OK (0ms)
+04:55:17 [SHOT] OK (0ms)
+04:55:18     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:55:18 [MACRO] Revivie: FAILED (9838ms total)
+04:55:18 [Warayupay] No next node after 'Macro' (ed214390). Restart 1/10
+04:55:34 [SHOT] OK (12733ms)
+04:55:34 [SCAN] Supplies → TRUE (12744ms)
+04:55:34 [MACRO] Buy Blood: Starting (0ms)
+04:55:40     - Step OK: ⚡ Hard Click 'Supplies' at (1334,550)
+04:55:40 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:55:40 [SHOT] OK (199ms)
+04:55:41 [SHOT] OK (0ms)
+04:55:42 [SHOT] OK (0ms)
+04:55:42 [SHOT] OK (0ms)
+04:55:43 [SHOT] OK (0ms)
+04:55:44 [SHOT] OK (647ms)
+04:55:45 [SHOT] OK (0ms)
+04:55:45 [SHOT] OK (0ms)
+04:55:47 [SHOT] OK (0ms)
+04:56:13 [SHOT] FAIL #1 (25001ms)
+04:56:13 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:56:40 [SHOT] FAIL #2 (25002ms)
+04:56:40 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:57:10 [SHOT] FAIL #3 (25001ms)
+04:57:10 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:57:43 [SHOT] FAIL #4 (25014ms)
+04:57:43 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:58:25 [SHOT] FAIL #5 (25015ms)
+04:58:25 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:59:20 [SHOT] FAIL #6 (25013ms)
+04:59:20 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:00:01 [SHOT] OK (9912ms)
+05:00:01     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:00:06     - Step OK: ⚡ Hard Click 'Supplies - Type' at (536,317)
+05:00:06 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:00:31 [SHOT] FAIL #1 (25002ms)
+05:00:31 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:00:34 [SHOT] OK (216ms)
+05:00:34     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:00:39     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (811,541)
+05:00:40 [Macro] (6/8) Delay: 100ms (0.1s)...
+05:00:40 [Macro] Delay completed.
+05:00:45     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (996,702)
+05:00:51     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1531,146)
+05:00:51 [Macro] Steps completed. Checking result...
+05:01:08 [SHOT] OK (16098ms)
+05:01:08 [Macro] Result: SUCCESS (found 'Home')
+05:01:08 [MACRO] Buy Blood: PASSED (333689ms total)
+05:01:13 [MACRO] Gathering: Starting (0ms)
+05:01:38 [SHOT] FAIL #1 (25011ms)
+05:01:38 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:02:05 [SHOT] FAIL #2 (25006ms)
+05:02:05 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:02:14 [SHOT] OK (4498ms)
+05:02:20     - Step OK: Clicked 'Gathering'
+05:02:20 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+05:02:45 [SHOT] FAIL #1 (25032ms)
+05:02:45 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:02:48 [SHOT] OK (0ms)
+05:02:48     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:02:53     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1102,599)
+05:02:53 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:03:06 [Macro] Delay completed.
+05:03:06 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+05:03:18 [SHOT] OK (12066ms)
+05:03:19 [SHOT] OK (0ms)
+05:03:20 [SHOT] OK (0ms)
+05:03:21 [SHOT] OK (0ms)
+05:03:46 [SHOT] FAIL #1 (25005ms)
+05:03:46 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:03:52 [SHOT] OK (3064ms)
+05:03:53 [SHOT] OK (0ms)
+05:03:54 [SHOT] OK (0ms)
+05:03:54 [SHOT] OK (0ms)
+05:04:20 [SHOT] FAIL #1 (25002ms)
+05:04:20 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:04:47 [SHOT] FAIL #2 (25003ms)
+05:04:47 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:05:17 [SHOT] FAIL #3 (25013ms)
+05:05:17 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:05:29 [SHOT] OK (3204ms)
+05:05:29     - Marker triggered. Holding 6.5s...
+05:05:29 [SHOT] OK (0ms)
+05:05:30 [SHOT] OK (0ms)
+05:05:31 [SHOT] OK (0ms)
+05:05:48 [SHOT] OK (16142ms)
+05:05:49     - Holding... 20/6s
+05:05:49     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:05:49 [SHOT] OK (0ms)
+05:05:54     - Step OK: Clicked 'Attack - Auto'
+05:05:55 [Macro] (7/8) Delay: 1000ms (1.0s)...
+05:05:56 [Macro] Delay completed.
+05:06:21 [SHOT] FAIL #1 (25013ms)
+05:06:21 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:06:23 [SHOT] OK (0ms)
+05:06:28     - Step OK: Clicked 'Click 5P'
+05:06:28 [Macro] Steps completed. Checking result...
+05:06:54 [SHOT] FAIL #1 (25012ms)
+05:06:54 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:06:56 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+05:06:56 [MACRO] Gathering: FAILED (343414ms total)
+05:06:56 ============================================================
+05:06:56 SESSION END — Warayupay (12.6 min)
+05:06:56   Loops: 0
+05:06:56   Screenshots: 40 ok / 16 fail (28.6%)
+05:06:56   Avg latency: 2730ms
+05:06:56   Macros: 3 ok / 2 fail
+05:06:56   Errors: 0
+05:06:56 ============================================================
+05:07:18 ============================================================
+05:07:18 SESSION START — Warayupay (port:9225 tab:2)
+05:07:18 ============================================================
+05:07:18 [Warayupay] Starting worker: func=macro - Home, port=9225, tab=2
+05:07:30 [Warayupay] Connected to Port 9225, Tab 2
+05:07:30 [MACRO] Home: Starting (0ms)
+05:07:35     - Step OK: ⚡ Hard Click 'Home' at (355,383)
+05:07:36 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:07:54 [SHOT] OK (18606ms)
+05:07:54     - Marker OK: 'Supplies' confirmed APPEAR.
+05:07:54 [Macro] Steps completed. Checking result...
+05:07:55 [SHOT] OK (0ms)
+05:07:55 [Macro] Result: SUCCESS (found 'Supplies')
+05:07:55 [MACRO] Home: PASSED (25148ms total)
+05:07:55 ============================================================
+05:07:55 SESSION END — Warayupay (0.6 min)
+05:07:55   Loops: 0
+05:07:55   Screenshots: 2 ok / 0 fail (0.0%)
+05:07:55   Avg latency: 9303ms
+05:07:55   Macros: 1 ok / 0 fail
+05:07:55   Errors: 0
+05:07:55 ============================================================
+05:11:29 ============================================================
+05:11:29 SESSION START — Warayupay (port:9225 tab:2)
+05:11:29 ============================================================
+05:11:30 [Warayupay] Starting worker: func=loop - Farm V1, port=9225, tab=2
+05:11:41 [Warayupay] Connected to Port 9225, Tab 2
+05:11:41 [LOOP] ── Loop iteration start ──
+05:12:06 [SHOT] FAIL #1 (25002ms)
+05:12:06 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:33 [SHOT] FAIL #2 (25015ms)
+05:12:33 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:37 [SCAN] Supplies → FALSE (56019ms)
+05:13:03 [SHOT] FAIL #3 (25013ms)
+05:13:03 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:13:36 [SHOT] FAIL #4 (25011ms)
+05:13:36 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:13:52 [SCAN] Revive → FALSE (74027ms)
+05:14:38 [SHOT] FAIL #5 (25004ms)
+05:14:38 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:15:31 [SHOT] OK (23103ms)
+05:15:32 [SCAN] Supplies - In → FALSE (78696ms)
+05:15:32 [SHOT] OK (0ms)
+05:15:33 [SHOT] OK (0ms)
+05:15:33 [SCAN] Attack - Auto → FALSE (953ms)
+05:15:34 [SHOT] OK (0ms)
+05:16:00 [SHOT] FAIL #1 (25004ms)
+05:16:00 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:16:02 [SCAN] Gathering - Automove → FALSE (27909ms)
+05:16:27 [SHOT] FAIL #2 (25003ms)
+05:16:27 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:16:56 [SHOT] FAIL #3 (25005ms)
+05:16:56 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:17:04 [SCAN] Attack - Auto On → FALSE (62011ms)
+05:17:30 [SHOT] FAIL #4 (25041ms)
+05:17:30 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:18:11 [SHOT] FAIL #5 (25004ms)
+05:18:11 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:18:41 [SCAN] Revive → FALSE (96048ms)
+05:18:41 [NODE] → Click: Attack - Auto
+05:18:49 [SHOT] OK (7553ms)
+05:18:49 [SCAN] Attack - Auto → FALSE (0ms)
+05:18:49 [NODE] → Click: Click 5P
+05:18:49 [SHOT] OK (0ms)
+05:18:54 [SCAN] Click 5P → TRUE (0ms)
+05:18:55 [ERR] DEAD END: No edge from 'Click' (Click 5P) — will trigger restart
+05:18:55 [ERR] RESTART: No next node after 'Click' (Click 5P). Restart 1/10
+05:18:58 [LOOP] ── Loop iteration start ──
+05:19:23 [SHOT] FAIL #1 (25002ms)
+05:19:23 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:19:50 [SHOT] FAIL #2 (25012ms)
+05:19:50 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:19:54 [SCAN] Supplies → FALSE (56015ms)
+05:20:30 [SHOT] FAIL #3 (25008ms)
+05:20:30 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:21:03 [SHOT] FAIL #4 (25015ms)
+05:21:03 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:21:19 [SCAN] Revive → FALSE (74049ms)
+05:21:19 ============================================================
+05:21:19 SESSION END — Warayupay (9.8 min)
+05:21:19   Loops: 0
+05:21:19   Screenshots: 6 ok / 14 fail (70.0%)
+05:21:19   Avg latency: 5109ms
+05:21:19   Macros: 0 ok / 0 fail
+05:21:19   Errors: 2
+05:21:19 ============================================================
+05:23:48 ============================================================
+05:23:48 SESSION START — Warayupay (port:9225 tab:2)
+05:23:48 ============================================================
+05:23:49 [Warayupay] Starting worker: func=macro - Home, port=9225, tab=2
+05:23:57 [Warayupay] Connected to Port 9225, Tab 2
+05:23:59 [MACRO] Home: Starting (0ms)
+05:24:04     - Step OK: ⚡ Hard Click 'Home' at (366,385)
+05:24:05 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:30 [SHOT] FAIL #1 (25010ms)
+05:24:30 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:24:57 [SHOT] FAIL #2 (25012ms)
+05:24:57 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:25:11 [SHOT] OK (9217ms)
+05:25:11     - Marker OK: 'Supplies' confirmed APPEAR.
+05:25:11 [Macro] Steps completed. Checking result...
+05:25:12 [SHOT] OK (0ms)
+05:25:12 [Macro] Result: SUCCESS (found 'Supplies')
+05:25:12 [MACRO] Home: PASSED (72875ms total)
+05:25:12 ============================================================
+05:25:12 SESSION END — Warayupay (1.4 min)
+05:25:12   Loops: 0
+05:25:12   Screenshots: 2 ok / 2 fail (50.0%)
+05:25:12   Avg latency: 4609ms
+05:25:12   Macros: 1 ok / 0 fail
+05:25:12   Errors: 0
+05:25:12 ============================================================
+05:26:47 ============================================================
+05:26:47 SESSION START — Warayupay (port:9225 tab:2)
+05:26:47 ============================================================
+05:26:48 [Warayupay] Starting worker: func=loop - Farm V1, port=9225, tab=2
+05:26:57 [Warayupay] Connected to Port 9225, Tab 2
+05:26:57 [LOOP] ── Loop iteration start ──
+05:27:22 [SHOT] FAIL #1 (25012ms)
+05:27:22 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:27:50 [SHOT] FAIL #2 (25007ms)
+05:27:50 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:27:54 [SCAN] Gathering - Inside → FALSE (56021ms)
+05:28:19 [SHOT] FAIL #3 (25013ms)
+05:28:19 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:28:52 [SHOT] FAIL #4 (25013ms)
+05:28:52 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:29:08 [SCAN] Supplies → FALSE (74028ms)
+05:29:54 [SHOT] FAIL #5 (25011ms)
+05:29:54 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:30:49 [SHOT] FAIL #6 (25008ms)
+05:30:49 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:31:19 [SCAN] Revive → FALSE (110041ms)
+05:31:44 [SHOT] FAIL #7 (25011ms)
+05:31:44 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:32:39 [SHOT] FAIL #8 (25002ms)
+05:32:39 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:33:09 [SCAN] Supplies - In → FALSE (110023ms)
+05:33:22 [SHOT] OK (2405ms)
+05:33:23 [SHOT] OK (0ms)
+05:33:24 [SCAN] Gathering - Automove → FALSE (3996ms)
+05:33:24 [SHOT] OK (0ms)
+05:33:25 [SHOT] OK (0ms)
+05:33:26 [SCAN] Attack - Auto → FALSE (1287ms)
+05:33:51 [SHOT] FAIL #1 (25003ms)
+05:33:51 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:34:18 [SHOT] FAIL #2 (25042ms)
+05:34:18 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:34:22 [SCAN] Attack - Auto On → FALSE (56060ms)
+05:34:22 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:34:22 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:34:25 [LOOP] ── Loop iteration start ──
+05:34:51 [SHOT] FAIL #3 (25001ms)
+05:34:51 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:34:59 [SHOT] FAIL #4 (145ms)
+05:34:59 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:35:15 [SCAN] Gathering - Inside → FALSE (49148ms)
+05:35:15 ============================================================
+05:35:15 SESSION END — Warayupay (8.5 min)
+05:35:15   Loops: 0
+05:35:15   Screenshots: 4 ok / 12 fail (75.0%)
+05:35:15   Avg latency: 601ms
+05:35:15   Macros: 0 ok / 0 fail
+05:35:15   Errors: 2
+05:35:15 ============================================================

@@ -1,0 +1,880 @@
+03:08:44 ============================================================
+03:08:44 SESSION START — Phone-27 (port:9226 tab:6)
+03:08:44 ============================================================
+03:08:46 [Phone-27] Starting worker: func=loop - Farm V1, port=9226, tab=6
+03:09:09 [Phone-27] Connected to Port 9226, Tab 6
+03:09:34 [SHOT] FAIL #1 (25012ms)
+03:09:34 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:10:01 [SHOT] FAIL #2 (25009ms)
+03:10:01 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:10:05 [SCAN] Gathering - Inside → FALSE (56024ms)
+03:10:31 [SHOT] FAIL #3 (25014ms)
+03:10:31 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:11:04 [SHOT] FAIL #4 (25015ms)
+03:11:04 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:11:20 [SCAN] Supplies → FALSE (74031ms)
+03:11:46 [SHOT] FAIL #5 (25015ms)
+03:11:46 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:12:41 [SHOT] FAIL #6 (25013ms)
+03:12:41 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:13:11 [SCAN] Revive → FALSE (110029ms)
+03:13:36 [SHOT] FAIL #7 (25004ms)
+03:13:36 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:14:31 [SHOT] FAIL #8 (25015ms)
+03:14:31 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:15:01 [SCAN] Supplies - In → FALSE (110020ms)
+03:15:32 [SHOT] FAIL #9 (25007ms)
+03:15:32 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:16:23 [SHOT] OK (21357ms)
+03:16:24 [SCAN] Gathering - Automove → FALSE (77311ms)
+03:16:25 [SHOT] OK (0ms)
+03:16:26 [SHOT] OK (0ms)
+03:16:26 [SCAN] Attack - Auto → FALSE (1541ms)
+03:16:52 [SHOT] FAIL #1 (25013ms)
+03:16:52 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:17:19 [SHOT] FAIL #2 (25012ms)
+03:17:19 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:17:23 [SCAN] Attack - Auto On → FALSE (56028ms)
+03:17:23 [Phone-27] No next node after 'Condition' (Attack - Auto On). Restart 1/10
+03:17:52 [SHOT] FAIL #3 (25015ms)
+03:17:52 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:18:25 [SHOT] FAIL #4 (25013ms)
+03:18:25 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:18:41 [SCAN] Gathering - Inside → FALSE (74030ms)
+03:19:07 [SHOT] FAIL #5 (25014ms)
+03:19:07 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:20:02 [SHOT] FAIL #6 (25007ms)
+03:20:02 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:20:32 [SCAN] Supplies → FALSE (110023ms)
+03:21:02 [SHOT] FAIL #7 (25009ms)
+03:21:02 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:21:57 [SHOT] FAIL #8 (25001ms)
+03:21:57 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:22:27 [SCAN] Revive → FALSE (110028ms)
+03:22:53 [SHOT] FAIL #9 (25003ms)
+03:22:53 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:23:48 [SHOT] FAIL #10 (25007ms)
+03:23:48 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:24:18 [SCAN] Supplies - In → FALSE (110053ms)
+03:24:44 [SHOT] FAIL #11 (25002ms)
+03:24:44 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+03:25:39 [SHOT] FAIL #12 (25011ms)
+03:25:39 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #12)
+03:26:09 [SCAN] Gathering - Automove → FALSE (110042ms)
+03:26:19 [SHOT] OK (4462ms)
+03:26:20 [SHOT] OK (0ms)
+03:26:21 [SCAN] Attack - Auto → FALSE (6015ms)
+03:26:21 [SHOT] OK (0ms)
+03:26:47 [SHOT] FAIL #1 (25009ms)
+03:26:47 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:26:49 [SCAN] Attack - Auto On → FALSE (27843ms)
+03:26:50 [Phone-27] No next node after 'Condition' (Attack - Auto On). Restart 1/10
+03:27:18 [SHOT] FAIL #2 (25014ms)
+03:27:18 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:27:46 [SHOT] FAIL #3 (23737ms)
+03:27:46 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:27:54 [SCAN] Gathering - Inside → FALSE (60754ms)
+03:27:54 ============================================================
+03:27:54 SESSION END — Phone-27 (19.2 min)
+03:27:54   Loops: 0
+03:27:54   Screenshots: 6 ok / 24 fail (80.0%)
+03:27:54   Avg latency: 4303ms
+03:27:54   Macros: 0 ok / 0 fail
+03:27:54   Errors: 0
+03:27:54 ============================================================
+03:31:13 ============================================================
+03:31:13 SESSION START — Phone-27 (port:9226 tab:6)
+03:31:13 ============================================================
+03:31:15 [Phone-27] Starting worker: func=loop - Farm V1, port=9226, tab=6
+03:31:30 [Phone-27] Connected to Port 9226, Tab 6
+03:31:55 [SHOT] FAIL #1 (25001ms)
+03:31:55 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:22 [SHOT] FAIL #2 (25002ms)
+03:32:22 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:32:26 [SCAN] Supplies → FALSE (56004ms)
+03:32:52 [SHOT] FAIL #3 (25011ms)
+03:32:52 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:33:25 [SHOT] FAIL #4 (25005ms)
+03:33:25 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:33:41 [SCAN] Revive → FALSE (74019ms)
+03:34:05 [SHOT] OK (23675ms)
+03:34:06 [SHOT] OK (0ms)
+03:34:07 [SCAN] Supplies - In → FALSE (24899ms)
+03:34:07 [SHOT] OK (0ms)
+03:34:08 [SHOT] OK (0ms)
+03:34:08 [SCAN] Attack - Auto → FALSE (1072ms)
+03:34:34 [SHOT] FAIL #1 (25014ms)
+03:34:34 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:35:01 [SHOT] FAIL #2 (25001ms)
+03:35:01 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:35:05 [SCAN] Gathering - Automove → FALSE (56018ms)
+03:35:30 [SHOT] FAIL #3 (25010ms)
+03:35:30 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:36:03 [SHOT] FAIL #4 (25015ms)
+03:36:03 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:36:19 [SCAN] Attack - Auto On → FALSE (74035ms)
+03:36:50 [SHOT] FAIL #5 (25010ms)
+03:36:50 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:37:45 [SHOT] FAIL #6 (25009ms)
+03:37:45 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:38:15 [SCAN] Revive → FALSE (110033ms)
+03:38:16 [NODE] → Click: Attack - Auto
+03:38:40 [SHOT] OK (24634ms)
+03:38:40 [SCAN] Attack - Auto → FALSE (0ms)
+03:38:41 [NODE] → Click: Click 5P
+03:38:41 [SHOT] OK (0ms)
+03:38:46 [SCAN] Click 5P → TRUE (0ms)
+03:38:46 [Phone-27] No next node after 'Click' (Click 5P). Restart 1/10
+03:39:12 [SHOT] OK (22128ms)
+03:39:12 [SCAN] Supplies → TRUE (22143ms)
+03:39:13 [MACRO] Buy Blood: Starting (0ms)
+03:39:15     - Step OK: ⚡ Hard Click 'Supplies' at (1297,579)
+03:39:16 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:39:16 [SHOT] OK (238ms)
+03:39:17 [SHOT] OK (0ms)
+03:39:18 [SHOT] OK (0ms)
+03:39:19 [SHOT] OK (0ms)
+03:39:20 [SHOT] OK (199ms)
+03:39:20     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:39:25     - Step OK: ⚡ Hard Click 'Supplies - Type' at (490,314)
+03:39:25 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:39:26 [SHOT] OK (178ms)
+03:39:26     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:39:31     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (806,571)
+03:39:31 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:39:31 [Macro] Delay completed.
+03:39:36     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1009,704)
+03:39:42     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1536,144)
+03:39:42 [Macro] Steps completed. Checking result...
+03:40:08 [SHOT] OK (24546ms)
+03:40:08 [Macro] Result: SUCCESS (found 'Home')
+03:40:08 [MACRO] Buy Blood: PASSED (55373ms total)
+03:40:08 [MACRO] Gathering: Starting (0ms)
+03:40:08 [SHOT] OK (0ms)
+03:40:13     - Step OK: Clicked 'Gathering'
+03:40:14 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+03:40:38 [SHOT] OK (24951ms)
+03:40:39     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:40:44     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1060,602)
+03:40:44 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:40:56 [Macro] Delay completed.
+03:40:56 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+03:41:13 [SHOT] OK (16613ms)
+03:41:13 [SHOT] OK (0ms)
+03:41:14 [SHOT] OK (0ms)
+03:41:15 [SHOT] OK (0ms)
+03:41:15 [SHOT] OK (0ms)
+03:41:41 [SHOT] FAIL #1 (25008ms)
+03:41:41 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:41:43     - Marker triggered. Holding 6.5s...
+03:42:09 [SHOT] FAIL #2 (25003ms)
+03:42:09 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:42:13     - Holding... 30/6s
+03:42:13     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:42:38 [SHOT] FAIL #3 (25004ms)
+03:42:38 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:43:11 [SHOT] FAIL #4 (25010ms)
+03:43:11 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:43:31 [SHOT] OK (3110ms)
+03:43:36     - Step OK: Clicked 'Attack - Auto'
+03:43:36 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:43:37 [Macro] Delay completed.
+03:44:02 [SHOT] FAIL #1 (25009ms)
+03:44:02 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:44:30 [SHOT] FAIL #2 (25014ms)
+03:44:30 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:44:59 [SHOT] FAIL #3 (25011ms)
+03:44:59 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:45:10 [SHOT] OK (2288ms)
+03:45:15     - Step OK: Clicked 'Click 5P'
+03:45:15 [Macro] Steps completed. Checking result...
+03:45:41 [SHOT] FAIL #1 (25006ms)
+03:45:41 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:45:43 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+03:45:43 [MACRO] Gathering: FAILED (335341ms total)
+03:45:48 [Phone-27] No next node after 'Macro' (cc882d55). Restart 1/10
+03:46:17 [SHOT] FAIL #2 (25003ms)
+03:46:17 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:46:21 [SHOT] OK (0ms)
+03:46:21 [SCAN] Supplies → FALSE (29397ms)
+03:46:47 [SHOT] FAIL #1 (25008ms)
+03:46:47 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:47:14 [SHOT] FAIL #2 (25011ms)
+03:47:14 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:47:18 [SCAN] Revive → FALSE (56021ms)
+03:47:44 [SHOT] FAIL #3 (25003ms)
+03:47:44 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:48:17 [SHOT] FAIL #4 (25005ms)
+03:48:17 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:48:33 [SCAN] Supplies - In → FALSE (74027ms)
+03:48:52 [SHOT] OK (18956ms)
+03:48:52 [SCAN] Attack - Auto → TRUE (18963ms)
+03:48:53 [SHOT] OK (0ms)
+03:48:54 [SHOT] OK (0ms)
+03:48:54 [SCAN] Gathering - Automove → FALSE (1440ms)
+03:48:55 [SHOT] OK (0ms)
+03:48:55 [SCAN] Attack - Auto On → TRUE (18ms)
+03:48:55 [MACRO] Click 5P: Starting (0ms)
+03:49:00     - Step OK: ⚡ Hard Click 'Click 5P' at (1504,87)
+03:49:01 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:49:01 [Macro] Delay completed.
+03:49:01 [Macro] Steps completed. Checking result...
+03:49:01 [Macro] Finished (no capture check configured).
+03:49:01 [MACRO] Click 5P: PASSED (5741ms total)
+03:49:01 [MACRO] Revivie: Starting (0ms)
+03:49:23 [SHOT] OK (21928ms)
+03:49:23 [SHOT] OK (0ms)
+03:49:24 [SHOT] OK (0ms)
+03:49:24 [SHOT] OK (0ms)
+03:49:25 [SHOT] OK (0ms)
+03:49:25     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:49:25 [MACRO] Revivie: FAILED (24086ms total)
+03:49:25 [Phone-27] No next node after 'Macro' (ed214390). Restart 1/10
+03:49:53 [SHOT] OK (24817ms)
+03:49:54 [SHOT] OK (0ms)
+03:49:54 [SCAN] Supplies → FALSE (25902ms)
+03:49:55 [SHOT] OK (0ms)
+03:49:55 [SHOT] OK (0ms)
+03:49:56 [SCAN] Revive → FALSE (1139ms)
+03:50:22 [SHOT] FAIL #1 (25009ms)
+03:50:22 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:50:49 [SHOT] FAIL #2 (25005ms)
+03:50:49 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:50:53 [SCAN] Supplies - In → FALSE (56016ms)
+03:51:23 [SHOT] FAIL #3 (25007ms)
+03:51:23 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:51:55 [SHOT] OK (24015ms)
+03:51:55 [SCAN] Attack - Auto → TRUE (57089ms)
+03:51:56 [SHOT] OK (0ms)
+03:51:56 [SHOT] OK (0ms)
+03:51:57 [SCAN] Gathering - Automove → FALSE (1293ms)
+03:51:58 [SHOT] OK (0ms)
+03:51:58 [SCAN] Attack - Auto On → TRUE (18ms)
+03:51:58 [MACRO] Click 5P: Starting (0ms)
+03:52:03     - Step OK: ⚡ Hard Click 'Click 5P' at (1510,95)
+03:52:03 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:52:04 [Macro] Delay completed.
+03:52:04 [Macro] Steps completed. Checking result...
+03:52:04 [Macro] Finished (no capture check configured).
+03:52:04 [MACRO] Click 5P: PASSED (5708ms total)
+03:52:04 [MACRO] Revivie: Starting (0ms)
+03:52:29 [SHOT] FAIL #1 (25013ms)
+03:52:29 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:52:56 [SHOT] FAIL #2 (25009ms)
+03:52:56 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:53:25 [SHOT] FAIL #3 (25007ms)
+03:53:25 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:53:59 [SHOT] FAIL #4 (25014ms)
+03:53:59 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:54:30 [SHOT] OK (15049ms)
+03:54:30     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:54:30 [MACRO] Revivie: FAILED (146692ms total)
+03:54:30 [Phone-27] No next node after 'Macro' (ed214390). Restart 1/10
+03:54:59 [SHOT] FAIL #1 (25022ms)
+03:54:59 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:55:26 [SHOT] FAIL #2 (25015ms)
+03:55:26 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:55:30 [SCAN] Supplies → FALSE (56073ms)
+03:56:00 [SHOT] FAIL #3 (25010ms)
+03:56:00 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:56:32 [SHOT] OK (23856ms)
+03:56:33 [SCAN] Revive → FALSE (57489ms)
+03:56:33 [SHOT] OK (0ms)
+03:56:34 [SHOT] OK (0ms)
+03:56:35 [SCAN] Supplies - In → FALSE (1476ms)
+03:56:35 [SHOT] OK (0ms)
+03:56:35 [SCAN] Attack - Auto → TRUE (8ms)
+03:57:01 [SHOT] FAIL #1 (25015ms)
+03:57:01 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:57:28 [SHOT] FAIL #2 (25014ms)
+03:57:28 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:57:32 [SCAN] Gathering - Automove → FALSE (56030ms)
+03:57:57 [SHOT] FAIL #3 (25015ms)
+03:57:57 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:58:30 [SHOT] FAIL #4 (25007ms)
+03:58:30 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:58:46 [SCAN] Attack - Auto On → FALSE (74024ms)
+03:59:06 [SHOT] OK (19392ms)
+03:59:07 [SHOT] OK (0ms)
+03:59:07 [SCAN] Revive → FALSE (20354ms)
+03:59:08 [NODE] → Click: Attack - Auto
+03:59:08 [SHOT] OK (0ms)
+03:59:13 [SCAN] Attack - Auto → TRUE (0ms)
+03:59:13 [NODE] → Click: Click 5P
+03:59:37 [SHOT] OK (23575ms)
+03:59:42 [SCAN] Click 5P → TRUE (0ms)
+03:59:42 [Phone-27] No next node after 'Click' (Click 5P). Restart 1/10
+04:00:07 [SHOT] OK (21476ms)
+04:00:08 [SHOT] OK (0ms)
+04:00:08 [SCAN] Supplies → FALSE (22468ms)
+04:00:38 [SHOT] OK (23763ms)
+04:00:38 [SHOT] OK (0ms)
+04:00:39 [SCAN] Revive → FALSE (24895ms)
+04:00:40 [SHOT] OK (0ms)
+04:00:41 [SHOT] OK (0ms)
+04:00:41 [SCAN] Supplies - In → FALSE (1293ms)
+04:01:07 [SHOT] FAIL #1 (25015ms)
+04:01:07 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:01:34 [SHOT] FAIL #2 (25001ms)
+04:01:34 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:01:38 [SCAN] Attack - Auto → FALSE (56018ms)
+04:01:39 [Phone-27] Connection rotation — periodic reconnect
+04:01:41 [Phone-27] Connection rotated successfully
+04:02:06 [SHOT] FAIL #3 (25011ms)
+04:02:06 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:02:39 [SHOT] FAIL #4 (25014ms)
+04:02:39 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:02:55 [SCAN] Gathering - Automove → FALSE (74026ms)
+04:03:20 [SHOT] FAIL #5 (25002ms)
+04:03:20 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:04:15 [SHOT] FAIL #6 (25008ms)
+04:04:15 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:04:45 [SCAN] Attack - Auto On → FALSE (110012ms)
+04:05:13 [SHOT] OK (22090ms)
+04:05:14 [SHOT] OK (0ms)
+04:05:14 [SCAN] Revive → FALSE (23667ms)
+04:05:15 [NODE] → Click: Attack - Auto
+04:05:15 [SHOT] OK (0ms)
+04:05:20 [SCAN] Attack - Auto → TRUE (0ms)
+04:05:21 [NODE] → Click: Click 5P
+04:05:43 [SHOT] OK (22817ms)
+04:05:49 [SCAN] Click 5P → TRUE (0ms)
+04:05:49 [Phone-27] No next node after 'Click' (Click 5P). Restart 1/10
+04:06:14 [SHOT] OK (21474ms)
+04:06:15 [SHOT] OK (0ms)
+04:06:16 [SCAN] Supplies → FALSE (23159ms)
+04:06:16 [SHOT] OK (0ms)
+04:06:17 [SHOT] OK (0ms)
+04:06:17 [SCAN] Revive → FALSE (1393ms)
+04:06:43 [SHOT] FAIL #1 (25003ms)
+04:06:43 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:07:10 [SHOT] FAIL #2 (25006ms)
+04:07:10 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:07:14 [SCAN] Supplies - In → FALSE (56011ms)
+04:07:39 [SHOT] FAIL #3 (25008ms)
+04:07:39 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:08:12 [SHOT] FAIL #4 (25005ms)
+04:08:12 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:08:28 [SCAN] Attack - Auto → FALSE (74015ms)
+04:08:54 [SHOT] FAIL #5 (25003ms)
+04:08:54 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:09:49 [SHOT] FAIL #6 (25003ms)
+04:09:49 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:10:19 [SCAN] Gathering - Automove → FALSE (110009ms)
+04:10:49 [SHOT] FAIL #7 (25002ms)
+04:10:49 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:11:44 [SHOT] FAIL #8 (25009ms)
+04:11:44 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+04:12:14 [SCAN] Attack - Auto On → FALSE (110014ms)
+04:12:40 [SHOT] FAIL #9 (25012ms)
+04:12:40 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+04:13:35 [SHOT] FAIL #10 (25008ms)
+04:13:35 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+04:14:05 [SCAN] Revive → FALSE (110027ms)
+04:14:05 [NODE] → Click: Attack - Auto
+04:14:24 [SHOT] OK (18177ms)
+04:14:29 [SCAN] Attack - Auto → TRUE (0ms)
+04:14:29 [NODE] → Click: Click 5P
+04:14:54 [SHOT] OK (24928ms)
+04:14:59 [SCAN] Click 5P → TRUE (0ms)
+04:15:05 [Phone-27] No next node after 'Click' (Click 5P). Restart 1/10
+04:15:26 [SHOT] OK (17881ms)
+04:15:27 [SHOT] OK (0ms)
+04:15:27 [SCAN] Supplies → FALSE (19271ms)
+04:15:28 [SHOT] OK (0ms)
+04:15:29 [SHOT] OK (0ms)
+04:15:29 [SCAN] Revive → FALSE (1097ms)
+04:15:55 [SHOT] FAIL #1 (25002ms)
+04:15:55 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:16:22 [SHOT] FAIL #2 (25010ms)
+04:16:22 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:16:26 [SCAN] Supplies - In → FALSE (56014ms)
+04:16:51 [SHOT] FAIL #3 (25012ms)
+04:16:51 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:17:24 [SHOT] FAIL #4 (25007ms)
+04:17:24 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:17:40 [SCAN] Attack - Auto → FALSE (74052ms)
+04:18:06 [SHOT] FAIL #5 (25010ms)
+04:18:06 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:19:01 [SHOT] FAIL #6 (25005ms)
+04:19:01 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:19:31 [SCAN] Gathering - Automove → FALSE (110016ms)
+04:19:57 [SHOT] FAIL #7 (25007ms)
+04:19:57 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:20:52 [SHOT] FAIL #8 (25007ms)
+04:20:52 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+04:21:22 [SCAN] Attack - Auto On → FALSE (110016ms)
+04:21:52 [SHOT] FAIL #9 (25006ms)
+04:21:52 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+04:22:47 [SHOT] FAIL #10 (25007ms)
+04:22:47 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+04:23:17 [SCAN] Revive → FALSE (110014ms)
+04:23:18 [NODE] → Click: Attack - Auto
+04:23:43 [SHOT] FAIL #11 (25005ms)
+04:23:43 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+04:24:13 [NODE] → Click: Click 5P
+04:24:36 [SHOT] OK (22591ms)
+04:24:41 [SCAN] Click 5P → TRUE (0ms)
+04:24:41 [Phone-27] No next node after 'Click' (Click 5P). Restart 1/10
+04:25:07 [SHOT] OK (22183ms)
+04:25:08 [SHOT] OK (0ms)
+04:25:08 [SCAN] Supplies → FALSE (23184ms)
+04:25:09 [SHOT] OK (0ms)
+04:25:09 [SCAN] Revive → TRUE (11ms)
+04:25:09 [MACRO] Revivie: Starting (0ms)
+04:25:09 [SHOT] OK (0ms)
+04:25:14     - Step OK: Clicked 'Revive'
+04:25:15 [Macro] (2/2) Delay: 3000ms (3.0s)...
+04:25:18 [Macro] Delay completed.
+04:25:18 [Macro] Steps completed. Checking result...
+04:25:40 [SHOT] OK (21465ms)
+04:25:40 [Macro] Result: SUCCESS (found 'Supplies')
+04:25:40 [MACRO] Revivie: PASSED (31013ms total)
+04:25:40 [MACRO] Click 5P: Starting (0ms)
+04:25:45     - Step OK: ⚡ Hard Click 'Click 5P' at (1493,88)
+04:25:46 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:25:46 [Macro] Delay completed.
+04:25:46 [Macro] Steps completed. Checking result...
+04:25:46 [Macro] Finished (no capture check configured).
+04:25:46 [MACRO] Click 5P: PASSED (5776ms total)
+04:25:46 [MACRO] Revivie: Starting (0ms)
+04:26:11 [SHOT] OK (24720ms)
+04:26:11 [SHOT] OK (0ms)
+04:26:11 [SHOT] OK (0ms)
+04:26:12 [SHOT] OK (0ms)
+04:26:12 [SHOT] OK (0ms)
+04:26:13     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:26:13 [MACRO] Revivie: FAILED (26706ms total)
+04:26:18 [Phone-27] No next node after 'Macro' (ed214390). Restart 1/10
+04:26:43 [SHOT] OK (21705ms)
+04:26:43 [SCAN] Supplies → TRUE (21715ms)
+04:26:43 [MACRO] Buy Blood: Starting (0ms)
+04:26:48     - Step OK: ⚡ Hard Click 'Supplies' at (1329,586)
+04:26:49 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:27:13 [SHOT] OK (24607ms)
+04:27:13     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:27:19     - Step OK: ⚡ Hard Click 'Supplies - Type' at (540,292)
+04:27:19 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:27:44 [SHOT] FAIL #1 (25008ms)
+04:27:44 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:28:12 [SHOT] FAIL #2 (25004ms)
+04:28:12 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:28:42 [SHOT] FAIL #3 (25007ms)
+04:28:42 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:29:15 [SHOT] OK (24616ms)
+04:29:15     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:29:21     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (862,560)
+04:29:21 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:29:21 [Macro] Delay completed.
+04:29:26     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1036,693)
+04:29:32     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1539,146)
+04:29:32 [Macro] Steps completed. Checking result...
+04:29:51 [SHOT] OK (17527ms)
+04:29:51 [Macro] Result: SUCCESS (found 'Home')
+04:29:51 [MACRO] Buy Blood: PASSED (187480ms total)
+04:29:51 [MACRO] Gathering: Starting (0ms)
+04:29:51 [SHOT] OK (0ms)
+04:29:56     - Step OK: Clicked 'Gathering'
+04:29:56 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+04:30:21 [SHOT] OK (24870ms)
+04:30:21     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+04:30:26     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1023,575)
+04:30:27 [Macro] (4/8) Delay: 12000ms (12.0s)...
+04:30:39 [Macro] Delay completed.
+04:30:39 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+04:31:04 [SHOT] FAIL #1 (25002ms)
+04:31:04 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:31:06     - Marker triggered. Holding 6.5s...
+04:31:22 [SHOT] OK (15750ms)
+04:31:22     - Marker interrupted. Resetting hold timer.
+04:31:23 [SHOT] OK (0ms)
+04:31:23 [SHOT] OK (0ms)
+04:31:24 [SHOT] OK (0ms)
+04:31:24 [SHOT] OK (0ms)
+04:31:25 [SHOT] OK (0ms)
+04:31:51 [SHOT] FAIL #1 (25005ms)
+04:31:51 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:31:53     - Marker triggered. Holding 6.5s...
+04:32:19 [SHOT] FAIL #2 (25010ms)
+04:32:19 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:32:23     - Holding... 30/6s
+04:32:23     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+04:32:25 [SHOT] OK (1787ms)
+04:32:30     - Step OK: Clicked 'Attack - Auto'
+04:32:31 [Macro] (7/8) Delay: 1000ms (1.0s)...
+04:32:32 [Macro] Delay completed.
+04:32:55 [SHOT] OK (23826ms)
+04:33:01     - Step OK: Clicked 'Click 5P'
+04:33:01 [Macro] Steps completed. Checking result...
+04:33:27 [SHOT] OK (24666ms)
+04:33:27 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+04:33:27 [MACRO] Gathering: PASSED (215985ms total)
+04:33:32 [Phone-27] Connection rotation — periodic reconnect
+04:33:34 [Phone-27] Connection rotated successfully
+04:33:34 [MACRO] Click 5P: Starting (0ms)
+04:33:39     - Step OK: ⚡ Hard Click 'Click 5P' at (1486,99)
+04:33:39 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:33:39 [Macro] Delay completed.
+04:33:39 [Macro] Steps completed. Checking result...
+04:33:39 [Macro] Finished (no capture check configured).
+04:33:39 [MACRO] Click 5P: PASSED (5805ms total)
+04:33:39 [MACRO] Revivie: Starting (0ms)
+04:33:58 [SHOT] OK (18526ms)
+04:33:58 [SHOT] OK (0ms)
+04:33:59 [SHOT] OK (0ms)
+04:33:59 [SHOT] OK (0ms)
+04:34:00 [SHOT] OK (0ms)
+04:34:00     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:34:00 [MACRO] Revivie: FAILED (20591ms total)
+04:34:00 [Phone-27] No next node after 'Macro' (ed214390). Restart 1/10
+04:34:28 [SHOT] OK (24944ms)
+04:34:29 [SHOT] OK (0ms)
+04:34:30 [SCAN] Supplies → FALSE (26139ms)
+04:34:30 [SHOT] OK (0ms)
+04:34:31 [SHOT] OK (0ms)
+04:34:31 [SCAN] Revive → FALSE (1158ms)
+04:34:57 [SHOT] FAIL #1 (25010ms)
+04:34:57 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:35:24 [SHOT] FAIL #2 (25002ms)
+04:35:24 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:35:28 [SCAN] Supplies - In → FALSE (56014ms)
+04:35:54 [SHOT] FAIL #3 (25002ms)
+04:35:54 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:36:27 [SHOT] FAIL #4 (25015ms)
+04:36:27 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:36:43 [SCAN] Attack - Auto → FALSE (74018ms)
+04:37:08 [SHOT] FAIL #5 (25006ms)
+04:37:08 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:37:43 [SHOT] OK (4831ms)
+04:37:44 [SCAN] Gathering - Automove → FALSE (60618ms)
+04:37:44 [SHOT] OK (0ms)
+04:37:44 [SCAN] Attack - Auto On → TRUE (19ms)
+04:37:45 [MACRO] Click 5P: Starting (0ms)
+04:37:48     - Step OK: ⚡ Hard Click 'Click 5P' at (1493,93)
+04:37:48 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:37:48 [Macro] Delay completed.
+04:37:48 [Macro] Steps completed. Checking result...
+04:37:48 [Macro] Finished (no capture check configured).
+04:37:48 [MACRO] Click 5P: PASSED (2945ms total)
+04:37:48 [MACRO] Revivie: Starting (0ms)
+04:37:48 [SHOT] OK (364ms)
+04:37:49 [SHOT] OK (0ms)
+04:37:49 [SHOT] OK (0ms)
+04:37:50 [SHOT] OK (0ms)
+04:37:50 [SHOT] OK (0ms)
+04:37:50     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:37:50 [MACRO] Revivie: FAILED (2374ms total)
+04:37:50 [Phone-27] No next node after 'Macro' (ed214390). Restart 1/10
+04:38:19 [SHOT] FAIL #1 (25014ms)
+04:38:19 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:38:46 [SHOT] FAIL #2 (25010ms)
+04:38:46 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:38:50 [SCAN] Supplies → FALSE (56026ms)
+04:39:21 [SHOT] FAIL #3 (25002ms)
+04:39:21 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:39:54 [SHOT] FAIL #4 (25004ms)
+04:39:54 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:40:10 [SCAN] Revive → FALSE (74008ms)
+04:40:35 [SHOT] FAIL #5 (25012ms)
+04:40:35 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:41:30 [SHOT] FAIL #6 (25002ms)
+04:41:30 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:42:00 [SCAN] Supplies - In → FALSE (110016ms)
+04:42:19 [SHOT] FAIL #7 (18176ms)
+04:42:19 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:42:49 [SHOT] OK (200ms)
+04:42:49 [SCAN] Attack - Auto → TRUE (48385ms)
+04:42:50 ============================================================
+04:42:50 SESSION END — Phone-27 (71.6 min)
+04:42:50   Loops: 0
+04:42:50   Screenshots: 113 ok / 82 fail (42.1%)
+04:42:50   Avg latency: 7132ms
+04:42:50   Macros: 9 ok / 6 fail
+04:42:50   Errors: 0
+04:42:50 ============================================================
+04:54:24 ============================================================
+04:54:24 SESSION START — Phone-27 (port:9226 tab:6)
+04:54:24 ============================================================
+04:54:26 [Phone-27] Starting worker: func=loop - Farm V1, port=9226, tab=6
+04:54:45 [Phone-27] Connected to Port 9226, Tab 6
+04:55:11 [SHOT] FAIL #1 (25014ms)
+04:55:11 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:55:38 [SHOT] FAIL #2 (25009ms)
+04:55:38 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:55:42 [SCAN] Supplies → FALSE (56034ms)
+04:55:43 [SHOT] OK (684ms)
+04:55:44 [SHOT] OK (0ms)
+04:55:44 [SCAN] Revive → FALSE (2008ms)
+04:55:45 [SHOT] OK (0ms)
+04:55:45 [SHOT] OK (0ms)
+04:55:46 [SCAN] Supplies - In → FALSE (1194ms)
+04:55:47 [SHOT] OK (349ms)
+04:55:47 [SCAN] Attack - Auto → TRUE (356ms)
+04:55:47 [SHOT] OK (0ms)
+04:55:48 [SHOT] OK (0ms)
+04:55:49 [SCAN] Gathering - Automove → FALSE (1575ms)
+04:55:49 [SHOT] OK (0ms)
+04:55:55 [SHOT] OK (4836ms)
+04:55:55 [SCAN] Attack - Auto On → FALSE (5983ms)
+04:55:56 [SHOT] OK (0ms)
+04:55:57 [SHOT] OK (0ms)
+04:55:57 [SCAN] Revive → FALSE (1403ms)
+04:55:58 [NODE] → Click: Attack - Auto
+04:56:23 [SHOT] FAIL #1 (25000ms)
+04:56:23 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:56:25 [NODE] → Click: Click 5P
+04:56:50 [SHOT] FAIL #2 (25012ms)
+04:56:50 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:56:55 [Phone-27] No next node after 'Click' (Click 5P). Restart 1/10
+04:57:23 [SHOT] FAIL #3 (25008ms)
+04:57:23 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:57:56 [SHOT] FAIL #4 (25001ms)
+04:57:56 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:58:12 [SCAN] Supplies → FALSE (74010ms)
+04:58:37 [SHOT] OK (24432ms)
+04:58:38 [SHOT] OK (0ms)
+04:58:38 [SCAN] Revive → FALSE (25904ms)
+04:58:39 [SHOT] OK (0ms)
+04:58:40 [SHOT] OK (0ms)
+04:58:40 [SCAN] Supplies - In → FALSE (1122ms)
+04:59:06 [SHOT] FAIL #1 (25008ms)
+04:59:06 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:59:33 [SHOT] FAIL #2 (25032ms)
+04:59:33 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:59:37 [SCAN] Attack - Auto → FALSE (56062ms)
+05:00:07 [SHOT] FAIL #3 (25013ms)
+05:00:07 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:00:40 [SHOT] OK (24467ms)
+05:00:41 [SCAN] Gathering - Automove → FALSE (58307ms)
+05:00:41 [SHOT] OK (0ms)
+05:00:42 [SHOT] OK (0ms)
+05:00:43 [SCAN] Attack - Auto On → FALSE (1121ms)
+05:01:08 [SHOT] FAIL #1 (25007ms)
+05:01:08 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:01:35 [SHOT] FAIL #2 (25012ms)
+05:01:35 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:01:39 [SCAN] Revive → FALSE (56021ms)
+05:01:39 [NODE] → Click: Attack - Auto
+05:02:04 [SHOT] FAIL #3 (25011ms)
+05:02:04 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:02:13 [NODE] → Click: Click 5P
+05:02:38 [SHOT] FAIL #4 (25014ms)
+05:02:38 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:02:54 [Phone-27] No next node after 'Click' (Click 5P). Restart 1/10
+05:03:22 [SHOT] FAIL #5 (25001ms)
+05:03:22 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:04:17 [SHOT] FAIL #6 (25003ms)
+05:04:17 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:04:47 [SCAN] Supplies → FALSE (110005ms)
+05:05:18 [SHOT] FAIL #7 (25005ms)
+05:05:18 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:06:13 [SHOT] FAIL #8 (25004ms)
+05:06:13 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:06:43 [SCAN] Revive → FALSE (110025ms)
+05:06:43 ============================================================
+05:06:43 SESSION END — Phone-27 (12.3 min)
+05:06:43   Loops: 0
+05:06:43   Screenshots: 18 ok / 17 fail (48.6%)
+05:06:43   Avg latency: 3043ms
+05:06:43   Macros: 0 ok / 0 fail
+05:06:43   Errors: 0
+05:06:43 ============================================================
+05:07:24 ============================================================
+05:07:24 SESSION START — Phone-27 (port:9226 tab:6)
+05:07:24 ============================================================
+05:07:26 [Phone-27] Starting worker: func=macro - Home, port=9226, tab=6
+05:07:48 [Phone-27] Connected to Port 9226, Tab 6
+05:07:48 [MACRO] Home: Starting (0ms)
+05:07:53     - Step OK: ⚡ Hard Click 'Home' at (347,374)
+05:07:54 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:08:03 [SHOT] OK (8926ms)
+05:08:03     - Marker OK: 'Supplies' confirmed APPEAR.
+05:08:03 [Macro] Steps completed. Checking result...
+05:08:04 [SHOT] OK (0ms)
+05:08:04 [Macro] Result: SUCCESS (found 'Supplies')
+05:08:04 [MACRO] Home: PASSED (15547ms total)
+05:08:04 ============================================================
+05:08:04 SESSION END — Phone-27 (0.7 min)
+05:08:04   Loops: 0
+05:08:04   Screenshots: 2 ok / 0 fail (0.0%)
+05:08:04   Avg latency: 4463ms
+05:08:04   Macros: 1 ok / 0 fail
+05:08:04   Errors: 0
+05:08:04 ============================================================
+05:11:35 ============================================================
+05:11:35 SESSION START — Phone-27 (port:9226 tab:6)
+05:11:35 ============================================================
+05:11:36 [Phone-27] Starting worker: func=loop - Farm V1, port=9226, tab=6
+05:11:51 [Phone-27] Connected to Port 9226, Tab 6
+05:11:51 [LOOP] ── Loop iteration start ──
+05:12:17 [SHOT] FAIL #1 (25007ms)
+05:12:17 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:44 [SHOT] FAIL #2 (25005ms)
+05:12:44 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:48 [SCAN] Supplies → FALSE (56015ms)
+05:13:13 [SHOT] OK (24924ms)
+05:13:13 [SHOT] OK (0ms)
+05:13:14 [SCAN] Revive → FALSE (26174ms)
+05:13:14 [SHOT] OK (0ms)
+05:13:15 [SHOT] OK (0ms)
+05:13:16 [SCAN] Supplies - In → FALSE (1390ms)
+05:13:41 [SHOT] FAIL #1 (25008ms)
+05:13:41 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:14:08 [SHOT] FAIL #2 (25006ms)
+05:14:08 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:14:12 [SCAN] Attack - Auto → FALSE (56016ms)
+05:14:48 [SHOT] FAIL #3 (25015ms)
+05:14:48 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:15:21 [SHOT] FAIL #4 (25001ms)
+05:15:21 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:15:37 [SCAN] Gathering - Automove → FALSE (74018ms)
+05:16:03 [SHOT] FAIL #5 (25007ms)
+05:16:03 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:16:57 [SHOT] OK (23999ms)
+05:16:57 [SCAN] Attack - Auto On → FALSE (79542ms)
+05:17:31 [SHOT] OK (23373ms)
+05:17:32 [SHOT] OK (0ms)
+05:17:33 [SCAN] Revive → FALSE (25000ms)
+05:17:33 [NODE] → Click: Attack - Auto
+05:17:33 [SHOT] OK (0ms)
+05:17:33 [SCAN] Attack - Auto → FALSE (0ms)
+05:17:33 [NODE] → Click: Click 5P
+05:17:33 [SHOT] OK (0ms)
+05:17:39 [SCAN] Click 5P → TRUE (0ms)
+05:17:39 [ERR] DEAD END: No edge from 'Click' (Click 5P) — will trigger restart
+05:17:39 [ERR] RESTART: No next node after 'Click' (Click 5P). Restart 1/10
+05:17:42 [LOOP] ── Loop iteration start ──
+05:18:07 [SHOT] OK (24426ms)
+05:18:07 [SCAN] Supplies → TRUE (24436ms)
+05:18:07 [MACRO] Buy Blood: Starting (0ms)
+05:18:13     - Step OK: ⚡ Hard Click 'Supplies' at (1293,580)
+05:18:13 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:18:38 [SHOT] FAIL #1 (25003ms)
+05:18:38 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:19:06 [SHOT] FAIL #2 (25007ms)
+05:19:06 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:19:35 [SHOT] FAIL #3 (25008ms)
+05:19:35 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:20:09 [SHOT] FAIL #4 (25007ms)
+05:20:09 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:20:49 [SHOT] OK (23750ms)
+05:20:49     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:20:54     - Step OK: ⚡ Hard Click 'Supplies - Type' at (504,320)
+05:20:54 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:21:19 [SHOT] FAIL #1 (25016ms)
+05:21:19 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:21:22 [MACRO] Buy Blood: FAILED (194625ms total)
+05:21:22 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:21:22 ============================================================
+05:21:22 SESSION END — Phone-27 (9.8 min)
+05:21:22   Loops: 0
+05:21:22   Screenshots: 11 ok / 12 fail (52.2%)
+05:21:22   Avg latency: 10952ms
+05:21:22   Macros: 0 ok / 1 fail
+05:21:22   Errors: 3
+05:21:22 ============================================================
+05:21:47 ============================================================
+05:21:47 SESSION START — Phone-27 (port:9226 tab:6)
+05:21:47 ============================================================
+05:21:49 [Phone-27] Starting worker: func=macro - Home, port=9226, tab=6
+05:22:12 [Phone-27] Connected to Port 9226, Tab 6
+05:22:15 [MACRO] Home: Starting (0ms)
+05:22:15 [Macro] Stopped at step 1/2 (worker stopped)
+05:22:15 [MACRO] Home: FAILED (1ms total)
+05:22:15 ============================================================
+05:22:15 SESSION END — Phone-27 (0.5 min)
+05:22:15   Loops: 0
+05:22:15   Screenshots: 0 ok / 0 fail (0.0%)
+05:22:15   Avg latency: 0ms
+05:22:15   Macros: 0 ok / 1 fail
+05:22:15   Errors: 0
+05:22:15 ============================================================
+05:22:19 ============================================================
+05:22:19 SESSION START — Phone-27 (port:9226 tab:6)
+05:22:19 ============================================================
+05:22:20 [Phone-27] Starting worker: func=macro - Home, port=9226, tab=6
+05:22:48 [Phone-27] Connected to Port 9226, Tab 6
+05:22:48 [MACRO] Home: Starting (0ms)
+05:24:03 ============================================================
+05:24:03 SESSION START — Phone-27 (port:9226 tab:6)
+05:24:03 ============================================================
+05:24:05 [Phone-27] Starting worker: func=macro - Home, port=9226, tab=6
+05:24:23 [Phone-27] Connected to Port 9226, Tab 6
+05:24:24 [MACRO] Home: Starting (0ms)
+05:24:29     - Step OK: ⚡ Hard Click 'Home' at (352,372)
+05:24:30 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:55 [SHOT] FAIL #1 (25011ms)
+05:24:55 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:25:15 [SHOT] OK (17923ms)
+05:25:16 [SHOT] OK (0ms)
+05:25:16 [SHOT] OK (0ms)
+05:25:17 [SHOT] OK (0ms)
+05:25:18 [SHOT] OK (141ms)
+05:25:19 [SHOT] OK (0ms)
+05:25:21 [SHOT] OK (0ms)
+05:25:22 [SHOT] OK (224ms)
+05:25:22     - Marker OK: 'Supplies' confirmed APPEAR.
+05:25:22 [Macro] Steps completed. Checking result...
+05:25:23 [SHOT] OK (0ms)
+05:25:23 [Macro] Result: SUCCESS (found 'Supplies')
+05:25:23 [MACRO] Home: PASSED (58440ms total)
+05:25:23 ============================================================
+05:25:23 SESSION END — Phone-27 (1.3 min)
+05:25:23   Loops: 0
+05:25:23   Screenshots: 9 ok / 1 fail (10.0%)
+05:25:23   Avg latency: 2032ms
+05:25:23   Macros: 1 ok / 0 fail
+05:25:23   Errors: 0
+05:25:23 ============================================================
+05:27:02 ============================================================
+05:27:02 SESSION START — Phone-27 (port:9226 tab:6)
+05:27:02 ============================================================
+05:27:04 [Phone-27] Starting worker: func=loop - Farm V1, port=9226, tab=6
+05:27:22 [Phone-27] Connected to Port 9226, Tab 6
+05:27:23 [LOOP] ── Loop iteration start ──
+05:27:49 [SHOT] FAIL #1 (25014ms)
+05:27:49 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:28:16 [SHOT] FAIL #2 (25005ms)
+05:28:16 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:28:20 [SCAN] Gathering - Inside → FALSE (56045ms)
+05:28:45 [SHOT] FAIL #3 (25003ms)
+05:28:45 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:29:18 [SHOT] FAIL #4 (25003ms)
+05:29:18 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:29:34 [SCAN] Supplies → FALSE (74008ms)
+05:30:10 [SHOT] FAIL #5 (25001ms)
+05:30:10 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:31:05 [SHOT] FAIL #6 (25014ms)
+05:31:05 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:31:35 [SCAN] Revive → FALSE (110018ms)
+05:32:01 [SHOT] FAIL #7 (25006ms)
+05:32:01 [Phone-27] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:32:49 [SHOT] OK (17964ms)
+05:32:49 [SCAN] Supplies - In → FALSE (73723ms)
+05:33:25 [SHOT] OK (24919ms)
+05:33:25 [SHOT] OK (0ms)
+05:33:26 [SCAN] Gathering - Automove → FALSE (25980ms)
+05:33:27 [SHOT] OK (0ms)
+05:33:27 [SHOT] OK (0ms)
+05:33:28 [SCAN] Attack - Auto → FALSE (1271ms)
+05:33:54 [SHOT] FAIL #1 (25009ms)
+05:33:54 [Phone-27] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:34:21 [SHOT] FAIL #2 (25003ms)
+05:34:21 [Phone-27] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:34:25 [SCAN] Attack - Auto On → FALSE (56015ms)
+05:34:25 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:34:25 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:34:28 [LOOP] ── Loop iteration start ──
+05:34:54 [SHOT] FAIL #3 (25002ms)
+05:34:54 [Phone-27] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:35:04 [SHOT] FAIL #4 (2496ms)
+05:35:04 [Phone-27] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:35:20 [SCAN] Gathering - Inside → FALSE (51499ms)
+05:35:21 ============================================================
+05:35:21 SESSION END — Phone-27 (8.3 min)
+05:35:21   Loops: 0
+05:35:21   Screenshots: 5 ok / 11 fail (68.8%)
+05:35:21   Avg latency: 8577ms
+05:35:21   Macros: 0 ok / 0 fail
+05:35:21   Errors: 2
+05:35:21 ============================================================

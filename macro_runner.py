@@ -216,6 +216,7 @@ def _run_marker_step(step_data, idx, total,
 
     hold_start = None
     last_log_time = 0
+    last_poll_time = time.time()
     start_time = time.time()
 
     while True:
@@ -249,6 +250,11 @@ def _run_marker_step(step_data, idx, total,
                 log_fn(f"    - CANCEL: Fail image '{fail_image}' ({fail_mode})! Macro FAILED.")
                 return False
 
+        # Track time since last successful poll
+        now = time.time()
+        poll_gap = now - last_poll_time
+        last_poll_time = now
+
         res = _find(marker_path, threshold_val, frame_bytes=frame_bytes,
                     use_color=get_color_detect(marker_path))
         is_condition_met = (
@@ -257,6 +263,15 @@ def _run_marker_step(step_data, idx, total,
         )
 
         if is_condition_met:
+            # If poll gap was too large (screenshot delayed by load),
+            # we can't trust the hold timer — reset it.
+            # Without this, a 20s screenshot delay + brief favorable result
+            # would instantly pass a 6.5s hold requirement.
+            if hold_start is not None and poll_gap > 3.0:
+                log_fn(f"    - Hold reset: poll gap was {poll_gap:.0f}s (screenshot slow)")
+                hold_start = None
+                last_log_time = 0
+
             if hold_start is None:
                 hold_start = time.time()
                 if marker_time > 0:

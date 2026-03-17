@@ -1,0 +1,1433 @@
+03:08:48 ============================================================
+03:08:48 SESSION START — Aizen (port:9227 tab:4)
+03:08:48 ============================================================
+03:08:50 [Aizen] Starting worker: func=loop - Farm V1, port=9227, tab=4
+03:09:07 [Aizen] Connected to Port 9227, Tab 4
+03:09:32 [SHOT] FAIL #1 (25009ms)
+03:09:32 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:09:56 [SHOT] OK (21995ms)
+03:09:57 [SCAN] Gathering - Inside → FALSE (49726ms)
+03:09:58 [SHOT] OK (0ms)
+03:09:58 [SCAN] Supplies → TRUE (10ms)
+03:09:58 [MACRO] Buy Blood: Starting (0ms)
+03:10:03     - Step OK: ⚡ Hard Click 'Supplies' at (1337,569)
+03:10:04 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:10:27 [SHOT] OK (23547ms)
+03:10:27     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:10:33     - Step OK: ⚡ Hard Click 'Supplies - Type' at (496,321)
+03:10:33 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:10:58 [SHOT] FAIL #1 (25004ms)
+03:10:58 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:11:01 [SHOT] OK (202ms)
+03:11:01     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:11:06     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (842,572)
+03:11:07 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:11:07 [Macro] Delay completed.
+03:11:12     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (983,720)
+03:11:12 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:11:13 [Macro] Delay completed.
+03:11:18     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1529,139)
+03:11:19 [Macro] Steps completed. Checking result...
+03:11:45 [SHOT] FAIL #1 (25005ms)
+03:11:45 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:11:47 [Macro] Result: FAILURE ('Home' not found)
+03:11:47 [MACRO] Buy Blood: FAILED (108585ms total)
+03:11:47 [Aizen] No next node after 'Macro' (ad649a80). Restart 1/10
+03:12:06 [SHOT] OK (16054ms)
+03:12:07 [SHOT] OK (0ms)
+03:12:08 [SCAN] Gathering - Inside → FALSE (17309ms)
+03:12:08 [SHOT] OK (0ms)
+03:12:08 [SCAN] Supplies → TRUE (12ms)
+03:12:09 [MACRO] Buy Blood: Starting (0ms)
+03:12:14     - Step OK: ⚡ Hard Click 'Supplies' at (1297,575)
+03:12:14 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:12:39 [SHOT] FAIL #1 (25010ms)
+03:12:39 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:13:07 [SHOT] FAIL #2 (25012ms)
+03:13:07 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:13:37 [SHOT] FAIL #3 (25005ms)
+03:13:37 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:14:11 [SHOT] FAIL #4 (25012ms)
+03:14:11 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:14:52 [SHOT] FAIL #5 (25007ms)
+03:14:52 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:15:48 [SHOT] FAIL #6 (25013ms)
+03:15:48 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:16:44 [SHOT] FAIL #7 (25009ms)
+03:16:44 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:17:39 [SHOT] FAIL #8 (25014ms)
+03:17:39 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:18:35 [SHOT] FAIL #9 (25003ms)
+03:18:35 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:19:31 [SHOT] FAIL #10 (25011ms)
+03:19:31 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:20:07 [SHOT] OK (6163ms)
+03:20:07     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:20:13     - Step OK: ⚡ Hard Click 'Supplies - Type' at (543,300)
+03:20:13 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:20:38 [SHOT] FAIL #1 (25010ms)
+03:20:38 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:21:02 [SHOT] OK (20807ms)
+03:21:02     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:21:02     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (886,555)
+03:21:02 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:21:02 [Macro] Delay completed.
+03:21:08     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1067,701)
+03:21:08 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:21:09 [Macro] Delay completed.
+03:21:14     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1544,139)
+03:21:15 [Macro] Steps completed. Checking result...
+03:21:37 [SHOT] OK (20873ms)
+03:21:37 [Macro] Result: SUCCESS (found 'Home')
+03:21:37 [MACRO] Buy Blood: PASSED (568182ms total)
+03:21:42 [MACRO] Gathering: Starting (0ms)
+03:21:55 [SHOT] OK (12827ms)
+03:22:00     - Step OK: Clicked 'Gathering'
+03:22:00 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+03:22:25 [SHOT] FAIL #1 (25012ms)
+03:22:25 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:22:28     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+03:22:28 [MACRO] Gathering: FAILED (46184ms total)
+03:22:28 [Aizen] No next node after 'Macro' (cc882d55). Restart 1/10
+03:22:45 [SHOT] OK (13775ms)
+03:22:45 [SCAN] Gathering - Inside → TRUE (13952ms)
+03:22:46 [NODE] → Click: Gathering - Exit
+03:22:46 [SHOT] OK (0ms)
+03:22:51 [SCAN] Gathering - Exit → TRUE (0ms)
+03:22:51 [Aizen] No next node after 'Click' (Gathering - Exit). Restart 1/10
+03:22:55 [SHOT] OK (222ms)
+03:22:56 [SHOT] OK (0ms)
+03:22:57 [SCAN] Gathering - Inside → FALSE (2453ms)
+03:22:58 [SHOT] OK (0ms)
+03:22:58 [SCAN] Supplies → TRUE (14ms)
+03:22:58 [MACRO] Buy Blood: Starting (0ms)
+03:23:04     - Step OK: ⚡ Hard Click 'Supplies' at (1317,587)
+03:23:04 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:23:04 [SHOT] OK (214ms)
+03:23:05 [SHOT] OK (0ms)
+03:23:06 [SHOT] OK (0ms)
+03:23:08 [SHOT] OK (254ms)
+03:23:08     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:23:13     - Step OK: ⚡ Hard Click 'Supplies - Type' at (520,318)
+03:23:14 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:23:14 [SHOT] OK (217ms)
+03:23:14     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:23:19     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (831,548)
+03:23:19 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:23:19 [Macro] Delay completed.
+03:23:25     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1077,696)
+03:23:25 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:23:26 [Macro] Delay completed.
+03:23:32     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1529,141)
+03:23:32 [Macro] Steps completed. Checking result...
+03:23:33 [SHOT] OK (252ms)
+03:23:33 [Macro] Result: SUCCESS (found 'Home')
+03:23:33 [MACRO] Buy Blood: PASSED (34947ms total)
+03:23:33 [MACRO] Gathering: Starting (0ms)
+03:23:33 [SHOT] OK (0ms)
+03:23:39     - Step OK: Clicked 'Gathering'
+03:23:39 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+03:23:39 [SHOT] OK (227ms)
+03:23:39     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:23:45     - Step OK: ⚡ Hard Click 'Gathering - OK' at (994,597)
+03:23:45 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:23:58 [Macro] Delay completed.
+03:23:58 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+03:23:59 [SHOT] OK (557ms)
+03:23:59 [SHOT] OK (0ms)
+03:24:00 [SHOT] OK (0ms)
+03:24:00 [SHOT] OK (0ms)
+03:24:01 [SHOT] OK (0ms)
+03:24:02 [SHOT] OK (259ms)
+03:24:02     - Marker triggered. Holding 6.5s...
+03:24:03 [SHOT] OK (0ms)
+03:24:04 [SHOT] OK (0ms)
+03:24:06 [SHOT] OK (240ms)
+03:24:06     - Holding... 3/6s
+03:24:06 [SHOT] OK (0ms)
+03:24:07 [SHOT] OK (0ms)
+03:24:08 [SHOT] OK (0ms)
+03:24:09 [SHOT] OK (312ms)
+03:24:09     - Marker interrupted. Resetting hold timer.
+03:24:10 [SHOT] OK (0ms)
+03:24:11 [SHOT] OK (0ms)
+03:24:12 [SHOT] OK (0ms)
+03:24:13 [SHOT] OK (316ms)
+03:24:14 [SHOT] OK (0ms)
+03:24:15 [SHOT] OK (0ms)
+03:24:15 [SHOT] OK (0ms)
+03:24:16 [SHOT] OK (232ms)
+03:24:17 [SHOT] OK (0ms)
+03:24:18 [SHOT] OK (0ms)
+03:24:19 [SHOT] OK (0ms)
+03:24:20 [SHOT] OK (265ms)
+03:24:21 [SHOT] OK (0ms)
+03:24:22 [SHOT] OK (0ms)
+03:24:23 [SHOT] OK (0ms)
+03:24:24 [SHOT] OK (311ms)
+03:24:25 [SHOT] OK (0ms)
+03:24:26 [SHOT] OK (0ms)
+03:24:26 [SHOT] OK (0ms)
+03:24:28 [SHOT] OK (342ms)
+03:24:28 [SHOT] OK (0ms)
+03:24:29 [SHOT] OK (0ms)
+03:24:30 [SHOT] OK (0ms)
+03:24:31 [SHOT] OK (216ms)
+03:24:32 [SHOT] OK (0ms)
+03:24:33 [SHOT] OK (0ms)
+03:24:33 [SHOT] OK (0ms)
+03:24:34 [SHOT] OK (0ms)
+03:24:35 [SHOT] OK (245ms)
+03:24:35 [SHOT] OK (0ms)
+03:24:37 [SHOT] OK (0ms)
+03:24:37 [SHOT] OK (0ms)
+03:24:37 [SHOT] OK (0ms)
+03:24:38 [SHOT] OK (168ms)
+03:24:39 [SHOT] OK (0ms)
+03:24:40 [SHOT] OK (0ms)
+03:24:40 [SHOT] OK (0ms)
+03:24:41 [SHOT] OK (0ms)
+03:24:43 [SHOT] OK (661ms)
+03:24:43 [SHOT] OK (0ms)
+03:24:44 [SHOT] OK (0ms)
+03:24:45 [SHOT] OK (0ms)
+03:24:47 [SHOT] OK (650ms)
+03:24:48 [SHOT] OK (0ms)
+03:24:49 [SHOT] OK (0ms)
+03:24:50 [SHOT] OK (0ms)
+03:24:51 [SHOT] OK (220ms)
+03:24:51 [SHOT] OK (0ms)
+03:24:52 [SHOT] OK (0ms)
+03:24:54 [SHOT] OK (0ms)
+03:24:55 [SHOT] OK (413ms)
+03:24:56 [SHOT] OK (0ms)
+03:24:57 [SHOT] OK (0ms)
+03:24:58 [SHOT] OK (387ms)
+03:24:58 [SHOT] OK (0ms)
+03:24:59 [SHOT] OK (0ms)
+03:25:00 [SHOT] OK (0ms)
+03:25:02 [SHOT] OK (588ms)
+03:25:03 [SHOT] OK (0ms)
+03:25:03 [SHOT] OK (0ms)
+03:25:04 [SHOT] OK (0ms)
+03:25:05 [SHOT] OK (0ms)
+03:25:05 [SHOT] OK (398ms)
+03:25:06 [SHOT] OK (0ms)
+03:25:07 [SHOT] OK (0ms)
+03:25:07 [SHOT] OK (0ms)
+03:25:08 [SHOT] OK (0ms)
+03:25:09 [SHOT] OK (378ms)
+03:25:09 [SHOT] OK (0ms)
+03:25:10 [SHOT] OK (0ms)
+03:25:11 [SHOT] OK (0ms)
+03:25:12 [SHOT] OK (0ms)
+03:25:13 [SHOT] OK (228ms)
+03:25:13 [SHOT] OK (0ms)
+03:25:14 [SHOT] OK (0ms)
+03:25:15 [SHOT] OK (0ms)
+03:25:16 [SHOT] OK (725ms)
+03:25:18 [SHOT] OK (0ms)
+03:25:19 [SHOT] OK (0ms)
+03:25:19 [SHOT] OK (0ms)
+03:25:19 [SHOT] OK (0ms)
+03:25:21 [SHOT] OK (687ms)
+03:25:22 [SHOT] OK (0ms)
+03:25:22 [SHOT] OK (0ms)
+03:25:23 [SHOT] OK (0ms)
+03:25:23 [SHOT] OK (0ms)
+03:25:24 [SHOT] OK (0ms)
+03:25:24 [SHOT] OK (0ms)
+03:25:25 [SHOT] OK (188ms)
+03:25:25     - Marker triggered. Holding 6.5s...
+03:25:26 [SHOT] OK (0ms)
+03:25:27 [SHOT] OK (0ms)
+03:25:28 [SHOT] OK (281ms)
+03:25:30     - Holding... 4/6s
+03:25:30 [SHOT] OK (0ms)
+03:25:33 [SHOT] OK (1174ms)
+03:25:33     - Marker interrupted. Resetting hold timer.
+03:25:33 [SHOT] OK (0ms)
+03:25:34 [SHOT] OK (0ms)
+03:25:35 [SHOT] OK (0ms)
+03:25:36 [SHOT] OK (765ms)
+03:25:37 [SHOT] OK (0ms)
+03:25:38 [SHOT] OK (0ms)
+03:25:39 [SHOT] OK (0ms)
+03:25:39 [SHOT] OK (0ms)
+03:25:41 [SHOT] OK (1166ms)
+03:25:42 [SHOT] OK (0ms)
+03:25:43 [SHOT] OK (0ms)
+03:25:45 [SHOT] OK (839ms)
+03:25:46 [SHOT] OK (0ms)
+03:25:47 [SHOT] OK (0ms)
+03:25:48 [SHOT] OK (0ms)
+03:25:50 [SHOT] OK (930ms)
+03:25:51 [SHOT] OK (0ms)
+03:25:51 [SHOT] OK (0ms)
+03:25:52 [SHOT] OK (0ms)
+03:25:52 [SHOT] OK (0ms)
+03:25:54 [SHOT] OK (195ms)
+03:25:54     - Marker triggered. Holding 6.5s...
+03:25:55 [SHOT] OK (0ms)
+03:25:56 [SHOT] OK (0ms)
+03:25:57 [SHOT] OK (446ms)
+03:25:57     - Marker interrupted. Resetting hold timer.
+03:25:59 [SHOT] OK (0ms)
+03:26:00 [SHOT] OK (0ms)
+03:26:00 [SHOT] OK (0ms)
+03:26:03 [SHOT] OK (1852ms)
+03:26:04 [SHOT] OK (0ms)
+03:26:05 [SHOT] OK (0ms)
+03:26:05 [SHOT] OK (0ms)
+03:26:06 [SHOT] OK (0ms)
+03:26:07 [SHOT] OK (654ms)
+03:26:08 [SHOT] OK (0ms)
+03:26:08 [SHOT] OK (0ms)
+03:26:09 [SHOT] OK (0ms)
+03:26:10 [SHOT] OK (0ms)
+03:26:11 [SHOT] OK (198ms)
+03:26:12 [SHOT] OK (0ms)
+03:26:13 [SHOT] OK (0ms)
+03:26:13 [SHOT] OK (0ms)
+03:26:14 [SHOT] OK (428ms)
+03:26:15 [SHOT] OK (0ms)
+03:26:17 [SHOT] OK (0ms)
+03:26:21 [SHOT] OK (3454ms)
+03:26:22 [SHOT] OK (0ms)
+03:26:23 [SHOT] OK (0ms)
+03:26:23 [SHOT] OK (0ms)
+03:26:25 [SHOT] OK (263ms)
+03:26:26 [SHOT] OK (0ms)
+03:26:26 [SHOT] OK (0ms)
+03:26:27 [SHOT] OK (0ms)
+03:26:28 [SHOT] OK (0ms)
+03:26:53 [SHOT] FAIL #1 (25007ms)
+03:26:53 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:26:55     - Marker triggered. Holding 6.5s...
+03:27:21 [SHOT] FAIL #2 (25013ms)
+03:27:21 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:27:25     - Holding... 29/6s
+03:27:25     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:27:50 [SHOT] FAIL #3 (25013ms)
+03:27:50 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:28:23 [SHOT] FAIL #4 (25009ms)
+03:28:23 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:28:40 [SHOT] OK (195ms)
+03:28:45     - Step OK: Clicked 'Attack - Auto'
+03:28:46 [Macro] Stopped at step 7/8 (worker stopped)
+03:28:46 [MACRO] Gathering: FAILED (312122ms total)
+03:28:46 ============================================================
+03:28:46 SESSION END — Aizen (20.0 min)
+03:28:46   Loops: 0
+03:28:46   Screenshots: 185 ok / 19 fail (9.3%)
+03:28:46   Avg latency: 862ms
+03:28:46   Macros: 2 ok / 3 fail
+03:28:46   Errors: 0
+03:28:46 ============================================================
+03:31:17 ============================================================
+03:31:17 SESSION START — Aizen (port:9227 tab:4)
+03:31:17 ============================================================
+03:31:18 [Aizen] Starting worker: func=loop - Farm V1, port=9227, tab=4
+03:31:36 [Aizen] Connected to Port 9227, Tab 4
+03:32:01 [SHOT] FAIL #1 (25009ms)
+03:32:01 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:28 [SHOT] FAIL #2 (25002ms)
+03:32:28 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:32:32 [SCAN] Supplies → FALSE (56012ms)
+03:32:58 [SHOT] FAIL #3 (25015ms)
+03:32:58 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:33:26 [SHOT] OK (19947ms)
+03:33:27 [SCAN] Revive → FALSE (53717ms)
+03:33:27 [SHOT] OK (0ms)
+03:33:28 [SHOT] OK (0ms)
+03:33:28 [SCAN] Supplies - In → FALSE (838ms)
+03:33:28 [SHOT] OK (0ms)
+03:33:29 [SHOT] OK (0ms)
+03:33:30 [SCAN] Attack - Auto → FALSE (1243ms)
+03:33:30 [SHOT] OK (149ms)
+03:33:31 [SHOT] OK (0ms)
+03:33:31 [SCAN] Gathering - Automove → FALSE (1449ms)
+03:33:32 [SHOT] OK (0ms)
+03:33:33 [SHOT] OK (0ms)
+03:33:33 [SCAN] Attack - Auto On → FALSE (1244ms)
+03:33:59 [SHOT] FAIL #1 (25012ms)
+03:33:59 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:34:05 [SHOT] OK (3995ms)
+03:34:06 [SCAN] Revive → FALSE (31952ms)
+03:34:06 [NODE] → Click: Attack - Auto
+03:34:06 [SHOT] OK (0ms)
+03:34:06 [SCAN] Attack - Auto → FALSE (0ms)
+03:34:07 [NODE] → Click: Click 5P
+03:34:07 [SHOT] OK (0ms)
+03:34:12 [SCAN] Click 5P → TRUE (0ms)
+03:34:12 [Aizen] No next node after 'Click' (Click 5P). Restart 1/10
+03:34:35 [SHOT] OK (19697ms)
+03:34:35 [SCAN] Supplies → TRUE (19708ms)
+03:34:36 [MACRO] Buy Blood: Starting (0ms)
+03:34:41     - Step OK: ⚡ Hard Click 'Supplies' at (1319,589)
+03:34:42 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:35:06 [SHOT] OK (24090ms)
+03:35:06     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:35:11     - Step OK: ⚡ Hard Click 'Supplies - Type' at (498,303)
+03:35:12 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:35:12 [SHOT] OK (158ms)
+03:35:12     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:35:17     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (781,549)
+03:35:17 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:35:17 [Macro] Delay completed.
+03:35:23     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1035,708)
+03:35:28     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1526,158)
+03:35:29 [Macro] Steps completed. Checking result...
+03:35:55 [SHOT] FAIL #1 (25010ms)
+03:35:55 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:35:57 [Macro] Result: FAILURE ('Home' not found)
+03:35:57 [MACRO] Buy Blood: FAILED (80468ms total)
+03:35:57 [Aizen] No next node after 'Macro' (ad649a80). Restart 1/10
+03:36:00 [SHOT] OK (157ms)
+03:36:00 [SCAN] Supplies → TRUE (228ms)
+03:36:01 [MACRO] Buy Blood: Starting (0ms)
+03:36:06     - Step OK: ⚡ Hard Click 'Supplies' at (1320,588)
+03:36:06 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:36:31 [SHOT] FAIL #1 (25012ms)
+03:36:31 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:36:37 [SHOT] OK (2848ms)
+03:36:37     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:36:42     - Step OK: ⚡ Hard Click 'Supplies - Type' at (490,304)
+03:36:43 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:37:08 [SHOT] FAIL #1 (25004ms)
+03:37:08 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:37:36 [SHOT] FAIL #2 (25003ms)
+03:37:36 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:38:06 [SHOT] FAIL #3 (25013ms)
+03:38:06 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:38:39 [SHOT] FAIL #4 (25014ms)
+03:38:39 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:39:16 [SHOT] OK (19703ms)
+03:39:17 [SHOT] OK (0ms)
+03:39:18 [SHOT] OK (0ms)
+03:39:19 [SHOT] OK (0ms)
+03:39:37 [SHOT] OK (17554ms)
+03:39:37     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:39:42     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (822,546)
+03:39:42 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:39:42 [Macro] Delay completed.
+03:39:43     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1014,710)
+03:39:48     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1545,154)
+03:39:48 [Macro] Steps completed. Checking result...
+03:40:15 [SHOT] FAIL #1 (25013ms)
+03:40:15 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:40:17 [Macro] Result: FAILURE ('Home' not found)
+03:40:17 [MACRO] Buy Blood: FAILED (255724ms total)
+03:40:32 [Aizen] No next node after 'Macro' (ad649a80). Restart 1/10
+03:40:44 [SHOT] OK (8896ms)
+03:40:44 [SCAN] Supplies → TRUE (8906ms)
+03:40:44 [MACRO] Buy Blood: Starting (0ms)
+03:40:49     - Step OK: ⚡ Hard Click 'Supplies' at (1306,583)
+03:40:50 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:40:50 [SHOT] OK (261ms)
+03:40:51 [SHOT] OK (0ms)
+03:40:52 [SHOT] OK (0ms)
+03:40:53 [SHOT] OK (0ms)
+03:41:19 [SHOT] FAIL #1 (25011ms)
+03:41:19 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:41:22 [SHOT] OK (497ms)
+03:41:22     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:41:28     - Step OK: ⚡ Hard Click 'Supplies - Type' at (506,310)
+03:41:28 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:41:53 [SHOT] FAIL #1 (25008ms)
+03:41:53 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:42:21 [SHOT] FAIL #2 (25012ms)
+03:42:21 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:42:51 [SHOT] FAIL #3 (25008ms)
+03:42:51 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:43:25 [SHOT] FAIL #4 (25010ms)
+03:43:25 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:44:07 [SHOT] FAIL #5 (25006ms)
+03:44:07 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:45:03 [SHOT] FAIL #6 (25010ms)
+03:45:03 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:45:58 [SHOT] FAIL #7 (25007ms)
+03:45:58 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:46:54 [SHOT] FAIL #8 (25013ms)
+03:46:54 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:47:49 [SHOT] FAIL #9 (25008ms)
+03:47:49 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:48:45 [SHOT] FAIL #10 (25002ms)
+03:48:45 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:49:41 [SHOT] FAIL #11 (25006ms)
+03:49:41 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+03:50:27 [SHOT] OK (15159ms)
+03:50:27     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:50:32     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (821,549)
+03:50:33 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:50:33 [Macro] Delay completed.
+03:50:38     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1067,718)
+03:50:44     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1543,157)
+03:50:44 [Macro] Steps completed. Checking result...
+03:51:02 [SHOT] OK (16399ms)
+03:51:02 [Macro] Result: SUCCESS (found 'Home')
+03:51:02 [MACRO] Buy Blood: PASSED (617372ms total)
+03:51:07 [MACRO] Gathering: Starting (0ms)
+03:51:32 [SHOT] FAIL #1 (25011ms)
+03:51:32 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:51:59 [SHOT] FAIL #2 (25001ms)
+03:51:59 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:52:28 [SHOT] FAIL #3 (25003ms)
+03:52:28 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:53:02 [SHOT] FAIL #4 (25010ms)
+03:53:02 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:53:39 [SHOT] OK (20666ms)
+03:53:44     - Step OK: Clicked 'Gathering'
+03:53:44 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+03:54:09 [SHOT] FAIL #1 (25013ms)
+03:54:09 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:54:38 [SHOT] FAIL #2 (25015ms)
+03:54:38 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:54:46 [SHOT] OK (3592ms)
+03:54:46     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:54:51     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1073,571)
+03:54:52 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:55:04 [Macro] Delay completed.
+03:55:04 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+03:55:17 [SHOT] OK (13374ms)
+03:55:18 [SHOT] OK (0ms)
+03:55:19 [SHOT] OK (0ms)
+03:55:45 [SHOT] FAIL #1 (25001ms)
+03:55:45 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:55:47     - Marker triggered. Holding 6.5s...
+03:55:48 [SHOT] OK (191ms)
+03:55:48     - Marker interrupted. Resetting hold timer.
+03:55:48 [SHOT] OK (0ms)
+03:55:49 [SHOT] OK (0ms)
+03:55:50 [SHOT] OK (0ms)
+03:55:50 [SHOT] OK (0ms)
+03:55:51 [SHOT] OK (0ms)
+03:56:17 [SHOT] FAIL #1 (25029ms)
+03:56:17 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:56:19     - Marker triggered. Holding 6.5s...
+03:56:44 [SHOT] FAIL #2 (25001ms)
+03:56:44 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:56:48     - Holding... 29/6s
+03:56:48     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:56:51 [SHOT] OK (2766ms)
+03:56:56     - Step OK: Clicked 'Attack - Auto'
+03:56:57 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:56:58 [Macro] Delay completed.
+03:57:23 [SHOT] OK (24855ms)
+03:57:28     - Step OK: Clicked 'Click 5P'
+03:57:28 [Macro] Steps completed. Checking result...
+03:57:54 [SHOT] OK (24799ms)
+03:57:54 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+03:57:54 [MACRO] Gathering: FAILED (407375ms total)
+03:57:59 [Aizen] No next node after 'Macro' (cc882d55). Restart 1/10
+03:58:26 [SHOT] OK (23378ms)
+03:58:27 [SHOT] OK (0ms)
+03:58:27 [SCAN] Supplies → FALSE (24732ms)
+03:58:28 [SHOT] OK (0ms)
+03:58:29 [SHOT] OK (0ms)
+03:58:30 [SCAN] Revive → FALSE (1597ms)
+03:58:55 [SHOT] FAIL #1 (25013ms)
+03:58:55 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:59:22 [SHOT] FAIL #2 (25014ms)
+03:59:22 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:59:26 [SCAN] Supplies - In → FALSE (56028ms)
+03:59:29 [SHOT] OK (2659ms)
+03:59:29 [SCAN] Attack - Auto → TRUE (2667ms)
+03:59:30 [SHOT] OK (0ms)
+03:59:31 [SHOT] OK (0ms)
+03:59:31 [SCAN] Gathering - Automove → FALSE (1359ms)
+03:59:32 [SHOT] OK (0ms)
+03:59:58 [SHOT] FAIL #1 (25010ms)
+03:59:58 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:00:00 [SCAN] Attack - Auto On → FALSE (27586ms)
+04:00:01 [SHOT] OK (1449ms)
+04:00:02 [SHOT] OK (0ms)
+04:00:03 [SCAN] Revive → FALSE (2765ms)
+04:00:03 [NODE] → Click: Attack - Auto
+04:00:03 [SHOT] OK (0ms)
+04:00:08 [SCAN] Attack - Auto → TRUE (0ms)
+04:00:09 [NODE] → Click: Click 5P
+04:00:33 [SHOT] OK (24387ms)
+04:00:38 [SCAN] Click 5P → TRUE (0ms)
+04:00:39 [Aizen] No next node after 'Click' (Click 5P). Restart 1/10
+04:01:07 [SHOT] FAIL #1 (25014ms)
+04:01:07 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:01:34 [SHOT] FAIL #2 (25001ms)
+04:01:34 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:01:38 [SCAN] Supplies → FALSE (56018ms)
+04:01:39 [Aizen] Connection rotation — periodic reconnect
+04:01:41 [Aizen] Connection rotated successfully
+04:02:06 [SHOT] FAIL #3 (25008ms)
+04:02:06 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:02:39 [SHOT] FAIL #4 (25014ms)
+04:02:39 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:02:55 [SCAN] Revive → FALSE (74023ms)
+04:03:13 [SHOT] OK (12341ms)
+04:03:13 [SHOT] OK (0ms)
+04:03:14 [SCAN] Supplies - In → FALSE (13506ms)
+04:03:14 [SHOT] OK (0ms)
+04:03:15 [SCAN] Attack - Auto → TRUE (25ms)
+04:03:15 [SHOT] OK (0ms)
+04:03:16 [SHOT] OK (0ms)
+04:03:16 [SCAN] Gathering - Automove → FALSE (1194ms)
+04:03:42 [SHOT] FAIL #1 (25026ms)
+04:03:42 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:04:09 [SHOT] FAIL #2 (25006ms)
+04:04:09 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:04:13 [SCAN] Attack - Auto On → FALSE (56072ms)
+04:04:38 [SHOT] FAIL #3 (25014ms)
+04:04:38 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:05:11 [SHOT] FAIL #4 (25009ms)
+04:05:11 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:05:27 [SCAN] Revive → FALSE (74024ms)
+04:05:28 [NODE] → Click: Attack - Auto
+04:05:53 [SHOT] FAIL #5 (25003ms)
+04:05:53 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:06:23 [NODE] → Click: Click 5P
+04:06:27 [SHOT] OK (3683ms)
+04:06:32 [SCAN] Click 5P → TRUE (0ms)
+04:06:32 [Aizen] No next node after 'Click' (Click 5P). Restart 1/10
+04:06:59 [SHOT] OK (22815ms)
+04:06:59 [SHOT] OK (0ms)
+04:07:00 [SCAN] Supplies → FALSE (23906ms)
+04:07:00 [SHOT] OK (0ms)
+04:07:01 [SHOT] OK (0ms)
+04:07:02 [SCAN] Revive → FALSE (1575ms)
+04:07:27 [SHOT] FAIL #1 (25022ms)
+04:07:27 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:07:30 [SHOT] OK (907ms)
+04:07:31 [SCAN] Supplies - In → FALSE (28569ms)
+04:08:01 [SHOT] FAIL #1 (25007ms)
+04:08:01 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:08:28 [SHOT] FAIL #2 (25002ms)
+04:08:28 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:08:32 [SCAN] Attack - Auto → FALSE (56011ms)
+04:08:36 [Aizen] Health check FAILED — reconnecting
+04:08:38 [Aizen] Reconnected successfully
+04:09:03 [SHOT] FAIL #3 (25008ms)
+04:09:03 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:09:36 [SHOT] OK (24873ms)
+04:09:36 [SCAN] Gathering - Automove → FALSE (58557ms)
+04:09:37 [SHOT] OK (0ms)
+04:09:37 [SCAN] Attack - Auto On → TRUE (21ms)
+04:09:37 [MACRO] Click 5P: Starting (0ms)
+04:09:43     - Step OK: ⚡ Hard Click 'Click 5P' at (1530,96)
+04:09:43 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:09:43 [Macro] Delay completed.
+04:09:43 [Macro] Steps completed. Checking result...
+04:09:43 [Macro] Finished (no capture check configured).
+04:09:43 [MACRO] Click 5P: PASSED (5631ms total)
+04:09:43 [MACRO] Revivie: Starting (0ms)
+04:10:06 [SHOT] OK (23315ms)
+04:10:07 [SHOT] OK (0ms)
+04:10:07 [SHOT] OK (0ms)
+04:10:07 [SHOT] OK (0ms)
+04:10:08 [SHOT] OK (0ms)
+04:10:08     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:10:08 [MACRO] Revivie: FAILED (25361ms total)
+04:10:08 [Aizen] No next node after 'Macro' (ed214390). Restart 1/10
+04:10:37 [SHOT] OK (24936ms)
+04:10:38 [SHOT] OK (0ms)
+04:10:38 [SCAN] Supplies → FALSE (26286ms)
+04:10:39 [SHOT] OK (0ms)
+04:10:40 [SHOT] OK (0ms)
+04:10:40 [SCAN] Revive → FALSE (1301ms)
+04:11:06 [SHOT] FAIL #1 (25010ms)
+04:11:06 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:11:08 [SHOT] OK (151ms)
+04:11:09 [SCAN] Supplies - In → FALSE (27960ms)
+04:11:09 [SHOT] OK (0ms)
+04:11:09 [SCAN] Attack - Auto → TRUE (8ms)
+04:11:10 [SHOT] OK (0ms)
+04:11:10 [SHOT] OK (0ms)
+04:11:11 [SCAN] Gathering - Automove → FALSE (856ms)
+04:11:36 [SHOT] FAIL #1 (25004ms)
+04:11:36 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:11:42 [SHOT] OK (3628ms)
+04:11:42 [SCAN] Attack - Auto On → TRUE (30651ms)
+04:11:42 [MACRO] Click 5P: Starting (0ms)
+04:11:47     - Step OK: ⚡ Hard Click 'Click 5P' at (1487,100)
+04:11:48 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:11:48 [Macro] Delay completed.
+04:11:48 [Macro] Steps completed. Checking result...
+04:11:48 [Macro] Finished (no capture check configured).
+04:11:48 [MACRO] Click 5P: PASSED (5777ms total)
+04:11:48 [MACRO] Revivie: Starting (0ms)
+04:11:48 [SHOT] OK (162ms)
+04:11:49 [SHOT] OK (0ms)
+04:11:49 [SHOT] OK (0ms)
+04:11:49 [SHOT] OK (0ms)
+04:11:50 [SHOT] OK (0ms)
+04:11:50     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:11:50 [MACRO] Revivie: FAILED (2301ms total)
+04:11:50 [Aizen] No next node after 'Macro' (ed214390). Restart 1/10
+04:12:19 [SHOT] OK (24870ms)
+04:12:19 [SHOT] OK (0ms)
+04:12:20 [SCAN] Supplies → FALSE (26061ms)
+04:12:50 [SHOT] FAIL #1 (25009ms)
+04:12:50 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:12:52 [SHOT] OK (0ms)
+04:12:53 [SCAN] Revive → FALSE (27524ms)
+04:13:18 [SHOT] FAIL #1 (25012ms)
+04:13:18 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:13:45 [SHOT] FAIL #2 (25015ms)
+04:13:45 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:13:49 [SCAN] Supplies - In → FALSE (56030ms)
+04:14:14 [SHOT] OK (23736ms)
+04:14:14 [SCAN] Attack - Auto → TRUE (23744ms)
+04:14:14 [SHOT] OK (0ms)
+04:14:15 [SHOT] OK (0ms)
+04:14:16 [SCAN] Gathering - Automove → FALSE (1177ms)
+04:14:16 [SHOT] OK (0ms)
+04:14:16 [SCAN] Attack - Auto On → TRUE (18ms)
+04:14:17 [MACRO] Click 5P: Starting (0ms)
+04:14:22     - Step OK: ⚡ Hard Click 'Click 5P' at (1494,95)
+04:14:22 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:14:22 [Macro] Delay completed.
+04:14:22 [Macro] Steps completed. Checking result...
+04:14:22 [Macro] Finished (no capture check configured).
+04:14:22 [MACRO] Click 5P: PASSED (5723ms total)
+04:14:22 [MACRO] Revivie: Starting (0ms)
+04:14:47 [SHOT] OK (24169ms)
+04:14:47 [SHOT] OK (0ms)
+04:14:47 [SHOT] OK (0ms)
+04:14:48 [SHOT] OK (0ms)
+04:14:48 [SHOT] OK (0ms)
+04:14:49     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:14:49 [MACRO] Revivie: FAILED (26118ms total)
+04:14:49 [Aizen] No next node after 'Macro' (ed214390). Restart 1/10
+04:15:17 [SHOT] FAIL #1 (25006ms)
+04:15:17 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:15:19 [SHOT] OK (0ms)
+04:15:20 [SCAN] Supplies → FALSE (27625ms)
+04:15:45 [SHOT] FAIL #1 (25006ms)
+04:15:45 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:16:12 [SHOT] FAIL #2 (25008ms)
+04:16:12 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:16:16 [SCAN] Revive → FALSE (56016ms)
+04:16:42 [SHOT] FAIL #3 (25013ms)
+04:16:42 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:17:15 [SHOT] FAIL #4 (25015ms)
+04:17:15 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:17:31 [SCAN] Supplies - In → FALSE (74043ms)
+04:17:53 [SHOT] OK (16659ms)
+04:17:53 [SCAN] Attack - Auto → TRUE (16667ms)
+04:17:54 [SHOT] OK (0ms)
+04:17:54 [SHOT] OK (0ms)
+04:17:55 [SCAN] Gathering - Automove → FALSE (951ms)
+04:17:55 [SHOT] OK (0ms)
+04:17:55 [SCAN] Attack - Auto On → TRUE (19ms)
+04:17:56 [MACRO] Click 5P: Starting (0ms)
+04:18:01     - Step OK: ⚡ Hard Click 'Click 5P' at (1530,100)
+04:18:01 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:18:01 [Macro] Delay completed.
+04:18:01 [Macro] Steps completed. Checking result...
+04:18:01 [Macro] Finished (no capture check configured).
+04:18:01 [MACRO] Click 5P: PASSED (5625ms total)
+04:18:01 [MACRO] Revivie: Starting (0ms)
+04:18:24 [SHOT] OK (22137ms)
+04:18:24 [SHOT] OK (0ms)
+04:18:24 [SHOT] OK (0ms)
+04:18:25 [SHOT] OK (0ms)
+04:18:25 [SHOT] OK (0ms)
+04:18:26     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:18:26 [MACRO] Revivie: FAILED (24263ms total)
+04:18:26 [Aizen] No next node after 'Macro' (ed214390). Restart 1/10
+04:18:54 [SHOT] FAIL #1 (25005ms)
+04:18:54 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:19:21 [SHOT] FAIL #2 (25012ms)
+04:19:21 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:19:25 [SCAN] Supplies → FALSE (56019ms)
+04:19:51 [SHOT] FAIL #3 (25013ms)
+04:19:51 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:20:24 [SHOT] FAIL #4 (25008ms)
+04:20:24 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:20:40 [SCAN] Revive → FALSE (74029ms)
+04:21:06 [SHOT] FAIL #5 (25008ms)
+04:21:06 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:21:39 [SHOT] OK (3287ms)
+04:21:39 [SCAN] Supplies - In → FALSE (58762ms)
+04:21:40 [SHOT] OK (0ms)
+04:21:40 [SCAN] Attack - Auto → TRUE (7ms)
+04:21:40 [SHOT] OK (0ms)
+04:21:41 [SHOT] OK (0ms)
+04:21:41 [SCAN] Gathering - Automove → FALSE (1280ms)
+04:21:42 [SHOT] OK (218ms)
+04:21:42 [SCAN] Attack - Auto On → TRUE (237ms)
+04:21:43 [MACRO] Click 5P: Starting (0ms)
+04:21:48     - Step OK: ⚡ Hard Click 'Click 5P' at (1497,86)
+04:21:49 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:21:49 [Macro] Delay completed.
+04:21:49 [Macro] Steps completed. Checking result...
+04:21:49 [Macro] Finished (no capture check configured).
+04:21:49 [MACRO] Click 5P: PASSED (5694ms total)
+04:21:49 [MACRO] Revivie: Starting (0ms)
+04:22:14 [SHOT] FAIL #1 (25009ms)
+04:22:14 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:22:41 [SHOT] FAIL #2 (25011ms)
+04:22:41 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:22:47 [SHOT] OK (1353ms)
+04:22:47 [SHOT] OK (0ms)
+04:22:48 [SHOT] OK (0ms)
+04:22:48     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:22:48 [MACRO] Revivie: FAILED (59189ms total)
+04:22:53 [Aizen] No next node after 'Macro' (ed214390). Restart 1/10
+04:23:22 [SHOT] FAIL #1 (25004ms)
+04:23:22 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:23:24 [SHOT] OK (0ms)
+04:23:24 [SCAN] Supplies → FALSE (27588ms)
+04:23:25 [SHOT] OK (0ms)
+04:23:50 [SHOT] FAIL #1 (25011ms)
+04:23:50 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:23:52 [SCAN] Revive → FALSE (27644ms)
+04:24:18 [SHOT] FAIL #2 (25011ms)
+04:24:18 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:24:47 [SHOT] FAIL #3 (25010ms)
+04:24:47 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:24:55 [SCAN] Supplies - In → FALSE (62038ms)
+04:25:20 [SHOT] FAIL #4 (25012ms)
+04:25:20 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:26:01 [SHOT] FAIL #5 (25001ms)
+04:26:01 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:26:31 [SCAN] Attack - Auto → FALSE (96015ms)
+04:26:32 [SHOT] OK (134ms)
+04:26:32 [SHOT] OK (0ms)
+04:26:33 [SCAN] Gathering - Automove → FALSE (1223ms)
+04:26:34 [SHOT] OK (0ms)
+04:26:34 [SCAN] Attack - Auto On → TRUE (18ms)
+04:26:34 [MACRO] Click 5P: Starting (0ms)
+04:26:39     - Step OK: ⚡ Hard Click 'Click 5P' at (1510,96)
+04:26:40 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:26:40 [Macro] Delay completed.
+04:26:40 [Macro] Steps completed. Checking result...
+04:26:40 [Macro] Finished (no capture check configured).
+04:26:40 [MACRO] Click 5P: PASSED (5788ms total)
+04:26:40 [MACRO] Revivie: Starting (0ms)
+04:27:05 [SHOT] FAIL #1 (25009ms)
+04:27:05 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:27:11 [SHOT] OK (3823ms)
+04:27:12 [SHOT] OK (0ms)
+04:27:12 [SHOT] OK (0ms)
+04:27:12 [SHOT] OK (0ms)
+04:27:13     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:27:13 [MACRO] Revivie: FAILED (32757ms total)
+04:27:13 [Aizen] No next node after 'Macro' (ed214390). Restart 1/10
+04:27:41 [SHOT] FAIL #1 (25015ms)
+04:27:41 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:28:08 [SHOT] FAIL #2 (25016ms)
+04:28:08 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:28:12 [SCAN] Supplies → FALSE (56032ms)
+04:28:18 [SHOT] OK (141ms)
+04:28:19 [SHOT] OK (0ms)
+04:28:20 [SCAN] Revive → FALSE (1738ms)
+04:28:20 [SHOT] OK (0ms)
+04:28:21 [SHOT] OK (0ms)
+04:28:22 [SCAN] Supplies - In → FALSE (1305ms)
+04:28:47 [SHOT] FAIL #1 (25012ms)
+04:28:47 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:29:14 [SHOT] FAIL #2 (25006ms)
+04:29:14 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:29:18 [SCAN] Attack - Auto → FALSE (56020ms)
+04:29:23 [SHOT] OK (4280ms)
+04:29:24 [SHOT] OK (0ms)
+04:29:25 [SCAN] Gathering - Automove → FALSE (5986ms)
+04:29:26 [SHOT] OK (0ms)
+04:29:26 [SCAN] Attack - Auto On → TRUE (17ms)
+04:29:26 [MACRO] Click 5P: Starting (0ms)
+04:29:31     - Step OK: ⚡ Hard Click 'Click 5P' at (1508,86)
+04:29:32 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:29:32 [Macro] Delay completed.
+04:29:32 [Macro] Steps completed. Checking result...
+04:29:32 [Macro] Finished (no capture check configured).
+04:29:32 [MACRO] Click 5P: PASSED (5672ms total)
+04:29:32 [MACRO] Revivie: Starting (0ms)
+04:29:55 [SHOT] OK (23026ms)
+04:29:55 [SHOT] OK (0ms)
+04:29:56 [SHOT] OK (0ms)
+04:29:56 [SHOT] OK (0ms)
+04:29:56 [SHOT] OK (0ms)
+04:29:57     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:29:57 [MACRO] Revivie: FAILED (25022ms total)
+04:29:57 [Aizen] No next node after 'Macro' (ed214390). Restart 1/10
+04:30:25 [SHOT] OK (24975ms)
+04:30:26 [SHOT] OK (0ms)
+04:30:27 [SCAN] Supplies → FALSE (26193ms)
+04:30:27 [SHOT] OK (0ms)
+04:30:28 [SHOT] OK (0ms)
+04:30:28 [SCAN] Revive → FALSE (1293ms)
+04:30:54 [SHOT] FAIL #1 (25005ms)
+04:30:54 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:31:21 [SHOT] FAIL #2 (25006ms)
+04:31:21 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:31:25 [SCAN] Supplies - In → FALSE (56013ms)
+04:31:30 [SHOT] OK (4116ms)
+04:31:30 [SHOT] OK (0ms)
+04:31:31 [SCAN] Attack - Auto → FALSE (5617ms)
+04:31:31 [SHOT] OK (0ms)
+04:31:32 [SHOT] OK (0ms)
+04:31:32 [SCAN] Gathering - Automove → FALSE (827ms)
+04:31:58 [SHOT] FAIL #1 (25016ms)
+04:31:58 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:32:25 [SHOT] FAIL #2 (25007ms)
+04:32:25 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:32:29 [SCAN] Attack - Auto On → FALSE (56025ms)
+04:32:29 [Aizen] Connection rotation — periodic reconnect
+04:32:31 [Aizen] Connection rotated successfully
+04:32:56 [SHOT] FAIL #3 (25006ms)
+04:32:56 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:33:29 [SHOT] FAIL #4 (25009ms)
+04:33:29 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:33:45 [SCAN] Revive → FALSE (74016ms)
+04:33:51 [NODE] → Click: Attack - Auto
+04:34:05 [SHOT] OK (14243ms)
+04:34:05 [SCAN] Attack - Auto → FALSE (0ms)
+04:34:05 [NODE] → Click: Click 5P
+04:34:05 [SHOT] OK (0ms)
+04:34:05 [SCAN] Click 5P → FALSE (0ms)
+04:34:06 [Aizen] No next node after 'Click' (Click 5P). Restart 1/10
+04:34:34 [SHOT] FAIL #1 (25006ms)
+04:34:34 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:34:37 [SHOT] OK (604ms)
+04:34:37 [SCAN] Supplies → FALSE (28056ms)
+04:34:38 [SHOT] OK (0ms)
+04:34:39 [SHOT] OK (0ms)
+04:34:39 [SCAN] Revive → FALSE (1699ms)
+04:35:05 [SHOT] FAIL #1 (25002ms)
+04:35:05 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:35:32 [SHOT] FAIL #2 (25003ms)
+04:35:32 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:35:36 [SCAN] Supplies - In → FALSE (56008ms)
+04:35:41 [SHOT] OK (5016ms)
+04:35:42 [SHOT] OK (0ms)
+04:35:42 [SCAN] Attack - Auto → FALSE (6262ms)
+04:35:43 [SHOT] OK (0ms)
+04:35:44 [SHOT] OK (0ms)
+04:35:44 [SCAN] Gathering - Automove → FALSE (1139ms)
+04:36:10 [SHOT] FAIL #1 (25011ms)
+04:36:10 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:36:13 [SHOT] OK (750ms)
+04:36:13 [SCAN] Attack - Auto On → FALSE (28506ms)
+04:36:14 [SHOT] OK (0ms)
+04:36:15 [SHOT] OK (0ms)
+04:36:16 [SCAN] Revive → FALSE (1485ms)
+04:36:16 [NODE] → Click: Attack - Auto
+04:36:41 [SHOT] FAIL #1 (25005ms)
+04:36:41 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:36:43 [NODE] → Click: Click 5P
+04:37:08 [SHOT] FAIL #2 (25000ms)
+04:37:08 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:37:13 [Aizen] No next node after 'Click' (Click 5P). Restart 1/10
+04:37:41 [SHOT] FAIL #3 (25010ms)
+04:37:41 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:37:49 [SHOT] OK (150ms)
+04:37:50 [SCAN] Supplies → FALSE (33912ms)
+04:37:51 [SHOT] OK (0ms)
+04:37:51 [SHOT] OK (0ms)
+04:37:52 [SCAN] Revive → FALSE (1594ms)
+04:37:53 [SHOT] OK (113ms)
+04:37:53 [SHOT] OK (0ms)
+04:37:54 [SCAN] Supplies - In → FALSE (1157ms)
+04:37:54 [SHOT] OK (0ms)
+04:37:55 [SHOT] OK (0ms)
+04:37:56 [SCAN] Attack - Auto → FALSE (1241ms)
+04:37:56 [SHOT] OK (166ms)
+04:37:57 [SHOT] OK (0ms)
+04:37:57 [SCAN] Gathering - Automove → FALSE (1143ms)
+04:37:58 [SHOT] OK (0ms)
+04:37:58 [SCAN] Attack - Auto On → TRUE (63ms)
+04:37:58 [MACRO] Click 5P: Starting (0ms)
+04:38:03     - Step OK: ⚡ Hard Click 'Click 5P' at (1492,99)
+04:38:04 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:38:04 [Macro] Delay completed.
+04:38:04 [Macro] Steps completed. Checking result...
+04:38:04 [Macro] Finished (no capture check configured).
+04:38:04 [MACRO] Click 5P: PASSED (5657ms total)
+04:38:04 [MACRO] Revivie: Starting (0ms)
+04:38:29 [SHOT] FAIL #1 (25009ms)
+04:38:29 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:38:56 [SHOT] FAIL #2 (25015ms)
+04:38:56 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:39:26 [SHOT] FAIL #3 (25014ms)
+04:39:26 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:39:59 [SHOT] FAIL #4 (25004ms)
+04:39:59 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:40:40 [SHOT] FAIL #5 (25013ms)
+04:40:40 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:41:10     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:41:10 [MACRO] Revivie: FAILED (186565ms total)
+04:41:16 [Aizen] No next node after 'Macro' (ed214390). Restart 1/10
+04:41:44 [SHOT] OK (24520ms)
+04:41:44 [SHOT] OK (0ms)
+04:41:45 [SCAN] Supplies → FALSE (25723ms)
+04:41:45 [SHOT] OK (0ms)
+04:41:46 [SHOT] OK (0ms)
+04:41:47 [SCAN] Revive → FALSE (1504ms)
+04:42:13 [SHOT] FAIL #1 (25013ms)
+04:42:13 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:42:24 [SHOT] FAIL #2 (9528ms)
+04:42:24 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:42:28 [SCAN] Supplies - In → FALSE (40542ms)
+04:42:29 ============================================================
+04:42:29 SESSION END — Aizen (71.2 min)
+04:42:29   Loops: 0
+04:42:29   Screenshots: 173 ok / 96 fail (35.7%)
+04:42:29   Avg latency: 3647ms
+04:42:29   Macros: 9 ok / 11 fail
+04:42:29   Errors: 0
+04:42:29 ============================================================
+04:54:28 ============================================================
+04:54:28 SESSION START — Aizen (port:9227 tab:4)
+04:54:28 ============================================================
+04:54:29 [Aizen] Starting worker: func=loop - Farm V1, port=9227, tab=4
+04:54:43 [Aizen] Connected to Port 9227, Tab 4
+04:55:08 [SHOT] FAIL #1 (25020ms)
+04:55:08 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:55:35 [SHOT] FAIL #2 (25000ms)
+04:55:35 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:55:39 [SCAN] Supplies → FALSE (56047ms)
+04:55:51 [SHOT] OK (10944ms)
+04:55:51 [SCAN] Revive → TRUE (11054ms)
+04:55:51 [MACRO] Revivie: Starting (0ms)
+04:55:51 [SHOT] OK (0ms)
+04:55:57     - Step OK: Clicked 'Revive'
+04:55:57 [Macro] (2/2) Delay: 3000ms (3.0s)...
+04:56:00 [Macro] Delay completed.
+04:56:00 [Macro] Steps completed. Checking result...
+04:56:01 [SHOT] OK (171ms)
+04:56:01 [Macro] Result: FAILURE ('Supplies' not found)
+04:56:01 [MACRO] Revivie: FAILED (9968ms total)
+04:56:01 [Aizen] No next node after 'Macro' (38ef6fd1). Restart 1/10
+04:56:05 [SHOT] OK (245ms)
+04:56:05 [SCAN] Supplies → TRUE (256ms)
+04:56:06 [MACRO] Buy Blood: Starting (0ms)
+04:56:11     - Step OK: ⚡ Hard Click 'Supplies' at (1308,588)
+04:56:11 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:56:36 [SHOT] FAIL #1 (25009ms)
+04:56:36 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:56:42 [SHOT] OK (3136ms)
+04:56:42     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:56:47     - Step OK: ⚡ Hard Click 'Supplies - Type' at (500,318)
+04:56:47 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:57:12 [SHOT] FAIL #1 (25006ms)
+04:57:12 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:57:15 [SHOT] OK (0ms)
+04:57:15     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:57:20     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (871,547)
+04:57:20 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:57:21 [Macro] Delay completed.
+04:57:26     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (987,692)
+04:57:31     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1525,134)
+04:57:32 [Macro] Steps completed. Checking result...
+04:57:43 [SHOT] OK (10660ms)
+04:57:43 [Macro] Result: SUCCESS (found 'Home')
+04:57:43 [MACRO] Buy Blood: PASSED (97847ms total)
+04:57:43 [MACRO] Gathering: Starting (0ms)
+04:57:43 [SHOT] OK (0ms)
+04:57:49     - Step OK: Clicked 'Gathering'
+04:57:49 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+04:57:49 [SHOT] OK (423ms)
+04:57:49     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+04:57:55     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1070,600)
+04:57:55 [Macro] (4/8) Delay: 12000ms (12.0s)...
+04:58:07 [Macro] Delay completed.
+04:58:07 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+04:58:26 [SHOT] OK (18898ms)
+04:58:26 [SHOT] OK (0ms)
+04:58:27 [SHOT] OK (0ms)
+04:58:28 [SHOT] OK (0ms)
+04:58:29 [SHOT] OK (0ms)
+04:58:55 [SHOT] FAIL #1 (25003ms)
+04:58:55 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:59:22 [SHOT] FAIL #2 (25010ms)
+04:59:22 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:59:33 [SHOT] OK (5867ms)
+04:59:34 [SHOT] OK (0ms)
+04:59:35 [SHOT] OK (0ms)
+04:59:36 [SHOT] OK (0ms)
+05:00:01 [SHOT] FAIL #1 (25008ms)
+05:00:01 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:00:07 [SHOT] OK (3267ms)
+05:00:08 [SHOT] OK (0ms)
+05:00:09 [SHOT] OK (0ms)
+05:00:09 [SHOT] OK (0ms)
+05:00:35 [SHOT] FAIL #1 (25003ms)
+05:00:35 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:01:03 [SHOT] FAIL #2 (25003ms)
+05:01:03 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:01:32 [SHOT] FAIL #3 (25006ms)
+05:01:32 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:01:41 [SHOT] OK (437ms)
+05:01:41     - Marker triggered. Holding 6.5s...
+05:01:42 [SHOT] OK (0ms)
+05:01:43 [SHOT] OK (0ms)
+05:01:43 [SHOT] OK (0ms)
+05:01:43 [SHOT] OK (0ms)
+05:02:09 [SHOT] FAIL #1 (25002ms)
+05:02:09 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:02:37 [SHOT] FAIL #2 (25011ms)
+05:02:37 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:03:06 [SHOT] FAIL #3 (25010ms)
+05:03:06 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:03:40 [SHOT] FAIL #4 (25013ms)
+05:03:40 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:04:21 [SHOT] FAIL #5 (25001ms)
+05:04:21 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:05:17 [SHOT] FAIL #6 (25006ms)
+05:05:17 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:05:52 [SHOT] OK (4874ms)
+05:05:52     - Holding... 251/6s
+05:05:52     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:05:52 [SHOT] OK (0ms)
+05:05:58     - Step OK: Clicked 'Attack - Auto'
+05:05:58 [Macro] (7/8) Delay: 1000ms (1.0s)...
+05:05:59 [Macro] Delay completed.
+05:06:24 [SHOT] FAIL #1 (25000ms)
+05:06:24 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:06:26 [SHOT] OK (0ms)
+05:06:31     - Step OK: Clicked 'Click 5P'
+05:06:32 [Macro] Steps completed. Checking result...
+05:06:58 [SHOT] FAIL #1 (25012ms)
+05:06:58 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:07:00 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+05:07:00 [MACRO] Gathering: FAILED (556467ms total)
+05:07:00 ============================================================
+05:07:00 SESSION END — Aizen (12.5 min)
+05:07:00   Loops: 0
+05:07:00   Screenshots: 30 ok / 18 fail (37.5%)
+05:07:00   Avg latency: 1964ms
+05:07:00   Macros: 1 ok / 2 fail
+05:07:00   Errors: 0
+05:07:00 ============================================================
+05:07:28 ============================================================
+05:07:28 SESSION START — Aizen (port:9227 tab:4)
+05:07:28 ============================================================
+05:07:29 [Aizen] Starting worker: func=macro - Home, port=9227, tab=4
+05:07:42 [Aizen] Connected to Port 9227, Tab 4
+05:07:42 [MACRO] Home: Starting (0ms)
+05:07:47     - Step OK: ⚡ Hard Click 'Home' at (351,378)
+05:07:48 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:08:06 [SHOT] OK (18351ms)
+05:08:07 [SHOT] OK (0ms)
+05:08:07 [SHOT] OK (0ms)
+05:08:08 [SHOT] OK (0ms)
+05:08:14 [SHOT] OK (4684ms)
+05:08:15 [SHOT] OK (0ms)
+05:08:16 [SHOT] OK (0ms)
+05:08:18 [SHOT] OK (873ms)
+05:08:19 [SHOT] OK (0ms)
+05:08:20 [SHOT] OK (0ms)
+05:08:21 [SHOT] OK (0ms)
+05:08:22 [SHOT] OK (144ms)
+05:08:23 [SHOT] OK (0ms)
+05:08:24 [SHOT] OK (0ms)
+05:08:25 [SHOT] OK (0ms)
+05:08:26 [SHOT] OK (108ms)
+05:08:27 [SHOT] OK (0ms)
+05:08:27 [SHOT] OK (0ms)
+05:08:28 [SHOT] OK (0ms)
+05:08:29 [SHOT] OK (142ms)
+05:08:29 [SHOT] OK (0ms)
+05:08:30 [SHOT] OK (0ms)
+05:08:32 [SHOT] OK (0ms)
+05:08:58 [SHOT] FAIL #1 (25013ms)
+05:08:58 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:09:03 [SHOT] OK (2941ms)
+05:09:03     - Marker OK: 'Supplies' confirmed APPEAR.
+05:09:03 [Macro] Steps completed. Checking result...
+05:09:04 [SHOT] OK (0ms)
+05:09:04 [Macro] Result: SUCCESS (found 'Supplies')
+05:09:04 [MACRO] Home: PASSED (82048ms total)
+05:09:04 ============================================================
+05:09:04 SESSION END — Aizen (1.6 min)
+05:09:04   Loops: 0
+05:09:04   Screenshots: 25 ok / 1 fail (3.8%)
+05:09:04   Avg latency: 1090ms
+05:09:04   Macros: 1 ok / 0 fail
+05:09:04   Errors: 0
+05:09:04 ============================================================
+05:11:39 ============================================================
+05:11:39 SESSION START — Aizen (port:9227 tab:4)
+05:11:39 ============================================================
+05:11:40 [Aizen] Starting worker: func=loop - Farm V1, port=9227, tab=4
+05:11:57 [Aizen] Connected to Port 9227, Tab 4
+05:11:57 [LOOP] ── Loop iteration start ──
+05:12:23 [SHOT] FAIL #1 (25001ms)
+05:12:23 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:50 [SHOT] FAIL #2 (25010ms)
+05:12:50 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:54 [SCAN] Supplies → FALSE (56013ms)
+05:13:19 [SHOT] FAIL #3 (25003ms)
+05:13:19 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:13:53 [SHOT] FAIL #4 (25006ms)
+05:13:53 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:14:09 [SCAN] Revive → FALSE (74011ms)
+05:14:34 [SHOT] FAIL #5 (25014ms)
+05:14:34 [Aizen] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:15:09 [SHOT] OK (4382ms)
+05:15:09 [SCAN] Supplies - In → FALSE (60220ms)
+05:15:10 [SHOT] OK (0ms)
+05:15:11 [SHOT] OK (0ms)
+05:15:12 [SCAN] Attack - Auto → FALSE (1659ms)
+05:15:13 [SHOT] OK (299ms)
+05:15:13 [SHOT] OK (0ms)
+05:15:14 [SCAN] Gathering - Automove → FALSE (1805ms)
+05:15:15 [SHOT] OK (0ms)
+05:15:15 [SHOT] OK (0ms)
+05:15:16 [SCAN] Attack - Auto On → FALSE (1315ms)
+05:15:18 [SHOT] OK (1784ms)
+05:15:19 [SHOT] OK (0ms)
+05:15:19 [SCAN] Revive → FALSE (3061ms)
+05:15:20 [NODE] → Click: Attack - Auto
+05:15:20 [SHOT] OK (0ms)
+05:15:20 [SCAN] Attack - Auto → FALSE (0ms)
+05:15:20 [NODE] → Click: Click 5P
+05:15:20 [SHOT] OK (0ms)
+05:15:26 [SCAN] Click 5P → TRUE (0ms)
+05:15:26 [ERR] DEAD END: No edge from 'Click' (Click 5P) — will trigger restart
+05:15:26 [ERR] RESTART: No next node after 'Click' (Click 5P). Restart 1/10
+05:15:29 [LOOP] ── Loop iteration start ──
+05:15:51 [SHOT] OK (21240ms)
+05:15:51 [SCAN] Supplies → TRUE (21250ms)
+05:15:51 [MACRO] Buy Blood: Starting (0ms)
+05:15:56     - Step OK: ⚡ Hard Click 'Supplies' at (1294,592)
+05:15:57 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:16:21 [SHOT] OK (24457ms)
+05:16:21     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:16:26     - Step OK: ⚡ Hard Click 'Supplies - Type' at (519,317)
+05:16:27 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:16:27 [SHOT] OK (156ms)
+05:16:27     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:16:32     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (857,567)
+05:16:33 [Macro] (6/8) Delay: 100ms (0.1s)...
+05:16:33 [Macro] Delay completed.
+05:16:38     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1070,706)
+05:16:43     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1539,136)
+05:16:44 [Macro] Steps completed. Checking result...
+05:17:01 [SHOT] OK (15982ms)
+05:17:01 [Macro] Result: SUCCESS (found 'Home')
+05:17:01 [MACRO] Buy Blood: PASSED (69720ms total)
+05:17:11 [MACRO] Gathering: Starting (0ms)
+05:17:34 [SHOT] OK (22880ms)
+05:17:39     - Step OK: Clicked 'Gathering'
+05:17:40 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+05:17:40 [SHOT] OK (212ms)
+05:17:40     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:17:45     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1001,593)
+05:17:45 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:17:57 [Macro] Delay completed.
+05:17:57 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+05:18:15 [SHOT] OK (17739ms)
+05:18:16 [SHOT] OK (0ms)
+05:18:17 [SHOT] OK (0ms)
+05:18:18 [SHOT] OK (167ms)
+05:18:20 [SHOT] OK (0ms)
+05:18:20 [SHOT] OK (0ms)
+05:18:21 [SHOT] OK (0ms)
+05:18:22 [SHOT] OK (295ms)
+05:18:23 [SHOT] OK (0ms)
+05:18:24 [SHOT] OK (0ms)
+05:18:24 [SHOT] OK (0ms)
+05:18:25 [SHOT] OK (0ms)
+05:18:26 [SHOT] OK (186ms)
+05:18:27 [SHOT] OK (0ms)
+05:18:27 [SHOT] OK (0ms)
+05:18:28 [SHOT] OK (0ms)
+05:18:28 [SHOT] OK (0ms)
+05:18:29 [SHOT] OK (0ms)
+05:18:29 [SHOT] OK (0ms)
+05:18:31 [SHOT] OK (495ms)
+05:18:32 [SHOT] OK (0ms)
+05:18:33 [SHOT] OK (0ms)
+05:18:59 [SHOT] FAIL #1 (25004ms)
+05:18:59 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:19:26 [SHOT] FAIL #2 (25011ms)
+05:19:26 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:19:36 [SHOT] OK (5360ms)
+05:19:37 [SHOT] OK (0ms)
+05:19:37 [SHOT] OK (0ms)
+05:19:38 [SHOT] OK (0ms)
+05:19:39 [SHOT] OK (0ms)
+05:20:05 [SHOT] FAIL #1 (25011ms)
+05:20:05 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:20:08 [SHOT] OK (1237ms)
+05:20:09 [SHOT] OK (0ms)
+05:20:10 [SHOT] OK (0ms)
+05:20:11 [SHOT] OK (0ms)
+05:20:37 [SHOT] FAIL #1 (25013ms)
+05:20:37 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:20:42 [SHOT] OK (3127ms)
+05:20:42     - Marker triggered. Holding 6.5s...
+05:20:43 [SHOT] OK (0ms)
+05:20:43 [SHOT] OK (0ms)
+05:20:44 [SHOT] OK (0ms)
+05:21:10 [SHOT] FAIL #1 (25004ms)
+05:21:10 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:21:36 [SHOT] FAIL #2 (23208ms)
+05:21:36 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:21:41 [MACRO] Gathering: FAILED (269603ms total)
+05:21:41 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:21:41 ============================================================
+05:21:41 SESSION END — Aizen (10.0 min)
+05:21:41   Loops: 0
+05:21:41   Screenshots: 52 ok / 11 fail (17.5%)
+05:21:41   Avg latency: 2308ms
+05:21:41   Macros: 1 ok / 1 fail
+05:21:41   Errors: 3
+05:21:41 ============================================================
+05:21:47 ============================================================
+05:21:47 SESSION START — Aizen (port:9227 tab:4)
+05:21:47 ============================================================
+05:21:48 [Aizen] Starting worker: func=macro - Home, port=9227, tab=4
+05:22:07 [Aizen] Connected to Port 9227, Tab 4
+05:22:15 [MACRO] Home: Starting (0ms)
+05:22:15 [Macro] Stopped at step 1/2 (worker stopped)
+05:22:15 [MACRO] Home: FAILED (1ms total)
+05:22:15 ============================================================
+05:22:15 SESSION END — Aizen (0.5 min)
+05:22:15   Loops: 0
+05:22:15   Screenshots: 0 ok / 0 fail (0.0%)
+05:22:15   Avg latency: 0ms
+05:22:15   Macros: 0 ok / 1 fail
+05:22:15   Errors: 0
+05:22:15 ============================================================
+05:22:19 ============================================================
+05:22:19 SESSION START — Aizen (port:9227 tab:4)
+05:22:19 ============================================================
+05:22:20 [Aizen] Starting worker: func=macro - Home, port=9227, tab=4
+05:22:35 [Aizen] Connected to Port 9227, Tab 4
+05:22:35 [MACRO] Home: Starting (0ms)
+05:22:40     - Step OK: ⚡ Hard Click 'Home' at (355,370)
+05:22:41 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:22:41 [SHOT] OK (150ms)
+05:22:42 [SHOT] OK (0ms)
+05:22:43 [SHOT] OK (0ms)
+05:22:44 [SHOT] OK (0ms)
+05:24:09 ============================================================
+05:24:09 SESSION START — Aizen (port:9227 tab:4)
+05:24:09 ============================================================
+05:24:10 [Aizen] Starting worker: func=macro - Home, port=9227, tab=4
+05:24:24 [Aizen] Connected to Port 9227, Tab 4
+05:24:25 [MACRO] Home: Starting (0ms)
+05:24:30     - Step OK: ⚡ Hard Click 'Home' at (363,375)
+05:24:30 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:55 [SHOT] FAIL #1 (25012ms)
+05:24:55 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:25:19 [SHOT] OK (21464ms)
+05:25:20 [SHOT] OK (0ms)
+05:25:21 [SHOT] OK (0ms)
+05:25:22 [SHOT] OK (0ms)
+05:25:24 [SHOT] OK (152ms)
+05:25:24 [SHOT] OK (0ms)
+05:25:26 [SHOT] OK (0ms)
+05:25:27 [SHOT] OK (698ms)
+05:25:28 [SHOT] OK (0ms)
+05:25:29 [SHOT] OK (0ms)
+05:25:30 [SHOT] OK (0ms)
+05:25:31 [SHOT] OK (124ms)
+05:25:32 [SHOT] OK (0ms)
+05:25:32 [SHOT] OK (0ms)
+05:25:33 [SHOT] OK (0ms)
+05:25:35 [SHOT] OK (1183ms)
+05:25:36 [SHOT] OK (0ms)
+05:25:37 [SHOT] OK (0ms)
+05:25:37 [SHOT] OK (0ms)
+05:25:38 [SHOT] OK (0ms)
+05:25:39 [SHOT] OK (168ms)
+05:25:40 [SHOT] OK (0ms)
+05:25:41 [SHOT] OK (0ms)
+05:25:41 [SHOT] OK (0ms)
+05:25:42 [SHOT] OK (0ms)
+05:26:08 [SHOT] FAIL #1 (25006ms)
+05:26:08 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:26:10 [MACRO] Home: FAILED (105342ms total)
+05:26:10 ============================================================
+05:26:10 SESSION END — Aizen (2.0 min)
+05:26:10   Loops: 0
+05:26:10   Screenshots: 25 ok / 2 fail (7.4%)
+05:26:10   Avg latency: 952ms
+05:26:10   Macros: 0 ok / 1 fail
+05:26:10   Errors: 0
+05:26:10 ============================================================
+05:27:08 ============================================================
+05:27:08 SESSION START — Aizen (port:9227 tab:4)
+05:27:08 ============================================================
+05:27:10 [Aizen] Starting worker: func=loop - Farm V1, port=9227, tab=4
+05:27:23 [Aizen] Connected to Port 9227, Tab 4
+05:27:24 [LOOP] ── Loop iteration start ──
+05:27:47 [SHOT] OK (21945ms)
+05:27:47 [SHOT] OK (0ms)
+05:27:48 [SCAN] Gathering - Inside → FALSE (23476ms)
+05:27:49 [SHOT] OK (0ms)
+05:27:49 [SHOT] OK (0ms)
+05:27:50 [SCAN] Supplies → FALSE (1089ms)
+05:27:51 [SHOT] OK (154ms)
+05:27:51 [SCAN] Revive → TRUE (252ms)
+05:27:51 [MACRO] Revivie: Starting (0ms)
+05:27:51 [SHOT] OK (0ms)
+05:27:56     - Step OK: Clicked 'Revive'
+05:27:57 [Macro] (2/2) Delay: 3000ms (3.0s)...
+05:28:00 [Macro] Delay completed.
+05:28:00 [Macro] Steps completed. Checking result...
+05:28:23 [SHOT] OK (22058ms)
+05:28:23 [Macro] Result: SUCCESS (found 'Supplies')
+05:28:23 [MACRO] Revivie: PASSED (31700ms total)
+05:28:23 [ERR] DEAD END: No edge from 'Macro' (38ef6fd1) — will trigger restart
+05:28:23 [ERR] RESTART: No next node after 'Macro' (38ef6fd1). Restart 1/10
+05:28:26 [LOOP] ── Loop iteration start ──
+05:28:51 [SHOT] FAIL #1 (25031ms)
+05:28:51 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:29:18 [SHOT] FAIL #2 (25011ms)
+05:29:18 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:29:22 [SCAN] Gathering - Inside → FALSE (56076ms)
+05:29:48 [SHOT] FAIL #3 (25003ms)
+05:29:48 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:30:21 [SHOT] FAIL #4 (25009ms)
+05:30:21 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:30:37 [SCAN] Supplies → FALSE (74027ms)
+05:31:02 [SHOT] OK (14475ms)
+05:31:03 [SHOT] OK (0ms)
+05:31:04 [SCAN] Revive → FALSE (15785ms)
+05:31:04 [SHOT] OK (0ms)
+05:31:05 [SHOT] OK (0ms)
+05:31:06 [SCAN] Supplies - In → FALSE (1737ms)
+05:31:31 [SHOT] FAIL #1 (25005ms)
+05:31:31 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:31:35 [SHOT] OK (1717ms)
+05:31:35 [SCAN] Gathering - Automove → FALSE (29121ms)
+05:31:36 [SHOT] OK (0ms)
+05:31:37 [SHOT] OK (0ms)
+05:31:38 [SCAN] Attack - Auto → FALSE (1708ms)
+05:32:03 [SHOT] FAIL #1 (25014ms)
+05:32:03 [Aizen] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:32:30 [SHOT] FAIL #2 (25005ms)
+05:32:30 [Aizen] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:32:34 [SCAN] Attack - Auto On → FALSE (56025ms)
+05:32:35 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:32:38 [Aizen] Health check FAILED — reconnecting
+05:32:40 [Aizen] Reconnected successfully
+05:32:40 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:32:43 [LOOP] ── Loop iteration start ──
+05:33:08 [SHOT] FAIL #3 (25009ms)
+05:33:08 [Aizen] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:33:41 [SHOT] FAIL #4 (25004ms)
+05:33:41 [Aizen] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:33:57 [SCAN] Gathering - Inside → FALSE (74015ms)
+05:34:16 [SHOT] OK (7960ms)
+05:34:16 [SCAN] Supplies → TRUE (7971ms)
+05:34:17 [MACRO] Buy Blood: Starting (0ms)
+05:34:22     - Step OK: ⚡ Hard Click 'Supplies' at (1309,558)
+05:34:22 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:34:47 [SHOT] OK (24560ms)
+05:34:47     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:34:52     - Step OK: ⚡ Hard Click 'Supplies - Type' at (529,325)
+05:34:53 [Macro] Stopped at step 4/9 (worker stopped)
+05:34:53 [MACRO] Buy Blood: FAILED (35628ms total)
+05:34:53 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:34:53 ============================================================
+05:34:53 SESSION END — Aizen (7.7 min)
+05:34:53   Loops: 0
+05:34:53   Screenshots: 16 ok / 9 fail (36.0%)
+05:34:53   Avg latency: 5804ms
+05:34:53   Macros: 1 ok / 1 fail
+05:34:53   Errors: 5
+05:34:53 ============================================================

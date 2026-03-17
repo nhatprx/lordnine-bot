@@ -1,0 +1,724 @@
+03:08:42 ============================================================
+03:08:42 SESSION START — Wongdu (port:9226 tab:1)
+03:08:42 ============================================================
+03:08:43 [Wongdu] Starting worker: func=loop - Farm V1, port=9226, tab=1
+03:08:48 [Wongdu] Connected to Port 9226, Tab 1
+03:09:14 [SHOT] FAIL #1 (25011ms)
+03:09:14 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:09:41 [SHOT] FAIL #2 (25028ms)
+03:09:41 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:09:45 [SCAN] Gathering - Inside → FALSE (56096ms)
+03:10:11 [SHOT] FAIL #3 (25005ms)
+03:10:11 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:10:44 [SHOT] FAIL #4 (25003ms)
+03:10:44 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:11:00 [SCAN] Supplies → FALSE (74011ms)
+03:11:25 [SHOT] FAIL #5 (25014ms)
+03:11:25 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:11:55 [SHOT] OK (215ms)
+03:11:56 [SCAN] Revive → FALSE (55867ms)
+03:11:56 [SHOT] OK (0ms)
+03:11:57 [SHOT] OK (0ms)
+03:11:57 [SCAN] Supplies - In → FALSE (1099ms)
+03:11:58 [SHOT] OK (0ms)
+03:12:24 [SHOT] FAIL #1 (25005ms)
+03:12:24 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:12:26 [SCAN] Gathering - Automove → FALSE (27493ms)
+03:12:51 [SHOT] FAIL #2 (25009ms)
+03:12:51 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:13:20 [SHOT] FAIL #3 (25006ms)
+03:13:20 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:13:28 [SCAN] Attack - Auto → FALSE (62018ms)
+03:13:54 [SHOT] FAIL #4 (25002ms)
+03:13:54 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:14:35 [SHOT] FAIL #5 (25015ms)
+03:14:35 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:15:05 [SCAN] Attack - Auto On → FALSE (96019ms)
+03:15:05 [Wongdu] No next node after 'Condition' (Attack - Auto On). Restart 1/10
+03:15:33 [SHOT] FAIL #6 (25008ms)
+03:15:33 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:16:28 [SHOT] FAIL #7 (25004ms)
+03:16:28 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:16:58 [SCAN] Gathering - Inside → FALSE (110014ms)
+03:17:24 [SHOT] OK (24944ms)
+03:17:24 [SCAN] Supplies → TRUE (25081ms)
+03:17:25 [MACRO] Buy Blood: Starting (0ms)
+03:17:30     - Step OK: ⚡ Hard Click 'Supplies' at (1314,555)
+03:17:30 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:17:55 [SHOT] FAIL #1 (25008ms)
+03:17:55 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:18:23 [SHOT] FAIL #2 (25014ms)
+03:18:23 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:18:53 [SHOT] FAIL #3 (25009ms)
+03:18:53 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:19:26 [SHOT] FAIL #4 (25007ms)
+03:19:26 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:20:08 [SHOT] FAIL #5 (25008ms)
+03:20:08 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:21:03 [SHOT] FAIL #6 (25005ms)
+03:21:03 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:21:59 [SHOT] FAIL #7 (25001ms)
+03:21:59 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:22:55 [SHOT] FAIL #8 (25010ms)
+03:22:55 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:23:50 [SHOT] FAIL #9 (25006ms)
+03:23:50 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:24:46 [SHOT] FAIL #10 (25006ms)
+03:24:46 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:25:42 [SHOT] FAIL #11 (25007ms)
+03:25:42 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+03:26:18 [SHOT] OK (4977ms)
+03:26:18     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:26:23     - Step OK: ⚡ Hard Click 'Supplies - Type' at (544,296)
+03:26:23 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:26:48 [SHOT] FAIL #1 (25015ms)
+03:26:48 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:27:16 [SHOT] FAIL #2 (25006ms)
+03:27:16 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:27:46 [SHOT] FAIL #3 (25002ms)
+03:27:46 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:27:54 [MACRO] Buy Blood: FAILED (629559ms total)
+03:27:54 ============================================================
+03:27:54 SESSION END — Wongdu (19.2 min)
+03:27:54   Loops: 0
+03:27:54   Screenshots: 6 ok / 26 fail (81.2%)
+03:27:54   Avg latency: 5023ms
+03:27:54   Macros: 0 ok / 1 fail
+03:27:54   Errors: 0
+03:27:54 ============================================================
+03:31:11 ============================================================
+03:31:11 SESSION START — Wongdu (port:9226 tab:1)
+03:31:11 ============================================================
+03:31:12 [Wongdu] Starting worker: func=loop - Farm V1, port=9226, tab=1
+03:31:21 [Wongdu] Connected to Port 9226, Tab 1
+03:31:47 [SHOT] FAIL #1 (25003ms)
+03:31:47 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:14 [SHOT] FAIL #2 (25010ms)
+03:32:14 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:32:18 [SCAN] Supplies → FALSE (56015ms)
+03:32:43 [SHOT] FAIL #3 (25004ms)
+03:32:43 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:33:04 [SHOT] OK (12483ms)
+03:33:04 [SCAN] Revive → FALSE (45924ms)
+03:33:05 [SHOT] OK (0ms)
+03:33:05 [SHOT] OK (0ms)
+03:33:06 [SCAN] Supplies - In → FALSE (1263ms)
+03:33:07 [SHOT] OK (0ms)
+03:33:32 [SHOT] FAIL #1 (25014ms)
+03:33:32 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:33:34 [SCAN] Attack - Auto → FALSE (27485ms)
+03:34:00 [SHOT] FAIL #2 (25022ms)
+03:34:00 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:34:29 [SHOT] FAIL #3 (25005ms)
+03:34:29 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:34:37 [SCAN] Gathering - Automove → FALSE (62037ms)
+03:35:02 [SHOT] FAIL #4 (25010ms)
+03:35:02 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:35:43 [SHOT] FAIL #5 (25013ms)
+03:35:43 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:36:13 [SCAN] Attack - Auto On → FALSE (96029ms)
+03:36:38 [SHOT] OK (24073ms)
+03:36:38 [SHOT] OK (0ms)
+03:36:39 [SCAN] Revive → FALSE (25384ms)
+03:36:40 [NODE] → Click: Attack - Auto
+03:36:40 [SHOT] OK (0ms)
+03:36:40 [SCAN] Attack - Auto → FALSE (0ms)
+03:36:40 [NODE] → Click: Click 5P
+03:36:40 [SHOT] OK (0ms)
+03:36:45 [SCAN] Click 5P → TRUE (0ms)
+03:36:45 [Wongdu] No next node after 'Click' (Click 5P). Restart 1/10
+03:37:14 [SHOT] FAIL #1 (25008ms)
+03:37:14 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:37:41 [SHOT] FAIL #2 (25002ms)
+03:37:41 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:37:45 [SCAN] Supplies → FALSE (56018ms)
+03:38:10 [SHOT] OK (24048ms)
+03:38:10 [SHOT] OK (0ms)
+03:38:11 [SCAN] Revive → FALSE (25260ms)
+03:38:11 [SHOT] OK (0ms)
+03:38:12 [SHOT] OK (0ms)
+03:38:13 [SCAN] Supplies - In → FALSE (1185ms)
+03:38:38 [SHOT] FAIL #1 (25004ms)
+03:38:38 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:39:05 [SHOT] FAIL #2 (25015ms)
+03:39:05 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:39:09 [SCAN] Attack - Auto → FALSE (56020ms)
+03:39:15 [SHOT] OK (5472ms)
+03:39:16 [SHOT] OK (0ms)
+03:39:16 [SCAN] Gathering - Automove → FALSE (6624ms)
+03:39:17 [SHOT] OK (0ms)
+03:39:18 [SHOT] OK (0ms)
+03:39:18 [SCAN] Attack - Auto On → FALSE (801ms)
+03:39:19 [SHOT] OK (192ms)
+03:39:20 [SHOT] OK (0ms)
+03:39:21 [SCAN] Revive → FALSE (1948ms)
+03:39:21 [NODE] → Click: Attack - Auto
+03:39:21 [SHOT] OK (0ms)
+03:39:21 [SCAN] Attack - Auto → FALSE (0ms)
+03:39:22 [NODE] → Click: Click 5P
+03:39:22 [SHOT] OK (0ms)
+03:39:27 [SCAN] Click 5P → TRUE (0ms)
+03:39:27 [Wongdu] No next node after 'Click' (Click 5P). Restart 1/10
+03:39:31 [SHOT] OK (208ms)
+03:39:31 [SCAN] Supplies → TRUE (217ms)
+03:39:32 [MACRO] Buy Blood: Starting (0ms)
+03:39:37     - Step OK: ⚡ Hard Click 'Supplies' at (1299,563)
+03:39:38 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:40:03 [SHOT] FAIL #1 (25022ms)
+03:40:03 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:40:30 [SHOT] FAIL #2 (25010ms)
+03:40:30 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:41:00 [SHOT] FAIL #3 (25000ms)
+03:41:00 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:41:14 [SHOT] OK (4858ms)
+03:41:14     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:41:19     - Step OK: ⚡ Hard Click 'Supplies - Type' at (479,301)
+03:41:19 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:41:44 [SHOT] FAIL #1 (25012ms)
+03:41:44 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:42:12 [SHOT] FAIL #2 (25012ms)
+03:42:12 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:42:42 [SHOT] FAIL #3 (25001ms)
+03:42:42 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:43:15 [SHOT] FAIL #4 (25015ms)
+03:43:15 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:43:57 [SHOT] FAIL #5 (25002ms)
+03:43:57 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:44:53 [SHOT] FAIL #6 (25011ms)
+03:44:53 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:45:45 [SHOT] OK (22239ms)
+03:45:46     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:45:51     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (900,556)
+03:45:51 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:45:51 [Macro] Delay completed.
+03:45:56     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (977,700)
+03:46:02     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1528,159)
+03:46:02 [Macro] Steps completed. Checking result...
+03:46:28 [SHOT] FAIL #1 (25001ms)
+03:46:28 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:46:30 [Macro] Result: FAILURE ('Home' not found)
+03:46:30 [MACRO] Buy Blood: FAILED (418398ms total)
+03:46:35 [Wongdu] No next node after 'Macro' (ad649a80). Restart 1/10
+03:47:04 [SHOT] FAIL #2 (25011ms)
+03:47:04 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:47:33 [SHOT] FAIL #3 (25008ms)
+03:47:33 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:47:41 [SCAN] Supplies → FALSE (62022ms)
+03:48:06 [SHOT] FAIL #4 (25015ms)
+03:48:06 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:48:47 [SHOT] FAIL #5 (25015ms)
+03:48:47 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:49:17 [SCAN] Revive → FALSE (96032ms)
+03:49:43 [SHOT] FAIL #6 (25015ms)
+03:49:43 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:50:38 [SHOT] FAIL #7 (25004ms)
+03:50:38 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:51:08 [SCAN] Supplies - In → FALSE (110021ms)
+03:51:39 [SHOT] FAIL #8 (25008ms)
+03:51:39 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:52:34 [SHOT] FAIL #9 (25021ms)
+03:52:34 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:53:04 [SCAN] Attack - Auto → FALSE (110072ms)
+03:53:28 [SHOT] OK (23225ms)
+03:53:29 [SHOT] OK (0ms)
+03:53:29 [SCAN] Gathering - Automove → FALSE (24920ms)
+03:53:30 [SHOT] OK (0ms)
+03:53:56 [SHOT] FAIL #1 (25011ms)
+03:53:56 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:53:58 [SCAN] Attack - Auto On → FALSE (27799ms)
+03:54:23 [SHOT] FAIL #2 (25000ms)
+03:54:23 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:54:52 [SHOT] FAIL #3 (25002ms)
+03:54:52 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:55:00 [SCAN] Revive → FALSE (62003ms)
+03:55:01 [NODE] → Click: Attack - Auto
+03:55:26 [SHOT] FAIL #4 (25003ms)
+03:55:26 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:55:42 [NODE] → Click: Click 5P
+03:56:07 [SHOT] FAIL #5 (25005ms)
+03:56:07 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:56:42 [Wongdu] No next node after 'Click' (Click 5P). Restart 1/10
+03:57:11 [SHOT] FAIL #6 (25010ms)
+03:57:11 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:58:06 [SHOT] FAIL #7 (25011ms)
+03:58:06 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:58:36 [SCAN] Supplies → FALSE (110023ms)
+03:59:01 [SHOT] FAIL #8 (25011ms)
+03:59:01 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:59:56 [SHOT] FAIL #9 (25006ms)
+03:59:56 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+04:00:26 [SCAN] Revive → FALSE (110018ms)
+04:00:51 [SHOT] FAIL #10 (25001ms)
+04:00:51 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+04:01:39 [SHOT] OK (17188ms)
+04:01:39 [SCAN] Supplies - In → FALSE (73041ms)
+04:01:45 [Wongdu] Connection rotation — periodic reconnect
+04:01:47 [Wongdu] Connection rotated successfully
+04:02:12 [SHOT] FAIL #1 (25015ms)
+04:02:12 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:02:39 [SHOT] FAIL #2 (25007ms)
+04:02:39 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:02:43 [SCAN] Attack - Auto → FALSE (56050ms)
+04:03:09 [SHOT] FAIL #3 (25006ms)
+04:03:09 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:03:40 [SHOT] OK (23320ms)
+04:03:41 [SCAN] Gathering - Automove → FALSE (56980ms)
+04:03:41 [SHOT] OK (0ms)
+04:03:42 [SHOT] OK (0ms)
+04:03:42 [SCAN] Attack - Auto On → FALSE (1279ms)
+04:03:43 [SHOT] OK (0ms)
+04:04:09 [SHOT] FAIL #1 (25005ms)
+04:04:09 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:04:11 [SCAN] Revive → FALSE (27733ms)
+04:04:11 [NODE] → Click: Attack - Auto
+04:04:36 [SHOT] FAIL #2 (25006ms)
+04:04:36 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:04:40 [NODE] → Click: Click 5P
+04:05:05 [SHOT] FAIL #3 (25009ms)
+04:05:05 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:05:14 [Wongdu] No next node after 'Click' (Click 5P). Restart 1/10
+04:05:42 [SHOT] FAIL #4 (25003ms)
+04:05:42 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:06:23 [SHOT] FAIL #5 (25014ms)
+04:06:23 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:06:53 [SCAN] Supplies → FALSE (96018ms)
+04:07:15 [SHOT] OK (20634ms)
+04:07:15 [SHOT] OK (0ms)
+04:07:16 [SCAN] Revive → FALSE (22064ms)
+04:07:16 [SHOT] OK (0ms)
+04:07:17 [SHOT] OK (0ms)
+04:07:17 [SCAN] Supplies - In → FALSE (1006ms)
+04:07:43 [SHOT] FAIL #1 (25005ms)
+04:07:43 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:08:10 [SHOT] FAIL #2 (25017ms)
+04:08:10 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:08:14 [SCAN] Attack - Auto → FALSE (56023ms)
+04:08:39 [SHOT] FAIL #3 (25012ms)
+04:08:39 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:09:12 [SHOT] FAIL #4 (25007ms)
+04:09:12 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:09:28 [SCAN] Gathering - Automove → FALSE (74021ms)
+04:09:54 [SHOT] FAIL #5 (25010ms)
+04:09:54 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:10:49 [SHOT] FAIL #6 (25007ms)
+04:10:49 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:11:19 [SCAN] Attack - Auto On → FALSE (110019ms)
+04:11:44 [SHOT] FAIL #7 (25001ms)
+04:11:44 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:12:39 [SHOT] FAIL #8 (25009ms)
+04:12:39 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+04:13:09 [SCAN] Revive → FALSE (110011ms)
+04:13:15 [NODE] → Click: Attack - Auto
+04:13:40 [SHOT] FAIL #9 (25011ms)
+04:13:40 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+04:14:10 [NODE] → Click: Click 5P
+04:14:35 [SHOT] FAIL #10 (25009ms)
+04:14:35 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+04:15:05 [Wongdu] No next node after 'Click' (Click 5P). Restart 1/10
+04:15:34 [SHOT] FAIL #11 (25010ms)
+04:15:34 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+04:16:27 [SHOT] OK (22759ms)
+04:16:27 [SCAN] Supplies → TRUE (77779ms)
+04:16:27 [MACRO] Buy Blood: Starting (0ms)
+04:16:32     - Step OK: ⚡ Hard Click 'Supplies' at (1294,583)
+04:16:32 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:16:58 [SHOT] OK (25053ms)
+04:16:58     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:17:03     - Step OK: ⚡ Hard Click 'Supplies - Type' at (507,307)
+04:17:03 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:17:28 [SHOT] OK (24975ms)
+04:17:28     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:17:33     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (872,569)
+04:17:34 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:17:34 [Macro] Delay completed.
+04:17:39     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1063,692)
+04:17:45     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1539,133)
+04:17:45 [Macro] Steps completed. Checking result...
+04:18:11 [SHOT] FAIL #1 (25009ms)
+04:18:11 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:18:13 [Macro] Result: FAILURE ('Home' not found)
+04:18:13 [MACRO] Buy Blood: FAILED (105927ms total)
+04:18:18 [Wongdu] No next node after 'Macro' (ad649a80). Restart 1/10
+04:18:46 [SHOT] FAIL #2 (25010ms)
+04:18:46 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:19:15 [SHOT] FAIL #3 (25003ms)
+04:19:15 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:19:23 [SCAN] Supplies → FALSE (62043ms)
+04:19:29 [SHOT] OK (4747ms)
+04:19:30 [SHOT] OK (0ms)
+04:19:30 [SCAN] Revive → FALSE (6197ms)
+04:19:31 [SHOT] OK (0ms)
+04:19:31 [SHOT] OK (0ms)
+04:19:32 [SCAN] Supplies - In → FALSE (1150ms)
+04:19:58 [SHOT] FAIL #1 (25010ms)
+04:19:58 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:20:25 [SHOT] FAIL #2 (25011ms)
+04:20:25 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:20:29 [SCAN] Attack - Auto → FALSE (56023ms)
+04:20:54 [SHOT] FAIL #3 (25008ms)
+04:20:54 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:21:27 [SHOT] FAIL #4 (25008ms)
+04:21:27 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:21:43 [SCAN] Gathering - Automove → FALSE (74018ms)
+04:22:03 [SHOT] OK (19097ms)
+04:22:04 [SHOT] OK (0ms)
+04:22:05 [SCAN] Attack - Auto On → FALSE (20673ms)
+04:22:05 [SHOT] OK (0ms)
+04:22:31 [SHOT] FAIL #1 (25002ms)
+04:22:31 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:22:33 [SCAN] Revive → FALSE (27757ms)
+04:22:34 [NODE] → Click: Attack - Auto
+04:22:59 [SHOT] FAIL #2 (25005ms)
+04:22:59 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:23:08 [NODE] → Click: Click 5P
+04:23:33 [SHOT] FAIL #3 (25011ms)
+04:23:33 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:23:41 [Wongdu] No next node after 'Click' (Click 5P). Restart 1/10
+04:24:05 [SHOT] OK (19754ms)
+04:24:05 [SCAN] Supplies → TRUE (19765ms)
+04:24:05 [MACRO] Buy Blood: Starting (0ms)
+04:24:10     - Step OK: ⚡ Hard Click 'Supplies' at (1304,593)
+04:24:11 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:24:35 [SHOT] OK (24337ms)
+04:24:35     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:24:40     - Step OK: ⚡ Hard Click 'Supplies - Type' at (568,307)
+04:24:41 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:25:06 [SHOT] FAIL #1 (25003ms)
+04:25:06 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:25:33 [SHOT] FAIL #2 (25015ms)
+04:25:33 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:26:04 [SHOT] FAIL #3 (25017ms)
+04:26:04 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:26:38 [SHOT] FAIL #4 (25001ms)
+04:26:38 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:27:19 [SHOT] FAIL #5 (25014ms)
+04:27:19 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:28:14 [SHOT] OK (24207ms)
+04:28:14     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:28:19     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (865,553)
+04:28:20 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:28:20 [Macro] Delay completed.
+04:28:25     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1019,709)
+04:28:30     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1528,147)
+04:28:31 [Macro] Steps completed. Checking result...
+04:28:57 [SHOT] FAIL #1 (25014ms)
+04:28:57 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:28:59 [Macro] Result: FAILURE ('Home' not found)
+04:28:59 [MACRO] Buy Blood: FAILED (293545ms total)
+04:29:04 [Wongdu] No next node after 'Macro' (ad649a80). Restart 1/10
+04:29:32 [SHOT] FAIL #2 (25007ms)
+04:29:32 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:30:01 [SHOT] FAIL #3 (25006ms)
+04:30:01 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:30:09 [SCAN] Supplies → FALSE (62015ms)
+04:30:35 [SHOT] FAIL #4 (25012ms)
+04:30:35 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:31:16 [SHOT] FAIL #5 (25001ms)
+04:31:16 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:31:46 [SCAN] Revive → FALSE (96014ms)
+04:31:46 [Wongdu] Connection rotation — periodic reconnect
+04:31:48 [Wongdu] Connection rotated successfully
+04:32:13 [SHOT] FAIL #6 (25014ms)
+04:32:13 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:33:08 [SHOT] FAIL #7 (25008ms)
+04:33:08 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:33:38 [SCAN] Supplies - In → FALSE (110025ms)
+04:34:09 [SHOT] FAIL #8 (25000ms)
+04:34:09 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+04:35:04 [SHOT] FAIL #9 (25000ms)
+04:35:04 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+04:35:34 [SCAN] Attack - Auto → FALSE (110003ms)
+04:36:00 [SHOT] FAIL #10 (25001ms)
+04:36:00 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+04:36:55 [SHOT] FAIL #11 (25009ms)
+04:36:55 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+04:37:25 [SCAN] Gathering - Automove → FALSE (110011ms)
+04:37:42 [SHOT] OK (17382ms)
+04:37:43 [SHOT] OK (0ms)
+04:37:43 [SCAN] Attack - Auto On → FALSE (18456ms)
+04:37:44 [SHOT] OK (0ms)
+04:37:45 [SHOT] OK (0ms)
+04:37:46 [SCAN] Revive → FALSE (1434ms)
+04:37:46 [NODE] → Click: Attack - Auto
+04:37:46 [SHOT] OK (179ms)
+04:37:46 [SCAN] Attack - Auto → FALSE (0ms)
+04:37:47 [NODE] → Click: Click 5P
+04:37:47 [SHOT] OK (0ms)
+04:37:52 [SCAN] Click 5P → TRUE (0ms)
+04:37:52 [Wongdu] No next node after 'Click' (Click 5P). Restart 1/10
+04:38:21 [SHOT] FAIL #1 (25006ms)
+04:38:21 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:38:48 [SHOT] FAIL #2 (25002ms)
+04:38:48 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:38:52 [SCAN] Supplies → FALSE (56020ms)
+04:39:22 [SHOT] FAIL #3 (25020ms)
+04:39:22 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:39:55 [SHOT] FAIL #4 (25005ms)
+04:39:55 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:40:11 [SCAN] Revive → FALSE (74028ms)
+04:40:36 [SHOT] FAIL #5 (25009ms)
+04:40:36 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:41:31 [SHOT] FAIL #6 (25003ms)
+04:41:31 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:42:01 [SCAN] Supplies - In → FALSE (110014ms)
+04:42:19 [SHOT] FAIL #7 (17319ms)
+04:42:19 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:42:50 [SHOT] OK (781ms)
+04:42:50 [SCAN] Attack - Auto → FALSE (48604ms)
+04:42:51 ============================================================
+04:42:51 SESSION END — Wongdu (71.7 min)
+04:42:51   Loops: 0
+04:42:51   Screenshots: 55 ok / 92 fail (62.6%)
+04:42:51   Avg latency: 6568ms
+04:42:51   Macros: 0 ok / 3 fail
+04:42:51   Errors: 0
+04:42:51 ============================================================
+04:54:22 ============================================================
+04:54:22 SESSION START — Wongdu (port:9226 tab:1)
+04:54:22 ============================================================
+04:54:23 [Wongdu] Starting worker: func=loop - Farm V1, port=9226, tab=1
+04:54:29 [Wongdu] Connected to Port 9226, Tab 1
+04:54:54 [SHOT] FAIL #1 (25014ms)
+04:54:54 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:55:14 [SHOT] OK (17513ms)
+04:55:14 [SCAN] Supplies → TRUE (44547ms)
+04:55:14 [MACRO] Buy Blood: Starting (0ms)
+04:55:19     - Step OK: ⚡ Hard Click 'Supplies' at (1307,579)
+04:55:20 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:55:41 [SHOT] OK (21661ms)
+04:55:41     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:55:46     - Step OK: ⚡ Hard Click 'Supplies - Type' at (564,291)
+04:55:46 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:55:46 [SHOT] OK (192ms)
+04:55:46     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:55:51     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (827,564)
+04:55:52 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:55:52 [Macro] Delay completed.
+04:55:57     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1016,726)
+04:56:03     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1531,143)
+04:56:03 [Macro] Steps completed. Checking result...
+04:56:29 [SHOT] FAIL #1 (25008ms)
+04:56:29 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:56:31 [Macro] Result: FAILURE ('Home' not found)
+04:56:31 [MACRO] Buy Blood: FAILED (77039ms total)
+04:56:31 [Wongdu] No next node after 'Macro' (ad649a80). Restart 1/10
+04:56:57 [SHOT] OK (22424ms)
+04:56:57 [SCAN] Supplies → TRUE (22435ms)
+04:56:58 [MACRO] Buy Blood: Starting (0ms)
+04:57:03     - Step OK: ⚡ Hard Click 'Supplies' at (1324,585)
+04:57:03 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:57:28 [SHOT] FAIL #1 (25001ms)
+04:57:28 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:57:56 [SHOT] FAIL #2 (25003ms)
+04:57:56 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:58:25 [SHOT] FAIL #3 (25011ms)
+04:58:25 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:58:59 [SHOT] FAIL #4 (25007ms)
+04:58:59 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:59:40 [SHOT] FAIL #5 (25002ms)
+04:59:40 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:00:36 [SHOT] FAIL #6 (25005ms)
+05:00:36 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:01:32 [SHOT] FAIL #7 (25010ms)
+05:01:32 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:02:27 [SHOT] FAIL #8 (25001ms)
+05:02:27 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:03:23 [SHOT] FAIL #9 (25001ms)
+05:03:23 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+05:04:18 [SHOT] FAIL #10 (25001ms)
+05:04:18 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+05:05:14 [SHOT] FAIL #11 (25013ms)
+05:05:14 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+05:06:09 [SHOT] FAIL #12 (25009ms)
+05:06:09 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #12)
+05:06:40 [MACRO] Buy Blood: FAILED (581722ms total)
+05:06:40 ============================================================
+05:06:40 SESSION END — Wongdu (12.3 min)
+05:06:40   Loops: 0
+05:06:40   Screenshots: 4 ok / 14 fail (77.8%)
+05:06:40   Avg latency: 15448ms
+05:06:40   Macros: 0 ok / 2 fail
+05:06:40   Errors: 0
+05:06:40 ============================================================
+05:07:22 ============================================================
+05:07:22 SESSION START — Wongdu (port:9226 tab:1)
+05:07:22 ============================================================
+05:07:22 [Wongdu] Starting worker: func=macro - Home, port=9226, tab=1
+05:07:28 [Wongdu] Connected to Port 9226, Tab 1
+05:07:28 [MACRO] Home: Starting (0ms)
+05:07:33     - Step OK: ⚡ Hard Click 'Home' at (360,373)
+05:07:33 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:07:58 [SHOT] FAIL #1 (25001ms)
+05:07:58 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:08:03 [SHOT] OK (2384ms)
+05:08:04 [SHOT] OK (0ms)
+05:08:05 [SHOT] OK (0ms)
+05:08:05 [SHOT] OK (0ms)
+05:08:06 [SHOT] OK (0ms)
+05:08:07 [SHOT] OK (169ms)
+05:08:07 [SHOT] OK (0ms)
+05:08:08 [SHOT] OK (0ms)
+05:08:09 [SHOT] OK (0ms)
+05:08:10 [SHOT] OK (105ms)
+05:08:11 [SHOT] OK (0ms)
+05:08:12 [SHOT] OK (0ms)
+05:08:14 [SHOT] OK (198ms)
+05:08:14     - Marker OK: 'Supplies' confirmed APPEAR.
+05:08:14 [Macro] Steps completed. Checking result...
+05:08:15 [SHOT] OK (0ms)
+05:08:15 [Macro] Result: SUCCESS (found 'Supplies')
+05:08:15 [MACRO] Home: PASSED (46993ms total)
+05:08:15 ============================================================
+05:08:15 SESSION END — Wongdu (0.9 min)
+05:08:15   Loops: 0
+05:08:15   Screenshots: 14 ok / 1 fail (6.7%)
+05:08:15   Avg latency: 204ms
+05:08:15   Macros: 1 ok / 0 fail
+05:08:15   Errors: 0
+05:08:15 ============================================================
+05:11:33 ============================================================
+05:11:33 SESSION START — Wongdu (port:9226 tab:1)
+05:11:33 ============================================================
+05:11:34 [Wongdu] Starting worker: func=loop - Farm V1, port=9226, tab=1
+05:11:39 [Wongdu] Connected to Port 9226, Tab 1
+05:11:39 [LOOP] ── Loop iteration start ──
+05:12:04 [SHOT] FAIL #1 (25012ms)
+05:12:04 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:31 [SHOT] FAIL #2 (25007ms)
+05:12:31 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:35 [SCAN] Supplies → FALSE (56021ms)
+05:13:01 [SHOT] FAIL #3 (25017ms)
+05:13:01 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:13:34 [SHOT] FAIL #4 (25015ms)
+05:13:34 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:13:50 [SCAN] Revive → FALSE (74046ms)
+05:14:26 [SHOT] FAIL #5 (25003ms)
+05:14:26 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:15:21 [SHOT] FAIL #6 (25007ms)
+05:15:21 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:15:51 [SCAN] Supplies - In → FALSE (110011ms)
+05:16:16 [SHOT] FAIL #7 (25011ms)
+05:16:16 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:17:11 [SHOT] FAIL #8 (25013ms)
+05:17:11 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:17:41 [SCAN] Attack - Auto → FALSE (110026ms)
+05:18:17 [SHOT] FAIL #9 (25001ms)
+05:18:17 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+05:19:12 [SHOT] FAIL #10 (25006ms)
+05:19:12 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+05:19:42 [SCAN] Gathering - Automove → FALSE (110009ms)
+05:20:07 [SHOT] FAIL #11 (25009ms)
+05:20:07 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+05:21:02 [SHOT] FAIL #12 (25005ms)
+05:21:02 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #12)
+05:21:32 [SCAN] Attack - Auto On → FALSE (110016ms)
+05:21:33 ============================================================
+05:21:33 SESSION END — Wongdu (10.0 min)
+05:21:33   Loops: 0
+05:21:33   Screenshots: 0 ok / 12 fail (100.0%)
+05:21:33   Avg latency: 0ms
+05:21:33   Macros: 0 ok / 0 fail
+05:21:33   Errors: 0
+05:21:33 ============================================================
+05:21:47 ============================================================
+05:21:47 SESSION START — Wongdu (port:9226 tab:1)
+05:21:47 ============================================================
+05:21:47 [Wongdu] Starting worker: func=macro - Home, port=9226, tab=1
+05:21:52 [Wongdu] Connected to Port 9226, Tab 1
+05:21:52 [MACRO] Home: Starting (0ms)
+05:21:57     - Step OK: ⚡ Hard Click 'Home' at (344,382)
+05:21:57 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:22:05 [SHOT] FAIL #1 (7960ms)
+05:22:05 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:22:08 [MACRO] Home: FAILED (15981ms total)
+05:22:08 ============================================================
+05:22:08 SESSION END — Wongdu (0.3 min)
+05:22:08   Loops: 0
+05:22:08   Screenshots: 0 ok / 1 fail (100.0%)
+05:22:08   Avg latency: 0ms
+05:22:08   Macros: 0 ok / 1 fail
+05:22:08   Errors: 0
+05:22:08 ============================================================
+05:22:19 ============================================================
+05:22:19 SESSION START — Wongdu (port:9226 tab:1)
+05:22:19 ============================================================
+05:22:19 [Wongdu] Initialized ScreenshotScheduler
+05:22:20 [Wongdu] Starting worker: func=macro - Home, port=9226, tab=1
+05:22:39 [Wongdu] Connected to Port 9226, Tab 1
+05:22:39 [MACRO] Home: Starting (0ms)
+05:22:45     - Step OK: ⚡ Hard Click 'Home' at (350,382)
+05:22:45 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:23:54 ============================================================
+05:23:54 SESSION START — Wongdu (port:9226 tab:1)
+05:23:54 ============================================================
+05:23:54 [Wongdu] Starting worker: func=macro - Home, port=9226, tab=1
+05:24:02 [Wongdu] Connected to Port 9226, Tab 1
+05:24:02 [MACRO] Home: Starting (0ms)
+05:24:07     - Step OK: ⚡ Hard Click 'Home' at (351,382)
+05:24:08 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:33 [SHOT] FAIL #1 (25014ms)
+05:24:33 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:25:00 [SHOT] FAIL #2 (25005ms)
+05:25:00 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:25:16 [SHOT] OK (10972ms)
+05:25:16     - Marker OK: 'Supplies' confirmed APPEAR.
+05:25:16 [Macro] Steps completed. Checking result...
+05:25:17 [SHOT] OK (0ms)
+05:25:17 [Macro] Result: SUCCESS (found 'Supplies')
+05:25:17 [MACRO] Home: PASSED (74608ms total)
+05:25:17 ============================================================
+05:25:17 SESSION END — Wongdu (1.4 min)
+05:25:17   Loops: 0
+05:25:17   Screenshots: 2 ok / 2 fail (50.0%)
+05:25:17   Avg latency: 5486ms
+05:25:17   Macros: 1 ok / 0 fail
+05:25:17   Errors: 0
+05:25:17 ============================================================
+05:26:53 ============================================================
+05:26:53 SESSION START — Wongdu (port:9226 tab:1)
+05:26:53 ============================================================
+05:26:54 [Wongdu] Starting worker: func=loop - Farm V1, port=9226, tab=1
+05:27:01 [Wongdu] Connected to Port 9226, Tab 1
+05:27:03 [LOOP] ── Loop iteration start ──
+05:27:28 [SHOT] FAIL #1 (25012ms)
+05:27:28 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:27:55 [SHOT] FAIL #2 (25000ms)
+05:27:55 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:27:59 [SCAN] Gathering - Inside → FALSE (56014ms)
+05:28:25 [SHOT] FAIL #3 (25002ms)
+05:28:25 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:28:58 [SHOT] FAIL #4 (25016ms)
+05:28:58 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:29:14 [SCAN] Supplies → FALSE (74053ms)
+05:29:39 [SHOT] OK (14209ms)
+05:29:40 [SHOT] OK (0ms)
+05:29:40 [SCAN] Revive → FALSE (15701ms)
+05:29:41 [SHOT] OK (0ms)
+05:29:41 [SHOT] OK (0ms)
+05:29:42 [SCAN] Supplies - In → FALSE (1490ms)
+05:30:08 [SHOT] FAIL #1 (25001ms)
+05:30:08 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:30:35 [SHOT] FAIL #2 (25015ms)
+05:30:35 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:30:39 [SCAN] Gathering - Automove → FALSE (56018ms)
+05:31:04 [SHOT] FAIL #3 (25007ms)
+05:31:04 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:31:37 [SHOT] FAIL #4 (25002ms)
+05:31:37 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:31:53 [SCAN] Attack - Auto → FALSE (74011ms)
+05:32:29 [SHOT] FAIL #5 (25007ms)
+05:32:29 [Wongdu] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:33:20 [SHOT] OK (21452ms)
+05:33:21 [SCAN] Attack - Auto On → FALSE (77325ms)
+05:33:22 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:33:22 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:33:25 [LOOP] ── Loop iteration start ──
+05:33:50 [SHOT] FAIL #1 (25014ms)
+05:33:50 [Wongdu] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:34:17 [SHOT] FAIL #2 (25001ms)
+05:34:17 [Wongdu] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:34:21 [SCAN] Gathering - Inside → FALSE (56018ms)
+05:34:57 [SHOT] FAIL #3 (25014ms)
+05:34:57 [Wongdu] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:35:30 [SHOT] FAIL #4 (25003ms)
+05:35:30 [Wongdu] Screenshot error: Screenshot failed (backoff 16s, fail #4)

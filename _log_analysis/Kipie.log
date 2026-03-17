@@ -1,0 +1,2101 @@
+03:08:32 ============================================================
+03:08:32 SESSION START — Kipie (port:9223 tab:2)
+03:08:32 ============================================================
+03:08:33 [Kipie] Starting worker: func=loop - Farm V1, port=9223, tab=2
+03:08:38 [Kipie] Connected to Port 9223, Tab 2
+03:09:04 [SHOT] FAIL #1 (25011ms)
+03:09:04 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:09:31 [SHOT] FAIL #2 (25004ms)
+03:09:31 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:09:35 [SCAN] Gathering - Inside → FALSE (56017ms)
+03:09:41 [SHOT] OK (5884ms)
+03:09:41 [SCAN] Supplies → TRUE (5895ms)
+03:09:42 [MACRO] Buy Blood: Starting (0ms)
+03:09:47     - Step OK: ⚡ Hard Click 'Supplies' at (1299,569)
+03:09:48 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:10:12 [SHOT] OK (24319ms)
+03:10:12     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:10:17     - Step OK: ⚡ Hard Click 'Supplies - Type' at (535,319)
+03:10:17 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:10:42 [SHOT] FAIL #1 (25013ms)
+03:10:42 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:11:10 [SHOT] FAIL #2 (25014ms)
+03:11:10 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:11:40 [SHOT] FAIL #3 (25004ms)
+03:11:40 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:12:13 [SHOT] FAIL #4 (25007ms)
+03:12:13 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:12:55 [SHOT] FAIL #5 (25010ms)
+03:12:55 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:13:52 [SHOT] FAIL #6 (25004ms)
+03:13:52 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:14:48 [SHOT] FAIL #7 (25014ms)
+03:14:48 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:15:44 [SHOT] FAIL #8 (25003ms)
+03:15:44 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:16:39 [SHOT] FAIL #9 (25011ms)
+03:16:39 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:17:35 [SHOT] FAIL #10 (25011ms)
+03:17:35 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:18:31 [SHOT] FAIL #11 (25015ms)
+03:18:31 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+03:19:26 [SHOT] FAIL #12 (25006ms)
+03:19:26 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #12)
+03:19:59 [SHOT] OK (1358ms)
+03:19:59     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:20:03     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (905,545)
+03:20:03 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:20:03 [Macro] Delay completed.
+03:20:03     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1001,723)
+03:20:04 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:20:05 [Macro] Delay completed.
+03:20:05     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1544,153)
+03:20:06 [Macro] Steps completed. Checking result...
+03:20:07 [SHOT] OK (178ms)
+03:20:07 [Macro] Result: SUCCESS (found 'Home')
+03:20:07 [MACRO] Buy Blood: PASSED (624756ms total)
+03:20:07 [MACRO] Gathering: Starting (0ms)
+03:20:07 [SHOT] OK (0ms)
+03:20:07     - Step OK: Clicked 'Gathering'
+03:20:07 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+03:20:07 [SHOT] OK (0ms)
+03:20:08 [SHOT] OK (0ms)
+03:20:09 [SHOT] OK (0ms)
+03:20:10 [SHOT] OK (153ms)
+03:20:10     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:20:10     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1028,604)
+03:20:11 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:20:23 [Macro] Delay completed.
+03:20:23 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+03:20:23 [SHOT] OK (171ms)
+03:20:24 [SHOT] OK (0ms)
+03:20:24 [SHOT] OK (0ms)
+03:20:25 [SHOT] OK (0ms)
+03:20:26 [SHOT] OK (0ms)
+03:20:27 [SHOT] OK (560ms)
+03:20:28     - Marker triggered. Holding 6.5s...
+03:20:28 [SHOT] OK (0ms)
+03:20:29 [SHOT] OK (0ms)
+03:20:30 [SHOT] OK (0ms)
+03:20:31 [SHOT] OK (158ms)
+03:20:31     - Marker interrupted. Resetting hold timer.
+03:20:32 [SHOT] OK (0ms)
+03:20:32 [SHOT] OK (0ms)
+03:20:34 [SHOT] OK (0ms)
+03:20:35 [SHOT] OK (154ms)
+03:20:35     - Marker triggered. Holding 6.5s...
+03:20:36 [SHOT] OK (0ms)
+03:20:36 [SHOT] OK (0ms)
+03:20:37 [SHOT] OK (0ms)
+03:20:37 [SHOT] OK (0ms)
+03:20:38 [SHOT] OK (388ms)
+03:20:38     - Holding... 3/6s
+03:20:39 [SHOT] OK (0ms)
+03:20:39 [SHOT] OK (0ms)
+03:20:40 [SHOT] OK (0ms)
+03:20:41 [SHOT] OK (0ms)
+03:20:41     - Holding... 6/6s
+03:20:42 [SHOT] OK (250ms)
+03:20:42     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:20:42 [SHOT] OK (0ms)
+03:20:42 [SHOT] OK (0ms)
+03:20:42 [SHOT] OK (0ms)
+03:20:43 [SHOT] OK (0ms)
+03:20:43 [SHOT] OK (0ms)
+03:20:43     - Step FAILED: Could not find 'Attack - Auto' after 5 attempts.
+03:20:43 [MACRO] Gathering: FAILED (36696ms total)
+03:20:43 [Kipie] No next node after 'Macro' (cc882d55). Restart 1/10
+03:20:47 [SHOT] OK (417ms)
+03:20:48 [SHOT] OK (0ms)
+03:20:48 [SCAN] Gathering - Inside → FALSE (1388ms)
+03:20:49 [SHOT] OK (0ms)
+03:20:50 [SHOT] OK (0ms)
+03:20:50 [SCAN] Supplies → FALSE (1097ms)
+03:20:51 [SHOT] OK (638ms)
+03:20:51 [SCAN] Revive → TRUE (798ms)
+03:20:52 [MACRO] Revivie: Starting (0ms)
+03:20:52 [SHOT] OK (0ms)
+03:20:57     - Step OK: Clicked 'Revive'
+03:20:58 [Macro] (2/2) Delay: 3000ms (3.0s)...
+03:21:01 [Macro] Delay completed.
+03:21:01 [Macro] Steps completed. Checking result...
+03:21:22 [SHOT] OK (20418ms)
+03:21:22 [Macro] Result: SUCCESS (found 'Supplies')
+03:21:22 [MACRO] Revivie: PASSED (30278ms total)
+03:21:22 [Kipie] No next node after 'Macro' (38ef6fd1). Restart 1/10
+03:21:51 [SHOT] FAIL #1 (25010ms)
+03:21:51 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:22:18 [SHOT] FAIL #2 (25005ms)
+03:22:18 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:22:22 [SCAN] Gathering - Inside → FALSE (56022ms)
+03:22:27 [SHOT] OK (4160ms)
+03:22:27 [SCAN] Supplies → TRUE (4171ms)
+03:22:27 [MACRO] Buy Blood: Starting (0ms)
+03:22:32     - Step OK: ⚡ Hard Click 'Supplies' at (1336,583)
+03:22:33 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:22:47 [SHOT] OK (14436ms)
+03:22:47     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:22:53     - Step OK: ⚡ Hard Click 'Supplies - Type' at (546,296)
+03:22:53 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:22:53 [SHOT] OK (430ms)
+03:22:53     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:22:59     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (792,563)
+03:22:59 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:22:59 [Macro] Delay completed.
+03:23:04     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1028,720)
+03:23:05 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:23:06 [Macro] Delay completed.
+03:23:11     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1534,135)
+03:23:12 [Macro] Steps completed. Checking result...
+03:23:14 [SHOT] OK (925ms)
+03:23:14 [Macro] Result: SUCCESS (found 'Home')
+03:23:14 [MACRO] Buy Blood: PASSED (46651ms total)
+03:23:14 [MACRO] Gathering: Starting (0ms)
+03:23:14 [SHOT] OK (0ms)
+03:23:19     - Step OK: Clicked 'Gathering'
+03:23:19 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+03:23:20 [SHOT] OK (235ms)
+03:23:20     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:23:25     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1102,592)
+03:23:25 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:23:38 [Macro] Delay completed.
+03:23:38 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+03:23:39 [SHOT] OK (538ms)
+03:23:40 [SHOT] OK (0ms)
+03:23:40 [SHOT] OK (0ms)
+03:23:42 [SHOT] OK (192ms)
+03:23:42     - Marker triggered. Holding 6.5s...
+03:23:42 [SHOT] OK (0ms)
+03:23:43 [SHOT] OK (0ms)
+03:23:45 [SHOT] OK (0ms)
+03:23:46 [SHOT] OK (243ms)
+03:23:46     - Marker interrupted. Resetting hold timer.
+03:23:47 [SHOT] OK (0ms)
+03:23:47 [SHOT] OK (0ms)
+03:23:48 [SHOT] OK (0ms)
+03:23:49 [SHOT] OK (265ms)
+03:23:50 [SHOT] OK (0ms)
+03:23:51 [SHOT] OK (0ms)
+03:23:53 [SHOT] OK (540ms)
+03:23:53     - Marker triggered. Holding 6.5s...
+03:23:54 [SHOT] OK (0ms)
+03:23:56 [SHOT] OK (0ms)
+03:23:58 [SHOT] OK (319ms)
+03:23:58     - Holding... 4/6s
+03:23:59 [SHOT] OK (0ms)
+03:24:00 [SHOT] OK (0ms)
+03:24:00     - Holding... 7/6s
+03:24:00     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:24:00 [SHOT] OK (0ms)
+03:24:02 [SHOT] OK (661ms)
+03:24:02 [SHOT] OK (0ms)
+03:24:02 [SHOT] OK (0ms)
+03:24:03 [SHOT] OK (0ms)
+03:24:03     - Step FAILED: Could not find 'Attack - Auto' after 5 attempts.
+03:24:03 [MACRO] Gathering: FAILED (49216ms total)
+03:24:03 [Kipie] No next node after 'Macro' (cc882d55). Restart 1/10
+03:24:07 [SHOT] OK (222ms)
+03:24:08 [SHOT] OK (0ms)
+03:24:08 [SCAN] Gathering - Inside → FALSE (1973ms)
+03:24:09 [SHOT] OK (0ms)
+03:24:09 [SHOT] OK (0ms)
+03:24:10 [SCAN] Supplies → FALSE (1286ms)
+03:24:11 [SHOT] OK (384ms)
+03:24:11 [SCAN] Revive → TRUE (530ms)
+03:24:12 [MACRO] Revivie: Starting (0ms)
+03:24:12 [SHOT] OK (0ms)
+03:24:17     - Step OK: Clicked 'Revive'
+03:24:18 [Macro] (2/2) Delay: 3000ms (3.0s)...
+03:24:21 [Macro] Delay completed.
+03:24:21 [Macro] Steps completed. Checking result...
+03:24:23 [SHOT] OK (691ms)
+03:24:23 [Macro] Result: SUCCESS (found 'Supplies')
+03:24:23 [MACRO] Revivie: PASSED (10727ms total)
+03:24:23 [Kipie] No next node after 'Macro' (38ef6fd1). Restart 1/10
+03:24:26 [SHOT] OK (372ms)
+03:24:27 [SHOT] OK (0ms)
+03:24:28 [SCAN] Gathering - Inside → FALSE (1774ms)
+03:24:28 [SHOT] OK (0ms)
+03:24:28 [SCAN] Supplies → TRUE (93ms)
+03:24:29 [MACRO] Buy Blood: Starting (0ms)
+03:24:34     - Step OK: ⚡ Hard Click 'Supplies' at (1312,573)
+03:24:35 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:24:35 [SHOT] OK (519ms)
+03:24:36 [SHOT] OK (0ms)
+03:24:37 [SHOT] OK (0ms)
+03:24:38 [SHOT] OK (233ms)
+03:24:39 [SHOT] OK (0ms)
+03:24:40 [SHOT] OK (0ms)
+03:24:41 [SHOT] OK (0ms)
+03:24:43 [SHOT] OK (640ms)
+03:24:43     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:24:48     - Step OK: ⚡ Hard Click 'Supplies - Type' at (495,302)
+03:24:49 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:24:49 [SHOT] OK (539ms)
+03:24:49     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:24:55     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (842,562)
+03:24:55 [Macro] (6/9) Delay: 100ms (0.1s)...
+03:24:55 [Macro] Delay completed.
+03:25:00     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (996,729)
+03:25:01 [Macro] (8/9) Delay: 1000ms (1.0s)...
+03:25:02 [Macro] Delay completed.
+03:25:07     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1546,150)
+03:25:07 [Macro] Steps completed. Checking result...
+03:25:09 [SHOT] OK (331ms)
+03:25:09 [Macro] Result: SUCCESS (found 'Home')
+03:25:09 [MACRO] Buy Blood: PASSED (39737ms total)
+03:25:14 [MACRO] Gathering: Starting (0ms)
+03:25:15 [SHOT] OK (693ms)
+03:25:20     - Step OK: Clicked 'Gathering'
+03:25:20 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+03:25:22 [SHOT] OK (1379ms)
+03:25:22     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:25:27     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1030,573)
+03:25:28 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:25:41 [Macro] Delay completed.
+03:25:41 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+03:25:41 [SHOT] OK (652ms)
+03:25:42 [SHOT] OK (0ms)
+03:25:43 [SHOT] OK (0ms)
+03:25:44 [SHOT] OK (0ms)
+03:25:45 [SHOT] OK (564ms)
+03:25:45     - Marker triggered. Holding 6.5s...
+03:25:46 [SHOT] OK (0ms)
+03:25:48 [SHOT] OK (392ms)
+03:25:49     - Holding... 3/6s
+03:25:50 [SHOT] OK (0ms)
+03:25:51 [SHOT] OK (0ms)
+03:25:52 [SHOT] OK (379ms)
+03:25:52     - Marker interrupted. Resetting hold timer.
+03:25:53 [SHOT] OK (0ms)
+03:25:54 [SHOT] OK (0ms)
+03:25:54 [SHOT] OK (0ms)
+03:25:55 [SHOT] OK (0ms)
+03:25:57 [SHOT] OK (813ms)
+03:25:57 [SHOT] OK (0ms)
+03:25:58 [SHOT] OK (0ms)
+03:25:59 [SHOT] OK (0ms)
+03:26:00 [SHOT] OK (0ms)
+03:26:02 [SHOT] OK (1866ms)
+03:26:04 [SHOT] OK (0ms)
+03:26:04 [SHOT] OK (0ms)
+03:26:05 [SHOT] OK (0ms)
+03:26:07 [SHOT] OK (782ms)
+03:26:08 [SHOT] OK (0ms)
+03:26:09 [SHOT] OK (0ms)
+03:26:10 [SHOT] OK (0ms)
+03:26:12 [SHOT] OK (655ms)
+03:26:13 [SHOT] OK (0ms)
+03:26:13 [SHOT] OK (0ms)
+03:26:14 [SHOT] OK (0ms)
+03:26:17 [SHOT] OK (1932ms)
+03:26:18 [SHOT] OK (0ms)
+03:26:19 [SHOT] OK (0ms)
+03:26:22 [SHOT] OK (2370ms)
+03:26:24 [SHOT] OK (0ms)
+03:26:24 [SHOT] OK (0ms)
+03:26:25 [SHOT] OK (0ms)
+03:26:51 [SHOT] FAIL #1 (25015ms)
+03:26:51 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:26:53     - Marker triggered. Holding 6.5s...
+03:27:19 [SHOT] FAIL #2 (25013ms)
+03:27:19 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:27:23     - Holding... 29/6s
+03:27:23     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:27:48 [SHOT] FAIL #3 (25008ms)
+03:27:48 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:28:21 [SHOT] FAIL #4 (25015ms)
+03:28:21 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:29:02 [SHOT] FAIL #5 (25011ms)
+03:29:02 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:29:33 [SHOT] OK (134ms)
+03:29:33 [SHOT] OK (0ms)
+03:29:33     - Step FAILED: Could not find 'Attack - Auto' after 5 attempts.
+03:29:33 [MACRO] Gathering: FAILED (259375ms total)
+03:29:33 ============================================================
+03:29:33 SESSION END — Kipie (21.0 min)
+03:29:33   Loops: 0
+03:29:33   Screenshots: 138 ok / 21 fail (13.2%)
+03:29:33   Avg latency: 685ms
+03:29:33   Macros: 5 ok / 3 fail
+03:29:33   Errors: 0
+03:29:33 ============================================================
+03:31:01 ============================================================
+03:31:01 SESSION START — Kipie (port:9223 tab:2)
+03:31:01 ============================================================
+03:31:02 [Kipie] Starting worker: func=loop - Farm V1, port=9223, tab=2
+03:31:07 [Kipie] Connected to Port 9223, Tab 2
+03:31:08 [SHOT] OK (263ms)
+03:31:08 [SCAN] Supplies → TRUE (273ms)
+03:31:09 [MACRO] Buy Blood: Starting (0ms)
+03:31:14     - Step OK: ⚡ Hard Click 'Supplies' at (1330,559)
+03:31:14 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:31:15 [SHOT] OK (299ms)
+03:31:16 [SHOT] OK (0ms)
+03:31:16 [SHOT] OK (0ms)
+03:31:17 [SHOT] OK (0ms)
+03:31:18 [SHOT] OK (175ms)
+03:31:19 [SHOT] OK (0ms)
+03:31:20 [SHOT] OK (0ms)
+03:31:21 [SHOT] OK (0ms)
+03:31:23 [SHOT] OK (453ms)
+03:31:23     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:31:28     - Step OK: ⚡ Hard Click 'Supplies - Type' at (527,296)
+03:31:28 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:31:29 [SHOT] OK (275ms)
+03:31:29     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:31:34     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (871,565)
+03:31:34 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:31:34 [Macro] Delay completed.
+03:31:39     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (993,711)
+03:31:45     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1528,136)
+03:31:45 [Macro] Steps completed. Checking result...
+03:31:47 [SHOT] OK (355ms)
+03:31:47 [Macro] Result: SUCCESS (found 'Home')
+03:31:47 [MACRO] Buy Blood: PASSED (37876ms total)
+03:31:47 [MACRO] Gathering: Starting (0ms)
+03:31:47 [SHOT] OK (0ms)
+03:31:52     - Step OK: Clicked 'Gathering'
+03:31:52 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+03:31:53 [SHOT] OK (267ms)
+03:31:53     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:31:58     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1017,571)
+03:31:58 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:32:10 [Macro] Delay completed.
+03:32:10 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+03:32:11 [SHOT] OK (224ms)
+03:32:11 [SHOT] OK (0ms)
+03:32:12 [SHOT] OK (0ms)
+03:32:12 [SHOT] OK (0ms)
+03:32:13 [SHOT] OK (0ms)
+03:32:14 [SHOT] OK (115ms)
+03:32:14     - Marker triggered. Holding 6.5s...
+03:32:15 [SHOT] OK (0ms)
+03:32:16 [SHOT] OK (0ms)
+03:32:18 [SHOT] OK (178ms)
+03:32:18     - Marker interrupted. Resetting hold timer.
+03:32:19 [SHOT] OK (0ms)
+03:32:19 [SHOT] OK (0ms)
+03:32:20 [SHOT] OK (0ms)
+03:32:21 [SHOT] OK (207ms)
+03:32:22 [SHOT] OK (0ms)
+03:32:23 [SHOT] OK (0ms)
+03:32:24 [SHOT] OK (0ms)
+03:32:25 [SHOT] OK (213ms)
+03:32:25     - Marker triggered. Holding 6.5s...
+03:32:26 [SHOT] OK (0ms)
+03:32:26 [SHOT] OK (0ms)
+03:32:27 [SHOT] OK (0ms)
+03:32:28 [SHOT] OK (147ms)
+03:32:29     - Holding... 3/6s
+03:32:29 [SHOT] OK (0ms)
+03:32:30 [SHOT] OK (0ms)
+03:32:31 [SHOT] OK (0ms)
+03:32:32 [SHOT] OK (143ms)
+03:32:32     - Holding... 7/6s
+03:32:32     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:32:32 [SHOT] OK (0ms)
+03:32:38     - Step OK: Clicked 'Attack - Auto'
+03:32:38 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:32:39 [Macro] Delay completed.
+03:32:39 [SHOT] OK (155ms)
+03:32:44     - Step OK: Clicked 'Click 5P'
+03:32:45 [Macro] Steps completed. Checking result...
+03:32:46 [SHOT] OK (615ms)
+03:32:46 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+03:32:46 [MACRO] Gathering: FAILED (59604ms total)
+03:32:46 [Kipie] No next node after 'Macro' (cc882d55). Restart 1/10
+03:32:50 [SHOT] OK (165ms)
+03:32:50 [SHOT] OK (0ms)
+03:32:51 [SCAN] Supplies → FALSE (1445ms)
+03:32:52 [SHOT] OK (0ms)
+03:32:52 [SCAN] Revive → TRUE (89ms)
+03:32:52 [MACRO] Revivie: Starting (0ms)
+03:32:52 [SHOT] OK (0ms)
+03:32:57     - Step OK: Clicked 'Revive'
+03:32:58 [Macro] (2/2) Delay: 3000ms (3.0s)...
+03:33:01 [Macro] Delay completed.
+03:33:01 [Macro] Steps completed. Checking result...
+03:33:02 [SHOT] OK (194ms)
+03:33:02 [Macro] Result: FAILURE ('Supplies' not found)
+03:33:02 [MACRO] Revivie: FAILED (9993ms total)
+03:33:02 [Kipie] No next node after 'Macro' (38ef6fd1). Restart 1/10
+03:33:06 [SHOT] OK (161ms)
+03:33:06 [SCAN] Supplies → TRUE (171ms)
+03:33:07 [MACRO] Buy Blood: Starting (0ms)
+03:33:12     - Step OK: ⚡ Hard Click 'Supplies' at (1322,592)
+03:33:12 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:33:12 [SHOT] OK (319ms)
+03:33:13 [SHOT] OK (0ms)
+03:33:14 [SHOT] OK (0ms)
+03:33:14 [SHOT] OK (0ms)
+03:33:15 [SHOT] OK (0ms)
+03:33:16 [SHOT] OK (183ms)
+03:33:16     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:33:21     - Step OK: ⚡ Hard Click 'Supplies - Type' at (528,314)
+03:33:21 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:33:22 [SHOT] OK (147ms)
+03:33:22     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:33:27     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (795,555)
+03:33:27 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:33:27 [Macro] Delay completed.
+03:33:32     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1080,725)
+03:33:38     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1533,146)
+03:33:38 [Macro] Steps completed. Checking result...
+03:33:40 [SHOT] OK (302ms)
+03:33:40 [Macro] Result: SUCCESS (found 'Home')
+03:33:40 [MACRO] Buy Blood: PASSED (33286ms total)
+03:33:40 [MACRO] Gathering: Starting (0ms)
+03:33:40 [SHOT] OK (0ms)
+03:33:45     - Step OK: Clicked 'Gathering'
+03:33:45 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+03:33:46 [SHOT] OK (450ms)
+03:33:46     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:33:51     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1079,595)
+03:33:51 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:34:04 [Macro] Delay completed.
+03:34:04 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+03:34:05 [SHOT] OK (832ms)
+03:34:05 [SHOT] OK (0ms)
+03:34:06 [SHOT] OK (0ms)
+03:34:07 [SHOT] OK (0ms)
+03:34:08 [SHOT] OK (0ms)
+03:34:09 [SHOT] OK (432ms)
+03:34:09     - Marker triggered. Holding 6.5s...
+03:34:10 [SHOT] OK (0ms)
+03:34:11 [SHOT] OK (0ms)
+03:34:12 [SHOT] OK (0ms)
+03:34:13 [SHOT] OK (246ms)
+03:34:13     - Marker interrupted. Resetting hold timer.
+03:34:13 [SHOT] OK (0ms)
+03:34:14 [SHOT] OK (0ms)
+03:34:15 [SHOT] OK (0ms)
+03:34:15 [SHOT] OK (0ms)
+03:34:16 [SHOT] OK (450ms)
+03:34:17 [SHOT] OK (0ms)
+03:34:18 [SHOT] OK (0ms)
+03:34:18 [SHOT] OK (0ms)
+03:34:19 [SHOT] OK (0ms)
+03:34:20 [SHOT] OK (156ms)
+03:34:21 [SHOT] OK (0ms)
+03:34:21 [SHOT] OK (0ms)
+03:34:23 [SHOT] OK (0ms)
+03:34:24 [SHOT] OK (366ms)
+03:34:24 [SHOT] OK (0ms)
+03:34:25 [SHOT] OK (0ms)
+03:34:26 [SHOT] OK (0ms)
+03:34:26 [SHOT] OK (0ms)
+03:34:28 [SHOT] OK (582ms)
+03:34:29 [SHOT] OK (0ms)
+03:34:30 [SHOT] OK (0ms)
+03:34:30 [SHOT] OK (0ms)
+03:34:32 [SHOT] OK (286ms)
+03:34:33 [SHOT] OK (0ms)
+03:34:34 [SHOT] OK (0ms)
+03:34:35 [SHOT] OK (276ms)
+03:34:36 [SHOT] OK (0ms)
+03:34:37 [SHOT] OK (0ms)
+03:34:37 [SHOT] OK (0ms)
+03:34:39 [SHOT] OK (163ms)
+03:34:40 [SHOT] OK (0ms)
+03:34:41 [SHOT] OK (0ms)
+03:34:41 [SHOT] OK (0ms)
+03:34:42 [SHOT] OK (200ms)
+03:34:43 [SHOT] OK (0ms)
+03:34:44 [SHOT] OK (0ms)
+03:34:45 [SHOT] OK (0ms)
+03:34:46 [SHOT] OK (169ms)
+03:34:47 [SHOT] OK (0ms)
+03:34:48 [SHOT] OK (0ms)
+03:34:48 [SHOT] OK (0ms)
+03:34:50 [SHOT] OK (298ms)
+03:34:51 [SHOT] OK (0ms)
+03:34:52 [SHOT] OK (0ms)
+03:34:53 [SHOT] OK (0ms)
+03:34:54 [SHOT] OK (182ms)
+03:34:54 [SHOT] OK (0ms)
+03:34:55 [SHOT] OK (0ms)
+03:34:55 [SHOT] OK (0ms)
+03:34:56 [SHOT] OK (0ms)
+03:34:56 [SHOT] OK (0ms)
+03:34:57 [SHOT] OK (185ms)
+03:34:58 [SHOT] OK (0ms)
+03:34:59 [SHOT] OK (0ms)
+03:35:00 [SHOT] OK (229ms)
+03:35:01 [SHOT] OK (0ms)
+03:35:02 [SHOT] OK (0ms)
+03:35:02 [SHOT] OK (0ms)
+03:35:04 [SHOT] OK (176ms)
+03:35:04 [SHOT] OK (0ms)
+03:35:05 [SHOT] OK (0ms)
+03:35:06 [SHOT] OK (0ms)
+03:35:06 [SHOT] OK (0ms)
+03:35:07 [SHOT] OK (159ms)
+03:35:08 [SHOT] OK (0ms)
+03:35:09 [SHOT] OK (0ms)
+03:35:10 [SHOT] OK (0ms)
+03:35:10 [SHOT] OK (0ms)
+03:35:11 [SHOT] OK (282ms)
+03:35:12 [SHOT] OK (0ms)
+03:35:13 [SHOT] OK (0ms)
+03:35:14 [SHOT] OK (0ms)
+03:35:15 [SHOT] OK (156ms)
+03:35:15 [SHOT] OK (0ms)
+03:35:16 [SHOT] OK (0ms)
+03:35:17 [SHOT] OK (0ms)
+03:35:18 [SHOT] OK (172ms)
+03:35:19 [SHOT] OK (0ms)
+03:35:20 [SHOT] OK (0ms)
+03:35:21 [SHOT] OK (0ms)
+03:35:22 [SHOT] OK (247ms)
+03:35:23 [SHOT] OK (0ms)
+03:35:24 [SHOT] OK (0ms)
+03:35:25 [SHOT] OK (0ms)
+03:35:26 [SHOT] OK (203ms)
+03:35:27 [SHOT] OK (0ms)
+03:35:28 [SHOT] OK (0ms)
+03:35:29 [SHOT] OK (0ms)
+03:35:30 [SHOT] OK (183ms)
+03:35:31 [SHOT] OK (0ms)
+03:35:31 [SHOT] OK (0ms)
+03:35:32 [SHOT] OK (0ms)
+03:35:33 [SHOT] OK (0ms)
+03:35:34 [SHOT] OK (209ms)
+03:35:35 [SHOT] OK (0ms)
+03:35:36 [SHOT] OK (0ms)
+03:35:37 [SHOT] OK (0ms)
+03:35:37 [SHOT] OK (0ms)
+03:35:38 [SHOT] OK (388ms)
+03:35:39 [SHOT] OK (0ms)
+03:35:40 [SHOT] OK (0ms)
+03:35:40 [SHOT] OK (0ms)
+03:35:41 [SHOT] OK (0ms)
+03:35:43 [SHOT] OK (511ms)
+03:35:43 [SHOT] OK (0ms)
+03:35:43 [SHOT] OK (0ms)
+03:35:45 [SHOT] OK (0ms)
+03:35:45 [SHOT] OK (0ms)
+03:35:46 [SHOT] OK (288ms)
+03:35:47 [SHOT] OK (0ms)
+03:35:47 [SHOT] OK (0ms)
+03:35:48 [SHOT] OK (0ms)
+03:35:49 [SHOT] OK (0ms)
+03:35:50 [SHOT] OK (156ms)
+03:35:51 [SHOT] OK (0ms)
+03:35:51 [SHOT] OK (0ms)
+03:35:52 [SHOT] OK (0ms)
+03:35:54 [SHOT] OK (245ms)
+03:35:55 [SHOT] OK (0ms)
+03:35:55 [SHOT] OK (0ms)
+03:35:56 [SHOT] OK (0ms)
+03:35:57 [SHOT] OK (175ms)
+03:35:58 [SHOT] OK (0ms)
+03:35:59 [SHOT] OK (0ms)
+03:35:59 [SHOT] OK (0ms)
+03:36:00 [SHOT] OK (312ms)
+03:36:01 [SHOT] OK (0ms)
+03:36:01 [SHOT] OK (0ms)
+03:36:02 [SHOT] OK (0ms)
+03:36:04 [SHOT] OK (174ms)
+03:36:04 [SHOT] OK (0ms)
+03:36:05 [SHOT] OK (0ms)
+03:36:06 [SHOT] OK (0ms)
+03:36:07 [SHOT] OK (190ms)
+03:36:08 [SHOT] OK (0ms)
+03:36:09 [SHOT] OK (0ms)
+03:36:09 [SHOT] OK (0ms)
+03:36:10 [SHOT] OK (188ms)
+03:36:11 [SHOT] OK (0ms)
+03:36:12 [SHOT] OK (0ms)
+03:36:13 [SHOT] OK (0ms)
+03:36:14 [SHOT] OK (139ms)
+03:36:14     - Marker triggered. Holding 6.5s...
+03:36:15 [SHOT] OK (0ms)
+03:36:16 [SHOT] OK (0ms)
+03:36:17 [SHOT] OK (0ms)
+03:36:18 [SHOT] OK (154ms)
+03:36:18     - Marker interrupted. Resetting hold timer.
+03:36:19 [SHOT] OK (0ms)
+03:36:20 [SHOT] OK (0ms)
+03:36:21 [SHOT] OK (163ms)
+03:36:22 [SHOT] OK (0ms)
+03:36:23 [SHOT] OK (0ms)
+03:36:24 [SHOT] OK (0ms)
+03:36:25 [SHOT] OK (189ms)
+03:36:25 [SHOT] OK (0ms)
+03:36:26 [SHOT] OK (0ms)
+03:36:27 [SHOT] OK (0ms)
+03:36:27 [SHOT] OK (0ms)
+03:36:29 [SHOT] OK (205ms)
+03:36:29 [SHOT] OK (0ms)
+03:36:30 [SHOT] OK (0ms)
+03:36:31 [SHOT] OK (0ms)
+03:36:32 [SHOT] OK (175ms)
+03:36:33 [SHOT] OK (0ms)
+03:36:34 [SHOT] OK (0ms)
+03:36:36 [SHOT] OK (154ms)
+03:36:36 [SHOT] OK (0ms)
+03:36:37 [SHOT] OK (0ms)
+03:36:37 [SHOT] OK (0ms)
+03:36:38 [SHOT] OK (0ms)
+03:36:39 [SHOT] OK (433ms)
+03:36:40 [SHOT] OK (0ms)
+03:36:41 [SHOT] OK (0ms)
+03:36:42 [SHOT] OK (0ms)
+03:36:43 [SHOT] OK (185ms)
+03:36:44 [SHOT] OK (0ms)
+03:36:44 [SHOT] OK (0ms)
+03:36:45 [SHOT] OK (0ms)
+03:36:46 [SHOT] OK (162ms)
+03:36:47 [SHOT] OK (0ms)
+03:36:48 [SHOT] OK (0ms)
+03:36:49 [SHOT] OK (0ms)
+03:36:50 [SHOT] OK (157ms)
+03:36:50 [SHOT] OK (0ms)
+03:36:51 [SHOT] OK (0ms)
+03:36:52 [SHOT] OK (0ms)
+03:36:53 [SHOT] OK (223ms)
+03:36:54 [SHOT] OK (0ms)
+03:36:54 [SHOT] OK (0ms)
+03:36:55 [SHOT] OK (0ms)
+03:36:55 [SHOT] OK (0ms)
+03:36:55 [SHOT] OK (0ms)
+03:36:56 [SHOT] OK (289ms)
+03:36:56     - Marker triggered. Holding 6.5s...
+03:36:57 [SHOT] OK (0ms)
+03:36:58 [SHOT] OK (0ms)
+03:36:59 [SHOT] OK (0ms)
+03:37:01 [SHOT] OK (694ms)
+03:37:01     - Holding... 4/6s
+03:37:01 [SHOT] OK (0ms)
+03:37:02 [SHOT] OK (0ms)
+03:37:03 [SHOT] OK (0ms)
+03:37:03     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:37:03 [SHOT] OK (0ms)
+03:37:08     - Step OK: Clicked 'Attack - Auto'
+03:37:09 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:37:10 [Macro] Delay completed.
+03:37:10 [SHOT] OK (242ms)
+03:37:15     - Step OK: Clicked 'Click 5P'
+03:37:16 [Macro] Steps completed. Checking result...
+03:37:17 [SHOT] OK (167ms)
+03:37:17 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+03:37:17 [MACRO] Gathering: PASSED (216993ms total)
+03:37:22 [MACRO] Click 5P: Starting (0ms)
+03:37:27     - Step OK: ⚡ Hard Click 'Click 5P' at (1503,88)
+03:37:27 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:37:28 [Macro] Delay completed.
+03:37:28 [Macro] Steps completed. Checking result...
+03:37:28 [Macro] Finished (no capture check configured).
+03:37:28 [MACRO] Click 5P: PASSED (5707ms total)
+03:37:28 [MACRO] Revivie: Starting (0ms)
+03:37:28 [SHOT] OK (188ms)
+03:37:28 [SHOT] OK (0ms)
+03:37:29 [SHOT] OK (0ms)
+03:37:29 [SHOT] OK (0ms)
+03:37:29 [SHOT] OK (0ms)
+03:37:30     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:37:30 [MACRO] Revivie: FAILED (2222ms total)
+03:37:30 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+03:37:34 [SHOT] OK (821ms)
+03:37:35 [SHOT] OK (0ms)
+03:37:36 [SCAN] Supplies → FALSE (2418ms)
+03:37:36 [SHOT] OK (0ms)
+03:37:37 [SHOT] OK (0ms)
+03:37:37 [SCAN] Revive → FALSE (1385ms)
+03:37:38 [SHOT] OK (418ms)
+03:37:39 [SHOT] OK (0ms)
+03:37:40 [SCAN] Supplies - In → FALSE (1651ms)
+03:37:40 [SHOT] OK (0ms)
+03:37:40 [SCAN] Attack - Auto → TRUE (12ms)
+03:37:41 [SHOT] OK (0ms)
+03:37:42 [SHOT] OK (155ms)
+03:37:42 [SCAN] Gathering - Automove → FALSE (1402ms)
+03:37:43 [SHOT] OK (0ms)
+03:37:43 [SCAN] Attack - Auto On → TRUE (21ms)
+03:37:43 [MACRO] Click 5P: Starting (0ms)
+03:37:48     - Step OK: ⚡ Hard Click 'Click 5P' at (1497,95)
+03:37:49 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:37:49 [Macro] Delay completed.
+03:37:49 [Macro] Steps completed. Checking result...
+03:37:49 [Macro] Finished (no capture check configured).
+03:37:49 [MACRO] Click 5P: PASSED (5691ms total)
+03:37:49 [MACRO] Revivie: Starting (0ms)
+03:37:49 [SHOT] OK (349ms)
+03:37:50 [SHOT] OK (0ms)
+03:37:50 [SHOT] OK (0ms)
+03:37:50 [SHOT] OK (0ms)
+03:37:51 [SHOT] OK (0ms)
+03:37:51     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:37:51 [MACRO] Revivie: FAILED (2352ms total)
+03:37:51 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+03:37:55 [SHOT] OK (269ms)
+03:37:56 [SHOT] OK (0ms)
+03:37:56 [SCAN] Supplies → FALSE (1349ms)
+03:37:57 [SHOT] OK (0ms)
+03:37:58 [SHOT] OK (0ms)
+03:37:58 [SCAN] Revive → FALSE (1110ms)
+03:38:00 [SHOT] OK (923ms)
+03:38:01 [SHOT] OK (0ms)
+03:38:01 [SCAN] Supplies - In → FALSE (2509ms)
+03:38:02 [SHOT] OK (0ms)
+03:38:02 [SCAN] Attack - Auto → TRUE (7ms)
+03:38:03 [SHOT] OK (0ms)
+03:38:03 [SHOT] OK (469ms)
+03:38:04 [SCAN] Gathering - Automove → FALSE (1641ms)
+03:38:05 [SHOT] OK (0ms)
+03:38:05 [SCAN] Attack - Auto On → TRUE (18ms)
+03:38:05 [MACRO] Click 5P: Starting (0ms)
+03:38:11     - Step OK: ⚡ Hard Click 'Click 5P' at (1490,99)
+03:38:11 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:38:11 [Macro] Delay completed.
+03:38:11 [Macro] Steps completed. Checking result...
+03:38:11 [Macro] Finished (no capture check configured).
+03:38:11 [MACRO] Click 5P: PASSED (5777ms total)
+03:38:11 [MACRO] Revivie: Starting (0ms)
+03:38:12 [SHOT] OK (344ms)
+03:38:12 [SHOT] OK (0ms)
+03:38:12 [SHOT] OK (0ms)
+03:38:13 [SHOT] OK (0ms)
+03:38:13 [SHOT] OK (0ms)
+03:38:14     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:38:14 [MACRO] Revivie: FAILED (2365ms total)
+03:38:14 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+03:38:17 [SHOT] OK (237ms)
+03:38:18 [SHOT] OK (0ms)
+03:38:19 [SCAN] Supplies → FALSE (1555ms)
+03:38:19 [SHOT] OK (0ms)
+03:38:20 [SHOT] OK (0ms)
+03:38:20 [SCAN] Revive → FALSE (1008ms)
+03:38:21 [SHOT] OK (155ms)
+03:38:22 [SHOT] OK (0ms)
+03:38:23 [SCAN] Supplies - In → FALSE (1790ms)
+03:38:23 [SHOT] OK (0ms)
+03:38:23 [SCAN] Attack - Auto → TRUE (8ms)
+03:38:24 [SHOT] OK (0ms)
+03:38:24 [SHOT] OK (135ms)
+03:38:25 [SCAN] Gathering - Automove → FALSE (1346ms)
+03:38:25 [SHOT] OK (0ms)
+03:38:25 [SCAN] Attack - Auto On → TRUE (18ms)
+03:38:26 [MACRO] Click 5P: Starting (0ms)
+03:38:26     - Step OK: ⚡ Hard Click 'Click 5P' at (1512,86)
+03:38:26 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:38:26 [Macro] Delay completed.
+03:38:26 [Macro] Steps completed. Checking result...
+03:38:26 [Macro] Finished (no capture check configured).
+03:38:26 [MACRO] Click 5P: PASSED (677ms total)
+03:38:26 [MACRO] Revivie: Starting (0ms)
+03:38:26 [SHOT] OK (0ms)
+03:38:27 [SHOT] OK (0ms)
+03:38:27 [SHOT] OK (134ms)
+03:38:28 [SHOT] OK (0ms)
+03:38:28 [SHOT] OK (0ms)
+03:38:28     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:38:28 [MACRO] Revivie: FAILED (2135ms total)
+03:38:28 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+03:38:32 [SHOT] OK (130ms)
+03:38:33 [SHOT] OK (0ms)
+03:38:33 [SCAN] Supplies → FALSE (1194ms)
+03:38:34 [SHOT] OK (0ms)
+03:38:34 [SHOT] OK (0ms)
+03:38:35 [SCAN] Revive → FALSE (1664ms)
+03:38:36 [SHOT] OK (134ms)
+03:38:37 [SHOT] OK (0ms)
+03:38:37 [SCAN] Supplies - In → FALSE (1379ms)
+03:38:38 [SHOT] OK (0ms)
+03:38:38 [SCAN] Attack - Auto → TRUE (7ms)
+03:38:39 [SHOT] OK (0ms)
+03:38:39 [SHOT] OK (122ms)
+03:38:40 [SCAN] Gathering - Automove → FALSE (1331ms)
+03:38:40 [SHOT] OK (0ms)
+03:38:40 [SCAN] Attack - Auto On → TRUE (23ms)
+03:38:41 [MACRO] Click 5P: Starting (0ms)
+03:38:46     - Step OK: ⚡ Hard Click 'Click 5P' at (1492,94)
+03:38:47 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:38:47 [Macro] Delay completed.
+03:38:47 [Macro] Steps completed. Checking result...
+03:38:47 [Macro] Finished (no capture check configured).
+03:38:47 [MACRO] Click 5P: PASSED (5764ms total)
+03:38:47 [MACRO] Revivie: Starting (0ms)
+03:38:48 [SHOT] OK (1307ms)
+03:38:53     - Step OK: Clicked 'Revive'
+03:38:54 [Macro] (2/2) Delay: 3000ms (3.0s)...
+03:38:57 [Macro] Delay completed.
+03:38:57 [Macro] Steps completed. Checking result...
+03:39:23 [SHOT] FAIL #1 (25002ms)
+03:39:23 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:39:25 [Macro] Result: FAILURE ('Supplies' not found)
+03:39:25 [MACRO] Revivie: FAILED (38067ms total)
+03:39:25 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+03:39:53 [SHOT] FAIL #2 (25020ms)
+03:39:53 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:40:21 [SHOT] OK (24038ms)
+03:40:21 [SCAN] Supplies → TRUE (53070ms)
+03:40:22 [MACRO] Buy Blood: Starting (0ms)
+03:40:27     - Step OK: ⚡ Hard Click 'Supplies' at (1295,563)
+03:40:28 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:40:52 [SHOT] OK (24083ms)
+03:40:52     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:40:57     - Step OK: ⚡ Hard Click 'Supplies - Type' at (563,317)
+03:40:57 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:40:58 [SHOT] OK (311ms)
+03:40:58     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:41:03     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (852,542)
+03:41:03 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:41:03 [Macro] Delay completed.
+03:41:04     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1078,695)
+03:41:05     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1527,141)
+03:41:05 [Macro] Steps completed. Checking result...
+03:41:07 [SHOT] OK (294ms)
+03:41:07 [Macro] Result: SUCCESS (found 'Home')
+03:41:07 [MACRO] Buy Blood: PASSED (44430ms total)
+03:41:07 [MACRO] Gathering: Starting (0ms)
+03:41:07 [SHOT] OK (0ms)
+03:41:12     - Step OK: Clicked 'Gathering'
+03:41:12 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+03:41:13 [SHOT] OK (591ms)
+03:41:13     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:41:18     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1099,580)
+03:41:18 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:41:31 [Macro] Delay completed.
+03:41:31 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+03:41:43 [SHOT] OK (12749ms)
+03:41:44 [SHOT] OK (0ms)
+03:41:45 [SHOT] OK (0ms)
+03:41:46 [SHOT] OK (0ms)
+03:42:11 [SHOT] FAIL #1 (25006ms)
+03:42:11 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:42:13     - Marker triggered. Holding 6.5s...
+03:42:18 [SHOT] OK (4001ms)
+03:42:18     - Marker interrupted. Resetting hold timer.
+03:42:18 [SHOT] OK (0ms)
+03:42:19 [SHOT] OK (0ms)
+03:42:19 [SHOT] OK (0ms)
+03:42:20 [SHOT] OK (0ms)
+03:42:46 [SHOT] FAIL #1 (25009ms)
+03:42:46 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:42:48     - Marker triggered. Holding 6.5s...
+03:42:49 [SHOT] OK (198ms)
+03:42:49     - Marker interrupted. Resetting hold timer.
+03:42:50 [SHOT] OK (0ms)
+03:42:51 [SHOT] OK (0ms)
+03:42:51 [SHOT] OK (0ms)
+03:42:52 [SHOT] OK (0ms)
+03:43:18 [SHOT] FAIL #1 (25003ms)
+03:43:18 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:43:20     - Marker triggered. Holding 6.5s...
+03:43:45 [SHOT] FAIL #2 (25001ms)
+03:43:45 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:43:49     - Holding... 29/6s
+03:43:49     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+03:44:14 [SHOT] FAIL #3 (25008ms)
+03:44:14 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:44:48 [SHOT] FAIL #4 (25014ms)
+03:44:48 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:45:26 [SHOT] OK (21994ms)
+03:45:31     - Step OK: Clicked 'Attack - Auto'
+03:45:31 [Macro] (7/8) Delay: 1000ms (1.0s)...
+03:45:33 [Macro] Delay completed.
+03:45:57 [SHOT] OK (24477ms)
+03:46:02     - Step OK: Clicked 'Click 5P'
+03:46:03 [Macro] Steps completed. Checking result...
+03:46:29 [SHOT] FAIL #1 (25015ms)
+03:46:29 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:46:31 [Macro] Result: FAILURE ('Attack - Auto On' not found)
+03:46:31 [MACRO] Gathering: FAILED (324143ms total)
+03:46:36 [Kipie] No next node after 'Macro' (cc882d55). Restart 1/10
+03:47:03 [SHOT] OK (24032ms)
+03:47:04 [SHOT] OK (0ms)
+03:47:04 [SCAN] Supplies → FALSE (25171ms)
+03:47:05 [SHOT] OK (0ms)
+03:47:05 [SHOT] OK (0ms)
+03:47:06 [SCAN] Revive → FALSE (1383ms)
+03:47:07 [SHOT] OK (160ms)
+03:47:07 [SHOT] OK (0ms)
+03:47:08 [SCAN] Supplies - In → FALSE (1790ms)
+03:47:09 [SHOT] OK (0ms)
+03:47:09 [SCAN] Attack - Auto → TRUE (21ms)
+03:47:09 [SHOT] OK (0ms)
+03:47:35 [SHOT] FAIL #1 (25007ms)
+03:47:35 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:47:37 [SCAN] Gathering - Automove → FALSE (27604ms)
+03:48:03 [SHOT] FAIL #2 (25008ms)
+03:48:03 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:48:32 [SHOT] FAIL #3 (25003ms)
+03:48:32 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:48:40 [SCAN] Attack - Auto On → FALSE (62052ms)
+03:49:05 [SHOT] FAIL #4 (25002ms)
+03:49:05 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:49:46 [SHOT] FAIL #5 (25008ms)
+03:49:46 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:50:16 [SCAN] Revive → FALSE (96011ms)
+03:50:17 [NODE] → Click: Attack - Auto
+03:50:42 [SHOT] FAIL #6 (25013ms)
+03:50:42 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:51:17 [NODE] → Click: Click 5P
+03:51:42 [SHOT] FAIL #7 (25002ms)
+03:51:42 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:52:12 [Kipie] No next node after 'Click' (Click 5P). Restart 1/10
+03:52:41 [SHOT] FAIL #8 (25000ms)
+03:52:41 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:53:36 [SHOT] FAIL #9 (25015ms)
+03:53:36 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:54:06 [SCAN] Supplies → FALSE (110018ms)
+03:54:26 [SHOT] OK (19638ms)
+03:54:26 [SCAN] Revive → TRUE (19650ms)
+03:54:27 [MACRO] Revivie: Starting (0ms)
+03:54:27 [SHOT] OK (0ms)
+03:54:32     - Step OK: Clicked 'Revive'
+03:54:32 [Macro] (2/2) Delay: 3000ms (3.0s)...
+03:54:35 [Macro] Delay completed.
+03:54:35 [Macro] Steps completed. Checking result...
+03:54:57 [SHOT] OK (20343ms)
+03:54:57 [Macro] Result: SUCCESS (found 'Supplies')
+03:54:57 [MACRO] Revivie: PASSED (30060ms total)
+03:54:57 [MACRO] Click 5P: Starting (0ms)
+03:55:02     - Step OK: ⚡ Hard Click 'Click 5P' at (1501,83)
+03:55:02 [Macro] (2/2) Delay: 100ms (0.1s)...
+03:55:02 [Macro] Delay completed.
+03:55:02 [Macro] Steps completed. Checking result...
+03:55:02 [Macro] Finished (no capture check configured).
+03:55:02 [MACRO] Click 5P: PASSED (5654ms total)
+03:55:02 [MACRO] Revivie: Starting (0ms)
+03:55:27 [SHOT] OK (24865ms)
+03:55:28 [SHOT] OK (0ms)
+03:55:28 [SHOT] OK (0ms)
+03:55:28 [SHOT] OK (0ms)
+03:55:29 [SHOT] OK (0ms)
+03:55:29     - Step FAILED: Could not find 'Revive' after 5 attempts.
+03:55:29 [MACRO] Revivie: FAILED (26927ms total)
+03:55:29 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+03:55:58 [SHOT] OK (24932ms)
+03:55:58 [SCAN] Supplies → TRUE (24944ms)
+03:56:03 [MACRO] Buy Blood: Starting (0ms)
+03:56:08     - Step OK: ⚡ Hard Click 'Supplies' at (1337,568)
+03:56:09 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:56:32 [SHOT] OK (23792ms)
+03:56:32     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:56:38     - Step OK: ⚡ Hard Click 'Supplies - Type' at (528,305)
+03:56:38 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:57:03 [SHOT] OK (24870ms)
+03:57:04 [SHOT] OK (0ms)
+03:57:05 [SHOT] OK (0ms)
+03:57:06 [SHOT] OK (0ms)
+03:57:32 [SHOT] FAIL #1 (25012ms)
+03:57:32 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:57:37 [SHOT] OK (2730ms)
+03:57:37     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:57:42     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (839,572)
+03:57:42 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:57:43 [Macro] Delay completed.
+03:57:48     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1026,714)
+03:57:53     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1527,155)
+03:57:54 [Macro] Steps completed. Checking result...
+03:58:16 [SHOT] OK (21135ms)
+03:58:16 [Macro] Result: SUCCESS (found 'Home')
+03:58:16 [MACRO] Buy Blood: PASSED (132744ms total)
+03:58:16 [MACRO] Gathering: Starting (0ms)
+03:58:16 [SHOT] OK (0ms)
+03:58:21     - Step OK: Clicked 'Gathering'
+03:58:21 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+03:58:46 [SHOT] OK (25011ms)
+03:58:46     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+03:58:52     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1116,571)
+03:58:52 [Macro] (4/8) Delay: 12000ms (12.0s)...
+03:59:04 [Macro] Delay completed.
+03:59:04 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+03:59:29 [SHOT] FAIL #1 (25007ms)
+03:59:29 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:59:31     - Marker triggered. Holding 6.5s...
+03:59:48 [SHOT] OK (15489ms)
+03:59:48     - Marker interrupted. Resetting hold timer.
+03:59:49 [SHOT] OK (0ms)
+03:59:49 [SHOT] OK (0ms)
+03:59:50 [SHOT] OK (0ms)
+04:00:16 [SHOT] FAIL #1 (25003ms)
+04:00:16 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:00:18     - Marker triggered. Holding 6.5s...
+04:00:19 [SHOT] OK (591ms)
+04:00:19     - Marker interrupted. Resetting hold timer.
+04:00:20 [SHOT] OK (0ms)
+04:00:21 [SHOT] OK (0ms)
+04:00:22 [SHOT] OK (0ms)
+04:00:23 [SHOT] OK (159ms)
+04:00:24 [SHOT] OK (0ms)
+04:00:25 [SHOT] OK (0ms)
+04:00:26 [SHOT] OK (0ms)
+04:00:26 [SHOT] OK (0ms)
+04:00:52 [SHOT] FAIL #1 (25002ms)
+04:00:52 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:00:54     - Marker triggered. Holding 6.5s...
+04:01:19 [SHOT] FAIL #2 (25012ms)
+04:01:19 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:01:23     - Holding... 29/6s
+04:01:23     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+04:01:29 [SHOT] OK (5141ms)
+04:01:34     - Step OK: Clicked 'Attack - Auto'
+04:01:34 [Macro] (7/8) Delay: 1000ms (1.0s)...
+04:01:35 [Macro] Delay completed.
+04:02:00 [SHOT] FAIL #1 (25028ms)
+04:02:00 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:02:03 [SHOT] OK (0ms)
+04:02:08     - Step OK: Clicked 'Click 5P'
+04:02:08 [Macro] Steps completed. Checking result...
+04:02:34 [SHOT] OK (24961ms)
+04:02:34 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+04:02:34 [MACRO] Gathering: PASSED (258290ms total)
+04:02:39 [Kipie] Connection rotation — periodic reconnect
+04:02:41 [Kipie] Connection rotated successfully
+04:02:41 [MACRO] Click 5P: Starting (0ms)
+04:02:46     - Step OK: ⚡ Hard Click 'Click 5P' at (1493,97)
+04:02:47 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:02:47 [Macro] Delay completed.
+04:02:47 [Macro] Steps completed. Checking result...
+04:02:47 [Macro] Finished (no capture check configured).
+04:02:47 [MACRO] Click 5P: PASSED (5658ms total)
+04:02:47 [MACRO] Revivie: Starting (0ms)
+04:03:12 [SHOT] FAIL #1 (25006ms)
+04:03:12 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:03:39 [SHOT] FAIL #2 (25002ms)
+04:03:39 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:04:06 [SHOT] OK (22425ms)
+04:04:06 [SHOT] OK (0ms)
+04:04:07 [SHOT] OK (0ms)
+04:04:07     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:04:07 [MACRO] Revivie: FAILED (80262ms total)
+04:04:07 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+04:04:36 [SHOT] FAIL #1 (25014ms)
+04:04:36 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:05:03 [SHOT] FAIL #2 (25029ms)
+04:05:03 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:05:07 [SCAN] Supplies → FALSE (56072ms)
+04:05:32 [SHOT] FAIL #3 (25003ms)
+04:05:32 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:06:05 [SHOT] FAIL #4 (25015ms)
+04:06:05 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:06:21 [SCAN] Revive → FALSE (74039ms)
+04:06:46 [SHOT] OK (24533ms)
+04:06:47 [SHOT] OK (0ms)
+04:06:48 [SCAN] Supplies - In → FALSE (26271ms)
+04:06:48 [SHOT] OK (0ms)
+04:06:48 [SCAN] Attack - Auto → TRUE (8ms)
+04:06:49 [SHOT] OK (0ms)
+04:07:15 [SHOT] FAIL #1 (25008ms)
+04:07:15 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:07:17 [SCAN] Gathering - Automove → FALSE (27905ms)
+04:07:47 [SHOT] FAIL #2 (25014ms)
+04:07:47 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:08:16 [SHOT] FAIL #3 (25010ms)
+04:08:16 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:08:24 [SCAN] Attack - Auto On → FALSE (62026ms)
+04:08:50 [SHOT] FAIL #4 (25001ms)
+04:08:50 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:09:31 [SHOT] FAIL #5 (25003ms)
+04:09:31 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:10:01 [SCAN] Revive → FALSE (96006ms)
+04:10:01 [NODE] → Click: Attack - Auto
+04:10:26 [SHOT] FAIL #6 (25000ms)
+04:10:26 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:10:57 [NODE] → Click: Click 5P
+04:11:13 [SHOT] OK (16169ms)
+04:11:18 [SCAN] Click 5P → TRUE (0ms)
+04:11:18 [Kipie] No next node after 'Click' (Click 5P). Restart 1/10
+04:11:47 [SHOT] FAIL #1 (25014ms)
+04:11:47 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:12:14 [SHOT] FAIL #2 (25006ms)
+04:12:14 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:12:18 [SCAN] Supplies → FALSE (56020ms)
+04:12:49 [SHOT] FAIL #3 (25002ms)
+04:12:49 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:12:57 [SHOT] OK (144ms)
+04:12:57 [SCAN] Revive → FALSE (33862ms)
+04:12:58 [SHOT] OK (0ms)
+04:12:59 [SHOT] OK (0ms)
+04:13:00 [SCAN] Supplies - In → FALSE (1680ms)
+04:13:25 [SHOT] FAIL #1 (25005ms)
+04:13:25 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:13:28 [SHOT] OK (836ms)
+04:13:28 [SCAN] Attack - Auto → TRUE (27849ms)
+04:13:29 [SHOT] OK (0ms)
+04:13:29 [SHOT] OK (0ms)
+04:13:30 [SCAN] Gathering - Automove → FALSE (895ms)
+04:13:31 [SHOT] OK (0ms)
+04:13:31 [SCAN] Attack - Auto On → TRUE (17ms)
+04:13:31 [MACRO] Click 5P: Starting (0ms)
+04:13:36     - Step OK: ⚡ Hard Click 'Click 5P' at (1503,98)
+04:13:37 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:13:37 [Macro] Delay completed.
+04:13:37 [Macro] Steps completed. Checking result...
+04:13:37 [Macro] Finished (no capture check configured).
+04:13:37 [MACRO] Click 5P: PASSED (5759ms total)
+04:13:37 [MACRO] Revivie: Starting (0ms)
+04:13:59 [SHOT] OK (21823ms)
+04:13:59 [SHOT] OK (0ms)
+04:13:59 [SHOT] OK (0ms)
+04:14:00 [SHOT] OK (0ms)
+04:14:00 [SHOT] OK (0ms)
+04:14:01     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:14:01 [MACRO] Revivie: FAILED (23789ms total)
+04:14:01 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+04:14:29 [SHOT] FAIL #1 (25040ms)
+04:14:29 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:14:31 [SHOT] OK (0ms)
+04:14:32 [SCAN] Supplies → FALSE (27807ms)
+04:14:58 [SHOT] FAIL #1 (25012ms)
+04:14:58 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:15:00 [SHOT] OK (165ms)
+04:15:01 [SCAN] Revive → FALSE (28005ms)
+04:15:01 [SHOT] OK (0ms)
+04:15:02 [SHOT] OK (0ms)
+04:15:03 [SCAN] Supplies - In → FALSE (1266ms)
+04:15:28 [SHOT] FAIL #1 (25011ms)
+04:15:28 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:15:32 [SHOT] OK (1485ms)
+04:15:32 [SCAN] Attack - Auto → TRUE (28505ms)
+04:15:32 [SHOT] OK (0ms)
+04:15:33 [SHOT] OK (0ms)
+04:15:33 [SCAN] Gathering - Automove → FALSE (1364ms)
+04:15:34 [SHOT] OK (0ms)
+04:15:34 [SCAN] Attack - Auto On → TRUE (18ms)
+04:15:34 [MACRO] Click 5P: Starting (0ms)
+04:15:40     - Step OK: ⚡ Hard Click 'Click 5P' at (1534,90)
+04:15:40 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:15:40 [Macro] Delay completed.
+04:15:40 [Macro] Steps completed. Checking result...
+04:15:40 [Macro] Finished (no capture check configured).
+04:15:40 [MACRO] Click 5P: PASSED (5747ms total)
+04:15:40 [MACRO] Revivie: Starting (0ms)
+04:16:05 [SHOT] FAIL #1 (25006ms)
+04:16:05 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:16:08 [SHOT] OK (0ms)
+04:16:08 [SHOT] OK (0ms)
+04:16:08 [SHOT] OK (0ms)
+04:16:34 [SHOT] FAIL #1 (25011ms)
+04:16:34 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:16:36     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:16:36 [MACRO] Revivie: FAILED (55808ms total)
+04:16:36 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+04:16:40 [SHOT] OK (196ms)
+04:16:41 [SHOT] OK (0ms)
+04:16:41 [SCAN] Supplies → FALSE (1398ms)
+04:16:41 [SHOT] OK (0ms)
+04:16:42 [SHOT] OK (0ms)
+04:16:43 [SCAN] Revive → FALSE (1285ms)
+04:17:08 [SHOT] FAIL #1 (25013ms)
+04:17:08 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:17:35 [SHOT] FAIL #2 (25001ms)
+04:17:35 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:17:39 [SCAN] Supplies - In → FALSE (56026ms)
+04:18:10 [SHOT] FAIL #3 (25001ms)
+04:18:10 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:18:43 [SHOT] FAIL #4 (25001ms)
+04:18:43 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:18:59 [SCAN] Attack - Auto → FALSE (74003ms)
+04:19:15 [SHOT] OK (15490ms)
+04:19:15 [SHOT] OK (0ms)
+04:19:16 [SCAN] Gathering - Automove → FALSE (16962ms)
+04:19:17 [SHOT] OK (0ms)
+04:19:17 [SCAN] Attack - Auto On → TRUE (18ms)
+04:19:17 [MACRO] Click 5P: Starting (0ms)
+04:19:23     - Step OK: ⚡ Hard Click 'Click 5P' at (1512,92)
+04:19:23 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:19:23 [Macro] Delay completed.
+04:19:23 [Macro] Steps completed. Checking result...
+04:19:23 [Macro] Finished (no capture check configured).
+04:19:23 [MACRO] Click 5P: PASSED (5688ms total)
+04:19:23 [MACRO] Revivie: Starting (0ms)
+04:19:48 [SHOT] FAIL #1 (25010ms)
+04:19:48 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:19:51 [SHOT] OK (307ms)
+04:19:51 [SHOT] OK (0ms)
+04:19:52 [SHOT] OK (0ms)
+04:19:52 [SHOT] OK (0ms)
+04:19:52     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:19:52 [MACRO] Revivie: FAILED (29294ms total)
+04:19:52 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+04:19:56 [SHOT] OK (224ms)
+04:19:57 [SHOT] OK (0ms)
+04:19:58 [SCAN] Supplies → FALSE (1628ms)
+04:19:58 [SHOT] OK (0ms)
+04:19:58 [SHOT] OK (0ms)
+04:19:59 [SCAN] Revive → FALSE (877ms)
+04:20:24 [SHOT] FAIL #1 (25006ms)
+04:20:24 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:20:51 [SHOT] FAIL #2 (25006ms)
+04:20:51 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:20:55 [SCAN] Supplies - In → FALSE (56015ms)
+04:20:58 [SHOT] OK (2454ms)
+04:20:58 [SCAN] Attack - Auto → TRUE (2461ms)
+04:20:59 [SHOT] OK (0ms)
+04:20:59 [SHOT] OK (0ms)
+04:21:00 [SCAN] Gathering - Automove → FALSE (1389ms)
+04:21:01 [SHOT] OK (0ms)
+04:21:01 [SCAN] Attack - Auto On → TRUE (18ms)
+04:21:01 [MACRO] Click 5P: Starting (0ms)
+04:21:06     - Step OK: ⚡ Hard Click 'Click 5P' at (1488,89)
+04:21:07 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:21:07 [Macro] Delay completed.
+04:21:07 [Macro] Steps completed. Checking result...
+04:21:07 [Macro] Finished (no capture check configured).
+04:21:07 [MACRO] Click 5P: PASSED (5679ms total)
+04:21:07 [MACRO] Revivie: Starting (0ms)
+04:21:32 [SHOT] FAIL #1 (25012ms)
+04:21:32 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:21:59 [SHOT] FAIL #2 (25030ms)
+04:21:59 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:22:28 [SHOT] FAIL #3 (25016ms)
+04:22:28 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:23:02 [SHOT] FAIL #4 (25011ms)
+04:23:02 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:23:40 [SHOT] OK (21813ms)
+04:23:40     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:23:40 [MACRO] Revivie: FAILED (153510ms total)
+04:23:45 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+04:24:10 [SHOT] OK (21561ms)
+04:24:11 [SHOT] OK (0ms)
+04:24:12 [SCAN] Supplies → FALSE (23021ms)
+04:24:12 [SHOT] OK (0ms)
+04:24:13 [SHOT] OK (0ms)
+04:24:14 [SCAN] Revive → FALSE (1277ms)
+04:24:39 [SHOT] FAIL #1 (25003ms)
+04:24:39 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:25:06 [SHOT] FAIL #2 (25029ms)
+04:25:06 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:25:10 [SCAN] Supplies - In → FALSE (56098ms)
+04:25:36 [SHOT] FAIL #3 (25011ms)
+04:25:36 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:26:09 [SHOT] FAIL #4 (25001ms)
+04:26:09 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:26:25 [SCAN] Attack - Auto → FALSE (74014ms)
+04:26:46 [SHOT] OK (19898ms)
+04:26:46 [SHOT] OK (0ms)
+04:26:47 [SCAN] Gathering - Automove → FALSE (21243ms)
+04:26:47 [SHOT] OK (0ms)
+04:26:47 [SCAN] Attack - Auto On → TRUE (17ms)
+04:26:48 [MACRO] Click 5P: Starting (0ms)
+04:26:53     - Step OK: ⚡ Hard Click 'Click 5P' at (1497,90)
+04:26:53 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:26:54 [Macro] Delay completed.
+04:26:54 [Macro] Steps completed. Checking result...
+04:26:54 [Macro] Finished (no capture check configured).
+04:26:54 [MACRO] Click 5P: PASSED (5591ms total)
+04:26:54 [MACRO] Revivie: Starting (0ms)
+04:27:19 [SHOT] FAIL #1 (25011ms)
+04:27:19 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:27:21 [SHOT] OK (0ms)
+04:27:21 [SHOT] OK (0ms)
+04:27:47 [SHOT] FAIL #1 (25003ms)
+04:27:47 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:28:14 [SHOT] FAIL #2 (25000ms)
+04:28:14 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:28:18     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:28:18 [MACRO] Revivie: FAILED (84721ms total)
+04:28:23 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+04:28:52 [SHOT] FAIL #3 (25001ms)
+04:28:52 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:29:25 [SHOT] FAIL #4 (25009ms)
+04:29:25 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:29:41 [SCAN] Supplies → FALSE (74013ms)
+04:29:51 [SHOT] OK (10184ms)
+04:29:52 [SHOT] OK (0ms)
+04:29:53 [SCAN] Revive → FALSE (11406ms)
+04:29:53 [SHOT] OK (0ms)
+04:29:54 [SHOT] OK (0ms)
+04:29:55 [SCAN] Supplies - In → FALSE (1491ms)
+04:30:20 [SHOT] FAIL #1 (25002ms)
+04:30:20 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:30:47 [SHOT] FAIL #2 (25015ms)
+04:30:47 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:30:51 [SCAN] Attack - Auto → FALSE (56020ms)
+04:31:17 [SHOT] FAIL #3 (25012ms)
+04:31:17 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:31:50 [SHOT] FAIL #4 (25002ms)
+04:31:50 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:32:06 [SCAN] Gathering - Automove → FALSE (74017ms)
+04:32:32 [SHOT] FAIL #5 (25002ms)
+04:32:32 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:33:26 [SHOT] OK (24700ms)
+04:33:27 [SCAN] Attack - Auto On → FALSE (80533ms)
+04:33:33 [Kipie] Connection rotation — periodic reconnect
+04:33:35 [Kipie] Connection rotated successfully
+04:34:00 [SHOT] FAIL #1 (25026ms)
+04:34:00 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:34:05 [SHOT] OK (3489ms)
+04:34:06 [SCAN] Revive → FALSE (30981ms)
+04:34:06 [NODE] → Click: Attack - Auto
+04:34:06 [SHOT] OK (0ms)
+04:34:06 [SCAN] Attack - Auto → FALSE (0ms)
+04:34:07 [NODE] → Click: Click 5P
+04:34:07 [SHOT] OK (0ms)
+04:34:07 [SCAN] Click 5P → FALSE (0ms)
+04:34:07 [Kipie] No next node after 'Click' (Click 5P). Restart 1/10
+04:34:36 [SHOT] FAIL #1 (25009ms)
+04:34:36 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:35:03 [SHOT] FAIL #2 (25004ms)
+04:35:03 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:35:07 [SCAN] Supplies → FALSE (56016ms)
+04:35:10 [SHOT] OK (3053ms)
+04:35:11 [SHOT] OK (0ms)
+04:35:12 [SCAN] Revive → FALSE (4687ms)
+04:35:12 [SHOT] OK (0ms)
+04:35:13 [SHOT] OK (0ms)
+04:35:14 [SCAN] Supplies - In → FALSE (1622ms)
+04:35:40 [SHOT] FAIL #1 (25006ms)
+04:35:40 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:36:07 [SHOT] FAIL #2 (25010ms)
+04:36:07 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:36:11 [SCAN] Attack - Auto → FALSE (56017ms)
+04:36:36 [SHOT] FAIL #3 (25014ms)
+04:36:36 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:36:45 [SHOT] OK (823ms)
+04:36:46 [SCAN] Gathering - Automove → FALSE (34488ms)
+04:36:46 [SHOT] OK (0ms)
+04:36:47 [SHOT] OK (0ms)
+04:36:48 [SCAN] Attack - Auto On → FALSE (1181ms)
+04:36:48 [SHOT] OK (0ms)
+04:36:49 [SHOT] OK (285ms)
+04:36:49 [SCAN] Revive → FALSE (1197ms)
+04:36:49 [NODE] → Click: Attack - Auto
+04:36:49 [SHOT] OK (0ms)
+04:36:50 [SCAN] Attack - Auto → FALSE (0ms)
+04:36:50 [NODE] → Click: Click 5P
+04:36:50 [SHOT] OK (0ms)
+04:36:50 [SCAN] Click 5P → FALSE (0ms)
+04:36:50 [Kipie] No next node after 'Click' (Click 5P). Restart 1/10
+04:36:54 [SHOT] OK (121ms)
+04:36:54 [SHOT] OK (0ms)
+04:36:55 [SCAN] Supplies → FALSE (1351ms)
+04:36:56 [SHOT] OK (0ms)
+04:36:56 [SHOT] OK (0ms)
+04:36:57 [SCAN] Revive → FALSE (1352ms)
+04:36:58 [SHOT] OK (141ms)
+04:36:58 [SHOT] OK (0ms)
+04:36:59 [SCAN] Supplies - In → FALSE (951ms)
+04:36:59 [SHOT] OK (0ms)
+04:37:00 [SHOT] OK (0ms)
+04:37:01 [SCAN] Attack - Auto → FALSE (1428ms)
+04:37:02 [SHOT] OK (107ms)
+04:37:03 [SHOT] OK (0ms)
+04:37:03 [SCAN] Gathering - Automove → FALSE (1652ms)
+04:37:04 [SHOT] OK (0ms)
+04:37:05 [SHOT] OK (158ms)
+04:37:05 [SCAN] Attack - Auto On → TRUE (987ms)
+04:37:06 [MACRO] Click 5P: Starting (0ms)
+04:37:06     - Step OK: ⚡ Hard Click 'Click 5P' at (1533,86)
+04:37:06 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:37:06 [Macro] Delay completed.
+04:37:06 [Macro] Steps completed. Checking result...
+04:37:06 [Macro] Finished (no capture check configured).
+04:37:06 [MACRO] Click 5P: PASSED (773ms total)
+04:37:06 [MACRO] Revivie: Starting (0ms)
+04:37:06 [SHOT] OK (0ms)
+04:37:07 [SHOT] OK (0ms)
+04:37:07 [SHOT] OK (0ms)
+04:37:08 [SHOT] OK (0ms)
+04:37:08 [SHOT] OK (0ms)
+04:37:08     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:37:08 [MACRO] Revivie: FAILED (1956ms total)
+04:37:08 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+04:37:12 [SHOT] OK (175ms)
+04:37:13 [SHOT] OK (0ms)
+04:37:13 [SCAN] Supplies → FALSE (1618ms)
+04:37:14 [SHOT] OK (0ms)
+04:37:15 [SHOT] OK (0ms)
+04:37:16 [SCAN] Revive → FALSE (1702ms)
+04:37:41 [SHOT] FAIL #1 (25003ms)
+04:37:41 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:37:43 [SHOT] OK (166ms)
+04:37:44 [SCAN] Supplies - In → FALSE (27863ms)
+04:37:45 [SHOT] OK (0ms)
+04:37:45 [SCAN] Attack - Auto → TRUE (8ms)
+04:37:45 [SHOT] OK (0ms)
+04:37:46 [SHOT] OK (0ms)
+04:37:47 [SCAN] Gathering - Automove → FALSE (1390ms)
+04:37:47 [SHOT] OK (215ms)
+04:37:47 [SCAN] Attack - Auto On → TRUE (234ms)
+04:37:48 [MACRO] Click 5P: Starting (0ms)
+04:37:53     - Step OK: ⚡ Hard Click 'Click 5P' at (1492,93)
+04:37:54 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:37:54 [Macro] Delay completed.
+04:37:54 [Macro] Steps completed. Checking result...
+04:37:54 [Macro] Finished (no capture check configured).
+04:37:54 [MACRO] Click 5P: PASSED (5713ms total)
+04:37:54 [MACRO] Revivie: Starting (0ms)
+04:38:18 [SHOT] OK (24621ms)
+04:38:19 [SHOT] OK (0ms)
+04:38:19 [SHOT] OK (0ms)
+04:38:19 [SHOT] OK (0ms)
+04:38:20 [SHOT] OK (0ms)
+04:38:20     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:38:20 [MACRO] Revivie: FAILED (26589ms total)
+04:38:25 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+04:38:49 [SHOT] OK (20611ms)
+04:38:50 [SHOT] OK (0ms)
+04:38:51 [SCAN] Supplies → FALSE (21820ms)
+04:38:51 [SHOT] OK (0ms)
+04:38:52 [SHOT] OK (0ms)
+04:38:53 [SCAN] Revive → FALSE (1489ms)
+04:39:19 [SHOT] FAIL #1 (25007ms)
+04:39:19 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:39:46 [SHOT] FAIL #2 (25010ms)
+04:39:46 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:39:50 [SCAN] Supplies - In → FALSE (56018ms)
+04:40:15 [SHOT] FAIL #3 (25009ms)
+04:40:15 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:40:48 [SHOT] FAIL #4 (25013ms)
+04:40:48 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:41:04 [SCAN] Attack - Auto → FALSE (74025ms)
+04:41:08 [SHOT] OK (3360ms)
+04:41:09 [SHOT] OK (0ms)
+04:41:10 [SCAN] Gathering - Automove → FALSE (4558ms)
+04:41:10 [SHOT] OK (0ms)
+04:41:10 [SCAN] Attack - Auto On → TRUE (18ms)
+04:41:11 [MACRO] Click 5P: Starting (0ms)
+04:41:16     - Step OK: ⚡ Hard Click 'Click 5P' at (1516,99)
+04:41:16 [Macro] (2/2) Delay: 100ms (0.1s)...
+04:41:16 [Macro] Delay completed.
+04:41:16 [Macro] Steps completed. Checking result...
+04:41:16 [Macro] Finished (no capture check configured).
+04:41:16 [MACRO] Click 5P: PASSED (5668ms total)
+04:41:16 [MACRO] Revivie: Starting (0ms)
+04:41:41 [SHOT] FAIL #1 (25004ms)
+04:41:41 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:42:09 [SHOT] FAIL #2 (25009ms)
+04:42:09 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:42:14 [SHOT] FAIL #3 (833ms)
+04:42:14 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:42:47 [SHOT] FAIL #4 (25003ms)
+04:42:47 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:43:04 [SHOT] OK (198ms)
+04:43:04     - Step FAILED: Could not find 'Revive' after 5 attempts.
+04:43:04 [MACRO] Revivie: FAILED (107723ms total)
+04:43:04 ============================================================
+04:43:04 SESSION END — Kipie (72.0 min)
+04:43:04   Loops: 0
+04:43:04   Screenshots: 513 ok / 85 fail (14.2%)
+04:43:04   Avg latency: 1283ms
+04:43:04   Macros: 22 ok / 18 fail
+04:43:04   Errors: 0
+04:43:04 ============================================================
+04:54:12 ============================================================
+04:54:12 SESSION START — Kipie (port:9223 tab:2)
+04:54:12 ============================================================
+04:54:13 [Kipie] Starting worker: func=loop - Farm V1, port=9223, tab=2
+04:54:19 [Kipie] Connected to Port 9223, Tab 2
+04:54:20 [SHOT] OK (604ms)
+04:54:20 [SHOT] OK (0ms)
+04:54:21 [SCAN] Supplies → FALSE (1850ms)
+04:54:22 [SHOT] OK (0ms)
+04:54:22 [SCAN] Revive → TRUE (13ms)
+04:54:22 [MACRO] Revivie: Starting (0ms)
+04:54:22 [SHOT] OK (0ms)
+04:54:24     - Step OK: Clicked 'Revive'
+04:54:25 [Macro] (2/2) Delay: 3000ms (3.0s)...
+04:54:28 [Macro] Delay completed.
+04:54:28 [Macro] Steps completed. Checking result...
+04:54:54 [SHOT] FAIL #1 (25003ms)
+04:54:54 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:54:56 [Macro] Result: FAILURE ('Supplies' not found)
+04:54:56 [MACRO] Revivie: FAILED (33658ms total)
+04:54:56 [Kipie] No next node after 'Macro' (38ef6fd1). Restart 1/10
+04:55:09 [SHOT] OK (9592ms)
+04:55:09 [SCAN] Supplies → TRUE (9604ms)
+04:55:10 [MACRO] Buy Blood: Starting (0ms)
+04:55:15     - Step OK: ⚡ Hard Click 'Supplies' at (1320,578)
+04:55:15 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:55:16 [SHOT] OK (235ms)
+04:55:17 [SHOT] OK (0ms)
+04:55:18 [SHOT] OK (0ms)
+04:55:19 [SHOT] OK (0ms)
+04:55:44 [SHOT] FAIL #1 (25012ms)
+04:55:44 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:56:12 [SHOT] FAIL #2 (25015ms)
+04:56:12 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:56:41 [SHOT] FAIL #3 (25014ms)
+04:56:41 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:56:50 [SHOT] OK (581ms)
+04:56:50     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:56:56     - Step OK: ⚡ Hard Click 'Supplies - Type' at (558,292)
+04:56:56 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:57:21 [SHOT] OK (24959ms)
+04:57:21     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:57:26     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (893,556)
+04:57:27 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:57:27 [Macro] Delay completed.
+04:57:32     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1031,720)
+04:57:37     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1528,143)
+04:57:38 [Macro] Steps completed. Checking result...
+04:57:52 [SHOT] OK (12744ms)
+04:57:52 [Macro] Result: SUCCESS (found 'Home')
+04:57:52 [MACRO] Buy Blood: PASSED (162005ms total)
+04:57:52 [MACRO] Gathering: Starting (0ms)
+04:57:52 [SHOT] OK (0ms)
+04:57:57     - Step OK: Clicked 'Gathering'
+04:57:57 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s)...
+04:58:22 [SHOT] FAIL #1 (25014ms)
+04:58:22 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:58:50 [SHOT] FAIL #2 (25003ms)
+04:58:50 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:59:19 [SHOT] FAIL #3 (25008ms)
+04:59:19 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:59:53 [SHOT] FAIL #4 (25012ms)
+04:59:53 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:00:18 [SHOT] OK (9012ms)
+05:00:18     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:00:24     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1088,570)
+05:00:24 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:00:36 [Macro] Delay completed.
+05:00:36 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s)...
+05:01:01 [SHOT] FAIL #1 (25005ms)
+05:01:01 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:01:29 [SHOT] FAIL #2 (25015ms)
+05:01:29 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:01:37 [SHOT] OK (3380ms)
+05:01:37 [SHOT] OK (0ms)
+05:01:38 [SHOT] OK (0ms)
+05:01:39 [SHOT] OK (0ms)
+05:01:40 [SHOT] OK (183ms)
+05:01:41 [SHOT] OK (0ms)
+05:01:42 [SHOT] OK (0ms)
+05:01:42 [SHOT] OK (0ms)
+05:01:43 [SHOT] OK (282ms)
+05:01:44 [SHOT] OK (0ms)
+05:01:45 [SHOT] OK (0ms)
+05:01:46 [SHOT] OK (0ms)
+05:01:47 [SHOT] OK (187ms)
+05:01:48 [SHOT] OK (0ms)
+05:01:48 [SHOT] OK (0ms)
+05:01:49 [SHOT] OK (0ms)
+05:01:50 [SHOT] OK (0ms)
+05:01:50 [SHOT] OK (203ms)
+05:01:51 [SHOT] OK (0ms)
+05:01:52 [SHOT] OK (0ms)
+05:01:53 [SHOT] OK (0ms)
+05:01:53 [SHOT] OK (0ms)
+05:01:54 [SHOT] OK (182ms)
+05:01:55 [SHOT] OK (0ms)
+05:01:56 [SHOT] OK (0ms)
+05:01:58 [SHOT] OK (681ms)
+05:01:58 [SHOT] OK (0ms)
+05:01:58 [SHOT] OK (0ms)
+05:01:59 [SHOT] OK (0ms)
+05:02:00 [SHOT] OK (0ms)
+05:02:00 [SHOT] OK (0ms)
+05:02:01 [SHOT] OK (182ms)
+05:02:02 [SHOT] OK (0ms)
+05:02:03 [SHOT] OK (0ms)
+05:02:04 [SHOT] OK (0ms)
+05:02:05 [SHOT] OK (184ms)
+05:02:06 [SHOT] OK (0ms)
+05:02:07 [SHOT] OK (0ms)
+05:02:07 [SHOT] OK (0ms)
+05:02:08 [SHOT] OK (0ms)
+05:02:09 [SHOT] OK (174ms)
+05:02:10 [SHOT] OK (0ms)
+05:02:11 [SHOT] OK (0ms)
+05:02:12 [SHOT] OK (161ms)
+05:02:12 [SHOT] OK (0ms)
+05:02:13 [SHOT] OK (0ms)
+05:02:13 [SHOT] OK (0ms)
+05:02:14 [SHOT] OK (0ms)
+05:02:16 [SHOT] OK (841ms)
+05:02:16 [SHOT] OK (0ms)
+05:02:17 [SHOT] OK (0ms)
+05:02:18 [SHOT] OK (0ms)
+05:02:18 [SHOT] OK (0ms)
+05:02:20 [SHOT] OK (183ms)
+05:02:20 [SHOT] OK (0ms)
+05:02:21 [SHOT] OK (0ms)
+05:02:21 [SHOT] OK (0ms)
+05:02:23 [SHOT] OK (0ms)
+05:02:24 [SHOT] OK (212ms)
+05:02:24 [SHOT] OK (0ms)
+05:02:25 [SHOT] OK (0ms)
+05:02:26 [SHOT] OK (0ms)
+05:02:26 [SHOT] OK (0ms)
+05:02:27 [SHOT] OK (203ms)
+05:02:28 [SHOT] OK (0ms)
+05:02:28 [SHOT] OK (0ms)
+05:02:28 [SHOT] OK (0ms)
+05:02:29 [SHOT] OK (0ms)
+05:02:31 [SHOT] OK (454ms)
+05:02:31 [SHOT] OK (0ms)
+05:02:32 [SHOT] OK (0ms)
+05:02:32 [SHOT] OK (0ms)
+05:02:33 [SHOT] OK (0ms)
+05:02:34 [SHOT] OK (165ms)
+05:02:35 [SHOT] OK (0ms)
+05:02:35 [SHOT] OK (0ms)
+05:02:36 [SHOT] OK (0ms)
+05:02:37 [SHOT] OK (0ms)
+05:02:38 [SHOT] OK (145ms)
+05:02:39 [SHOT] OK (0ms)
+05:02:40 [SHOT] OK (0ms)
+05:02:41 [SHOT] OK (0ms)
+05:02:42 [SHOT] OK (157ms)
+05:02:43 [SHOT] OK (0ms)
+05:02:44 [SHOT] OK (0ms)
+05:02:44 [SHOT] OK (0ms)
+05:02:46 [SHOT] OK (166ms)
+05:02:46     - Marker triggered. Holding 6.5s...
+05:02:47 [SHOT] OK (0ms)
+05:02:48 [SHOT] OK (0ms)
+05:02:49 [SHOT] OK (201ms)
+05:02:49     - Marker interrupted. Resetting hold timer.
+05:02:50 [SHOT] OK (0ms)
+05:02:51 [SHOT] OK (0ms)
+05:02:52 [SHOT] OK (0ms)
+05:02:53 [SHOT] OK (257ms)
+05:02:55 [SHOT] OK (0ms)
+05:02:55 [SHOT] OK (0ms)
+05:02:56 [SHOT] OK (0ms)
+05:02:57 [SHOT] OK (231ms)
+05:02:58 [SHOT] OK (0ms)
+05:02:58 [SHOT] OK (0ms)
+05:02:59 [SHOT] OK (0ms)
+05:03:00 [SHOT] OK (191ms)
+05:03:01 [SHOT] OK (0ms)
+05:03:02 [SHOT] OK (0ms)
+05:03:03 [SHOT] OK (0ms)
+05:03:03 [SHOT] OK (0ms)
+05:03:04 [SHOT] OK (196ms)
+05:03:05 [SHOT] OK (0ms)
+05:03:06 [SHOT] OK (0ms)
+05:03:07 [SHOT] OK (0ms)
+05:03:08 [SHOT] OK (195ms)
+05:03:09 [SHOT] OK (0ms)
+05:03:10 [SHOT] OK (0ms)
+05:03:11 [SHOT] OK (197ms)
+05:03:12 [SHOT] OK (0ms)
+05:03:13 [SHOT] OK (0ms)
+05:03:14 [SHOT] OK (0ms)
+05:03:15 [SHOT] OK (172ms)
+05:03:16 [SHOT] OK (0ms)
+05:03:17 [SHOT] OK (0ms)
+05:03:18 [SHOT] OK (185ms)
+05:03:18 [SHOT] OK (0ms)
+05:03:20 [SHOT] OK (0ms)
+05:03:20 [SHOT] OK (0ms)
+05:03:21 [SHOT] OK (0ms)
+05:03:22 [SHOT] OK (185ms)
+05:03:22 [SHOT] OK (0ms)
+05:03:23 [SHOT] OK (0ms)
+05:03:23 [SHOT] OK (0ms)
+05:03:24 [SHOT] OK (0ms)
+05:03:25 [SHOT] OK (0ms)
+05:03:26 [SHOT] OK (199ms)
+05:03:26 [SHOT] OK (0ms)
+05:03:27 [SHOT] OK (0ms)
+05:03:28 [SHOT] OK (0ms)
+05:03:29 [SHOT] OK (181ms)
+05:03:29     - Marker triggered. Holding 6.5s...
+05:03:30 [SHOT] OK (0ms)
+05:03:30 [SHOT] OK (0ms)
+05:03:31 [SHOT] OK (0ms)
+05:03:32 [SHOT] OK (0ms)
+05:03:33 [SHOT] OK (216ms)
+05:03:33     - Holding... 3/6s
+05:03:34 [SHOT] OK (0ms)
+05:03:35 [SHOT] OK (0ms)
+05:03:35 [SHOT] OK (0ms)
+05:03:35     - Holding... 6/6s
+05:03:37 [SHOT] OK (222ms)
+05:03:37     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:03:37 [SHOT] OK (0ms)
+05:03:42     - Step OK: Clicked 'Attack - Auto'
+05:03:42 [Macro] (7/8) Delay: 1000ms (1.0s)...
+05:03:43 [Macro] Delay completed.
+05:03:44 [SHOT] OK (289ms)
+05:03:49     - Step OK: Clicked 'Click 5P'
+05:03:49 [Macro] Steps completed. Checking result...
+05:03:51 [SHOT] OK (310ms)
+05:03:51 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+05:03:51 [MACRO] Gathering: PASSED (358906ms total)
+05:03:56 [MACRO] Click 5P: Starting (0ms)
+05:04:01     - Step OK: ⚡ Hard Click 'Click 5P' at (1531,100)
+05:04:01 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:04:01 [Macro] Delay completed.
+05:04:01 [Macro] Steps completed. Checking result...
+05:04:01 [Macro] Finished (no capture check configured).
+05:04:01 [MACRO] Click 5P: PASSED (5709ms total)
+05:04:01 [MACRO] Revivie: Starting (0ms)
+05:04:02 [SHOT] OK (285ms)
+05:04:02 [SHOT] OK (0ms)
+05:04:02 [SHOT] OK (0ms)
+05:04:03 [SHOT] OK (0ms)
+05:04:03 [SHOT] OK (0ms)
+05:04:04     - Step FAILED: Could not find 'Revive' after 5 attempts.
+05:04:04 [MACRO] Revivie: FAILED (2316ms total)
+05:04:04 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+05:04:07 [SHOT] OK (208ms)
+05:04:08 [SHOT] OK (0ms)
+05:04:09 [SCAN] Supplies → FALSE (1534ms)
+05:04:09 [SHOT] OK (0ms)
+05:04:10 [SHOT] OK (0ms)
+05:04:11 [SCAN] Revive → FALSE (1592ms)
+05:04:11 [SHOT] OK (199ms)
+05:04:12 [SHOT] OK (0ms)
+05:04:12 [SCAN] Supplies - In → FALSE (1524ms)
+05:04:13 [SHOT] OK (0ms)
+05:04:13 [SCAN] Attack - Auto → TRUE (7ms)
+05:04:14 [SHOT] OK (0ms)
+05:04:15 [SHOT] OK (189ms)
+05:04:15 [SCAN] Gathering - Automove → FALSE (1924ms)
+05:04:16 [SHOT] OK (0ms)
+05:04:16 [SCAN] Attack - Auto On → TRUE (23ms)
+05:04:17 [MACRO] Click 5P: Starting (0ms)
+05:04:22     - Step OK: ⚡ Hard Click 'Click 5P' at (1503,93)
+05:04:22 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:04:22 [Macro] Delay completed.
+05:04:22 [Macro] Steps completed. Checking result...
+05:04:22 [Macro] Finished (no capture check configured).
+05:04:22 [MACRO] Click 5P: PASSED (5613ms total)
+05:04:22 [MACRO] Revivie: Starting (0ms)
+05:04:22 [SHOT] OK (183ms)
+05:04:23 [SHOT] OK (0ms)
+05:04:23 [SHOT] OK (0ms)
+05:04:24 [SHOT] OK (0ms)
+05:04:24 [SHOT] OK (0ms)
+05:04:25     - Step FAILED: Could not find 'Revive' after 5 attempts.
+05:04:25 [MACRO] Revivie: FAILED (2238ms total)
+05:04:25 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+05:04:28 [SHOT] OK (177ms)
+05:04:29 [SHOT] OK (0ms)
+05:04:30 [SCAN] Supplies → FALSE (1809ms)
+05:04:31 [SHOT] OK (0ms)
+05:04:31 [SHOT] OK (0ms)
+05:04:32 [SCAN] Revive → FALSE (1267ms)
+05:04:33 [SHOT] OK (170ms)
+05:04:33 [SHOT] OK (0ms)
+05:04:34 [SCAN] Supplies - In → FALSE (1630ms)
+05:04:35 [SHOT] OK (0ms)
+05:04:35 [SCAN] Attack - Auto → TRUE (9ms)
+05:04:35 [SHOT] OK (0ms)
+05:04:36 [SHOT] OK (212ms)
+05:04:37 [SCAN] Gathering - Automove → FALSE (1773ms)
+05:04:38 [SHOT] OK (0ms)
+05:04:38 [SCAN] Attack - Auto On → TRUE (33ms)
+05:04:39 [MACRO] Click 5P: Starting (0ms)
+05:04:44     - Step OK: ⚡ Hard Click 'Click 5P' at (1493,94)
+05:04:44 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:04:44 [Macro] Delay completed.
+05:04:44 [Macro] Steps completed. Checking result...
+05:04:44 [Macro] Finished (no capture check configured).
+05:04:44 [MACRO] Click 5P: PASSED (5716ms total)
+05:04:44 [MACRO] Revivie: Starting (0ms)
+05:04:44 [SHOT] OK (197ms)
+05:04:45 [SHOT] OK (0ms)
+05:04:45 [SHOT] OK (0ms)
+05:04:46 [SHOT] OK (0ms)
+05:04:46 [SHOT] OK (0ms)
+05:04:46     - Step FAILED: Could not find 'Revive' after 5 attempts.
+05:04:46 [MACRO] Revivie: FAILED (2219ms total)
+05:04:46 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+05:04:50 [SHOT] OK (235ms)
+05:04:51 [SHOT] OK (0ms)
+05:04:51 [SCAN] Supplies → FALSE (1482ms)
+05:04:52 [SHOT] OK (0ms)
+05:04:53 [SHOT] OK (0ms)
+05:04:54 [SCAN] Revive → FALSE (1593ms)
+05:04:55 [SHOT] OK (415ms)
+05:04:55 [SHOT] OK (0ms)
+05:04:56 [SCAN] Supplies - In → FALSE (2147ms)
+05:04:57 [SHOT] OK (0ms)
+05:04:57 [SCAN] Attack - Auto → TRUE (12ms)
+05:04:57 [SHOT] OK (0ms)
+05:04:58 [SHOT] OK (193ms)
+05:04:59 [SCAN] Gathering - Automove → FALSE (1575ms)
+05:04:59 [SHOT] OK (0ms)
+05:04:59 [SCAN] Attack - Auto On → TRUE (26ms)
+05:05:00 [MACRO] Click 5P: Starting (0ms)
+05:05:02     - Step OK: ⚡ Hard Click 'Click 5P' at (1514,86)
+05:05:03 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:05:03 [Macro] Delay completed.
+05:05:03 [Macro] Steps completed. Checking result...
+05:05:03 [Macro] Finished (no capture check configured).
+05:05:03 [MACRO] Click 5P: PASSED (2541ms total)
+05:05:03 [MACRO] Revivie: Starting (0ms)
+05:05:03 [SHOT] OK (150ms)
+05:05:03 [SHOT] OK (0ms)
+05:05:04 [SHOT] OK (0ms)
+05:05:04 [SHOT] OK (0ms)
+05:05:04 [SHOT] OK (0ms)
+05:05:05     - Step FAILED: Could not find 'Revive' after 5 attempts.
+05:05:05 [MACRO] Revivie: FAILED (2168ms total)
+05:05:05 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+05:05:08 [SHOT] OK (141ms)
+05:05:09 [SHOT] OK (0ms)
+05:05:10 [SCAN] Supplies → FALSE (1535ms)
+05:05:11 [SHOT] OK (0ms)
+05:05:11 [SHOT] OK (0ms)
+05:05:12 [SCAN] Revive → FALSE (1526ms)
+05:05:13 [SHOT] OK (239ms)
+05:05:14 [SHOT] OK (0ms)
+05:05:15 [SCAN] Supplies - In → FALSE (1845ms)
+05:05:15 [SHOT] OK (0ms)
+05:05:15 [SCAN] Attack - Auto → TRUE (12ms)
+05:05:15 [SHOT] OK (0ms)
+05:05:41 [SHOT] FAIL #1 (25014ms)
+05:05:41 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:05:43 [SCAN] Gathering - Automove → FALSE (27771ms)
+05:05:49 [SHOT] OK (5083ms)
+05:05:49 [SCAN] Attack - Auto On → TRUE (5159ms)
+05:05:50 [MACRO] Click 5P: Starting (0ms)
+05:05:55     - Step OK: ⚡ Hard Click 'Click 5P' at (1504,91)
+05:05:55 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:05:55 [Macro] Delay completed.
+05:05:55 [Macro] Steps completed. Checking result...
+05:05:55 [Macro] Finished (no capture check configured).
+05:05:55 [MACRO] Click 5P: PASSED (5702ms total)
+05:05:55 [MACRO] Revivie: Starting (0ms)
+05:06:12 [SHOT] OK (16147ms)
+05:06:12 [SHOT] OK (0ms)
+05:06:12 [SHOT] OK (0ms)
+05:06:13 [SHOT] OK (0ms)
+05:06:13 [SHOT] OK (0ms)
+05:06:14     - Step FAILED: Could not find 'Revive' after 5 attempts.
+05:06:14 [MACRO] Revivie: FAILED (18236ms total)
+05:06:14 [Kipie] No next node after 'Macro' (ed214390). Restart 1/10
+05:06:17 ============================================================
+05:06:17 SESSION END — Kipie (12.1 min)
+05:06:17   Loops: 0
+05:06:17   Screenshots: 226 ok / 11 fail (4.6%)
+05:06:17   Avg latency: 415ms
+05:06:17   Macros: 7 ok / 6 fail
+05:06:17   Errors: 0
+05:06:17 ============================================================
+05:07:12 ============================================================
+05:07:12 SESSION START — Kipie (port:9223 tab:2)
+05:07:12 ============================================================
+05:07:13 [Kipie] Starting worker: func=macro - Home, port=9223, tab=2
+05:07:22 [Kipie] Connected to Port 9223, Tab 2
+05:07:22 [MACRO] Home: Starting (0ms)
+05:07:27     - Step OK: ⚡ Hard Click 'Home' at (353,369)
+05:07:28 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:07:38 [SHOT] OK (10471ms)
+05:07:38     - Marker OK: 'Supplies' confirmed APPEAR.
+05:07:38 [Macro] Steps completed. Checking result...
+05:07:39 [SHOT] OK (0ms)
+05:07:39 [Macro] Result: SUCCESS (found 'Supplies')
+05:07:39 [MACRO] Home: PASSED (17177ms total)
+05:07:39 ============================================================
+05:07:39 SESSION END — Kipie (0.5 min)
+05:07:39   Loops: 0
+05:07:39   Screenshots: 2 ok / 0 fail (0.0%)
+05:07:39   Avg latency: 5235ms
+05:07:39   Macros: 1 ok / 0 fail
+05:07:39   Errors: 0
+05:07:39 ============================================================
+05:11:23 ============================================================
+05:11:23 SESSION START — Kipie (port:9223 tab:2)
+05:11:23 ============================================================
+05:11:24 [Kipie] Starting worker: func=loop - Farm V1, port=9223, tab=2
+05:11:33 [Kipie] Connected to Port 9223, Tab 2
+05:11:33 [LOOP] ── Loop iteration start ──
+05:11:58 [SHOT] FAIL #1 (25002ms)
+05:11:58 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:25 [SHOT] FAIL #2 (25008ms)
+05:12:25 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:29 [SCAN] Supplies → FALSE (56013ms)
+05:12:55 [SHOT] FAIL #3 (25011ms)
+05:12:55 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:13:28 [SHOT] FAIL #4 (25009ms)
+05:13:28 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:13:44 [SCAN] Revive → FALSE (74022ms)
+05:14:30 [SHOT] FAIL #5 (25011ms)
+05:14:30 [Kipie] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:15:10 [SHOT] OK (10005ms)
+05:15:11 [SCAN] Supplies - In → FALSE (65889ms)
+05:15:11 [SHOT] OK (0ms)
+05:15:12 [SHOT] OK (0ms)
+05:15:13 [SCAN] Attack - Auto → FALSE (1899ms)
+05:15:14 [SHOT] OK (237ms)
+05:15:15 [SHOT] OK (0ms)
+05:15:15 [SCAN] Gathering - Automove → FALSE (1998ms)
+05:15:16 [SHOT] OK (0ms)
+05:15:17 [SHOT] OK (563ms)
+05:15:18 [SCAN] Attack - Auto On → FALSE (2141ms)
+05:15:19 [SHOT] OK (0ms)
+05:15:20 [SHOT] OK (0ms)
+05:15:21 [SCAN] Revive → FALSE (1576ms)
+05:15:21 [NODE] → Click: Attack - Auto
+05:15:46 [SHOT] FAIL #1 (25007ms)
+05:15:46 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:15:48 [ERR] Click SKIP: 'Attack - Auto' screenshot failed
+05:15:48 [NODE] → Click: Click 5P
+05:16:13 [SHOT] FAIL #2 (25014ms)
+05:16:13 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:16:17 [ERR] Click SKIP: 'Click 5P' screenshot failed
+05:16:18 [ERR] DEAD END: No edge from 'Click' (Click 5P) — will trigger restart
+05:16:28 [ERR] RESTART: No next node after 'Click' (Click 5P). Restart 1/10
+05:16:31 [LOOP] ── Loop iteration start ──
+05:16:55 [SHOT] OK (23703ms)
+05:16:55 [SCAN] Supplies → TRUE (23714ms)
+05:16:56 [MACRO] Buy Blood: Starting (0ms)
+05:17:01     - Step OK: ⚡ Hard Click 'Supplies' at (1327,575)
+05:17:01 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:17:26 [SHOT] FAIL #1 (25002ms)
+05:17:26 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:17:54 [SHOT] FAIL #2 (25005ms)
+05:17:54 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:18:23 [SHOT] FAIL #3 (25013ms)
+05:18:23 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:18:32 [SHOT] OK (0ms)
+05:18:32     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:18:37     - Step OK: ⚡ Hard Click 'Supplies - Type' at (477,302)
+05:18:37 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:19:02 [SHOT] FAIL #1 (25002ms)
+05:19:02 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:19:30 [SHOT] FAIL #2 (25014ms)
+05:19:30 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:19:59 [SHOT] FAIL #3 (25005ms)
+05:19:59 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:20:33 [SHOT] FAIL #4 (25007ms)
+05:20:33 [Kipie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:21:13 [SHOT] OK (23140ms)
+05:21:13     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:21:18     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (840,547)
+05:21:18 [Macro] Stopped at step 6/8 (worker stopped)
+05:21:18 [MACRO] Buy Blood: FAILED (262431ms total)
+05:21:18 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:21:18 ============================================================
+05:21:18 SESSION END — Kipie (9.9 min)
+05:21:18   Loops: 0
+05:21:18   Screenshots: 12 ok / 14 fail (53.8%)
+05:21:18   Avg latency: 4804ms
+05:21:18   Macros: 0 ok / 1 fail
+05:21:18   Errors: 5
+05:21:18 ============================================================
+05:23:33 ============================================================
+05:23:33 SESSION START — Kipie (port:9223 tab:2)
+05:23:33 ============================================================
+05:23:34 [Kipie] Starting worker: func=macro - Home, port=9223, tab=2
+05:23:42 [Kipie] Connected to Port 9223, Tab 2
+05:23:43 [MACRO] Home: Starting (0ms)
+05:23:48     - Step OK: ⚡ Hard Click 'Home' at (357,382)
+05:23:49 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:14 [SHOT] FAIL #1 (25009ms)
+05:24:14 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:24:41 [SHOT] FAIL #2 (25007ms)
+05:24:41 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:24:48 [SHOT] OK (2417ms)
+05:24:49 [SHOT] OK (0ms)
+05:24:50 [SHOT] OK (0ms)
+05:24:50 [SHOT] OK (0ms)
+05:24:51 [SHOT] OK (0ms)
+05:24:52 [SHOT] OK (170ms)
+05:24:53 [SHOT] OK (0ms)
+05:24:54 [SHOT] OK (0ms)
+05:24:55 [SHOT] OK (0ms)
+05:24:56 [SHOT] OK (210ms)
+05:24:56     - Marker OK: 'Supplies' confirmed APPEAR.
+05:24:56 [Macro] Steps completed. Checking result...
+05:24:57 [SHOT] OK (0ms)
+05:24:57 [Macro] Result: SUCCESS (found 'Supplies')
+05:24:57 [MACRO] Home: PASSED (73376ms total)
+05:24:57 ============================================================
+05:24:57 SESSION END — Kipie (1.4 min)
+05:24:57   Loops: 0
+05:24:57   Screenshots: 11 ok / 2 fail (15.4%)
+05:24:57   Avg latency: 254ms
+05:24:57   Macros: 1 ok / 0 fail
+05:24:57   Errors: 0
+05:24:57 ============================================================
+05:26:32 ============================================================
+05:26:32 SESSION START — Kipie (port:9223 tab:2)
+05:26:32 ============================================================
+05:26:33 [Kipie] Starting worker: func=loop - Farm V1, port=9223, tab=2
+05:26:37 [Kipie] Connected to Port 9223, Tab 2
+05:26:39 [LOOP] ── Loop iteration start ──
+05:27:05 [SHOT] FAIL #1 (25008ms)
+05:27:05 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:27:07 [SHOT] OK (0ms)
+05:27:07 [SCAN] Gathering - Inside → FALSE (27616ms)
+05:27:33 [SHOT] FAIL #1 (25015ms)
+05:27:33 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:27:37 [SHOT] OK (1736ms)
+05:27:37 [SCAN] Supplies → TRUE (28761ms)
+05:27:37 [MACRO] Buy Blood: Starting (0ms)
+05:27:42     - Step OK: ⚡ Hard Click 'Supplies' at (1301,554)
+05:27:43 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:28:08 [SHOT] FAIL #1 (25004ms)
+05:28:08 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:28:15 [SHOT] OK (4126ms)
+05:28:15     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:28:20     - Step OK: ⚡ Hard Click 'Supplies - Type' at (510,290)
+05:28:20 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:28:45 [SHOT] FAIL #1 (25015ms)
+05:28:45 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:28:51 [SHOT] OK (2905ms)
+05:28:51     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:28:56     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (867,542)
+05:28:56 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:28:56 [Macro] Delay completed.
+05:29:01     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (989,729)
+05:29:02 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:29:03 [Macro] Delay completed.
+05:29:08     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1546,155)
+05:29:08 [Macro] Steps completed. Checking result...
+05:29:22 [SHOT] OK (12836ms)
+05:29:22 [Macro] Result: SUCCESS (found 'Home')
+05:29:22 [MACRO] Buy Blood: PASSED (104908ms total)
+05:29:32 [MACRO] Gathering: Starting (0ms)
+05:29:54 [SHOT] OK (21623ms)
+05:29:59     - Step OK: Clicked 'Gathering'
+05:29:59 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:30:24 [SHOT] FAIL #1 (25000ms)
+05:30:24 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:30:27     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:30:27 [MACRO] Gathering: FAILED (54643ms total)
+05:30:27 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:30:27 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:30:30 [LOOP] ── Loop iteration start ──
+05:30:55 [SHOT] FAIL #2 (25014ms)
+05:30:55 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:31:24 [SHOT] FAIL #3 (25006ms)
+05:31:24 [Kipie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:31:32 [SCAN] Gathering - Inside → FALSE (62032ms)
+05:32:01 [SHOT] OK (18463ms)
+05:32:01 [SCAN] Supplies → TRUE (18477ms)
+05:32:02 [MACRO] Buy Blood: Starting (0ms)
+05:32:07     - Step OK: ⚡ Hard Click 'Supplies' at (1305,564)
+05:32:07 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:32:32 [SHOT] FAIL #1 (25006ms)
+05:32:32 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:33:00 [SHOT] FAIL #2 (25011ms)
+05:33:00 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:33:05 [SHOT] OK (377ms)
+05:33:05 [SHOT] OK (0ms)
+05:33:06 [SHOT] OK (0ms)
+05:33:07 [SHOT] OK (0ms)
+05:33:08 [SHOT] OK (0ms)
+05:33:33 [SHOT] FAIL #1 (25006ms)
+05:33:33 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:33:37 [SHOT] OK (1179ms)
+05:33:38 [SHOT] OK (0ms)
+05:33:39 [SHOT] OK (0ms)
+05:33:39 [SHOT] OK (0ms)
+05:33:41 [SHOT] OK (376ms)
+05:33:42 [SHOT] OK (0ms)
+05:33:43 [SHOT] OK (0ms)
+05:33:44 [SHOT] OK (0ms)
+05:34:10 [SHOT] FAIL #1 (25006ms)
+05:34:10 [Kipie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:34:37 [SHOT] FAIL #2 (25007ms)
+05:34:37 [Kipie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:34:43 [SHOT] OK (1496ms)
+05:34:44 [SHOT] OK (0ms)
+05:34:45 [SHOT] OK (0ms)
+05:34:47 [SHOT] OK (191ms)
+05:34:47 [SHOT] OK (0ms)
+05:34:48 [SHOT] OK (0ms)
+05:34:50 [MACRO] Buy Blood: FAILED (167783ms total)
+05:34:50 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:34:50 ============================================================
+05:34:50 SESSION END — Kipie (8.3 min)
+05:34:50   Loops: 0
+05:34:50   Screenshots: 26 ok / 12 fail (31.6%)
+05:34:50   Avg latency: 2512ms
+05:34:50   Macros: 1 ok / 2 fail
+05:34:50   Errors: 3
+05:34:50 ============================================================

@@ -1,0 +1,709 @@
+03:08:42 ============================================================
+03:08:42 SESSION START — Stuccy (port:9226 tab:3)
+03:08:42 ============================================================
+03:08:44 [Stuccy] Starting worker: func=loop - Farm V1, port=9226, tab=3
+03:08:57 [Stuccy] Connected to Port 9226, Tab 3
+03:09:22 [SHOT] FAIL #1 (25014ms)
+03:09:22 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:09:49 [SHOT] FAIL #2 (25015ms)
+03:09:49 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:09:53 [SCAN] Gathering - Inside → FALSE (56031ms)
+03:10:19 [SHOT] FAIL #3 (25012ms)
+03:10:19 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:10:52 [SHOT] FAIL #4 (25011ms)
+03:10:52 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:11:08 [SCAN] Supplies → FALSE (74026ms)
+03:11:33 [SHOT] FAIL #5 (25009ms)
+03:11:33 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:12:28 [SHOT] FAIL #6 (25001ms)
+03:12:28 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:12:58 [SCAN] Revive → FALSE (110011ms)
+03:13:24 [SHOT] FAIL #7 (25005ms)
+03:13:24 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:14:19 [SHOT] FAIL #8 (25002ms)
+03:14:19 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:14:49 [SCAN] Supplies - In → FALSE (110010ms)
+03:15:19 [SHOT] FAIL #9 (25015ms)
+03:15:19 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:16:14 [SHOT] FAIL #10 (25013ms)
+03:16:14 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:16:44 [SCAN] Gathering - Automove → FALSE (110029ms)
+03:17:10 [SHOT] FAIL #11 (25005ms)
+03:17:10 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+03:18:05 [SHOT] FAIL #12 (25009ms)
+03:18:05 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #12)
+03:18:35 [SCAN] Attack - Auto → FALSE (110016ms)
+03:19:00 [SHOT] FAIL #13 (25015ms)
+03:19:00 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #13)
+03:19:55 [SHOT] FAIL #14 (25003ms)
+03:19:55 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #14)
+03:20:25 [SCAN] Attack - Auto On → FALSE (110019ms)
+03:20:26 [Stuccy] No next node after 'Condition' (Attack - Auto On). Restart 1/10
+03:20:30 [SHOT] OK (177ms)
+03:20:31 [SHOT] OK (0ms)
+03:20:32 [SCAN] Gathering - Inside → FALSE (1754ms)
+03:20:32 [SHOT] OK (0ms)
+03:20:32 [SCAN] Supplies → TRUE (13ms)
+03:20:33 [MACRO] Buy Blood: Starting (0ms)
+03:20:38     - Step OK: ⚡ Hard Click 'Supplies' at (1298,592)
+03:20:38 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:21:03 [SHOT] FAIL #1 (25003ms)
+03:21:03 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:21:31 [SHOT] FAIL #2 (25004ms)
+03:21:31 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:22:00 [SHOT] FAIL #3 (25008ms)
+03:22:00 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:22:34 [SHOT] FAIL #4 (25014ms)
+03:22:34 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:23:16 [SHOT] FAIL #5 (25006ms)
+03:23:16 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:24:11 [SHOT] FAIL #6 (25080ms)
+03:24:11 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:25:08 [SHOT] FAIL #7 (25023ms)
+03:25:08 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:26:03 [SHOT] FAIL #8 (25010ms)
+03:26:03 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:26:59 [SHOT] FAIL #9 (25002ms)
+03:26:59 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:27:46 [SHOT] FAIL #10 (16272ms)
+03:27:46 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:28:16 [MACRO] Buy Blood: FAILED (463634ms total)
+03:28:16 ============================================================
+03:28:16 SESSION END — Stuccy (19.6 min)
+03:28:16   Loops: 0
+03:28:16   Screenshots: 3 ok / 24 fail (88.9%)
+03:28:16   Avg latency: 59ms
+03:28:16   Macros: 0 ok / 1 fail
+03:28:16   Errors: 0
+03:28:16 ============================================================
+03:31:11 ============================================================
+03:31:11 SESSION START — Stuccy (port:9226 tab:3)
+03:31:11 ============================================================
+03:31:12 [Stuccy] Starting worker: func=loop - Farm V1, port=9226, tab=3
+03:31:26 [Stuccy] Connected to Port 9226, Tab 3
+03:31:51 [SHOT] FAIL #1 (25002ms)
+03:31:51 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:32:18 [SHOT] FAIL #2 (25011ms)
+03:32:18 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:32:22 [SCAN] Supplies → FALSE (56015ms)
+03:32:48 [SHOT] FAIL #3 (25009ms)
+03:32:48 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:33:21 [SHOT] FAIL #4 (25001ms)
+03:33:21 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:33:37 [SCAN] Revive → FALSE (74011ms)
+03:34:02 [SHOT] FAIL #5 (25028ms)
+03:34:02 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:34:57 [SHOT] FAIL #6 (25002ms)
+03:34:57 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:35:27 [SCAN] Supplies - In → FALSE (110044ms)
+03:35:52 [SHOT] FAIL #7 (25012ms)
+03:35:52 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:36:48 [SHOT] FAIL #8 (25011ms)
+03:36:48 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:37:18 [SCAN] Attack - Auto → FALSE (110025ms)
+03:37:48 [SHOT] FAIL #9 (25003ms)
+03:37:48 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:38:43 [SHOT] FAIL #10 (25014ms)
+03:38:43 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:39:13 [SCAN] Gathering - Automove → FALSE (110019ms)
+03:39:16 [SHOT] OK (1888ms)
+03:39:16 [SHOT] OK (0ms)
+03:39:17 [SCAN] Attack - Auto On → FALSE (3026ms)
+03:39:17 [SHOT] OK (0ms)
+03:39:18 [SHOT] OK (0ms)
+03:39:19 [SCAN] Revive → FALSE (1095ms)
+03:39:19 [NODE] → Click: Attack - Auto
+03:39:19 [SHOT] OK (190ms)
+03:39:19 [SCAN] Attack - Auto → FALSE (0ms)
+03:39:20 [NODE] → Click: Click 5P
+03:39:20 [SHOT] OK (0ms)
+03:39:25 [SCAN] Click 5P → TRUE (0ms)
+03:39:25 [Stuccy] No next node after 'Click' (Click 5P). Restart 1/10
+03:39:29 [SHOT] OK (341ms)
+03:39:29 [SCAN] Supplies → TRUE (351ms)
+03:39:30 [MACRO] Buy Blood: Starting (0ms)
+03:39:35     - Step OK: ⚡ Hard Click 'Supplies' at (1296,561)
+03:39:36 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+03:39:36 [SHOT] OK (162ms)
+03:39:37 [SHOT] OK (0ms)
+03:39:38 [SHOT] OK (0ms)
+03:39:38 [SHOT] OK (0ms)
+03:40:04 [SHOT] FAIL #1 (25007ms)
+03:40:04 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:40:32 [SHOT] FAIL #2 (25014ms)
+03:40:32 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:41:02 [SHOT] FAIL #3 (25013ms)
+03:41:02 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:41:36 [SHOT] FAIL #4 (25009ms)
+03:41:36 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:42:15 [SHOT] OK (22437ms)
+03:42:15     - Marker OK: 'Supplies - In' confirmed APPEAR.
+03:42:20     - Step OK: ⚡ Hard Click 'Supplies - Type' at (470,323)
+03:42:21 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+03:42:46 [SHOT] FAIL #1 (25005ms)
+03:42:46 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:43:13 [SHOT] FAIL #2 (25023ms)
+03:43:13 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:43:18 [SHOT] OK (585ms)
+03:43:18     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+03:43:24     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (908,561)
+03:43:24 [Macro] (6/8) Delay: 100ms (0.1s)...
+03:43:24 [Macro] Delay completed.
+03:43:29     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1035,725)
+03:43:35     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1536,147)
+03:43:35 [Macro] Steps completed. Checking result...
+03:44:01 [SHOT] FAIL #1 (25020ms)
+03:44:01 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:44:03 [Macro] Result: FAILURE ('Home' not found)
+03:44:03 [MACRO] Buy Blood: FAILED (273443ms total)
+03:44:08 [Stuccy] No next node after 'Macro' (ad649a80). Restart 1/10
+03:44:37 [SHOT] FAIL #2 (25002ms)
+03:44:37 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:45:06 [SHOT] FAIL #3 (25013ms)
+03:45:06 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:45:14 [SCAN] Supplies → FALSE (62018ms)
+03:45:39 [SHOT] FAIL #4 (25006ms)
+03:45:39 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:46:20 [SHOT] FAIL #5 (25010ms)
+03:46:20 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:46:50 [SCAN] Revive → FALSE (96019ms)
+03:47:16 [SHOT] FAIL #6 (25009ms)
+03:47:16 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+03:48:11 [SHOT] FAIL #7 (25009ms)
+03:48:11 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+03:48:41 [SCAN] Supplies - In → FALSE (110036ms)
+03:49:12 [SHOT] FAIL #8 (25012ms)
+03:49:12 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+03:50:07 [SHOT] FAIL #9 (25000ms)
+03:50:07 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+03:50:37 [SCAN] Attack - Auto → FALSE (110014ms)
+03:51:02 [SHOT] FAIL #10 (25006ms)
+03:51:02 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+03:51:56 [SHOT] OK (23861ms)
+03:51:57 [SCAN] Gathering - Automove → FALSE (79366ms)
+03:51:57 [SHOT] OK (0ms)
+03:51:58 [SHOT] OK (0ms)
+03:51:58 [SCAN] Attack - Auto On → FALSE (1069ms)
+03:51:59 [SHOT] OK (0ms)
+03:52:24 [SHOT] FAIL #1 (25007ms)
+03:52:24 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:52:26 [SCAN] Revive → FALSE (27500ms)
+03:52:27 [NODE] → Click: Attack - Auto
+03:52:52 [SHOT] FAIL #2 (25013ms)
+03:52:52 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:52:56 [NODE] → Click: Click 5P
+03:53:21 [SHOT] FAIL #3 (25014ms)
+03:53:21 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:53:34 [Stuccy] No next node after 'Click' (Click 5P). Restart 1/10
+03:54:03 [SHOT] FAIL #4 (25004ms)
+03:54:03 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:54:44 [SHOT] FAIL #5 (25003ms)
+03:54:44 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:55:14 [SCAN] Supplies → FALSE (96019ms)
+03:55:31 [SHOT] OK (17126ms)
+03:55:32 [SHOT] OK (0ms)
+03:55:33 [SCAN] Revive → FALSE (18580ms)
+03:55:33 [SHOT] OK (0ms)
+03:55:34 [SHOT] OK (0ms)
+03:55:35 [SCAN] Supplies - In → FALSE (1138ms)
+03:56:00 [SHOT] FAIL #1 (25006ms)
+03:56:00 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+03:56:27 [SHOT] FAIL #2 (25015ms)
+03:56:27 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+03:56:31 [SCAN] Attack - Auto → FALSE (56022ms)
+03:56:57 [SHOT] FAIL #3 (25003ms)
+03:56:57 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+03:57:30 [SHOT] FAIL #4 (25003ms)
+03:57:30 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+03:57:46 [SCAN] Gathering - Automove → FALSE (74008ms)
+03:58:11 [SHOT] FAIL #5 (25003ms)
+03:58:11 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+03:59:05 [SHOT] OK (23570ms)
+03:59:05 [SCAN] Attack - Auto On → FALSE (79022ms)
+03:59:36 [SHOT] FAIL #1 (25029ms)
+03:59:36 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:00:03 [SHOT] FAIL #2 (25004ms)
+04:00:03 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:00:07 [SCAN] Revive → FALSE (56069ms)
+04:00:08 [NODE] → Click: Attack - Auto
+04:00:33 [SHOT] FAIL #3 (25013ms)
+04:00:33 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:00:41 [NODE] → Click: Click 5P
+04:01:06 [SHOT] FAIL #4 (25006ms)
+04:01:06 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:01:22 [Stuccy] No next node after 'Click' (Click 5P). Restart 1/10
+04:01:26 [Stuccy] Connection rotation — periodic reconnect
+04:01:28 [Stuccy] Connection rotated successfully
+04:01:53 [SHOT] FAIL #5 (25011ms)
+04:01:53 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:02:48 [SHOT] FAIL #6 (25025ms)
+04:02:48 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:03:18 [SCAN] Supplies → FALSE (110078ms)
+04:03:44 [SHOT] FAIL #7 (25008ms)
+04:03:44 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:04:39 [SHOT] FAIL #8 (25003ms)
+04:04:39 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+04:05:09 [SCAN] Revive → FALSE (110013ms)
+04:05:39 [SHOT] FAIL #9 (25007ms)
+04:05:39 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+04:06:34 [SHOT] FAIL #10 (25015ms)
+04:06:34 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+04:07:04 [SCAN] Supplies - In → FALSE (110026ms)
+04:07:30 [SHOT] FAIL #11 (25013ms)
+04:07:30 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+04:08:25 [SHOT] FAIL #12 (25015ms)
+04:08:25 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #12)
+04:08:55 [SCAN] Attack - Auto → FALSE (110029ms)
+04:09:16 [SHOT] OK (20486ms)
+04:09:16 [SHOT] OK (0ms)
+04:09:17 [SCAN] Gathering - Automove → FALSE (21876ms)
+04:09:18 [SHOT] OK (0ms)
+04:09:19 [SHOT] OK (0ms)
+04:09:20 [SCAN] Attack - Auto On → FALSE (1555ms)
+04:09:45 [SHOT] FAIL #1 (25008ms)
+04:09:45 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:10:12 [SHOT] FAIL #2 (25015ms)
+04:10:12 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:10:16 [SCAN] Revive → FALSE (56025ms)
+04:10:22 [NODE] → Click: Attack - Auto
+04:10:47 [SHOT] FAIL #3 (25006ms)
+04:10:47 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:10:55 [NODE] → Click: Click 5P
+04:11:20 [SHOT] FAIL #4 (25003ms)
+04:11:20 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:11:36 [Stuccy] No next node after 'Click' (Click 5P). Restart 1/10
+04:12:05 [SHOT] FAIL #5 (25001ms)
+04:12:05 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:12:49 [SHOT] OK (13797ms)
+04:12:49 [SCAN] Supplies → TRUE (68809ms)
+04:12:49 [MACRO] Buy Blood: Starting (0ms)
+04:12:54     - Step OK: ⚡ Hard Click 'Supplies' at (1296,562)
+04:12:55 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:13:20 [SHOT] FAIL #1 (25009ms)
+04:13:20 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:13:48 [SHOT] FAIL #2 (25001ms)
+04:13:48 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:14:18 [SHOT] FAIL #3 (25015ms)
+04:14:18 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:14:52 [SHOT] FAIL #4 (25008ms)
+04:14:52 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:15:34 [SHOT] FAIL #5 (25001ms)
+04:15:34 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:16:30 [SHOT] FAIL #6 (25005ms)
+04:16:30 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:17:26 [SHOT] FAIL #7 (25015ms)
+04:17:26 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:18:22 [SHOT] FAIL #8 (25015ms)
+04:18:22 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+04:19:18 [SHOT] FAIL #9 (25013ms)
+04:19:18 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+04:20:13 [SHOT] FAIL #10 (25010ms)
+04:20:13 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+04:21:02 [SHOT] OK (18021ms)
+04:21:02     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:21:07     - Step OK: ⚡ Hard Click 'Supplies - Type' at (510,299)
+04:21:08 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:21:33 [SHOT] FAIL #1 (25004ms)
+04:21:33 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:22:01 [SHOT] FAIL #2 (25004ms)
+04:22:01 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:22:30 [SHOT] FAIL #3 (25006ms)
+04:22:30 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:23:04 [SHOT] OK (24542ms)
+04:23:04     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:23:09     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (900,573)
+04:23:09 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:23:09 [Macro] Delay completed.
+04:23:14     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (997,726)
+04:23:20     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1546,144)
+04:23:20 [Macro] Steps completed. Checking result...
+04:23:46 [SHOT] FAIL #1 (25003ms)
+04:23:46 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:23:48 [Macro] Result: FAILURE ('Home' not found)
+04:23:48 [MACRO] Buy Blood: FAILED (659210ms total)
+04:23:53 [Stuccy] No next node after 'Macro' (ad649a80). Restart 1/10
+04:24:22 [SHOT] FAIL #2 (25005ms)
+04:24:22 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:24:51 [SHOT] FAIL #3 (25015ms)
+04:24:51 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:24:59 [SCAN] Supplies → FALSE (62022ms)
+04:25:25 [SHOT] FAIL #4 (25006ms)
+04:25:25 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:26:06 [SHOT] FAIL #5 (25013ms)
+04:26:06 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:26:36 [SCAN] Revive → FALSE (96020ms)
+04:27:01 [SHOT] FAIL #6 (25015ms)
+04:27:01 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:27:56 [SHOT] FAIL #7 (25012ms)
+04:27:56 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+04:28:26 [SCAN] Supplies - In → FALSE (110028ms)
+04:28:57 [SHOT] FAIL #8 (25008ms)
+04:28:57 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+04:29:46 [SHOT] OK (19310ms)
+04:29:46 [SCAN] Attack - Auto → FALSE (74780ms)
+04:29:47 [SHOT] OK (0ms)
+04:29:48 [SHOT] OK (0ms)
+04:29:49 [SCAN] Gathering - Automove → FALSE (1650ms)
+04:30:14 [SHOT] FAIL #1 (25004ms)
+04:30:14 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:30:41 [SHOT] FAIL #2 (25009ms)
+04:30:41 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:30:45 [SCAN] Attack - Auto On → FALSE (56015ms)
+04:31:11 [SHOT] FAIL #3 (25014ms)
+04:31:11 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:31:44 [SHOT] FAIL #4 (25001ms)
+04:31:44 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:32:00 [SCAN] Revive → FALSE (74016ms)
+04:32:00 [Stuccy] Connection rotation — periodic reconnect
+04:32:02 [Stuccy] Connection rotated successfully
+04:32:02 [NODE] → Click: Attack - Auto
+04:32:23 [SHOT] OK (20328ms)
+04:32:23 [SCAN] Attack - Auto → FALSE (0ms)
+04:32:23 [NODE] → Click: Click 5P
+04:32:23 [SHOT] OK (0ms)
+04:32:28 [SCAN] Click 5P → TRUE (0ms)
+04:32:29 [Stuccy] No next node after 'Click' (Click 5P). Restart 1/10
+04:32:56 [SHOT] OK (23599ms)
+04:32:56 [SCAN] Supplies → TRUE (23609ms)
+04:32:56 [MACRO] Buy Blood: Starting (0ms)
+04:33:01     - Step OK: ⚡ Hard Click 'Supplies' at (1294,569)
+04:33:02 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:33:26 [SHOT] OK (24269ms)
+04:33:26     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:33:31     - Step OK: ⚡ Hard Click 'Supplies - Type' at (528,320)
+04:33:32 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:33:57 [SHOT] FAIL #1 (25012ms)
+04:33:57 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:34:24 [SHOT] FAIL #2 (25004ms)
+04:34:24 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:34:54 [SHOT] FAIL #3 (25005ms)
+04:34:54 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:35:27 [SHOT] FAIL #4 (25001ms)
+04:35:27 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:36:10 [SHOT] FAIL #5 (25011ms)
+04:36:10 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:37:05 [SHOT] FAIL #6 (25015ms)
+04:37:05 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:37:43 [SHOT] OK (7115ms)
+04:37:43     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:37:43     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (805,542)
+04:37:43 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:37:44 [Macro] Delay completed.
+04:37:44     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1064,706)
+04:37:46     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1528,153)
+04:37:47 [Macro] Steps completed. Checking result...
+04:37:48 [SHOT] OK (221ms)
+04:37:48 [Macro] Result: SUCCESS (found 'Home')
+04:37:48 [MACRO] Buy Blood: PASSED (291799ms total)
+04:37:53 [MACRO] Gathering: Starting (0ms)
+04:38:18 [SHOT] FAIL #1 (25011ms)
+04:38:18 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:38:45 [SHOT] FAIL #2 (25004ms)
+04:38:45 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:39:15 [SHOT] FAIL #3 (25015ms)
+04:39:15 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:39:48 [SHOT] FAIL #4 (25014ms)
+04:39:48 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:40:29 [SHOT] FAIL #5 (25005ms)
+04:40:29 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:41:00     - Step FAILED: Could not find 'Gathering' after 5 attempts.
+04:41:00 [MACRO] Gathering: FAILED (186594ms total)
+04:41:00 [Stuccy] No next node after 'Macro' (cc882d55). Restart 1/10
+04:41:28 [SHOT] FAIL #6 (25009ms)
+04:41:28 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+04:42:15 [SHOT] OK (16874ms)
+04:42:15 [SCAN] Supplies → TRUE (71894ms)
+04:42:16 ============================================================
+04:42:16 SESSION END — Stuccy (71.1 min)
+04:42:16   Loops: 0
+04:42:16   Screenshots: 39 ok / 90 fail (69.8%)
+04:42:16   Avg latency: 7147ms
+04:42:16   Macros: 1 ok / 3 fail
+04:42:16   Errors: 0
+04:42:16 ============================================================
+04:54:22 ============================================================
+04:54:22 SESSION START — Stuccy (port:9226 tab:3)
+04:54:22 ============================================================
+04:54:24 [Stuccy] Starting worker: func=loop - Farm V1, port=9226, tab=3
+04:54:37 [Stuccy] Connected to Port 9226, Tab 3
+04:55:00 [SHOT] OK (22274ms)
+04:55:00 [SCAN] Supplies → TRUE (22284ms)
+04:55:00 [MACRO] Buy Blood: Starting (0ms)
+04:55:06     - Step OK: ⚡ Hard Click 'Supplies' at (1297,566)
+04:55:06 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+04:55:31 [SHOT] FAIL #1 (25001ms)
+04:55:31 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:55:42 [SHOT] OK (8875ms)
+04:55:42     - Marker OK: 'Supplies - In' confirmed APPEAR.
+04:55:43     - Step OK: ⚡ Hard Click 'Supplies - Type' at (511,311)
+04:55:44 [Macro] (4/8) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+04:55:44 [SHOT] OK (0ms)
+04:55:45 [SHOT] OK (0ms)
+04:55:45 [SHOT] OK (0ms)
+04:55:46 [SHOT] OK (454ms)
+04:55:46     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+04:55:52     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (796,551)
+04:55:52 [Macro] (6/8) Delay: 100ms (0.1s)...
+04:55:52 [Macro] Delay completed.
+04:55:57     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1050,711)
+04:56:03     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1544,151)
+04:56:03 [Macro] Steps completed. Checking result...
+04:56:29 [SHOT] FAIL #1 (25002ms)
+04:56:29 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+04:56:31 [Macro] Result: FAILURE ('Home' not found)
+04:56:31 [MACRO] Buy Blood: FAILED (91030ms total)
+04:56:31 [Stuccy] No next node after 'Macro' (ad649a80). Restart 1/10
+04:57:00 [SHOT] FAIL #2 (25003ms)
+04:57:00 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+04:57:29 [SHOT] FAIL #3 (25007ms)
+04:57:29 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+04:57:37 [SCAN] Supplies → FALSE (62013ms)
+04:58:02 [SHOT] FAIL #4 (25001ms)
+04:58:02 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+04:58:43 [SHOT] FAIL #5 (25007ms)
+04:58:43 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+04:59:13 [SCAN] Revive → FALSE (96020ms)
+04:59:38 [SHOT] OK (24295ms)
+04:59:39 [SHOT] OK (0ms)
+04:59:39 [SCAN] Supplies - In → FALSE (25349ms)
+04:59:40 [SHOT] OK (0ms)
+04:59:40 [SHOT] OK (0ms)
+04:59:41 [SCAN] Attack - Auto → FALSE (1482ms)
+05:00:07 [SHOT] FAIL #1 (25001ms)
+05:00:07 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:00:34 [SHOT] FAIL #2 (25012ms)
+05:00:34 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:00:38 [SCAN] Gathering - Automove → FALSE (56018ms)
+05:01:03 [SHOT] FAIL #3 (25006ms)
+05:01:03 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:01:36 [SHOT] FAIL #4 (25003ms)
+05:01:36 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:01:52 [SCAN] Attack - Auto On → FALSE (74012ms)
+05:02:14 [SHOT] OK (21486ms)
+05:02:15 [SHOT] OK (0ms)
+05:02:16 [SCAN] Revive → FALSE (22701ms)
+05:02:16 [NODE] → Click: Attack - Auto
+05:02:16 [SHOT] OK (0ms)
+05:02:16 [SCAN] Attack - Auto → FALSE (0ms)
+05:02:17 [NODE] → Click: Click 5P
+05:02:17 [SHOT] OK (0ms)
+05:02:22 [SCAN] Click 5P → TRUE (0ms)
+05:02:22 [Stuccy] No next node after 'Click' (Click 5P). Restart 1/10
+05:02:46 [SHOT] OK (20456ms)
+05:02:46 [SCAN] Supplies → TRUE (20504ms)
+05:02:47 [MACRO] Buy Blood: Starting (0ms)
+05:02:52     - Step OK: ⚡ Hard Click 'Supplies' at (1327,568)
+05:02:52 [Macro] (2/8) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:03:17 [SHOT] FAIL #1 (25012ms)
+05:03:17 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:03:45 [SHOT] FAIL #2 (25012ms)
+05:03:45 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:04:14 [SHOT] FAIL #3 (25002ms)
+05:04:14 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:04:48 [SHOT] FAIL #4 (25005ms)
+05:04:48 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:05:30 [SHOT] FAIL #5 (25012ms)
+05:05:30 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:06:21 [SHOT] OK (21108ms)
+05:06:21     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:06:21 [Macro] Stopped at step 3/8 (worker stopped)
+05:06:21 [MACRO] Buy Blood: FAILED (214370ms total)
+05:06:21 ============================================================
+05:06:21 SESSION END — Stuccy (12.0 min)
+05:06:21   Loops: 0
+05:06:21   Screenshots: 16 ok / 15 fail (48.4%)
+05:06:21   Avg latency: 7434ms
+05:06:21   Macros: 0 ok / 2 fail
+05:06:21   Errors: 0
+05:06:21 ============================================================
+05:07:22 ============================================================
+05:07:22 SESSION START — Stuccy (port:9226 tab:3)
+05:07:22 ============================================================
+05:07:22 [Stuccy] Starting worker: func=macro - Home, port=9226, tab=3
+05:07:32 [Stuccy] Connected to Port 9226, Tab 3
+05:07:32 [MACRO] Home: Starting (0ms)
+05:07:37     - Step OK: ⚡ Hard Click 'Home' at (343,385)
+05:07:37 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:08:02 [SHOT] OK (24576ms)
+05:08:03 [SHOT] OK (0ms)
+05:08:04 [SHOT] OK (0ms)
+05:08:05 [SHOT] OK (0ms)
+05:08:06 [SHOT] OK (150ms)
+05:08:06 [SHOT] OK (0ms)
+05:08:07 [SHOT] OK (0ms)
+05:08:08 [SHOT] OK (0ms)
+05:08:09 [SHOT] OK (424ms)
+05:08:09     - Marker OK: 'Supplies' confirmed APPEAR.
+05:08:09 [Macro] Steps completed. Checking result...
+05:08:10 [SHOT] OK (0ms)
+05:08:10 [Macro] Result: SUCCESS (found 'Supplies')
+05:08:10 [MACRO] Home: PASSED (38368ms total)
+05:08:10 ============================================================
+05:08:10 SESSION END — Stuccy (0.8 min)
+05:08:10   Loops: 0
+05:08:10   Screenshots: 10 ok / 0 fail (0.0%)
+05:08:10   Avg latency: 2515ms
+05:08:10   Macros: 1 ok / 0 fail
+05:08:10   Errors: 0
+05:08:10 ============================================================
+05:11:33 ============================================================
+05:11:33 SESSION START — Stuccy (port:9226 tab:3)
+05:11:33 ============================================================
+05:11:34 [Stuccy] Starting worker: func=loop - Farm V1, port=9226, tab=3
+05:11:47 [Stuccy] Connected to Port 9226, Tab 3
+05:11:47 [LOOP] ── Loop iteration start ──
+05:12:13 [SHOT] FAIL #1 (25002ms)
+05:12:13 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:12:40 [SHOT] FAIL #2 (25012ms)
+05:12:40 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:12:44 [SCAN] Supplies → FALSE (56016ms)
+05:13:07 [SHOT] OK (22654ms)
+05:13:07 [SHOT] OK (0ms)
+05:13:08 [SCAN] Revive → FALSE (23602ms)
+05:13:08 [SHOT] OK (0ms)
+05:13:09 [SHOT] OK (0ms)
+05:13:10 [SCAN] Supplies - In → FALSE (1386ms)
+05:13:35 [SHOT] FAIL #1 (25004ms)
+05:13:35 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:14:02 [SHOT] FAIL #2 (25008ms)
+05:14:02 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:14:06 [SCAN] Attack - Auto → FALSE (56014ms)
+05:14:42 [SHOT] FAIL #3 (25015ms)
+05:14:42 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:15:15 [SHOT] FAIL #4 (25011ms)
+05:15:15 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:15:31 [SCAN] Gathering - Automove → FALSE (74041ms)
+05:15:57 [SHOT] FAIL #5 (25005ms)
+05:15:57 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:16:52 [SHOT] FAIL #6 (25004ms)
+05:16:52 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:17:22 [SCAN] Attack - Auto On → FALSE (110012ms)
+05:17:57 [SHOT] FAIL #7 (25014ms)
+05:17:57 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:18:52 [SHOT] FAIL #8 (25011ms)
+05:18:52 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:19:22 [SCAN] Revive → FALSE (110028ms)
+05:19:23 [NODE] → Click: Attack - Auto
+05:19:45 [SHOT] OK (22736ms)
+05:19:46 [SCAN] Attack - Auto → FALSE (0ms)
+05:19:56 [NODE] → Click: Click 5P
+05:20:21 [SHOT] FAIL #1 (25005ms)
+05:20:21 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:20:23 [ERR] Click SKIP: 'Click 5P' screenshot failed
+05:20:23 [ERR] DEAD END: No edge from 'Click' (Click 5P) — will trigger restart
+05:20:23 [ERR] RESTART: No next node after 'Click' (Click 5P). Restart 1/10
+05:20:26 [LOOP] ── Loop iteration start ──
+05:20:52 [SHOT] FAIL #2 (25010ms)
+05:20:52 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:21:21 [SHOT] OK (24812ms)
+05:21:21 [SCAN] Supplies → TRUE (53835ms)
+05:21:21 ============================================================
+05:21:21 SESSION END — Stuccy (9.8 min)
+05:21:21   Loops: 0
+05:21:21   Screenshots: 6 ok / 12 fail (66.7%)
+05:21:21   Avg latency: 11700ms
+05:21:21   Macros: 0 ok / 0 fail
+05:21:21   Errors: 3
+05:21:21 ============================================================
+05:21:47 ============================================================
+05:21:47 SESSION START — Stuccy (port:9226 tab:3)
+05:21:47 ============================================================
+05:21:48 [Stuccy] Starting worker: func=macro - Home, port=9226, tab=3
+05:21:56 [Stuccy] Connected to Port 9226, Tab 3
+05:21:56 [MACRO] Home: Starting (0ms)
+05:22:01     - Step OK: ⚡ Hard Click 'Home' at (362,371)
+05:22:01 [Macro] Stopped at step 2/2 (worker stopped)
+05:22:01 [MACRO] Home: FAILED (5570ms total)
+05:22:01 ============================================================
+05:22:01 SESSION END — Stuccy (0.2 min)
+05:22:01   Loops: 0
+05:22:01   Screenshots: 0 ok / 0 fail (0.0%)
+05:22:01   Avg latency: 0ms
+05:22:01   Macros: 0 ok / 1 fail
+05:22:01   Errors: 0
+05:22:01 ============================================================
+05:22:19 ============================================================
+05:22:19 SESSION START — Stuccy (port:9226 tab:3)
+05:22:19 ============================================================
+05:22:19 [Stuccy] Starting worker: func=macro - Home, port=9226, tab=3
+05:22:31 [Stuccy] Connected to Port 9226, Tab 3
+05:22:31 [MACRO] Home: Starting (0ms)
+05:22:36     - Step OK: ⚡ Hard Click 'Home' at (361,388)
+05:22:37 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:23:57 ============================================================
+05:23:57 SESSION START — Stuccy (port:9226 tab:3)
+05:23:57 ============================================================
+05:23:58 [Stuccy] Starting worker: func=macro - Home, port=9226, tab=3
+05:24:10 [Stuccy] Connected to Port 9226, Tab 3
+05:24:10 [MACRO] Home: Starting (0ms)
+05:24:16     - Step OK: ⚡ Hard Click 'Home' at (356,389)
+05:24:16 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:24:41 [SHOT] FAIL #1 (25009ms)
+05:24:41 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:25:06 [SHOT] OK (22775ms)
+05:25:06     - Marker OK: 'Supplies' confirmed APPEAR.
+05:25:06 [Macro] Steps completed. Checking result...
+05:25:07 [SHOT] OK (0ms)
+05:25:07 [Macro] Result: SUCCESS (found 'Supplies')
+05:25:07 [MACRO] Home: PASSED (56881ms total)
+05:25:07 ============================================================
+05:25:07 SESSION END — Stuccy (1.2 min)
+05:25:07   Loops: 0
+05:25:07   Screenshots: 2 ok / 1 fail (33.3%)
+05:25:07   Avg latency: 11388ms
+05:25:07   Macros: 1 ok / 0 fail
+05:25:07   Errors: 0
+05:25:07 ============================================================
+05:26:56 ============================================================
+05:26:56 SESSION START — Stuccy (port:9226 tab:3)
+05:26:56 ============================================================
+05:26:58 [Stuccy] Starting worker: func=loop - Farm V1, port=9226, tab=3
+05:27:06 [Stuccy] Connected to Port 9226, Tab 3
+05:27:08 [LOOP] ── Loop iteration start ──
+05:27:33 [SHOT] FAIL #1 (25003ms)
+05:27:33 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:28:00 [SHOT] FAIL #2 (25009ms)
+05:28:00 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:28:04 [SCAN] Gathering - Inside → FALSE (56013ms)
+05:28:29 [SHOT] FAIL #3 (25001ms)
+05:28:29 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:29:02 [SHOT] FAIL #4 (25001ms)
+05:29:02 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:29:18 [SCAN] Supplies → FALSE (74005ms)
+05:29:54 [SHOT] FAIL #5 (25001ms)
+05:29:54 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:30:49 [SHOT] FAIL #6 (25015ms)
+05:30:49 [Stuccy] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:31:19 [SCAN] Revive → FALSE (110018ms)
+05:31:44 [SHOT] OK (24354ms)
+05:31:44 [SHOT] OK (0ms)
+05:31:45 [SCAN] Supplies - In → FALSE (25390ms)
+05:32:16 [SHOT] OK (20565ms)
+05:32:17 [SHOT] OK (0ms)
+05:32:17 [SCAN] Gathering - Automove → FALSE (21982ms)
+05:32:18 [SHOT] OK (0ms)
+05:32:19 [SHOT] OK (0ms)
+05:32:19 [SCAN] Attack - Auto → FALSE (1484ms)
+05:32:45 [SHOT] FAIL #1 (25010ms)
+05:32:45 [Stuccy] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:33:12 [SHOT] FAIL #2 (25012ms)
+05:33:12 [Stuccy] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:33:16 [SCAN] Attack - Auto On → FALSE (56054ms)
+05:33:17 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:33:17 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:33:20 [LOOP] ── Loop iteration start ──
+05:33:45 [SHOT] FAIL #3 (25006ms)
+05:33:45 [Stuccy] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:34:18 [SHOT] FAIL #4 (25012ms)
+05:34:18 [Stuccy] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:34:34 [SCAN] Gathering - Inside → FALSE (74020ms)
+05:34:58 [SHOT] OK (13159ms)
+05:34:58 [SCAN] Supplies → TRUE (13228ms)
+05:34:59 ============================================================
+05:34:59 SESSION END — Stuccy (8.0 min)
+05:34:59   Loops: 0
+05:34:59   Screenshots: 7 ok / 10 fail (58.8%)
+05:34:59   Avg latency: 8297ms
+05:34:59   Macros: 0 ok / 0 fail
+05:34:59   Errors: 2
+05:34:59 ============================================================
