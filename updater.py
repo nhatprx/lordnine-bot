@@ -264,9 +264,6 @@ def apply_update(zip_path):
         pid = os.getpid()
         log_file = os.path.join(app_dir, "_update_log.txt")
 
-        # Files/dirs to preserve
-        preserve = PRESERVE_FILES + PRESERVE_DIRS
-
         bat_script = f'''@echo off
 chcp 65001 >nul 2>&1
 echo [UPDATE] LordNine Bot Auto-Update > "{log_file}"
