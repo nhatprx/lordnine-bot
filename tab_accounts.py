@@ -340,10 +340,12 @@ class AccountsMixin:
                     continue
                 
                 # Each Chrome tab's page shows ALL phone cards.
-                # phone_indices should be 0-based PER PAGE — each tab clicks
-                # a different card on the same page.
-                # e.g. Chrome with 3 tabs → indices [0, 1, 2] → tab0 clicks card 0, etc.
-                indices = list(range(actual))
+                # phone_indices tells each tab which card to click (0-based).
+                # CRITICAL: offset by global_phone_counter so each Chrome profile
+                # opens DIFFERENT phones. Without offset, every profile clicks
+                # cards [0,1,2...] = same phones!
+                start_idx = global_phone_counter - start_phone  # convert to 0-based offset
+                indices = list(range(start_idx, start_idx + actual))
                 
                 # Wave-based: wait between ports so pages have time to stabilize
                 if port_idx > 0:
