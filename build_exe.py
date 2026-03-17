@@ -1,10 +1,16 @@
 """
 Build script for packaging LordNine Bot as a standalone .exe
 Usage: python build_exe.py
+
+After build, creates dist/LordNineBot_v{version}_update.zip for auto-update.
 """
 import subprocess
 import sys
 import os
+import zipfile
+import hashlib
+
+from version import APP_VERSION
 
 # Get CustomTkinter path for data inclusion
 import customtkinter
@@ -13,6 +19,8 @@ ctk_path = os.path.dirname(customtkinter.__file__)
 # All project Python modules (entry point is main.py)
 hidden_imports = [
     "constants",
+    "version",
+    "updater",
     "vision",
     "chrome_manager",
     "state_db",
@@ -27,6 +35,8 @@ hidden_imports = [
     "tab_macros",
     "tab_loops",
     "tab_accounts",
+    "macro_runner",
+    "graph_engine",
     "websocket",
     "websocket._abnf",
     "websocket._core",
@@ -77,7 +87,7 @@ cmd = [
 ]
 
 print("=" * 60)
-print("Building LordNine Bot v3.15.6")
+print(f"Building LordNine Bot v{APP_VERSION}")
 print("=" * 60)
 print(f"Command: {' '.join(cmd[:10])}...")
 print()
@@ -90,11 +100,45 @@ if result.returncode == 0:
     print("BUILD SUCCESSFUL!")
     print("Output: dist/LordNineBot/LordNineBot.exe")
     print("=" * 60)
+
+    # ── Create update.zip for auto-update ──
+    dist_dir = os.path.join("dist", "LordNineBot")
+    zip_name = f"LordNineBot_v{APP_VERSION}_update.zip"
+    zip_path = os.path.join("dist", zip_name)
+
     print()
-    print("To distribute:")
-    print("  1. Copy the entire 'dist/LordNineBot/' folder")
-    print("  2. User runs 'LordNineBot.exe' inside it")
-    print("  3. trackers/ folder will be created automatically on first run")
+    print(f"Creating update package: dist/{zip_name}")
+
+    with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
+        for root_dir, dirs, files in os.walk(dist_dir):
+            for f in files:
+                full_path = os.path.join(root_dir, f)
+                arc_name = os.path.relpath(full_path, os.path.dirname(dist_dir))
+                zf.write(full_path, arc_name)
+
+    # Calculate SHA-256 hash
+    sha256 = hashlib.sha256()
+    with open(zip_path, 'rb') as f:
+        for chunk in iter(lambda: f.read(65536), b''):
+            sha256.update(chunk)
+    sha256_hash = sha256.hexdigest()
+    zip_size = os.path.getsize(zip_path)
+
+    print(f"  Size:   {zip_size / (1024*1024):.1f} MB")
+    print(f"  SHA256: {sha256_hash}")
+    print()
+    print("=" * 60)
+    print("RELEASE CHECKLIST:")
+    print("=" * 60)
+    print(f"  1. Upload dist/{zip_name} to GitHub Releases")
+    print(f"  2. Set Vercel env vars:")
+    print(f"     LATEST_VERSION = {APP_VERSION}")
+    print(f"     DOWNLOAD_URL   = https://github.com/<user>/<repo>/releases/download/v{APP_VERSION}/{zip_name}")
+    print(f"     UPDATE_SIZE    = {zip_size}")
+    print(f"     UPDATE_SHA256  = {sha256_hash}")
+    print(f"     CHANGELOG      = <your changelog here>")
+    print()
 else:
     print(f"\nBUILD FAILED with code {result.returncode}")
     sys.exit(1)
+

@@ -29,6 +29,10 @@ SEARCH_RADII = [0, 50, 100, 200, -1]
 # Padding around template for ROI extraction
 ROI_PAD_FACTOR = 1.5  # ROI = template_size * factor on each side
 
+# Color detection weights for combined score
+COLOR_WEIGHT = 0.4    # weight for color histogram score
+TEMPLATE_WEIGHT = 0.6 # weight for template match score
+
 
 class Vision:
     """OpenCV-based template detection engine.
@@ -72,11 +76,22 @@ class Vision:
             h, w = img.shape[:2]
             edges = cv2.Canny(img, 50, 150)
 
+            # Load color version for HSV histogram (used when color detection is enabled)
+            img_color = cv2.imread(template_path, cv2.IMREAD_COLOR)
+            hsv_hist = None
+            if img_color is not None:
+                hsv = cv2.cvtColor(img_color, cv2.COLOR_BGR2HSV)
+                # Compute normalized HSV histogram (H: 30 bins, S: 32 bins)
+                hsv_hist = cv2.calcHist([hsv], [0, 1], None, [30, 32],
+                                        [0, 180, 0, 256])
+                cv2.normalize(hsv_hist, hsv_hist, 0, 1, cv2.NORM_MINMAX)
+
             entry = {
                 "gray": img,
                 "w": w,
                 "h": h,
                 "edges": edges,
+                "hsv_hist": hsv_hist,
             }
             self._cache[template_path] = entry
             return entry
@@ -109,6 +124,52 @@ class Vision:
         arr = np.frombuffer(frame_bytes, np.uint8)
         frame = cv2.imdecode(arr, cv2.IMREAD_GRAYSCALE)
         return frame
+
+    def _decode_frame_color(self, frame_bytes):
+        """Decode JPEG/PNG bytes to BGR numpy array (for color detection)."""
+        if frame_bytes is None:
+            return None
+        arr = np.frombuffer(frame_bytes, np.uint8)
+        return cv2.imdecode(arr, cv2.IMREAD_COLOR)
+
+    def _color_score_at(self, frame_color, template_entry, x, y):
+        """Calculate HSV histogram similarity at a matched position.
+
+        Args:
+            frame_color: BGR frame (full or ROI)
+            template_entry: cached template dict (must have hsv_hist)
+            x, y: center coordinates of the match (in frame_color space)
+
+        Returns:
+            float score (0.0-1.0) or 0.0 if unavailable
+        """
+        hsv_hist_tmpl = template_entry.get("hsv_hist")
+        if hsv_hist_tmpl is None or frame_color is None:
+            return 0.0
+
+        tw, th = template_entry["w"], template_entry["h"]
+        fh, fw = frame_color.shape[:2]
+
+        # Crop region around the matched position (same size as template)
+        x1 = max(0, x - tw // 2)
+        y1 = max(0, y - th // 2)
+        x2 = min(fw, x1 + tw)
+        y2 = min(fh, y1 + th)
+
+        if (x2 - x1) < 4 or (y2 - y1) < 4:
+            return 0.0
+
+        roi_bgr = frame_color[y1:y2, x1:x2]
+        roi_hsv = cv2.cvtColor(roi_bgr, cv2.COLOR_BGR2HSV)
+
+        # Same histogram config as template
+        roi_hist = cv2.calcHist([roi_hsv], [0, 1], None, [30, 32],
+                                [0, 180, 0, 256])
+        cv2.normalize(roi_hist, roi_hist, 0, 1, cv2.NORM_MINMAX)
+
+        # CORREL: 1.0 = perfect match, -1.0 = inverse
+        score = cv2.compareHist(hsv_hist_tmpl, roi_hist, cv2.HISTCMP_CORREL)
+        return max(0.0, score)  # clamp negative to 0
 
     def _match_in_region(self, frame_gray, template_entry, roi=None, threshold=0.8):
         """Run matchTemplate in a region. Returns (x, y, score) or None.
@@ -191,7 +252,8 @@ class Vision:
 
     def find_template_on_screen(self, template_path, threshold=0.8,
                                 debug=False, region=None,
-                                frame_bytes=None, write_debug=False):
+                                frame_bytes=None, write_debug=False,
+                                use_color=False):
         """Find template in screenshot. Used by single-tab workflows.
 
         Args:
@@ -201,6 +263,7 @@ class Vision:
             region: (x1, y1, x2, y2) restrict search area
             frame_bytes: pre-captured screenshot bytes (JPEG/PNG)
             write_debug: unused (backward compat)
+            use_color: if True, combine grayscale + HSV color score
 
         Returns:
             (x, y, score) or None
@@ -239,7 +302,8 @@ class Vision:
 
         fh, fw = frame_gray.shape[:2]
         if debug:
-            debug_lines.append(f"[Vision] Frame: {fw}×{fh}, Template: {tmpl['w']}×{tmpl['h']}")
+            mode_str = "Template+Color" if use_color else "Template"
+            debug_lines.append(f"[Vision] Frame: {fw}×{fh}, Template: {tmpl['w']}×{tmpl['h']} ({mode_str})")
 
         # Apply region constraint if specified
         if region:
@@ -263,25 +327,43 @@ class Vision:
 
         result = self._detect(frame_gray, template_path, tmpl, threshold)
 
-        if result and region_offset != (0, 0):
-            # Adjust coordinates back to full frame
-            result = (result[0] + region_offset[0],
-                      result[1] + region_offset[1],
-                      result[2])
+        if result:
+            x, y, score = result
+            x += region_offset[0]
+            y += region_offset[1]
+
+            # Color scoring (if enabled)
+            if use_color and tmpl.get("hsv_hist") is not None:
+                frame_color = self._decode_frame_color(frame_bytes) if frame_bytes else None
+                if frame_color is not None:
+                    color_score = self._color_score_at(frame_color, tmpl, x, y)
+                    combined = TEMPLATE_WEIGHT * score + COLOR_WEIGHT * color_score
+                    if debug:
+                        debug_lines.append(f"[Vision] Template={score:.3f}, Color={color_score:.3f}, Combined={combined:.3f}")
+                    score = combined
+
+            if debug:
+                debug_lines.append(f"[Vision] Found at ({x},{y}) score={score:.3f}")
+                if score >= threshold:
+                    return (x, y, score), debug_lines
+                else:
+                    debug_lines.append(f"[Vision] Combined score {score:.3f} below threshold {threshold:.2f}")
+                    return None, debug_lines
+            else:
+                if score >= threshold:
+                    return (x, y, score)
+                return None
 
         if debug:
-            if result:
-                debug_lines.append(f"[Vision] Found at ({result[0]},{result[1]}) score={result[2]:.3f}")
-            else:
-                debug_lines.append(f"[Vision] Not found (threshold={threshold:.2f})")
-            return result, debug_lines
+            debug_lines.append(f"[Vision] Not found (threshold={threshold:.2f})")
+            return None, debug_lines
 
-        return result
+        return None
 
     def find_template_direct(self, template_path, threshold=0.8,
                              debug=False, region=None,
                              frame_bytes=None, fast_mode=False,
-                             _prepared_frame=None):
+                             _prepared_frame=None, use_color=False):
         """Find template in provided frame bytes. Hot path for multi-account.
 
         Designed for high concurrency: no global state mutation, no disk I/O
@@ -295,6 +377,7 @@ class Vision:
             frame_bytes: screenshot bytes (required for multi-account)
             fast_mode: if True, skip expanding search — do ROI + full only
             _prepared_frame: pre-decoded grayscale frame (from prepare_frame)
+            use_color: if True, combine grayscale + HSV color score
 
         Returns:
             (x, y, score) or None
@@ -327,17 +410,28 @@ class Vision:
                 region_offset = (rx1, ry1)
 
         if fast_mode:
-            # Fast mode: ROI at known position → full frame (skip expanding)
             result = self._detect_fast(frame_gray, template_path, tmpl, threshold)
         else:
             result = self._detect(frame_gray, template_path, tmpl, threshold)
 
-        if result and region_offset != (0, 0):
-            result = (result[0] + region_offset[0],
-                      result[1] + region_offset[1],
-                      result[2])
+        if result:
+            x, y, score = result
+            x += region_offset[0]
+            y += region_offset[1]
 
-        return result
+            # Color scoring (if enabled)
+            if use_color and tmpl.get("hsv_hist") is not None and frame_bytes is not None:
+                frame_color = self._decode_frame_color(frame_bytes)
+                if frame_color is not None:
+                    color_score = self._color_score_at(frame_color, tmpl, x, y)
+                    combined = TEMPLATE_WEIGHT * score + COLOR_WEIGHT * color_score
+                    if combined < threshold:
+                        return None
+                    return (x, y, combined)
+
+            return (x, y, score)
+
+        return None
 
     def _detect_fast(self, frame_gray, template_path, template_entry, threshold):
         """Fast detection: position ROI → full frame (2 passes only)."""
@@ -399,6 +493,14 @@ class Vision:
             return None
         arr = np.frombuffer(frame_bytes, np.uint8)
         return cv2.imdecode(arr, cv2.IMREAD_GRAYSCALE)
+
+    @staticmethod
+    def prepare_frame_color(frame_bytes):
+        """Pre-decode frame bytes to BGR numpy array (for color detection)."""
+        if frame_bytes is None:
+            return None
+        arr = np.frombuffer(frame_bytes, np.uint8)
+        return cv2.imdecode(arr, cv2.IMREAD_COLOR)
 
     def shutdown_pool(self):
         """Cleanup resources."""

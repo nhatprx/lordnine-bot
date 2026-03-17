@@ -12,6 +12,7 @@ import os
 import logging
 
 from macro_runner import run_macro
+from node_features import get_color_detect
 
 logger = logging.getLogger(__name__)
 
@@ -194,11 +195,13 @@ class GraphEngine:
         self.log_fn(f"[FLOWCHART] Checking: Is '{img_name}' on screen?")
 
         found = False
+        use_color = get_color_detect(filepath) if filepath else False
         for _ in range(3):
             frame_bytes = self._capture_frame()
             res = self.vision.find_template_on_screen(
                 filepath, threshold=threshold_val,
                 debug=False, frame_bytes=frame_bytes,
+                use_color=use_color,
             )
             if res:
                 found = True
@@ -227,10 +230,12 @@ class GraphEngine:
             self.status_fn(f"Clicking: {img_name}...", "warning")
             self.log_fn(f"[FLOWCHART] Looking for '{img_name}' to click...")
 
+            use_color = get_color_detect(filepath)
             frame_bytes = self._capture_frame()
             res = self.vision.find_template_on_screen(
                 filepath, threshold=threshold_val,
                 debug=False, frame_bytes=frame_bytes,
+                use_color=use_color,
             )
 
             if res:

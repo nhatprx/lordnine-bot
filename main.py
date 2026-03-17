@@ -22,6 +22,7 @@ from vision import Vision
 from chrome_manager import ChromeManager
 from state_db import StateDB
 from constants import COLOR, FONT, PAD, RADIUS
+from version import APP_VERSION
 
 # Tab Mixins
 from tab_nodes import NodesMixin
@@ -343,7 +344,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
         # Right side: Port/Tab inputs + version
         self.status_version = ctk.CTkLabel(
-            self.statusbar, text="v3.15.6",
+            self.statusbar, text=f"v{APP_VERSION}",
             font=ctk.CTkFont(family="Consolas", size=10),
             text_color=COLOR["text_muted"]
         )
@@ -402,6 +403,25 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
         # Start real-time footer stats updater
         self._start_footer_stats_updater()
+
+    def _check_for_update_manual(self):
+        """Check for updates when user clicks the button."""
+        self.log_gui("[Update] Checking for updates...")
+        def _check():
+            try:
+                from updater import check_for_update, show_update_dialog
+                update_info = check_for_update()
+                if update_info:
+                    self.log_gui(f"[Update] New version available: v{update_info['latest']}")
+                    self.after(0, lambda: show_update_dialog(
+                        self, update_info,
+                        log_fn=self.log_gui
+                    ))
+                else:
+                    self.log_gui("[Update] You are up to date ✓")
+            except Exception as e:
+                self.log_gui(f"[Update] Check failed: {e}")
+        threading.Thread(target=_check, daemon=True).start()
 
     # ==================== Tab Switching ====================
     def switch_tab(self, index):
@@ -664,6 +684,13 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         btn_frame.pack(side="right", pady=5)
 
         ctk.CTkButton(
+            btn_frame, text="⬇ Check Update", width=110, height=28,
+            font=ctk.CTkFont(family=FONT["family"], size=11, weight="bold"),
+            fg_color=COLOR["primary"], hover_color=COLOR["primary_h"], text_color="#FFFFFF",
+            command=self._check_for_update_manual, corner_radius=6
+        ).pack(side="left", padx=(0, 8))
+
+        ctk.CTkButton(
             btn_frame, text="Export", width=70, height=28,
             font=ctk.CTkFont(family=FONT["family"], size=11, weight="bold"),
             fg_color="transparent", hover_color=COLOR["surface2"],
@@ -783,7 +810,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
         # ── Version & Environment ──
         _section("Environment")
-        _row("Version", "v3.15.6")
+        _row("Version", f"v{APP_VERSION}")
         _row("Python", f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}")
         _row("Platform", platform.system() + " " + platform.release())
         _row("Architecture", platform.machine())

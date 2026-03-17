@@ -9,7 +9,7 @@ from PIL import Image
 import json
 from node_features import (precompute_features, batch_precompute, save_capture_position,
                            reset_learned_position, update_learned_position,
-                           save_hard_click_position)
+                           save_hard_click_position, save_color_detect, get_color_detect)
 
 from constants import COLOR, FONT, PAD, RADIUS
 
@@ -62,14 +62,6 @@ class NodesMixin:
         )
         self.del_selected_btn.pack(side="right", padx=(2, 0))
 
-        # Learn All button — right next to Delete
-        self.learn_btn = ctk.CTkButton(
-            title_row, text="⚡ Learn", command=self._learn_all_nodes,
-            fg_color="transparent", hover_color=COLOR["surface2"],
-            text_color=COLOR["warning"], font=ctk.CTkFont(size=11, weight="bold"),
-            width=55, height=24, corner_radius=4
-        )
-        self.learn_btn.pack(side="right", padx=(2, 0))
 
         self.add_btn = ctk.CTkButton(
             title_row, text="+ Add", command=self.add_new_target,
@@ -241,6 +233,26 @@ class NodesMixin:
         )
         self.debug_toggle_switch.pack(side="right")
 
+        # Row 3: Color Detection toggle
+        color_row = ctk.CTkFrame(self.settings_frame, fg_color="transparent")
+        color_row.pack(fill="x", padx=PAD["md"], pady=(0, PAD["sm"]))
+
+        ctk.CTkLabel(
+            color_row, text="Color Detection (HSV)",
+            font=ctk.CTkFont(size=12), text_color=COLOR["text_dim"]
+        ).pack(side="left")
+
+        self.color_detect_var = ctk.BooleanVar(value=False)
+        self.color_detect_switch = ctk.CTkSwitch(
+            color_row, text="",
+            variable=self.color_detect_var, onvalue=True, offvalue=False,
+            command=self._on_color_detect_toggle,
+            progress_color=COLOR["success"], button_color=COLOR["text"],
+            button_hover_color=COLOR["success"],
+            width=36, height=20
+        )
+        self.color_detect_switch.pack(side="right")
+
         # Action buttons — outline style, clean in both states
         self.test_node_btn = ctk.CTkButton(
             self.target_controls, text="Test Node", command=self.test_current_node,
@@ -283,6 +295,13 @@ class NodesMixin:
             # No node selected → update global default
             self._default_threshold = round(value, 2)
             self._save_config_settings(threshold=round(value, 2))
+
+    def _on_color_detect_toggle(self):
+        """Save color detection toggle for the currently selected node."""
+        if self.current_selected_name:
+            filepath = self.tracked_icons.get(self.current_selected_name)
+            if filepath and os.path.exists(filepath):
+                save_color_detect(filepath, self.color_detect_var.get())
 
     def _save_config_settings(self, **kwargs):
         """Save settings to config.json. Merges with existing values."""
@@ -339,8 +358,6 @@ class NodesMixin:
             
             if self.tracked_icons:
                 self.after(500, lambda: self.log_gui(f"[System] Setup restored {len(self.tracked_icons)} active nodes."))
-                # Auto-learn features on startup for any templates missing .features.npz
-                self.after(1000, self._auto_learn_if_needed)
 
     def refresh_tracked_list(self):
         for widget in self.btn_container.winfo_children():
@@ -449,6 +466,12 @@ class NodesMixin:
         self.thresh_value_label.configure(text=f"{node_thresh:.2f}")
         self.test_node_btn.configure(state="normal")
 
+        # Load per-node color detect toggle
+        if filepath and os.path.exists(filepath):
+            self.color_detect_var.set(get_color_detect(filepath))
+        else:
+            self.color_detect_var.set(False)
+
     def _show_test_notification(self, text, color, bg_color):
         """Show a toast notification in the Nodes tab. Must be called from main thread."""
         # Cancel pending hide
@@ -485,6 +508,7 @@ class NodesMixin:
         frozen_tab_id_str = self.footer_tab_input.get().strip()
         frozen_tab_id = int(frozen_tab_id_str) if frozen_tab_id_str.isdigit() else 0
         frozen_threshold = self.slider.get()
+        frozen_use_color = self.color_detect_var.get()
 
         # Show scanning notification immediately
         self._show_test_notification(
@@ -529,7 +553,10 @@ class NodesMixin:
                 try: frame_bytes = cdp_client.screenshot()
                 except: pass
             
-            debug_result = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=True, frame_bytes=frame_bytes)
+            debug_result = self.vision.find_template_on_screen(
+                filepath, threshold=threshold_val, debug=True,
+                frame_bytes=frame_bytes, use_color=frozen_use_color
+            )
             # debug=True returns (result, debug_lines)
             if isinstance(debug_result, tuple) and len(debug_result) == 2 and isinstance(debug_result[1], list):
                 res, debug_lines = debug_result
@@ -616,7 +643,7 @@ class NodesMixin:
         # Custom styled dialog
         dialog = ctk.CTkToplevel(self)
         dialog.title("New Tracking Node")
-        dialog.geometry("380x280")
+        dialog.geometry("380x220")
         dialog.resizable(False, False)
         dialog.transient(self)
         dialog.grab_set()
@@ -664,27 +691,12 @@ class NodesMixin:
             text_color=COLOR["text"]
         ).pack(pady=(16, 4))
 
-        # Mode toggle: Image / Text
-        mode_var = ctk.StringVar(value="Image")
-        mode_frame = ctk.CTkFrame(dialog, fg_color="transparent")
-        mode_frame.pack(pady=(4, 8))
-        
-        ctk.CTkSegmentedButton(
-            mode_frame, values=["Image", "Text"],
-            variable=mode_var, width=200,
-            font=ctk.CTkFont(size=11, weight="bold"),
-            selected_color=COLOR["primary"],
-            selected_hover_color=COLOR["primary_h"],
-            command=lambda v: _toggle_mode(v)
-        ).pack()
-
         # Subtitle
-        subtitle = ctk.CTkLabel(
+        ctk.CTkLabel(
             dialog, text="e.g., hp_bar, potion, settings...",
             font=ctk.CTkFont(family="Inter", size=11),
             text_color=COLOR["text_muted"]
-        )
-        subtitle.pack(pady=(0, 6))
+        ).pack(pady=(0, 6))
 
         # Name entry
         entry = ctk.CTkEntry(
@@ -697,38 +709,16 @@ class NodesMixin:
         entry.pack(pady=(0, 6))
         entry.focus_set()
 
-        # Text search entry (hidden by default, shown in Text mode)
-        text_frame = ctk.CTkFrame(dialog, fg_color="transparent")
-        text_entry = ctk.CTkEntry(
-            text_frame, width=300, height=36,
-            fg_color=COLOR["surface"], border_width=1,
-            border_color=COLOR["accent"], corner_radius=8,
-            font=ctk.CTkFont(family="Inter", size=12),
-            placeholder_text="Text to search (e.g. Supplies, Auto Attack...)"
-        )
-        text_entry.pack()
-        
-        def _toggle_mode(v):
-            if v == "Text":
-                subtitle.configure(text="OCR will search for this text on screen")
-                text_frame.pack(after=entry, pady=(0, 6))
-            else:
-                subtitle.configure(text="e.g., hp_bar, potion, settings...")
-                text_frame.pack_forget()
-        
-        result = {"name": None, "mode": None, "search_text": None}
+        result = {"name": None}
 
         def on_ok(*_):
             result["name"] = entry.get().strip()
-            result["mode"] = mode_var.get()
-            result["search_text"] = text_entry.get().strip() if mode_var.get() == "Text" else None
             _on_close()
 
         def on_cancel():
             _on_close()
 
         entry.bind("<Return>", on_ok)
-        text_entry.bind("<Return>", on_ok)
 
         # Button row
         btn_row = ctk.CTkFrame(dialog, fg_color="transparent")
@@ -757,17 +747,10 @@ class NodesMixin:
                 messagebox.showerror("Error", "This Node Name already exists! Provide a unique name.")
                 return
             
-            if result["mode"] == "Text" and result["search_text"]:
-                # Save text node config
-                self._save_text_node(name, result["search_text"])
-                self._add_icon_to_list(name, "")
-                self.on_select_target(name)
-                self.log_gui(f"[Nodes] 🔤 Text Node '{name}' created (search: '{result['search_text']}')")
-            else:
-                # Image mode — proceed with screenshot capture
-                self._add_icon_to_list(name, "")
-                self.on_select_target(name)
-                self._show_capture_confirm(name)
+            # Image mode — proceed with screenshot capture
+            self._add_icon_to_list(name, "")
+            self.on_select_target(name)
+            self._show_capture_confirm(name)
     
     def _load_text_nodes(self):
         """Load text node configs from trackers/text_nodes.json."""
