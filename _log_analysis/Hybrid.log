@@ -1385,3 +1385,215 @@
 05:34:58   Macros: 1 ok / 1 fail
 05:34:58   Errors: 2
 05:34:58 ============================================================
+05:36:14 ============================================================
+05:36:14 SESSION START — Hybrid (port:9225 tab:0)
+05:36:14 ============================================================
+05:36:14 [Hybrid] Starting worker: func=loop - Farm V1, port=9225, tab=0
+05:36:18 [Hybrid] Connected to Port 9225, Tab 0
+05:36:18 [LOOP] ── Loop iteration start ──
+05:36:19 [SHOT] OK (163ms)
+05:36:19 [SCAN] Gathering - Inside → TRUE (180ms)
+05:36:20 [NODE] → Click: Gathering - Exit
+05:36:20 [SHOT] OK (0ms)
+05:36:25 [SCAN] Gathering - Exit → TRUE (0ms)
+05:36:25 [ERR] DEAD END: No edge from 'Click' (Gathering - Exit) — will trigger restart
+05:36:25 [ERR] RESTART: No next node after 'Click' (Gathering - Exit). Restart 1/10
+05:36:28 [LOOP] ── Loop iteration start ──
+05:36:54 [SHOT] FAIL #1 (25003ms)
+05:36:54 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:21 [SHOT] FAIL #2 (25007ms)
+05:37:21 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:37:25 [SCAN] Gathering - Inside → FALSE (56012ms)
+05:37:50 [SHOT] FAIL #3 (25012ms)
+05:37:50 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:38:23 [SHOT] FAIL #4 (25010ms)
+05:38:23 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:38:39 [SCAN] Supplies → FALSE (74023ms)
+05:39:01 [SHOT] OK (10741ms)
+05:39:01 [SHOT] OK (0ms)
+05:39:02 [SCAN] Revive → FALSE (12095ms)
+05:39:03 [SHOT] OK (0ms)
+05:39:03 [SHOT] OK (0ms)
+05:39:04 [SCAN] Supplies - In → FALSE (1365ms)
+05:39:29 [SHOT] FAIL #1 (25006ms)
+05:39:29 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:39:56 [SHOT] FAIL #2 (25006ms)
+05:39:56 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:40:00 [SCAN] Gathering - Automove → FALSE (56013ms)
+05:40:26 [SHOT] FAIL #3 (25003ms)
+05:40:26 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:40:59 [SHOT] FAIL #4 (25002ms)
+05:40:59 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:41:15 [SCAN] Attack - Auto → FALSE (74011ms)
+05:41:49 [SHOT] OK (23652ms)
+05:41:50 [SHOT] OK (0ms)
+05:41:50 [SCAN] Attack - Auto On → FALSE (24937ms)
+05:41:51 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:41:51 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:41:54 [LOOP] ── Loop iteration start ──
+05:41:55 [SHOT] OK (198ms)
+05:41:55 [SHOT] OK (0ms)
+05:41:56 [SCAN] Gathering - Inside → FALSE (1173ms)
+05:41:56 [SHOT] OK (0ms)
+05:41:56 [SCAN] Supplies → TRUE (13ms)
+05:41:57 [MACRO] Buy Blood: Starting (0ms)
+05:42:02     - Step OK: ⚡ Hard Click 'Supplies' at (1324,561)
+05:42:02 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:42:27 [SHOT] FAIL #1 (25001ms)
+05:42:27 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:42:55 [SHOT] FAIL #2 (25009ms)
+05:42:55 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:43:24 [SHOT] FAIL #3 (25007ms)
+05:43:24 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:43:58 [SHOT] FAIL #4 (25008ms)
+05:43:58 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:44:39 [SHOT] FAIL #5 (25013ms)
+05:44:39 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:46:09 ============================================================
+05:46:09 SESSION START — Hybrid (port:9225 tab:0)
+05:46:09 ============================================================
+05:46:09 [Hybrid] Starting worker: func=macro - Home, port=9225, tab=0
+05:46:13 [Hybrid] Connected to Port 9225, Tab 0
+05:46:13 [MACRO] Home: Starting (0ms)
+05:46:19     - Step OK: ⚡ Hard Click 'Home' at (356,374)
+05:46:19 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:46:44 [SHOT] FAIL #1 (25002ms)
+05:46:44 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:47:11 [SHOT] FAIL #2 (25001ms)
+05:47:11 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:47:41 [SHOT] FAIL #3 (25011ms)
+05:47:41 [Hybrid] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:48:14 [SHOT] FAIL #4 (25005ms)
+05:48:14 [Hybrid] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:48:56 [SHOT] FAIL #5 (25002ms)
+05:48:56 [Hybrid] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:49:27 [SHOT] OK (187ms)
+05:49:27     - Marker OK: 'Supplies' confirmed APPEAR.
+05:49:27 [Macro] Steps completed. Checking result...
+05:49:28 [SHOT] OK (0ms)
+05:49:28 [Macro] Result: SUCCESS (found 'Supplies')
+05:49:28 [MACRO] Home: PASSED (194253ms total)
+05:49:28 ============================================================
+05:49:28 SESSION END — Hybrid (3.3 min)
+05:49:28   Loops: 0
+05:49:28   Screenshots: 2 ok / 5 fail (71.4%)
+05:49:28   Avg latency: 94ms
+05:49:28   Macros: 1 ok / 0 fail
+05:49:28   Errors: 0
+05:49:28 ============================================================
+05:51:09 ============================================================
+05:51:09 SESSION START — Hybrid (port:9225 tab:0)
+05:51:09 ============================================================
+05:51:09 [Hybrid] Starting worker: func=loop - Farm V1, port=9225, tab=0
+05:51:13 [Hybrid] Connected to Port 9225, Tab 0
+05:51:14 [LOOP] ── Loop iteration start ──
+05:51:15 [SHOT] OK (185ms)
+05:51:15 [SHOT] OK (0ms)
+05:51:16 [SCAN] Gathering - Inside → FALSE (1361ms)
+05:51:16 [SHOT] OK (0ms)
+05:51:16 [SCAN] Supplies → TRUE (11ms)
+05:51:17 [MACRO] Buy Blood: Starting (0ms)
+05:51:22     - Step OK: ⚡ Hard Click 'Supplies' at (1333,584)
+05:51:22 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:51:47 [SHOT] FAIL #1 (25004ms)
+05:51:47 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:51:54 [SHOT] OK (3628ms)
+05:51:54     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:51:59     - Step OK: ⚡ Hard Click 'Supplies - Type' at (560,323)
+05:51:59 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:52:24 [SHOT] FAIL #1 (25010ms)
+05:52:24 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:30 [SHOT] OK (3135ms)
+05:52:30     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:52:35     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (793,541)
+05:52:35 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:52:35 [Macro] Delay completed.
+05:52:41     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1005,700)
+05:52:41 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:52:42 [Macro] Delay completed.
+05:52:47     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1544,154)
+05:52:48 [Macro] Steps completed. Checking result...
+05:53:14 [SHOT] FAIL #1 (25027ms)
+05:53:14 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:53:16 [Macro] Result: FAILURE ('Home' not found)
+05:53:16 [MACRO] Buy Blood: FAILED (119110ms total)
+05:53:16 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:53:36 [ERR] RESTART: No next node after 'Macro' (ad649a80). Restart 1/10
+05:53:39 [LOOP] ── Loop iteration start ──
+05:54:02 [SHOT] OK (22865ms)
+05:54:03 [SHOT] OK (0ms)
+05:54:04 [SCAN] Gathering - Inside → FALSE (24156ms)
+05:54:04 [SHOT] OK (0ms)
+05:54:04 [SCAN] Supplies → TRUE (10ms)
+05:54:05 [MACRO] Buy Blood: Starting (0ms)
+05:54:10     - Step OK: ⚡ Hard Click 'Supplies' at (1306,575)
+05:54:11 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:54:19 [SHOT] OK (8000ms)
+05:54:19     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:54:24     - Step OK: ⚡ Hard Click 'Supplies - Type' at (494,317)
+05:54:24 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:54:24 [SHOT] OK (156ms)
+05:54:24     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:54:30     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (843,550)
+05:54:30 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:54:30 [Macro] Delay completed.
+05:54:35     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1067,698)
+05:54:36 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:54:37 [Macro] Delay completed.
+05:54:42     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1546,143)
+05:54:42 [Macro] Steps completed. Checking result...
+05:54:56 [SHOT] OK (12813ms)
+05:54:56 [Macro] Result: SUCCESS (found 'Home')
+05:54:56 [MACRO] Buy Blood: PASSED (51011ms total)
+05:54:56 [MACRO] Gathering: Starting (0ms)
+05:54:56 [SHOT] OK (0ms)
+05:55:01     - Step OK: Clicked 'Gathering'
+05:55:02 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:55:27 [SHOT] FAIL #1 (25014ms)
+05:55:27 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:55:29     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:55:29 [MACRO] Gathering: FAILED (33141ms total)
+05:55:29 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:55:29 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:55:32 [LOOP] ── Loop iteration start ──
+05:55:58 [SHOT] FAIL #2 (25008ms)
+05:55:58 [Hybrid] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:56:04 [SHOT] OK (2819ms)
+05:56:04 [SCAN] Gathering - Inside → TRUE (31849ms)
+05:56:15 [NODE] → Click: Gathering - Exit
+05:56:15 [SHOT] OK (233ms)
+05:56:16 [SCAN] Gathering - Exit → TRUE (0ms)
+05:56:16 [ERR] DEAD END: No edge from 'Click' (Gathering - Exit) — will trigger restart
+05:56:16 [ERR] RESTART: No next node after 'Click' (Gathering - Exit). Restart 1/10
+05:56:19 [LOOP] ── Loop iteration start ──
+05:56:20 [SHOT] OK (229ms)
+05:56:20 [SHOT] OK (0ms)
+05:56:21 [SCAN] Gathering - Inside → FALSE (1684ms)
+05:56:22 [SHOT] OK (0ms)
+05:56:22 [SCAN] Supplies → TRUE (12ms)
+05:56:22 [MACRO] Buy Blood: Starting (0ms)
+05:56:27     - Step OK: ⚡ Hard Click 'Supplies' at (1301,575)
+05:56:28 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:56:51 [SHOT] OK (23675ms)
+05:56:51     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:56:57     - Step OK: ⚡ Hard Click 'Supplies - Type' at (491,292)
+05:56:57 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:57:22 [SHOT] FAIL #1 (25014ms)
+05:57:22 [Hybrid] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:57:25 [SHOT] OK (144ms)
+05:57:25     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:57:30     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (801,561)
+05:57:30 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:57:30 [Macro] Delay completed.
+05:57:35     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1049,722)
+05:57:36 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:57:37 [Macro] Delay completed.
+05:57:42     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1530,138)
+05:57:42 [Macro] Steps completed. Checking result...
+05:57:58 [SHOT] OK (14388ms)
+05:57:58 [Macro] Result: SUCCESS (found 'Home')
+05:57:58 [MACRO] Buy Blood: PASSED (95722ms total)
+05:57:58 [MACRO] Gathering: Starting (0ms)
+05:57:58 [SHOT] OK (0ms)
+05:58:03     - Step OK: Clicked 'Gathering'
+05:58:04 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...

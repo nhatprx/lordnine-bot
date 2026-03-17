@@ -654,3 +654,152 @@
 05:34:25 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 30s, fail #9)
 05:35:20 [SHOT] FAIL #10 (25007ms)
 05:35:20 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+05:35:50 [SCAN] Attack - Auto On → FALSE (110018ms)
+05:35:50 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:35:50 ============================================================
+05:35:50 SESSION END — LowkeyCuto (8.9 min)
+05:35:50   Loops: 0
+05:35:50   Screenshots: 3 ok / 11 fail (78.6%)
+05:35:50   Avg latency: 8322ms
+05:35:50   Macros: 0 ok / 0 fail
+05:35:50   Errors: 1
+05:35:50 ============================================================
+05:36:26 ============================================================
+05:36:26 SESSION START — LowkeyCuto (port:9226 tab:2)
+05:36:26 ============================================================
+05:36:27 [LowkeyCuto] Starting worker: func=loop - Farm V1, port=9226, tab=2
+05:36:35 [LowkeyCuto] Connected to Port 9226, Tab 2
+05:36:36 [LOOP] ── Loop iteration start ──
+05:37:02 [SHOT] FAIL #1 (25015ms)
+05:37:02 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:29 [SHOT] FAIL #2 (25004ms)
+05:37:29 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:37:33 [SCAN] Gathering - Inside → FALSE (56020ms)
+05:37:58 [SHOT] FAIL #3 (25010ms)
+05:37:58 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:38:31 [SHOT] FAIL #4 (25013ms)
+05:38:31 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:38:47 [SCAN] Supplies → FALSE (74026ms)
+05:39:13 [SHOT] FAIL #5 (25009ms)
+05:39:13 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:40:08 [SHOT] FAIL #6 (25012ms)
+05:40:08 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:40:38 [SCAN] Revive → FALSE (110022ms)
+05:41:04 [SHOT] FAIL #7 (25013ms)
+05:41:04 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:41:59 [SHOT] FAIL #8 (25015ms)
+05:41:59 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:42:29 [SCAN] Supplies - In → FALSE (110030ms)
+05:42:54 [SHOT] FAIL #9 (25007ms)
+05:42:54 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+05:43:49 [SHOT] FAIL #10 (25011ms)
+05:43:49 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+05:44:19 [SCAN] Gathering - Automove → FALSE (110020ms)
+05:44:45 [SHOT] FAIL #11 (25006ms)
+05:44:45 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 30s, fail #11)
+05:46:21 ============================================================
+05:46:21 SESSION START — LowkeyCuto (port:9226 tab:2)
+05:46:21 ============================================================
+05:46:22 [LowkeyCuto] Starting worker: func=macro - Home, port=9226, tab=2
+05:46:31 [LowkeyCuto] Connected to Port 9226, Tab 2
+05:46:31 [MACRO] Home: Starting (0ms)
+05:46:31     - Step OK: ⚡ Hard Click 'Home' at (360,374)
+05:46:32 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:46:57 [SHOT] FAIL #1 (25003ms)
+05:46:57 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:47:24 [SHOT] FAIL #2 (25013ms)
+05:47:24 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:47:54 [SHOT] FAIL #3 (25007ms)
+05:47:54 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:48:27 [SHOT] FAIL #4 (25009ms)
+05:48:27 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:49:08 [SHOT] OK (23845ms)
+05:49:09 [SHOT] OK (0ms)
+05:49:09 [SHOT] OK (0ms)
+05:49:10 [SHOT] OK (0ms)
+05:49:10 [SHOT] OK (0ms)
+05:49:11 [SHOT] OK (61ms)
+05:49:12 [SHOT] OK (0ms)
+05:49:13 [SHOT] OK (0ms)
+05:49:14 [SHOT] OK (0ms)
+05:49:14 [SHOT] OK (64ms)
+05:49:15 [SHOT] OK (0ms)
+05:49:17 [SHOT] OK (0ms)
+05:49:18 [SHOT] OK (60ms)
+05:49:19 [SHOT] OK (0ms)
+05:49:19 [SHOT] OK (0ms)
+05:49:20 [SHOT] OK (0ms)
+05:49:21 [SHOT] OK (54ms)
+05:49:22 [SHOT] OK (0ms)
+05:49:23 [SHOT] OK (0ms)
+05:49:24 [SHOT] OK (0ms)
+05:49:49 [SHOT] FAIL #1 (25011ms)
+05:49:49 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:50:17 [SHOT] FAIL #2 (24811ms)
+05:50:17 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:50:21 [MACRO] Home: FAILED (230055ms total)
+05:50:21 ============================================================
+05:50:21 SESSION END — LowkeyCuto (4.0 min)
+05:50:21   Loops: 0
+05:50:21   Screenshots: 20 ok / 6 fail (23.1%)
+05:50:21   Avg latency: 1204ms
+05:50:21   Macros: 0 ok / 1 fail
+05:50:21   Errors: 0
+05:50:21 ============================================================
+05:51:21 ============================================================
+05:51:21 SESSION START — LowkeyCuto (port:9226 tab:2)
+05:51:21 ============================================================
+05:51:21 [LowkeyCuto] Starting worker: func=loop - Farm V1, port=9226, tab=2
+05:51:34 [LowkeyCuto] Connected to Port 9226, Tab 2
+05:51:35 [LOOP] ── Loop iteration start ──
+05:52:01 [SHOT] FAIL #1 (25005ms)
+05:52:01 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:28 [SHOT] FAIL #2 (25014ms)
+05:52:28 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:52:32 [SCAN] Gathering - Inside → FALSE (56021ms)
+05:52:57 [SHOT] FAIL #3 (25001ms)
+05:52:57 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:53:25 [SHOT] OK (19494ms)
+05:53:26 [SCAN] Supplies → FALSE (53234ms)
+05:53:26 [SHOT] OK (0ms)
+05:53:27 [SHOT] OK (0ms)
+05:53:27 [SCAN] Revive → FALSE (789ms)
+05:53:28 [SHOT] OK (0ms)
+05:53:53 [SHOT] FAIL #1 (25011ms)
+05:53:53 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:53:55 [SCAN] Supplies - In → FALSE (27461ms)
+05:54:21 [SHOT] FAIL #2 (25011ms)
+05:54:21 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:54:50 [SHOT] OK (24948ms)
+05:54:50 [SCAN] Gathering - Automove → FALSE (54298ms)
+05:54:50 [SHOT] OK (0ms)
+05:54:51 [SHOT] OK (0ms)
+05:54:51 [SCAN] Attack - Auto → FALSE (1106ms)
+05:54:52 [SHOT] OK (0ms)
+05:54:52 [SHOT] OK (0ms)
+05:54:53 [SCAN] Attack - Auto On → FALSE (905ms)
+05:54:53 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:54:53 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:54:56 [LOOP] ── Loop iteration start ──
+05:55:22 [SHOT] FAIL #1 (25014ms)
+05:55:22 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:55:49 [SHOT] FAIL #2 (25014ms)
+05:55:49 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:55:53 [SCAN] Gathering - Inside → FALSE (56040ms)
+05:56:18 [SHOT] FAIL #3 (25028ms)
+05:56:18 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:56:27 [SHOT] OK (57ms)
+05:56:27 [SCAN] Supplies → FALSE (33525ms)
+05:56:27 [SHOT] OK (0ms)
+05:56:28 [SHOT] OK (0ms)
+05:56:28 [SCAN] Revive → FALSE (1099ms)
+05:56:29 [SHOT] OK (0ms)
+05:56:29 [SHOT] OK (0ms)
+05:56:30 [SCAN] Supplies - In → FALSE (822ms)
+05:56:55 [SHOT] FAIL #1 (25010ms)
+05:56:55 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:57:22 [SHOT] FAIL #2 (25004ms)
+05:57:22 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:57:26 [SCAN] Gathering - Automove → FALSE (56062ms)
+05:57:52 [SHOT] FAIL #3 (25002ms)
+05:57:52 [LowkeyCuto] Screenshot error: Screenshot failed (backoff 8s, fail #3)

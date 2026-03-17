@@ -1332,7 +1332,7 @@ class AccountsMixin:
         
         # ── Screenshot backoff state ──
         _ss_fail_count = 0
-        _SS_MAX_BACKOFF = 30  # cap at 30 seconds
+        _SS_MAX_BACKOFF = 5  # cap at 5s (circuit breaker handles long pauses)
         
         # ── Screenshot via ScreenshotScheduler (central coordinator) ──
         # Initialize scheduler on first use (lazy singleton on BotApp)
@@ -1344,6 +1344,13 @@ class AccountsMixin:
         def take_screenshot(quality=70):
             """Take screenshot via scheduler with backoff on failure."""
             nonlocal _ss_fail_count
+            
+            # Fix 4: If circuit breaker is open, sleep briefly without
+            # incrementing fail_count (avoids double penalty)
+            if scheduler.is_circuit_open(port):
+                time.sleep(1.0)
+                return None
+            
             _t0 = time.time()
             frame = scheduler.request_screenshot(cdp_client, quality=quality)
             _lat = (time.time() - _t0) * 1000
@@ -1353,9 +1360,11 @@ class AccountsMixin:
                 return frame
             else:
                 _ss_fail_count += 1
-                backoff = min(_SS_MAX_BACKOFF, 2 ** _ss_fail_count)
+                # Fix 2: Linear backoff 0.5s, 1s, 1.5s... capped at 5s
+                # (was exponential 2^n capped at 30s — too aggressive)
+                backoff = min(_SS_MAX_BACKOFF, 0.5 * _ss_fail_count)
                 acc_logger.shot(success=False, latency_ms=_lat, fail_count=_ss_fail_count)
-                log_ss_error(f"Screenshot failed (backoff {backoff}s, fail #{_ss_fail_count})", _ss_fail_count)
+                log_ss_error(f"Screenshot failed (backoff {backoff:.1f}s, fail #{_ss_fail_count})", _ss_fail_count)
                 time.sleep(backoff)
                 return None
         
@@ -1742,9 +1751,12 @@ class AccountsMixin:
                 current_node_id = get_start_node()
                 continue  # Skip setting current_node_id = next_nid
 
-            # Log if next node is missing (edge not connected)
+            # Fix 1: DEAD END → fallback to Start instead of restart
+            # Flowchart may have missing edges (user didn't connect FAIL output).
+            # Going to Start is safe; full restart costs 3s + churn.
             if next_nid is None and ntype != "End":
-                acc_logger.error(f"DEAD END: No edge from '{ntype}' ({_last_node_name}) — will trigger restart")
+                acc_logger.info(f"[LOOP] No edge from '{ntype}' ({_last_node_name}) → back to Start")
+                next_nid = get_start_node()
             current_node_id = next_nid
 
         # ---- Cleanup (set flags FIRST to prevent health monitor restart) ----

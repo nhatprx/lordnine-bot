@@ -1,24 +1,57 @@
-=== ANALYSIS REPORT (2026-03-18 05:35) ===
-Accounts: 3 running / 39 total
+=== ANALYSIS REPORT (2026-03-18 05:58) ===
+Accounts: 39 running / 39 total
 
 📊 SCREENSHOT HEALTH (by port)
-  Port 9222 (5 tabs): 98% success, avg 258ms
-  Port 9223 (5 tabs): 71% success, avg 3471ms  ⚠ BOTTLENECK
-  Port 9224 (5 tabs): 90% success, avg 825ms
-  Port 9225 (5 tabs): 50% success, avg 4318ms  ⚠ BOTTLENECK
-  Port 9226 (7 tabs): 26% success, avg 9232ms  ⚠ BOTTLENECK
-  Port 9227 (5 tabs): 61% success, avg 4065ms  ⚠ BOTTLENECK
-  Port 9228 (5 tabs): 85% success, avg 1730ms
-  Port 9229 (2 tabs): 96% success, avg 222ms
+  Port 9222 (5 tabs): 99% success, avg 222ms
+  Port 9223 (5 tabs): 81% success, avg 2800ms
+  Port 9224 (5 tabs): 77% success, avg 2543ms  ⚠ BOTTLENECK
+  Port 9225 (5 tabs): 71% success, avg 3596ms  ⚠ BOTTLENECK
+  Port 9226 (7 tabs): 44% success, avg 4906ms  ⚠ BOTTLENECK
+  Port 9227 (5 tabs): 81% success, avg 1669ms
+  Port 9228 (5 tabs): 88% success, avg 1945ms
+  Port 9229 (2 tabs): 94% success, avg 324ms
 
 ❌ TOP ERRORS (by frequency)
-  1. DEAD END: No edge from 'Macro' (cc882d55) — will t (30 times)
-  2. RESTART: No next node after 'Macro' (cc882d55). Re (19 times)
-  3. DEAD END: No edge from 'Macro' (14253c0e) — will t (16 times)
-  4. RESTART: No next node after 'Macro' (14253c0e). Re (16 times)
-  5. DEAD END: No edge from 'Macro' (ad649a80) — will t (15 times)
+  1. DEAD END: No edge from 'Macro' (cc882d55) — will t (24 times)
+  2. RESTART: No next node after 'Macro' (cc882d55). Re (24 times)
+  3. DEAD END: No edge from 'Macro' (14253c0e) — will t (15 times)
+  4. RESTART: No next node after 'Macro' (14253c0e). Re (15 times)
+  5. DEAD END: No edge from 'Macro' (ad649a80) — will t (6 times)
 
 ⚠ ACCOUNTS NEEDING ATTENTION
-  LowkeyCuto — 79% screenshot fail, avg latency 8322ms
-  HILDODO — 75% screenshot fail, avg latency 568ms
-  Wongdu — 72% screenshot fail, avg latency 7132ms
+  Middlemist — 71% screenshot fail, avg latency 5985ms
+  Wongdu — 65% screenshot fail, avg latency 1299ms
+  Stuccy — 60% screenshot fail, avg latency 10166ms
+  Phone-27 — 47% screenshot fail, avg latency 7670ms
+  Lomie — 45% screenshot fail, avg latency 5199ms
+  LowkeyCuto — 44% screenshot fail, avg latency 3178ms
+  benji0 — 43% screenshot fail, avg latency 3627ms
+  Phylac — 42% screenshot fail, avg latency 3841ms
+  darius — 39% screenshot fail, avg latency 3483ms, 6 recent errors, at node 'Gathering - Exit'
+  Shyz — 36% screenshot fail, avg latency 1966ms
+  SkyVen — 35% screenshot fail, avg latency 3293ms
+  Machi — 31% screenshot fail, avg latency 2226ms
+  Misery — avg latency 3412ms
+  Silly — avg latency 3602ms
+  Kaori — avg latency 2369ms
+  Warayupay — avg latency 4581ms
+  HILDODO — avg latency 3325ms
+  Hybrid — avg latency 4394ms, 6 recent errors, at node 'Gathering - Exit'
+  Kipie — avg latency 1867ms
+  Voidking — avg latency 2393ms, 6 recent errors, at node 'Attack - Auto'
+  Xuka — avg latency 2542ms, 6 recent errors, at node 'Supplies - Exit'
+  Beru — avg latency 1691ms
+  Alcoholic — avg latency 2277ms
+  RayMZ — avg latency 828ms
+  MangKanor — avg latency 4521ms, 8 recent errors, at node 'Gathering - Exit'
+  Quizzle — avg latency 1746ms
+  Kunehu — avg latency 1864ms
+  Aizen — avg latency 1508ms
+  OLDGUY — avg latency 2942ms, at node 'Gathering - Exit'
+  Kekidot — avg latency 2167ms
+  Joyjoy — avg latency 1275ms
+  Doremon — 10 recent errors
+  Ace — 10 recent errors
+  BigDaddy — 8 recent errors
+  iCool — 10 recent errors
+  KissU — 10 recent errors

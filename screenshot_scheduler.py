@@ -393,6 +393,17 @@ class ScreenshotScheduler:
                 sched.shutdown()
             self._schedulers.clear()
 
+    def is_circuit_open(self, port):
+        """Check if a port's circuit breaker is currently open.
+        
+        Workers should check this before requesting screenshots
+        to avoid double backoff (circuit pause + worker backoff).
+        """
+        sched = self._schedulers.get(port)
+        if sched is None:
+            return False
+        return time.time() < sched._circuit_open_until
+
     def get_stats(self):
         """Get scheduler stats for debugging.
 

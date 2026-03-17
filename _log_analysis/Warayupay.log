@@ -1221,3 +1221,230 @@
 05:35:15   Macros: 0 ok / 0 fail
 05:35:15   Errors: 2
 05:35:15 ============================================================
+05:36:17 ============================================================
+05:36:17 SESSION START — Warayupay (port:9225 tab:2)
+05:36:17 ============================================================
+05:36:18 [Warayupay] Starting worker: func=loop - Farm V1, port=9225, tab=2
+05:36:26 [Warayupay] Connected to Port 9225, Tab 2
+05:36:26 [LOOP] ── Loop iteration start ──
+05:36:52 [SHOT] FAIL #1 (25009ms)
+05:36:52 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:19 [SHOT] FAIL #2 (25015ms)
+05:37:19 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:37:23 [SCAN] Gathering - Inside → FALSE (56025ms)
+05:37:48 [SHOT] FAIL #3 (25010ms)
+05:37:48 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:38:21 [SHOT] FAIL #4 (25012ms)
+05:38:21 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:38:37 [SCAN] Supplies → FALSE (74024ms)
+05:39:00 [SHOT] OK (12490ms)
+05:39:01 [SHOT] OK (0ms)
+05:39:02 [SCAN] Revive → FALSE (14117ms)
+05:39:03 [SHOT] OK (0ms)
+05:39:29 [SHOT] FAIL #1 (25014ms)
+05:39:29 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:39:31 [SCAN] Supplies - In → FALSE (27795ms)
+05:39:56 [SHOT] FAIL #2 (25006ms)
+05:39:56 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:40:05 [SHOT] OK (5072ms)
+05:40:06 [SCAN] Gathering - Automove → FALSE (34968ms)
+05:40:06 [SHOT] OK (0ms)
+05:40:07 [SHOT] OK (0ms)
+05:40:08 [SCAN] Attack - Auto → FALSE (1219ms)
+05:40:08 [SHOT] OK (0ms)
+05:40:33 [SHOT] FAIL #1 (25030ms)
+05:40:33 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:40:35 [SCAN] Attack - Auto On → FALSE (27488ms)
+05:40:36 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:40:36 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:40:39 [LOOP] ── Loop iteration start ──
+05:41:05 [SHOT] FAIL #2 (25006ms)
+05:41:05 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:41:09 [SHOT] OK (164ms)
+05:41:10 [SCAN] Gathering - Inside → FALSE (29950ms)
+05:41:45 [SHOT] FAIL #1 (25009ms)
+05:41:45 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:41:50 [SHOT] OK (2785ms)
+05:41:50 [SCAN] Supplies → TRUE (29810ms)
+05:41:50 [MACRO] Buy Blood: Starting (0ms)
+05:41:56     - Step OK: ⚡ Hard Click 'Supplies' at (1302,586)
+05:41:56 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:41:56 [SHOT] OK (190ms)
+05:41:57 [SHOT] OK (0ms)
+05:41:57 [SHOT] OK (0ms)
+05:41:58 [SHOT] OK (0ms)
+05:41:59 [SHOT] OK (0ms)
+05:42:24 [SHOT] FAIL #1 (25007ms)
+05:42:24 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:42:30 [SHOT] OK (3596ms)
+05:42:30     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:42:36     - Step OK: ⚡ Hard Click 'Supplies - Type' at (487,301)
+05:42:36 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:43:01 [SHOT] OK (24975ms)
+05:43:01     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:43:06     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (908,552)
+05:43:07 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:43:07 [Macro] Delay completed.
+05:43:12     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (999,708)
+05:43:12 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:43:13 [Macro] Delay completed.
+05:43:18     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1535,135)
+05:43:19 [Macro] Steps completed. Checking result...
+05:43:45 [SHOT] FAIL #1 (25003ms)
+05:43:45 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:47 [Macro] Result: FAILURE ('Home' not found)
+05:43:47 [MACRO] Buy Blood: FAILED (116421ms total)
+05:43:47 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:43:57 [ERR] RESTART: No next node after 'Macro' (ad649a80). Restart 1/10
+05:44:00 [LOOP] ── Loop iteration start ──
+05:44:03 [SHOT] OK (2931ms)
+05:44:04 [SHOT] OK (0ms)
+05:44:05 [SCAN] Gathering - Inside → FALSE (4518ms)
+05:44:06 [SHOT] OK (0ms)
+05:44:06 [SCAN] Supplies → TRUE (11ms)
+05:44:06 [MACRO] Buy Blood: Starting (0ms)
+05:44:11     - Step OK: ⚡ Hard Click 'Supplies' at (1299,551)
+05:44:12 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:44:37 [SHOT] FAIL #1 (25010ms)
+05:44:37 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:44:43 [SHOT] OK (3619ms)
+05:44:43     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:44:48     - Step OK: ⚡ Hard Click 'Supplies - Type' at (499,297)
+05:44:48 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:46:12 ============================================================
+05:46:12 SESSION START — Warayupay (port:9225 tab:2)
+05:46:12 ============================================================
+05:46:14 [Warayupay] Starting worker: func=macro - Home, port=9225, tab=2
+05:46:22 [Warayupay] Connected to Port 9225, Tab 2
+05:46:22 [MACRO] Home: Starting (0ms)
+05:46:27     - Step OK: ⚡ Hard Click 'Home' at (347,371)
+05:46:28 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:46:53 [SHOT] FAIL #1 (25011ms)
+05:46:53 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:47:20 [SHOT] FAIL #2 (25015ms)
+05:47:20 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:47:50 [SHOT] FAIL #3 (25010ms)
+05:47:50 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:48:23 [SHOT] FAIL #4 (25009ms)
+05:48:23 [Warayupay] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:49:05 [SHOT] FAIL #5 (25001ms)
+05:49:05 [Warayupay] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:49:35 [SHOT] OK (182ms)
+05:49:35     - Marker OK: 'Supplies' confirmed APPEAR.
+05:49:35 [Macro] Steps completed. Checking result...
+05:49:36 [SHOT] OK (0ms)
+05:49:36 [Macro] Result: SUCCESS (found 'Supplies')
+05:49:36 [MACRO] Home: PASSED (194319ms total)
+05:49:36 ============================================================
+05:49:36 SESSION END — Warayupay (3.4 min)
+05:49:36   Loops: 0
+05:49:36   Screenshots: 2 ok / 5 fail (71.4%)
+05:49:36   Avg latency: 91ms
+05:49:36   Macros: 1 ok / 0 fail
+05:49:36   Errors: 0
+05:49:36 ============================================================
+05:51:12 ============================================================
+05:51:12 SESSION START — Warayupay (port:9225 tab:2)
+05:51:12 ============================================================
+05:51:13 [Warayupay] Starting worker: func=loop - Farm V1, port=9225, tab=2
+05:51:17 [Warayupay] Connected to Port 9225, Tab 2
+05:51:17 [LOOP] ── Loop iteration start ──
+05:51:18 [SHOT] OK (177ms)
+05:51:18 [SHOT] OK (0ms)
+05:51:19 [SCAN] Gathering - Inside → FALSE (1564ms)
+05:51:20 [SHOT] OK (0ms)
+05:51:20 [SCAN] Supplies → TRUE (11ms)
+05:51:20 [MACRO] Buy Blood: Starting (0ms)
+05:51:25     - Step OK: ⚡ Hard Click 'Supplies' at (1326,563)
+05:51:25 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:51:50 [SHOT] FAIL #1 (25000ms)
+05:51:50 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:51:54 [SHOT] OK (1488ms)
+05:51:54     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:52:00     - Step OK: ⚡ Hard Click 'Supplies - Type' at (502,320)
+05:52:00 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:52:25 [SHOT] FAIL #1 (25010ms)
+05:52:25 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:52 [SHOT] FAIL #2 (25007ms)
+05:52:52 [Warayupay] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:53:22 [SHOT] FAIL #3 (25006ms)
+05:53:22 [Warayupay] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:53:32 [SHOT] OK (1128ms)
+05:53:32     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:53:37     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (833,548)
+05:53:37 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:53:37 [Macro] Delay completed.
+05:53:42     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1012,721)
+05:53:43 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:53:44 [Macro] Delay completed.
+05:53:49     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1525,137)
+05:53:49 [Macro] Steps completed. Checking result...
+05:54:15 [SHOT] FAIL #1 (25002ms)
+05:54:15 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:54:17 [Macro] Result: FAILURE ('Home' not found)
+05:54:17 [MACRO] Buy Blood: FAILED (177609ms total)
+05:54:17 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:54:27 [ERR] RESTART: No next node after 'Macro' (ad649a80). Restart 1/10
+05:54:30 [LOOP] ── Loop iteration start ──
+05:54:56 [SHOT] OK (24571ms)
+05:54:56 [SHOT] OK (0ms)
+05:54:57 [SCAN] Gathering - Inside → FALSE (25923ms)
+05:54:57 [SHOT] OK (0ms)
+05:54:57 [SCAN] Supplies → TRUE (13ms)
+05:54:58 [MACRO] Buy Blood: Starting (0ms)
+05:55:03     - Step OK: ⚡ Hard Click 'Supplies' at (1306,576)
+05:55:04 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:55:27 [SHOT] OK (23204ms)
+05:55:27     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:55:32     - Step OK: ⚡ Hard Click 'Supplies - Type' at (513,313)
+05:55:33 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:55:33 [SHOT] OK (178ms)
+05:55:34 [SHOT] OK (0ms)
+05:55:34 [SHOT] OK (0ms)
+05:55:36 [SHOT] OK (0ms)
+05:56:02 [SHOT] FAIL #1 (25006ms)
+05:56:02 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:56:05 [SHOT] OK (760ms)
+05:56:05     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:56:05     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (867,556)
+05:56:05 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:56:06 [Macro] Delay completed.
+05:56:06     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1019,716)
+05:56:06 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:56:07 [Macro] Delay completed.
+05:56:07     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1529,138)
+05:56:08 [Macro] Steps completed. Checking result...
+05:56:09 [SHOT] OK (86ms)
+05:56:09 [Macro] Result: FAILURE ('Home' not found)
+05:56:09 [MACRO] Buy Blood: FAILED (70829ms total)
+05:56:09 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:56:09 [ERR] RESTART: No next node after 'Macro' (ad649a80). Restart 1/10
+05:56:12 [LOOP] ── Loop iteration start ──
+05:56:13 [SHOT] OK (221ms)
+05:56:13 [SHOT] OK (0ms)
+05:56:14 [SCAN] Gathering - Inside → FALSE (1703ms)
+05:56:15 [SHOT] OK (0ms)
+05:56:15 [SCAN] Supplies → TRUE (24ms)
+05:56:15 [MACRO] Buy Blood: Starting (0ms)
+05:56:20     - Step OK: ⚡ Hard Click 'Supplies' at (1301,560)
+05:56:21 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:56:46 [SHOT] FAIL #1 (25001ms)
+05:56:46 [Warayupay] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:56:52 [SHOT] OK (3924ms)
+05:56:52     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:56:58     - Step OK: ⚡ Hard Click 'Supplies - Type' at (541,320)
+05:56:58 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:57:23 [SHOT] OK (24847ms)
+05:57:23     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:57:28     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (892,560)
+05:57:29 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:57:29 [Macro] Delay completed.
+05:57:34     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (980,693)
+05:57:34 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:57:35 [Macro] Delay completed.
+05:57:40     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1535,147)
+05:57:41 [Macro] Steps completed. Checking result...
+05:57:57 [SHOT] OK (15620ms)
+05:57:57 [Macro] Result: SUCCESS (found 'Home')
+05:57:57 [MACRO] Buy Blood: PASSED (102368ms total)
+05:58:07 [MACRO] Gathering: Starting (0ms)

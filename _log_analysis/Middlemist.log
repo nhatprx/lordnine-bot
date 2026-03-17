@@ -665,3 +665,139 @@
 05:35:22   Macros: 0 ok / 0 fail
 05:35:22   Errors: 0
 05:35:22 ============================================================
+05:36:29 ============================================================
+05:36:29 SESSION START — Middlemist (port:9226 tab:4)
+05:36:29 ============================================================
+05:36:31 [Middlemist] Starting worker: func=loop - Farm V1, port=9226, tab=4
+05:36:44 [Middlemist] Connected to Port 9226, Tab 4
+05:36:44 [LOOP] ── Loop iteration start ──
+05:37:09 [SHOT] FAIL #1 (25012ms)
+05:37:09 [Middlemist] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:34 [SHOT] OK (22503ms)
+05:37:34 [SCAN] Gathering - Inside → FALSE (49989ms)
+05:37:35 [SHOT] OK (0ms)
+05:37:35 [SHOT] OK (0ms)
+05:37:36 [SCAN] Supplies → FALSE (1124ms)
+05:38:02 [SHOT] FAIL #1 (25012ms)
+05:38:02 [Middlemist] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:38:29 [SHOT] FAIL #2 (25015ms)
+05:38:29 [Middlemist] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:38:33 [SCAN] Revive → FALSE (56029ms)
+05:38:59 [SHOT] FAIL #3 (25007ms)
+05:38:59 [Middlemist] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:39:14 [SHOT] OK (7432ms)
+05:39:15 [SCAN] Supplies - In → FALSE (41078ms)
+05:39:15 [SHOT] OK (0ms)
+05:39:16 [SHOT] OK (0ms)
+05:39:16 [SCAN] Gathering - Automove → FALSE (1006ms)
+05:39:42 [SHOT] FAIL #1 (25012ms)
+05:39:42 [Middlemist] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:40:09 [SHOT] FAIL #2 (25015ms)
+05:40:09 [Middlemist] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:40:13 [SCAN] Attack - Auto → FALSE (56029ms)
+05:40:39 [SHOT] FAIL #3 (25011ms)
+05:40:39 [Middlemist] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:41:12 [SHOT] FAIL #4 (25005ms)
+05:41:12 [Middlemist] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:41:28 [SCAN] Attack - Auto On → FALSE (74018ms)
+05:41:28 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:41:28 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:41:31 [LOOP] ── Loop iteration start ──
+05:41:57 [SHOT] FAIL #5 (25012ms)
+05:41:57 [Middlemist] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:42:52 [SHOT] FAIL #6 (25009ms)
+05:42:52 [Middlemist] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:43:22 [SCAN] Gathering - Inside → FALSE (110022ms)
+05:43:48 [SHOT] FAIL #7 (25004ms)
+05:43:48 [Middlemist] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:44:43 [SHOT] FAIL #8 (25003ms)
+05:44:43 [Middlemist] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:46:24 ============================================================
+05:46:24 SESSION START — Middlemist (port:9226 tab:4)
+05:46:24 ============================================================
+05:46:25 [Middlemist] Starting worker: func=macro - Home, port=9226, tab=4
+05:46:39 [Middlemist] Connected to Port 9226, Tab 4
+05:46:40 [MACRO] Home: Starting (0ms)
+05:46:40     - Step OK: ⚡ Hard Click 'Home' at (357,367)
+05:46:41 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:47:06 [SHOT] FAIL #1 (25015ms)
+05:47:06 [Middlemist] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:47:30 [SHOT] OK (21604ms)
+05:47:30 [SHOT] OK (0ms)
+05:47:31 [SHOT] OK (0ms)
+05:47:32 [SHOT] OK (0ms)
+05:47:32 [SHOT] OK (0ms)
+05:47:58 [SHOT] FAIL #1 (25010ms)
+05:47:58 [Middlemist] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:48:26 [SHOT] FAIL #2 (25011ms)
+05:48:26 [Middlemist] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:48:55 [SHOT] FAIL #3 (25014ms)
+05:48:55 [Middlemist] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:49:09 [SHOT] OK (5175ms)
+05:49:10 [SHOT] OK (0ms)
+05:49:10 [SHOT] OK (0ms)
+05:49:11 [SHOT] OK (0ms)
+05:49:11 [SHOT] OK (0ms)
+05:49:12 [SHOT] OK (386ms)
+05:49:13 [SHOT] OK (0ms)
+05:49:14 [SHOT] OK (0ms)
+05:49:15 [SHOT] OK (0ms)
+05:49:16 [SHOT] OK (52ms)
+05:49:16 [SHOT] OK (0ms)
+05:49:17 [SHOT] OK (0ms)
+05:49:17 [SHOT] OK (0ms)
+05:49:18 [SHOT] OK (0ms)
+05:49:18 [SHOT] OK (0ms)
+05:49:20 [SHOT] OK (46ms)
+05:49:21 [SHOT] OK (0ms)
+05:49:22 [SHOT] OK (0ms)
+05:49:22 [SHOT] OK (0ms)
+05:49:49 [SHOT] FAIL #1 (25011ms)
+05:49:49 [Middlemist] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:50:16 [SHOT] FAIL #2 (25004ms)
+05:50:16 [Middlemist] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:50:21 [MACRO] Home: FAILED (220272ms total)
+05:50:21 ============================================================
+05:50:21 SESSION END — Middlemist (3.9 min)
+05:50:21   Loops: 0
+05:50:21   Screenshots: 24 ok / 6 fail (20.0%)
+05:50:21   Avg latency: 1136ms
+05:50:21   Macros: 0 ok / 1 fail
+05:50:21   Errors: 0
+05:50:21 ============================================================
+05:51:24 ============================================================
+05:51:24 SESSION START — Middlemist (port:9226 tab:4)
+05:51:24 ============================================================
+05:51:25 [Middlemist] Starting worker: func=loop - Farm V1, port=9226, tab=4
+05:51:42 [Middlemist] Connected to Port 9226, Tab 4
+05:51:42 [LOOP] ── Loop iteration start ──
+05:52:08 [SHOT] FAIL #1 (25009ms)
+05:52:08 [Middlemist] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:35 [SHOT] FAIL #2 (25011ms)
+05:52:35 [Middlemist] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:52:39 [SCAN] Gathering - Inside → FALSE (56022ms)
+05:53:05 [SHOT] FAIL #3 (25014ms)
+05:53:05 [Middlemist] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:53:38 [SHOT] FAIL #4 (25015ms)
+05:53:38 [Middlemist] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:53:54 [SCAN] Supplies → FALSE (74031ms)
+05:54:18 [SHOT] OK (23941ms)
+05:54:19 [SHOT] OK (0ms)
+05:54:20 [SCAN] Revive → FALSE (25261ms)
+05:54:20 [SHOT] OK (0ms)
+05:54:20 [SHOT] OK (0ms)
+05:54:21 [SCAN] Supplies - In → FALSE (1096ms)
+05:54:47 [SHOT] FAIL #1 (25009ms)
+05:54:47 [Middlemist] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:55:14 [SHOT] FAIL #2 (25025ms)
+05:55:14 [Middlemist] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:55:18 [SCAN] Gathering - Automove → FALSE (56036ms)
+05:55:43 [SHOT] FAIL #3 (25013ms)
+05:55:43 [Middlemist] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:56:16 [SHOT] FAIL #4 (25008ms)
+05:56:16 [Middlemist] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:56:32 [SCAN] Attack - Auto → FALSE (74022ms)
+05:56:58 [SHOT] FAIL #5 (25014ms)
+05:56:58 [Middlemist] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:57:53 [SHOT] FAIL #6 (25008ms)
+05:57:53 [Middlemist] Screenshot error: Screenshot failed (backoff 30s, fail #6)

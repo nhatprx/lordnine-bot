@@ -2182,3 +2182,572 @@
 05:34:50   Macros: 1 ok / 2 fail
 05:34:50   Errors: 3
 05:34:50 ============================================================
+05:36:02 ============================================================
+05:36:02 SESSION START — MangKanor (port:9223 tab:1)
+05:36:02 ============================================================
+05:36:03 [MangKanor] Starting worker: func=loop - Farm V1, port=9223, tab=1
+05:36:07 [MangKanor] Connected to Port 9223, Tab 1
+05:36:09 [LOOP] ── Loop iteration start ──
+05:36:10 [SHOT] OK (1223ms)
+05:36:11 [SCAN] Gathering - Inside → TRUE (1242ms)
+05:36:11 [NODE] → Click: Gathering - Exit
+05:36:11 [SHOT] OK (0ms)
+05:36:16 [SCAN] Gathering - Exit → TRUE (0ms)
+05:36:16 [ERR] DEAD END: No edge from 'Click' (Gathering - Exit) — will trigger restart
+05:36:16 [ERR] RESTART: No next node after 'Click' (Gathering - Exit). Restart 1/10
+05:36:19 [LOOP] ── Loop iteration start ──
+05:36:20 [SHOT] OK (170ms)
+05:36:21 [SHOT] OK (0ms)
+05:36:22 [SCAN] Gathering - Inside → FALSE (1622ms)
+05:36:22 [SHOT] OK (0ms)
+05:36:22 [SCAN] Supplies → TRUE (10ms)
+05:36:23 [MACRO] Buy Blood: Starting (0ms)
+05:36:28     - Step OK: ⚡ Hard Click 'Supplies' at (1323,549)
+05:36:28 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:36:53 [SHOT] FAIL #1 (25013ms)
+05:36:53 [MangKanor] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:36:56 [SHOT] OK (0ms)
+05:36:56     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:37:01     - Step OK: ⚡ Hard Click 'Supplies - Type' at (519,313)
+05:37:01 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:37:26 [SHOT] FAIL #1 (25015ms)
+05:37:26 [MangKanor] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:54 [SHOT] FAIL #2 (25006ms)
+05:37:54 [MangKanor] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:38:03 [SHOT] OK (4826ms)
+05:38:03     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:38:08     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (816,573)
+05:38:09 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:38:09 [Macro] Delay completed.
+05:38:14     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1009,692)
+05:38:15 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:38:16 [Macro] Delay completed.
+05:38:21     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1539,153)
+05:38:21 [Macro] Steps completed. Checking result...
+05:38:35 [SHOT] OK (12735ms)
+05:38:35 [Macro] Result: SUCCESS (found 'Home')
+05:38:35 [MACRO] Buy Blood: PASSED (132148ms total)
+05:38:45 [MACRO] Gathering: Starting (0ms)
+05:39:10 [SHOT] FAIL #1 (25009ms)
+05:39:10 [MangKanor] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:39:37 [SHOT] FAIL #2 (25011ms)
+05:39:37 [MangKanor] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:39:44 [SHOT] OK (2843ms)
+05:39:50     - Step OK: Clicked 'Gathering'
+05:39:50 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:39:54 [SHOT] OK (3874ms)
+05:39:54     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:39:59     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1039,572)
+05:39:59 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:40:12 [Macro] Delay completed.
+05:40:12 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+05:40:28 [SHOT] OK (16589ms)
+05:40:29 [SHOT] OK (0ms)
+05:40:30 [SHOT] OK (0ms)
+05:40:31 [SHOT] OK (0ms)
+05:40:57 [SHOT] FAIL #1 (25006ms)
+05:40:57 [MangKanor] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:41:24 [SHOT] FAIL #2 (25005ms)
+05:41:24 [MangKanor] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:41:54 [SHOT] FAIL #3 (25000ms)
+05:41:54 [MangKanor] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:42:27 [SHOT] FAIL #4 (25008ms)
+05:42:27 [MangKanor] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:42:44 [SHOT] OK (228ms)
+05:42:45 [SHOT] OK (0ms)
+05:42:45 [SHOT] OK (0ms)
+05:42:46 [SHOT] OK (0ms)
+05:42:47 [SHOT] OK (0ms)
+05:42:48 [SHOT] OK (191ms)
+05:42:49 [SHOT] OK (0ms)
+05:42:50 [SHOT] OK (0ms)
+05:42:51 [SHOT] OK (0ms)
+05:42:51 [SHOT] OK (165ms)
+05:42:52 [SHOT] OK (0ms)
+05:42:53 [SHOT] OK (0ms)
+05:42:54 [SHOT] OK (0ms)
+05:42:55 [SHOT] OK (452ms)
+05:42:56 [SHOT] OK (0ms)
+05:42:57 [SHOT] OK (0ms)
+05:42:57 [SHOT] OK (0ms)
+05:42:59 [SHOT] OK (369ms)
+05:42:59 [SHOT] OK (0ms)
+05:43:00 [SHOT] OK (0ms)
+05:43:01 [SHOT] OK (0ms)
+05:43:01 [SHOT] OK (0ms)
+05:43:02 [SHOT] OK (166ms)
+05:43:03 [SHOT] OK (0ms)
+05:43:03 [SHOT] OK (0ms)
+05:43:04 [SHOT] OK (0ms)
+05:43:05 [SHOT] OK (0ms)
+05:43:06 [SHOT] OK (214ms)
+05:43:07 [SHOT] OK (0ms)
+05:43:07 [SHOT] OK (0ms)
+05:43:08 [SHOT] OK (0ms)
+05:43:09 [SHOT] OK (210ms)
+05:43:09 [SHOT] OK (0ms)
+05:43:10 [SHOT] OK (0ms)
+05:43:10 [SHOT] OK (0ms)
+05:43:12 [SHOT] OK (0ms)
+05:43:13 [SHOT] OK (175ms)
+05:43:14 [SHOT] OK (0ms)
+05:43:15 [SHOT] OK (0ms)
+05:43:16 [SHOT] OK (0ms)
+05:43:17 [SHOT] OK (427ms)
+05:43:18 [SHOT] OK (0ms)
+05:43:18 [SHOT] OK (0ms)
+05:43:18 [SHOT] OK (0ms)
+05:43:19 [SHOT] OK (0ms)
+05:43:20 [SHOT] OK (172ms)
+05:43:21 [SHOT] OK (0ms)
+05:43:22 [SHOT] OK (0ms)
+05:43:23 [SHOT] OK (0ms)
+05:43:24 [SHOT] OK (182ms)
+05:43:25 [SHOT] OK (0ms)
+05:43:26 [SHOT] OK (0ms)
+05:43:26 [SHOT] OK (0ms)
+05:43:27 [SHOT] OK (0ms)
+05:43:28 [SHOT] OK (184ms)
+05:43:28 [SHOT] OK (0ms)
+05:43:29 [SHOT] OK (0ms)
+05:43:30 [SHOT] OK (0ms)
+05:43:31 [SHOT] OK (180ms)
+05:43:32 [SHOT] OK (0ms)
+05:43:33 [SHOT] OK (0ms)
+05:43:34 [SHOT] OK (0ms)
+05:43:35 [SHOT] OK (202ms)
+05:43:36 [SHOT] OK (0ms)
+05:43:36 [SHOT] OK (0ms)
+05:43:37 [SHOT] OK (0ms)
+05:43:38 [SHOT] OK (533ms)
+05:43:39 [SHOT] OK (0ms)
+05:43:40 [SHOT] OK (0ms)
+05:43:41 [SHOT] OK (0ms)
+05:43:41 [SHOT] OK (0ms)
+05:43:42 [SHOT] OK (463ms)
+05:43:44 [SHOT] OK (0ms)
+05:43:44 [SHOT] OK (0ms)
+05:43:45 [SHOT] OK (0ms)
+05:43:45 [SHOT] OK (0ms)
+05:43:46 [SHOT] OK (197ms)
+05:43:46     - Marker triggered. Holding 6.5s...
+05:43:48 [SHOT] OK (0ms)
+05:43:48 [SHOT] OK (0ms)
+05:43:49 [SHOT] OK (0ms)
+05:43:50 [SHOT] OK (198ms)
+05:43:50     - Holding... 3/6s
+05:43:51 [SHOT] OK (0ms)
+05:43:53 [SHOT] OK (0ms)
+05:43:53     - Holding... 6/6s
+05:43:54 [SHOT] OK (175ms)
+05:43:54     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:43:54 [SHOT] OK (0ms)
+05:43:54 [SHOT] OK (0ms)
+05:43:55 [SHOT] OK (0ms)
+05:43:55 [SHOT] OK (0ms)
+05:43:55 [SHOT] OK (0ms)
+05:43:56     - Step FAILED: Could not find 'Attack - Auto' after 5 attempts.
+05:43:56 [MACRO] Gathering: FAILED (310732ms total)
+05:43:56 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:44:06 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:44:09 [LOOP] ── Loop iteration start ──
+05:44:09 [SHOT] OK (326ms)
+05:44:10 [SHOT] OK (0ms)
+05:44:11 [SCAN] Gathering - Inside → FALSE (1411ms)
+05:44:11 [SHOT] OK (0ms)
+05:44:12 [SHOT] OK (0ms)
+05:44:12 [SCAN] Supplies → FALSE (1129ms)
+05:44:13 [SHOT] OK (519ms)
+05:44:13 [SCAN] Revive → TRUE (619ms)
+05:44:14 [MACRO] Revivie: Starting (0ms)
+05:44:14 [SHOT] OK (0ms)
+05:44:19     - Step OK: Clicked 'Revive'
+05:44:20 [Macro] (2/2) Delay: 3000ms (3.0s)...
+05:44:23 [Macro] Delay completed.
+05:44:23 [Macro] Steps completed. Checking result...
+05:44:24 [SHOT] OK (515ms)
+05:44:24 [Macro] Result: FAILURE ('Supplies' not found)
+05:44:24 [MACRO] Revivie: FAILED (10540ms total)
+05:44:24 [ERR] DEAD END: No edge from 'Macro' (38ef6fd1) — will trigger restart
+05:44:24 [ERR] RESTART: No next node after 'Macro' (38ef6fd1). Restart 1/10
+05:44:27 [LOOP] ── Loop iteration start ──
+05:44:28 [SHOT] OK (150ms)
+05:44:29 [SHOT] OK (0ms)
+05:44:30 [SCAN] Gathering - Inside → FALSE (1550ms)
+05:44:30 [SHOT] OK (0ms)
+05:44:31 [SHOT] OK (0ms)
+05:44:31 [SCAN] Supplies → FALSE (1232ms)
+05:44:32 [SHOT] OK (193ms)
+05:44:33 [SHOT] OK (0ms)
+05:44:33 [SCAN] Revive → FALSE (1386ms)
+05:44:34 [SHOT] OK (0ms)
+05:44:34 [SHOT] OK (0ms)
+05:44:35 [SCAN] Supplies - In → FALSE (1164ms)
+05:44:36 [SHOT] OK (195ms)
+05:44:37 [SHOT] OK (0ms)
+05:44:37 [SCAN] Gathering - Automove → FALSE (1655ms)
+05:44:38 [SHOT] OK (0ms)
+05:44:38 [SHOT] OK (0ms)
+05:44:39 [SCAN] Attack - Auto → FALSE (1176ms)
+05:44:40 [SHOT] OK (219ms)
+05:44:40 [SHOT] OK (0ms)
+05:44:41 [SCAN] Attack - Auto On → FALSE (1111ms)
+05:44:41 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:44:41 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:44:44 [LOOP] ── Loop iteration start ──
+05:44:45 [SHOT] OK (195ms)
+05:44:46 [SHOT] OK (0ms)
+05:44:46 [SCAN] Gathering - Inside → FALSE (1508ms)
+05:44:47 [SHOT] OK (0ms)
+05:44:47 [SCAN] Supplies → TRUE (12ms)
+05:44:47 [MACRO] Buy Blood: Starting (0ms)
+05:44:52     - Step OK: ⚡ Hard Click 'Supplies' at (1337,593)
+05:44:53 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:44:53 [SHOT] OK (315ms)
+05:44:54 [SHOT] OK (0ms)
+05:44:55 [SHOT] OK (0ms)
+05:44:56 [SHOT] OK (0ms)
+05:44:57 [SHOT] OK (129ms)
+05:44:58 [SHOT] OK (0ms)
+05:44:59 [SHOT] OK (0ms)
+05:44:59 [SHOT] OK (0ms)
+05:45:01 [SHOT] OK (261ms)
+05:45:01     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:45:57 ============================================================
+05:45:57 SESSION START — MangKanor (port:9223 tab:1)
+05:45:57 ============================================================
+05:45:58 [MangKanor] Starting worker: func=macro - Home, port=9223, tab=1
+05:46:03 [MangKanor] Connected to Port 9223, Tab 1
+05:46:03 [MACRO] Home: Starting (0ms)
+05:46:08     - Step OK: ⚡ Hard Click 'Home' at (363,378)
+05:46:08 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:46:13 [SHOT] OK (4983ms)
+05:46:14 [SHOT] OK (0ms)
+05:46:15 [SHOT] OK (0ms)
+05:46:16 [SHOT] OK (0ms)
+05:46:17 [SHOT] OK (535ms)
+05:46:18 [SHOT] OK (0ms)
+05:46:18 [SHOT] OK (0ms)
+05:46:19 [SHOT] OK (0ms)
+05:46:21 [SHOT] OK (219ms)
+05:46:22 [SHOT] OK (0ms)
+05:46:23 [SHOT] OK (0ms)
+05:46:24 [SHOT] OK (308ms)
+05:46:25 [SHOT] OK (0ms)
+05:46:26 [SHOT] OK (0ms)
+05:46:27 [SHOT] OK (0ms)
+05:46:28 [SHOT] OK (270ms)
+05:46:29 [SHOT] OK (0ms)
+05:46:30 [SHOT] OK (0ms)
+05:46:31 [SHOT] OK (0ms)
+05:46:32 [SHOT] OK (593ms)
+05:46:33 [SHOT] OK (0ms)
+05:46:34 [SHOT] OK (0ms)
+05:46:36 [SHOT] OK (178ms)
+05:46:37 [SHOT] OK (0ms)
+05:46:38 [SHOT] OK (0ms)
+05:46:39 [SHOT] OK (317ms)
+05:46:40 [SHOT] OK (0ms)
+05:46:41 [SHOT] OK (0ms)
+05:46:42 [SHOT] OK (176ms)
+05:46:44 [SHOT] OK (0ms)
+05:46:45 [SHOT] OK (0ms)
+05:46:46 [SHOT] OK (158ms)
+05:46:47 [SHOT] OK (0ms)
+05:46:47 [SHOT] OK (0ms)
+05:46:48 [SHOT] OK (0ms)
+05:46:59 [SHOT] OK (10548ms)
+05:47:00 [SHOT] OK (0ms)
+05:47:01 [SHOT] OK (0ms)
+05:47:02 [SHOT] OK (0ms)
+05:47:03 [SHOT] OK (173ms)
+05:47:04 [SHOT] OK (0ms)
+05:47:05 [SHOT] OK (0ms)
+05:47:06 [SHOT] OK (0ms)
+05:47:07 [SHOT] OK (491ms)
+05:47:08 [SHOT] OK (0ms)
+05:47:09 [SHOT] OK (0ms)
+05:47:10 [SHOT] OK (0ms)
+05:47:11 [SHOT] OK (170ms)
+05:47:12 [SHOT] OK (0ms)
+05:47:13 [SHOT] OK (0ms)
+05:47:14 [SHOT] OK (177ms)
+05:47:15 [SHOT] OK (0ms)
+05:47:16 [SHOT] OK (0ms)
+05:47:16 [SHOT] OK (0ms)
+05:47:17 [SHOT] OK (173ms)
+05:47:18 [SHOT] OK (0ms)
+05:47:19 [SHOT] OK (0ms)
+05:47:20 [SHOT] OK (0ms)
+05:47:21 [SHOT] OK (171ms)
+05:47:22 [SHOT] OK (0ms)
+05:47:22 [SHOT] OK (0ms)
+05:47:23 [SHOT] OK (0ms)
+05:47:24 [SHOT] OK (0ms)
+05:47:24 [SHOT] OK (192ms)
+05:47:25 [SHOT] OK (0ms)
+05:47:26 [SHOT] OK (0ms)
+05:47:26 [SHOT] OK (0ms)
+05:47:28 [SHOT] OK (192ms)
+05:47:29 [SHOT] OK (0ms)
+05:47:30 [SHOT] OK (0ms)
+05:47:31 [SHOT] OK (412ms)
+05:47:32 [SHOT] OK (0ms)
+05:47:33 [SHOT] OK (0ms)
+05:47:33 [SHOT] OK (0ms)
+05:47:34 [SHOT] OK (0ms)
+05:47:35 [SHOT] OK (175ms)
+05:47:36 [SHOT] OK (0ms)
+05:47:38 [SHOT] OK (0ms)
+05:47:39 [SHOT] OK (180ms)
+05:47:40 [SHOT] OK (0ms)
+05:47:41 [SHOT] OK (0ms)
+05:47:42 [SHOT] OK (0ms)
+05:47:43 [SHOT] OK (222ms)
+05:47:44 [SHOT] OK (0ms)
+05:47:45 [SHOT] OK (0ms)
+05:47:46 [SHOT] OK (0ms)
+05:47:47 [SHOT] OK (179ms)
+05:47:47 [SHOT] OK (0ms)
+05:47:48 [SHOT] OK (0ms)
+05:47:49 [SHOT] OK (0ms)
+05:47:50 [SHOT] OK (236ms)
+05:47:51 [SHOT] OK (0ms)
+05:47:52 [SHOT] OK (0ms)
+05:47:53 [SHOT] OK (0ms)
+05:47:54 [SHOT] OK (169ms)
+05:47:55 [SHOT] OK (0ms)
+05:47:56 [SHOT] OK (0ms)
+05:47:57 [SHOT] OK (0ms)
+05:47:58 [SHOT] OK (175ms)
+05:47:58 [SHOT] OK (0ms)
+05:48:00 [SHOT] OK (0ms)
+05:48:01 [SHOT] OK (0ms)
+05:48:02 [SHOT] OK (166ms)
+05:48:03 [SHOT] OK (0ms)
+05:48:04 [SHOT] OK (0ms)
+05:48:05 [SHOT] OK (175ms)
+05:48:06 [SHOT] OK (0ms)
+05:48:07 [SHOT] OK (0ms)
+05:48:08 [SHOT] OK (0ms)
+05:48:09 [SHOT] OK (215ms)
+05:48:10 [SHOT] OK (0ms)
+05:48:11 [SHOT] OK (0ms)
+05:48:11 [SHOT] OK (0ms)
+05:48:13 [SHOT] OK (176ms)
+05:48:13 [SHOT] OK (0ms)
+05:48:14 [SHOT] OK (0ms)
+05:48:15 [SHOT] OK (0ms)
+05:48:17 [SHOT] OK (172ms)
+05:48:17 [SHOT] OK (0ms)
+05:48:18 [SHOT] OK (0ms)
+05:48:18 [SHOT] OK (0ms)
+05:48:20 [SHOT] OK (0ms)
+05:48:21 [SHOT] OK (169ms)
+05:48:22 [SHOT] OK (0ms)
+05:48:22 [SHOT] OK (0ms)
+05:48:23 [SHOT] OK (0ms)
+05:48:24 [SHOT] OK (0ms)
+05:48:25 [SHOT] OK (175ms)
+05:48:26 [SHOT] OK (0ms)
+05:48:27 [SHOT] OK (0ms)
+05:48:27 [SHOT] OK (0ms)
+05:48:28 [SHOT] OK (169ms)
+05:48:30 [SHOT] OK (0ms)
+05:48:31 [SHOT] OK (0ms)
+05:48:32 [SHOT] OK (747ms)
+05:48:33 [SHOT] OK (0ms)
+05:48:34 [SHOT] OK (0ms)
+05:48:35 [SHOT] OK (0ms)
+05:48:36 [SHOT] OK (172ms)
+05:48:37 [SHOT] OK (0ms)
+05:48:38 [SHOT] OK (0ms)
+05:48:39 [SHOT] OK (0ms)
+05:48:40 [SHOT] OK (181ms)
+05:48:41 [SHOT] OK (0ms)
+05:48:42 [SHOT] OK (0ms)
+05:48:42 [SHOT] OK (0ms)
+05:49:08 [SHOT] FAIL #1 (25001ms)
+05:49:08 [MangKanor] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:49:17 [SHOT] OK (5879ms)
+05:49:18 [SHOT] OK (0ms)
+05:49:18 [SHOT] OK (0ms)
+05:49:19 [SHOT] OK (0ms)
+05:49:21 [SHOT] OK (173ms)
+05:49:21 [SHOT] OK (0ms)
+05:49:22 [SHOT] OK (0ms)
+05:49:23 [SHOT] OK (0ms)
+05:49:24 [SHOT] OK (183ms)
+05:49:25 [SHOT] OK (0ms)
+05:49:26 [SHOT] OK (0ms)
+05:49:27 [SHOT] OK (0ms)
+05:49:28 [SHOT] OK (154ms)
+05:49:29 [SHOT] OK (0ms)
+05:49:29 [SHOT] OK (0ms)
+05:49:30 [SHOT] OK (0ms)
+05:49:32 [SHOT] OK (194ms)
+05:49:33 [SHOT] OK (0ms)
+05:49:34 [SHOT] OK (0ms)
+05:49:35 [SHOT] OK (0ms)
+05:49:36 [SHOT] OK (168ms)
+05:49:37 [SHOT] OK (0ms)
+05:49:38 [SHOT] OK (0ms)
+05:49:39 [SHOT] OK (0ms)
+05:49:53 [SHOT] OK (13692ms)
+05:49:54 [SHOT] OK (0ms)
+05:49:56 [SHOT] OK (0ms)
+05:49:57 [SHOT] OK (199ms)
+05:49:57 [SHOT] OK (0ms)
+05:49:58 [SHOT] OK (0ms)
+05:49:59 [SHOT] OK (0ms)
+05:49:59 [SHOT] OK (0ms)
+05:50:01 [SHOT] OK (140ms)
+05:50:01 [SHOT] OK (0ms)
+05:50:02 [SHOT] OK (0ms)
+05:50:03 [SHOT] OK (0ms)
+05:50:04 [SHOT] OK (207ms)
+05:50:04     - Marker OK: 'Supplies' confirmed APPEAR.
+05:50:04 [Macro] Steps completed. Checking result...
+05:50:05 [SHOT] OK (0ms)
+05:50:05 [Macro] Result: SUCCESS (found 'Supplies')
+05:50:05 [MACRO] Home: PASSED (242208ms total)
+05:50:05 ============================================================
+05:50:05 SESSION END — MangKanor (4.1 min)
+05:50:05   Loops: 0
+05:50:05   Screenshots: 184 ok / 1 fail (0.5%)
+05:50:05   Avg latency: 246ms
+05:50:05   Macros: 1 ok / 0 fail
+05:50:05   Errors: 0
+05:50:05 ============================================================
+05:50:57 ============================================================
+05:50:57 SESSION START — MangKanor (port:9223 tab:1)
+05:50:57 ============================================================
+05:50:58 [MangKanor] Starting worker: func=loop - Farm V1, port=9223, tab=1
+05:51:06 [MangKanor] Connected to Port 9223, Tab 1
+05:51:08 [LOOP] ── Loop iteration start ──
+05:51:09 [SHOT] OK (471ms)
+05:51:09 [SHOT] OK (0ms)
+05:51:10 [SCAN] Gathering - Inside → FALSE (2038ms)
+05:51:11 [SHOT] OK (0ms)
+05:51:11 [SCAN] Supplies → TRUE (12ms)
+05:51:11 [MACRO] Buy Blood: Starting (0ms)
+05:51:17     - Step OK: ⚡ Hard Click 'Supplies' at (1297,573)
+05:51:17 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:51:42 [SHOT] OK (24663ms)
+05:51:42     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:51:47     - Step OK: ⚡ Hard Click 'Supplies - Type' at (512,315)
+05:51:47 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:52:12 [SHOT] FAIL #1 (25006ms)
+05:52:12 [MangKanor] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:15 [SHOT] OK (0ms)
+05:52:15     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:52:20     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (895,550)
+05:52:20 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:52:20 [Macro] Delay completed.
+05:52:25     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1058,700)
+05:52:26 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:52:27 [Macro] Delay completed.
+05:52:32     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1533,138)
+05:52:33 [Macro] Steps completed. Checking result...
+05:52:43 [SHOT] OK (9474ms)
+05:52:43 [Macro] Result: SUCCESS (found 'Home')
+05:52:43 [MACRO] Buy Blood: PASSED (91743ms total)
+05:52:43 [MACRO] Gathering: Starting (0ms)
+05:52:43 [SHOT] OK (0ms)
+05:52:48     - Step OK: Clicked 'Gathering'
+05:52:49 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:53:14 [SHOT] FAIL #1 (25003ms)
+05:53:14 [MangKanor] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:53:16     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:53:16 [MACRO] Gathering: FAILED (33016ms total)
+05:53:16 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:53:26 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:53:29 [LOOP] ── Loop iteration start ──
+05:53:48 [SHOT] OK (18357ms)
+05:53:48 [SCAN] Gathering - Inside → TRUE (18373ms)
+05:53:49 [NODE] → Click: Gathering - Exit
+05:53:49 [SHOT] OK (0ms)
+05:53:54 [SCAN] Gathering - Exit → TRUE (0ms)
+05:53:54 [ERR] DEAD END: No edge from 'Click' (Gathering - Exit) — will trigger restart
+05:53:54 [ERR] RESTART: No next node after 'Click' (Gathering - Exit). Restart 1/10
+05:53:57 [LOOP] ── Loop iteration start ──
+05:54:19 [SHOT] OK (21147ms)
+05:54:19 [SHOT] OK (0ms)
+05:54:20 [SCAN] Gathering - Inside → FALSE (22578ms)
+05:54:21 [SHOT] OK (0ms)
+05:54:21 [SCAN] Supplies → TRUE (14ms)
+05:54:22 [MACRO] Buy Blood: Starting (0ms)
+05:54:27     - Step OK: ⚡ Hard Click 'Supplies' at (1301,567)
+05:54:27 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:54:52 [SHOT] FAIL #1 (25014ms)
+05:54:52 [MangKanor] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:54:59 [SHOT] OK (3935ms)
+05:54:59     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:55:04     - Step OK: ⚡ Hard Click 'Supplies - Type' at (545,302)
+05:55:04 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:55:28 [SHOT] OK (23933ms)
+05:55:28     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:55:33     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (798,561)
+05:55:34 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:55:34 [Macro] Delay completed.
+05:55:34     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1031,722)
+05:55:34 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:55:35 [Macro] Delay completed.
+05:55:36     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1546,154)
+05:55:36 [Macro] Steps completed. Checking result...
+05:55:37 [SHOT] OK (193ms)
+05:55:37 [Macro] Result: SUCCESS (found 'Home')
+05:55:37 [MACRO] Buy Blood: PASSED (75680ms total)
+05:55:37 [MACRO] Gathering: Starting (0ms)
+05:55:37 [SHOT] OK (0ms)
+05:55:38     - Step OK: Clicked 'Gathering'
+05:55:38 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:55:38 [SHOT] OK (0ms)
+05:55:39 [SHOT] OK (0ms)
+05:55:39 [SHOT] OK (0ms)
+05:55:40 [SHOT] OK (0ms)
+05:55:41 [SHOT] OK (208ms)
+05:55:43 [SHOT] OK (0ms)
+05:55:43     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:55:43 [MACRO] Gathering: FAILED (5920ms total)
+05:55:43 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:55:43 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:55:46 [LOOP] ── Loop iteration start ──
+05:55:47 [SHOT] OK (170ms)
+05:55:47 [SHOT] OK (0ms)
+05:55:48 [SCAN] Gathering - Inside → FALSE (1412ms)
+05:55:49 [SHOT] OK (0ms)
+05:55:49 [SCAN] Supplies → TRUE (12ms)
+05:55:49 [MACRO] Buy Blood: Starting (0ms)
+05:55:54     - Step OK: ⚡ Hard Click 'Supplies' at (1334,571)
+05:55:55 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:56:18 [SHOT] OK (23598ms)
+05:56:18     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:56:23     - Step OK: ⚡ Hard Click 'Supplies - Type' at (549,321)
+05:56:24 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:56:49 [SHOT] FAIL #1 (25011ms)
+05:56:49 [MangKanor] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:56:55 [SHOT] OK (3247ms)
+05:56:55     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:57:00     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (785,550)
+05:57:00 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:57:00 [Macro] Delay completed.
+05:57:06     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1012,697)
+05:57:06 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:57:07 [Macro] Delay completed.
+05:57:12     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1540,151)
+05:57:13 [Macro] Steps completed. Checking result...
+05:57:15 [SHOT] OK (1715ms)
+05:57:15 [Macro] Result: SUCCESS (found 'Home')
+05:57:15 [MACRO] Buy Blood: PASSED (86460ms total)
+05:57:15 [MACRO] Gathering: Starting (0ms)
+05:57:15 [SHOT] OK (0ms)
+05:57:21     - Step OK: Clicked 'Gathering'
+05:57:21 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:57:46 [SHOT] FAIL #1 (25008ms)
+05:57:46 [MangKanor] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:57:48     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:57:48 [MACRO] Gathering: FAILED (33111ms total)
+05:57:48 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:57:59 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:58:02 [LOOP] ── Loop iteration start ──

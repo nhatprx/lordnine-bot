@@ -2887,3 +2887,534 @@
 05:35:25   Macros: 7 ok / 0 fail
 05:35:25   Errors: 10
 05:35:25 ============================================================
+05:35:59 ============================================================
+05:35:59 SESSION START — Doremon (port:9222 tab:4)
+05:35:59 ============================================================
+05:36:00 [Doremon] Starting worker: func=loop - Farm V1, port=9222, tab=4
+05:36:14 [Doremon] Connected to Port 9222, Tab 4
+05:36:14 [LOOP] ── Loop iteration start ──
+05:36:31 [SHOT] OK (16243ms)
+05:36:31 [SHOT] OK (0ms)
+05:36:32 [SCAN] Gathering - Inside → FALSE (17946ms)
+05:36:33 [SHOT] OK (0ms)
+05:36:59 [SHOT] FAIL #1 (25003ms)
+05:36:59 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:01 [SCAN] Supplies → FALSE (27591ms)
+05:37:26 [SHOT] FAIL #2 (25009ms)
+05:37:26 [Doremon] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:37:35 [SHOT] OK (4497ms)
+05:37:36 [SCAN] Revive → FALSE (34183ms)
+05:37:36 [SHOT] OK (0ms)
+05:37:37 [SHOT] OK (0ms)
+05:37:38 [SCAN] Supplies - In → FALSE (1629ms)
+05:38:03 [SHOT] FAIL #1 (25007ms)
+05:38:03 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:38:11 [SHOT] OK (5809ms)
+05:38:11 [SCAN] Gathering - Automove → FALSE (33227ms)
+05:38:12 [SHOT] OK (0ms)
+05:38:13 [SHOT] OK (0ms)
+05:38:13 [SCAN] Attack - Auto → FALSE (1173ms)
+05:38:14 [SHOT] OK (0ms)
+05:38:14 [SCAN] Attack - Auto On → TRUE (18ms)
+05:38:24 [MACRO] Click 5P: Starting (0ms)
+05:38:30     - Step OK: ⚡ Hard Click 'Click 5P' at (1487,97)
+05:38:30 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:38:30 [Macro] Delay completed.
+05:38:30 [Macro] Steps completed. Checking result...
+05:38:30 [Macro] Finished (no capture check configured).
+05:38:30 [MACRO] Click 5P: PASSED (5775ms total)
+05:38:30 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:38:30 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:38:33 [LOOP] ── Loop iteration start ──
+05:38:43 [SHOT] OK (9327ms)
+05:38:44 [SHOT] OK (0ms)
+05:38:44 [SCAN] Gathering - Inside → FALSE (10340ms)
+05:38:45 [SHOT] OK (0ms)
+05:38:45 [SHOT] OK (0ms)
+05:38:46 [SCAN] Supplies → FALSE (1406ms)
+05:39:12 [SHOT] FAIL #1 (25002ms)
+05:39:12 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:39:17 [SHOT] OK (3392ms)
+05:39:18 [SCAN] Revive → FALSE (31130ms)
+05:39:18 [SHOT] OK (0ms)
+05:39:19 [SHOT] OK (0ms)
+05:39:20 [SCAN] Supplies - In → FALSE (1366ms)
+05:39:24 [SHOT] OK (3321ms)
+05:39:25 [SHOT] OK (0ms)
+05:39:26 [SCAN] Gathering - Automove → FALSE (4964ms)
+05:39:26 [SHOT] OK (0ms)
+05:39:26 [SHOT] OK (0ms)
+05:39:27 [SCAN] Attack - Auto → FALSE (820ms)
+05:39:53 [SHOT] FAIL #1 (25005ms)
+05:39:53 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:39:56 [SHOT] OK (1236ms)
+05:39:56 [SCAN] Attack - Auto On → TRUE (28269ms)
+05:39:56 [MACRO] Click 5P: Starting (0ms)
+05:40:02     - Step OK: ⚡ Hard Click 'Click 5P' at (1530,98)
+05:40:02 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:40:02 [Macro] Delay completed.
+05:40:02 [Macro] Steps completed. Checking result...
+05:40:02 [Macro] Finished (no capture check configured).
+05:40:02 [MACRO] Click 5P: PASSED (5684ms total)
+05:40:02 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:40:02 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:40:05 [LOOP] ── Loop iteration start ──
+05:40:31 [SHOT] FAIL #1 (25002ms)
+05:40:31 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:40:58 [SHOT] FAIL #2 (25004ms)
+05:40:58 [Doremon] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:41:02 [SCAN] Gathering - Inside → FALSE (56016ms)
+05:41:37 [SHOT] FAIL #3 (25006ms)
+05:41:37 [Doremon] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:42:10 [SHOT] FAIL #4 (25008ms)
+05:42:10 [Doremon] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:42:26 [SCAN] Supplies → FALSE (74016ms)
+05:42:49 [SHOT] OK (22576ms)
+05:42:50 [SHOT] OK (0ms)
+05:42:51 [SCAN] Revive → FALSE (24087ms)
+05:42:51 [SHOT] OK (0ms)
+05:42:52 [SHOT] OK (0ms)
+05:42:52 [SCAN] Supplies - In → FALSE (1165ms)
+05:43:18 [SHOT] FAIL #1 (25013ms)
+05:43:18 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:20 [SHOT] OK (442ms)
+05:43:21 [SCAN] Gathering - Automove → FALSE (27849ms)
+05:43:56 [SHOT] FAIL #1 (25016ms)
+05:43:56 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:58 [SHOT] OK (0ms)
+05:43:59 [SCAN] Attack - Auto → FALSE (27595ms)
+05:44:00 [SHOT] OK (367ms)
+05:44:00 [SCAN] Attack - Auto On → TRUE (387ms)
+05:44:00 [MACRO] Click 5P: Starting (0ms)
+05:44:06     - Step OK: ⚡ Hard Click 'Click 5P' at (1486,93)
+05:44:06 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:44:06 [Macro] Delay completed.
+05:44:06 [Macro] Steps completed. Checking result...
+05:44:06 [Macro] Finished (no capture check configured).
+05:44:06 [MACRO] Click 5P: PASSED (5761ms total)
+05:44:06 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:44:06 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:44:09 [LOOP] ── Loop iteration start ──
+05:44:35 [SHOT] FAIL #1 (25011ms)
+05:44:35 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:44:37 [SHOT] OK (0ms)
+05:44:37 [SCAN] Gathering - Inside → FALSE (27594ms)
+05:45:03 [SHOT] FAIL #1 (25002ms)
+05:45:03 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:45:54 ============================================================
+05:45:54 SESSION START — Doremon (port:9222 tab:4)
+05:45:54 ============================================================
+05:45:56 [Doremon] Starting worker: func=macro - Home, port=9222, tab=4
+05:46:09 [Doremon] Connected to Port 9222, Tab 4
+05:46:10 [MACRO] Home: Starting (0ms)
+05:46:11     - Step OK: ⚡ Hard Click 'Home' at (351,367)
+05:46:11 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:46:11 [SHOT] OK (317ms)
+05:46:13 [SHOT] OK (0ms)
+05:46:13 [SHOT] OK (0ms)
+05:46:14 [SHOT] OK (0ms)
+05:46:16 [SHOT] OK (143ms)
+05:46:17 [SHOT] OK (0ms)
+05:46:18 [SHOT] OK (0ms)
+05:46:18 [SHOT] OK (0ms)
+05:46:20 [SHOT] OK (206ms)
+05:46:20 [SHOT] OK (0ms)
+05:46:21 [SHOT] OK (0ms)
+05:46:22 [SHOT] OK (0ms)
+05:46:32 [SHOT] OK (9531ms)
+05:46:32     - Marker OK: 'Supplies' confirmed APPEAR.
+05:46:32 [Macro] Steps completed. Checking result...
+05:46:33 [SHOT] OK (0ms)
+05:46:33 [Macro] Result: SUCCESS (found 'Supplies')
+05:46:33 [MACRO] Home: PASSED (22820ms total)
+05:46:33 ============================================================
+05:46:33 SESSION END — Doremon (0.6 min)
+05:46:33   Loops: 0
+05:46:33   Screenshots: 14 ok / 0 fail (0.0%)
+05:46:33   Avg latency: 728ms
+05:46:33   Macros: 1 ok / 0 fail
+05:46:33   Errors: 0
+05:46:33 ============================================================
+05:50:54 ============================================================
+05:50:54 SESSION START — Doremon (port:9222 tab:4)
+05:50:54 ============================================================
+05:50:55 [Doremon] Starting worker: func=loop - Farm V1, port=9222, tab=4
+05:51:08 [Doremon] Connected to Port 9222, Tab 4
+05:51:10 [LOOP] ── Loop iteration start ──
+05:51:10 [SHOT] OK (227ms)
+05:51:11 [SHOT] OK (0ms)
+05:51:12 [SCAN] Gathering - Inside → FALSE (1607ms)
+05:51:12 [SHOT] OK (0ms)
+05:51:12 [SCAN] Supplies → TRUE (10ms)
+05:51:13 [MACRO] Buy Blood: Starting (0ms)
+05:51:18     - Step OK: ⚡ Hard Click 'Supplies' at (1310,588)
+05:51:18 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:51:19 [SHOT] OK (184ms)
+05:51:19 [SHOT] OK (0ms)
+05:51:20 [SHOT] OK (0ms)
+05:51:21 [SHOT] OK (0ms)
+05:51:23 [SHOT] OK (474ms)
+05:51:23     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:51:28     - Step OK: ⚡ Hard Click 'Supplies - Type' at (554,322)
+05:51:28 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:51:29 [SHOT] OK (178ms)
+05:51:29 [SHOT] OK (0ms)
+05:51:30 [SHOT] OK (0ms)
+05:51:31 [SHOT] OK (0ms)
+05:51:31 [SHOT] OK (0ms)
+05:51:32 [SHOT] OK (185ms)
+05:51:32     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:51:38     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (857,546)
+05:51:38 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:51:38 [Macro] Delay completed.
+05:51:43     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (999,696)
+05:51:44 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:51:45 [Macro] Delay completed.
+05:51:50     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1532,148)
+05:51:50 [Macro] Steps completed. Checking result...
+05:51:52 [SHOT] OK (234ms)
+05:51:52 [Macro] Result: SUCCESS (found 'Home')
+05:51:52 [MACRO] Buy Blood: PASSED (38617ms total)
+05:51:52 [MACRO] Gathering: Starting (0ms)
+05:51:52 [SHOT] OK (0ms)
+05:51:57     - Step OK: Clicked 'Gathering'
+05:51:57 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:51:57 [SHOT] OK (205ms)
+05:51:58 [SHOT] OK (0ms)
+05:51:59 [SHOT] OK (0ms)
+05:52:00 [SHOT] OK (0ms)
+05:52:01 [SHOT] OK (180ms)
+05:52:01     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:52:06     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1046,573)
+05:52:07 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:52:19 [Macro] Delay completed.
+05:52:19 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+05:52:19 [SHOT] OK (482ms)
+05:52:20     - Marker triggered. Holding 6.5s...
+05:52:21 [SHOT] OK (0ms)
+05:52:21 [SHOT] OK (0ms)
+05:52:22 [SHOT] OK (0ms)
+05:52:24 [SHOT] OK (617ms)
+05:52:24     - Marker interrupted. Resetting hold timer.
+05:52:24 [SHOT] OK (0ms)
+05:52:25 [SHOT] OK (0ms)
+05:52:26 [SHOT] OK (0ms)
+05:52:26 [SHOT] OK (0ms)
+05:52:27 [SHOT] OK (452ms)
+05:52:27     - Marker triggered. Holding 6.5s...
+05:52:28 [SHOT] OK (0ms)
+05:52:29 [SHOT] OK (0ms)
+05:52:30 [SHOT] OK (0ms)
+05:52:31 [SHOT] OK (471ms)
+05:52:31     - Marker interrupted. Resetting hold timer.
+05:52:31 [SHOT] OK (0ms)
+05:52:32 [SHOT] OK (0ms)
+05:52:33 [SHOT] OK (0ms)
+05:52:33 [SHOT] OK (0ms)
+05:52:34 [SHOT] OK (0ms)
+05:52:35 [SHOT] OK (214ms)
+05:52:35 [SHOT] OK (0ms)
+05:52:36 [SHOT] OK (0ms)
+05:52:37 [SHOT] OK (0ms)
+05:52:38 [SHOT] OK (344ms)
+05:52:39 [SHOT] OK (0ms)
+05:52:40 [SHOT] OK (0ms)
+05:52:40 [SHOT] OK (0ms)
+05:52:41 [SHOT] OK (0ms)
+05:52:42 [SHOT] OK (333ms)
+05:52:43 [SHOT] OK (0ms)
+05:52:44 [SHOT] OK (0ms)
+05:52:44 [SHOT] OK (0ms)
+05:52:45 [SHOT] OK (217ms)
+05:52:45 [SHOT] OK (0ms)
+05:52:47 [SHOT] OK (0ms)
+05:52:47 [SHOT] OK (0ms)
+05:52:48 [SHOT] OK (0ms)
+05:52:49 [SHOT] OK (468ms)
+05:52:50 [SHOT] OK (0ms)
+05:52:51 [SHOT] OK (0ms)
+05:52:51 [SHOT] OK (0ms)
+05:52:53 [SHOT] OK (283ms)
+05:52:54 [SHOT] OK (0ms)
+05:52:54 [SHOT] OK (0ms)
+05:52:54 [SHOT] OK (0ms)
+05:52:55 [SHOT] OK (0ms)
+05:52:56 [SHOT] OK (369ms)
+05:52:57 [SHOT] OK (0ms)
+05:52:58 [SHOT] OK (0ms)
+05:52:59 [SHOT] OK (0ms)
+05:53:00 [SHOT] OK (203ms)
+05:53:01 [SHOT] OK (0ms)
+05:53:02 [SHOT] OK (0ms)
+05:53:03 [SHOT] OK (0ms)
+05:53:03 [SHOT] OK (0ms)
+05:53:05 [SHOT] OK (202ms)
+05:53:06 [SHOT] OK (0ms)
+05:53:06 [SHOT] OK (0ms)
+05:53:07 [SHOT] OK (0ms)
+05:53:07 [SHOT] OK (0ms)
+05:53:07 [SHOT] OK (0ms)
+05:53:08 [SHOT] OK (184ms)
+05:53:09 [SHOT] OK (0ms)
+05:53:10 [SHOT] OK (0ms)
+05:53:10 [SHOT] OK (0ms)
+05:53:11 [SHOT] OK (0ms)
+05:53:12 [SHOT] OK (216ms)
+05:53:12 [SHOT] OK (0ms)
+05:53:13 [SHOT] OK (0ms)
+05:53:14 [SHOT] OK (0ms)
+05:53:14 [SHOT] OK (0ms)
+05:53:16 [SHOT] OK (210ms)
+05:53:17 [SHOT] OK (0ms)
+05:53:17 [SHOT] OK (0ms)
+05:53:18 [SHOT] OK (0ms)
+05:53:19 [SHOT] OK (209ms)
+05:53:20 [SHOT] OK (0ms)
+05:53:22 [SHOT] OK (0ms)
+05:53:22 [SHOT] OK (0ms)
+05:53:24 [SHOT] OK (309ms)
+05:53:24 [SHOT] OK (0ms)
+05:53:24 [SHOT] OK (0ms)
+05:53:26 [SHOT] OK (0ms)
+05:53:27 [SHOT] OK (0ms)
+05:53:28 [SHOT] OK (461ms)
+05:53:28 [SHOT] OK (0ms)
+05:53:29 [SHOT] OK (0ms)
+05:53:30 [SHOT] OK (0ms)
+05:53:30 [SHOT] OK (0ms)
+05:53:31 [SHOT] OK (252ms)
+05:53:32 [SHOT] OK (0ms)
+05:53:33 [SHOT] OK (0ms)
+05:53:34 [SHOT] OK (0ms)
+05:53:35 [SHOT] OK (186ms)
+05:53:36 [SHOT] OK (0ms)
+05:53:37 [SHOT] OK (0ms)
+05:53:38 [SHOT] OK (0ms)
+05:53:39 [SHOT] OK (178ms)
+05:53:39     - Marker triggered. Holding 6.5s...
+05:53:39 [SHOT] OK (0ms)
+05:53:39 [SHOT] OK (0ms)
+05:53:40 [SHOT] OK (0ms)
+05:53:41 [SHOT] OK (0ms)
+05:53:42 [SHOT] OK (168ms)
+05:53:42     - Holding... 3/6s
+05:53:43 [SHOT] OK (0ms)
+05:53:44 [SHOT] OK (0ms)
+05:53:45 [SHOT] OK (0ms)
+05:53:45     - Holding... 6/6s
+05:53:45 [SHOT] OK (0ms)
+05:53:46 [SHOT] OK (170ms)
+05:53:46     - Marker interrupted. Resetting hold timer.
+05:53:47 [SHOT] OK (0ms)
+05:53:48 [SHOT] OK (0ms)
+05:53:48 [SHOT] OK (0ms)
+05:53:49 [SHOT] OK (0ms)
+05:53:50 [SHOT] OK (168ms)
+05:53:51 [SHOT] OK (0ms)
+05:53:52 [SHOT] OK (0ms)
+05:53:53 [SHOT] OK (0ms)
+05:53:53 [SHOT] OK (172ms)
+05:53:54 [SHOT] OK (0ms)
+05:53:55 [SHOT] OK (0ms)
+05:53:56 [SHOT] OK (0ms)
+05:53:57 [SHOT] OK (173ms)
+05:53:58 [SHOT] OK (0ms)
+05:53:59 [SHOT] OK (0ms)
+05:53:59 [SHOT] OK (0ms)
+05:54:00 [SHOT] OK (0ms)
+05:54:01 [SHOT] OK (178ms)
+05:54:02 [SHOT] OK (0ms)
+05:54:02 [SHOT] OK (0ms)
+05:54:03 [SHOT] OK (0ms)
+05:54:05 [SHOT] OK (318ms)
+05:54:05 [SHOT] OK (0ms)
+05:54:06 [SHOT] OK (0ms)
+05:54:07 [SHOT] OK (0ms)
+05:54:07 [SHOT] OK (0ms)
+05:54:08 [SHOT] OK (185ms)
+05:54:09 [SHOT] OK (0ms)
+05:54:10 [SHOT] OK (0ms)
+05:54:11 [SHOT] OK (0ms)
+05:54:11 [SHOT] OK (0ms)
+05:54:13 [SHOT] OK (1042ms)
+05:54:14 [SHOT] OK (0ms)
+05:54:14 [SHOT] OK (0ms)
+05:54:15 [SHOT] OK (0ms)
+05:54:15 [SHOT] OK (0ms)
+05:54:21 [SHOT] OK (4846ms)
+05:54:22 [SHOT] OK (0ms)
+05:54:23 [SHOT] OK (0ms)
+05:54:23 [SHOT] OK (0ms)
+05:54:25 [SHOT] OK (610ms)
+05:54:26 [SHOT] OK (0ms)
+05:54:26 [SHOT] OK (0ms)
+05:54:27 [SHOT] OK (0ms)
+05:54:28 [SHOT] OK (173ms)
+05:54:30 [SHOT] OK (0ms)
+05:54:30 [SHOT] OK (0ms)
+05:54:31 [SHOT] OK (0ms)
+05:54:32 [SHOT] OK (191ms)
+05:54:33 [SHOT] OK (0ms)
+05:54:34 [SHOT] OK (0ms)
+05:54:35 [SHOT] OK (391ms)
+05:54:35     - Marker triggered. Holding 6.5s...
+05:54:36 [SHOT] OK (0ms)
+05:54:37 [SHOT] OK (0ms)
+05:54:38 [SHOT] OK (0ms)
+05:54:39 [SHOT] OK (199ms)
+05:54:39     - Holding... 3/6s
+05:54:40 [SHOT] OK (0ms)
+05:54:40 [SHOT] OK (0ms)
+05:54:42 [SHOT] OK (0ms)
+05:54:42     - Holding... 6/6s
+05:54:43 [SHOT] OK (209ms)
+05:54:43     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:54:43 [SHOT] OK (0ms)
+05:54:48     - Step OK: Clicked 'Attack - Auto'
+05:54:48 [Macro] (7/8) Delay: 1000ms (1.0s)...
+05:54:49 [Macro] Delay completed.
+05:54:49 [SHOT] OK (185ms)
+05:54:55     - Step OK: Clicked 'Click 5P'
+05:54:55 [Macro] Steps completed. Checking result...
+05:54:56 [SHOT] OK (403ms)
+05:54:56 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+05:54:56 [MACRO] Gathering: PASSED (184864ms total)
+05:54:56 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:55:06 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:55:09 [LOOP] ── Loop iteration start ──
+05:55:10 [SHOT] OK (206ms)
+05:55:11 [SHOT] OK (0ms)
+05:55:11 [SCAN] Gathering - Inside → FALSE (1343ms)
+05:55:12 [SHOT] OK (0ms)
+05:55:12 [SHOT] OK (0ms)
+05:55:13 [SCAN] Supplies → FALSE (1060ms)
+05:55:14 [SHOT] OK (188ms)
+05:55:14 [SHOT] OK (0ms)
+05:55:15 [SCAN] Revive → FALSE (1354ms)
+05:55:15 [SHOT] OK (0ms)
+05:55:16 [SHOT] OK (0ms)
+05:55:17 [SCAN] Supplies - In → FALSE (1133ms)
+05:55:17 [SHOT] OK (248ms)
+05:55:18 [SHOT] OK (0ms)
+05:55:19 [SCAN] Gathering - Automove → FALSE (1531ms)
+05:55:19 [SHOT] OK (0ms)
+05:55:20 [SHOT] OK (0ms)
+05:55:20 [SCAN] Attack - Auto → FALSE (1419ms)
+05:55:21 [SHOT] OK (229ms)
+05:55:21 [SCAN] Attack - Auto On → TRUE (249ms)
+05:55:22 [MACRO] Click 5P: Starting (0ms)
+05:55:27     - Step OK: ⚡ Hard Click 'Click 5P' at (1521,84)
+05:55:27 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:55:27 [Macro] Delay completed.
+05:55:27 [Macro] Steps completed. Checking result...
+05:55:27 [Macro] Finished (no capture check configured).
+05:55:27 [MACRO] Click 5P: PASSED (5654ms total)
+05:55:27 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:55:27 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:55:30 [LOOP] ── Loop iteration start ──
+05:55:56 [SHOT] FAIL #1 (25002ms)
+05:55:56 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:56:18 [SHOT] OK (19852ms)
+05:56:19 [SCAN] Gathering - Inside → FALSE (47746ms)
+05:56:19 [SHOT] OK (0ms)
+05:56:19 [SHOT] OK (0ms)
+05:56:20 [SCAN] Supplies → FALSE (1211ms)
+05:56:46 [SHOT] FAIL #1 (25014ms)
+05:56:46 [Doremon] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:56:58 [SHOT] OK (10111ms)
+05:56:59 [SCAN] Revive → FALSE (37927ms)
+05:56:59 [SHOT] OK (0ms)
+05:57:00 [SHOT] OK (0ms)
+05:57:00 [SCAN] Supplies - In → FALSE (1246ms)
+05:57:01 [SHOT] OK (277ms)
+05:57:02 [SHOT] OK (0ms)
+05:57:02 [SCAN] Gathering - Automove → FALSE (1416ms)
+05:57:03 [SHOT] OK (0ms)
+05:57:04 [SHOT] OK (0ms)
+05:57:04 [SCAN] Attack - Auto → FALSE (1357ms)
+05:57:05 [SHOT] OK (200ms)
+05:57:05 [SCAN] Attack - Auto On → TRUE (235ms)
+05:57:05 [MACRO] Click 5P: Starting (0ms)
+05:57:10     - Step OK: ⚡ Hard Click 'Click 5P' at (1513,86)
+05:57:11 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:57:11 [Macro] Delay completed.
+05:57:11 [Macro] Steps completed. Checking result...
+05:57:11 [Macro] Finished (no capture check configured).
+05:57:11 [MACRO] Click 5P: PASSED (5756ms total)
+05:57:11 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:57:18 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:57:21 [LOOP] ── Loop iteration start ──
+05:57:22 [SHOT] OK (210ms)
+05:57:22 [SHOT] OK (0ms)
+05:57:23 [SCAN] Gathering - Inside → FALSE (1693ms)
+05:57:24 [SHOT] OK (0ms)
+05:57:25 [SHOT] OK (0ms)
+05:57:25 [SCAN] Supplies → FALSE (1330ms)
+05:57:26 [SHOT] OK (174ms)
+05:57:26 [SHOT] OK (0ms)
+05:57:27 [SCAN] Revive → FALSE (1453ms)
+05:57:28 [SHOT] OK (0ms)
+05:57:28 [SHOT] OK (0ms)
+05:57:29 [SCAN] Supplies - In → FALSE (1630ms)
+05:57:30 [SHOT] OK (219ms)
+05:57:31 [SHOT] OK (0ms)
+05:57:32 [SCAN] Gathering - Automove → FALSE (1821ms)
+05:57:33 [SHOT] OK (0ms)
+05:57:33 [SHOT] OK (129ms)
+05:57:34 [SCAN] Attack - Auto → FALSE (1492ms)
+05:57:35 [SHOT] OK (0ms)
+05:57:35 [SCAN] Attack - Auto On → TRUE (21ms)
+05:57:35 [MACRO] Click 5P: Starting (0ms)
+05:57:40     - Step OK: ⚡ Hard Click 'Click 5P' at (1495,84)
+05:57:41 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:57:41 [Macro] Delay completed.
+05:57:41 [Macro] Steps completed. Checking result...
+05:57:41 [Macro] Finished (no capture check configured).
+05:57:41 [MACRO] Click 5P: PASSED (5650ms total)
+05:57:41 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:57:41 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:57:44 [LOOP] ── Loop iteration start ──
+05:57:44 [SHOT] OK (217ms)
+05:57:45 [SHOT] OK (0ms)
+05:57:46 [SCAN] Gathering - Inside → FALSE (1267ms)
+05:57:46 [SHOT] OK (0ms)
+05:57:46 [SHOT] OK (0ms)
+05:57:47 [SCAN] Supplies → FALSE (1055ms)
+05:57:48 [SHOT] OK (185ms)
+05:57:49 [SHOT] OK (0ms)
+05:57:49 [SCAN] Revive → FALSE (1641ms)
+05:57:50 [SHOT] OK (0ms)
+05:57:51 [SHOT] OK (0ms)
+05:57:51 [SCAN] Supplies - In → FALSE (1370ms)
+05:57:52 [SHOT] OK (198ms)
+05:57:53 [SHOT] OK (0ms)
+05:57:53 [SCAN] Gathering - Automove → FALSE (1438ms)
+05:57:54 [SHOT] OK (0ms)
+05:57:54 [SHOT] OK (0ms)
+05:57:55 [SCAN] Attack - Auto → FALSE (1265ms)
+05:57:56 [SHOT] OK (195ms)
+05:57:56 [SCAN] Attack - Auto On → TRUE (217ms)
+05:57:56 [MACRO] Click 5P: Starting (0ms)
+05:58:01     - Step OK: ⚡ Hard Click 'Click 5P' at (1498,83)
+05:58:02 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:58:02 [Macro] Delay completed.
+05:58:02 [Macro] Steps completed. Checking result...
+05:58:02 [Macro] Finished (no capture check configured).
+05:58:02 [MACRO] Click 5P: PASSED (5705ms total)
+05:58:02 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:58:02 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:58:05 [LOOP] ── Loop iteration start ──
+05:58:06 [SHOT] OK (174ms)
+05:58:06 [SHOT] OK (0ms)
+05:58:07 [SCAN] Gathering - Inside → FALSE (1753ms)
+05:58:08 [SHOT] OK (0ms)
+05:58:09 [SHOT] OK (535ms)
+05:58:10 [SCAN] Supplies → FALSE (2089ms)
+05:58:11 [SHOT] OK (0ms)
+05:58:11 [SHOT] OK (0ms)
+05:58:12 [SCAN] Revive → FALSE (1075ms)
+05:58:12 [SHOT] OK (0ms)
+05:58:13 [SHOT] OK (929ms)
+05:58:14 [SCAN] Supplies - In → FALSE (1811ms)
+05:58:14 [SHOT] OK (0ms)
+05:58:15 [SHOT] OK (0ms)

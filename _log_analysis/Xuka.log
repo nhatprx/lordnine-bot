@@ -1886,3 +1886,263 @@
 05:35:26   Macros: 1 ok / 2 fail
 05:35:26   Errors: 4
 05:35:26 ============================================================
+05:36:11 ============================================================
+05:36:11 SESSION START — Xuka (port:9224 tab:2)
+05:36:11 ============================================================
+05:36:12 [Xuka] Starting worker: func=loop - Farm V1, port=9224, tab=2
+05:36:20 [Xuka] Connected to Port 9224, Tab 2
+05:36:21 [LOOP] ── Loop iteration start ──
+05:36:21 [SHOT] OK (128ms)
+05:36:22 [SHOT] OK (0ms)
+05:36:23 [SCAN] Gathering - Inside → FALSE (1583ms)
+05:36:23 [SHOT] OK (0ms)
+05:36:24 [SHOT] OK (0ms)
+05:36:25 [SCAN] Supplies → FALSE (1273ms)
+05:36:25 [SHOT] OK (137ms)
+05:36:25 [SCAN] Revive → TRUE (239ms)
+05:36:26 [MACRO] Revivie: Starting (0ms)
+05:36:26 [SHOT] OK (0ms)
+05:36:31     - Step OK: Clicked 'Revive'
+05:36:31 [Macro] (2/2) Delay: 3000ms (3.0s)...
+05:36:34 [Macro] Delay completed.
+05:36:34 [Macro] Steps completed. Checking result...
+05:37:00 [SHOT] FAIL #1 (25014ms)
+05:37:00 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:02 [Macro] Result: FAILURE ('Supplies' not found)
+05:37:02 [MACRO] Revivie: FAILED (36706ms total)
+05:37:02 [ERR] DEAD END: No edge from 'Macro' (38ef6fd1) — will trigger restart
+05:37:02 [ERR] RESTART: No next node after 'Macro' (38ef6fd1). Restart 1/10
+05:37:05 [LOOP] ── Loop iteration start ──
+05:37:06 [SHOT] OK (182ms)
+05:37:07 [SHOT] OK (0ms)
+05:37:08 [SCAN] Gathering - Inside → FALSE (1673ms)
+05:37:08 [SHOT] OK (0ms)
+05:37:08 [SCAN] Supplies → TRUE (10ms)
+05:37:09 [MACRO] Buy Blood: Starting (0ms)
+05:37:14     - Step OK: ⚡ Hard Click 'Supplies' at (1293,564)
+05:37:14 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:37:14 [SHOT] OK (120ms)
+05:37:16 [SHOT] OK (0ms)
+05:37:17 [SHOT] OK (0ms)
+05:37:43 [SHOT] FAIL #1 (25011ms)
+05:37:43 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:38:10 [SHOT] FAIL #2 (25011ms)
+05:38:10 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:38:16 [SHOT] OK (1363ms)
+05:38:16     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:38:22     - Step OK: ⚡ Hard Click 'Supplies - Type' at (502,304)
+05:38:22 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:38:47 [SHOT] OK (24998ms)
+05:38:47     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:38:52     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (877,545)
+05:38:53 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:38:53 [Macro] Delay completed.
+05:38:58     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (986,716)
+05:38:58 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:38:59 [Macro] Delay completed.
+05:39:04     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1526,142)
+05:39:05 [Macro] Steps completed. Checking result...
+05:39:20 [SHOT] OK (14607ms)
+05:39:20 [Macro] Result: SUCCESS (found 'Home')
+05:39:20 [MACRO] Buy Blood: PASSED (131555ms total)
+05:39:30 [MACRO] Gathering: Starting (0ms)
+05:39:30 [SHOT] OK (189ms)
+05:39:36     - Step OK: Clicked 'Gathering'
+05:39:36 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:40:01 [SHOT] FAIL #1 (25008ms)
+05:40:01 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:40:04     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:40:04 [MACRO] Gathering: FAILED (33252ms total)
+05:40:04 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:40:04 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:40:07 [LOOP] ── Loop iteration start ──
+05:40:32 [SHOT] FAIL #2 (25013ms)
+05:40:32 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:41:01 [SHOT] FAIL #3 (25002ms)
+05:41:01 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:41:09 [SCAN] Gathering - Inside → FALSE (62018ms)
+05:41:35 [SHOT] FAIL #4 (25014ms)
+05:41:35 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:42:11 [SHOT] OK (20726ms)
+05:42:11 [SCAN] Supplies → TRUE (61754ms)
+05:42:22 [MACRO] Buy Blood: Starting (0ms)
+05:42:27     - Step OK: ⚡ Hard Click 'Supplies' at (1330,555)
+05:42:28 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:42:45 [SHOT] OK (17513ms)
+05:42:46 [SHOT] OK (0ms)
+05:42:47 [SHOT] OK (0ms)
+05:42:48 [SHOT] OK (0ms)
+05:43:14 [SHOT] FAIL #1 (25002ms)
+05:43:14 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:18 [SHOT] OK (1378ms)
+05:43:19 [SHOT] OK (0ms)
+05:43:19 [SHOT] OK (0ms)
+05:43:20 [SHOT] OK (0ms)
+05:43:21 [SHOT] OK (168ms)
+05:43:22 [SHOT] OK (0ms)
+05:43:23 [SHOT] OK (0ms)
+05:43:23 [SHOT] OK (0ms)
+05:43:25 [SHOT] OK (182ms)
+05:43:25 [SHOT] OK (0ms)
+05:43:26 [SHOT] OK (0ms)
+05:43:26 [SHOT] OK (0ms)
+05:43:27 [SHOT] OK (0ms)
+05:43:53 [SHOT] FAIL #1 (25009ms)
+05:43:53 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:59 [SHOT] OK (3581ms)
+05:44:00 [SHOT] OK (0ms)
+05:44:01 [SHOT] OK (0ms)
+05:44:02 [SHOT] OK (0ms)
+05:44:03 [SHOT] OK (165ms)
+05:44:04 [SHOT] OK (0ms)
+05:44:05 [SHOT] OK (0ms)
+05:44:06 [SHOT] OK (0ms)
+05:44:31 [SHOT] FAIL #1 (25010ms)
+05:44:31 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:44:37 [SHOT] OK (3007ms)
+05:44:37 [SHOT] OK (0ms)
+05:44:38 [SHOT] OK (0ms)
+05:44:39 [SHOT] OK (0ms)
+05:44:39 [SHOT] OK (0ms)
+05:45:05 [SHOT] FAIL #1 (25014ms)
+05:45:05 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:46:06 ============================================================
+05:46:06 SESSION START — Xuka (port:9224 tab:2)
+05:46:06 ============================================================
+05:46:07 [Xuka] Starting worker: func=macro - Home, port=9224, tab=2
+05:46:16 [Xuka] Connected to Port 9224, Tab 2
+05:46:17 [MACRO] Home: Starting (0ms)
+05:46:22     - Step OK: ⚡ Hard Click 'Home' at (349,367)
+05:46:22 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:46:47 [SHOT] FAIL #1 (25013ms)
+05:46:47 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:47:15 [SHOT] FAIL #2 (25008ms)
+05:47:15 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:47:44 [SHOT] FAIL #3 (25008ms)
+05:47:44 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:48:18 [SHOT] FAIL #4 (25014ms)
+05:48:18 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:48:59 [SHOT] FAIL #5 (25014ms)
+05:48:59 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:49:42 [SHOT] OK (12615ms)
+05:49:42     - Marker OK: 'Supplies' confirmed APPEAR.
+05:49:42 [Macro] Steps completed. Checking result...
+05:49:43 [SHOT] OK (0ms)
+05:49:43 [Macro] Result: SUCCESS (found 'Supplies')
+05:49:43 [MACRO] Home: PASSED (206717ms total)
+05:49:43 ============================================================
+05:49:43 SESSION END — Xuka (3.6 min)
+05:49:43   Loops: 0
+05:49:43   Screenshots: 2 ok / 5 fail (71.4%)
+05:49:43   Avg latency: 6307ms
+05:49:43   Macros: 1 ok / 0 fail
+05:49:43   Errors: 0
+05:49:43 ============================================================
+05:51:06 ============================================================
+05:51:06 SESSION START — Xuka (port:9224 tab:2)
+05:51:06 ============================================================
+05:51:07 [Xuka] Starting worker: func=loop - Farm V1, port=9224, tab=2
+05:51:19 [Xuka] Connected to Port 9224, Tab 2
+05:51:19 [LOOP] ── Loop iteration start ──
+05:51:39 [SHOT] OK (19470ms)
+05:51:40 [SHOT] OK (0ms)
+05:51:40 [SCAN] Gathering - Inside → FALSE (20677ms)
+05:51:41 [SHOT] OK (0ms)
+05:51:41 [SCAN] Supplies → TRUE (10ms)
+05:51:41 [MACRO] Buy Blood: Starting (0ms)
+05:51:47     - Step OK: ⚡ Hard Click 'Supplies' at (1332,552)
+05:51:47 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:51:47 [SHOT] OK (123ms)
+05:51:47 [SHOT] OK (0ms)
+05:51:48 [SHOT] OK (0ms)
+05:51:49 [SHOT] OK (0ms)
+05:51:50 [SHOT] OK (0ms)
+05:52:16 [SHOT] FAIL #1 (25002ms)
+05:52:16 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:44 [SHOT] FAIL #2 (25002ms)
+05:52:44 [Xuka] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:53:13 [SHOT] FAIL #3 (25007ms)
+05:53:13 [Xuka] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:53:47 [SHOT] FAIL #4 (25001ms)
+05:53:47 [Xuka] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:54:28 [SHOT] FAIL #5 (25015ms)
+05:54:28 [Xuka] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:55:22 [SHOT] OK (22912ms)
+05:55:22     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:55:27     - Step OK: ⚡ Hard Click 'Supplies - Type' at (545,292)
+05:55:27 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:55:41 [SHOT] OK (14115ms)
+05:55:42 [SHOT] OK (0ms)
+05:55:43 [SHOT] OK (0ms)
+05:55:44 [SHOT] OK (0ms)
+05:55:45 [SHOT] OK (186ms)
+05:55:45     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:55:45     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (857,549)
+05:55:46 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:55:46 [Macro] Delay completed.
+05:55:46     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1030,711)
+05:55:46 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:55:47 [Macro] Delay completed.
+05:55:47     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1540,159)
+05:55:48 [Macro] Steps completed. Checking result...
+05:55:49 [SHOT] OK (137ms)
+05:55:49 [Macro] Result: FAILURE ('Home' not found)
+05:55:49 [MACRO] Buy Blood: FAILED (247664ms total)
+05:55:49 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:55:49 [ERR] RESTART: No next node after 'Macro' (ad649a80). Restart 1/10
+05:55:52 [LOOP] ── Loop iteration start ──
+05:55:53 [SHOT] OK (327ms)
+05:55:54 [SHOT] OK (0ms)
+05:55:55 [SCAN] Gathering - Inside → FALSE (1984ms)
+05:55:55 [SHOT] OK (0ms)
+05:55:56 [SHOT] OK (0ms)
+05:55:56 [SCAN] Supplies → FALSE (1020ms)
+05:55:57 [SHOT] OK (612ms)
+05:55:58 [SHOT] OK (0ms)
+05:55:59 [SCAN] Revive → FALSE (1906ms)
+05:55:59 [SHOT] OK (0ms)
+05:55:59 [SCAN] Supplies - In → TRUE (10ms)
+05:56:00 [NODE] → Click: Supplies - Exit
+05:56:00 [SHOT] OK (0ms)
+05:56:00 [SCAN] Supplies - Exit → TRUE (0ms)
+05:56:00 [ERR] DEAD END: No edge from 'Click' (Supplies - Exit) — will trigger restart
+05:56:00 [ERR] RESTART: No next node after 'Click' (Supplies - Exit). Restart 1/10
+05:56:03 [LOOP] ── Loop iteration start ──
+05:56:04 [SHOT] OK (238ms)
+05:56:05 [SHOT] OK (0ms)
+05:56:06 [SCAN] Gathering - Inside → FALSE (1669ms)
+05:56:06 [SHOT] OK (0ms)
+05:56:06 [SCAN] Supplies → TRUE (10ms)
+05:56:07 [MACRO] Buy Blood: Starting (0ms)
+05:56:12     - Step OK: ⚡ Hard Click 'Supplies' at (1320,561)
+05:56:12 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:56:18 [SHOT] OK (5197ms)
+05:56:18     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:56:23     - Step OK: ⚡ Hard Click 'Supplies - Type' at (567,310)
+05:56:23 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:56:48 [SHOT] FAIL #1 (25015ms)
+05:56:48 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:56:51 [SHOT] OK (161ms)
+05:56:51     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:56:56     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (866,574)
+05:56:56 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:56:57 [Macro] Delay completed.
+05:57:02     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1003,720)
+05:57:02 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:57:03 [Macro] Delay completed.
+05:57:08     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1534,134)
+05:57:09 [Macro] Steps completed. Checking result...
+05:57:22 [SHOT] OK (12771ms)
+05:57:22 [Macro] Result: SUCCESS (found 'Home')
+05:57:22 [MACRO] Buy Blood: PASSED (75638ms total)
+05:57:22 [MACRO] Gathering: Starting (0ms)
+05:57:22 [SHOT] OK (0ms)
+05:57:28     - Step OK: Clicked 'Gathering'
+05:57:28 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:57:53 [SHOT] FAIL #1 (25004ms)
+05:57:53 [Xuka] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:57:56     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:57:56 [MACRO] Gathering: FAILED (33112ms total)
+05:57:56 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:58:06 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:58:09 [LOOP] ── Loop iteration start ──

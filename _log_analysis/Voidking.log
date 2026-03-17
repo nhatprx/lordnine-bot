@@ -2167,3 +2167,355 @@
 05:34:50   Macros: 1 ok / 1 fail
 05:34:50   Errors: 1
 05:34:50 ============================================================
+05:36:05 ============================================================
+05:36:05 SESSION START — Voidking (port:9223 tab:4)
+05:36:05 ============================================================
+05:36:07 [Voidking] Starting worker: func=loop - Farm V1, port=9223, tab=4
+05:36:20 [Voidking] Connected to Port 9223, Tab 4
+05:36:21 [LOOP] ── Loop iteration start ──
+05:36:21 [SHOT] OK (159ms)
+05:36:21 [SCAN] Gathering - Inside → TRUE (181ms)
+05:36:22 [NODE] → Click: Gathering - Exit
+05:36:22 [SHOT] OK (0ms)
+05:36:27 [SCAN] Gathering - Exit → TRUE (0ms)
+05:36:27 [ERR] DEAD END: No edge from 'Click' (Gathering - Exit) — will trigger restart
+05:36:27 [ERR] RESTART: No next node after 'Click' (Gathering - Exit). Restart 1/10
+05:36:30 [LOOP] ── Loop iteration start ──
+05:36:54 [SHOT] OK (22970ms)
+05:36:54 [SHOT] OK (0ms)
+05:36:55 [SCAN] Gathering - Inside → FALSE (24217ms)
+05:36:55 [SHOT] OK (0ms)
+05:36:55 [SCAN] Supplies → TRUE (11ms)
+05:36:56 [MACRO] Buy Blood: Starting (0ms)
+05:37:01     - Step OK: ⚡ Hard Click 'Supplies' at (1304,579)
+05:37:02 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:37:27 [SHOT] FAIL #1 (25000ms)
+05:37:27 [Voidking] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:54 [SHOT] FAIL #2 (25003ms)
+05:37:54 [Voidking] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:38:04 [SHOT] OK (4859ms)
+05:38:04     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:38:09     - Step OK: ⚡ Hard Click 'Supplies - Type' at (527,318)
+05:38:09 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:38:34 [SHOT] FAIL #1 (25005ms)
+05:38:34 [Voidking] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:38:37 [SHOT] OK (0ms)
+05:38:37     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:38:42     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (844,560)
+05:38:42 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:38:42 [Macro] Delay completed.
+05:38:48     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (978,694)
+05:38:48 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:38:49 [Macro] Delay completed.
+05:38:54     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1543,135)
+05:38:55 [Macro] Steps completed. Checking result...
+05:39:13 [SHOT] OK (17530ms)
+05:39:13 [Macro] Result: SUCCESS (found 'Home')
+05:39:13 [MACRO] Buy Blood: PASSED (137184ms total)
+05:39:23 [MACRO] Gathering: Starting (0ms)
+05:39:44 [SHOT] OK (20676ms)
+05:39:49     - Step OK: Clicked 'Gathering'
+05:39:49 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:39:50 [SHOT] OK (182ms)
+05:39:50     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:39:55     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1105,570)
+05:39:55 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:40:08 [Macro] Delay completed.
+05:40:08 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+05:40:28 [SHOT] OK (20270ms)
+05:40:28 [SHOT] OK (0ms)
+05:40:29 [SHOT] OK (0ms)
+05:40:30 [SHOT] OK (0ms)
+05:40:31 [SHOT] OK (0ms)
+05:40:56 [SHOT] FAIL #1 (25012ms)
+05:40:56 [Voidking] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:41:24 [SHOT] FAIL #2 (25011ms)
+05:41:24 [Voidking] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:41:53 [SHOT] FAIL #3 (25006ms)
+05:41:53 [Voidking] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:42:27 [SHOT] FAIL #4 (25010ms)
+05:42:27 [Voidking] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:42:43 [SHOT] OK (209ms)
+05:42:44 [SHOT] OK (0ms)
+05:42:45 [SHOT] OK (0ms)
+05:42:46 [SHOT] OK (0ms)
+05:42:47 [SHOT] OK (207ms)
+05:42:48 [SHOT] OK (0ms)
+05:42:49 [SHOT] OK (0ms)
+05:42:50 [SHOT] OK (0ms)
+05:42:50 [SHOT] OK (0ms)
+05:42:52 [SHOT] OK (510ms)
+05:42:53 [SHOT] OK (0ms)
+05:42:53 [SHOT] OK (0ms)
+05:42:54 [SHOT] OK (0ms)
+05:42:55 [SHOT] OK (221ms)
+05:42:56 [SHOT] OK (0ms)
+05:42:57 [SHOT] OK (0ms)
+05:42:57 [SHOT] OK (0ms)
+05:42:58 [SHOT] OK (0ms)
+05:42:59 [SHOT] OK (420ms)
+05:43:00 [SHOT] OK (0ms)
+05:43:01 [SHOT] OK (0ms)
+05:43:01 [SHOT] OK (0ms)
+05:43:02 [SHOT] OK (0ms)
+05:43:03 [SHOT] OK (449ms)
+05:43:03     - Marker triggered. Holding 6.5s...
+05:43:04 [SHOT] OK (0ms)
+05:43:05 [SHOT] OK (0ms)
+05:43:06 [SHOT] OK (0ms)
+05:43:06 [SHOT] OK (0ms)
+05:43:08 [SHOT] OK (196ms)
+05:43:08     - Holding... 4/6s
+05:43:09 [SHOT] OK (0ms)
+05:43:09 [SHOT] OK (0ms)
+05:43:10 [SHOT] OK (0ms)
+05:43:10     - Holding... 7/6s
+05:43:10     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:43:10 [SHOT] OK (0ms)
+05:43:16     - Step OK: Clicked 'Attack - Auto'
+05:43:16 [Macro] (7/8) Delay: 1000ms (1.0s)...
+05:43:17 [Macro] Delay completed.
+05:43:17 [SHOT] OK (205ms)
+05:43:23     - Step OK: Clicked 'Click 5P'
+05:43:23 [Macro] Steps completed. Checking result...
+05:43:24 [SHOT] OK (477ms)
+05:43:24 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+05:43:24 [MACRO] Gathering: PASSED (241079ms total)
+05:43:24 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:43:34 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:43:37 [LOOP] ── Loop iteration start ──
+05:43:38 [SHOT] OK (198ms)
+05:43:39 [SHOT] OK (0ms)
+05:43:39 [SCAN] Gathering - Inside → FALSE (1486ms)
+05:43:40 [SHOT] OK (0ms)
+05:43:41 [SHOT] OK (0ms)
+05:43:42 [SCAN] Supplies → FALSE (1532ms)
+05:43:43 [SHOT] OK (551ms)
+05:43:43 [SHOT] OK (0ms)
+05:43:44 [SCAN] Revive → FALSE (2004ms)
+05:43:45 [SHOT] OK (0ms)
+05:43:46 [SHOT] OK (0ms)
+05:43:46 [SCAN] Supplies - In → FALSE (1480ms)
+05:43:47 [SHOT] OK (162ms)
+05:43:48 [SHOT] OK (0ms)
+05:43:48 [SCAN] Gathering - Automove → FALSE (1522ms)
+05:43:49 [SHOT] OK (0ms)
+05:43:49 [SCAN] Attack - Auto → TRUE (22ms)
+05:43:50 [NODE] → Click: Gathering
+05:43:50 [SHOT] OK (0ms)
+05:43:50 [SCAN] Gathering → FALSE (0ms)
+05:43:50 [NODE] → Delay: Delay 1000ms
+05:43:51 [SHOT] OK (230ms)
+05:43:52 [SHOT] OK (0ms)
+05:43:53 [SCAN] Gathering - Inside → FALSE (1736ms)
+05:43:53 [NODE] → Delay: Delay 1000ms
+05:43:54 [NODE] → Click: Attack - Auto
+05:43:54 [SHOT] OK (0ms)
+05:43:54 [SCAN] Attack - Auto → FALSE (0ms)
+05:43:54 [ERR] DEAD END: No edge from 'Click' (Attack - Auto) — will trigger restart
+05:43:54 [ERR] RESTART: No next node after 'Click' (Attack - Auto). Restart 1/10
+05:43:57 [LOOP] ── Loop iteration start ──
+05:43:58 [SHOT] OK (164ms)
+05:43:59 [SHOT] OK (0ms)
+05:44:00 [SCAN] Gathering - Inside → FALSE (1727ms)
+05:44:00 [SHOT] OK (0ms)
+05:44:00 [SHOT] OK (0ms)
+05:44:01 [SCAN] Supplies → FALSE (1263ms)
+05:44:02 [SHOT] OK (153ms)
+05:44:02 [SCAN] Revive → TRUE (164ms)
+05:44:03 [MACRO] Revivie: Starting (0ms)
+05:44:03 [SHOT] OK (0ms)
+05:44:08     - Step OK: Clicked 'Revive'
+05:44:08 [Macro] (2/2) Delay: 3000ms (3.0s)...
+05:44:11 [Macro] Delay completed.
+05:44:11 [Macro] Steps completed. Checking result...
+05:44:13 [SHOT] OK (236ms)
+05:44:13 [Macro] Result: FAILURE ('Supplies' not found)
+05:44:13 [MACRO] Revivie: FAILED (9915ms total)
+05:44:13 [ERR] DEAD END: No edge from 'Macro' (38ef6fd1) — will trigger restart
+05:44:13 [ERR] RESTART: No next node after 'Macro' (38ef6fd1). Restart 1/10
+05:44:16 [LOOP] ── Loop iteration start ──
+05:44:17 [SHOT] OK (287ms)
+05:44:17 [SHOT] OK (0ms)
+05:44:18 [SCAN] Gathering - Inside → FALSE (1909ms)
+05:44:19 [SHOT] OK (0ms)
+05:44:19 [SCAN] Supplies → TRUE (11ms)
+05:44:19 [MACRO] Buy Blood: Starting (0ms)
+05:44:24     - Step OK: ⚡ Hard Click 'Supplies' at (1326,554)
+05:44:25 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:44:25 [SHOT] OK (212ms)
+05:44:26 [SHOT] OK (0ms)
+05:44:27 [SHOT] OK (0ms)
+05:44:28 [SHOT] OK (0ms)
+05:44:29 [SHOT] OK (217ms)
+05:44:29     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:44:34     - Step OK: ⚡ Hard Click 'Supplies - Type' at (487,291)
+05:44:34 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:44:35 [SHOT] OK (196ms)
+05:44:35     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:44:40     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (898,569)
+05:44:40 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:44:40 [Macro] Delay completed.
+05:44:45     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1013,710)
+05:44:46 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:44:47 [Macro] Delay completed.
+05:44:52     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1536,138)
+05:44:52 [Macro] Steps completed. Checking result...
+05:44:54 [SHOT] OK (275ms)
+05:44:54 [Macro] Result: SUCCESS (found 'Home')
+05:44:54 [MACRO] Buy Blood: PASSED (34523ms total)
+05:44:54 [MACRO] Gathering: Starting (0ms)
+05:44:54 [SHOT] OK (0ms)
+05:44:59     - Step OK: Clicked 'Gathering'
+05:44:59 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:45:00 [SHOT] OK (509ms)
+05:45:00     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:45:05     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1002,597)
+05:45:06 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:46:00 ============================================================
+05:46:00 SESSION START — Voidking (port:9223 tab:4)
+05:46:00 ============================================================
+05:46:02 [Voidking] Starting worker: func=macro - Home, port=9223, tab=4
+05:46:15 [Voidking] Connected to Port 9223, Tab 4
+05:46:15 [MACRO] Home: Starting (0ms)
+05:46:15     - Step OK: ⚡ Hard Click 'Home' at (354,374)
+05:46:16 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:46:16 [SHOT] OK (113ms)
+05:46:17 [SHOT] OK (0ms)
+05:46:18 [SHOT] OK (0ms)
+05:46:19 [SHOT] OK (0ms)
+05:46:20 [SHOT] FAIL #1 (1ms)
+05:46:20 [Voidking] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:46:23 [SHOT] FAIL #2 (184ms)
+05:46:23 [Voidking] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:46:27 [SHOT] FAIL #3 (0ms)
+05:46:27 [Voidking] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:46:36 [SHOT] FAIL #4 (763ms)
+05:46:36 [Voidking] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:47:00 [SHOT] FAIL #5 (7025ms)
+05:47:00 [Voidking] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:47:30 [SHOT] FAIL #6 (1ms)
+05:47:30 [Voidking] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:48:01 [SHOT] FAIL #7 (0ms)
+05:48:01 [Voidking] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:48:31 [SHOT] FAIL #8 (1ms)
+05:48:31 [Voidking] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:49:14 [SHOT] FAIL #9 (12396ms)
+05:49:14 [Voidking] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+05:49:54 [SHOT] FAIL #10 (8937ms)
+05:49:54 [Voidking] Screenshot error: Screenshot failed (backoff 30s, fail #10)
+05:50:24 [MACRO] Home: FAILED (249038ms total)
+05:50:24 ============================================================
+05:50:24 SESSION END — Voidking (4.4 min)
+05:50:24   Loops: 0
+05:50:24   Screenshots: 4 ok / 10 fail (71.4%)
+05:50:24   Avg latency: 28ms
+05:50:24   Macros: 0 ok / 1 fail
+05:50:24   Errors: 0
+05:50:24 ============================================================
+05:51:00 ============================================================
+05:51:00 SESSION START — Voidking (port:9223 tab:4)
+05:51:00 ============================================================
+05:51:01 [Voidking] Starting worker: func=loop - Farm V1, port=9223, tab=4
+05:51:14 [Voidking] Connected to Port 9223, Tab 4
+05:51:15 [LOOP] ── Loop iteration start ──
+05:51:40 [SHOT] FAIL #1 (25003ms)
+05:51:40 [Voidking] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:07 [SHOT] FAIL #2 (25004ms)
+05:52:07 [Voidking] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:52:11 [SCAN] Gathering - Inside → FALSE (56013ms)
+05:52:37 [SHOT] FAIL #3 (25005ms)
+05:52:37 [Voidking] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:53:10 [SHOT] FAIL #4 (25002ms)
+05:53:10 [Voidking] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:53:26 [SCAN] Supplies → FALSE (74011ms)
+05:53:48 [SHOT] OK (12134ms)
+05:53:49 [SHOT] OK (0ms)
+05:53:50 [SCAN] Revive → FALSE (13780ms)
+05:53:50 [SHOT] OK (0ms)
+05:53:51 [SHOT] OK (0ms)
+05:53:52 [SCAN] Supplies - In → FALSE (1512ms)
+05:54:18 [SHOT] FAIL #1 (25002ms)
+05:54:18 [Voidking] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:54:20 [SHOT] OK (206ms)
+05:54:20 [SCAN] Gathering - Automove → FALSE (27739ms)
+05:54:21 [SHOT] OK (0ms)
+05:54:21 [SCAN] Attack - Auto → TRUE (24ms)
+05:54:21 [NODE] → Click: Gathering
+05:54:21 [SHOT] OK (0ms)
+05:54:21 [SCAN] Gathering → FALSE (0ms)
+05:54:22 [NODE] → Delay: Delay 1000ms
+05:54:23 [SHOT] OK (0ms)
+05:54:23 [SHOT] OK (174ms)
+05:54:24 [SCAN] Gathering - Inside → FALSE (1293ms)
+05:54:25 [NODE] → Delay: Delay 1000ms
+05:54:26 [NODE] → Click: Attack - Auto
+05:54:26 [SHOT] OK (0ms)
+05:54:31 [SCAN] Attack - Auto → TRUE (0ms)
+05:54:31 [ERR] DEAD END: No edge from 'Click' (Attack - Auto) — will trigger restart
+05:54:31 [ERR] RESTART: No next node after 'Click' (Attack - Auto). Restart 1/10
+05:54:34 [LOOP] ── Loop iteration start ──
+05:54:58 [SHOT] OK (22721ms)
+05:54:59 [SHOT] OK (0ms)
+05:54:59 [SCAN] Gathering - Inside → FALSE (24275ms)
+05:55:00 [SHOT] OK (0ms)
+05:55:00 [SHOT] OK (0ms)
+05:55:01 [SCAN] Supplies → FALSE (1240ms)
+05:55:27 [SHOT] FAIL #1 (25006ms)
+05:55:27 [Voidking] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:55:29 [SHOT] OK (0ms)
+05:55:30 [SCAN] Revive → FALSE (27879ms)
+05:55:30 [SHOT] OK (0ms)
+05:55:31 [SHOT] OK (171ms)
+05:55:32 [SCAN] Supplies - In → FALSE (1323ms)
+05:55:32 [SHOT] OK (0ms)
+05:55:33 [SHOT] OK (0ms)
+05:55:34 [SCAN] Gathering - Automove → FALSE (1365ms)
+05:55:34 [SHOT] OK (0ms)
+05:55:35 [SHOT] OK (182ms)
+05:55:36 [SCAN] Attack - Auto → FALSE (1433ms)
+05:55:36 [SHOT] OK (0ms)
+05:55:36 [SCAN] Attack - Auto On → TRUE (19ms)
+05:55:46 [MACRO] Click 5P: Starting (0ms)
+05:55:52     - Step OK: ⚡ Hard Click 'Click 5P' at (1499,98)
+05:55:52 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:55:52 [Macro] Delay completed.
+05:55:52 [Macro] Steps completed. Checking result...
+05:55:52 [Macro] Finished (no capture check configured).
+05:55:52 [MACRO] Click 5P: PASSED (5684ms total)
+05:55:52 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:55:52 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:55:55 [LOOP] ── Loop iteration start ──
+05:56:20 [SHOT] OK (24168ms)
+05:56:21 [SHOT] OK (0ms)
+05:56:22 [SCAN] Gathering - Inside → FALSE (25870ms)
+05:56:22 [SHOT] OK (0ms)
+05:56:23 [SHOT] OK (0ms)
+05:56:23 [SCAN] Supplies → FALSE (1110ms)
+05:56:49 [SHOT] FAIL #1 (25015ms)
+05:56:49 [Voidking] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:56:54 [SHOT] OK (3281ms)
+05:56:55 [SCAN] Revive → FALSE (31173ms)
+05:56:56 [SHOT] OK (0ms)
+05:56:57 [SHOT] OK (0ms)
+05:56:57 [SCAN] Supplies - In → FALSE (1670ms)
+05:57:12 [SHOT] OK (14586ms)
+05:57:13 [SHOT] OK (0ms)
+05:57:14 [SCAN] Gathering - Automove → FALSE (15805ms)
+05:57:14 [SHOT] OK (0ms)
+05:57:15 [SHOT] OK (0ms)
+05:57:16 [SCAN] Attack - Auto → FALSE (1502ms)
+05:57:42 [SHOT] FAIL #1 (25010ms)
+05:57:42 [Voidking] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:57:47 [SHOT] OK (3726ms)
+05:57:47 [SCAN] Attack - Auto On → TRUE (30755ms)
+05:57:58 [MACRO] Click 5P: Starting (0ms)
+05:58:03     - Step OK: ⚡ Hard Click 'Click 5P' at (1486,87)
+05:58:04 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:58:04 [Macro] Delay completed.
+05:58:04 [Macro] Steps completed. Checking result...
+05:58:04 [Macro] Finished (no capture check configured).
+05:58:04 [MACRO] Click 5P: PASSED (5609ms total)
+05:58:04 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:58:04 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:58:07 [LOOP] ── Loop iteration start ──

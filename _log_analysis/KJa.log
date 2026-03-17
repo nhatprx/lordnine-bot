@@ -2700,3 +2700,451 @@
 05:34:57   Macros: 1 ok / 3 fail
 05:34:57   Errors: 6
 05:34:57 ============================================================
+05:36:50 ============================================================
+05:36:50 SESSION START — KJa (port:9229 tab:1)
+05:36:50 ============================================================
+05:36:50 [KJa] Starting worker: func=loop - Farm V1, port=9229, tab=1
+05:36:55 [KJa] Connected to Port 9229, Tab 1
+05:36:55 [LOOP] ── Loop iteration start ──
+05:36:56 [SHOT] OK (439ms)
+05:36:57 [SHOT] OK (0ms)
+05:36:58 [SCAN] Gathering - Inside → FALSE (1958ms)
+05:36:58 [SHOT] OK (0ms)
+05:36:58 [SCAN] Supplies → TRUE (10ms)
+05:36:59 [MACRO] Buy Blood: Starting (0ms)
+05:37:04     - Step OK: ⚡ Hard Click 'Supplies' at (1301,590)
+05:37:05 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:37:05 [SHOT] OK (213ms)
+05:37:05 [SHOT] OK (0ms)
+05:37:06 [SHOT] OK (0ms)
+05:37:07 [SHOT] OK (0ms)
+05:37:07 [SHOT] OK (0ms)
+05:37:08 [SHOT] OK (165ms)
+05:37:08     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:37:13     - Step OK: ⚡ Hard Click 'Supplies - Type' at (516,307)
+05:37:14 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:37:14 [SHOT] OK (162ms)
+05:37:15 [SHOT] OK (0ms)
+05:37:16 [SHOT] OK (0ms)
+05:37:16 [SHOT] OK (0ms)
+05:37:17 [SHOT] OK (166ms)
+05:37:17     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:37:23     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (840,565)
+05:37:23 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:37:23 [Macro] Delay completed.
+05:37:28     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1068,709)
+05:37:29 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:37:30 [Macro] Delay completed.
+05:37:35     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1543,152)
+05:37:35 [Macro] Steps completed. Checking result...
+05:38:01 [SHOT] FAIL #1 (25011ms)
+05:38:01 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:38:03 [Macro] Result: FAILURE ('Home' not found)
+05:38:03 [MACRO] Buy Blood: FAILED (64382ms total)
+05:38:03 [ERR] DEAD END: No edge from 'Macro' (ad649a80) — will trigger restart
+05:38:03 [ERR] RESTART: No next node after 'Macro' (ad649a80). Restart 1/10
+05:38:06 [LOOP] ── Loop iteration start ──
+05:38:07 [SHOT] OK (376ms)
+05:38:08 [SHOT] OK (0ms)
+05:38:09 [SCAN] Gathering - Inside → FALSE (1685ms)
+05:38:09 [SHOT] OK (0ms)
+05:38:09 [SCAN] Supplies → TRUE (11ms)
+05:38:09 [MACRO] Buy Blood: Starting (0ms)
+05:38:15     - Step OK: ⚡ Hard Click 'Supplies' at (1299,578)
+05:38:15 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:38:15 [SHOT] OK (194ms)
+05:38:16 [SHOT] OK (0ms)
+05:38:17 [SHOT] OK (0ms)
+05:38:17 [SHOT] OK (0ms)
+05:38:18 [SHOT] OK (0ms)
+05:38:44 [SHOT] FAIL #1 (25010ms)
+05:38:44 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:38:50 [SHOT] OK (3274ms)
+05:38:50     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:38:55     - Step OK: ⚡ Hard Click 'Supplies - Type' at (468,293)
+05:38:55 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:38:56 [SHOT] OK (160ms)
+05:38:57 [SHOT] OK (0ms)
+05:38:58 [SHOT] OK (0ms)
+05:38:59 [SHOT] OK (167ms)
+05:38:59     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:39:04     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (793,542)
+05:39:05 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:39:05 [Macro] Delay completed.
+05:39:10     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (993,723)
+05:39:10 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:39:11 [Macro] Delay completed.
+05:39:16     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1532,148)
+05:39:17 [Macro] Steps completed. Checking result...
+05:39:18 [SHOT] OK (237ms)
+05:39:18 [Macro] Result: SUCCESS (found 'Home')
+05:39:18 [MACRO] Buy Blood: PASSED (68588ms total)
+05:39:28 [MACRO] Gathering: Starting (0ms)
+05:39:28 [SHOT] OK (203ms)
+05:39:33     - Step OK: Clicked 'Gathering'
+05:39:34 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:39:34 [SHOT] OK (195ms)
+05:39:35 [SHOT] OK (0ms)
+05:39:36 [SHOT] OK (0ms)
+05:39:37 [SHOT] OK (168ms)
+05:39:37     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:39:43     - Step OK: ⚡ Hard Click 'Gathering - OK' at (993,593)
+05:39:43 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:39:55 [Macro] Delay completed.
+05:39:55 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+05:39:55 [SHOT] OK (180ms)
+05:39:57 [SHOT] OK (0ms)
+05:39:57 [SHOT] OK (0ms)
+05:39:58 [SHOT] OK (0ms)
+05:39:58 [SHOT] OK (0ms)
+05:39:59 [SHOT] OK (141ms)
+05:39:59     - Marker triggered. Holding 6.5s...
+05:40:00 [SHOT] OK (0ms)
+05:40:01 [SHOT] OK (0ms)
+05:40:02 [SHOT] OK (0ms)
+05:40:02 [SHOT] OK (0ms)
+05:40:03 [SHOT] OK (178ms)
+05:40:03     - Marker interrupted. Resetting hold timer.
+05:40:04 [SHOT] OK (0ms)
+05:40:04 [SHOT] OK (0ms)
+05:40:05 [SHOT] OK (0ms)
+05:40:06 [SHOT] OK (0ms)
+05:40:07 [SHOT] OK (186ms)
+05:40:08 [SHOT] OK (0ms)
+05:40:09 [SHOT] OK (0ms)
+05:40:10 [SHOT] OK (0ms)
+05:40:11 [SHOT] OK (196ms)
+05:40:12 [SHOT] OK (0ms)
+05:40:12 [SHOT] OK (0ms)
+05:40:13 [SHOT] OK (0ms)
+05:40:14 [SHOT] OK (370ms)
+05:40:15 [SHOT] OK (0ms)
+05:40:16 [SHOT] OK (0ms)
+05:40:16 [SHOT] OK (0ms)
+05:40:17 [SHOT] OK (0ms)
+05:40:18 [SHOT] OK (163ms)
+05:40:18 [SHOT] OK (0ms)
+05:40:19 [SHOT] OK (0ms)
+05:40:19 [SHOT] OK (0ms)
+05:40:20 [SHOT] OK (0ms)
+05:40:20 [SHOT] OK (0ms)
+05:40:46 [SHOT] FAIL #1 (25007ms)
+05:40:46 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:40:52 [SHOT] OK (2949ms)
+05:40:53 [SHOT] OK (0ms)
+05:40:53 [SHOT] OK (0ms)
+05:40:54 [SHOT] OK (0ms)
+05:40:55 [SHOT] OK (158ms)
+05:40:56 [SHOT] OK (0ms)
+05:40:56 [SHOT] OK (0ms)
+05:40:57 [SHOT] OK (0ms)
+05:40:58 [SHOT] OK (166ms)
+05:40:59 [SHOT] OK (0ms)
+05:40:59 [SHOT] OK (0ms)
+05:41:00 [SHOT] OK (0ms)
+05:41:01 [SHOT] OK (0ms)
+05:41:02 [SHOT] OK (199ms)
+05:41:02 [SHOT] OK (0ms)
+05:41:03 [SHOT] OK (0ms)
+05:41:04 [SHOT] OK (0ms)
+05:41:30 [SHOT] FAIL #1 (25006ms)
+05:41:30 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:41:36 [SHOT] OK (3493ms)
+05:41:37 [SHOT] OK (0ms)
+05:41:37 [SHOT] OK (0ms)
+05:41:38 [SHOT] OK (0ms)
+05:41:39 [SHOT] OK (0ms)
+05:41:40 [SHOT] OK (314ms)
+05:41:41 [SHOT] OK (0ms)
+05:41:42 [SHOT] OK (0ms)
+05:41:43 [SHOT] OK (0ms)
+05:42:09 [SHOT] FAIL #1 (25015ms)
+05:42:09 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:42:15 [SHOT] OK (3291ms)
+05:42:15     - Marker triggered. Holding 6.5s...
+05:42:16 [SHOT] OK (0ms)
+05:42:16 [SHOT] OK (0ms)
+05:42:17 [SHOT] OK (0ms)
+05:42:18 [SHOT] OK (308ms)
+05:42:19     - Holding... 3/6s
+05:42:19 [SHOT] OK (0ms)
+05:42:20 [SHOT] OK (0ms)
+05:42:21 [SHOT] OK (0ms)
+05:42:21     - Holding... 6/6s
+05:42:47 [SHOT] FAIL #1 (25002ms)
+05:42:47 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:42:53 [SHOT] OK (2906ms)
+05:42:53     - Holding... 37/6s
+05:42:53     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:42:53 [SHOT] OK (0ms)
+05:42:53 [SHOT] OK (0ms)
+05:42:53 [SHOT] OK (0ms)
+05:42:54 [SHOT] OK (0ms)
+05:42:54 [SHOT] OK (0ms)
+05:42:54     - Step FAILED: Could not find 'Attack - Auto' after 5 attempts.
+05:42:54 [MACRO] Gathering: FAILED (206252ms total)
+05:42:54 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:43:04 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:43:07 [LOOP] ── Loop iteration start ──
+05:43:33 [SHOT] FAIL #1 (25002ms)
+05:43:33 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:39 [SHOT] OK (3967ms)
+05:43:39 [SCAN] Gathering - Inside → FALSE (31513ms)
+05:43:40 [SHOT] OK (0ms)
+05:43:40 [SHOT] OK (0ms)
+05:43:41 [SCAN] Supplies → FALSE (990ms)
+05:43:42 [SHOT] OK (0ms)
+05:43:42 [SCAN] Revive → TRUE (13ms)
+05:43:42 [MACRO] Revivie: Starting (0ms)
+05:43:42 [SHOT] OK (144ms)
+05:43:48     - Step OK: Clicked 'Revive'
+05:43:48 [Macro] (2/2) Delay: 3000ms (3.0s)...
+05:43:51 [Macro] Delay completed.
+05:43:51 [Macro] Steps completed. Checking result...
+05:43:52 [SHOT] OK (168ms)
+05:43:52 [Macro] Result: FAILURE ('Supplies' not found)
+05:43:52 [MACRO] Revivie: FAILED (10043ms total)
+05:43:52 [ERR] DEAD END: No edge from 'Macro' (38ef6fd1) — will trigger restart
+05:43:52 [ERR] RESTART: No next node after 'Macro' (38ef6fd1). Restart 1/10
+05:43:55 [LOOP] ── Loop iteration start ──
+05:43:56 [SHOT] OK (176ms)
+05:43:57 [SHOT] OK (0ms)
+05:43:57 [SCAN] Gathering - Inside → FALSE (1440ms)
+05:43:58 [SHOT] OK (0ms)
+05:43:58 [SCAN] Supplies → TRUE (10ms)
+05:43:59 [MACRO] Buy Blood: Starting (0ms)
+05:44:04     - Step OK: ⚡ Hard Click 'Supplies' at (1298,577)
+05:44:04 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:44:04 [SHOT] OK (192ms)
+05:44:05 [SHOT] OK (0ms)
+05:44:06 [SHOT] OK (0ms)
+05:44:07 [SHOT] OK (0ms)
+05:44:33 [SHOT] FAIL #1 (25013ms)
+05:44:33 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:44:38 [SHOT] OK (2923ms)
+05:44:38     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:44:43     - Step OK: ⚡ Hard Click 'Supplies - Type' at (561,321)
+05:44:44 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:46:45 ============================================================
+05:46:45 SESSION START — KJa (port:9229 tab:1)
+05:46:45 ============================================================
+05:46:46 [KJa] Starting worker: func=macro - Home, port=9229, tab=1
+05:46:51 [KJa] Connected to Port 9229, Tab 1
+05:46:52 [MACRO] Home: Starting (0ms)
+05:46:57     - Step OK: ⚡ Hard Click 'Home' at (362,378)
+05:46:57 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:47:22 [SHOT] FAIL #1 (25012ms)
+05:47:22 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:47:50 [SHOT] FAIL #2 (25013ms)
+05:47:50 [KJa] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:47:55 [SHOT] OK (933ms)
+05:47:56 [SHOT] OK (0ms)
+05:47:57 [SHOT] OK (0ms)
+05:47:57 [SHOT] OK (0ms)
+05:47:58 [SHOT] OK (0ms)
+05:48:24 [SHOT] FAIL #1 (25001ms)
+05:48:24 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:48:37 [SHOT] OK (11348ms)
+05:48:38 [SHOT] OK (0ms)
+05:48:39 [SHOT] OK (0ms)
+05:48:40 [SHOT] OK (0ms)
+05:48:40 [SHOT] OK (0ms)
+05:48:42 [SHOT] OK (165ms)
+05:48:42 [SHOT] OK (0ms)
+05:48:43 [SHOT] OK (0ms)
+05:48:44 [SHOT] OK (0ms)
+05:48:45 [SHOT] OK (181ms)
+05:48:45     - Marker OK: 'Supplies' confirmed APPEAR.
+05:48:45 [Macro] Steps completed. Checking result...
+05:48:46 [SHOT] OK (0ms)
+05:48:46 [Macro] Result: SUCCESS (found 'Supplies')
+05:48:46 [MACRO] Home: PASSED (114273ms total)
+05:48:46 ============================================================
+05:48:46 SESSION END — KJa (2.0 min)
+05:48:46   Loops: 0
+05:48:46   Screenshots: 16 ok / 3 fail (15.8%)
+05:48:46   Avg latency: 789ms
+05:48:46   Macros: 1 ok / 0 fail
+05:48:46   Errors: 0
+05:48:46 ============================================================
+05:51:45 ============================================================
+05:51:45 SESSION START — KJa (port:9229 tab:1)
+05:51:45 ============================================================
+05:51:45 [KJa] Starting worker: func=loop - Farm V1, port=9229, tab=1
+05:51:50 [KJa] Connected to Port 9229, Tab 1
+05:51:51 [LOOP] ── Loop iteration start ──
+05:52:17 [SHOT] FAIL #1 (25012ms)
+05:52:17 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:19 [SHOT] OK (191ms)
+05:52:19 [SCAN] Gathering - Inside → FALSE (27792ms)
+05:52:20 [SHOT] OK (0ms)
+05:52:20 [SCAN] Supplies → TRUE (10ms)
+05:52:21 [MACRO] Buy Blood: Starting (0ms)
+05:52:26     - Step OK: ⚡ Hard Click 'Supplies' at (1296,591)
+05:52:26 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:52:51 [SHOT] FAIL #1 (25001ms)
+05:52:51 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:56 [SHOT] OK (2463ms)
+05:52:56     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:53:01     - Step OK: ⚡ Hard Click 'Supplies - Type' at (564,296)
+05:53:02 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:53:27 [SHOT] FAIL #1 (25004ms)
+05:53:27 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:53:32 [SHOT] OK (2984ms)
+05:53:32     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:53:38     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (883,563)
+05:53:38 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:53:38 [Macro] Delay completed.
+05:53:43     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1039,723)
+05:53:44 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:53:45 [Macro] Delay completed.
+05:53:50     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1543,159)
+05:53:50 [Macro] Steps completed. Checking result...
+05:53:52 [SHOT] OK (239ms)
+05:53:52 [Macro] Result: SUCCESS (found 'Home')
+05:53:52 [MACRO] Buy Blood: PASSED (90866ms total)
+05:54:02 [MACRO] Gathering: Starting (0ms)
+05:54:02 [SHOT] OK (226ms)
+05:54:07     - Step OK: Clicked 'Gathering'
+05:54:07 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:54:08 [SHOT] OK (191ms)
+05:54:09 [SHOT] OK (0ms)
+05:54:09 [SHOT] OK (0ms)
+05:54:10 [SHOT] OK (0ms)
+05:54:12 [SHOT] OK (160ms)
+05:54:12     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:54:12     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1047,594)
+05:54:12 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:54:25 [Macro] Delay completed.
+05:54:25 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+05:54:25 [SHOT] OK (195ms)
+05:54:25 [SHOT] OK (0ms)
+05:54:26 [SHOT] OK (0ms)
+05:54:27 [SHOT] OK (0ms)
+05:54:28 [SHOT] OK (0ms)
+05:54:28 [SHOT] OK (158ms)
+05:54:28     - Marker triggered. Holding 6.5s...
+05:54:30 [SHOT] OK (0ms)
+05:54:31 [SHOT] OK (0ms)
+05:54:32 [SHOT] OK (173ms)
+05:54:32     - Marker interrupted. Resetting hold timer.
+05:54:32 [SHOT] OK (0ms)
+05:54:33 [SHOT] OK (0ms)
+05:54:34 [SHOT] OK (0ms)
+05:54:34 [SHOT] OK (0ms)
+05:54:35 [SHOT] OK (0ms)
+05:54:36 [SHOT] OK (171ms)
+05:54:37 [SHOT] OK (0ms)
+05:54:38 [SHOT] OK (0ms)
+05:54:39 [SHOT] OK (0ms)
+05:54:39 [SHOT] OK (192ms)
+05:54:41 [SHOT] OK (0ms)
+05:54:41 [SHOT] OK (0ms)
+05:54:42 [SHOT] OK (0ms)
+05:54:43 [SHOT] OK (190ms)
+05:54:44 [SHOT] OK (0ms)
+05:54:45 [SHOT] OK (0ms)
+05:54:46 [SHOT] OK (0ms)
+05:55:12 [SHOT] FAIL #1 (25011ms)
+05:55:12 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:55:17 [SHOT] OK (2937ms)
+05:55:18 [SHOT] OK (0ms)
+05:55:19 [SHOT] OK (0ms)
+05:55:20 [SHOT] OK (0ms)
+05:55:21 [SHOT] OK (193ms)
+05:55:23 [SHOT] OK (0ms)
+05:55:24 [SHOT] OK (0ms)
+05:55:50 [SHOT] FAIL #1 (25010ms)
+05:55:50 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:55:55 [SHOT] OK (2898ms)
+05:55:56 [SHOT] OK (0ms)
+05:55:57 [SHOT] OK (0ms)
+05:55:57 [SHOT] OK (0ms)
+05:55:58 [SHOT] OK (0ms)
+05:55:58 [SHOT] OK (0ms)
+05:55:59 [SHOT] OK (166ms)
+05:56:00 [SHOT] OK (0ms)
+05:56:01 [SHOT] OK (0ms)
+05:56:02 [SHOT] OK (0ms)
+05:56:02 [SHOT] OK (0ms)
+05:56:04 [SHOT] OK (1106ms)
+05:56:05 [SHOT] OK (0ms)
+05:56:06 [SHOT] OK (0ms)
+05:56:07 [SHOT] OK (220ms)
+05:56:08 [SHOT] OK (0ms)
+05:56:09 [SHOT] OK (0ms)
+05:56:10 [SHOT] OK (0ms)
+05:56:10 [SHOT] OK (0ms)
+05:56:11 [SHOT] OK (176ms)
+05:56:11 [SHOT] OK (0ms)
+05:56:12 [SHOT] OK (0ms)
+05:56:13 [SHOT] OK (0ms)
+05:56:15 [SHOT] OK (737ms)
+05:56:16 [SHOT] OK (0ms)
+05:56:17 [SHOT] OK (0ms)
+05:56:17 [SHOT] OK (0ms)
+05:56:19 [SHOT] OK (376ms)
+05:56:20 [SHOT] OK (0ms)
+05:56:21 [SHOT] OK (0ms)
+05:56:22 [SHOT] OK (199ms)
+05:56:23 [SHOT] OK (0ms)
+05:56:23 [SHOT] OK (0ms)
+05:56:24 [SHOT] OK (0ms)
+05:56:24 [SHOT] OK (0ms)
+05:56:26 [SHOT] OK (385ms)
+05:56:26     - Marker triggered. Holding 6.5s...
+05:56:27 [SHOT] OK (0ms)
+05:56:28 [SHOT] OK (0ms)
+05:56:28 [SHOT] OK (0ms)
+05:56:29 [SHOT] OK (227ms)
+05:56:29     - Holding... 3/6s
+05:56:30 [SHOT] OK (0ms)
+05:56:31 [SHOT] OK (0ms)
+05:56:32 [SHOT] OK (0ms)
+05:56:32     - Holding... 6/6s
+05:56:33 [SHOT] OK (186ms)
+05:56:33     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:56:33 [SHOT] OK (0ms)
+05:56:38     - Step OK: Clicked 'Attack - Auto'
+05:56:39 [Macro] (7/8) Delay: 1000ms (1.0s)...
+05:56:40 [Macro] Delay completed.
+05:56:52 [SHOT] OK (11815ms)
+05:56:55     - Step OK: Clicked 'Click 5P'
+05:56:55 [Macro] Steps completed. Checking result...
+05:56:56 [SHOT] OK (142ms)
+05:56:56 [Macro] Result: SUCCESS (found 'Attack - Auto On')
+05:56:56 [MACRO] Gathering: PASSED (174674ms total)
+05:56:56 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:56:56 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:56:59 [LOOP] ── Loop iteration start ──
+05:57:00 [SHOT] OK (209ms)
+05:57:01 [SHOT] OK (0ms)
+05:57:02 [SCAN] Gathering - Inside → FALSE (1960ms)
+05:57:03 [SHOT] OK (0ms)
+05:57:28 [SHOT] FAIL #1 (25009ms)
+05:57:28 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:57:30 [SCAN] Supplies → FALSE (27658ms)
+05:57:32 [SHOT] OK (1692ms)
+05:57:33 [SHOT] OK (0ms)
+05:57:34 [SCAN] Revive → FALSE (3213ms)
+05:57:34 [SHOT] OK (0ms)
+05:57:35 [SHOT] OK (0ms)
+05:57:36 [SCAN] Supplies - In → FALSE (1596ms)
+05:58:02 [SHOT] FAIL #1 (25006ms)
+05:58:02 [KJa] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:58:06 [SHOT] OK (2250ms)
+05:58:06 [SCAN] Gathering - Automove → FALSE (29817ms)
+05:58:07 [SHOT] OK (0ms)
+05:58:08 [SHOT] OK (0ms)
+05:58:08 [SCAN] Attack - Auto → FALSE (1138ms)
+05:58:09 [SHOT] OK (0ms)
+05:58:09 [SCAN] Attack - Auto On → TRUE (24ms)
+05:58:09 [MACRO] Click 5P: Starting (0ms)
+05:58:14     - Step OK: ⚡ Hard Click 'Click 5P' at (1495,100)
+05:58:15 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:58:15 [Macro] Delay completed.
+05:58:15 [Macro] Steps completed. Checking result...
+05:58:15 [Macro] Finished (no capture check configured).
+05:58:15 [MACRO] Click 5P: PASSED (5790ms total)
+05:58:15 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:58:15 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10

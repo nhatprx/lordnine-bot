@@ -5101,3 +5101,245 @@
 05:34:51   Macros: 1 ok / 2 fail
 05:34:51   Errors: 3
 05:34:51 ============================================================
+05:36:41 ============================================================
+05:36:41 SESSION START — Kaori (port:9228 tab:1)
+05:36:41 ============================================================
+05:36:41 [Kaori] Starting worker: func=loop - Farm V1, port=9228, tab=1
+05:36:49 [Kaori] Connected to Port 9228, Tab 1
+05:36:50 [LOOP] ── Loop iteration start ──
+05:37:16 [SHOT] FAIL #1 (25006ms)
+05:37:16 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:19 [SHOT] OK (1535ms)
+05:37:20 [SCAN] Gathering - Inside → FALSE (29099ms)
+05:37:20 [SHOT] OK (0ms)
+05:37:21 [SHOT] OK (0ms)
+05:37:21 [SCAN] Supplies → FALSE (1041ms)
+05:37:22 [SHOT] OK (0ms)
+05:37:23 [SHOT] OK (818ms)
+05:37:24 [SCAN] Revive → FALSE (2273ms)
+05:37:25 [SHOT] OK (0ms)
+05:37:25 [SHOT] OK (0ms)
+05:37:26 [SCAN] Supplies - In → FALSE (1592ms)
+05:37:27 [SHOT] OK (238ms)
+05:37:27 [SCAN] Gathering - Automove → TRUE (246ms)
+05:37:28 [NODE] → Delay: Delay 1800ms
+05:37:30 [ERR] DEAD END: No edge from 'Delay' (8bac0be2) — will trigger restart
+05:37:30 [ERR] RESTART: No next node after 'Delay' (8bac0be2). Restart 1/10
+05:37:33 [LOOP] ── Loop iteration start ──
+05:37:33 [SHOT] OK (255ms)
+05:37:34 [SHOT] OK (0ms)
+05:37:35 [SCAN] Gathering - Inside → FALSE (1649ms)
+05:37:35 [SHOT] OK (0ms)
+05:37:36 [SHOT] OK (0ms)
+05:37:37 [SCAN] Supplies → FALSE (1473ms)
+05:37:38 [SHOT] OK (160ms)
+05:37:38 [SHOT] OK (0ms)
+05:37:39 [SCAN] Revive → FALSE (1414ms)
+05:37:40 [SHOT] OK (0ms)
+05:37:40 [SHOT] OK (0ms)
+05:37:41 [SCAN] Supplies - In → FALSE (1273ms)
+05:37:42 [SHOT] OK (227ms)
+05:37:42 [SCAN] Gathering - Automove → TRUE (236ms)
+05:37:42 [NODE] → Delay: Delay 1800ms
+05:37:44 [ERR] DEAD END: No edge from 'Delay' (8bac0be2) — will trigger restart
+05:37:44 [ERR] RESTART: No next node after 'Delay' (8bac0be2). Restart 1/10
+05:37:47 [LOOP] ── Loop iteration start ──
+05:38:12 [SHOT] FAIL #1 (25000ms)
+05:38:12 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:38:18 [SHOT] OK (4085ms)
+05:38:19 [SCAN] Gathering - Inside → FALSE (31880ms)
+05:38:20 [SHOT] OK (0ms)
+05:38:20 [SHOT] OK (0ms)
+05:38:21 [SCAN] Supplies → FALSE (1379ms)
+05:38:22 [SHOT] OK (160ms)
+05:38:23 [SHOT] OK (0ms)
+05:38:23 [SCAN] Revive → FALSE (1536ms)
+05:38:24 [SHOT] OK (0ms)
+05:38:24 [SHOT] OK (0ms)
+05:38:25 [SCAN] Supplies - In → FALSE (986ms)
+05:38:26 [SHOT] OK (178ms)
+05:38:26 [SCAN] Gathering - Automove → TRUE (189ms)
+05:38:26 [NODE] → Delay: Delay 1800ms
+05:38:28 [ERR] DEAD END: No edge from 'Delay' (8bac0be2) — will trigger restart
+05:38:28 [ERR] RESTART: No next node after 'Delay' (8bac0be2). Restart 1/10
+05:38:31 [LOOP] ── Loop iteration start ──
+05:38:57 [SHOT] FAIL #1 (25004ms)
+05:38:57 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:38:59 [SHOT] OK (847ms)
+05:39:00 [SCAN] Gathering - Inside → FALSE (28707ms)
+05:39:36 [SHOT] FAIL #1 (25014ms)
+05:39:36 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:40:02 [SHOT] OK (24451ms)
+05:40:03 [SCAN] Supplies → FALSE (52337ms)
+05:40:04 [SHOT] OK (0ms)
+05:40:04 [SCAN] Revive → TRUE (11ms)
+05:40:04 [MACRO] Revivie: Starting (0ms)
+05:40:04 [SHOT] OK (0ms)
+05:40:10     - Step OK: Clicked 'Revive'
+05:40:10 [Macro] (2/2) Delay: 3000ms (3.0s)...
+05:40:13 [Macro] Delay completed.
+05:40:13 [Macro] Steps completed. Checking result...
+05:40:39 [SHOT] FAIL #1 (25005ms)
+05:40:39 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:40:41 [Macro] Result: FAILURE ('Supplies' not found)
+05:40:41 [MACRO] Revivie: FAILED (36679ms total)
+05:40:41 [ERR] DEAD END: No edge from 'Macro' (38ef6fd1) — will trigger restart
+05:40:41 [ERR] RESTART: No next node after 'Macro' (38ef6fd1). Restart 1/10
+05:40:44 [LOOP] ── Loop iteration start ──
+05:40:45 [SHOT] OK (273ms)
+05:40:45 [SHOT] OK (0ms)
+05:40:46 [SCAN] Gathering - Inside → FALSE (1713ms)
+05:40:47 [SHOT] OK (0ms)
+05:40:47 [SCAN] Supplies → TRUE (10ms)
+05:40:47 [MACRO] Buy Blood: Starting (0ms)
+05:40:52     - Step OK: ⚡ Hard Click 'Supplies' at (1315,588)
+05:40:53 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:41:18 [SHOT] FAIL #1 (25004ms)
+05:41:18 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:41:23 [SHOT] OK (2980ms)
+05:41:23     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:41:28     - Step OK: ⚡ Hard Click 'Supplies - Type' at (528,303)
+05:41:29 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:41:29 [SHOT] OK (140ms)
+05:41:29     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:41:34     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (856,567)
+05:41:35 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:41:35 [Macro] Delay completed.
+05:41:40     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1082,697)
+05:41:40 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:41:41 [Macro] Delay completed.
+05:41:47     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1536,141)
+05:41:47 [Macro] Steps completed. Checking result...
+05:42:04 [SHOT] OK (15893ms)
+05:42:04 [Macro] Result: SUCCESS (found 'Home')
+05:42:04 [MACRO] Buy Blood: PASSED (76595ms total)
+05:42:14 [MACRO] Gathering: Starting (0ms)
+05:42:39 [SHOT] FAIL #1 (25006ms)
+05:42:39 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:06 [SHOT] FAIL #2 (25015ms)
+05:43:06 [Kaori] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:43:15 [SHOT] OK (4552ms)
+05:43:20     - Step OK: Clicked 'Gathering'
+05:43:21 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:43:46 [SHOT] FAIL #1 (25014ms)
+05:43:46 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:48     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:43:48 [MACRO] Gathering: FAILED (94355ms total)
+05:43:48 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:43:48 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:43:51 [LOOP] ── Loop iteration start ──
+05:44:17 [SHOT] FAIL #2 (25013ms)
+05:44:17 [Kaori] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:44:46 [SHOT] FAIL #3 (25004ms)
+05:44:46 [Kaori] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:44:54 [SCAN] Gathering - Inside → FALSE (62019ms)
+05:46:36 ============================================================
+05:46:36 SESSION START — Kaori (port:9228 tab:1)
+05:46:36 ============================================================
+05:46:37 [Kaori] Starting worker: func=macro - Home, port=9228, tab=1
+05:46:44 [Kaori] Connected to Port 9228, Tab 1
+05:46:46 [MACRO] Home: Starting (0ms)
+05:46:51     - Step OK: ⚡ Hard Click 'Home' at (343,366)
+05:46:51 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:47:16 [SHOT] FAIL #1 (25000ms)
+05:47:16 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:47:44 [SHOT] FAIL #2 (25008ms)
+05:47:44 [Kaori] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:48:13 [SHOT] FAIL #3 (25005ms)
+05:48:13 [Kaori] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:48:47 [SHOT] FAIL #4 (25026ms)
+05:48:47 [Kaori] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:49:28 [SHOT] FAIL #5 (25003ms)
+05:49:28 [Kaori] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:50:22 [SHOT] FAIL #6 (22692ms)
+05:50:22 [Kaori] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:50:52 [MACRO] Home: FAILED (246297ms total)
+05:50:52 ============================================================
+05:50:52 SESSION END — Kaori (4.3 min)
+05:50:52   Loops: 0
+05:50:52   Screenshots: 0 ok / 6 fail (100.0%)
+05:50:52   Avg latency: 0ms
+05:50:52   Macros: 0 ok / 1 fail
+05:50:52   Errors: 0
+05:50:52 ============================================================
+05:51:36 ============================================================
+05:51:36 SESSION START — Kaori (port:9228 tab:1)
+05:51:36 ============================================================
+05:51:37 [Kaori] Starting worker: func=loop - Farm V1, port=9228, tab=1
+05:51:44 [Kaori] Connected to Port 9228, Tab 1
+05:51:46 [LOOP] ── Loop iteration start ──
+05:52:11 [SHOT] FAIL #1 (25006ms)
+05:52:11 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:38 [SHOT] FAIL #2 (25013ms)
+05:52:38 [Kaori] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:52:42 [SCAN] Gathering - Inside → FALSE (56022ms)
+05:53:08 [SHOT] FAIL #3 (25009ms)
+05:53:08 [Kaori] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:53:41 [SHOT] FAIL #4 (25001ms)
+05:53:41 [Kaori] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:53:57 [SCAN] Supplies → FALSE (74018ms)
+05:54:16 [SHOT] OK (8413ms)
+05:54:17 [SHOT] OK (0ms)
+05:54:18 [SCAN] Revive → FALSE (9929ms)
+05:54:18 [SHOT] OK (0ms)
+05:54:19 [SHOT] OK (0ms)
+05:54:20 [SCAN] Supplies - In → FALSE (1542ms)
+05:54:21 [SHOT] OK (414ms)
+05:54:21 [SHOT] OK (0ms)
+05:54:22 [SCAN] Gathering - Automove → FALSE (1533ms)
+05:54:22 [SHOT] OK (0ms)
+05:54:23 [SHOT] OK (0ms)
+05:54:24 [SCAN] Attack - Auto → FALSE (1310ms)
+05:54:49 [SHOT] FAIL #1 (25009ms)
+05:54:49 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:55:16 [SHOT] FAIL #2 (25013ms)
+05:55:16 [Kaori] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:55:20 [SCAN] Attack - Auto On → FALSE (56040ms)
+05:55:21 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:55:21 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:55:24 [LOOP] ── Loop iteration start ──
+05:55:49 [SHOT] FAIL #3 (25011ms)
+05:55:49 [Kaori] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:55:58 [SHOT] OK (214ms)
+05:55:58 [SCAN] Gathering - Inside → FALSE (33925ms)
+05:55:59 [SHOT] OK (0ms)
+05:55:59 [SCAN] Supplies → TRUE (11ms)
+05:55:59 [MACRO] Buy Blood: Starting (0ms)
+05:56:04     - Step OK: ⚡ Hard Click 'Supplies' at (1298,554)
+05:56:05 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:56:05 [SHOT] OK (117ms)
+05:56:06 [SHOT] OK (0ms)
+05:56:07 [SHOT] OK (0ms)
+05:56:08 [SHOT] OK (0ms)
+05:56:18 [SHOT] OK (8988ms)
+05:56:18     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:56:23     - Step OK: ⚡ Hard Click 'Supplies - Type' at (569,305)
+05:56:24 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:56:36 [SHOT] OK (11816ms)
+05:56:36     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:56:41     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (795,574)
+05:56:41 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:56:41 [Macro] Delay completed.
+05:56:45     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1019,724)
+05:56:45 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:56:46 [Macro] Delay completed.
+05:56:47     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1528,138)
+05:56:47 [Macro] Steps completed. Checking result...
+05:56:49 [SHOT] OK (164ms)
+05:56:49 [Macro] Result: SUCCESS (found 'Home')
+05:56:49 [MACRO] Buy Blood: PASSED (49271ms total)
+05:56:59 [MACRO] Gathering: Starting (0ms)
+05:57:24 [SHOT] FAIL #1 (25011ms)
+05:57:24 [Kaori] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:57:30 [SHOT] OK (4228ms)
+05:57:35     - Step OK: Clicked 'Gathering'
+05:57:36 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:57:36 [SHOT] OK (184ms)
+05:57:36     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:57:41     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1005,596)
+05:57:41 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:57:54 [Macro] Delay completed.
+05:57:54 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+05:58:14 [SHOT] OK (19954ms)
+05:58:14 [SHOT] OK (0ms)
+05:58:15 [SHOT] OK (0ms)

@@ -6766,3 +6766,276 @@
 05:34:52   Macros: 1 ok / 2 fail
 05:34:52   Errors: 3
 05:34:52 ============================================================
+05:36:41 ============================================================
+05:36:41 SESSION START — Beru (port:9228 tab:0)
+05:36:41 ============================================================
+05:36:41 [Beru] Starting worker: func=loop - Farm V1, port=9228, tab=0
+05:36:45 [Beru] Connected to Port 9228, Tab 0
+05:36:47 [LOOP] ── Loop iteration start ──
+05:37:12 [SHOT] FAIL #1 (25014ms)
+05:37:12 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:19 [SHOT] OK (4440ms)
+05:37:19 [SCAN] Gathering - Inside → FALSE (32182ms)
+05:37:20 [SHOT] OK (0ms)
+05:37:20 [SHOT] OK (0ms)
+05:37:21 [SCAN] Supplies → FALSE (1214ms)
+05:37:22 [SHOT] OK (0ms)
+05:37:23 [SHOT] OK (602ms)
+05:37:24 [SCAN] Revive → FALSE (2056ms)
+05:37:24 [SHOT] OK (0ms)
+05:37:25 [SHOT] OK (0ms)
+05:37:26 [SCAN] Supplies - In → FALSE (1548ms)
+05:37:26 [SHOT] OK (160ms)
+05:37:27 [SHOT] OK (0ms)
+05:37:27 [SCAN] Gathering - Automove → FALSE (1274ms)
+05:37:28 [SHOT] OK (0ms)
+05:37:28 [SCAN] Attack - Auto → TRUE (19ms)
+05:37:29 [NODE] → Click: Gathering
+05:37:29 [SHOT] OK (0ms)
+05:37:29 [SCAN] Gathering → FALSE (0ms)
+05:37:29 [NODE] → Delay: Delay 1000ms
+05:37:30 [SHOT] OK (295ms)
+05:37:31 [SHOT] OK (0ms)
+05:37:32 [SCAN] Gathering - Inside → FALSE (1665ms)
+05:37:32 [NODE] → Delay: Delay 1000ms
+05:37:33 [NODE] → Click: Attack - Auto
+05:37:34 [SHOT] OK (252ms)
+05:37:39 [SCAN] Attack - Auto → TRUE (0ms)
+05:37:39 [ERR] DEAD END: No edge from 'Click' (Attack - Auto) — will trigger restart
+05:37:39 [ERR] RESTART: No next node after 'Click' (Attack - Auto). Restart 1/10
+05:37:42 [LOOP] ── Loop iteration start ──
+05:37:43 [SHOT] OK (149ms)
+05:37:44 [SHOT] OK (0ms)
+05:37:45 [SCAN] Gathering - Inside → FALSE (1628ms)
+05:37:45 [SHOT] OK (0ms)
+05:37:46 [SHOT] OK (0ms)
+05:37:46 [SCAN] Supplies → FALSE (1026ms)
+05:38:11 [SHOT] FAIL #1 (25004ms)
+05:38:11 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:38:18 [SHOT] OK (4352ms)
+05:38:18 [SCAN] Revive → TRUE (31455ms)
+05:38:19 [MACRO] Revivie: Starting (0ms)
+05:38:19 [SHOT] OK (0ms)
+05:38:24     - Step OK: Clicked 'Revive'
+05:38:24 [Macro] (2/2) Delay: 3000ms (3.0s)...
+05:38:27 [Macro] Delay completed.
+05:38:27 [Macro] Steps completed. Checking result...
+05:38:28 [SHOT] OK (180ms)
+05:38:29 [Macro] Result: FAILURE ('Supplies' not found)
+05:38:29 [MACRO] Revivie: FAILED (10021ms total)
+05:38:29 [ERR] DEAD END: No edge from 'Macro' (38ef6fd1) — will trigger restart
+05:38:29 [ERR] RESTART: No next node after 'Macro' (38ef6fd1). Restart 1/10
+05:38:32 [LOOP] ── Loop iteration start ──
+05:38:57 [SHOT] FAIL #1 (25011ms)
+05:38:57 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:39:24 [SHOT] FAIL #2 (25006ms)
+05:39:24 [Beru] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:39:28 [SCAN] Gathering - Inside → FALSE (56029ms)
+05:40:03 [SHOT] OK (24084ms)
+05:40:03 [SCAN] Supplies → TRUE (24095ms)
+05:40:04 [MACRO] Buy Blood: Starting (0ms)
+05:40:09     - Step OK: ⚡ Hard Click 'Supplies' at (1320,566)
+05:40:09 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:40:09 [SHOT] OK (187ms)
+05:40:10 [SHOT] OK (0ms)
+05:40:11 [SHOT] OK (0ms)
+05:40:12 [SHOT] OK (0ms)
+05:40:38 [SHOT] FAIL #1 (25010ms)
+05:40:38 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:40:44 [SHOT] OK (3573ms)
+05:40:44     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:40:49     - Step OK: ⚡ Hard Click 'Supplies - Type' at (553,309)
+05:40:50 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:40:50 [SHOT] OK (157ms)
+05:40:50     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:40:55     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (869,561)
+05:40:56 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:40:56 [Macro] Delay completed.
+05:41:01     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1073,700)
+05:41:01 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:41:02 [Macro] Delay completed.
+05:41:08     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1542,143)
+05:41:08 [Macro] Steps completed. Checking result...
+05:41:22 [SHOT] OK (13261ms)
+05:41:22 [Macro] Result: SUCCESS (found 'Home')
+05:41:22 [MACRO] Buy Blood: PASSED (78655ms total)
+05:41:22 [MACRO] Gathering: Starting (0ms)
+05:41:22 [SHOT] OK (0ms)
+05:41:27     - Step OK: Clicked 'Gathering'
+05:41:28 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:41:28 [SHOT] OK (161ms)
+05:41:28     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:41:33     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1052,579)
+05:41:34 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:41:46 [Macro] Delay completed.
+05:41:46 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+05:42:03 [SHOT] OK (17175ms)
+05:42:04 [SHOT] OK (0ms)
+05:42:05 [SHOT] OK (0ms)
+05:42:06 [SHOT] OK (0ms)
+05:42:06 [SHOT] OK (157ms)
+05:42:07 [SHOT] OK (0ms)
+05:42:09 [SHOT] OK (0ms)
+05:42:09 [SHOT] OK (0ms)
+05:42:10 [SHOT] OK (157ms)
+05:42:11 [SHOT] OK (0ms)
+05:42:11 [SHOT] OK (0ms)
+05:42:12 [SHOT] OK (0ms)
+05:42:12 [SHOT] OK (0ms)
+05:42:38 [SHOT] FAIL #1 (25003ms)
+05:42:38 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:06 [SHOT] FAIL #2 (25004ms)
+05:43:06 [Beru] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:43:15 [SHOT] OK (4412ms)
+05:43:15     - Marker triggered. Holding 6.5s...
+05:43:15 [SHOT] OK (0ms)
+05:43:16 [SHOT] OK (0ms)
+05:43:16 [SHOT] OK (0ms)
+05:43:17 [SHOT] OK (0ms)
+05:43:43 [SHOT] FAIL #1 (25004ms)
+05:43:43 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:49 [SHOT] OK (2924ms)
+05:43:49     - Marker interrupted. Resetting hold timer.
+05:43:49 [SHOT] OK (0ms)
+05:43:50 [SHOT] OK (0ms)
+05:43:51 [SHOT] OK (0ms)
+05:43:51 [SHOT] OK (0ms)
+05:44:17 [SHOT] FAIL #1 (25009ms)
+05:44:17 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:44:22 [SHOT] OK (2315ms)
+05:44:22     - Marker triggered. Holding 6.5s...
+05:44:23 [SHOT] OK (0ms)
+05:44:23 [SHOT] OK (0ms)
+05:44:24 [SHOT] OK (0ms)
+05:44:50 [SHOT] FAIL #1 (25005ms)
+05:44:50 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:44:54 [SHOT] OK (1431ms)
+05:44:54     - Holding... 32/6s
+05:44:54     - Marker OK: 'Gathering - Automove' confirmed DISAPPEAR.
+05:44:54 [SHOT] OK (0ms)
+05:44:59     - Step OK: Clicked 'Attack - Auto'
+05:45:00 [Macro] (7/8) Delay: 1000ms (1.0s)...
+05:45:01 [Macro] Delay completed.
+05:46:36 ============================================================
+05:46:36 SESSION START — Beru (port:9228 tab:0)
+05:46:36 ============================================================
+05:46:36 [Beru] Starting worker: func=macro - Home, port=9228, tab=0
+05:46:40 [Beru] Connected to Port 9228, Tab 0
+05:46:42 [MACRO] Home: Starting (0ms)
+05:46:47     - Step OK: ⚡ Hard Click 'Home' at (345,371)
+05:46:47 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:47:12 [SHOT] FAIL #1 (25011ms)
+05:47:12 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:47:40 [SHOT] FAIL #2 (25004ms)
+05:47:40 [Beru] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:48:09 [SHOT] FAIL #3 (25014ms)
+05:48:09 [Beru] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:48:43 [SHOT] FAIL #4 (25001ms)
+05:48:43 [Beru] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:49:24 [SHOT] FAIL #5 (25013ms)
+05:49:24 [Beru] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:50:20 [SHOT] FAIL #6 (25012ms)
+05:50:20 [Beru] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:50:50 [MACRO] Home: FAILED (248694ms total)
+05:50:50 ============================================================
+05:50:50 SESSION END — Beru (4.2 min)
+05:50:50   Loops: 0
+05:50:50   Screenshots: 0 ok / 6 fail (100.0%)
+05:50:50   Avg latency: 0ms
+05:50:50   Macros: 0 ok / 1 fail
+05:50:50   Errors: 0
+05:50:50 ============================================================
+05:51:36 ============================================================
+05:51:36 SESSION START — Beru (port:9228 tab:0)
+05:51:36 ============================================================
+05:51:36 [Beru] Starting worker: func=loop - Farm V1, port=9228, tab=0
+05:51:40 [Beru] Connected to Port 9228, Tab 0
+05:51:41 [LOOP] ── Loop iteration start ──
+05:52:07 [SHOT] FAIL #1 (25014ms)
+05:52:07 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:34 [SHOT] FAIL #2 (25001ms)
+05:52:34 [Beru] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:52:38 [SCAN] Gathering - Inside → FALSE (56016ms)
+05:53:03 [SHOT] FAIL #3 (25012ms)
+05:53:03 [Beru] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:53:36 [SHOT] FAIL #4 (25006ms)
+05:53:36 [Beru] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:53:52 [SCAN] Supplies → FALSE (74019ms)
+05:54:16 [SHOT] OK (13302ms)
+05:54:16 [SHOT] OK (0ms)
+05:54:17 [SCAN] Revive → FALSE (14409ms)
+05:54:18 [SHOT] OK (0ms)
+05:54:18 [SHOT] OK (0ms)
+05:54:19 [SCAN] Supplies - In → FALSE (1069ms)
+05:54:19 [SHOT] OK (311ms)
+05:54:20 [SHOT] OK (0ms)
+05:54:21 [SCAN] Gathering - Automove → FALSE (2001ms)
+05:54:22 [SHOT] OK (0ms)
+05:54:22 [SHOT] OK (0ms)
+05:54:23 [SCAN] Attack - Auto → FALSE (866ms)
+05:54:48 [SHOT] FAIL #1 (25002ms)
+05:54:48 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:55:15 [SHOT] FAIL #2 (25002ms)
+05:55:15 [Beru] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:55:19 [SCAN] Attack - Auto On → FALSE (56005ms)
+05:55:20 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:55:20 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:55:23 [LOOP] ── Loop iteration start ──
+05:55:49 [SHOT] FAIL #3 (25011ms)
+05:55:49 [Beru] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:55:57 [SHOT] OK (176ms)
+05:55:57 [SCAN] Gathering - Inside → FALSE (33936ms)
+05:55:58 [SHOT] OK (0ms)
+05:55:58 [SCAN] Supplies → TRUE (11ms)
+05:55:59 [MACRO] Buy Blood: Starting (0ms)
+05:56:04     - Step OK: ⚡ Hard Click 'Supplies' at (1332,583)
+05:56:05 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:56:05 [SHOT] OK (199ms)
+05:56:06 [SHOT] OK (0ms)
+05:56:07 [SHOT] OK (0ms)
+05:56:17 [SHOT] OK (8953ms)
+05:56:17     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:56:23     - Step OK: ⚡ Hard Click 'Supplies - Type' at (471,298)
+05:56:23 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:56:35 [SHOT] OK (11974ms)
+05:56:35     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:56:40     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (880,554)
+05:56:40 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:56:41 [Macro] Delay completed.
+05:56:43     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1017,717)
+05:56:44 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:56:45 [Macro] Delay completed.
+05:56:49     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1539,137)
+05:56:49 [Macro] Steps completed. Checking result...
+05:56:50 [SHOT] OK (190ms)
+05:56:50 [Macro] Result: SUCCESS (found 'Home')
+05:56:50 [MACRO] Buy Blood: PASSED (51332ms total)
+05:56:50 [MACRO] Gathering: Starting (0ms)
+05:56:50 [SHOT] OK (0ms)
+05:56:51     - Step OK: Clicked 'Gathering'
+05:56:51 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:56:51 [SHOT] OK (0ms)
+05:56:52 [SHOT] OK (0ms)
+05:56:53 [SHOT] OK (0ms)
+05:56:54 [SHOT] OK (205ms)
+05:56:54     - Marker OK: 'Gathering - Inside' confirmed APPEAR.
+05:56:59     - Step OK: ⚡ Hard Click 'Gathering - OK' at (1074,604)
+05:56:59 [Macro] (4/8) Delay: 12000ms (12.0s)...
+05:57:12 [Macro] Delay completed.
+05:57:12 [Macro] (5/8) Waiting: 'Gathering - Automove' to DISAPPEAR (hold 6.5s, timeout 3600s)...
+05:57:29 [SHOT] OK (17542ms)
+05:57:30 [SHOT] OK (0ms)
+05:57:30 [SHOT] OK (0ms)
+05:57:32 [SHOT] OK (0ms)
+05:57:32 [SHOT] OK (0ms)
+05:57:33 [SHOT] OK (225ms)
+05:57:34 [SHOT] OK (0ms)
+05:57:35 [SHOT] OK (0ms)
+05:57:36 [SHOT] OK (305ms)
+05:57:37 [SHOT] OK (0ms)
+05:57:38 [SHOT] OK (0ms)
+05:57:39 [SHOT] OK (0ms)
+05:57:39 [SHOT] OK (0ms)
+05:58:05 [SHOT] FAIL #1 (25014ms)
+05:58:05 [Beru] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:58:15 [SHOT] OK (7501ms)

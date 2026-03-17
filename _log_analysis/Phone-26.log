@@ -734,3 +734,113 @@
 05:35:06   Macros: 0 ok / 1 fail
 05:35:06   Errors: 1
 05:35:06 ============================================================
+05:36:29 ============================================================
+05:36:29 SESSION START — Phone-26 (port:9226 tab:5)
+05:36:29 ============================================================
+05:36:31 [Phone-26] Starting worker: func=loop - Farm V1, port=9226, tab=5
+05:36:48 [Phone-26] Connected to Port 9226, Tab 5
+05:36:49 [LOOP] ── Loop iteration start ──
+05:37:15 [SHOT] FAIL #1 (25003ms)
+05:37:15 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:42 [SHOT] FAIL #2 (25015ms)
+05:37:42 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:37:46 [SCAN] Gathering - Inside → FALSE (56019ms)
+05:38:05 [SHOT] OK (18862ms)
+05:38:06 [SHOT] OK (0ms)
+05:38:06 [SCAN] Supplies → FALSE (20372ms)
+05:38:07 [SHOT] OK (0ms)
+05:38:08 [SHOT] OK (0ms)
+05:38:09 [SCAN] Revive → FALSE (1478ms)
+05:38:34 [SHOT] FAIL #1 (25009ms)
+05:38:34 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:39:01 [SHOT] FAIL #2 (25009ms)
+05:39:01 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:39:05 [SCAN] Supplies - In → FALSE (56060ms)
+05:39:41 [SHOT] FAIL #3 (25003ms)
+05:39:41 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:40:14 [SHOT] FAIL #4 (25010ms)
+05:40:14 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:40:30 [SCAN] Gathering - Automove → FALSE (74016ms)
+05:40:56 [SHOT] FAIL #5 (25005ms)
+05:40:56 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:41:51 [SHOT] FAIL #6 (25015ms)
+05:41:51 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:42:21 [SCAN] Attack - Auto → FALSE (110023ms)
+05:42:56 [SHOT] FAIL #7 (25013ms)
+05:42:56 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:43:51 [SHOT] FAIL #8 (25012ms)
+05:43:51 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:44:21 [SCAN] Attack - Auto On → FALSE (110028ms)
+05:44:22 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:44:22 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:44:25 [LOOP] ── Loop iteration start ──
+05:44:50 [SHOT] FAIL #9 (25013ms)
+05:44:50 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #9)
+05:46:24 ============================================================
+05:46:24 SESSION START — Phone-26 (port:9226 tab:5)
+05:46:24 ============================================================
+05:46:26 [Phone-26] Starting worker: func=macro - Home, port=9226, tab=5
+05:46:43 [Phone-26] Connected to Port 9226, Tab 5
+05:46:44 [MACRO] Home: Starting (0ms)
+05:46:49     - Step OK: ⚡ Hard Click 'Home' at (357,385)
+05:46:49 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:47:14 [SHOT] FAIL #1 (25001ms)
+05:47:14 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:47:42 [SHOT] FAIL #2 (25012ms)
+05:47:42 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:48:11 [SHOT] FAIL #3 (25008ms)
+05:48:11 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:48:32 [SHOT] OK (12220ms)
+05:48:33 [SHOT] OK (0ms)
+05:48:34 [SHOT] OK (0ms)
+05:48:35 [SHOT] OK (0ms)
+05:49:01 [SHOT] FAIL #1 (25002ms)
+05:49:01 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:49:09 [SHOT] OK (5610ms)
+05:49:09 [SHOT] OK (0ms)
+05:49:10 [SHOT] OK (0ms)
+05:49:11 [SHOT] OK (0ms)
+05:49:12 [SHOT] OK (189ms)
+05:49:13 [SHOT] OK (0ms)
+05:49:14 [SHOT] OK (0ms)
+05:49:15 [SHOT] OK (0ms)
+05:49:16 [SHOT] OK (396ms)
+05:49:16     - Marker OK: 'Supplies' confirmed APPEAR.
+05:49:16 [Macro] Steps completed. Checking result...
+05:49:17 [SHOT] OK (0ms)
+05:49:17 [Macro] Result: SUCCESS (found 'Supplies')
+05:49:17 [MACRO] Home: PASSED (153536ms total)
+05:49:17 ============================================================
+05:49:17 SESSION END — Phone-26 (2.9 min)
+05:49:17   Loops: 0
+05:49:17   Screenshots: 14 ok / 4 fail (22.2%)
+05:49:17   Avg latency: 1315ms
+05:49:17   Macros: 1 ok / 0 fail
+05:49:17   Errors: 0
+05:49:17 ============================================================
+05:51:24 ============================================================
+05:51:24 SESSION START — Phone-26 (port:9226 tab:5)
+05:51:24 ============================================================
+05:51:25 [Phone-26] Starting worker: func=loop - Farm V1, port=9226, tab=5
+05:51:38 [Phone-26] Connected to Port 9226, Tab 5
+05:51:39 [LOOP] ── Loop iteration start ──
+05:52:05 [SHOT] FAIL #1 (25007ms)
+05:52:05 [Phone-26] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:32 [SHOT] FAIL #2 (25010ms)
+05:52:32 [Phone-26] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:52:36 [SCAN] Gathering - Inside → FALSE (56020ms)
+05:53:02 [SHOT] FAIL #3 (25012ms)
+05:53:02 [Phone-26] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:53:35 [SHOT] FAIL #4 (25006ms)
+05:53:35 [Phone-26] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:53:51 [SCAN] Supplies → FALSE (74039ms)
+05:54:27 [SHOT] FAIL #5 (25012ms)
+05:54:27 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:55:22 [SHOT] FAIL #6 (25002ms)
+05:55:22 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #6)
+05:55:52 [SCAN] Revive → FALSE (110016ms)
+05:56:18 [SHOT] FAIL #7 (25005ms)
+05:56:18 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #7)
+05:57:13 [SHOT] FAIL #8 (25008ms)
+05:57:13 [Phone-26] Screenshot error: Screenshot failed (backoff 30s, fail #8)
+05:57:43 [SCAN] Supplies - In → FALSE (110034ms)

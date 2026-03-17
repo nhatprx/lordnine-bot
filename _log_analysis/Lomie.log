@@ -1832,3 +1832,222 @@
 05:34:56   Macros: 2 ok / 2 fail
 05:34:56   Errors: 5
 05:34:56 ============================================================
+05:36:14 ============================================================
+05:36:14 SESSION START — Lomie (port:9224 tab:4)
+05:36:14 ============================================================
+05:36:16 [Lomie] Starting worker: func=loop - Farm V1, port=9224, tab=4
+05:36:29 [Lomie] Connected to Port 9224, Tab 4
+05:36:29 [LOOP] ── Loop iteration start ──
+05:36:55 [SHOT] FAIL #1 (25012ms)
+05:36:55 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:37:01 [SHOT] OK (4204ms)
+05:37:02 [SCAN] Gathering - Inside → FALSE (32014ms)
+05:37:02 [SHOT] OK (0ms)
+05:37:03 [SHOT] OK (0ms)
+05:37:04 [SCAN] Supplies → FALSE (1354ms)
+05:37:04 [SHOT] OK (162ms)
+05:37:05 [SHOT] OK (0ms)
+05:37:06 [SCAN] Revive → FALSE (1509ms)
+05:37:06 [SHOT] OK (0ms)
+05:37:07 [SHOT] OK (0ms)
+05:37:08 [SCAN] Supplies - In → FALSE (1752ms)
+05:37:09 [SHOT] OK (162ms)
+05:37:09 [SHOT] OK (0ms)
+05:37:10 [SCAN] Gathering - Automove → FALSE (1390ms)
+05:37:11 [SHOT] OK (0ms)
+05:37:11 [SHOT] OK (0ms)
+05:37:12 [SCAN] Attack - Auto → FALSE (1246ms)
+05:37:13 [SHOT] OK (147ms)
+05:37:13 [SCAN] Attack - Auto On → TRUE (166ms)
+05:37:13 [MACRO] Click 5P: Starting (0ms)
+05:37:19     - Step OK: ⚡ Hard Click 'Click 5P' at (1503,97)
+05:37:19 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:37:19 [Macro] Delay completed.
+05:37:19 [Macro] Steps completed. Checking result...
+05:37:19 [Macro] Finished (no capture check configured).
+05:37:19 [MACRO] Click 5P: PASSED (5858ms total)
+05:37:19 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:37:19 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:37:22 [LOOP] ── Loop iteration start ──
+05:37:45 [SHOT] OK (22407ms)
+05:37:46 [SHOT] OK (0ms)
+05:37:47 [SCAN] Gathering - Inside → FALSE (23975ms)
+05:37:47 [SHOT] OK (0ms)
+05:37:48 [SHOT] OK (0ms)
+05:37:49 [SCAN] Supplies → FALSE (1654ms)
+05:38:14 [SHOT] FAIL #1 (25004ms)
+05:38:14 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:38:41 [SHOT] FAIL #2 (25011ms)
+05:38:41 [Lomie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:38:45 [SCAN] Revive → FALSE (56030ms)
+05:39:20 [SHOT] OK (23685ms)
+05:39:20 [SHOT] OK (0ms)
+05:39:21 [SCAN] Supplies - In → FALSE (25211ms)
+05:39:22 [SHOT] OK (0ms)
+05:39:22 [SHOT] OK (0ms)
+05:39:23 [SCAN] Gathering - Automove → FALSE (1190ms)
+05:39:24 [SHOT] OK (180ms)
+05:39:25 [SHOT] OK (0ms)
+05:39:25 [SCAN] Attack - Auto → FALSE (1699ms)
+05:39:26 [SHOT] OK (0ms)
+05:39:26 [SCAN] Attack - Auto On → TRUE (25ms)
+05:39:26 [MACRO] Click 5P: Starting (0ms)
+05:39:31     - Step OK: ⚡ Hard Click 'Click 5P' at (1487,95)
+05:39:32 [Macro] (2/2) Delay: 100ms (0.1s)...
+05:39:32 [Macro] Delay completed.
+05:39:32 [Macro] Steps completed. Checking result...
+05:39:32 [Macro] Finished (no capture check configured).
+05:39:32 [MACRO] Click 5P: PASSED (5693ms total)
+05:39:32 [ERR] DEAD END: No edge from 'Macro' (14253c0e) — will trigger restart
+05:39:32 [ERR] RESTART: No next node after 'Macro' (14253c0e). Restart 1/10
+05:39:35 [LOOP] ── Loop iteration start ──
+05:40:00 [SHOT] FAIL #1 (25010ms)
+05:40:00 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:40:27 [SHOT] FAIL #2 (25009ms)
+05:40:27 [Lomie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:40:31 [SCAN] Gathering - Inside → FALSE (56021ms)
+05:40:33 [SHOT] OK (1161ms)
+05:40:34 [SHOT] OK (0ms)
+05:40:34 [SCAN] Supplies → FALSE (2442ms)
+05:40:35 [SHOT] OK (0ms)
+05:40:36 [SHOT] OK (0ms)
+05:40:37 [SCAN] Revive → FALSE (1493ms)
+05:41:02 [SHOT] FAIL #1 (25006ms)
+05:41:02 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:41:08 [SHOT] OK (3291ms)
+05:41:08 [SCAN] Supplies - In → FALSE (30990ms)
+05:41:44 [SHOT] FAIL #1 (25007ms)
+05:41:44 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:42:11 [SHOT] OK (24909ms)
+05:42:11 [SCAN] Gathering - Automove → FALSE (52320ms)
+05:42:12 [SHOT] OK (0ms)
+05:42:12 [SHOT] OK (0ms)
+05:42:13 [SCAN] Attack - Auto → FALSE (1026ms)
+05:42:13 [SHOT] OK (0ms)
+05:42:14 [SHOT] OK (124ms)
+05:42:15 [SCAN] Attack - Auto On → FALSE (1261ms)
+05:42:15 [ERR] DEAD END: No edge from 'Condition' (Attack - Auto On) — will trigger restart
+05:42:15 [ERR] RESTART: No next node after 'Condition' (Attack - Auto On). Restart 1/10
+05:42:18 [LOOP] ── Loop iteration start ──
+05:42:44 [SHOT] FAIL #1 (25008ms)
+05:42:44 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:11 [SHOT] FAIL #2 (25001ms)
+05:43:11 [Lomie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:43:15 [SCAN] Gathering - Inside → FALSE (56010ms)
+05:43:17 [SHOT] OK (2205ms)
+05:43:18 [SHOT] OK (0ms)
+05:43:19 [SCAN] Supplies → FALSE (3683ms)
+05:43:54 [SHOT] FAIL #1 (25013ms)
+05:43:54 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:43:59 [SHOT] OK (3121ms)
+05:44:00 [SCAN] Revive → TRUE (30232ms)
+05:44:00 [MACRO] Revivie: Starting (0ms)
+05:44:00 [SHOT] OK (0ms)
+05:44:05     - Step OK: Clicked 'Revive'
+05:44:06 [Macro] (2/2) Delay: 3000ms (3.0s)...
+05:44:09 [Macro] Delay completed.
+05:44:09 [Macro] Steps completed. Checking result...
+05:44:35 [SHOT] FAIL #1 (25014ms)
+05:44:35 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:44:37 [Macro] Result: FAILURE ('Supplies' not found)
+05:44:37 [MACRO] Revivie: FAILED (36710ms total)
+05:44:37 [ERR] DEAD END: No edge from 'Macro' (38ef6fd1) — will trigger restart
+05:44:37 [ERR] RESTART: No next node after 'Macro' (38ef6fd1). Restart 1/10
+05:44:40 [LOOP] ── Loop iteration start ──
+05:45:05 [SHOT] FAIL #2 (25010ms)
+05:45:05 [Lomie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:46:09 ============================================================
+05:46:09 SESSION START — Lomie (port:9224 tab:4)
+05:46:09 ============================================================
+05:46:11 [Lomie] Starting worker: func=macro - Home, port=9224, tab=4
+05:46:24 [Lomie] Connected to Port 9224, Tab 4
+05:46:26 [MACRO] Home: Starting (0ms)
+05:46:31     - Step OK: ⚡ Hard Click 'Home' at (351,375)
+05:46:31 [Macro] (2/2) Waiting: 'Supplies' to APPEAR (hold 0.0s)...
+05:46:56 [SHOT] FAIL #1 (25007ms)
+05:46:56 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:47:24 [SHOT] FAIL #2 (25008ms)
+05:47:24 [Lomie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:47:53 [SHOT] FAIL #3 (25013ms)
+05:47:53 [Lomie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:48:27 [SHOT] FAIL #4 (25003ms)
+05:48:27 [Lomie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:49:08 [SHOT] FAIL #5 (25014ms)
+05:49:08 [Lomie] Screenshot error: Screenshot failed (backoff 30s, fail #5)
+05:49:43 [SHOT] OK (4302ms)
+05:49:43     - Marker OK: 'Supplies' confirmed APPEAR.
+05:49:43 [Macro] Steps completed. Checking result...
+05:49:44 [SHOT] OK (0ms)
+05:49:44 [Macro] Result: SUCCESS (found 'Supplies')
+05:49:44 [MACRO] Home: PASSED (198452ms total)
+05:49:44 ============================================================
+05:49:44 SESSION END — Lomie (3.6 min)
+05:49:44   Loops: 0
+05:49:44   Screenshots: 2 ok / 5 fail (71.4%)
+05:49:44   Avg latency: 2151ms
+05:49:44   Macros: 1 ok / 0 fail
+05:49:44   Errors: 0
+05:49:44 ============================================================
+05:51:09 ============================================================
+05:51:09 SESSION START — Lomie (port:9224 tab:4)
+05:51:09 ============================================================
+05:51:10 [Lomie] Starting worker: func=loop - Farm V1, port=9224, tab=4
+05:51:23 [Lomie] Connected to Port 9224, Tab 4
+05:51:25 [LOOP] ── Loop iteration start ──
+05:51:40 [SHOT] OK (14295ms)
+05:51:40 [SHOT] OK (0ms)
+05:51:41 [SCAN] Gathering - Inside → FALSE (15817ms)
+05:51:42 [SHOT] OK (0ms)
+05:51:42 [SCAN] Supplies → TRUE (11ms)
+05:51:42 [MACRO] Buy Blood: Starting (0ms)
+05:51:48     - Step OK: ⚡ Hard Click 'Supplies' at (1317,556)
+05:51:48 [Macro] (2/9) Waiting: 'Supplies - In' to APPEAR (hold 0.0s)...
+05:52:13 [SHOT] FAIL #1 (25008ms)
+05:52:13 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:52:41 [SHOT] FAIL #2 (25012ms)
+05:52:41 [Lomie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:53:10 [SHOT] FAIL #3 (25011ms)
+05:53:10 [Lomie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:53:44 [SHOT] FAIL #4 (25007ms)
+05:53:44 [Lomie] Screenshot error: Screenshot failed (backoff 16s, fail #4)
+05:54:20 [SHOT] OK (19685ms)
+05:54:20     - Marker OK: 'Supplies - In' confirmed APPEAR.
+05:54:25     - Step OK: ⚡ Hard Click 'Supplies - Type' at (492,312)
+05:54:25 [Macro] (4/9) Waiting: 'Supplies - Menu' to APPEAR (hold 0.0s)...
+05:54:50 [SHOT] FAIL #1 (25012ms)
+05:54:50 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:55:18 [SHOT] FAIL #2 (25003ms)
+05:55:18 [Lomie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:55:41 [SHOT] OK (18610ms)
+05:55:42 [SHOT] OK (0ms)
+05:55:43 [SHOT] OK (0ms)
+05:55:43 [SHOT] OK (0ms)
+05:55:45 [SHOT] OK (170ms)
+05:55:45     - Marker OK: 'Supplies - Menu' confirmed APPEAR.
+05:55:50     - Step OK: ⚡ Hard Click 'Supplies -  Amount' at (894,547)
+05:55:50 [Macro] (6/9) Delay: 100ms (0.1s)...
+05:55:50 [Macro] Delay completed.
+05:55:55     - Step OK: ⚡ Hard Click 'Supplies - Purchase' at (1029,695)
+05:55:56 [Macro] (8/9) Delay: 1000ms (1.0s)...
+05:55:57 [Macro] Delay completed.
+05:56:02     - Step OK: ⚡ Hard Click 'Supplies - Exit' at (1526,143)
+05:56:02 [Macro] Steps completed. Checking result...
+05:56:04 [SHOT] OK (300ms)
+05:56:04 [Macro] Result: SUCCESS (found 'Home')
+05:56:04 [MACRO] Buy Blood: PASSED (261502ms total)
+05:56:14 [MACRO] Gathering: Starting (0ms)
+05:56:18 [SHOT] OK (4134ms)
+05:56:23     - Step OK: Clicked 'Gathering'
+05:56:24 [Macro] (2/8) Waiting: 'Gathering - Inside' to APPEAR (hold 0.0s, timeout 5s)...
+05:56:49 [SHOT] FAIL #1 (25013ms)
+05:56:49 [Lomie] Screenshot error: Screenshot failed (backoff 2s, fail #1)
+05:56:51     - Marker TIMEOUT (5s): 'Gathering - Inside'. Macro FAILED.
+05:56:51 [MACRO] Gathering: FAILED (37500ms total)
+05:56:51 [ERR] DEAD END: No edge from 'Macro' (cc882d55) — will trigger restart
+05:56:51 [ERR] RESTART: No next node after 'Macro' (cc882d55). Restart 1/10
+05:56:54 [LOOP] ── Loop iteration start ──
+05:57:20 [SHOT] FAIL #2 (25002ms)
+05:57:20 [Lomie] Screenshot error: Screenshot failed (backoff 4s, fail #2)
+05:57:49 [SHOT] FAIL #3 (25012ms)
+05:57:49 [Lomie] Screenshot error: Screenshot failed (backoff 8s, fail #3)
+05:57:57 [SCAN] Gathering - Inside → FALSE (62015ms)
