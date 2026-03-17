@@ -1535,6 +1535,7 @@ class AccountsMixin:
             if not current_node_id or current_node_id not in nodes:
                 restart_count += 1
                 if restart_count > max_restarts:
+                    acc_logger.error(f"Loop restarted {max_restarts}x consecutively — stopping")
                     self.log_gui(f"[{acc_name}] Loop restarted {max_restarts} times consecutively. Stopping.")
                     self.update_dash_status(acc_name, "Loop Error: Too many restarts", COLOR["danger"])
                     break
@@ -1543,11 +1544,11 @@ class AccountsMixin:
                     msg = f"No next node after '{_last_node_type}' ({_last_node_name}). Restart {restart_count}/{max_restarts}"
                 else:
                     msg = f"Restarting loop ({restart_count}/{max_restarts})"
-                flog(msg)
-                if restart_count >= 3:  # Only log to GUI after 3+ restarts
+                acc_logger.error(f"RESTART: {msg}")
+                if restart_count >= 3:
                     self.log_gui(f"[{acc_name}] {msg}")
                 self.update_dash_status(acc_name, f"Restarting Loop ({restart_count}/{max_restarts})", COLOR["warning"])
-                time.sleep(3.0)  # Longer delay to avoid rapid restart spam
+                time.sleep(3.0)
                 current_node_id = get_start_node()
                 continue
             
@@ -1564,6 +1565,7 @@ class AccountsMixin:
             throttled_state_save(current_node=current_node_id)
 
             if ntype == "Start":
+                acc_logger.loop("── Loop iteration start ──")
                 throttled_dash("Running...", COLOR["success"])
                 next_nid = get_next_node(current_node_id, "out")
                 time.sleep(0.5)
@@ -1571,8 +1573,8 @@ class AccountsMixin:
             elif ntype == "Delay":
                 delay_ms = float(ndata.get("time", 1000))
                 delay_sec = delay_ms / 1000.0
+                acc_logger.node(f"Delay {delay_ms:.0f}ms", "Delay")
                 throttled_dash(f"Delay ({delay_ms:.0f}ms)...", COLOR["accent"])
-                flog(f"Delay {delay_ms:.0f}ms")
                 steps = int(delay_sec * 10)
                 for _ in range(steps):
                     if not self._is_running(acc_name): break
@@ -1588,6 +1590,7 @@ class AccountsMixin:
                 is_text = self._is_text_node(img_name) if img_name else False
                 
                 if not is_text and (not filepath or not os.path.exists(filepath)):
+                    acc_logger.error(f"Condition SKIP: '{img_name}' image missing")
                     self.update_dash_status(acc_name, f"Cond Err: Missing Image", COLOR["danger"])
                     next_nid = get_next_node(current_node_id, "false")
                 else:
@@ -1658,6 +1661,7 @@ class AccountsMixin:
                             self.update_dash_status(acc_name, "Reconnect Failed", COLOR["danger"])
                             break
                 else:
+                    acc_logger.error(f"Macro SKIP: '{mac_name}' not found in combos")
                     self.update_dash_status(acc_name, f"Macro error: Not found", COLOR["danger"])
                     next_nid = get_next_node(current_node_id, "false")
 
@@ -1670,6 +1674,7 @@ class AccountsMixin:
                 is_text = self._is_text_node(img_name) if img_name else False
                 
                 if not is_text and (not filepath or not os.path.exists(filepath)):
+                    acc_logger.error(f"Click SKIP: '{img_name}' image missing")
                     self.update_dash_status(acc_name, f"Click Err: Missing", COLOR["danger"])
                     self.state_db.log_action(acc_name, "click", img_name, "MISSING")
                 else:
@@ -1677,7 +1682,9 @@ class AccountsMixin:
                     acc_logger.node(img_name, "Click")
                     frame_bytes = take_screenshot(quality=50)
                     
-                    if frame_bytes:
+                    if frame_bytes is None:
+                        acc_logger.error(f"Click SKIP: '{img_name}' screenshot failed")
+                    elif frame_bytes:
                         if is_text:
                             search_text = self._get_text_node_search(img_name)
                             res = self.vision.find_text_on_screen(search_text, frame_bytes=frame_bytes)
@@ -1704,6 +1711,9 @@ class AccountsMixin:
                 current_node_id = get_start_node()
                 continue  # Skip setting current_node_id = next_nid
 
+            # Log if next node is missing (edge not connected)
+            if next_nid is None and ntype != "End":
+                acc_logger.error(f"DEAD END: No edge from '{ntype}' ({_last_node_name}) — will trigger restart")
             current_node_id = next_nid
 
         # ---- Cleanup (set flags FIRST to prevent health monitor restart) ----
