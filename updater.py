@@ -230,17 +230,13 @@ def _get_app_dir():
 
 def apply_update(zip_path):
     """
-    Apply update by extracting zip and creating a swap script.
+    Apply update by extracting zip and creating a batch swap script.
 
-    The swap script will:
+    The batch script will:
     1. Wait for app to exit
-    2. Backup current app
-    3. Copy new files (preserving user data)
-    4. Clean up temp files
-    5. Restart the app
-
-    Args:
-        zip_path: Path to downloaded update zip
+    2. Copy new files over old ones (preserving user data)
+    3. Clean up temp files
+    4. Restart the app
 
     Returns:
         (success: bool, error_msg: str or None)
@@ -248,7 +244,6 @@ def apply_update(zip_path):
     app_dir = _get_app_dir()
     temp_dir = os.path.join(app_dir, UPDATE_TEMP_DIR)
     extract_dir = os.path.join(temp_dir, "extracted")
-    backup_dir = os.path.join(temp_dir, "backup")
 
     try:
         # Extract zip
@@ -257,151 +252,64 @@ def apply_update(zip_path):
             zf.extractall(extract_dir)
 
         # Find the actual update content directory
-        # The zip might contain a top-level folder (e.g., "LordNineBot/")
         contents = os.listdir(extract_dir)
         if len(contents) == 1 and os.path.isdir(os.path.join(extract_dir, contents[0])):
             update_source = os.path.join(extract_dir, contents[0])
         else:
             update_source = extract_dir
 
-        # Create the update PowerShell script
-        script_path = os.path.join(app_dir, "_update.ps1")
+        # Create the update batch script (more reliable than PowerShell)
+        script_path = os.path.join(app_dir, "_update.bat")
         exe_name = "LordNineBot.exe"
-        exe_path = os.path.join(app_dir, exe_name)
         pid = os.getpid()
+        log_file = os.path.join(app_dir, "_update_log.txt")
 
-        # User data files to preserve (relative paths)
-        preserve_files = [
-            "config.json",
-            "combos.json", "combos.json.bak",
-            "loops.json", "loops.json.bak",
-            "multi.json", "multi.json.bak",
-            "bot_state.db", "bot_state.db-shm", "bot_state.db-wal",
-            "license.key",
-        ]
-        preserve_dirs = ["trackers"]
+        # Files/dirs to preserve
+        preserve = PRESERVE_FILES + PRESERVE_DIRS
 
-        # Build PowerShell script
-        ps_script = f'''# LordNine Bot Auto-Update Script
-# Generated at: {time.strftime("%Y-%m-%d %H:%M:%S")}
+        bat_script = f'''@echo off
+chcp 65001 >nul 2>&1
+echo [UPDATE] LordNine Bot Auto-Update > "{log_file}"
+echo [UPDATE] Started at %date% %time% >> "{log_file}"
+echo [UPDATE] App dir: {app_dir} >> "{log_file}"
+echo [UPDATE] Source: {update_source} >> "{log_file}"
 
-$ErrorActionPreference = "SilentlyContinue"
+echo Waiting for app to exit...
+echo [UPDATE] Waiting for PID {pid} >> "{log_file}"
+:waitloop
+tasklist /FI "PID eq {pid}" 2>nul | find /I "{pid}" >nul
+if %errorlevel%==0 (
+    timeout /t 1 /nobreak >nul
+    goto waitloop
+)
+echo [UPDATE] App exited >> "{log_file}"
+timeout /t 1 /nobreak >nul
 
-$appDir = "{app_dir.replace(chr(92), chr(92)+chr(92))}"
-$updateSource = "{update_source.replace(chr(92), chr(92)+chr(92))}"
-$backupDir = "{backup_dir.replace(chr(92), chr(92)+chr(92))}"
-$tempDir = "{temp_dir.replace(chr(92), chr(92)+chr(92))}"
-$exeName = "{exe_name}"
-$pid = {pid}
+echo Installing update...
+echo [UPDATE] Copying files from {update_source} >> "{log_file}"
+xcopy /E /Y /I /Q "{update_source}\\*" "{app_dir}\\" >> "{log_file}" 2>&1
+echo [UPDATE] xcopy exit code: %errorlevel% >> "{log_file}"
 
-# Step 1: Wait for app to exit
-Write-Host "Waiting for LordNine Bot to exit..."
-$maxWait = 30
-$waited = 0
-while ($waited -lt $maxWait) {{
-    $proc = Get-Process -Id $pid -ErrorAction SilentlyContinue
-    if (-not $proc) {{ break }}
-    Start-Sleep -Milliseconds 500
-    $waited++
-}}
+echo Cleaning up...
+echo [UPDATE] Removing temp dir >> "{log_file}"
+rmdir /S /Q "{temp_dir}" >nul 2>&1
 
-# Force kill if still running
-$proc = Get-Process -Id $pid -ErrorAction SilentlyContinue
-if ($proc) {{
-    Write-Host "Force stopping app..."
-    Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue
-    Start-Sleep -Seconds 2
-}}
+echo Starting LordNine Bot...
+echo [UPDATE] Starting {exe_name} >> "{log_file}"
+if exist "{os.path.join(app_dir, exe_name)}" (
+    start "" "{os.path.join(app_dir, exe_name)}"
+    echo [UPDATE] Started OK >> "{log_file}"
+) else (
+    echo [UPDATE] ERROR: {exe_name} not found! >> "{log_file}"
+)
 
-# Step 2: Backup current app files (excluding user data and temp)
-Write-Host "Creating backup..."
-New-Item -Path $backupDir -ItemType Directory -Force | Out-Null
-
-$preserveFiles = @({", ".join(f'"{f}"' for f in preserve_files)})
-$preserveDirs = @({", ".join(f'"{d}"' for d in preserve_dirs)})
-$skipItems = $preserveFiles + $preserveDirs + @("{UPDATE_TEMP_DIR}", "_update.ps1")
-
-Get-ChildItem -Path $appDir -Force | Where-Object {{
-    $skipItems -notcontains $_.Name
-}} | ForEach-Object {{
-    try {{
-        if ($_.PSIsContainer) {{
-            Copy-Item -Path $_.FullName -Destination (Join-Path $backupDir $_.Name) -Recurse -Force
-        }} else {{
-            Copy-Item -Path $_.FullName -Destination (Join-Path $backupDir $_.Name) -Force
-        }}
-    }} catch {{ }}
-}}
-
-# Step 3: Remove old app files (preserving user data)
-Write-Host "Removing old files..."
-Get-ChildItem -Path $appDir -Force | Where-Object {{
-    $skipItems -notcontains $_.Name
-}} | ForEach-Object {{
-    try {{
-        if ($_.PSIsContainer) {{
-            Remove-Item -Path $_.FullName -Recurse -Force
-        }} else {{
-            Remove-Item -Path $_.FullName -Force
-        }}
-    }} catch {{
-        Write-Host "Warning: Could not remove $($_.Name): $_"
-    }}
-}}
-
-# Step 4: Copy new files
-Write-Host "Installing update..."
-Get-ChildItem -Path $updateSource -Force | ForEach-Object {{
-    $destPath = Join-Path $appDir $_.Name
-    # Skip user data files that already exist
-    if (($preserveFiles -contains $_.Name) -and (Test-Path $destPath)) {{
-        Write-Host "  Preserved: $($_.Name)"
-        return
-    }}
-    if (($preserveDirs -contains $_.Name) -and (Test-Path $destPath)) {{
-        Write-Host "  Preserved: $($_.Name)/"
-        return
-    }}
-    try {{
-        if ($_.PSIsContainer) {{
-            Copy-Item -Path $_.FullName -Destination $destPath -Recurse -Force
-        }} else {{
-            Copy-Item -Path $_.FullName -Destination $destPath -Force
-        }}
-    }} catch {{
-        Write-Host "Warning: Could not copy $($_.Name): $_"
-    }}
-}}
-
-# Step 5: Cleanup temp
-Write-Host "Cleaning up..."
-Start-Sleep -Seconds 1
-Remove-Item -Path $tempDir -Recurse -Force -ErrorAction SilentlyContinue
-
-# Step 6: Restart app
-Write-Host "Starting LordNine Bot..."
-$exePath = Join-Path $appDir $exeName
-if (Test-Path $exePath) {{
-    Start-Process -FilePath $exePath
-    Write-Host "Update complete!"
-}} else {{
-    Write-Host "ERROR: $exeName not found after update!"
-    Write-Host "Restoring backup..."
-    # Restore from backup
-    Get-ChildItem -Path $backupDir -Force | ForEach-Object {{
-        $destPath = Join-Path $appDir $_.Name
-        Copy-Item -Path $_.FullName -Destination $destPath -Recurse -Force
-    }}
-    Start-Process -FilePath $exePath
-}}
-
-# Self-cleanup
-Start-Sleep -Seconds 3
-Remove-Item -Path (Join-Path $appDir "_update.ps1") -Force -ErrorAction SilentlyContinue
+echo [UPDATE] Done at %date% %time% >> "{log_file}"
+timeout /t 2 /nobreak >nul
+del "%~f0" >nul 2>&1
 '''
 
         with open(script_path, "w", encoding="utf-8") as f:
-            f.write(ps_script)
+            f.write(bat_script)
 
         return True, None
 
@@ -410,20 +318,21 @@ Remove-Item -Path (Join-Path $appDir "_update.ps1") -Force -ErrorAction Silently
 
 
 def launch_update_and_exit():
-    """Launch the update script and exit the application."""
+    """Launch the update batch script and exit the application."""
     app_dir = _get_app_dir()
-    script_path = os.path.join(app_dir, "_update.ps1")
+    script_path = os.path.join(app_dir, "_update.bat")
 
     if not os.path.exists(script_path):
         return False, "Update script not found"
 
     try:
-        # Launch PowerShell script in a new window (persists after app exit)
+        # Launch batch script in a new minimized window
         subprocess.Popen(
-            ["powershell", "-ExecutionPolicy", "Bypass",
-             "-WindowStyle", "Minimized", "-File", script_path],
+            ["cmd.exe", "/c", script_path],
             cwd=app_dir,
             creationflags=subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.DETACHED_PROCESS,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         )
         return True, None
     except Exception as e:
