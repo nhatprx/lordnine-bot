@@ -1236,6 +1236,7 @@ class AccountsMixin:
         port = acc.get('port', 9222)
         cdp_client = None  # Declare early for crash cleanup
         current_node_id = None
+        acc_logger = None
         
         try:
             self._account_worker_thread_inner(acc, acc_name, func_value, tab_idx, port)
@@ -1243,6 +1244,15 @@ class AccountsMixin:
             error_msg = f"Unhandled crash: {str(e)[:200]}"
             _file_logger.error(f"[{acc_name}] {error_msg}", exc_info=True)
             try:
+                # Log to per-account logger if available
+                try:
+                    from account_logger import AccountLogger
+                    acc_logger = AccountLogger(acc_name, port=port, tab_index=tab_idx)
+                    acc_logger.error(error_msg)
+                    acc_logger.summary()
+                    acc_logger.close()
+                except:
+                    pass
                 self.state_db.save_account_state(acc_name, status="crashed", error_msg=error_msg[:100])
                 self.update_dash_status(acc_name, f"CRASHED: {str(e)[:30]}", COLOR["danger"])
                 self.log_gui(f"[{acc_name}] Worker CRASHED: {str(e)[:60]}")
@@ -1273,8 +1283,13 @@ class AccountsMixin:
                 self.state_db.save_account_state(acc_name, **kwargs)
                 _last_state_save = now
         
-        # ── File-only logger (no GUI flooding) ──
+        # ── Per-account structured logger ──
+        from account_logger import AccountLogger
+        acc_logger = AccountLogger(acc_name, port=port, tab_index=tab_idx)
+        
         def flog(msg):
+            """Backward compat — redirects to acc_logger."""
+            acc_logger.info(f"[{acc_name}] {msg}")
             _file_logger.info(f"[{acc_name}] {msg}")
         
         # ── Throttled screenshot error logging (max 1/60s to GUI, only after 3+ fails) ──
@@ -1303,13 +1318,17 @@ class AccountsMixin:
         def take_screenshot(quality=70):
             """Take screenshot via scheduler with backoff on failure."""
             nonlocal _ss_fail_count
+            _t0 = time.time()
             frame = scheduler.request_screenshot(cdp_client, quality=quality)
+            _lat = (time.time() - _t0) * 1000
             if frame is not None:
                 _ss_fail_count = 0  # reset on success
+                acc_logger.shot(success=True, latency_ms=_lat)
                 return frame
             else:
                 _ss_fail_count += 1
                 backoff = min(_SS_MAX_BACKOFF, 2 ** _ss_fail_count)
+                acc_logger.shot(success=False, latency_ms=_lat, fail_count=_ss_fail_count)
                 log_ss_error(f"Screenshot failed (backoff {backoff}s, fail #{_ss_fail_count})", _ss_fail_count)
                 time.sleep(backoff)
                 return None
@@ -1419,28 +1438,36 @@ class AccountsMixin:
             self.state_db.save_account_state(acc_name, status="running_macro", current_node=func_name)
             self.update_dash_status(acc_name, f"Macro: {func_name}", "#C084FC")
             self.state_db.log_action(acc_name, "macro_start", func_name)
+            acc_logger.macro(func_name, "Starting")
+            _macro_t0 = time.time()
             try:
                 result = run_macro(
                     macro_steps, bot_instance, self.vision,
                     self.tracked_icons, threshold_val=threshold_val,
                     cdp_client=cdp_client,
-                    log_fn=lambda msg: flog(msg),  # macro logs → file only
+                    log_fn=lambda msg: acc_logger.info(msg),
                     is_running_fn=lambda: self.account_running.get(acc_name, False),
                     use_direct_vision=True,
                     screenshot_fn=lambda: take_screenshot(quality=70),
                 )
+                _macro_ms = (time.time() - _macro_t0) * 1000
                 if result:
+                    acc_logger.macro_result(func_name, success=True, total_ms=_macro_ms)
                     self.state_db.log_action(acc_name, "macro_done", func_name, "OK")
                     self.update_dash_status(acc_name, f"Macro Done ✓", COLOR["success"])
                 else:
+                    acc_logger.macro_result(func_name, success=False, total_ms=_macro_ms)
                     self.state_db.log_action(acc_name, "macro_done", func_name, "FAIL")
                     self.update_dash_status(acc_name, f"Macro Failed", COLOR["danger"])
             except Exception as e:
+                acc_logger.error(f"Macro error: {func_name}: {e}")
                 self.log_gui(f"[{acc_name}] Macro error: {e}")
                 self.state_db.log_action(acc_name, "macro_error", func_name, str(e)[:100])
                 self.update_dash_status(acc_name, f"Macro Error", COLOR["danger"])
             
             # Macro done — cleanup
+            acc_logger.summary()
+            acc_logger.close()
             self._set_running(acc_name, False)
             try:
                 if cdp_client: cdp_client.close()
@@ -1565,7 +1592,7 @@ class AccountsMixin:
                     next_nid = get_next_node(current_node_id, "false")
                 else:
                     throttled_dash(f"Scanning: {img_name}...", COLOR["warning"])
-                    flog(f"Condition scan: {img_name}")
+                    _scan_t0 = time.time()
                     
                     found_res = None
                     for attempt in range(2):
@@ -1589,38 +1616,41 @@ class AccountsMixin:
                             del frame_bytes  # explicit cleanup
                         time.sleep(random.uniform(0.3, 0.8))  # Jitter
                     
+                    _scan_ms = (time.time() - _scan_t0) * 1000
                     if found_res:
                         next_nid = get_next_node(current_node_id, "true")
-                        flog(f"Condition {img_name} → TRUE")
+                        acc_logger.scan(img_name, result=True, latency_ms=_scan_ms)
                     else:
                         next_nid = get_next_node(current_node_id, "false")
-                        flog(f"Condition {img_name} → FALSE")
+                        acc_logger.scan(img_name, result=False, latency_ms=_scan_ms)
                     time.sleep(random.uniform(0.3, 0.8))  # Jitter
                     
             elif ntype == "Macro":
                 mac_name = ndata.get("macro_name")
                 if mac_name and mac_name in self.combos:
                     throttled_dash(f"Macro: {mac_name}", "#C084FC")
-                    flog(f"Macro start: {mac_name}")
+                    acc_logger.macro(mac_name, "Starting")
+                    _mac_t0 = time.time()
                     try:
                         result = run_macro(
                             self.combos[mac_name], bot_instance, self.vision,
                             self.tracked_icons, threshold_val=threshold_val,
                             cdp_client=cdp_client,
-                            log_fn=lambda msg: flog(msg),  # macro logs → file only
+                            log_fn=lambda msg: acc_logger.info(msg),
                             is_running_fn=lambda: self.account_running.get(acc_name, False),
                             use_direct_vision=True,
                             screenshot_fn=lambda: take_screenshot(quality=70),
                         )
+                        _mac_ms = (time.time() - _mac_t0) * 1000
                         if result:
-                            flog(f"Macro done: {mac_name} → OK")
+                            acc_logger.macro_result(mac_name, success=True, total_ms=_mac_ms)
                             next_nid = get_next_node(current_node_id, "true")
                         else:
-                            flog(f"Macro done: {mac_name} → FAIL")
+                            acc_logger.macro_result(mac_name, success=False, total_ms=_mac_ms)
                             next_nid = get_next_node(current_node_id, "false")
                     except Exception as e:
+                        acc_logger.error(f"Macro error: {mac_name}: {e}")
                         self.log_gui(f"[{acc_name}] Macro error: {e}")
-                        flog(f"Macro error: {mac_name}: {e}")
                         next_nid = get_next_node(current_node_id, "false")
                         if connect_to_tab():
                             bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
@@ -1644,7 +1674,7 @@ class AccountsMixin:
                     self.state_db.log_action(acc_name, "click", img_name, "MISSING")
                 else:
                     throttled_dash(f"Click: {img_name}...", COLOR["warning"])
-                    flog(f"Click scan: {img_name}")
+                    acc_logger.node(img_name, "Click")
                     frame_bytes = take_screenshot(quality=50)
                     
                     if frame_bytes:
@@ -1659,17 +1689,17 @@ class AccountsMixin:
                             cx, cy = res[0], res[1]
                             bot_instance.click_at(cx, cy)
                             throttled_dash(f"Clicked {img_name}", COLOR["success"])
-                            flog(f"Clicked {img_name} at ({cx},{cy})")
+                            acc_logger.scan(img_name, result=True)
                         else:
                             throttled_dash(f"Click: Not visible", COLOR["warning"])
-                            flog(f"Click: {img_name} not visible")
+                            acc_logger.scan(img_name, result=False)
                 
                 next_nid = get_next_node(current_node_id, "out")
                 time.sleep(0.3)
 
             elif ntype == "End":
                 throttled_dash("Loop complete, restarting...", COLOR["success"], force=True)
-                flog("Reached END → restarting loop")
+                acc_logger.loop_complete()
                 time.sleep(1.0)
                 current_node_id = get_start_node()
                 continue  # Skip setting current_node_id = next_nid
@@ -1680,6 +1710,10 @@ class AccountsMixin:
         self._set_running(acc_name, False)
         self.state_db.save_account_state(acc_name, status="idle", current_node=current_node_id or "")
         self.update_dash_status(acc_name, "Stopped", COLOR["text_dim"])
+        
+        # Write session summary and close logger
+        acc_logger.summary()
+        acc_logger.close()
         
         # Close CDP connection
         if cdp_client:

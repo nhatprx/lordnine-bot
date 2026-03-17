@@ -679,6 +679,49 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                 with open(filepath, "w", encoding="utf-8") as f:
                     f.write(self.log_textbox.get("1.0", "end"))
 
+        def analyze_report():
+            """Generate and display analysis report from metrics."""
+            try:
+                from metrics import metrics as _metrics
+                report = _metrics.generate_report()
+                self.log_textbox.configure(state="normal")
+                self.log_textbox.insert("end", f"\n{report}\n", "default")
+                self.log_textbox.see("end")
+                self.log_textbox.configure(state="disabled")
+            except Exception as e:
+                self.log_gui(f"[Analyze] Error: {e}")
+
+        def export_all_logs():
+            """Zip all per-account logs and save."""
+            import tkinter.filedialog as fd
+            import zipfile
+            logs_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
+            if not os.path.isdir(logs_dir):
+                self.log_gui("[Export] No logs directory found. Run some accounts first.")
+                return
+            log_files = [f for f in os.listdir(logs_dir) if f.endswith(".log")]
+            if not log_files:
+                self.log_gui("[Export] No log files found.")
+                return
+            filepath = fd.asksaveasfilename(
+                title="Export All Logs",
+                defaultextension=".zip",
+                filetypes=[("Zip Files", "*.zip")],
+                initialfile=f"lordnine_logs_{time.strftime('%Y%m%d_%H%M%S')}.zip"
+            )
+            if filepath:
+                try:
+                    from metrics import metrics as _metrics
+                    with zipfile.ZipFile(filepath, "w", zipfile.ZIP_DEFLATED) as zf:
+                        for lf in log_files:
+                            zf.write(os.path.join(logs_dir, lf), lf)
+                        # Include analysis report
+                        report = _metrics.generate_report()
+                        zf.writestr("analysis_report.txt", report)
+                    self.log_gui(f"[Export] Saved {len(log_files)} logs to {os.path.basename(filepath)}")
+                except Exception as e:
+                    self.log_gui(f"[Export] Error: {e}")
+
         # Buttons
         btn_frame = ctk.CTkFrame(header_frame, fg_color="transparent")
         btn_frame.pack(side="right", pady=5)
@@ -691,11 +734,26 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         ).pack(side="left", padx=(0, 8))
 
         ctk.CTkButton(
+            btn_frame, text="📊 Analyze", width=80, height=28,
+            font=ctk.CTkFont(family=FONT["family"], size=11, weight="bold"),
+            fg_color="#6D28D9", hover_color="#7C3AED", text_color="#FFFFFF",
+            command=analyze_report, corner_radius=6
+        ).pack(side="left", padx=(0, 8))
+
+        ctk.CTkButton(
             btn_frame, text="Export", width=70, height=28,
             font=ctk.CTkFont(family=FONT["family"], size=11, weight="bold"),
             fg_color="transparent", hover_color=COLOR["surface2"],
             border_width=1, border_color=COLOR["border"], text_color=COLOR["text_dim"],
             command=export_log, corner_radius=6
+        ).pack(side="left", padx=(0, 8))
+
+        ctk.CTkButton(
+            btn_frame, text="📦 Export Logs", width=100, height=28,
+            font=ctk.CTkFont(family=FONT["family"], size=11, weight="bold"),
+            fg_color="transparent", hover_color=COLOR["surface2"],
+            border_width=1, border_color="#6D28D9", text_color="#A78BFA",
+            command=export_all_logs, corner_radius=6
         ).pack(side="left", padx=(0, 8))
 
         ctk.CTkButton(
