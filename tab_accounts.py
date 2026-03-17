@@ -875,11 +875,16 @@ class AccountsMixin:
     def _batch_stop_all(self):
         for acc in self.multi_accounts:
             self._stop_account(acc['name'])
-        # Shutdown screenshot scheduler when all accounts stop
+        # Shutdown screenshot scheduler in background to avoid GUI freeze
+        # (joining 8-16 worker threads on main thread blocks for up to 80s)
         if hasattr(self, 'screenshot_scheduler') and self.screenshot_scheduler:
-            self.screenshot_scheduler.shutdown()
+            sched = self.screenshot_scheduler
             self.screenshot_scheduler = None
-            _file_logger.info("ScreenshotScheduler shutdown on Stop All")
+            def _bg_shutdown():
+                sched.shutdown()
+                _file_logger.info("ScreenshotScheduler shutdown complete")
+            threading.Thread(target=_bg_shutdown, daemon=True).start()
+            _file_logger.info("ScreenshotScheduler shutdown initiated (background)")
     
     def _batch_start_selected(self):
         selected = [acc['name'] for acc in self.multi_accounts
@@ -1212,6 +1217,27 @@ class AccountsMixin:
                                 if db_state and time.time() - db_state.get("last_active", 0) < 300:
                                     self._restart_counts[acc_name] = 0
                     
+                    # Port-level health check: detect dead ports and force reconnect
+                    if hasattr(self, 'screenshot_scheduler') and self.screenshot_scheduler:
+                        try:
+                            stats = self.screenshot_scheduler.get_stats()
+                            for port, pstat in stats.items():
+                                if pstat.get('consecutive_failures', 0) >= 15:
+                                    # Port is effectively dead — find accounts on this port
+                                    dead_accs = [a['name'] for a in self.multi_accounts
+                                                 if a.get('port', 9222) == port and self._is_running(a['name'])]
+                                    if dead_accs:
+                                        self.gui_queue.put(("log", f"[Health] Port {port} dead ({pstat['consecutive_failures']} failures) — restarting {len(dead_accs)} workers: {', '.join(dead_accs[:5])}"))
+                                        # Stop affected workers — health monitor will auto-restart them
+                                        for name in dead_accs:
+                                            self._set_running(name, False)
+                                        # Reset the port scheduler so it's clean on restart
+                                        sched = self.screenshot_scheduler._schedulers.get(port)
+                                        if sched:
+                                            sched.reset()
+                        except Exception as e:
+                            _file_logger.debug(f"[Health] Port check error: {e}")
+
                     # Periodic DB maintenance
                     try:
                         self.state_db.checkpoint()

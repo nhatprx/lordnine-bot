@@ -70,7 +70,7 @@ class PortScheduler:
 
         # Frame cache: tab_index → (timestamp, bytes)
         self._frame_cache = {}
-        self._CACHE_TTL = 3.0  # seconds — longer TTL for 37+ account scenarios
+        self._CACHE_TTL = 1.5  # seconds — fresh frames for accurate condition/marker checks
 
         # Adaptive rate limiting (AIMD congestion control)
         self._GAP_MIN = 0.15          # floor: 150ms (normal load)
@@ -96,6 +96,18 @@ class PortScheduler:
         t.start()
         self._worker_threads.append(t)
 
+    @property
+    def is_healthy(self):
+        """Returns False if port is effectively dead (10+ consecutive failures)."""
+        return self._consecutive_failures < 10
+
+    def reset(self):
+        """Reset circuit breaker and gap after external reconnection."""
+        self._consecutive_failures = 0
+        self._circuit_open_until = 0.0
+        self._current_gap = self._GAP_MIN
+        logger.info(f"[ShotSched:{self.port}] Reset — circuit closed, gap restored")
+
     def request(self, cdp_client, tab_index, quality=70, timeout=25):
         """Submit a screenshot request.
 
@@ -104,6 +116,11 @@ class PortScheduler:
 
         Thread-safe — multiple workers call this concurrently.
         """
+        # Early reject: if circuit is open, don't queue — return None immediately
+        # This prevents unbounded queue growth when Chrome is dead
+        if time.time() < self._circuit_open_until:
+            return None
+
         # Check frame cache first — avoids queueing entirely
         cached = self._get_cached(tab_index)
         if cached is not None:
@@ -253,13 +270,22 @@ class PortScheduler:
                     self._increase_gap()
                     self._consecutive_failures += 1
 
-                    # Circuit breaker: open after 5 consecutive failures
+                    # Progressive circuit breaker: longer pauses as failures accumulate
+                    # 5 fails → 5s, 10 → 10s, 15 → 30s, 20+ → 60s
                     if self._consecutive_failures >= 5:
-                        self._circuit_open_until = time.time() + 5.0
+                        if self._consecutive_failures >= 20:
+                            pause = 60.0
+                        elif self._consecutive_failures >= 15:
+                            pause = 30.0
+                        elif self._consecutive_failures >= 10:
+                            pause = 10.0
+                        else:
+                            pause = 5.0
+                        self._circuit_open_until = time.time() + pause
                         logger.warning(
                             f"[ShotSched:{self.port}] Circuit breaker OPEN — "
                             f"{self._consecutive_failures} consecutive failures, "
-                            f"pausing for 5s"
+                            f"pausing for {pause:.0f}s"
                         )
 
                 self._last_shot_time = time.time()
