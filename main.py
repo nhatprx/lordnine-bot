@@ -1392,6 +1392,21 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             return
         
         try:
+            # Auto-stop running workers to prevent crash during file overwrite
+            was_running = []
+            if hasattr(self, 'multi_accounts') and hasattr(self, '_is_running'):
+                was_running = [a['name'] for a in self.multi_accounts if self._is_running(a['name'])]
+                if was_running:
+                    self.log_gui(f"[Preset] Stopping {len(was_running)} workers before import...")
+                    self._batch_stop_all()
+                    # Wait for workers to actually stop (max 5s)
+                    for _ in range(50):
+                        still_running = [n for n in was_running if self._is_running(n)]
+                        if not still_running:
+                            break
+                        time.sleep(0.1)
+                    self.log_gui("[Preset] All workers stopped")
+            
             # Backup existing data
             for fname in ["combos.json", "loops.json"]:
                 if os.path.exists(fname):
@@ -1429,6 +1444,12 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             self._build_info_panel()
             
             self.log_gui(f"[Preset] ✅ Import complete: {os.path.basename(filepath)}")
+            
+            # Auto-restart workers that were running before import
+            if was_running:
+                self.log_gui(f"[Preset] Restarting {len(was_running)} workers...")
+                for name in was_running:
+                    self.after(500, lambda n=name: self._start_account(n))
         except Exception as e:
             self.log_gui(f"[Preset] ❌ Import failed: {e}")
 

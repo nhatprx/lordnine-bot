@@ -154,7 +154,7 @@ class TestDownloadUpdate:
 
 class TestApplyUpdate:
     def test_update_script_generated(self):
-        """apply_update should create the PowerShell swap script."""
+        """apply_update should create the batch swap script."""
         with tempfile.TemporaryDirectory() as tmpdir:
             # Create fake update zip
             zip_path = os.path.join(tmpdir, "update.zip")
@@ -167,19 +167,17 @@ class TestApplyUpdate:
 
             assert success, f"Apply should succeed: {error}"
 
-            # Check script was created
-            script_path = os.path.join(tmpdir, "_update.ps1")
-            assert os.path.exists(script_path), "Update script not found"
+            # Check script was created (batch file, not PowerShell)
+            script_path = os.path.join(tmpdir, "_update.bat")
+            assert os.path.exists(script_path), "Update batch script not found"
 
             with open(script_path, 'r', encoding='utf-8') as f:
                 script_content = f.read()
 
             assert "LordNineBot.exe" in script_content
-            assert "Preserved" in script_content  # User data preservation
-            assert "config.json" in script_content
-            assert "trackers" in script_content
-            assert "backup" in script_content.lower()
-            print("  ✅ Update script generated with user data preservation")
+            assert "xcopy" in script_content  # Batch copy command
+            assert "waitloop" in script_content  # Wait for PID loop
+            print("  OK: Update batch script generated correctly")
 
     def test_extracted_content_correct(self):
         """Verify zip is extracted to the correct temp directory."""

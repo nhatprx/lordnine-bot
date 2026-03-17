@@ -878,6 +878,11 @@ class AccountsMixin:
     def _batch_stop_all(self):
         for acc in self.multi_accounts:
             self._stop_account(acc['name'])
+        # Shutdown screenshot scheduler when all accounts stop
+        if hasattr(self, 'screenshot_scheduler') and self.screenshot_scheduler:
+            self.screenshot_scheduler.shutdown()
+            self.screenshot_scheduler = None
+            _file_logger.info("ScreenshotScheduler shutdown on Stop All")
     
     def _batch_start_selected(self):
         selected = [acc['name'] for acc in self.multi_accounts
@@ -1159,6 +1164,7 @@ class AccountsMixin:
     # ---- Health Monitor (optimized: only check running account ports, 60s interval) ----
     def _start_health_monitor(self):
         self.health_monitor_active = True
+        self._restart_counts = {}  # Track restart attempts per account
         
         def _monitor_loop():
             while self.health_monitor_active:
@@ -1176,17 +1182,38 @@ class AccountsMixin:
                             if time.time() - last_active < 10:
                                 continue
                             
-                            self.gui_queue.put(("log", f"[Health] Worker {acc_name} died (status={db_status})! Restarting..."))
+                            # Restart backoff: exponential delay based on restart count
+                            restart_count = self._restart_counts.get(acc_name, 0)
+                            backoff = min(60, 2 ** restart_count)  # 1s, 2s, 4s, 8s, ... 60s max
+                            
+                            self.gui_queue.put(("log", f"[Health] Worker {acc_name} died (status={db_status}, restart #{restart_count + 1})! Restarting in {backoff}s..."))
                             self._set_running(acc_name, False)
-                            self.state_db.save_account_state(acc_name, status="crashed")
+                            self.state_db.save_account_state(acc_name, status="crashed", error_msg=f"Crash #{restart_count + 1}")
+                            
+                            time.sleep(backoff)
+                            
+                            # Check if we should still restart (user might have stopped)
+                            if not self.health_monitor_active:
+                                return
+                            
                             for acc in self.multi_accounts:
                                 if acc['name'] == acc_name:
+                                    self._restart_counts[acc_name] = restart_count + 1
                                     self._set_running(acc_name, True)
                                     t = threading.Thread(target=self._account_worker_thread, args=(acc,), daemon=True)
                                     self.account_workers[acc_name] = t
                                     t.start()
-                                    self.gui_queue.put(("log", f"[Health] Worker {acc_name} restarted"))
+                                    self.gui_queue.put(("log", f"[Health] Worker {acc_name} restarted (attempt #{restart_count + 1})"))
                                     break
+                    
+                    # Reset restart counts for healthy workers (running for 5+ min)
+                    for acc_name in list(self._restart_counts.keys()):
+                        if self._is_running(acc_name):
+                            thread = self.account_workers.get(acc_name)
+                            if thread and thread.is_alive():
+                                db_state = self.state_db.get_account_state(acc_name)
+                                if db_state and time.time() - db_state.get("last_active", 0) < 300:
+                                    self._restart_counts[acc_name] = 0
                     
                     # Periodic DB maintenance
                     try:
@@ -1197,7 +1224,7 @@ class AccountsMixin:
                 except Exception as e:
                     pass
                 
-                # 60s interval (was 30s) — saves CPU/network
+                # 60s interval
                 for _ in range(120):
                     if not self.health_monitor_active:
                         return
@@ -1210,6 +1237,24 @@ class AccountsMixin:
         func_value = acc.get('loop', '')
         tab_idx = int(acc.get('target', '0')) if str(acc.get('target', '0')).isdigit() else 0
         port = acc.get('port', 9222)
+        cdp_client = None  # Declare early for crash cleanup
+        current_node_id = None
+        
+        try:
+            self._account_worker_thread_inner(acc, acc_name, func_value, tab_idx, port)
+        except Exception as e:
+            error_msg = f"Unhandled crash: {str(e)[:200]}"
+            _file_logger.error(f"[{acc_name}] {error_msg}", exc_info=True)
+            try:
+                self.state_db.save_account_state(acc_name, status="crashed", error_msg=error_msg[:100])
+                self.update_dash_status(acc_name, f"CRASHED: {str(e)[:30]}", COLOR["danger"])
+                self.log_gui(f"[{acc_name}] Worker CRASHED: {str(e)[:60]}")
+            except:
+                pass
+            finally:
+                self._set_running(acc_name, False)
+    
+    def _account_worker_thread_inner(self, acc, acc_name, func_value, tab_idx, port):
         
         # ── Throttled status update (max 1/sec per account) ──
         _last_dash_time = 0

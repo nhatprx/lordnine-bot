@@ -43,6 +43,7 @@ class StateDB:
         
         # Dedicated writer connection (only used by flush thread)
         self._writer_conn = None
+        self._writer_lock = threading.Lock()  # Protects writer conn access
         
         self._init_db()
         
@@ -60,9 +61,11 @@ class StateDB:
         return self._local.conn
     
     def _get_writer(self):
-        """Get the dedicated writer connection (flush thread only)."""
+        """Get the dedicated writer connection (flush thread + reads after flush)."""
         if self._writer_conn is None:
-            self._writer_conn = sqlite3.connect(self.db_path, timeout=15)
+            self._writer_conn = sqlite3.connect(
+                self.db_path, timeout=15, check_same_thread=False
+            )
             self._writer_conn.execute("PRAGMA journal_mode=WAL")
             self._writer_conn.execute("PRAGMA synchronous=NORMAL")
             self._writer_conn.execute("PRAGMA cache_size=-8000")  # 8MB cache
@@ -127,18 +130,61 @@ class StateDB:
                 self._state_buffer[name] = fields
     
     def get_account_state(self, name):
-        """Get account state. Returns dict or None."""
-        conn = self._get_conn()
-        row = conn.execute(
-            "SELECT * FROM account_state WHERE name = ?", (name,)
-        ).fetchone()
-        return dict(row) if row else None
+        """Get account state. Returns dict or None.
+        
+        Flushes pending writes and reads from writer connection
+        for consistent read-your-own-writes semantics.
+        """
+        self.flush()
+        # Read from writer connection — it always sees its own committed data
+        with self._writer_lock:
+            writer = self._get_writer()
+            writer.row_factory = sqlite3.Row
+            row = writer.execute(
+                "SELECT * FROM account_state WHERE name = ?", (name,)
+            ).fetchone()
+            result = dict(row) if row else None
+        
+        # Also overlay any pending buffer (race between flush and new writes)
+        with self._state_lock:
+            pending = self._state_buffer.get(name)
+            if pending:
+                if result is None:
+                    result = {
+                        "name": name, "current_node_id": "",
+                        "loop_name": "", "status": "idle",
+                        "last_active": 0, "error_msg": "",
+                        "port": 9222, "tab_index": 0, "extra_json": "{}",
+                    }
+                result.update(pending)
+        
+        return result
     
     def get_all_account_states(self):
-        """Get all account states."""
-        conn = self._get_conn()
-        rows = conn.execute("SELECT * FROM account_state ORDER BY name").fetchall()
-        return [dict(r) for r in rows]
+        """Get all account states. Reads from writer for consistency."""
+        self.flush()
+        with self._writer_lock:
+            writer = self._get_writer()
+            writer.row_factory = sqlite3.Row
+            rows = writer.execute("SELECT * FROM account_state ORDER BY name").fetchall()
+        results = {dict(r)["name"]: dict(r) for r in rows}
+        
+        # Overlay pending buffer entries (race between flush and new writes)
+        with self._state_lock:
+            for name, fields in self._state_buffer.items():
+                if name in results:
+                    results[name].update(fields)
+                else:
+                    entry = {
+                        "name": name, "current_node_id": "",
+                        "loop_name": "", "status": "idle",
+                        "last_active": 0, "error_msg": "",
+                        "port": 9222, "tab_index": 0, "extra_json": "{}",
+                    }
+                    entry.update(fields)
+                    results[name] = entry
+        
+        return sorted(results.values(), key=lambda s: s["name"])
     
     def clear_account_state(self, name):
         """Reset account state to idle."""
@@ -146,6 +192,8 @@ class StateDB:
     
     def clear_all_states(self):
         """Reset all accounts to idle."""
+        # Flush pending writes first, then overwrite everything
+        self.flush()
         conn = self._get_conn()
         conn.execute("""
             UPDATE account_state 
@@ -184,55 +232,77 @@ class StateDB:
         if not states and not logs:
             return
         
-        try:
-            conn = self._get_writer()
-            
-            # Batch state upserts
-            for name, fields in states.items():
-                set_clause = ", ".join(f"{k}=?" for k in fields.keys())
-                values = list(fields.values())
-                conn.execute(f"""
-                    INSERT INTO account_state (name, {', '.join(fields.keys())})
-                    VALUES (?, {', '.join('?' * len(fields))})
-                    ON CONFLICT(name) DO UPDATE SET {set_clause}
-                """, [name] + values + values)
-            
-            # Batch log inserts
-            if logs:
-                conn.executemany(
-                    "INSERT INTO execution_log (timestamp, account, action, detail, result) VALUES (?, ?, ?, ?, ?)",
-                    logs
-                )
+        with self._writer_lock:
+            try:
+                conn = self._get_writer()
                 
-                # Auto-prune old logs every 500 buffered inserts
-                if len(logs) >= 50:
-                    # Delete logs older than 24h
-                    cutoff = time.time() - 86400
-                    conn.execute("DELETE FROM execution_log WHERE timestamp < ?", (cutoff,))
-                    # Also cap total to 5000 most recent
-                    conn.execute("""
-                        DELETE FROM execution_log
-                        WHERE id NOT IN (
-                            SELECT id FROM execution_log
-                            ORDER BY timestamp DESC
-                            LIMIT 5000
-                        )
-                    """)
-            
-            conn.commit()
-        except Exception:
-            pass  # Best-effort persistence
+                # Batch state upserts
+                for name, fields in states.items():
+                    set_clause = ", ".join(f"{k}=?" for k in fields.keys())
+                    values = list(fields.values())
+                    conn.execute(f"""
+                        INSERT INTO account_state (name, {', '.join(fields.keys())})
+                        VALUES (?, {', '.join('?' * len(fields))})
+                        ON CONFLICT(name) DO UPDATE SET {set_clause}
+                    """, [name] + values + values)
+                
+                # Batch log inserts
+                if logs:
+                    conn.executemany(
+                        "INSERT INTO execution_log (timestamp, account, action, detail, result) VALUES (?, ?, ?, ?, ?)",
+                        logs
+                    )
+                    
+                    # Auto-prune old logs every 500 buffered inserts
+                    if len(logs) >= 50:
+                        # Delete logs older than 24h
+                        cutoff = time.time() - 86400
+                        conn.execute("DELETE FROM execution_log WHERE timestamp < ?", (cutoff,))
+                        # Also cap total to 5000 most recent
+                        conn.execute("""
+                            DELETE FROM execution_log
+                            WHERE id NOT IN (
+                                SELECT id FROM execution_log
+                                ORDER BY timestamp DESC
+                                LIMIT 5000
+                            )
+                        """)
+                
+                conn.commit()
+            except Exception:
+                pass  # Best-effort persistence
+    
+    def flush(self):
+        """Force immediate flush of all buffered writes to disk.
+        
+        Call this when you need read-your-own-writes consistency.
+        In production, the background thread flushes every 2s automatically.
+        """
+        self._flush_now()
+        # Close the thread-local reader so the next read opens a fresh
+        # connection that sees the writer's latest committed data.
+        # (In SQLite WAL mode, each connection holds its own read snapshot.)
+        if hasattr(self._local, 'conn') and self._local.conn:
+            try:
+                self._local.conn.close()
+            except Exception:
+                pass
+            self._local.conn = None
     
     def shutdown(self):
-        """Flush remaining writes and stop background thread."""
+        """Flush remaining writes and stop background thread. Idempotent."""
+        if getattr(self, '_shutdown_done', False):
+            return
+        self._shutdown_done = True
         self._flush_stop.set()
-        self._flush_now()  # Final flush
+        self.flush()  # Final flush
         if self._writer_conn:
             try: self._writer_conn.close()
             except: pass
     
     def get_recent_logs(self, account=None, limit=100):
         """Get recent log entries."""
+        self.flush()
         conn = self._get_conn()
         if account:
             rows = conn.execute(
@@ -270,7 +340,8 @@ class StateDB:
         return [dict(r) for r in rows]
     
     def close(self):
-        """Close the database connection for the current thread."""
+        """Close the database — flushes pending writes first."""
+        self.shutdown()
         if hasattr(self._local, 'conn') and self._local.conn:
             self._local.conn.close()
             self._local.conn = None
