@@ -17,20 +17,29 @@ from node_features import get_color_detect
 logger = logging.getLogger(__name__)
 
 
-def _capture_frame(cdp_client):
-    """Take a screenshot via CDP. Returns bytes or None."""
-    if not cdp_client:
-        return None
+def _capture_frame(cdp_client, screenshot_fn=None):
+    """Take a screenshot via CDP or ScreenshotScheduler.
+    
+    Args:
+        cdp_client: CDPClient instance (fallback)
+        screenshot_fn: callable() → bytes, from ScreenshotScheduler
+    
+    Returns bytes or None.
+    """
     try:
-        return cdp_client.screenshot(quality=70)
+        if screenshot_fn:
+            return screenshot_fn()
+        if cdp_client:
+            return cdp_client.screenshot(quality=70)
     except Exception:
-        return None
+        pass
+    return None
 
 
 def run_macro(macro_data, bot_instance, vision, tracked_icons,
               threshold_val=0.54, cdp_client=None,
               log_fn=None, is_running_fn=None,
-              use_direct_vision=False):
+              use_direct_vision=False, screenshot_fn=None):
     """
     Execute a macro's step list.
 
@@ -40,10 +49,12 @@ def run_macro(macro_data, bot_instance, vision, tracked_icons,
         vision:           Vision instance for template matching
         tracked_icons:    dict mapping node_name -> image file path
         threshold_val:    matching threshold (0.0 – 1.0)
-        cdp_client:       CDPClient for screenshots (None → screen capture)
+        cdp_client:       CDPClient for screenshots (fallback if no screenshot_fn)
         log_fn:           callable(str) for logging, defaults to logger.info
         is_running_fn:    callable() -> bool, checked before each step
         use_direct_vision: if True, uses find_template_direct (multi-account)
+        screenshot_fn:    callable() -> bytes from ScreenshotScheduler.
+                          Preferred for multi-account; falls back to cdp_client.
 
     Returns:
         True if macro succeeded, False otherwise.
@@ -97,6 +108,7 @@ def run_macro(macro_data, bot_instance, vision, tracked_icons,
                 step_data, idx, len(steps),
                 tracked_icons, threshold_val,
                 cdp_client, _find, log_fn, is_running_fn,
+                screenshot_fn=screenshot_fn,
             )
             if not ok:
                 return False
@@ -130,9 +142,14 @@ def run_macro(macro_data, bot_instance, vision, tracked_icons,
         # ── Normal detect-then-click ──
         found = False
         for attempt in range(5):
-            frame_bytes = _capture_frame(cdp_client)
-            res = _find(filepath, threshold_val, frame_bytes=frame_bytes,
-                        use_color=get_color_detect(filepath))
+            frame_bytes = _capture_frame(cdp_client, screenshot_fn)
+            try:
+                res = _find(filepath, threshold_val, frame_bytes=frame_bytes,
+                            use_color=get_color_detect(filepath))
+            finally:
+                # Explicit cleanup — 37 accounts × 100-200KB per frame
+                if not res:
+                    del frame_bytes
             if res:
                 x, y, _ = res
                 bot_instance.click_at(x, y, randomize=True)
@@ -158,12 +175,14 @@ def run_macro(macro_data, bot_instance, vision, tracked_icons,
     return _verify_result(
         macro_data, tracked_icons, threshold_val,
         cdp_client, _find, log_fn,
+        screenshot_fn=screenshot_fn,
     )
 
 
 def _run_marker_step(step_data, idx, total,
                      tracked_icons, threshold_val,
-                     cdp_client, _find, log_fn, is_running_fn):
+                     cdp_client, _find, log_fn, is_running_fn,
+                     screenshot_fn=None):
     """Execute a single marker (wait-for-image) step. Returns True on success."""
     marker = step_data.get("marker", "")
     marker_mode = step_data.get("mode", "Wait until Appear")
@@ -208,7 +227,7 @@ def _run_marker_step(step_data, idx, total,
         if not is_running_fn():
             return False
 
-        frame_bytes = _capture_frame(cdp_client)
+        frame_bytes = _capture_frame(cdp_client, screenshot_fn)
 
         # Fail image check
         if fail_path and os.path.exists(fail_path):
@@ -253,7 +272,8 @@ def _run_marker_step(step_data, idx, total,
 
 
 def _verify_result(macro_data, tracked_icons, threshold_val,
-                   cdp_client, _find, log_fn):
+                   cdp_client, _find, log_fn,
+                   screenshot_fn=None):
     """Verify macro result via success/failure capture images."""
     success_capture = macro_data.get("success_capture", "None")
     failure_capture = macro_data.get("failure_capture", "None")
@@ -263,7 +283,7 @@ def _verify_result(macro_data, tracked_icons, threshold_val,
         return True
 
     time.sleep(1.0)
-    frame_bytes = _capture_frame(cdp_client)
+    frame_bytes = _capture_frame(cdp_client, screenshot_fn)
 
     if success_capture != "None":
         s_path = tracked_icons.get(success_capture)

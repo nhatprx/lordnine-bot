@@ -25,6 +25,7 @@ from cdp_client import CDPClient
 from chrome_manager import ChromeManager
 from macro_runner import run_macro
 from state_db import StateDB
+from screenshot_scheduler import ScreenshotScheduler
 
 class AccountsMixin:
     """Mixin for the Accounts/Coordinator tab. Mixed into BotApp."""
@@ -1234,6 +1235,41 @@ class AccountsMixin:
         def flog(msg):
             _file_logger.info(f"[{acc_name}] {msg}")
         
+        # ── Throttled screenshot error logging (max 1/60s to GUI) ──
+        _last_ss_error_gui = 0
+        def log_ss_error(error_msg):
+            nonlocal _last_ss_error_gui
+            flog(f"Screenshot error: {error_msg}")  # always log to file
+            now = time.time()
+            if (now - _last_ss_error_gui) >= 60.0:
+                self.log_gui(f"[{acc_name}] Screenshot Error: {str(error_msg)[:40]}")
+                _last_ss_error_gui = now
+        
+        # ── Screenshot backoff state ──
+        _ss_fail_count = 0
+        _SS_MAX_BACKOFF = 30  # cap at 30 seconds
+        
+        # ── Screenshot via ScreenshotScheduler (central coordinator) ──
+        # Initialize scheduler on first use (lazy singleton on BotApp)
+        if not hasattr(self, 'screenshot_scheduler') or self.screenshot_scheduler is None:
+            self.screenshot_scheduler = ScreenshotScheduler()
+            flog("Initialized ScreenshotScheduler")
+        scheduler = self.screenshot_scheduler
+        
+        def take_screenshot(quality=70):
+            """Take screenshot via scheduler with backoff on failure."""
+            nonlocal _ss_fail_count
+            frame = scheduler.request_screenshot(cdp_client, quality=quality)
+            if frame is not None:
+                _ss_fail_count = 0  # reset on success
+                return frame
+            else:
+                _ss_fail_count += 1
+                backoff = min(_SS_MAX_BACKOFF, 2 ** _ss_fail_count)
+                log_ss_error(f"Screenshot failed (backoff {backoff}s, fail #{_ss_fail_count})")
+                time.sleep(backoff)
+                return None
+        
         # Parse function prefix: "loop - name" or "macro - name" (legacy: plain loop name)
         is_macro_mode = False
         if func_value.startswith("macro - "):
@@ -1328,6 +1364,12 @@ class AccountsMixin:
         # Keep-alive: prevent cloud phone (Redfinger) from timing out
         _last_keepalive = time.time()
         _KEEPALIVE_INTERVAL = 270  # Send mouse move every 4.5 minutes
+        
+        # v3.21: Connection health monitoring
+        _last_health_check = time.time()
+        _HEALTH_CHECK_INTERVAL = 300  # 5 minutes
+        _last_reconnect = time.time()
+        _RECONNECT_INTERVAL = 1800  # 30 minutes — periodic connection refresh
 
         # ======== MACRO MODE: run macro ONCE then stop ========
         if is_macro_mode:
@@ -1342,6 +1384,7 @@ class AccountsMixin:
                     log_fn=lambda msg: flog(msg),  # macro logs → file only
                     is_running_fn=lambda: self.account_running.get(acc_name, False),
                     use_direct_vision=True,
+                    screenshot_fn=lambda: take_screenshot(quality=70),
                 )
                 if result:
                     self.state_db.log_action(acc_name, "macro_done", func_name, "OK")
@@ -1389,6 +1432,35 @@ class AccountsMixin:
                 except Exception:
                     pass
                 _last_keepalive = time.time()
+            
+            # ── v3.21: Periodic health check (every 5 min) ──
+            now = time.time()
+            if cdp_client and (now - _last_health_check) >= _HEALTH_CHECK_INTERVAL:
+                _last_health_check = now
+                if not cdp_client.is_alive():
+                    flog("Health check FAILED — reconnecting")
+                    try:
+                        cdp_client.reconnect()
+                        bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
+                        flog("Reconnected successfully")
+                    except Exception as e:
+                        flog(f"Reconnect failed: {e}")
+                        if connect_to_tab():
+                            bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
+                        else:
+                            self.update_dash_status(acc_name, "Health Check Failed", COLOR["danger"])
+                            break
+            
+            # ── v3.21: Periodic connection rotation (every 30 min) ──
+            if cdp_client and (now - _last_reconnect) >= _RECONNECT_INTERVAL:
+                _last_reconnect = now
+                flog("Connection rotation — periodic reconnect")
+                try:
+                    cdp_client.reconnect()
+                    bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
+                    flog("Connection rotated successfully")
+                except Exception as e:
+                    flog(f"Connection rotation failed: {e}")
 
             if not current_node_id or current_node_id not in nodes:
                 restart_count += 1
@@ -1453,31 +1525,25 @@ class AccountsMixin:
                     flog(f"Condition scan: {img_name}")
                     
                     found_res = None
-                    for attempt in range(3):
-                        frame_bytes = None
-                        try:
-                            frame_bytes = cdp_client.screenshot(quality=70)
-                        except Exception as e:
-                            self.log_gui(f"[{acc_name}] Screenshot Error: {str(e)[:40]}")
-                            flog(f"Screenshot failed, reconnecting: {e}")
-                            self.state_db.log_action(acc_name, "reconnect", f"Screenshot failed: {e}")
-                            if connect_to_tab():
-                                bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
-                            else:
-                                self.update_dash_status(acc_name, "Reconnect Failed", COLOR["danger"])
-                                break
+                    for attempt in range(2):
+                        frame_bytes = take_screenshot(quality=50)
+                        
+                        if frame_bytes is None:
                             continue
                         
-                        if is_text:
-                            search_text = self._get_text_node_search(img_name)
-                            res = self.vision.find_text_on_screen(search_text, frame_bytes=frame_bytes)
-                        else:
-                            from node_features import get_color_detect
-                            _use_color = get_color_detect(filepath)
-                            res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes, fast_mode=True, use_color=_use_color)
-                        if res:
-                            found_res = res
-                            break
+                        try:
+                            if is_text:
+                                search_text = self._get_text_node_search(img_name)
+                                res = self.vision.find_text_on_screen(search_text, frame_bytes=frame_bytes)
+                            else:
+                                from node_features import get_color_detect
+                                _use_color = get_color_detect(filepath)
+                                res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes, fast_mode=True, use_color=_use_color)
+                            if res:
+                                found_res = res
+                                break
+                        finally:
+                            del frame_bytes  # explicit cleanup
                         time.sleep(0.5)
                     
                     if found_res:
@@ -1501,6 +1567,7 @@ class AccountsMixin:
                             log_fn=lambda msg: flog(msg),  # macro logs → file only
                             is_running_fn=lambda: self.account_running.get(acc_name, False),
                             use_direct_vision=True,
+                            screenshot_fn=lambda: take_screenshot(quality=70),
                         )
                         if result:
                             flog(f"Macro done: {mac_name} → OK")
@@ -1535,14 +1602,7 @@ class AccountsMixin:
                 else:
                     throttled_dash(f"Click: {img_name}...", COLOR["warning"])
                     flog(f"Click scan: {img_name}")
-                    frame_bytes = None
-                    try:
-                        frame_bytes = cdp_client.screenshot(quality=50)
-                    except Exception as e:
-                        self.log_gui(f"[{acc_name}] Screenshot Error: {str(e)[:40]}")
-                        flog(f"Screenshot failed in click: {e}")
-                        if connect_to_tab():
-                            bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
+                    frame_bytes = take_screenshot(quality=50)
                     
                     if frame_bytes:
                         if is_text:

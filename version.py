@@ -5,4 +5,4 @@ All modules import APP_VERSION from here instead of hardcoding.
 When releasing a new version, only change this file.
 """
 
-APP_VERSION = "3.20.0"
+APP_VERSION = "3.21.0"
