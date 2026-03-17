@@ -323,11 +323,15 @@ def launch_update_and_exit():
         return False, "Update script not found"
 
     try:
-        # Launch batch script in a new minimized window
+        # Launch batch script hidden (no visible terminal window)
+        startupinfo = subprocess.STARTUPINFO()
+        startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+        startupinfo.wShowWindow = 0  # SW_HIDE
         subprocess.Popen(
             ["cmd.exe", "/c", script_path],
             cwd=app_dir,
-            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.DETACHED_PROCESS,
+            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW,
+            startupinfo=startupinfo,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
@@ -533,10 +537,11 @@ def show_update_dialog(root, update_info, log_fn=None):
             success, error = launch_update_and_exit()
             if success:
                 log_fn("[Updater] Update script launched. Exiting...")
-                try:
-                    dialog.after(500, lambda: root.destroy())
-                except Exception:
-                    pass
+                # CRITICAL: os._exit(0) force-terminates the ENTIRE process.
+                # root.destroy() only closes the Tk window — Python process stays alive
+                # → batch script waits for PID forever → update never completes.
+                time.sleep(1)
+                os._exit(0)
             else:
                 log_fn(f"[Updater] Failed to launch update script: {error}")
                 try:
