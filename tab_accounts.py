@@ -330,17 +330,13 @@ class AccountsMixin:
                 results[port] = (success, msg, actual)
                 self.gui_queue.put(("log", f"[Quick Launch] {msg}"))
             
-            self.gui_queue.put(("log", f"[Quick Launch] Launching {num_chrome} Chrome(s) in parallel..."))
-            threads = []
+            self.gui_queue.put(("log", f"[Quick Launch] Launching {num_chrome} Chrome(s) sequentially (3s apart)..."))
             for idx, tab_count in enumerate(distribution):
                 port = ports_needed[idx]
-                t = threading.Thread(target=_launch_one, args=(port, tab_count), daemon=True)
-                threads.append(t)
-                t.start()
-            
-            # Wait for all to finish
-            for t in threads:
-                t.join(timeout=15)
+                _launch_one(port, tab_count)
+                # Stagger: wait between launches so Chrome/Redfinger can initialize
+                if idx < len(distribution) - 1:
+                    time.sleep(3)
             
             # Auto-open cloud phones FIRST (to get phone names)
             self.gui_queue.put(("log", f"[Quick Launch] Waiting for pages to load..."))
