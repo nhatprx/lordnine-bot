@@ -1348,7 +1348,6 @@ class AccountsMixin:
         
         # Stagger start — batch 5 acc/sec to avoid overloading Chrome CDP
         if tab_idx > 0:
-            import random
             batch_delay = tab_idx / 5   # 5 accounts per second (was 50)
             jitter = random.uniform(0, 1.0)  # Larger jitter to spread load
             stagger = batch_delay + jitter

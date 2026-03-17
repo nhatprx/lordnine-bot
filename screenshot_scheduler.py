@@ -65,10 +65,10 @@ class PortScheduler:
 
         # Frame cache: tab_index → (timestamp, bytes)
         self._frame_cache = {}
-        self._CACHE_TTL = 2.0  # seconds — longer TTL for heavy load scenarios
+        self._CACHE_TTL = 3.0  # seconds — longer TTL for 37+ account scenarios
 
         # Rate limiting
-        self._MIN_GAP = 0.10  # minimum 100ms between screenshots
+        self._MIN_GAP = 0.15  # minimum 150ms between screenshots (reduce Chrome pressure)
         self._last_shot_time = 0.0
 
         # Periodic cache cleanup (prevent memory growth over 24h+)
@@ -228,13 +228,13 @@ class PortScheduler:
                     error = str(e)
                     self._consecutive_failures += 1
 
-                    # Circuit breaker: open after 3 consecutive failures
-                    if self._consecutive_failures >= 3:
-                        self._circuit_open_until = time.time() + 10.0
+                    # Circuit breaker: open after 5 consecutive failures
+                    if self._consecutive_failures >= 5:
+                        self._circuit_open_until = time.time() + 5.0
                         logger.warning(
                             f"[ShotSched:{self.port}] Circuit breaker OPEN — "
                             f"{self._consecutive_failures} consecutive failures, "
-                            f"pausing for 10s"
+                            f"pausing for 5s"
                         )
 
                 self._last_shot_time = time.time()
