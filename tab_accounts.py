@@ -463,6 +463,12 @@ class AccountsMixin:
         threading.Thread(target=_check, daemon=True).start()
 
     def _render_connection_status(self, ports_info):
+        # Cache: skip redraw if data unchanged (avoids widget destroy+create churn)
+        cache_key = str([(p.get('port'), p.get('tab_count')) for p in ports_info]) if ports_info else ""
+        if hasattr(self, '_last_conn_cache') and self._last_conn_cache == cache_key:
+            return
+        self._last_conn_cache = cache_key
+
         for w in self.chrome_instances_container.winfo_children():
             w.destroy()
         
@@ -761,11 +767,13 @@ class AccountsMixin:
             # Action button container
             action_frame = ctk.CTkFrame(r_grp3, fg_color="transparent")
             action_frame.grid(row=0, column=1, sticky="nsew")
-            ctk.CTkButton(action_frame, text=btn_text, width=50, height=22, fg_color=btn_fg, hover_color=COLOR["surface2"], text_color=btn_color, corner_radius=4, font=ctk.CTkFont(size=10, weight="bold"), command=toggle_single).pack(expand=True)
+            action_btn = ctk.CTkButton(action_frame, text=btn_text, width=50, height=22, fg_color=btn_fg, hover_color=COLOR["surface2"], text_color=btn_color, corner_radius=4, font=ctk.CTkFont(size=10, weight="bold"), command=toggle_single)
+            action_btn.pack(expand=True)
 
-            # Cache widget references for in-place updates
+            # Cache widget references for in-place updates (avoid destroy+create)
             self._row_widgets[name] = {
                 "row": row,
+                "btn": action_btn,  # direct ref for configure()
                 "btn_frame": action_frame,
                 "lbl_conn": lbl_conn,
                 "lbl_func": r_grp3.winfo_children()[0] if r_grp3.winfo_children() else None,
@@ -792,8 +800,8 @@ class AccountsMixin:
     def _update_row_states(self):
         """Lightweight in-place update of row widgets (no destroy/recreate).
         
-        Only updates:  connection label color, action button text/colors, stats.
-        ~100x faster than refresh_multi_acc_list() which rebuilds all widgets.
+        v3.19.9: Uses btn.configure() instead of destroy+create — eliminates
+        20+ widget destroy/create cycles per call, ~100x faster.
         """
         running_count = 0
         idle_count = 0
@@ -812,14 +820,10 @@ class AccountsMixin:
                 conn_color = COLOR["success"] if is_running else COLOR["text_muted"]
                 self.dash_conn_labels[name].configure(text_color=conn_color)
             
-            # Update action button (Start/Stop)
+            # Update action button IN-PLACE (configure, no destroy+create)
             if name in self._row_widgets:
-                btn_frame = self._row_widgets[name].get("btn_frame")
-                if btn_frame and btn_frame.winfo_exists():
-                    # Destroy old button and create new one with correct state
-                    for child in btn_frame.winfo_children():
-                        child.destroy()
-                    
+                btn = self._row_widgets[name].get("btn")
+                if btn and btn.winfo_exists():
                     btn_text = "Stop" if is_running else "Start"
                     btn_fg = COLOR["danger_dim"] if is_running else COLOR["success_dim"]
                     btn_color = COLOR["danger"] if is_running else COLOR["success"]
@@ -830,11 +834,8 @@ class AccountsMixin:
                         else:
                             self._start_account(n)
                     
-                    ctk.CTkButton(btn_frame, text=btn_text, width=50, height=22,
-                                  fg_color=btn_fg, hover_color=COLOR["surface2"],
-                                  text_color=btn_color, corner_radius=4,
-                                  font=ctk.CTkFont(size=10, weight="bold"),
-                                  command=toggle_single).pack(expand=True)
+                    btn.configure(text=btn_text, fg_color=btn_fg,
+                                  text_color=btn_color, command=toggle_single)
         
         # Update stats
         if hasattr(self, 'acc_stats_label'):
@@ -1520,7 +1521,7 @@ class AccountsMixin:
                     flog(f"Click scan: {img_name}")
                     frame_bytes = None
                     try:
-                        frame_bytes = cdp_client.screenshot(quality=70)
+                        frame_bytes = cdp_client.screenshot(quality=50)
                     except Exception as e:
                         self.log_gui(f"[{acc_name}] Screenshot Error: {str(e)[:40]}")
                         flog(f"Screenshot failed in click: {e}")

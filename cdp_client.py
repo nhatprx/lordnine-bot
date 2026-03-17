@@ -28,6 +28,13 @@ import time
 _port_locks = {}        # port -> threading.Lock
 _port_locks_lock = threading.Lock()  # protects _port_locks dict creation
 
+# ── Per-port screenshot throttle ───────────────────────────────
+# Limits concurrent screenshots per Chrome instance to prevent Chrome from
+# rendering all tabs at once — which starves Redfinger's stream of CPU/RAM
+# and causes high ping/lag even on fast networks.
+_port_screenshot_sems = {}  # port -> threading.Semaphore
+_MAX_CONCURRENT_SCREENSHOTS = 2  # max simultaneous screenshots per Chrome instance
+
 # Tab list cache — avoid redundant /json calls when multiple threads
 # connect to different tabs on the same port within a short window.
 _tab_cache = {}         # port -> (timestamp, tabs_list)
@@ -45,7 +52,7 @@ def _get_port_lock(port):
 class CDPClient:
     """Lightweight CDP client using WebSocket connection to a Chrome tab."""
     
-    def __init__(self, ws_url, tab_info=None):
+    def __init__(self, ws_url, tab_info=None, port=9222):
         """
         Initialize with a WebSocket URL to a specific Chrome tab.
         Use CDPClient.connect() factory method instead.
@@ -57,6 +64,7 @@ class CDPClient:
         self._responses = {}
         self._event_callbacks = {}
         self._closed = False
+        self._port = port  # for screenshot throttle
         self.tab_info = tab_info or {}
         self.url = tab_info.get("url", "") if tab_info else ""
         self.title = tab_info.get("title", "") if tab_info else ""
@@ -137,7 +145,7 @@ class CDPClient:
                             "is another debugger already attached?"
                         )
                     
-                    return CDPClient(ws_url, tab_info=tab)
+                    return CDPClient(ws_url, tab_info=tab, port=port)
             except Exception as e:
                 last_error = e
                 if attempt < retries - 1:
@@ -195,12 +203,29 @@ class CDPClient:
         """
         Capture screenshot of the tab.
         Returns bytes (JPEG or PNG).
+        
+        Uses per-port semaphore to limit concurrent screenshots — prevents
+        Chrome from rendering all tabs simultaneously, which starves
+        Redfinger's video stream of CPU/RAM.
         """
         params = {"format": format}
         if format == "jpeg":
             params["quality"] = quality
         
-        result = self._send("Page.captureScreenshot", params)
+        # Get or create per-port semaphore
+        port = self._port
+        with _port_locks_lock:
+            if port not in _port_screenshot_sems:
+                _port_screenshot_sems[port] = threading.Semaphore(_MAX_CONCURRENT_SCREENSHOTS)
+        sem = _port_screenshot_sems[port]
+        
+        # Throttle: wait for slot (max 2 concurrent screenshots per Chrome)
+        sem.acquire()
+        try:
+            result = self._send("Page.captureScreenshot", params)
+        finally:
+            sem.release()
+        
         data_b64 = result.get("data", "")
         return base64.b64decode(data_b64)
     
