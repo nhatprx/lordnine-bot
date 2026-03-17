@@ -35,7 +35,7 @@ logger = logging.getLogger(__name__)
 # ── Configuration ──────────────────────────────────────────────
 
 # Vercel API endpoint for checking updates
-UPDATE_API_URL = "https://lordnine-api.vercel.app/api/check-update"
+UPDATE_API_URL = "https://lordnine-update.vercel.app/api/check-update"
 
 # Files/folders to PRESERVE during update (user data)
 USER_DATA = {
