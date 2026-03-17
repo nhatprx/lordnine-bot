@@ -387,6 +387,11 @@ Only shows:
 | 3.19.4 | 2026-03-17 | Fix PRESERVE_FILES NameError crash in updater |
 | 3.19.3 | 2026-03-17 | Batch file updater (replaces PowerShell) |
 | 3.19.2 | 2026-03-17 | Download proxy for private repo, duplicate name fix |
+| 3.23.1 | 2026-03-18 | Adaptive screenshot gap (AIMD): auto-adjusts 150ms–800ms based on failure rate |
+| 3.23.0 | 2026-03-18 | Per-account logging, metrics, analyze report, export logs |
+| 3.22.5 | 2026-03-18 | Fix import random crash (tab0), tune screenshot scheduler |
+| 3.22.4 | 2026-03-18 | Sequential Chrome launch (3s stagger) |
+| 3.22.3 | 2026-03-17 | Suppress transient screenshot errors (fail #1-2) |
 | 3.19.1 | 2026-03-17 | SSL fix for PyInstaller builds |
 | 3.19.0 | 2026-03-17 | Refresh button, multi-profile Chrome merge |
 | 3.18.0 | 2026-03-16 | Keep-alive, HSV color detect, auto-update, DB batching |
@@ -404,3 +409,4 @@ These files are **never overwritten** by auto-update:
 - `bot_state.db` — SQLite state database
 - `license.key` — License key
 - `trackers/` — Node images
+- `logs/` — Per-account debug logs (v3.23.0+)

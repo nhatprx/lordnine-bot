@@ -229,6 +229,13 @@ def _run_marker_step(step_data, idx, total,
 
         frame_bytes = _capture_frame(cdp_client, screenshot_fn)
 
+        # CRITICAL: If screenshot failed, do NOT evaluate condition.
+        # A None frame causes _find() to return None, which in
+        # "Wait until Disappear" mode is falsely treated as "disappeared".
+        if frame_bytes is None:
+            time.sleep(0.5)
+            continue
+
         # Fail image check
         if fail_path and os.path.exists(fail_path):
             fail_res = _find(fail_path, threshold_val, frame_bytes=frame_bytes,

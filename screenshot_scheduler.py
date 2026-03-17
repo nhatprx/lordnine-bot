@@ -4,6 +4,11 @@ Screenshot Scheduler — Central coordinator for CDP screenshots at scale.
 Replaces the old semaphore-based throttling with a fair round-robin scheduler
 that prevents Chrome from being overwhelmed by concurrent screenshot requests.
 
+v3.23.1: Adaptive gap (AIMD) — gap between screenshots adjusts dynamically:
+  - On success: gap -= 50ms (floor 150ms)   — additive decrease
+  - On failure: gap *= 1.5  (ceiling 800ms) — multiplicative increase
+  - Same principle as TCP congestion control, adapted for screenshot pacing
+
 Design decisions:
   - Adaptive concurrency: 1-2 worker threads per Chrome port based on demand
   - Workers submit requests and block until result is delivered
@@ -67,8 +72,12 @@ class PortScheduler:
         self._frame_cache = {}
         self._CACHE_TTL = 3.0  # seconds — longer TTL for 37+ account scenarios
 
-        # Rate limiting
-        self._MIN_GAP = 0.15  # minimum 150ms between screenshots (reduce Chrome pressure)
+        # Adaptive rate limiting (AIMD congestion control)
+        self._GAP_MIN = 0.15          # floor: 150ms (normal load)
+        self._GAP_MAX = 0.80          # ceiling: 800ms (heavy load)
+        self._GAP_INCREASE_FACTOR = 1.5  # multiplicative increase on failure
+        self._GAP_DECREASE_STEP = 0.05   # additive decrease on success (50ms)
+        self._current_gap = self._GAP_MIN  # starts at minimum
         self._last_shot_time = 0.0
 
         # Periodic cache cleanup (prevent memory growth over 24h+)
@@ -164,6 +173,20 @@ class PortScheduler:
             self._worker_threads.append(t)
             logger.info(f"[ShotSched:{self.port}] Scaled UP to 2 workers ({pending_count} pending)")
 
+    def _increase_gap(self):
+        """Multiplicative increase on failure (AIMD)."""
+        old = self._current_gap
+        self._current_gap = min(self._current_gap * self._GAP_INCREASE_FACTOR, self._GAP_MAX)
+        if self._current_gap != old:
+            logger.debug(f"[ShotSched:{self.port}] Gap ↑ {old*1000:.0f}ms → {self._current_gap*1000:.0f}ms")
+
+    def _decrease_gap(self):
+        """Additive decrease on success (AIMD)."""
+        old = self._current_gap
+        self._current_gap = max(self._current_gap - self._GAP_DECREASE_STEP, self._GAP_MIN)
+        if self._current_gap != old:
+            logger.debug(f"[ShotSched:{self.port}] Gap ↓ {old*1000:.0f}ms → {self._current_gap*1000:.0f}ms")
+
     def _cleanup_stale_cache(self):
         """Remove expired cache entries to prevent memory growth over days."""
         now = time.time()
@@ -213,10 +236,10 @@ class PortScheduler:
                 if req is None:
                     break
 
-                # Rate limit: ensure minimum gap between shots
+                # Rate limit: ensure adaptive gap between shots
                 elapsed = time.time() - self._last_shot_time
-                if elapsed < self._MIN_GAP:
-                    time.sleep(self._MIN_GAP - elapsed)
+                if elapsed < self._current_gap:
+                    time.sleep(self._current_gap - elapsed)
 
                 # Execute screenshot
                 frame_bytes = None
@@ -224,8 +247,10 @@ class PortScheduler:
                 try:
                     frame_bytes = req.cdp_client.screenshot(quality=req.quality)
                     self._consecutive_failures = 0
+                    self._decrease_gap()
                 except Exception as e:
                     error = str(e)
+                    self._increase_gap()
                     self._consecutive_failures += 1
 
                     # Circuit breaker: open after 5 consecutive failures
@@ -356,5 +381,6 @@ class ScreenshotScheduler:
                 "cache_size": len(sched._frame_cache),
                 "circuit_open": time.time() < sched._circuit_open_until,
                 "consecutive_failures": sched._consecutive_failures,
+                "current_gap_ms": round(sched._current_gap * 1000),
             }
         return stats
