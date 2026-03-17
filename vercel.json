@@ -4,12 +4,20 @@
     {
       "src": "api/validate-license.py",
       "use": "@vercel/python"
+    },
+    {
+      "src": "api/check-update.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/api/validate-license",
       "dest": "/api/validate-license.py"
+    },
+    {
+      "src": "/api/check-update",
+      "dest": "/api/check-update.py"
     }
   ]
 }

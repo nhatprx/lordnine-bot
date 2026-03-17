@@ -329,7 +329,7 @@ class AccountsMixin:
             time.sleep(5)  # 5s for Redfinger page to fully load with multiple tabs
             
             all_phone_names = {}  # (port, tab_idx) -> phone_name
-            phone_counter = start_phone - 1  # 0-based
+            global_phone_counter = start_phone  # 1-based, for fallback naming
             for port_idx, port in enumerate(ports_needed):
                 if port not in results:
                     continue
@@ -337,14 +337,17 @@ class AccountsMixin:
                 if not success:
                     continue
                 
-                indices = list(range(phone_counter, phone_counter + actual))
-                phone_counter += actual
+                # Each Chrome tab's page shows ALL phone cards.
+                # phone_indices should be 0-based PER PAGE — each tab clicks
+                # a different card on the same page.
+                # e.g. Chrome with 3 tabs → indices [0, 1, 2] → tab0 clicks card 0, etc.
+                indices = list(range(actual))
                 
                 # Wave-based: wait between ports so pages have time to stabilize
                 if port_idx > 0:
                     time.sleep(2)
                 
-                self.gui_queue.put(("log", f"[Quick Launch] Scanning phones {indices[0]+1}-{indices[-1]+1} on port {port}..."))
+                self.gui_queue.put(("log", f"[Quick Launch] Scanning phones {global_phone_counter}-{global_phone_counter+actual-1} on port {port}..."))
                 try:
                     opened, errors, phone_names = self.chrome_mgr.auto_open_cloud_phones(port, indices)
                     
@@ -357,6 +360,8 @@ class AccountsMixin:
                     self.gui_queue.put(("log", f"[Quick Launch] Port {port}: opened {opened}/{actual} cloud phones"))
                 except Exception as e:
                     self.gui_queue.put(("log", f"[Quick Launch] ❌ Port {port} scan failed: {e}"))
+                
+                global_phone_counter += actual
             
             # Create accounts with phone names
             created_accounts = []
@@ -735,7 +740,7 @@ class AccountsMixin:
     def _batch_start_all(self):
         # Smart wave-based start: groups of 5, 1s between waves
         # 15 accounts → 3 waves → fully started in ~2s
-        WAVE_SIZE = 5
+        WAVE_SIZE = 3
         delay_ms = 0
         count = 0
         for acc in self.multi_accounts:
@@ -743,7 +748,7 @@ class AccountsMixin:
                 self.after(delay_ms, lambda n=acc['name']: self._start_account(n))
                 count += 1
                 if count % WAVE_SIZE == 0:
-                    delay_ms += 1000  # 1s between waves
+                    delay_ms += 2000  # 2s between waves (was 1s)
     
     def _batch_stop_all(self):
         for acc in self.multi_accounts:
@@ -752,12 +757,12 @@ class AccountsMixin:
     def _batch_start_selected(self):
         selected = [acc['name'] for acc in self.multi_accounts
                     if self.dash_checkboxes.get(acc['name']) and self.dash_checkboxes[acc['name']].get()]
-        WAVE_SIZE = 5
+        WAVE_SIZE = 3
         delay_ms = 0
         for i, name in enumerate(selected):
             self.after(delay_ms, lambda n=name: self._start_account(n))
             if (i + 1) % WAVE_SIZE == 0:
-                delay_ms += 1000
+                delay_ms += 2000
     
     def _batch_stop_selected(self):
         selected = [acc['name'] for acc in self.multi_accounts
@@ -1067,11 +1072,11 @@ class AccountsMixin:
             nodes = graph.get("nodes", {})
             edges = graph.get("edges", [])
         
-        # Stagger start — batch 50 acc/sec to avoid overloading Chrome CDP
+        # Stagger start — batch 5 acc/sec to avoid overloading Chrome CDP
         if tab_idx > 0:
             import random
-            batch_delay = tab_idx / 50  # 50 accounts per second
-            jitter = random.uniform(0, 0.3)
+            batch_delay = tab_idx / 5   # 5 accounts per second (was 50)
+            jitter = random.uniform(0, 1.0)  # Larger jitter to spread load
             stagger = batch_delay + jitter
             self.update_dash_status(acc_name, f"Starting in {stagger:.1f}s...", COLOR["text_dim"])
             time.sleep(stagger)
@@ -1105,8 +1110,8 @@ class AccountsMixin:
                     self.log_gui(f"[{acc_name}] Connection attempt {attempt+1}/{max_retries} failed: {str(e)[:60]}")
                 
                 if attempt < max_retries - 1:
-                    wait_time = 2 ** (attempt + 1)
-                    self.update_dash_status(acc_name, f"Reconnecting in {wait_time}s... ({attempt+2}/{max_retries})", COLOR["warning"])
+                    wait_time = 2 ** (attempt + 1) + random.uniform(0, 1.5)  # Add jitter
+                    self.update_dash_status(acc_name, f"Reconnecting in {wait_time:.0f}s... ({attempt+2}/{max_retries})", COLOR["warning"])
                     time.sleep(wait_time)
             
             return False
@@ -1254,7 +1259,9 @@ class AccountsMixin:
                             search_text = self._get_text_node_search(img_name)
                             res = self.vision.find_text_on_screen(search_text, frame_bytes=frame_bytes)
                         else:
-                            res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes, fast_mode=True)
+                            from node_features import get_color_detect
+                            _use_color = get_color_detect(filepath)
+                            res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes, fast_mode=True, use_color=_use_color)
                         if res:
                             found_res = res
                             break
@@ -1327,7 +1334,9 @@ class AccountsMixin:
                             search_text = self._get_text_node_search(img_name)
                             res = self.vision.find_text_on_screen(search_text, frame_bytes=frame_bytes)
                         else:
-                            res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes, fast_mode=True)
+                            from node_features import get_color_detect
+                            _use_color = get_color_detect(filepath)
+                            res = self.vision.find_template_direct(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes, fast_mode=True, use_color=_use_color)
                         if res:
                             cx, cy = res[0], res[1]
                             bot_instance.click_at(cx, cy)

@@ -283,29 +283,30 @@ class ChromeManager:
         
         Args:
             port: Chrome debug port
-            phone_indices: list of 0-based indices, one per tab
-                e.g. [0, 1, 2] = click phone 1, 2, 3
+            phone_indices: list of 0-based indices, one per tab.
+                Each index refers to the card position on THAT tab's page.
+                e.g. [0, 1, 2] = tab0 clicks card 0, tab1 clicks card 1, tab2 clicks card 2
             timeout: max seconds to wait for page load
             
         Returns:
             (opened_count, errors_list, phone_names)
         """
-        import urllib.request
-        import json as _json
+        from cdp_client import CDPClient
         
         opened = 0
         errors = []
         phone_names = {}  # tab_idx -> phone_name
         
         try:
-            # Get all targets (tabs) via CDP
-            resp = urllib.request.urlopen(f"http://localhost:{port}/json", timeout=5)
-            targets = _json.loads(resp.read().decode())
+            # Use CDPClient.list_tabs() for CONSISTENT ordering with worker threads.
+            # This is critical — if we call /json directly here, we might get tabs
+            # in a different order than when workers connect later via CDPClient.connect(),
+            # causing phone names to be assigned to the wrong accounts.
+            page_targets = CDPClient.list_tabs(port)
             
-            page_targets = [t for t in targets if t.get("type") == "page"]
             print(f"[auto_open] Port {port}: {len(page_targets)} page targets found")
             for i, t in enumerate(page_targets):
-                print(f"  Tab {i}: {t.get('url', '?')[:80]}")
+                print(f"  Tab {i}: id={t.get('id', '?')[:12]} url={t.get('url', '?')[:80]}")
             
             # Filter to Redfinger pages (match cloudemulator, redfinger, or phone page)
             rf_targets = [t for t in page_targets if 
@@ -324,8 +325,6 @@ class ChromeManager:
                 return opened, errors, phone_names
             
             print(f"[auto_open] Scanning {len(rf_targets)} tabs for phone cards...")
-            
-            from cdp_client import CDPClient
             
             for tab_idx, target in enumerate(rf_targets):
                 if tab_idx >= len(phone_indices):
@@ -389,9 +388,9 @@ class ChromeManager:
                     if result is not None:
                         phone_names[tab_idx] = result
                         opened += 1
-                        print(f"[auto_open] Tab {tab_idx}: opened '{result}' (phone #{phone_idx+1})")
+                        print(f"[auto_open] Tab {tab_idx}: opened '{result}' (card #{phone_idx+1})")
                     else:
-                        errors.append(f"Tab {tab_idx}: phone #{phone_idx+1} not found (have {card_count} cards)")
+                        errors.append(f"Tab {tab_idx}: card #{phone_idx+1} not found (have {card_count} cards)")
                     
                 except Exception as e:
                     errors.append(f"Tab {tab_idx}: {e}")

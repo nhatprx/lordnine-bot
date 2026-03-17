@@ -12,6 +12,8 @@ import os
 import random
 import logging
 
+from node_features import get_color_detect
+
 logger = logging.getLogger(__name__)
 
 
@@ -54,15 +56,16 @@ def run_macro(macro_data, bot_instance, vision, tracked_icons,
 
     steps = macro_data.get("steps", [])
 
-    def _find(path, threshold, frame_bytes=None):
+    def _find(path, threshold, frame_bytes=None, use_color=False):
         if use_direct_vision:
             return vision.find_template_direct(
                 path, threshold=threshold, debug=False,
                 frame_bytes=frame_bytes, fast_mode=True,
+                use_color=use_color,
             )
         return vision.find_template_on_screen(
             path, threshold=threshold, debug=False,
-            frame_bytes=frame_bytes,
+            frame_bytes=frame_bytes, use_color=use_color,
         )
 
     for idx, step_data in enumerate(steps):
@@ -128,7 +131,8 @@ def run_macro(macro_data, bot_instance, vision, tracked_icons,
         found = False
         for attempt in range(5):
             frame_bytes = _capture_frame(cdp_client)
-            res = _find(filepath, threshold_val, frame_bytes=frame_bytes)
+            res = _find(filepath, threshold_val, frame_bytes=frame_bytes,
+                        use_color=get_color_detect(filepath))
             if res:
                 x, y, _ = res
                 bot_instance.click_at(x, y, randomize=True)
@@ -208,7 +212,8 @@ def _run_marker_step(step_data, idx, total,
 
         # Fail image check
         if fail_path and os.path.exists(fail_path):
-            fail_res = _find(fail_path, threshold_val, frame_bytes=frame_bytes)
+            fail_res = _find(fail_path, threshold_val, frame_bytes=frame_bytes,
+                             use_color=get_color_detect(fail_path))
             fail_mode = step_data.get("fail_mode", "Fail if Appear")
             fail_triggered = (
                 (fail_mode == "Fail if Appear" and fail_res)
@@ -218,7 +223,8 @@ def _run_marker_step(step_data, idx, total,
                 log_fn(f"    - CANCEL: Fail image '{fail_image}' ({fail_mode})! Macro FAILED.")
                 return False
 
-        res = _find(marker_path, threshold_val, frame_bytes=frame_bytes)
+        res = _find(marker_path, threshold_val, frame_bytes=frame_bytes,
+                    use_color=get_color_detect(marker_path))
         is_condition_met = (
             (marker_mode == "Wait until Appear" and res)
             or (marker_mode == "Wait until Disappear" and not res)
@@ -262,7 +268,8 @@ def _verify_result(macro_data, tracked_icons, threshold_val,
     if success_capture != "None":
         s_path = tracked_icons.get(success_capture)
         if s_path and os.path.exists(s_path):
-            res = _find(s_path, threshold_val, frame_bytes=frame_bytes)
+            res = _find(s_path, threshold_val, frame_bytes=frame_bytes,
+                        use_color=get_color_detect(s_path))
             if res:
                 log_fn(f"[Macro] Result: SUCCESS (found '{success_capture}')")
                 return True
@@ -273,7 +280,8 @@ def _verify_result(macro_data, tracked_icons, threshold_val,
     if failure_capture != "None":
         f_path = tracked_icons.get(failure_capture)
         if f_path and os.path.exists(f_path):
-            res = _find(f_path, threshold_val, frame_bytes=frame_bytes)
+            res = _find(f_path, threshold_val, frame_bytes=frame_bytes,
+                        use_color=get_color_detect(f_path))
             if res:
                 log_fn(f"[Macro] Result: FAILURE (found '{failure_capture}')")
                 return False

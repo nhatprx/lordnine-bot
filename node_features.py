@@ -126,6 +126,19 @@ def get_search_position(template_path):
     return None
 
 
+def save_color_detect(template_path, enabled):
+    """Save color detection toggle for a node."""
+    meta = load_meta(template_path)
+    meta["use_color_detect"] = bool(enabled)
+    save_meta(template_path, meta)
+
+
+def get_color_detect(template_path):
+    """Get color detection toggle for a node. Default: False."""
+    meta = load_meta(template_path)
+    return meta.get("use_color_detect", False)
+
+
 # ── Stubs (for backward compatibility) ────────────────────────
 
 

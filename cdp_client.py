@@ -22,6 +22,25 @@ import base64
 import threading
 import time
 
+# ── Per-port connection serialization ──────────────────────────
+# Prevents 20+ threads from hammering Chrome's /json endpoint simultaneously.
+# Each port gets its own lock; threads queue up instead of all hitting at once.
+_port_locks = {}        # port -> threading.Lock
+_port_locks_lock = threading.Lock()  # protects _port_locks dict creation
+
+# Tab list cache — avoid redundant /json calls when multiple threads
+# connect to different tabs on the same port within a short window.
+_tab_cache = {}         # port -> (timestamp, tabs_list)
+_TAB_CACHE_TTL = 2.0    # seconds
+
+
+def _get_port_lock(port):
+    """Get or create a per-port lock."""
+    with _port_locks_lock:
+        if port not in _port_locks:
+            _port_locks[port] = threading.Lock()
+        return _port_locks[port]
+
 
 class CDPClient:
     """Lightweight CDP client using WebSocket connection to a Chrome tab."""
@@ -48,21 +67,37 @@ class CDPClient:
         import websocket
         self._ws = websocket.create_connection(
             self._ws_url,
-            timeout=10,
+            timeout=20,  # Increased from 10s — Chrome under load needs more time
             enable_multithread=True,
             suppress_origin=True,  # Chrome rejects non-localhost Origin headers with 403
         )
     
     @staticmethod
     def list_tabs(port=9222):
-        """List all page tabs on a Chrome instance."""
+        """List all page tabs on a Chrome instance.
+        
+        Uses a short-lived cache (2s TTL) to avoid redundant HTTP calls
+        when multiple threads connect to different tabs on the same port.
+        """
+        # Check cache first
+        cached = _tab_cache.get(port)
+        if cached and (time.time() - cached[0]) < _TAB_CACHE_TTL:
+            return list(cached[1])  # return copy to prevent mutation
+        
         try:
             resp = urllib.request.urlopen(
                 f"http://localhost:{port}/json",
-                timeout=5
+                timeout=15  # Increased from 5s — Chrome under load needs more time
             )
             targets = json.loads(resp.read().decode())
-            return [t for t in targets if t.get("type") == "page"]
+            result = [t for t in targets if t.get("type") == "page"]
+            # Sort by tab ID for deterministic order across calls.
+            # Chrome /json does NOT guarantee visual tab order — without sorting,
+            # phone names scanned during Quick Launch can mismatch with the tab
+            # that the worker thread actually connects to later.
+            result.sort(key=lambda t: t.get("id", ""))
+            _tab_cache[port] = (time.time(), result)
+            return result
         except Exception as e:
             return []
     
@@ -71,24 +106,29 @@ class CDPClient:
         """
         Connect to a Chrome tab by visual index.
         Returns CDPClient instance or raises ConnectionError.
+        
+        Uses per-port lock to serialize connections — prevents 20+ threads
+        from simultaneously calling /json on the same Chrome instance.
         """
-        tabs = CDPClient.list_tabs(port)
-        if not tabs:
-            raise ConnectionError(f"No tabs found on port {port}")
-        if tab_index >= len(tabs):
-            raise ConnectionError(
-                f"Tab {tab_index} out of range (only {len(tabs)} tabs on port {port})"
-            )
-        
-        tab = tabs[tab_index]
-        ws_url = tab.get("webSocketDebuggerUrl")
-        if not ws_url:
-            raise ConnectionError(
-                f"Tab {tab_index} has no webSocketDebuggerUrl — "
-                "is another debugger already attached?"
-            )
-        
-        return CDPClient(ws_url, tab_info=tab)
+        port_lock = _get_port_lock(port)
+        with port_lock:
+            tabs = CDPClient.list_tabs(port)
+            if not tabs:
+                raise ConnectionError(f"No tabs found on port {port}")
+            if tab_index >= len(tabs):
+                raise ConnectionError(
+                    f"Tab {tab_index} out of range (only {len(tabs)} tabs on port {port})"
+                )
+            
+            tab = tabs[tab_index]
+            ws_url = tab.get("webSocketDebuggerUrl")
+            if not ws_url:
+                raise ConnectionError(
+                    f"Tab {tab_index} has no webSocketDebuggerUrl — "
+                    "is another debugger already attached?"
+                )
+            
+            return CDPClient(ws_url, tab_info=tab)
     
     def _send(self, method, params=None, timeout=15):
         """Send CDP command and wait for response."""
