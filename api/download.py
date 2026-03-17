@@ -14,8 +14,8 @@ from http.server import BaseHTTPRequestHandler
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
-DOWNLOAD_URL = os.environ.get("DOWNLOAD_URL", "")
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
+DOWNLOAD_URL = os.environ.get("DOWNLOAD_URL", "").strip()
 
 # Parse owner/repo and tag from DOWNLOAD_URL
 # e.g. https://github.com/nhatpse/lordnine-bot/releases/download/v3.19.2/LordNineBot_v3.19.2_update.zip

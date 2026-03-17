@@ -20,11 +20,11 @@ from urllib.parse import urlparse, parse_qs
 
 
 # Read config from Vercel environment variables
-LATEST_VERSION = os.environ.get("LATEST_VERSION", "")
-DOWNLOAD_URL = os.environ.get("DOWNLOAD_URL", "")
-CHANGELOG = os.environ.get("CHANGELOG", "Bug fixes and improvements.").replace("\\n", "\n")
-UPDATE_SIZE = int(os.environ.get("UPDATE_SIZE", "0") or "0")
-UPDATE_SHA256 = os.environ.get("UPDATE_SHA256", "")
+LATEST_VERSION = os.environ.get("LATEST_VERSION", "").strip()
+DOWNLOAD_URL = os.environ.get("DOWNLOAD_URL", "").strip()
+CHANGELOG = os.environ.get("CHANGELOG", "Bug fixes and improvements.").strip().replace("\\n", "\n")
+UPDATE_SIZE = int(os.environ.get("UPDATE_SIZE", "0").strip() or "0")
+UPDATE_SHA256 = os.environ.get("UPDATE_SHA256", "").strip()
 
 
 def _parse_version(v):
