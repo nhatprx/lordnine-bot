@@ -406,3 +406,53 @@ class ChromeManager:
         
         return opened, errors, phone_names
 
+    def scan_phone_names(self, port):
+        """Read-only scan: get phone names from each tab without clicking.
+        
+        Returns:
+            dict: {tab_idx: phone_name}
+        """
+        from cdp_client import CDPClient
+        phone_names = {}
+        
+        try:
+            page_targets = CDPClient.list_tabs(port)
+            rf_targets = [t for t in page_targets if 
+                         ("cloudemulator" in t.get("url", "") or 
+                          "redfinger" in t.get("url", "") or
+                          "phone" in t.get("url", ""))]
+            if not rf_targets:
+                rf_targets = page_targets
+            
+            for tab_idx, target in enumerate(rf_targets):
+                ws_url = target.get("webSocketDebuggerUrl")
+                if not ws_url:
+                    continue
+                cdp = None
+                try:
+                    cdp = CDPClient(ws_url, target)
+                    # Read phone name from page title or card element
+                    name = cdp.evaluate("""
+                        (() => {
+                            // Try iframe/active phone title
+                            const title = document.querySelector('.phone-name, .device-name, [class*="phoneName"]');
+                            if (title) return title.innerText.trim();
+                            // Try card name
+                            const card = document.querySelector('div.phone-col.grid-item div.single-line, [class*="name"] span');
+                            if (card) return card.innerText.trim();
+                            // Fallback: page title
+                            return document.title || null;
+                        })()
+                    """)
+                    if name:
+                        phone_names[tab_idx] = name
+                except Exception:
+                    pass
+                finally:
+                    if cdp:
+                        try: cdp.close()
+                        except: pass
+        except Exception:
+            pass
+        
+        return phone_names

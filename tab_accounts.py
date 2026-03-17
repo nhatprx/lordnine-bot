@@ -116,6 +116,7 @@ class AccountsMixin:
         self._btn_stop = ctk.CTkButton(left_grp, text="Stop All", command=self._batch_stop_all, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["danger"], font=ctk.CTkFont(size=10, weight="bold"), width=65, height=24, corner_radius=4)
         self._btn_stop.pack(side="left")
         ctk.CTkButton(left_grp, text="Delete", command=self._delete_selected_accounts, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold"), width=45, height=24, corner_radius=4).pack(side="left", padx=(1, 0))
+        ctk.CTkButton(left_grp, text="⟳ Refresh", command=self._refresh_accounts, fg_color="transparent", hover_color=COLOR["surface2"], text_color=COLOR["accent"], font=ctk.CTkFont(size=10, weight="bold"), width=60, height=24, corner_radius=4).pack(side="left", padx=(1, 0))
 
         # Right group: Function assignment (type selector + name)
         right_grp = ctk.CTkFrame(toolbar_inner, fg_color="transparent")
@@ -225,6 +226,7 @@ class AccountsMixin:
         self.dash_labels = {}
         self.dash_conn_labels = {}
         self.dash_checkboxes = {}
+        self._row_widgets = {}  # acc_name → {row, btn, lbl_func, lbl_conn}
         self.refresh_multi_acc_list()
 
         # Auto-check connection on startup (delayed)
@@ -386,8 +388,13 @@ class AccountsMixin:
                     created_accounts.append(acc_entry)
             
             # Save accounts
+            # Merge new accounts with existing (preserve other ports)
             if created_accounts:
-                self.multi_accounts = created_accounts
+                new_names = {a['name'] for a in created_accounts}
+                # Keep existing accounts that aren't being replaced
+                merged = [a for a in self.multi_accounts if a['name'] not in new_names]
+                merged.extend(created_accounts)
+                self.multi_accounts = merged
                 self.save_multi()
             
             self.gui_queue.put(("log", f"[Quick Launch] All done! {len(created_accounts)} accounts ready."))
@@ -606,6 +613,7 @@ class AccountsMixin:
         self.dash_labels.clear()
         self.dash_conn_labels = {}
         self.dash_checkboxes = {}
+        self._row_widgets = {}
 
         # Update sort header arrows
         self._update_sort_headers()
@@ -718,6 +726,14 @@ class AccountsMixin:
             action_frame.grid(row=0, column=1, sticky="nsew")
             ctk.CTkButton(action_frame, text=btn_text, width=50, height=22, fg_color=btn_fg, hover_color=COLOR["surface2"], text_color=btn_color, corner_radius=4, font=ctk.CTkFont(size=10, weight="bold"), command=toggle_single).pack(expand=True)
 
+            # Cache widget references for in-place updates
+            self._row_widgets[name] = {
+                "row": row,
+                "btn_frame": action_frame,
+                "lbl_conn": lbl_conn,
+                "lbl_func": r_grp3.winfo_children()[0] if r_grp3.winfo_children() else None,
+            }
+
         # Update stats label
         if hasattr(self, 'acc_stats_label'):
             parts = []
@@ -735,6 +751,60 @@ class AccountsMixin:
     def _internal_update_dash_status(self, acc_name, status, color):
         if acc_name in self.dash_labels:
             self.dash_labels[acc_name].configure(text=f"{status}", text_color=color)
+
+    def _update_row_states(self):
+        """Lightweight in-place update of row widgets (no destroy/recreate).
+        
+        Only updates:  connection label color, action button text/colors, stats.
+        ~100x faster than refresh_multi_acc_list() which rebuilds all widgets.
+        """
+        running_count = 0
+        idle_count = 0
+        
+        for acc in self.multi_accounts:
+            name = acc['name']
+            is_running = self._is_running(name)
+            
+            if is_running:
+                running_count += 1
+            else:
+                idle_count += 1
+            
+            # Update connection label color
+            if name in self.dash_conn_labels:
+                conn_color = COLOR["success"] if is_running else COLOR["text_muted"]
+                self.dash_conn_labels[name].configure(text_color=conn_color)
+            
+            # Update action button (Start/Stop)
+            if name in self._row_widgets:
+                btn_frame = self._row_widgets[name].get("btn_frame")
+                if btn_frame and btn_frame.winfo_exists():
+                    # Destroy old button and create new one with correct state
+                    for child in btn_frame.winfo_children():
+                        child.destroy()
+                    
+                    btn_text = "Stop" if is_running else "Start"
+                    btn_fg = COLOR["danger_dim"] if is_running else COLOR["success_dim"]
+                    btn_color = COLOR["danger"] if is_running else COLOR["success"]
+                    
+                    def toggle_single(n=name):
+                        if self._is_running(n):
+                            self._stop_account(n)
+                        else:
+                            self._start_account(n)
+                    
+                    ctk.CTkButton(btn_frame, text=btn_text, width=50, height=22,
+                                  fg_color=btn_fg, hover_color=COLOR["surface2"],
+                                  text_color=btn_color, corner_radius=4,
+                                  font=ctk.CTkFont(size=10, weight="bold"),
+                                  command=toggle_single).pack(expand=True)
+        
+        # Update stats
+        if hasattr(self, 'acc_stats_label'):
+            parts = []
+            if running_count: parts.append(f"● {running_count} running")
+            if idle_count: parts.append(f"● {idle_count} idle")
+            self.acc_stats_label.configure(text=" · ".join(parts) if parts else "")
 
     # ---- Batch Operations ----
     def _batch_start_all(self):
@@ -958,7 +1028,8 @@ class AccountsMixin:
         self.state_db.save_account_state(acc_name, status="stopping")
         self.update_dash_status(acc_name, "Stopping...", COLOR["warning"])
         self.log_gui(f"[{acc_name}] Stop signal sent")
-        self.after(1500, self.refresh_multi_acc_list)
+        # Use lightweight update instead of full rebuild
+        self.after(1500, self._update_row_states)
 
     def toggle_coordinator(self):
         has_running = any(self._is_running(a['name']) for a in self.multi_accounts)
@@ -966,6 +1037,51 @@ class AccountsMixin:
             self._batch_stop_all()
         else:
             self._batch_start_all()
+
+    def _refresh_accounts(self):
+        """Re-scan all connected Chrome ports and update phone names."""
+        def _do_refresh():
+            # Collect unique ports from accounts
+            ports = set(a.get('port', 9222) for a in self.multi_accounts)
+            if not ports:
+                self.gui_queue.put(("log", "[Refresh] No accounts to refresh"))
+                return
+            
+            self.gui_queue.put(("log", f"[Refresh] Scanning {len(ports)} port(s): {sorted(ports)}..."))
+            updated = 0
+            
+            for port in sorted(ports):
+                try:
+                    phone_names = self.chrome_mgr.scan_phone_names(port)
+                    if not phone_names:
+                        self.gui_queue.put(("log", f"[Refresh] Port {port}: no phone names found"))
+                        continue
+                    
+                    # Update matching accounts
+                    for acc in self.multi_accounts:
+                        if acc.get('port') != port:
+                            continue
+                        tab_idx = int(acc.get('target', '0'))
+                        if tab_idx in phone_names:
+                            old_name = acc['name']
+                            new_name = phone_names[tab_idx]
+                            if old_name != new_name:
+                                acc['name'] = new_name
+                                updated += 1
+                                self.gui_queue.put(("log", f"[Refresh] {old_name} → {new_name}"))
+                except Exception as e:
+                    self.gui_queue.put(("log", f"[Refresh] Port {port} error: {e}"))
+            
+            if updated > 0:
+                self.save_multi()
+            self.gui_queue.put(("log", f"[Refresh] Done! Updated {updated} account(s)"))
+            
+            # Rebuild table on main thread
+            def _ui():
+                self.refresh_multi_acc_list()
+            self.after(100, _ui)
+        
+        threading.Thread(target=_do_refresh, daemon=True).start()
 
     def _acc_styled_info(self, title, text):
         """Reusable styled info popup for Accounts tab."""

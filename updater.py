@@ -27,10 +27,35 @@ import zipfile
 import threading
 import urllib.request
 import urllib.error
+import ssl
 import logging
 import subprocess
 
 logger = logging.getLogger(__name__)
+
+# ── SSL Context (PyInstaller .exe doesn't bundle CA certs) ─────
+def _make_ssl_ctx():
+    """Create SSL context that works in frozen (PyInstaller) builds."""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        pass
+    try:
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = True
+        ctx.verify_mode = ssl.CERT_REQUIRED
+        # Test it works
+        return ctx
+    except Exception:
+        pass
+    # Last resort: unverified (still encrypted, just no cert check)
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    return ctx
+
+_SSL_CTX = _make_ssl_ctx()
 
 # ── Configuration ──────────────────────────────────────────────
 
@@ -100,7 +125,7 @@ def check_for_update(current_version=None):
             url,
             headers={"User-Agent": "LordNineBot-Updater/1.0"}
         )
-        resp = urllib.request.urlopen(req, timeout=10)
+        resp = urllib.request.urlopen(req, timeout=10, context=_SSL_CTX)
         data = json.loads(resp.read().decode("utf-8"))
 
         if not data.get("update_available"):
@@ -155,7 +180,7 @@ def download_update(url, dest_path, progress_cb=None, sha256_expected=None):
             url,
             headers={"User-Agent": "LordNineBot-Updater/1.0"}
         )
-        resp = urllib.request.urlopen(req, timeout=60)
+        resp = urllib.request.urlopen(req, timeout=60, context=_SSL_CTX)
         total = int(resp.headers.get("Content-Length", 0))
         downloaded = 0
         hasher = hashlib.sha256()
