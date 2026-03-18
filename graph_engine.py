@@ -220,33 +220,61 @@ class GraphEngine:
             return self.get_next_node(node_id, "false")
 
     def _exec_click(self, node_id, ndata, threshold_val):
+        import random
+
         img_name = ndata.get("image_name")
         filepath = self.tracked_icons.get(img_name)
 
         if not filepath or not os.path.exists(filepath):
             self.status_fn(f"Click [{img_name}] → NOT FOUND", "danger")
             self.log_fn(f"[FLOWCHART] Click target '{img_name}' image not found. Skipping.")
-        else:
-            self.status_fn(f"Clicking: {img_name}...", "warning")
-            self.log_fn(f"[FLOWCHART] Looking for '{img_name}' to click...")
-
-            use_color = get_color_detect(filepath)
-            frame_bytes = self._capture_frame()
-            res = self.vision.find_template_on_screen(
-                filepath, threshold=threshold_val,
-                debug=False, frame_bytes=frame_bytes,
-                use_color=use_color,
-            )
-
-            if res:
-                cx, cy = res[0], res[1]
-                self.log_fn(f"[FLOWCHART] Found '{img_name}' at ({cx}, {cy}). Clicking...")
-                self.bot_instance.click_at(cx, cy)
-                self.status_fn(f"Click [{img_name}] → OK", "success")
-                self.log_fn(f"[FLOWCHART] Clicked '{img_name}'")
+        elif ndata.get("hard_click"):
+            # ── HARD CLICK: skip detection, click at learned position ──
+            from node_features import get_click_zone
+            zone = get_click_zone(filepath)
+            if zone:
+                cx, cy, w, h = zone
+                rx = cx + random.randint(-w * 35 // 100, w * 35 // 100)
+                ry = cy + random.randint(-h * 35 // 100, h * 35 // 100)
+                self.bot_instance.click_at(rx, ry, randomize=False)
+                self.status_fn(f"⚡ Click [{img_name}] → OK", "success")
+                self.log_fn(f"[FLOWCHART] ⚡ Hard Click '{img_name}' at ({rx},{ry})")
             else:
-                self.status_fn(f"Click [{img_name}] → NOT VISIBLE", "warning")
-                self.log_fn(f"[FLOWCHART] '{img_name}' not on screen. Skipping click.")
+                # No learned position yet — fall back to detection
+                self.log_fn(f"[FLOWCHART] ⚡ Hard Click: No learned position for '{img_name}'. Falling back to detection.")
+                self._click_by_detection(img_name, filepath, threshold_val)
+        else:
+            # ── Normal detect-then-click ──
+            self._click_by_detection(img_name, filepath, threshold_val)
 
         time.sleep(0.3)
         return self.get_next_node(node_id, "out")
+
+    def _click_by_detection(self, img_name, filepath, threshold_val):
+        """Detect image on screen and click at found position."""
+        self.status_fn(f"Clicking: {img_name}...", "warning")
+        self.log_fn(f"[FLOWCHART] Looking for '{img_name}' to click...")
+
+        use_color = get_color_detect(filepath)
+        frame_bytes = self._capture_frame()
+        res = self.vision.find_template_on_screen(
+            filepath, threshold=threshold_val,
+            debug=False, frame_bytes=frame_bytes,
+            use_color=use_color,
+        )
+
+        if res:
+            cx, cy = res[0], res[1]
+            self.log_fn(f"[FLOWCHART] Found '{img_name}' at ({cx}, {cy}). Clicking...")
+            self.bot_instance.click_at(cx, cy)
+            self.status_fn(f"Click [{img_name}] → OK", "success")
+            self.log_fn(f"[FLOWCHART] Clicked '{img_name}'")
+            # Update learned position for future hard clicks
+            try:
+                from node_features import update_learned_position
+                update_learned_position(filepath, cx, cy, res[2])
+            except Exception:
+                pass
+        else:
+            self.status_fn(f"Click [{img_name}] → NOT VISIBLE", "warning")
+            self.log_fn(f"[FLOWCHART] '{img_name}' not on screen. Skipping click.")

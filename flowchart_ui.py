@@ -336,7 +336,8 @@ class FlowchartUI(ctk.CTkCanvas):
             elif n["type"] == "Start":
                 title = "START"
             elif n["type"] == "Click":
-                title = f"Click\n{n['data'].get('image_name','None')}"
+                hc = "⚡ " if n['data'].get('hard_click') else ""
+                title = f"{hc}Click\n{n['data'].get('image_name','None')}"
             elif n["type"] == "End":
                 title = "END"
             
@@ -518,7 +519,7 @@ class FlowchartUI(ctk.CTkCanvas):
         elif n["type"] == "Delay":
             menu.add_command(label="  Set Delay Time...  ", command=lambda: self.config_delay(nid))
         elif n["type"] == "Click":
-            menu.add_command(label="  Select Target Image...  ", command=lambda: self.config_click(nid))
+            menu.add_command(label="  Configure Click...  ", command=lambda: self.config_click(nid))
             
         if n["type"] != "Start":
             menu.add_separator()
@@ -625,13 +626,92 @@ class FlowchartUI(ctk.CTkCanvas):
         if not images:
             show_styled_info(self, "No images", "Track images in the Setup tab first")
             return
-        selected = show_selection_dialog(
-            self, "Select Click Target", images,
-            title_color=COLOR["node_click"],
-            item_color=COLOR["node_click"], item_hover="#BE123C"
+
+        node_data = self.nodes[nid]["data"]
+        current_image = node_data.get("image_name", "None")
+        current_hard = node_data.get("hard_click", False)
+
+        dialog = create_styled_dialog(self.winfo_toplevel(), "Lordbot Control", 380, 320)
+        result = {"image": None, "hard_click": current_hard}
+
+        ctk.CTkLabel(
+            dialog, text="Configure Click Node",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            text_color=COLOR["node_click"]
+        ).pack(pady=(16, 4))
+
+        ctk.CTkLabel(
+            dialog, text="Select target image to find and click",
+            font=ctk.CTkFont(size=10), text_color=COLOR["text_dim"]
+        ).pack(pady=(0, 10))
+
+        # Image selector
+        img_var = ctk.StringVar(value=current_image)
+        img_combo = ctk.CTkComboBox(
+            dialog, values=images, variable=img_var,
+            fg_color=COLOR["bg"], border_color=COLOR["text_dim"],
+            border_width=1, corner_radius=6, height=34,
+            font=ctk.CTkFont(size=12), text_color=COLOR["text"],
+            button_color=COLOR["node_click"], button_hover_color="#BE123C",
+            dropdown_fg_color=COLOR["surface2"],
+            dropdown_hover_color=COLOR["primary"],
+            dropdown_text_color=COLOR["text"],
         )
-        if selected:
-            self.nodes[nid]["data"]["image_name"] = selected
+        img_combo.pack(fill="x", padx=24, pady=(0, 12))
+
+        # Hard click toggle
+        hard_click_var = ctk.BooleanVar(value=current_hard)
+
+        hc_frame = ctk.CTkFrame(dialog, fg_color=COLOR["bg"], corner_radius=8,
+                                border_width=1, border_color=COLOR["border_subtle"])
+        hc_frame.pack(fill="x", padx=24, pady=(0, 4))
+
+        ctk.CTkCheckBox(
+            hc_frame, text="⚡ Hard Click",
+            variable=hard_click_var, onvalue=True, offvalue=False,
+            font=ctk.CTkFont(size=12, weight="bold"),
+            text_color=COLOR["warning"],
+            fg_color=COLOR["node_click"], hover_color="#BE123C",
+            corner_radius=4,
+        ).pack(side="left", padx=12, pady=10)
+
+        ctk.CTkLabel(
+            hc_frame, text="Skip detection,\nclick at learned position",
+            font=ctk.CTkFont(size=9), text_color=COLOR["text_dim"],
+            justify="left"
+        ).pack(side="left", padx=(0, 12), pady=10)
+
+        # Buttons
+        btn_row = ctk.CTkFrame(dialog, fg_color="transparent")
+        btn_row.pack(fill="x", padx=24, pady=(12, 16))
+
+        def on_ok():
+            selected = img_var.get()
+            if selected and selected in images:
+                result["image"] = selected
+                result["hard_click"] = hard_click_var.get()
+            dialog.destroy()
+
+        ctk.CTkButton(
+            btn_row, text="Apply", command=on_ok,
+            fg_color=COLOR["node_click"], hover_color="#BE123C",
+            text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6
+        ).pack(side="left", expand=True, fill="x", padx=(0, 4))
+
+        ctk.CTkButton(
+            btn_row, text="Cancel", command=dialog.destroy,
+            fg_color="transparent", hover_color=COLOR["surface2"],
+            border_width=1, border_color=COLOR["text_dim"],
+            text_color=COLOR["text_dim"], font=ctk.CTkFont(size=11, weight="bold"),
+            height=30, corner_radius=6
+        ).pack(side="left", expand=True, fill="x", padx=(4, 0))
+
+        dialog.wait_window()
+
+        if result["image"] is not None:
+            self.nodes[nid]["data"]["image_name"] = result["image"]
+            self.nodes[nid]["data"]["hard_click"] = result["hard_click"]
             self.redraw()
             if self.on_change_cb: self.on_change_cb()
             

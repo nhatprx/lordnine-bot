@@ -1,6 +1,6 @@
 # LordNine Bot — Developer Guide
 
-> **Current Version:** 3.19.8 · **Last Updated:** 2026-03-17
+> **Current Version:** 3.23.9 · **Last Updated:** 2026-03-19
 >
 > Bot automation tool for LordNine game, running on cloud phones (Redfinger) via Chrome DevTools Protocol.
 
@@ -380,6 +380,7 @@ Only shows:
 
 | Version | Date | Key Changes |
 |---------|------|-------------|
+| 3.23.9 | 2026-03-19 | ⚡ Hard Click for Loops Click nodes, configure dialog with toggle |
 | 3.19.8 | 2026-03-17 | Throttled GUI updates, file logger, macro logs → file only |
 | 3.19.7 | 2026-03-17 | CDPClient.connect() retry logic (3 attempts) |
 | 3.19.6 | 2026-03-17 | `os._exit(0)` for update, hidden batch terminal |

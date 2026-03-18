@@ -49,7 +49,7 @@ print(f"🏷️  Creating release {TAG}...")
 release_data = json.dumps({
     "tag_name": TAG,
     "name": TAG,
-    "body": f"## {TAG}\n\n- StateDB read-your-own-writes fix\n- Worker crash recovery with exponential backoff\n- Scheduler cleanup on Stop All\n- Preset import auto-stop workers\n- All 69 tests pass",
+    "body": f"## {TAG}\n\n- ⚡ Hard Click support for Click nodes in Loops (flowchart)\n- Click node configure dialog with image selector + hard click toggle\n- Normal clicks now learn position for future hard clicks\n- Fallback to detection when no learned position exists",
     "draft": False,
     "prerelease": False,
 }).encode()
