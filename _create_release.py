@@ -49,7 +49,7 @@ print(f"🏷️  Creating release {TAG}...")
 release_data = json.dumps({
     "tag_name": TAG,
     "name": TAG,
-    "body": f"## {TAG}\n\n- ⚡ Hard Click support for Click nodes in Loops (flowchart)\n- Click node configure dialog with image selector + hard click toggle\n- Normal clicks now learn position for future hard clicks\n- Fallback to detection when no learned position exists",
+    "body": f"## {TAG}\n\n- Phone death logging: logs/deaths.log with phone name, timestamp, node context\n- Death events tracked at all failure points (connection, screenshot, health check, crash)\n- ⚡ Hard Click for Loops Click nodes\n- Click node configure dialog with toggle",
     "draft": False,
     "prerelease": False,
 }).encode()

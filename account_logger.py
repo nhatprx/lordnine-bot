@@ -112,6 +112,38 @@ class AccountLogger:
         metrics.record_error(self.acc_name, msg)
         self._logger.error(f"[ERR] {msg}")
     
+    def phone_dead(self, reason: str, node_type: str = "", node_name: str = "", loop_name: str = ""):
+        """Log phone death event with full context.
+        
+        Args:
+            reason: Why the phone died (e.g. 'screenshot_timeout', 'connection_lost', 'health_check_failed')
+            node_type: Current flowchart node type (Click, Condition, Macro, Delay)
+            node_name: Current node target (image name, macro name)
+            loop_name: Which loop/function was running
+        """
+        import datetime
+        uptime_min = (time.time() - self._start_time) / 60.0
+        ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # Structured death line
+        at_node = f" at {node_type}:{node_name}" if node_type else ""
+        in_loop = f" in '{loop_name}'" if loop_name else ""
+        death_line = f"[DEAD] {self.acc_name} — {reason}{at_node}{in_loop} (uptime {uptime_min:.1f}min, port:{self.port} tab:{self.tab_index})"
+        
+        # Log to per-account file
+        self._logger.error(death_line)
+        
+        # Log to shared deaths.log for easy cross-account export
+        try:
+            deaths_path = os.path.join(_LOG_DIR, "deaths.log")
+            with open(deaths_path, "a", encoding="utf-8") as f:
+                f.write(f"{ts} {death_line}\n")
+        except Exception:
+            pass
+        
+        # Record in metrics
+        metrics.record_error(self.acc_name, f"DEAD: {reason}{at_node}")
+    
     def info(self, msg: str):
         """General info log (replaces flog)."""
         self._logger.info(msg)

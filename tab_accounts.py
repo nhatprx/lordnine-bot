@@ -1274,6 +1274,7 @@ class AccountsMixin:
                 try:
                     from account_logger import AccountLogger
                     acc_logger = AccountLogger(acc_name, port=port, tab_index=tab_idx)
+                    acc_logger.phone_dead("worker_crashed", loop_name=func_value)
                     acc_logger.error(error_msg)
                     acc_logger.summary()
                     acc_logger.close()
@@ -1449,6 +1450,7 @@ class AccountsMixin:
             self.update_dash_status(acc_name, "Connection Failed", COLOR["danger"])
             self.state_db.save_account_state(acc_name, status="connection_failed", 
                                               error_msg="Could not connect after retries")
+            acc_logger.phone_dead("connection_failed", loop_name=func_value)
             self._set_running(acc_name, False)
             if cdp_client:
                 try: cdp_client.close()
@@ -1558,6 +1560,7 @@ class AccountsMixin:
                         if connect_to_tab():
                             bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
                         else:
+                            acc_logger.phone_dead("health_check_failed", node_type=_last_node_type, node_name=_last_node_name, loop_name=func_value)
                             self.update_dash_status(acc_name, "Health Check Failed", COLOR["danger"])
                             break
             
@@ -1638,10 +1641,14 @@ class AccountsMixin:
                     _scan_t0 = time.time()
                     
                     found_res = None
+                    _cond_ss_fails = 0
                     for attempt in range(2):
                         frame_bytes = take_screenshot(quality=50)
                         
                         if frame_bytes is None:
+                            _cond_ss_fails += 1
+                            if _cond_ss_fails >= 2:
+                                acc_logger.phone_dead("screenshot_failed", node_type="Condition", node_name=img_name, loop_name=func_value)
                             continue
                         
                         try:
@@ -1698,6 +1705,7 @@ class AccountsMixin:
                         if connect_to_tab():
                             bot_instance = BotAction(cdp_client=cdp_client, debug_visual_var=self.debug_visual_var)
                         else:
+                            acc_logger.phone_dead("macro_reconnect_failed", node_type="Macro", node_name=mac_name, loop_name=func_value)
                             self.update_dash_status(acc_name, "Reconnect Failed", COLOR["danger"])
                             break
                 else:
@@ -1723,6 +1731,7 @@ class AccountsMixin:
                     frame_bytes = take_screenshot(quality=50)
                     
                     if frame_bytes is None:
+                        acc_logger.phone_dead("screenshot_failed", node_type="Click", node_name=img_name, loop_name=func_value)
                         acc_logger.error(f"Click SKIP: '{img_name}' screenshot failed")
                     elif frame_bytes:
                         if is_text:
