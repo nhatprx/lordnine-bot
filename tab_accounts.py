@@ -1467,7 +1467,7 @@ class AccountsMixin:
 
         # Keep-alive: prevent Redfinger idle timeout (5 min)
         _last_keepalive = time.time()
-        _KEEPALIVE_INTERVAL = 120  # Touch tap every 2 minutes (safe margin for 5 min timeout)
+        _KEEPALIVE_INTERVAL = 90  # Touch tap every 90s (safe margin for 5 min timeout)
         
         # v3.21: Connection health monitoring
         _last_health_check = time.time()
@@ -1540,7 +1540,14 @@ class AccountsMixin:
             # ── Keep-alive: prevent Redfinger idle timeout ──
             if cdp_client and (time.time() - _last_keepalive) >= _KEEPALIVE_INTERVAL:
                 try:
-                    cdp_client.touch_tap(1, 1)  # Touch event for Android cloud phone
+                    # Touch top-edge (760,5) — status bar area, safe to tap
+                    # without accidentally clicking game UI elements
+                    cdp_client.touch_tap(760, 5)
+                except Exception:
+                    pass
+                try:
+                    # JS backup: scroll or focus event to keep Chrome alive
+                    cdp_client.execute_js("void(0)")
                 except Exception:
                     pass
                 _last_keepalive = time.time()

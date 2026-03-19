@@ -218,11 +218,16 @@ def _run_marker_step(step_data, idx, total,
     last_log_time = 0
     last_poll_time = time.time()
     start_time = time.time()
+    _null_frame_count = 0
+    _MARKER_KEEPALIVE = 90  # Touch every 90s to prevent Redfinger idle timeout
+    _last_marker_keepalive = time.time()
 
     while True:
-        # Timeout check
-        if marker_timeout > 0 and (time.time() - start_time) > marker_timeout:
-            log_fn(f"    - Marker TIMEOUT ({marker_timeout:.0f}s): '{marker}'. Macro FAILED.")
+        # Timeout check — runs BEFORE and AFTER screenshot to catch
+        # timeouts even when screenshots are slow/failing
+        elapsed_total = time.time() - start_time
+        if marker_timeout > 0 and elapsed_total > marker_timeout:
+            log_fn(f"    - Marker TIMEOUT ({marker_timeout:.0f}s, elapsed {elapsed_total:.1f}s): '{marker}'. Macro FAILED.")
             return False
 
         if not is_running_fn():
@@ -234,8 +239,29 @@ def _run_marker_step(step_data, idx, total,
         # A None frame causes _find() to return None, which in
         # "Wait until Disappear" mode is falsely treated as "disappeared".
         if frame_bytes is None:
-            time.sleep(0.5)
+            _null_frame_count += 1
+            if _null_frame_count == 3:
+                log_fn(f"    - ⚠ Screenshot failing ({_null_frame_count}x), marker still waiting...")
+            elif _null_frame_count % 10 == 0:
+                log_fn(f"    - ⚠ Screenshot failing ({_null_frame_count}x, {elapsed_total:.0f}s elapsed)")
+            # Re-check timeout BEFORE continuing — don't let screenshot
+            # failures silently skip the timeout check
+            if marker_timeout > 0 and (time.time() - start_time) > marker_timeout:
+                log_fn(f"    - Marker TIMEOUT ({marker_timeout:.0f}s, elapsed {time.time()-start_time:.1f}s, {_null_frame_count} null frames): '{marker}'. Macro FAILED.")
+                return False
+            time.sleep(0.3)
             continue
+
+        _null_frame_count = 0  # reset on successful screenshot
+
+        # Keepalive: during long marker waits (e.g., 210s automove),
+        # touch the status bar to prevent Redfinger idle timeout
+        if cdp_client and (time.time() - _last_marker_keepalive) >= _MARKER_KEEPALIVE:
+            try:
+                cdp_client.touch_tap(760, 5)
+            except Exception:
+                pass
+            _last_marker_keepalive = time.time()
 
         # Fail image check
         if fail_path and os.path.exists(fail_path):

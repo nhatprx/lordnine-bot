@@ -108,7 +108,7 @@ class PortScheduler:
         self._current_gap = self._GAP_MIN
         logger.info(f"[ShotSched:{self.port}] Reset — circuit closed, gap restored")
 
-    def request(self, cdp_client, tab_index, quality=70, timeout=25):
+    def request(self, cdp_client, tab_index, quality=70, timeout=8):
         """Submit a screenshot request.
 
         Blocks until the result is ready or timeout expires.

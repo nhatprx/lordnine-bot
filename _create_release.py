@@ -49,7 +49,7 @@ print(f"🏷️  Creating release {TAG}...")
 release_data = json.dumps({
     "tag_name": TAG,
     "name": TAG,
-    "body": f"## {TAG}\n\n- Phone death logging: logs/deaths.log with phone name, timestamp, node context\n- Death events tracked at all failure points (connection, screenshot, health check, crash)\n- ⚡ Hard Click for Loops Click nodes\n- Click node configure dialog with toggle",
+    "body": f"## {TAG}\n\n- Fix marker timeout bug: timeout check now runs after screenshot fails (was being skipped)\n- Screenshot request timeout: 25s → 8s (prevents blocking marker timeout)\n- Keepalive: touch status bar (760,5) every 90s + JS backup + marker-internal keepalive\n- Enhanced logging: null frame count, elapsed time in timeout messages",
     "draft": False,
     "prerelease": False,
 }).encode()

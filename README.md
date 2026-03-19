@@ -1,6 +1,6 @@
 # LordNine Bot — Developer Guide
 
-> **Current Version:** 3.24.0 · **Last Updated:** 2026-03-19
+> **Current Version:** 3.24.1 · **Last Updated:** 2026-03-19
 >
 > Bot automation tool for LordNine game, running on cloud phones (Redfinger) via Chrome DevTools Protocol.
 
@@ -380,6 +380,7 @@ Only shows:
 
 | Version | Date | Key Changes |
 |---------|------|-------------|
+| 3.24.1 | 2026-03-19 | Fix marker timeout bug, screenshot timeout 25s→8s, keepalive improvement |
 | 3.24.0 | 2026-03-19 | Phone death logging (logs/deaths.log), ⚡ Hard Click for Loops Click nodes |
 | 3.23.9 | 2026-03-19 | ⚡ Hard Click for Loops Click nodes, configure dialog with toggle |
 | 3.19.8 | 2026-03-17 | Throttled GUI updates, file logger, macro logs → file only |
