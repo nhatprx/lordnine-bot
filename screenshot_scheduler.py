@@ -210,10 +210,20 @@ class PortScheduler:
         if (now - self._last_cache_cleanup) < self._CACHE_CLEANUP_INTERVAL:
             return
         self._last_cache_cleanup = now
+        
+        # Clean entries older than 2x TTL (tighter than previous 5x)
         stale_keys = [k for k, (ts, _) in self._frame_cache.items()
-                      if (now - ts) > self._CACHE_TTL * 5]
+                      if (now - ts) > self._CACHE_TTL * 2]
         for k in stale_keys:
             del self._frame_cache[k]
+        
+        # Hard cap: if cache grows beyond 50 entries, evict oldest
+        if len(self._frame_cache) > 50:
+            sorted_keys = sorted(self._frame_cache.keys(),
+                               key=lambda k: self._frame_cache[k][0])
+            for k in sorted_keys[:len(self._frame_cache) - 30]:
+                del self._frame_cache[k]
+        
         if stale_keys:
             logger.debug(f"[ShotSched:{self.port}] Cleaned {len(stale_keys)} stale cache entries")
 

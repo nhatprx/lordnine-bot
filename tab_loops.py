@@ -29,7 +29,7 @@ class LoopsMixin:
         def _blur_loop_search(event=None):
             if hasattr(self, 'loop_search_entry'):
                 try: self.tab_loop.focus_set()
-                except: pass
+                except Exception: pass
         self._blur_loop_search = _blur_loop_search
 
         # ====== LEFT PANE (Panel Card) ======

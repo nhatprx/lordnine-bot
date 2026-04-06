@@ -6,3 +6,5 @@ mss
 customtkinter
 pillow
 pyarmor
+websocket-client
+certifi

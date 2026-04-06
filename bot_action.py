@@ -22,7 +22,7 @@ class BotAction:
         # Cache debug flag at init (avoid tkinter access from worker threads)
         try:
             self._show_debug = debug_visual_var.get() if debug_visual_var else False
-        except:
+        except Exception:
             self._show_debug = False
         
         # Only create legacy CDP session if using Playwright page

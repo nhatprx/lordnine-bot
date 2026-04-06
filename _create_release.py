@@ -49,7 +49,7 @@ print(f"🏷️  Creating release {TAG}...")
 release_data = json.dumps({
     "tag_name": TAG,
     "name": TAG,
-    "body": f"## {TAG}\n\n- Fix marker timeout bug: timeout check now runs after screenshot fails (was being skipped)\n- Screenshot request timeout: 25s → 8s (prevents blocking marker timeout)\n- Keepalive: touch status bar (760,5) every 90s + JS backup + marker-internal keepalive\n- Enhanced logging: null frame count, elapsed time in timeout messages",
+    "body": f"## {TAG}\n\n- **GUI Performance**: Optimized for 100+ accounts (coalesced dashboard rendering, adaptive tick timing 16-100ms, batch log inserts, 500ms status update throttle).\n- **Faster Batch Start**: Staggered starts now scale dynamically (groups of 5 every 2s) to reduce launch time from 150s to 40s for 100 accounts.\n- **Dynamic Phone Names**: Dashboard now syncs new phone names from CDP during refresh without breaking actively running worker threads.",
     "draft": False,
     "prerelease": False,
 }).encode()

@@ -298,7 +298,8 @@ class StateDB:
         self.flush()  # Final flush
         if self._writer_conn:
             try: self._writer_conn.close()
-            except: pass
+            except Exception:
+                pass
     
     def get_recent_logs(self, account=None, limit=100):
         """Get recent log entries."""
@@ -352,7 +353,7 @@ class StateDB:
         try:
             conn = self._get_conn()
             conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
-        except:
+        except Exception:
             pass
     
     def cleanup_old_logs(self, max_per_account=2000):
@@ -369,5 +370,5 @@ class StateDB:
                 )
             """)
             conn.commit()
-        except:
+        except Exception:
             pass

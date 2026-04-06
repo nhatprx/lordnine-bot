@@ -9,6 +9,7 @@ Premium UI with sidebar navigation.
   - constants.py    → COLOR palette, get_page_by_visual_index
 """
 
+import logging
 import customtkinter as ctk
 import time
 import os
@@ -156,7 +157,8 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             sys.exit(1)
         
         self.geometry("1000x650")
-        self.resizable(False, False)
+        self.minsize(900, 550)
+        self.resizable(True, True)
         self.configure(fg_color=COLOR["bg"])
 
         self.vision = Vision()
@@ -172,7 +174,8 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                 _saved_debug = _cfg.get("debug_visual", True)
                 _saved_port = str(_cfg.get("port", 9222))
                 _saved_tab = str(_cfg.get("tab", 0))
-        except: pass
+        except Exception:
+            pass
         self.debug_visual_var = ctk.BooleanVar(value=_saved_debug)
         self._saved_port = _saved_port
         self._saved_tab = _saved_tab
@@ -187,6 +190,10 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
         # Scale infrastructure
         self.chrome_mgr = ChromeManager()
+        # Clean up Chrome processes left from a previous crash
+        _orphans = self.chrome_mgr.cleanup_orphan_pids()
+        if _orphans:
+            logging.getLogger(__name__).info(f"[Startup] Cleaned {_orphans} orphan Chrome process(es)")
         self.state_db = StateDB()
         self.account_workers = {}
         self.account_running = {}
@@ -626,7 +633,8 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         btn_row.pack(fill="x", padx=24, pady=(0, 16))
 
         ctk.CTkButton(
-            btn_row, text="Quit", command=lambda: (self._save_config_settings(), self.destroy()),
+            btn_row, text="Quit",
+            command=lambda: (dialog.destroy(), self._graceful_shutdown()),
             fg_color=COLOR["danger"], hover_color="#8B2020",
             text_color="#FFFFFF", font=ctk.CTkFont(size=11, weight="bold"),
             height=30, corner_radius=6
@@ -639,6 +647,56 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             text_color=COLOR["text_muted"], font=ctk.CTkFont(size=11, weight="bold"),
             height=30, corner_radius=6
         ).pack(side="left", expand=True, fill="x", padx=(4, 0))
+
+    def _graceful_shutdown(self):
+        """Ordered shutdown: save config → stop workers → scheduler → DB → destroy."""
+        _logger = logging.getLogger(__name__)
+        _logger.info("[Shutdown] Graceful shutdown initiated")
+        self._save_config_settings()
+
+        # 1. Signal all workers to stop
+        if hasattr(self, 'account_running'):
+            for name in list(self.account_running.keys()):
+                self.account_running[name] = False
+        self.is_looping = False
+        self.is_coordinating = False
+        _logger.info("[Shutdown] All workers signaled to stop")
+
+        # 2. Wait for worker threads (max 5s total)
+        import time as _time
+        deadline = _time.time() + 5
+        if hasattr(self, 'account_workers'):
+            for name, t in list(self.account_workers.items()):
+                remaining = max(0.1, deadline - _time.time())
+                if t.is_alive():
+                    t.join(timeout=remaining)
+        _logger.info("[Shutdown] Worker threads joined")
+
+        # 3. Shutdown screenshot scheduler
+        if hasattr(self, 'screenshot_scheduler') and self.screenshot_scheduler:
+            try:
+                self.screenshot_scheduler.shutdown()
+                _logger.info("[Shutdown] ScreenshotScheduler stopped")
+            except Exception as e:
+                _logger.warning(f"[Shutdown] ScreenshotScheduler error: {e}")
+
+        # 4. Flush and close StateDB
+        if hasattr(self, 'state_db'):
+            try:
+                self.state_db.close()
+                _logger.info("[Shutdown] StateDB flushed and closed")
+            except Exception as e:
+                _logger.warning(f"[Shutdown] StateDB error: {e}")
+
+        # 5. Save Chrome PIDs for orphan cleanup on next start
+        if hasattr(self, 'chrome_mgr'):
+            try:
+                self.chrome_mgr._save_pids()
+            except Exception:
+                pass
+
+        _logger.info("[Shutdown] Destroying GUI")
+        self.destroy()
 
     # ==================== Output Tab ====================
     def _setup_output_tab(self):
@@ -928,15 +986,16 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
     def process_gui_queue(self):
         """Process GUI queue with batching to prevent main thread saturation.
         
-        v3.20.0: Dirty-flag rendering, adaptive tick timing, skip hidden log.
+        v3.25: Optimized for 100+ accounts — larger batches, faster ticks,
+        aggressive log throttling, dashboard update coalescing.
         """
         _tick_start = time.perf_counter()
         try:
             qsize = self.gui_queue.qsize()
             
             # Aggressive drain: drop oldest messages if severely backed up
-            if qsize > 300:
-                drop_count = qsize - 100  # keep latest 100
+            if qsize > 200:
+                drop_count = qsize - 80  # keep latest 80
                 for _ in range(drop_count):
                     try:
                         self.gui_queue.get_nowait()
@@ -944,8 +1003,8 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                     except queue.Empty:
                         break
 
-            # Collect up to MAX_PER_TICK messages
-            MAX_PER_TICK = 15
+            # Collect up to MAX_PER_TICK messages — scaled up for 100 accounts
+            MAX_PER_TICK = 50
             messages = []
             for _ in range(MAX_PER_TICK):
                 try:
@@ -957,7 +1016,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
                 self.after(100, self.process_gui_queue)
                 return
             
-            # Coalesce dash_status: keep only LATEST per account
+            # Coalesce: keep only LATEST per account for dash_status
             latest_dash = {}
             log_lines = []
             other_msgs = []
@@ -978,11 +1037,15 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             for acc_name, (status, color) in latest_dash.items():
                 self._internal_update_dash_status(acc_name, status, color)
             
-            # Batch insert logs — skip if Output tab is NOT active
+            # Batch insert logs — skip entirely if Output tab not visible
+            # With 100 accounts this alone saves ~60% of tick time
             if log_lines:
                 is_output_visible = (hasattr(self, 'tab_output') and
                                      self.tab_output.winfo_ismapped())
                 if is_output_visible:
+                    # Cap log lines per tick to prevent textbox saturation
+                    if len(log_lines) > 10:
+                        log_lines = log_lines[-10:]  # keep latest
                     self._batch_log_gui(log_lines)
             
             # Process other messages
@@ -1007,22 +1070,25 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         except Exception:
             pass
 
-        # Adaptive tick: scale interval based on actual tick duration
+        # Adaptive tick: fast when busy, relaxed when idle
         _tick_ms = (time.perf_counter() - _tick_start) * 1000
-        if _tick_ms > 50:
-            next_tick = 250  # tick was slow → give main thread breathing room
-        elif self.gui_queue.qsize() > 50:
-            next_tick = 200  # queue backed up → slower ticks
+        remaining = self.gui_queue.qsize()
+        if remaining > 100:
+            next_tick = 16   # ~60 FPS drain when severely backed up
+        elif remaining > 30:
+            next_tick = 33   # ~30 FPS for moderate load
+        elif remaining > 0:
+            next_tick = 50   # messages pending, stay responsive
         else:
-            next_tick = 100  # idle → responsive
+            next_tick = 100  # idle — save CPU
         self.after(next_tick, self.process_gui_queue)
 
     # ==================== Logging ====================
     def log_gui(self, text):
-        # Cap queue at 500 items to prevent OOM if GUI freezes
-        if self.gui_queue.qsize() > 500:
+        # Cap queue at 200 items — tighter for 100+ accounts
+        if self.gui_queue.qsize() > 200:
             try: self.gui_queue.get_nowait()
-            except: pass
+            except Exception: pass
         self.gui_queue.put(("log", text))
 
     def _batch_log_gui(self, lines):

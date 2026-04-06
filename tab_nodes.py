@@ -36,7 +36,7 @@ class NodesMixin:
         def _blur_search_entry(event=None):
             if hasattr(self, 'node_search_entry'):
                 try: self.tab_setup.focus_set()
-                except: pass
+                except Exception: pass
         self._blur_search_entry = _blur_search_entry
 
         # ====== LEFT PANE (Panel card) ======
@@ -210,7 +210,7 @@ class NodesMixin:
                 with open("config.json", "r") as f:
                     cfg = json.load(f)
                 saved_thresh = cfg.get("threshold", 0.7)
-        except: pass
+        except Exception: pass
         self.slider.set(saved_thresh)
         self.thresh_value_label.configure(text=f"{saved_thresh:.2f}")
         self._default_threshold = saved_thresh  # Global default for nodes without per-node threshold
@@ -312,16 +312,16 @@ class NodesMixin:
                     cfg = json.load(f)
             # Always capture current state of all settings
             try: cfg["debug_visual"] = self.debug_visual_var.get()
-            except: pass
+            except Exception: pass
             try: cfg["port"] = int(self.footer_port_input.get())
-            except: pass
+            except Exception: pass
             try: cfg["tab"] = int(self.footer_tab_input.get())
-            except: pass
+            except Exception: pass
             # Merge any explicit overrides
             cfg.update(kwargs)
             with open("config.json", "w") as f:
                 json.dump(cfg, f)
-        except: pass
+        except Exception: pass
 
     def _load_node_thresholds(self):
         """Load per-node thresholds from trackers/thresholds.json."""
@@ -330,7 +330,7 @@ class NodesMixin:
             if os.path.exists(path):
                 with open(path, "r") as f:
                     self.node_thresholds = json.load(f)
-        except:
+        except Exception:
             self.node_thresholds = {}
 
     def _save_node_thresholds(self):
@@ -339,7 +339,7 @@ class NodesMixin:
             path = os.path.join("trackers", "thresholds.json")
             with open(path, "w") as f:
                 json.dump(self.node_thresholds, f, indent=2)
-        except:
+        except Exception:
             pass
 
     def get_node_threshold(self, name):
@@ -541,7 +541,7 @@ class NodesMixin:
                     tab_list = " | ".join([f"[{i}] {t.get('title', '?')[:25]}" for i, t in enumerate(page_targets)])
                     self.log_gui(f"[TEST] Port {port} | Tabs: {tab_list}")
                     self.log_gui(f"[TEST] Using Tab {tab_id}")
-                except:
+                except Exception:
                     pass
                 
                 cdp_client = CDPClient.connect(port=port, tab_index=tab_id)
@@ -551,7 +551,7 @@ class NodesMixin:
             frame_bytes = None
             if cdp_client:
                 try: frame_bytes = cdp_client.screenshot()
-                except: pass
+                except Exception: pass
             
             debug_result = self.vision.find_template_on_screen(
                 filepath, threshold=threshold_val, debug=True,
@@ -597,7 +597,7 @@ class NodesMixin:
                 if cdp_client and self.debug_visual_var.get():
                     try:
                         dpr = float(cdp_client.evaluate("window.devicePixelRatio"))
-                    except:
+                    except Exception:
                         dpr = 1.0
                     css_x = x / dpr
                     css_y = y / dpr
@@ -619,7 +619,7 @@ class NodesMixin:
                             )
                         else:
                             cdp_client.evaluate(f"({js_dot})({{x: {css_x}, y: {css_y}}})")
-                    except:
+                    except Exception:
                         pass
             else:
                 self.gui_queue.put(("test_notif", (
@@ -634,7 +634,7 @@ class NodesMixin:
             # Cleanup
             if cdp_client:
                 try: cdp_client.close()
-                except: pass
+                except Exception: pass
         
         threading.Thread(target=_run_test, daemon=True).start()
 
@@ -760,7 +760,7 @@ class NodesMixin:
             try:
                 with open(path, "r", encoding="utf-8") as f:
                     self.text_nodes = json.load(f)
-            except:
+            except Exception:
                 pass
     
     def _save_text_node(self, name, search_text):
@@ -937,7 +937,7 @@ class NodesMixin:
                 self._current_preview_img = ctk.CTkImage(light_image=img, size=(dw, dh))
                 self.preview_image_label.configure(image=self._current_preview_img, text="")
                 self.preview_size_label.configure(text=f"Resolution: {w2}x{h2} px")
-            except:
+            except Exception:
                 pass
             self.recapture_btn.configure(state="normal")
             self.delete_btn.configure(state="normal")
@@ -956,7 +956,7 @@ class NodesMixin:
                 filepath = self.tracked_icons.get(name)
                 if filepath and os.path.exists(filepath):
                     try: os.remove(filepath)
-                    except: pass
+                    except Exception: pass
                 if name in self.tracked_icons:
                     del self.tracked_icons[name]
                 if self.current_selected_name == name:
@@ -980,7 +980,7 @@ class NodesMixin:
             filepath = self.tracked_icons.get(name)
             if filepath and os.path.exists(filepath):
                 try: os.remove(filepath)
-                except: pass
+                except Exception: pass
             
             if name in self.tracked_icons:
                 del self.tracked_icons[name]
@@ -1064,7 +1064,7 @@ class NodesMixin:
             port = int(port_str) if port_str.isdigit() else 9222
             tab_str = self.footer_tab_input.get().strip()
             tab_id = int(tab_str) if tab_str.isdigit() else 0
-        except:
+        except Exception:
             port, tab_id = 9222, 0
 
         cdp_client = None
@@ -1105,7 +1105,7 @@ class NodesMixin:
         finally:
             if cdp_client:
                 try: cdp_client.close()
-                except: pass
+                except Exception: pass
 
     def _precompute_and_validate(self, template_path, cap_x, cap_y):
         """Extract features + auto-validate at captured coords."""
@@ -1156,7 +1156,7 @@ class NodesMixin:
             s, f, sk = batch_precompute("trackers")
             if s > 0:
                 self.log_gui(f"[⚡ Learn] Auto-learned {s} nodes on startup")
-        except:
+        except Exception:
             pass
 
     def _learn_all_nodes(self):

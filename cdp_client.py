@@ -460,7 +460,7 @@ class CDPClient:
                 )
                 if has_canvas:
                     return frame_id
-            except:
+            except Exception:
                 continue
         
         return main_frame_id
@@ -470,7 +470,7 @@ class CDPClient:
         try:
             if self._ws:
                 self._ws.close()
-        except:
+        except Exception:
             pass
         self._connect_ws()
     
@@ -493,7 +493,7 @@ class CDPClient:
         try:
             if self._ws:
                 self._ws.close()
-        except:
+        except Exception:
             pass
         self._ws = None
     

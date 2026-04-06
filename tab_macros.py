@@ -27,7 +27,7 @@ class MacrosMixin:
         def _blur_combo_search(event=None):
             if hasattr(self, 'combo_search_entry'):
                 try: self.tab_combo.focus_set()
-                except: pass
+                except Exception: pass
         self._blur_combo_search = _blur_combo_search
 
         # ====== LEFT PANE (Panel Card) ======
@@ -529,7 +529,7 @@ class MacrosMixin:
         
         try:
             mouse_y = event.widget.winfo_rooty() + event.y
-        except:
+        except Exception:
             return
         
         # Find which position the mouse is over
@@ -542,7 +542,7 @@ class MacrosMixin:
                 if mouse_y < frame_top + frame_h / 2:
                     target_pos = pos
                     break
-            except:
+            except Exception:
                 continue
         
         # Only repack if target actually changed
@@ -1425,11 +1425,11 @@ class MacrosMixin:
                     marker_mode = step_data.get("mode", "Wait until Appear")
                     try:
                         marker_time = float(step_data.get("time", "0")) / 1000.0
-                    except:
+                    except Exception:
                         marker_time = 0
                     try:
                         marker_timeout = float(step_data.get("timeout", "0")) / 1000.0
-                    except:
+                    except Exception:
                         marker_timeout = 0
                     fail_image = step_data.get("fail_image", "None")
                     
@@ -1457,7 +1457,7 @@ class MacrosMixin:
                         frame_bytes = None
                         if cdp_client:
                             try: frame_bytes = cdp_client.screenshot()
-                            except: pass
+                            except Exception: pass
                         
                         # Fail image check
                         if fail_path and os.path.exists(fail_path):
@@ -1523,7 +1523,7 @@ class MacrosMixin:
                         try:
                             dpr = float(cdp_client.evaluate("window.devicePixelRatio")) if cdp_client else 1.0
                             self.log_gui(f"           DPR={dpr} -> css=({rx/dpr:.0f},{ry/dpr:.0f})")
-                        except: pass
+                        except Exception: pass
                         bot_instance.click_at(rx, ry, randomize=False)
                         time.sleep(random.uniform(1.2, 2.0))
                         continue
@@ -1536,7 +1536,7 @@ class MacrosMixin:
                     frame_bytes = None
                     if cdp_client:
                         try: frame_bytes = cdp_client.screenshot()
-                        except: pass
+                        except Exception: pass
                     res = self.vision.find_template_on_screen(filepath, threshold=threshold_val, debug=False, frame_bytes=frame_bytes)
                     if res:
                         x, y, score = res
@@ -1553,5 +1553,5 @@ class MacrosMixin:
         finally:
             if cdp_client:
                 try: cdp_client.close()
-                except: pass
+                except Exception: pass
         self.log_gui(f"============== MACRO FINISHED ==============")

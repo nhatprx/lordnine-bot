@@ -42,6 +42,14 @@ ALL_PY_FILES = [
     "tab_macros.py",
     "tab_loops.py",
     "tab_accounts.py",
+    "macro_runner.py",
+    "graph_engine.py",
+    "metrics.py",
+    "screenshot_scheduler.py",
+    "updater.py",
+    "version.py",
+    "config_manager.py",
+    "sync_version.py",
 ]
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -139,6 +147,10 @@ def step_build():
         "cdp_client", "license_manager", "node_features",
         "flowchart_ui", "tab_nodes", "tab_macros", "tab_loops",
         "tab_accounts",
+        "macro_runner", "graph_engine", "metrics",
+        "screenshot_scheduler", "updater", "version",
+        "config_manager",
+        "certifi",
         "websocket", "websocket._abnf", "websocket._core",
         "websocket._exceptions", "websocket._http",
         "websocket._logging", "websocket._socket",
@@ -162,6 +174,7 @@ def step_build():
         "--add-data", f"{ctk_path};customtkinter/",
         "--add-data", f"{os.path.join(build_src, 'logo.ico')};.",
         "--add-data", f"{os.path.join(build_src, 'logo.png')};.",
+        "--collect-data", "certifi",
         "--exclude-module", "matplotlib",
         "--exclude-module", "scipy",
         "--exclude-module", "pandas",

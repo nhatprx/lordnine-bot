@@ -17,9 +17,12 @@ import subprocess
 import os
 import time
 import json
+import logging
 import urllib.request
 import urllib.parse
 import signal
+
+logger = logging.getLogger(__name__)
 
 
 class ChromeManager:
@@ -42,6 +45,40 @@ class ChromeManager:
             self.base_user_data_dir = os.path.join(os.path.expanduser("~"), ".lordnine_chrome")
         
         os.makedirs(self.base_user_data_dir, exist_ok=True)
+        self._pid_file = os.path.join(self.base_user_data_dir, ".chrome_pids.json")
+    
+    def _save_pids(self):
+        """Save managed PIDs to file for crash recovery."""
+        pids = [p.pid for p in self.processes.values() 
+                if p is not None and p.poll() is None]
+        try:
+            with open(self._pid_file, "w") as f:
+                json.dump(pids, f)
+        except Exception:
+            pass
+    
+    def cleanup_orphan_pids(self):
+        """Kill Chrome instances left from a previous crash.
+        
+        Reads PIDs saved by _save_pids() and terminates them.
+        Call on startup before launching new instances.
+        """
+        if not os.path.exists(self._pid_file):
+            return 0
+        cleaned = 0
+        try:
+            with open(self._pid_file) as f:
+                old_pids = json.load(f)
+            for pid in old_pids:
+                try:
+                    os.kill(pid, signal.SIGTERM)
+                    cleaned += 1
+                except (ProcessLookupError, PermissionError, OSError):
+                    pass
+            os.remove(self._pid_file)
+        except Exception:
+            pass
+        return cleaned
     
     def _find_chrome_path(self):
         """Find Chrome executable on Windows."""
@@ -110,6 +147,7 @@ class ChromeManager:
                                      stdout=subprocess.DEVNULL, 
                                      stderr=subprocess.DEVNULL)
             self.processes[port] = proc
+            self._save_pids()
             
             # Wait for Chrome to start accepting connections
             for attempt in range(10):  # 1 second max
@@ -130,11 +168,12 @@ class ChromeManager:
                 try:
                     proc.kill()
                     proc.wait(timeout=2)
-                except:
+                except Exception:
                     pass
             del self.processes[port]
             if port in self.proxies:
                 del self.proxies[port]
+            self._save_pids()
             return True, f"Chrome on port {port} terminated"
         return False, f"No Chrome managed on port {port}"
     
@@ -198,7 +237,7 @@ class ChromeManager:
                 "tabs": tabs,
                 "proxy": self.proxies.get(port, ""),
             }
-        except:
+        except Exception:
             return None
     
     def get_all_ports_info(self):
@@ -215,7 +254,7 @@ class ChromeManager:
         try:
             resp = urllib.request.urlopen(f"http://localhost:{port}/json/version", timeout=0.15)
             return resp.status == 200
-        except:
+        except Exception:
             return False
     
     def get_next_available_port(self):
@@ -409,7 +448,7 @@ class ChromeManager:
                     if cdp:
                         try:
                             cdp.close()
-                        except:
+                        except Exception:
                             pass
         
         except Exception as e:
@@ -462,7 +501,7 @@ class ChromeManager:
                 finally:
                     if cdp:
                         try: cdp.close()
-                        except: pass
+                        except Exception: pass
         except Exception:
             pass
         

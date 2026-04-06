@@ -5,6 +5,10 @@ installer_output/
 *.exe
 *.spec
 
+# PyArmor obfuscation artifacts
+pyarmor_runtime*/
+.pyarmor/
+
 # Python cache
 __pycache__/
 *.pyc
@@ -13,10 +17,15 @@ __pycache__/
 
 # Debug output
 debug/
+logs/
 
 # Database runtime files
+*.db
 *.db-shm
 *.db-wal
+
+# Config (user-specific)
+config.json
 
 # Backup files
 *.bak
@@ -36,4 +45,10 @@ ui_mockup.html
 # License key (sensitive)
 license.key
 
-.vercel
+# Chrome PID tracking
+.chrome_pids.json
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

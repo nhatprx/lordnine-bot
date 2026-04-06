@@ -136,11 +136,11 @@ class PlaywrightPool:
                 # Last user — close everything
                 try:
                     conn['browser'].close()
-                except:
+                except Exception:
                     pass
                 try:
                     conn['pw'].stop()
-                except:
+                except Exception:
                     pass
                 del self._connections[port]
     
@@ -158,11 +158,11 @@ class PlaywrightPool:
                 old_ref_count = conn['ref_count']
                 try:
                     conn['browser'].close()
-                except:
+                except Exception:
                     pass
                 try:
                     conn['pw'].stop()
-                except:
+                except Exception:
                     pass
                 del self._connections[port]
             else:
@@ -198,10 +198,10 @@ class PlaywrightPool:
             for port, conn in list(self._connections.items()):
                 try:
                     conn['browser'].close()
-                except:
+                except Exception:
                     pass
                 try:
                     conn['pw'].stop()
-                except:
+                except Exception:
                     pass
             self._connections.clear()

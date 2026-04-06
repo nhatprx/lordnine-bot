@@ -456,7 +456,7 @@ class AccountsMixin:
         try:
             if self.conn_status_label.winfo_exists():
                 self.conn_status_label.configure(text="Checking...", text_color=COLOR["warning"])
-        except:
+        except Exception:
             pass
         threading.Thread(target=_check, daemon=True).start()
 
@@ -789,6 +789,25 @@ class AccountsMixin:
         self._refresh_func_combo()
 
     def update_dash_status(self, acc_name, status, color="white"):
+        """Enqueue a dashboard status update with per-account throttling.
+        
+        Skips duplicate status messages from the same account if sent within
+        500ms — prevents 100 workers from flooding the GUI queue with
+        identical repeated updates like 'Running...' every second.
+        """
+        now = time.time()
+        if not hasattr(self, '_dash_throttle'):
+            self._dash_throttle = {}
+        
+        key = acc_name
+        prev = self._dash_throttle.get(key)
+        if prev:
+            prev_status, prev_time = prev
+            # Skip if same status text and within 500ms
+            if prev_status == status and (now - prev_time) < 0.5:
+                return
+        
+        self._dash_throttle[key] = (status, now)
         self.gui_queue.put(("dash_status", (acc_name, status, color)))
         
     def _internal_update_dash_status(self, acc_name, status, color):
@@ -801,14 +820,21 @@ class AccountsMixin:
         """Batch-render all pending status updates in ONE pass.
         
         Called once per GUI queue tick instead of per-message.
-        With 20 accounts, this coalesces ~20 configure() calls into
-        only the ones that actually changed.
+        Skips configure() when text hasn't changed — with 100 accounts
+        this avoids ~95% of redundant Tk widget updates.
         """
         if not hasattr(self, '_dirty_dash') or not self._dirty_dash:
             return
+        if not hasattr(self, '_last_rendered_dash'):
+            self._last_rendered_dash = {}
         for acc_name, (text, color) in self._dirty_dash.items():
+            # Skip if already showing exact same text + color
+            prev = self._last_rendered_dash.get(acc_name)
+            if prev and prev == (text, color):
+                continue
             if acc_name in self.dash_labels:
                 self.dash_labels[acc_name].configure(text=text, text_color=color)
+                self._last_rendered_dash[acc_name] = (text, color)
         self._dirty_dash.clear()
 
     def _update_row_states(self):
@@ -860,9 +886,9 @@ class AccountsMixin:
 
     # ---- Batch Operations ----
     def _batch_start_all(self):
-        # Staggered start: groups of 2, 3s between waves
-        # 39 accounts → 20 waves → fully started in ~57s (prevents screenshot storm)
-        WAVE_SIZE = 2
+        # Staggered start: groups of 5, 2s between waves
+        # 100 accounts → 20 waves → fully started in ~40s (prevents screenshot storm)
+        WAVE_SIZE = 5
         delay_ms = 0
         count = 0
         for acc in self.multi_accounts:
@@ -870,7 +896,7 @@ class AccountsMixin:
                 self.after(delay_ms, lambda n=acc['name']: self._start_account(n))
                 count += 1
                 if count % WAVE_SIZE == 0:
-                    delay_ms += 3000  # 3s between waves
+                    delay_ms += 2000  # 2s between waves
     
     def _batch_stop_all(self):
         for acc in self.multi_accounts:
@@ -1128,9 +1154,29 @@ class AccountsMixin:
                             old_name = acc['name']
                             new_name = phone_names[tab_idx]
                             if old_name != new_name:
+                                # Skip rename if worker is actively running — 
+                                # changing the key while worker uses old_name causes
+                                # status updates to go to a dead widget
+                                if self._is_running(old_name):
+                                    self.gui_queue.put((
+                                        "log",
+                                        f"[Refresh] {old_name} → {new_name} (skipped: running)"
+                                    ))
+                                    continue
+                                
                                 acc['name'] = new_name
+                                
+                                # Migrate running state + worker thread to new key
+                                with self._running_lock:
+                                    if old_name in self.account_running:
+                                        self.account_running[new_name] = self.account_running.pop(old_name)
+                                    if old_name in self.account_workers:
+                                        self.account_workers[new_name] = self.account_workers.pop(old_name)
+                                
                                 updated += 1
-                                self.gui_queue.put(("log", f"[Refresh] {old_name} → {new_name}"))
+                                self.gui_queue.put((
+                                    "log", f"[Refresh] {old_name} → {new_name}"
+                                ))
                 except Exception as e:
                     self.gui_queue.put(("log", f"[Refresh] Port {port} error: {e}"))
             
@@ -1241,7 +1287,7 @@ class AccountsMixin:
                     # Periodic DB maintenance
                     try:
                         self.state_db.checkpoint()
-                    except:
+                    except Exception:
                         pass
                         
                 except Exception as e:
@@ -1278,12 +1324,12 @@ class AccountsMixin:
                     acc_logger.error(error_msg)
                     acc_logger.summary()
                     acc_logger.close()
-                except:
+                except Exception:
                     pass
                 self.state_db.save_account_state(acc_name, status="crashed", error_msg=error_msg[:100])
                 self.update_dash_status(acc_name, f"CRASHED: {str(e)[:30]}", COLOR["danger"])
                 self.log_gui(f"[{acc_name}] Worker CRASHED: {str(e)[:60]}")
-            except:
+            except Exception:
                 pass
             finally:
                 self._set_running(acc_name, False)
@@ -1382,7 +1428,7 @@ class AccountsMixin:
         # [THREAD-SAFE] Cache threshold from GUI once at start
         try:
             threshold_val = self.slider.get()
-        except:
+        except Exception:
             threshold_val = 0.54
         
         if is_macro_mode:
@@ -1428,7 +1474,7 @@ class AccountsMixin:
                 try:
                     if cdp_client:
                         try: cdp_client.close()
-                        except: pass
+                        except Exception: pass
                     
                     cdp_client = CDPClient.connect(port=port, tab_index=tab_idx)
                     flog(f"Connected to Port {port}, Tab {tab_idx}")
@@ -1454,7 +1500,7 @@ class AccountsMixin:
             self._set_running(acc_name, False)
             if cdp_client:
                 try: cdp_client.close()
-                except: pass
+                except Exception: pass
             return
         
         self.update_dash_status(acc_name, "Connected, running...", COLOR["success"])
@@ -1513,7 +1559,7 @@ class AccountsMixin:
             self._set_running(acc_name, False)
             try:
                 if cdp_client: cdp_client.close()
-            except: pass
+            except Exception: pass
             return
 
         # ======== LOOP MODE: run loop graph (existing logic) ========
@@ -1787,6 +1833,6 @@ class AccountsMixin:
         # Close CDP connection
         if cdp_client:
             try: cdp_client.close()
-            except: pass
+            except Exception: pass
         
         self.log_gui(f"[{acc_name}] Worker stopped")
