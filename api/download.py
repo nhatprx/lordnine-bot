@@ -18,7 +18,7 @@ GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
 DOWNLOAD_URL = os.environ.get("DOWNLOAD_URL", "").strip()
 
 # Parse owner/repo and tag from DOWNLOAD_URL
-# e.g. https://github.com/nhatpse/lordnine-bot/releases/download/v3.19.2/LordNineBot_v3.19.2_update.zip
+# e.g. https://github.com/nhatprx/lordnine-bot/releases/download/v3.19.2/LordNineBot_v3.19.2_update.zip
 
 def _get_asset_url():
     """Use GitHub API to get a temporary S3 download URL for the release asset."""

@@ -1,7 +1,7 @@
 """Create GitHub Release and upload update.zip — uses git credential manager for auth."""
 import subprocess, json, os, sys, glob
 
-REPO = "nhatpse/lordnine-bot"
+REPO = "nhatprx/lordnine-bot"
 
 # Get version from version.py
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

@@ -3,7 +3,7 @@ Vercel Serverless Function — License Validation API Proxy.
 
 Hides the GitHub Gist URL from clients. Validates license key + HWID binding.
 Deploy to Vercel with environment variable:
-  GIST_URL = https://gist.githubusercontent.com/nhatpse/.../raw/licenses.json
+  GIST_URL = https://gist.githubusercontent.com/nhatprx/.../raw/licenses.json
 """
 
 import json

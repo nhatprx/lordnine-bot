@@ -254,7 +254,7 @@ git push origin master
 
 # 6. Update Vercel env vars (use Python subprocess, NOT PowerShell echo)
 # LATEST_VERSION = "X.Y.Z"
-# DOWNLOAD_URL = "https://github.com/nhatpse/lordnine-bot/releases/download/vX.Y.Z/..."
+# DOWNLOAD_URL = "https://github.com/nhatprx/lordnine-bot/releases/download/vX.Y.Z/..."
 # UPDATE_SIZE = "<bytes>"
 # UPDATE_SHA256 = "<hash>"
 

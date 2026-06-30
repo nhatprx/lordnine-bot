@@ -5,7 +5,7 @@ Client sends current version, server responds with latest version info.
 
 Configuration via Vercel environment variables:
     LATEST_VERSION  = "3.16.0"
-    DOWNLOAD_URL    = "https://github.com/nhatpse/lordnine-releases/releases/download/v3.16.0/LordNineBot_v3.16.0_update.zip"
+    DOWNLOAD_URL    = "https://github.com/nhatprx/lordnine-releases/releases/download/v3.16.0/LordNineBot_v3.16.0_update.zip"
     CHANGELOG       = "• Fix connection 20+ accounts\\n• Thêm auto-update"
     UPDATE_SIZE     = "47185920"  (bytes, optional)
     UPDATE_SHA256   = "abc123..."  (optional, for integrity check)

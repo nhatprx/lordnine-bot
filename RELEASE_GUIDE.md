@@ -59,7 +59,7 @@ python _create_release.py
 ```
 
 Hoặc tạo thủ công:
-1. Vào https://github.com/nhatpse/lordnine-bot/releases/new
+1. Vào https://github.com/nhatprx/lordnine-bot/releases/new
 2. Tag: `v3.20.0`
 3. Upload: `dist/LordNineBot_v3.20.0_update.zip`
 4. Publish
@@ -89,7 +89,7 @@ Sau đó thêm giá trị mới — **QUAN TRỌNG: dùng pipe để tránh trai
 echo 3.20.0| npx vercel env add LATEST_VERSION production
 echo 72368112| npx vercel env add UPDATE_SIZE production
 echo abc123def456...| npx vercel env add UPDATE_SHA256 production
-echo https://github.com/nhatpse/lordnine-bot/releases/download/v3.20.0/LordNineBot_v3.20.0_update.zip| npx vercel env add DOWNLOAD_URL production
+echo https://github.com/nhatprx/lordnine-bot/releases/download/v3.20.0/LordNineBot_v3.20.0_update.zip| npx vercel env add DOWNLOAD_URL production
 echo Fix bugs va improvements| npx vercel env add CHANGELOG production
 ```
 
@@ -101,7 +101,7 @@ echo Fix bugs va improvements| npx vercel env add CHANGELOG production
 | `LATEST_VERSION` | `3.20.0` | `version.py` |
 | `UPDATE_SIZE` | `72368112` | Console output từ `build_exe.py` |
 | `UPDATE_SHA256` | `c4c3307d67a5...` | Console output từ `build_exe.py` |
-| `DOWNLOAD_URL` | `https://github.com/nhatpse/lordnine-bot/releases/download/v3.20.0/LordNineBot_v3.20.0_update.zip` | GitHub Release URL |
+| `DOWNLOAD_URL` | `https://github.com/nhatprx/lordnine-bot/releases/download/v3.20.0/LordNineBot_v3.20.0_update.zip` | GitHub Release URL |
 | `CHANGELOG` | `Fix lag 20 accounts` | Tự viết |
 
 ---

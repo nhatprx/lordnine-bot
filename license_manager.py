@@ -25,7 +25,7 @@ from constants import COLOR, FONT, PAD, RADIUS
 # API endpoint — deploy api/validate-license.py to Vercel, then set this URL
 API_URL = "https://lordnine-api.vercel.app/api/validate-license"
 LICENSE_FILE = "license.key"
-CONTACT_EMAIL = "pnhat.se@gmail.com"
+CONTACT_EMAIL = "nhatprx@gmail.com"
 APP_NAME = "LordNine Bot"
 
 
