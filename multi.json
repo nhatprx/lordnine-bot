@@ -1,73 +1,19 @@
 {
     "accounts": [
         {
-            "name": "Kekidot",
+            "name": "D B13",
             "target": "0",
             "port": 9222,
-            "loop": "macro - Buy Blood",
+            "loop": "",
             "proxy": "",
             "enabled": true,
             "group": "default"
         },
         {
-            "name": "Lomie",
+            "name": "z 13",
             "target": "1",
             "port": 9222,
-            "loop": "macro - Buy Blood",
-            "proxy": "",
-            "enabled": true,
-            "group": "default"
-        },
-        {
-            "name": "Misery",
-            "target": "2",
-            "port": 9222,
-            "loop": "macro - Buy Blood",
-            "proxy": "",
-            "enabled": true,
-            "group": "default"
-        },
-        {
-            "name": "Nobits",
-            "target": "3",
-            "port": 9222,
-            "loop": "macro - Buy Blood",
-            "proxy": "",
-            "enabled": true,
-            "group": "default"
-        },
-        {
-            "name": "Quizzle",
-            "target": "4",
-            "port": 9222,
-            "loop": "macro - Buy Blood",
-            "proxy": "",
-            "enabled": true,
-            "group": "default"
-        },
-        {
-            "name": "VIP-33",
-            "target": "5",
-            "port": 9222,
-            "loop": "macro - Buy Blood",
-            "proxy": "",
-            "enabled": true,
-            "group": "default"
-        },
-        {
-            "name": "VIP-34",
-            "target": "6",
-            "port": 9222,
-            "loop": "macro - Buy Blood",
-            "proxy": "",
-            "enabled": true,
-            "group": "default"
-        },
-        {
-            "name": "VIP-35",
-            "target": "7",
-            "port": 9222,
-            "loop": "macro - Buy Blood",
+            "loop": "",
             "proxy": "",
             "enabled": true,
             "group": "default"

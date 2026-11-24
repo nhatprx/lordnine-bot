@@ -74,6 +74,11 @@ class FlowchartUI(ctk.CTkCanvas):
         self.bind("<Control-MouseWheel>", self.on_zoom)
         self.bind("<MouseWheel>", self.on_scroll)
         self.bind("<Shift-MouseWheel>", self.on_scroll_h)
+        try:
+            self.bind("<TouchpadScroll>", self.on_touchpad_scroll)
+            self.bind("<Control-TouchpadScroll>", self.on_touchpad_zoom)
+        except Exception:
+            pass
         
         # Track mouse movement for cursor-based node placement
         self.bind("<Motion>", self.on_mouse_move)
@@ -170,13 +175,50 @@ class FlowchartUI(ctk.CTkCanvas):
         self.redraw()
 
     # --- Scroll & Pan & Zoom ---
+    @staticmethod
+    def _decode_touchpad_delta(raw):
+        dx = (raw >> 16) & 0xFFFF
+        if dx >= 0x8000:
+            dx -= 0x10000
+        dy = raw & 0xFFFF
+        if dy >= 0x8000:
+            dy -= 0x10000
+        return dx, dy
+
+    def on_touchpad_scroll(self, event):
+        dx, dy = self._decode_touchpad_delta(event.delta)
+        if dx == 0 and dy == 0:
+            return
+        self.view_offset_x -= (dx * 2.0) / self.zoom
+        self.view_offset_y -= (dy * 2.0) / self.zoom
+        self.redraw()
+
+    def on_touchpad_zoom(self, event):
+        _, dy = self._decode_touchpad_delta(event.delta)
+        if dy == 0:
+            return
+        old_wx, old_wy = self.screen_to_world(event.x, event.y)
+        factor = 1.05 if dy > 0 else 0.95
+        self.zoom = max(self.ZOOM_MIN, min(self.ZOOM_MAX, self.zoom * factor))
+        self.view_offset_x = old_wx - event.x / self.zoom
+        self.view_offset_y = old_wy - event.y / self.zoom
+        self.redraw()
+
     def on_scroll(self, event):
-        delta = -event.delta // 120 * 30
+        import sys
+        if sys.platform == "darwin":
+            delta = -event.delta * 15
+        else:
+            delta = -event.delta // 120 * 30
         self.view_offset_y += delta / self.zoom
         self.redraw()
     
     def on_scroll_h(self, event):
-        delta = -event.delta // 120 * 30
+        import sys
+        if sys.platform == "darwin":
+            delta = -event.delta * 15
+        else:
+            delta = -event.delta // 120 * 30
         self.view_offset_x += delta / self.zoom
         self.redraw()
     

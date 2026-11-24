@@ -75,7 +75,7 @@ class AccountsMixin:
         ctk.CTkLabel(ql_inner, text="LAUNCH", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10, weight="bold")).pack(side="left", padx=(0, 8))
 
         self.quick_url_entry = ctk.CTkEntry(ql_inner, placeholder_text="URL...", fg_color=COLOR["surface"], corner_radius=4, height=24, border_width=1, border_color=COLOR["border_subtle"], font=ctk.CTkFont(size=10))
-        self.quick_url_entry.insert(0, "https://www.cloudemulator.net/app/phone?channelCode=web")
+        self.quick_url_entry.insert(0, "https://cloud.vsphone.com/?channel=web")
         self.quick_url_entry.pack(side="left", fill="x", expand=True, padx=(0, 8))
 
         ctk.CTkLabel(ql_inner, text="x", text_color=COLOR["text_muted"], font=ctk.CTkFont(size=10)).pack(side="left")

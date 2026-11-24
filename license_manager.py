@@ -20,6 +20,7 @@ from datetime import datetime
 from uuid import getnode
 
 from constants import COLOR, FONT, PAD, RADIUS
+from icons import get_icon
 
 # === CONFIGURATION ===
 # API endpoint — deploy api/validate-license.py to Vercel, then set this URL
@@ -129,9 +130,8 @@ def _show_key_prompt(root):
     card.pack(fill="both", expand=True, padx=12, pady=12)
 
     # Icon + Title
-    ctk.CTkLabel(card, text="\uE8D7",
-                 font=ctk.CTkFont(family="Segoe MDL2 Assets", size=28),
-                 text_color=COLOR["primary"]).pack(pady=(20, 6))
+    ctk.CTkLabel(card, text="",
+                 image=get_icon("key", COLOR["primary"], size=28)).pack(pady=(20, 6))
     ctk.CTkLabel(card, text="License Activation",
                  font=ctk.CTkFont(family=FONT["family"], size=15, weight="bold"),
                  text_color=COLOR["text"]).pack(pady=(0, 2))
@@ -200,9 +200,8 @@ def _show_blocked_message(message, root):
     card.pack(fill="both", expand=True, padx=12, pady=12)
 
     # Icon + Title
-    ctk.CTkLabel(card, text="\uE711",
-                 font=ctk.CTkFont(family="Segoe MDL2 Assets", size=28),
-                 text_color=COLOR["danger"]).pack(pady=(20, 6))
+    ctk.CTkLabel(card, text="",
+                 image=get_icon("error", COLOR["danger"], size=28)).pack(pady=(20, 6))
     ctk.CTkLabel(card, text="Access Denied",
                  font=ctk.CTkFont(family=FONT["family"], size=15, weight="bold"),
                  text_color=COLOR["danger"]).pack(pady=(0, 4))

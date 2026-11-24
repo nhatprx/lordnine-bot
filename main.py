@@ -10,6 +10,8 @@ Premium UI with sidebar navigation.
 """
 
 import logging
+import sys
+import tkinter as tk
 import customtkinter as ctk
 import time
 import os
@@ -23,6 +25,7 @@ from vision import Vision
 from chrome_manager import ChromeManager
 from state_db import StateDB
 from constants import COLOR, FONT, PAD, RADIUS
+from icons import get_icon
 from version import APP_VERSION
 
 # Tab Mixins
@@ -37,12 +40,14 @@ from tab_accounts import AccountsMixin
 # ════════════════════════════════════════════════════════════════
 class SidebarButton(ctk.CTkFrame):
     """Compact icon-only sidebar button with hover tooltip."""
-    def __init__(self, master, icon, label, command=None, **kwargs):
+    def __init__(self, master, icon, label, command=None, icon_size=18, **kwargs):
         super().__init__(master, fg_color="transparent", height=36, cursor="hand2", **kwargs)
         self.pack_propagate(False)
         self.command = command
         self.is_active = False
         self._label_text = label
+        self._icon_name = icon
+        self._icon_size = icon_size
         self._tooltip = None
         self._tooltip_delay_id = None
         self._tooltip_hide_id = None
@@ -51,10 +56,10 @@ class SidebarButton(ctk.CTkFrame):
         self.indicator = ctk.CTkFrame(self, width=3, height=18, fg_color="transparent", corner_radius=2)
         self.indicator.place(x=0, rely=0.5, anchor="w")
 
-        # Icon (centered) — uses Segoe MDL2 Assets font
+        # Icon (centered) — crisp cross-platform monochrome icon
         self.icon_label = ctk.CTkLabel(
-            self, text=icon, font=ctk.CTkFont(family="Segoe MDL2 Assets", size=18),
-            text_color=COLOR["text_dim"]
+            self, text="",
+            image=get_icon(self._icon_name, COLOR["text_muted"], size=self._icon_size)
         )
         self.icon_label.pack(expand=True)
 
@@ -64,6 +69,15 @@ class SidebarButton(ctk.CTkFrame):
             widget.bind("<Enter>", self._on_enter)
             widget.bind("<Leave>", self._on_leave)
 
+    def _update_icon(self, color_key):
+        self.icon_label.configure(
+            image=get_icon(self._icon_name, COLOR[color_key], size=self._icon_size)
+        )
+
+    def set_icon(self, icon_name):
+        self._icon_name = icon_name
+        self._update_icon("primary" if self.is_active else "text_muted")
+
     def _on_click(self, event=None):
         if self.command:
             self.command()
@@ -71,7 +85,7 @@ class SidebarButton(ctk.CTkFrame):
     def _on_enter(self, event=None):
         if not self.is_active:
             self.configure(fg_color=COLOR["sidebar_h"])
-            self.icon_label.configure(text_color=COLOR["text_dim"])
+            self._update_icon("text_dim")
         # Show tooltip after short delay
         self._cancel_tooltip_timers()
         self._tooltip_delay_id = self.after(300, self._show_tooltip)
@@ -79,7 +93,7 @@ class SidebarButton(ctk.CTkFrame):
     def _on_leave(self, event=None):
         if not self.is_active:
             self.configure(fg_color="transparent")
-            self.icon_label.configure(text_color=COLOR["text_muted"])
+            self._update_icon("text_muted")
         self._cancel_tooltip_timers()
         self._hide_tooltip()
 
@@ -119,11 +133,11 @@ class SidebarButton(ctk.CTkFrame):
         self.is_active = active
         if active:
             self.indicator.configure(fg_color=COLOR["primary"])
-            self.icon_label.configure(text_color=COLOR["primary"])
+            self._update_icon("primary")
             self.configure(fg_color=COLOR["surface"])
         else:
             self.indicator.configure(fg_color="transparent")
-            self.icon_label.configure(text_color=COLOR["text_muted"])
+            self._update_icon("text_muted")
             self.configure(fg_color="transparent")
 
 
@@ -149,17 +163,25 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         except Exception:
             pass
         
-        # --- License Check (before UI setup) ---
-        from license_manager import check_license
-        if not check_license(self):
-            self.destroy()
-            import sys
-            sys.exit(1)
+        # --- License Check (temporarily disabled for local dev) ---
+        # from license_manager import check_license
+        # if not check_license(self):
+        #     self.destroy()
+        #     import sys
+        #     sys.exit(1)
         
         self.geometry("1000x650")
         self.minsize(900, 550)
         self.resizable(True, True)
         self.configure(fg_color=COLOR["bg"])
+
+        # macOS + Tk 9.0: trackpad two-finger scroll emits <TouchpadScroll>
+        # which CustomTkinter's CTkScrollableFrame does not bind natively.
+        if sys.platform == "darwin":
+            try:
+                self.bind_all("<TouchpadScroll>", self._on_macos_touchpad_scroll, add=True)
+            except Exception:
+                pass
 
         self.vision = Vision()
         
@@ -236,13 +258,13 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
         # Navigation buttons (icon-only)
         self.nav_buttons = []
-        # Navigation buttons — uses Segoe MDL2 Assets glyphs
+        # Navigation buttons — crisp cross-platform vector icons
         nav_items = [
-            ("\uE74C", "Nodes",      0),   # Page/tiles
-            ("\uE945", "Macros",     1),   # Lightning bolt
-            ("\uE895", "Automation", 2),   # Sync/refresh
-            ("\uE77B", "Accounts",   3),   # People
-            ("\uE8A1", "Output",     4),   # List/document
+            ("nodes",      "Nodes",      0),
+            ("macros",     "Macros",     1),
+            ("automation", "Automation", 2),
+            ("accounts",   "Accounts",   3),
+            ("output",     "Output",     4),
         ]
         self._sidebar_icons = []
         for icon, label, idx in nav_items:
@@ -265,22 +287,21 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
         # Lock
         self._is_locked = False
         self._lock_btn = SidebarButton(
-            bottom_group, icon="\uE785", label="Lock",
+            bottom_group, icon="unlock", label="Lock",
             command=self._toggle_lock
         )
         self._lock_btn.pack(fill="x", padx=4, pady=1)
 
         # Refresh
         refresh_btn = SidebarButton(
-            bottom_group, icon="\uE149", label="Refresh",
+            bottom_group, icon="refresh", label="Refresh", icon_size=16,
             command=self._refresh_all
         )
-        refresh_btn.icon_label.configure(font=ctk.CTkFont(family="Segoe MDL2 Assets", size=14))
         refresh_btn.pack(fill="x", padx=4, pady=1)
 
         # Quit
         quit_btn = SidebarButton(
-            bottom_group, icon="\uE7E8", label="Quit",
+            bottom_group, icon="quit", label="Quit",
             command=self._confirm_quit
         )
         quit_btn.pack(fill="x", padx=4, pady=1)
@@ -577,9 +598,56 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
             _collect(frame)
         return widgets
 
+    def _on_macos_touchpad_scroll(self, event):
+        """Handle Tk 9.0 macOS <TouchpadScroll> for all CTkScrollableFrame widgets."""
+        raw = event.delta
+        dx = (raw >> 16) & 0xFFFF
+        if dx >= 0x8000:
+            dx -= 0x10000
+        dy = raw & 0xFFFF
+        if dy >= 0x8000:
+            dy -= 0x10000
+        if dx == 0 and dy == 0:
+            return
+
+        w = event.widget
+        while w is not None:
+            # Text widgets already have native Tk 9 <TouchpadScroll> handling
+            if isinstance(w, (tk.Text, ctk.CTkTextbox)):
+                return
+            # FlowchartCanvas handles its own <TouchpadScroll>
+            if hasattr(w, "on_touchpad_scroll"):
+                return
+            if isinstance(w, ctk.CTkScrollableFrame):
+                canvas = w._parent_canvas
+                if dy != 0 and canvas.yview() != (0.0, 1.0):
+                    step_y = int(round(-dy / 3.0))
+                    if step_y == 0:
+                        step_y = -1 if dy > 0 else 1
+                    canvas.yview("scroll", step_y, "units")
+                if dx != 0 and canvas.xview() != (0.0, 1.0):
+                    step_x = int(round(-dx / 3.0))
+                    if step_x == 0:
+                        step_x = -1 if dx > 0 else 1
+                    canvas.xview("scroll", step_x, "units")
+                return
+            if isinstance(w, tk.Canvas) and (w.yview() != (0.0, 1.0) or w.xview() != (0.0, 1.0)):
+                if dy != 0 and w.yview() != (0.0, 1.0):
+                    step_y = int(round(-dy / 3.0))
+                    if step_y == 0:
+                        step_y = -1 if dy > 0 else 1
+                    w.yview("scroll", step_y, "units")
+                if dx != 0 and w.xview() != (0.0, 1.0):
+                    step_x = int(round(-dx / 3.0))
+                    if step_x == 0:
+                        step_x = -1 if dx > 0 else 1
+                    w.xview("scroll", step_x, "units")
+                return
+            w = getattr(w, "master", None)
+
     def _apply_lock(self):
         self._is_locked = True
-        self._lock_btn.icon_label.configure(text="\uE72E")
+        self._lock_btn.set_icon("lock")
 
         for w in self._get_all_interactive_widgets():
             try:
@@ -590,7 +658,7 @@ class BotApp(NodesMixin, MacrosMixin, LoopsMixin, AccountsMixin, ctk.CTk):
 
     def _apply_unlock(self):
         self._is_locked = False
-        self._lock_btn.icon_label.configure(text="\uE785")
+        self._lock_btn.set_icon("unlock")
 
         for w in self._get_all_interactive_widgets():
             cls = type(w).__name__

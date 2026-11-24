@@ -15,6 +15,8 @@ Usage:
 
 import subprocess
 import os
+import sys
+import shutil
 import time
 import json
 import logging
@@ -81,14 +83,31 @@ class ChromeManager:
         return cleaned
     
     def _find_chrome_path(self):
-        """Find Chrome executable on Windows."""
-        candidates = [
-            os.path.expandvars(r"%ProgramFiles%\Google\Chrome\Application\chrome.exe"),
-            os.path.expandvars(r"%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"),
-            os.path.expandvars(r"%LocalAppData%\Google\Chrome\Application\chrome.exe"),
-        ]
+        """Find Chrome executable on Windows, macOS, or Linux."""
+        if sys.platform == "darwin":
+            candidates = [
+                "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+                os.path.expanduser("~/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
+                "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary",
+                "/Applications/Chromium.app/Contents/MacOS/Chromium",
+                "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+                "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+            ]
+        elif sys.platform.startswith("win"):
+            candidates = [
+                os.path.expandvars(r"%ProgramFiles%\Google\Chrome\Application\chrome.exe"),
+                os.path.expandvars(r"%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"),
+                os.path.expandvars(r"%LocalAppData%\Google\Chrome\Application\chrome.exe"),
+            ]
+        else:
+            candidates = [
+                shutil.which("google-chrome"),
+                shutil.which("google-chrome-stable"),
+                shutil.which("chromium"),
+                shutil.which("chromium-browser"),
+            ]
         for p in candidates:
-            if os.path.exists(p):
+            if p and os.path.exists(p):
                 return p
         return None
     
@@ -149,8 +168,8 @@ class ChromeManager:
             self.processes[port] = proc
             self._save_pids()
             
-            # Wait for Chrome to start accepting connections
-            for attempt in range(10):  # 1 second max
+            # Wait for Chrome to start accepting connections (up to 4s)
+            for attempt in range(40):
                 time.sleep(0.1)
                 if self._is_port_reachable(port):
                     return True, f"Chrome launched on port {port} (PID: {proc.pid})"
@@ -358,9 +377,10 @@ class ChromeManager:
             for i, t in enumerate(page_targets):
                 print(f"  Tab {i}: id={t.get('id', '?')[:12]} url={t.get('url', '?')[:80]}")
             
-            # Filter to Redfinger pages (match cloudemulator, redfinger, or phone page)
+            # Filter to cloud phone pages (VSPhone, Redfinger / cloudemulator)
             rf_targets = [t for t in page_targets if 
-                         ("cloudemulator" in t.get("url", "") or 
+                         ("vsphone" in t.get("url", "") or
+                          "cloudemulator" in t.get("url", "") or 
                           "redfinger" in t.get("url", "") or
                           "phone" in t.get("url", ""))]
             
@@ -390,11 +410,12 @@ class ChromeManager:
                 try:
                     cdp = CDPClient(ws_url, target)
                     
-                    # Wait for phone cards to load (multiple selector attempts)
+                    # Wait for phone cards to load (VSPhone + Redfinger selectors)
                     import time as _time
                     card_count = 0
                     selectors = [
-                        'div.phone-col.grid-item',
+                        '.window-item:not(.buy):not(.placeholder)',  # VSPhone
+                        'div.phone-col.grid-item',                   # Redfinger
                         'div.phone-col',
                         'div.grid-item',
                         '[class*="phone"]',
@@ -419,17 +440,26 @@ class ChromeManager:
                         errors.append(f"Tab {tab_idx}: no phone cards found (title: {title})")
                         continue
                     
-                    # Get phone name + click
+                    # Get phone name + click to launch stream
                     js_code = f"""
                     (() => {{
                         const cards = document.querySelectorAll('{matched_selector}');
                         if ({phone_idx} >= cards.length) return null;
                         const card = cards[{phone_idx}];
-                        const nameEl = card.querySelector('div.single-line') || 
+                        const padNameAttr = card.getAttribute('pad-name');
+                        const nameEl = card.querySelector('.head .name') ||
+                                       card.querySelector('div.single-line') || 
                                        card.querySelector('[class*="name"]') ||
                                        card.querySelector('span');
-                        const name = nameEl ? nameEl.innerText.trim() : 'Phone-{phone_idx+1}';
-                        card.click();
+                        const name = (padNameAttr && padNameAttr.trim()) ||
+                                     (nameEl && nameEl.innerText.trim()) ||
+                                     'Phone-{phone_idx+1}';
+                        // VSPhone launches stream when clicking .cover / img.screen;
+                        // Redfinger launches when clicking the card itself.
+                        const clickTarget = card.querySelector('.cover img.screen') ||
+                                            card.querySelector('.cover') ||
+                                            card;
+                        clickTarget.click();
                         return name;
                     }})()
                     """
@@ -468,7 +498,8 @@ class ChromeManager:
         try:
             page_targets = CDPClient.list_tabs(port)
             rf_targets = [t for t in page_targets if 
-                         ("cloudemulator" in t.get("url", "") or 
+                         ("vsphone" in t.get("url", "") or
+                          "cloudemulator" in t.get("url", "") or 
                           "redfinger" in t.get("url", "") or
                           "phone" in t.get("url", ""))]
             if not rf_targets:
@@ -481,13 +512,30 @@ class ChromeManager:
                 cdp = None
                 try:
                     cdp = CDPClient(ws_url, target)
-                    # Read phone name from page title or card element
+                    # Read phone name from active stream or card element (VSPhone + Redfinger)
                     name = cdp.evaluate("""
                         (() => {
-                            // Try iframe/active phone title
+                            // VSPhone active stream info panel
+                            const vsItems = document.querySelectorAll('.play-phone-info .item');
+                            for (const item of vsItems) {
+                                const lbl = (item.querySelector('.label')?.innerText || '').toLowerCase();
+                                if (lbl.includes('name')) {
+                                    const val = item.querySelector('.value')?.innerText?.trim();
+                                    if (val) return val;
+                                }
+                            }
+                            const vsFirstVal = document.querySelector('.play-phone-info .item .value');
+                            if (vsFirstVal && vsFirstVal.innerText.trim()) return vsFirstVal.innerText.trim();
+                            // VSPhone active card in list view
+                            const vsActiveCard = document.querySelector('.window-item.active[pad-name]');
+                            if (vsActiveCard) {
+                                const n = vsActiveCard.getAttribute('pad-name')?.trim();
+                                if (n) return n;
+                            }
+                            // Redfinger active phone title
                             const title = document.querySelector('.phone-name, .device-name, [class*="phoneName"]');
                             if (title) return title.innerText.trim();
-                            // Try card name
+                            // Redfinger card name
                             const card = document.querySelector('div.phone-col.grid-item div.single-line, [class*="name"] span');
                             if (card) return card.innerText.trim();
                             // Fallback: page title
